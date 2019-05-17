@@ -1,0 +1,434 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+\newtheorem{exmp}{Example}
+\newtheorem{note}{Note}
+\newtheorem{claim}{Claim}
+\newtheorem{nonexmp}{non-Example}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{exercise}{Exercise}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathbf P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\T}{\mathbf T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\renewcommand{\a}{\mathscr{A}}
+\renewcommand{\b}{\mathscr{B}}
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\newcommand{\y}{\mathscr{Y}}
+\renewcommand{\j}{\mathscr{J}}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator*{\SL}{SL}
+\DeclareMathOperator*{\SO}{SO}
+\DeclareMathOperator*{\SU}{SU}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\iso}{iso}
+\DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\ZFC}{ZFC}
+\DeclareMathOperator{\set}{\mathbf{Set}}
+\DeclareMathOperator{\Ab}{\mathbf{Ab}}
+\DeclareMathOperator{\Cmon}{\mathbf{CMon}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ar}{Ar}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\ch}{\mathbf{Ch}}
+\DeclareMathOperator{\Mod}{\mathbf Mod}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{PLClub}
+\assignment{HoTT preliminaries}
+\duedate{January 30, 2019}
+
+\begin{document}
+
+\begin{abstract}
+This covers some preliminary concepts from type theory, category theory, and topology. Each section is independent of the other two. Only the stuff about type theory is essential to my talk on HoTT. The section on category theory is included for a brief discussion at the end of my talk about models of HoTT.  The section on topology is the least important but is included so that you can interpret some major concepts from HoTT in a geometric way. The core of my talk should be comprehensible without the last two sections, but you may get a bit more from it if you read them (perhaps ignoring any proofs). (There are probably typos.)
+\end{abstract}
+
+\begin{center}
+{\textbf{(Elements of type theory)}} 
+\end{center}
+
+We are given a language $\mathcal{L}$ consisting of certain terms, say, a variant of the untyped lambda calculus. We can enrich $\mathcal{L}$ with additional primitive objects called \textit{types}. If $a$ is a term and $A$ a type, then we write $a: A$ to express the \textit{judgment} (distinct from a proposition) that $a$ \textit{inhabits} or \textit{has type} $A$. We declare that types themselves inhabit types known as \textit{universes}, which are arranged in a cumulative hierarchy. $$\mathbf{Type}_0 :\mathbf{Type}_1 : \mathbf{Type}_2 : \cdots . $$ If instead we declared a single universe $\mathbf{Type}$ that every type inhabits, then we could encode Russel's paradox into our type theory. Our hierarchy avoids such a problem by tracking which level a newly formed type inhabits. For convenience, however, we usually avoid writing the level explicitly and use the term $\mathbf{Type}$ instead.
+\begin{exmp} The following (among others) will be base types of our language.
+\begin{enumerate}
+\item The \textit{empty type} $\bot$.
+\item The \textit{one point type} $\ast$.
+\end{enumerate}
+\end{exmp}
+We write $a\equiv b :A$ to express that the terms $a$ and $b$ are \textit{definitionally equal with respect to the type $A$}. We declare that $\equiv$ is an equivalence relation with respect to a fixed type $A$. We also declare that if $A\equiv B : \mathbf{Type}$ and $a: A$, then $a:B$. Intensional type theory.
+
+Moving now to dependent type theory, this section will assume familiarity with non-dependent type theory at the level of the STLC (including product and sum types).
+
+\begin{definition} Let $A$ be any type and $B : A \to \mathbf{Type}$ be any family of types (e.g., $\lambda n.T^n : \N \to \mathbf{Type}$ when $A \equiv \N : \mathbf{Type}$).  
+\begin{enumerate}
+\item We form the \textit{dependent product type $\prod_{x:A} B(x)$} according to the following four rules.
+\begin{enumerate}
+\item \underline{${\prod}$-Introduction:} If $ b: B(x)$ for any $x: A$, then $\lambda x. b : \prod_{x : A} B(x)$.
+\item \underline{${\prod}$-Elimination:} If $f:  \prod_{x : A} B(x)$ and $a: A$, then $f(a) : B(a)$.
+\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $(\lambda x.b)(a) \equiv b[x:=a]: B(a)$.
+\item \underline{${\prod}$-Uniqueness:} If $f: \prod_{x:A} B(x)$, then $f \equiv \lambda x. f(x) : \prod_{x:A} B(x)$.
+\end{enumerate}
+Note that the ordinary function type $A \to B$ is a special case of the dependent product type. Naively, a dependent product type is comparable to a set-theoretic choice function. 
+\item Now, add the term $\ind_{\sum_{x:A}B(x)}(t_1, t_2, t_3)$ to $\mathcal{L}$ where $t_1$, $t_2$, and $t_3$ are any given terms of $\mathcal{L}$. We form the \textit{dependent sum type $\sum_{x:A} B(x)$} according to the following three rules.
+\begin{enumerate}
+\item \underline{${\sum}$-Introduction:} If $a: A$ and $b: B(a)$, then $(a, b) : \sum_{x: A} B(x)$.
+\item \underline{${\sum}$-Elimination:} Given any family of types $C: (\sum_{x:A} B(x)) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
+\item \underline{${\sum}$-Computation:}  Given any family of types $C: (\sum_{x:A} B(x)) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
+\end{enumerate}
+Note that the ordinary product type $A  \times B$ is a special case of the dependent sum type. Naively, a dependent sum type is comparable to a set-theoretic disjoint union (or, more generally, as a coproduct).
+\end{enumerate}
+\end{definition}
+
+\begin{definition} $ $
+\begin{enumerate}
+\item Define the \textit{left projection function $\pr_1$} by the judgments $$\pr_1 : \big (\sum_{x:A}B(x) \big) \to A  \quad \quad \pr_1(a,b) \equiv a: A.$$
+\item Define the \textit{right projection function $\pr_2$} by the judgements  $$ \pr_2 : \prod_{p: \sum_{x:A}B(x)} B(\pr_1(p)) \quad \quad \pr_2(a,b) \equiv b :B(a). $$
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+Given $p: \sum_{x:A} B(x)$, we have that $p\equiv (\pr_1(p), \pr_2(p)) : \sum_{x:A}B(x)$. This is known as the uniqueness principle for dependent sum types.
+\end{note}
+
+\begin{remark}
+Under the Curry-Howard isomorphism, we get the following propositional interpretation of dependent type theory.
+\[
+\begin{tikzcd}
+\text{False} \arrow[r] & \bot \arrow[l] \\
+\text{True} \arrow[r] & \ast \arrow[l] \\
+P \land Q \arrow[r] & P\times Q \arrow[l] \\
+P\vee Q \arrow[r] & P + Q \arrow[l] \\
+P \implies Q \arrow[r] & P \to Q \arrow[l] \\
+\forall x.P(x) \arrow[r] & \prod_{x:A}P(x) \arrow[l] \\
+\exists x. P(x) \arrow[r] & \sum_{x:A}P(x) \arrow[l]
+\end{tikzcd}
+.\]
+\end{remark}
+
+\begin{center}
+{\textbf{(Elements of category theory)}} 
+\end{center}
+
+This section assumes a familiarity with the basic definitions of category theory.
+
+\begin{definition}
+Let $\c$ and $\d$ be categories and $F,G: \c \to \d$ be functors.  A \textit{natural transformation} $\phi :F \Rightarrow G$  is an assignment  $A \mapsto f_A$ from $\ob \c$ to $\mor \d$ such that $f_A : F(A) \to G(A)$ and the following diagram commutes for any morphism $f: A \to B$.
+
+\begin{center}
+\begin{tikzcd}[row sep=large, column sep = large]
+FA \arrow[r, "Ff"] \arrow[d, "f_A", swap]
+& FB \arrow[d, "f_B"] \\
+GA \arrow[r, "Gf"]
+& GB
+\end{tikzcd}
+\end{center}
+In symbols, this may be written as $f_Bf_{\ast} = f_{\ast}f_A$, where $f_A$ and $f_B$ are called the \textit{components} of $\phi$.
+\end{definition}
+
+\begin{remark}
+If every $f_A$ is an isomorphism, then the $(f_A)^{-1}$ define a natural transformation between the same two functors.
+\end{remark}
+
+\begin{definition}
+If each $f_A$ is an isomorphism, then we call $\phi: F \cong G$ a \textit{natural isomorphism}.
+\end{definition}
+
+\begin{remark}
+ Let $\c$ be a category.  The class $\{\Hom_{\c}(y, x)\}_{y\in \ob \c}$ reconstructs $x$ as an object in $\c$. To see this, let $\widehat{\c}$ denote the functor category $\Fun(\c^{\op}, \mathbf{Set})$ (whose objects are called \textit{set-valued presheaves on $\c$})  and let $x \in \ob \c$. Define the functor $h_x : \c^{\op} \to \mathbf{Set}$ by $$y \mapsto \Hom_{\c}(y, x) \quad \quad h_x(f) : u \mapsto u \circ f.$$ 
+\begin{definition}
+A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x$. We say that \textit{$x$ represents $F$} in this case.
+\end{definition}
+The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'), \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. Then the essential image of $h$ is precisely the representable presheaves of $\c$.
+\end{remark}
+
+\begin{lemma}{(Yoneda)} Let $\c$ be a category.
+\begin{enumerate}
+\item For any $x, y \in \ob \c$, the map $\Hom_{\c}(x, y) \to \Hom_{\widehat{\c}}(h_x, h_y)$ given by $\phi \mapsto h(\phi)$ is bijective.
+\item There is a natural isomorphism $$\Hom_{\c}(-, -) \cong \Hom_{\widehat{\c}}(h_{(-)}, h_{(-)})$$ of functors $ \c^{\op} \times \c \to \mathbf{Set}$. Thus, we can treat objects in $\c$ as set-valued presheaves of $\c$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+We prove just the first statement as the second follows formally from the first.
+Specifically, we define an inverse to the given map. If $\alpha : h_x \to h_y$ is a morphism in $\widehat{\c}$, then define $$i : \alpha \mapsto \alpha_x(\id_x).$$ Note that $\alpha_x(\id_x) \in h_y(x) = \Hom_{\c}(x,y)$. We must verify that $h \circ i = \id = i \circ h$.
+\\ \\ If $f: x \to y$ in $\c$, then $h(f) : h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $(-) \mapsto f \circ (-)$ for any $z\in \ob \c$. But then $h(f)_x(\id_x) = f\circ \id_x = f$.
+\\ \\ It remains to show that $h \circ i = \id$. Let $\alpha : h_x \to h_y$.  We have that $
+i(\alpha) = \alpha_x(\id_x) \in h_y(x)$, so that $i(\alpha) : x \to y$ in $\c$. Note that the component map $h(i(\alpha))_z : \Hom_{\c}(z, x) \to \Hom_{\c}(z, y)$ is given by $\phi \mapsto i(\alpha) \circ \phi.$ We must check that this agrees with $\alpha_z$. For any $x, y, z \in \ob \c$ and $\phi : z \to x$, we have
+\[
+\begin{tikzcd}
+h_x(x) \arrow[r, "\alpha_x"] \arrow[d, "h_x(\phi)"'] & h_y(x) \arrow[d, "h_y(\phi)"] \\
+h_x(z) \arrow[r, "\alpha_z"'] & h_y(z)
+\end{tikzcd}
+\]
+because $\alpha$ is a natural transformation. By evaluating this at the morphism $\id_x$, we see that $\alpha_z(\phi) = i(\alpha) \circ \phi$.
+\end{proof}
+
+\begin{corollary}
+Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi:= h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map $$h_x(y) \to F(y)$$ $$ f \mapsto F(f)(\xi).$$ This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
+\\ \\ By Yoneda, $F$ is representable by $x$ if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
+\end{corollary}
+
+\begin{definition} Let $\c$ be a category and $I$ be any set. Let $A_{\alpha} \in \ob \c$ for each $\alpha \in I$.
+\begin{enumerate}
+\item  Define the \textit{product functor} $\c^{\op} \to \mathbf{Set}$ by $$B \mapsto \prod_{\alpha \in I}\Hom_{\c}(B, A_{\alpha}) \quad \quad f \mapsto (f_{\alpha} \mapsto f_{\alpha} \circ f).$$ If the product functor is representable by some object $P$ in $\c$, then we say that $P$ is the \textit{product} of the $A_{\alpha}$'s in $\c$. {[[We use ``the" since limits are unique up to isomorphism.]]}
+\item Define the \textit{coproduct functor} $\c \to \mathbf{Set}$ by $$ B \mapsto \prod_{\alpha \in I} \Hom_{\c}(A_{\alpha}, B) \quad \quad f \mapsto (f_{\alpha} \mapsto f \circ f_{\alpha}).$$ If the coproduct functor is representable by some object $Q$ in $\c$, then we say that $Q$ is the \textit{coproduct} of the $A_{\alpha}$'s in $\c$.
+\end{enumerate}
+\end{definition}
+
+Finally, we collect some additional concepts that will be relevant to our discussion of HoTT.
+
+\begin{definition}
+Given $x \in \ob \c$, rhe \textit{overcategory} ${\c}/{X}$ has as objects morphisms in $\c$ of the form $i : Y \to X$ where $X$ is fixed. Given $i:  Y \to X$ and  $i' : Y' \to X$ in $\ob {\c}/{X}$, define the set of morphisms from $i$ to $i'$ as the morphisms $f: Y \to Y'$ where
+\[ \begin{tikzcd}
+Y \arrow[r, "f"] \arrow[swap, dr,  " i "] & Y' \arrow[d, "i '"] \\% 
+ & X
+\end{tikzcd}
+\]
+commutes.
+\end{definition}
+
+\begin{definition}
+An object $X$ of $\c$ is \textit{initial} if for each $Y \in \ob \c$, there is a unique morphism $f : X \to Y$. Moreover, we say that $X$ is \textit{terminal} if for each $Z \in \ob \c$, there is a unique morphism $g : Z \to X$. 
+\end{definition}
+
+\begin{definition}
+Let $\c$ be a category and $Y\in \ob{\c}$ such that $W\times Y$ exists for any $W\in \ob{\c}$. Given $X\in \ob{\c}$, an \textit{exponential object} $X^Y$ is an object of $\c$  equipped with a map $\ev : X^Y \times Y \to X$ such that for any morphism $f : Z\times Y \to X$, there exists a unique morphism $g: Z \to X^Y$ such that 
+\[
+\begin{tikzcd}
+Z\times Y \arrow[d, "g\times \id_Y"', dashed] \arrow[rd, "f"] &  \\
+X^Y \times Y \arrow[r, "\ev"'] & X
+\end{tikzcd}
+\] commutes. Of course, $X^Y$ is unique when it exists.
+\end{definition}
+
+\begin{definition}
+A category $\c$ is \textit{Cartesian closed} if
+\begin{enumerate}
+\item it has a terminal object
+\item $X \times Y \in \ob{\c}$ whenever $X,Y\in \ob{\c}$
+\item $X^Y \in \ob{\c}$ whenever $X,Y \in \ob{\c}$.
+\end{enumerate}
+A category $\c$ is \textit{locally Cartesian closed} if each overcategory $\c/X$ is Cartesian closed. 
+\end{definition}
+
+\begin{definition}
+Let $\c$ be a category. If, given any commutative diagram
+\[
+\begin{tikzcd}
+a \arrow[r] \arrow[d, "f"'] & c \arrow[d, "g"] \\
+b \arrow[r] & d
+\end{tikzcd}
+\] in $\c$, we can find some $\gamma : b \to c$ such that
+\[
+\begin{tikzcd}
+a \arrow[r] \arrow[d, "f"'] & c \arrow[d, "g"] \\
+b \arrow[r] \arrow[ru, "\gamma", dashed] & d
+\end{tikzcd}
+\] commutes, then we say that $f$ has the \textit{left lifting property with respect to $g$} and that $g$ has the  \textit{right lifting property with respect to $f$}.
+\end{definition}
+
+\begin{definition}
+A \textit{weak factorization system} on a category $\c$ is a pair $(\mathscr{L}, \mathscr{R})$ of classes of morphisms in $\c$ such that
+\begin{enumerate}
+\item any morphism $f$ in $\c$ satisfies $f = r \circ l$ for some $r\in \mor{\mathscr{R}}$ and some $l\in \mor{\mathscr{L}}$
+\item $\mathscr{L}$ is precisely the class of morphisms with the left lifting property with respect to any morphism in $\mathscr{R}$
+\item $\mathscr{R}$ is precisely the class of morphisms with the right  lifting property with respect to any morphism in $\mathscr{L}$.
+\end{enumerate}
+\end{definition}
+
+\begin{center}
+{\textbf{(Elements of algebraic topology)}} 
+\end{center}
+
+This sections assumes familiarly with elementary point-set topology.
+
+\begin{definition}
+Let $X$ and $Y$ be topological spaces and $I:= [0,1]$. Let $f,g: X \to Y$ be continuous maps. A \textit{homotopy from $f$ to $g$} is a continuous map $H: X \times I \to Y$ such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$ for each $x\in X$. We say that $f$ is \textit{homotopic to $g$}, written as $f\simeq g$.
+\end{definition}
+
+\begin{lemma}
+Homotopy equivalence of maps is an equivalence relation.
+\end{lemma}
+\begin{proof}
+Reflexivity is obvious.  Let $f, g, h : X \to Y$ be continuous. If $A: f \simeq g$ is a homotopy, then $A' : X \times I \to Y$ given by $(x,t) \mapsto A(x, 1-t)$ defines a homotopy $g\simeq f$, proving symmetry. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$ are homotopies. Define $H(x,t) = \begin{cases}
+F(x, 2t) & 0 \leq t \leq \frac{1}{2}
+\\ G(x, 2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases}.$ This is continuous by the gluing lemma. Thus, $H : f \simeq h$, as required. 
+\end{proof}
+
+\begin{definition}
+Let $\gamma, \hat{\gamma}: I \to X$ be continuous (i.e., paths in $X$) such that $\gamma(0) = \hat{\gamma}(0)$ and $\gamma(1) = \hat{\gamma}(1)$.  A \textit{path homotopy from $\gamma$ to $\hat{\gamma}$} is a homotopy $H: I \times I \to X$ such that $H(0,s) = \gamma(0)$ and $H(1,s) = \gamma(1)$ for each $s\in I$.
+\end{definition}
+
+\begin{note}
+$S^n := \{x\in \R^{n+1} : |x| =1\}$, and $D^n \{x\in \R^n : |x|\leq 1\}$.
+\end{note}
+
+\begin{exmp}
+Let $X:= D^2 \setminus \{0\}$. Define $f: X \to X$ by $f(r, \theta) = (r, \theta)$ and $g: X \to X$ by $g(r, \theta) = (1, \theta)$. Then the map $F: X \times I \to X$ given by  $F((r, \theta), t)=  (t+ (1-t)r, \theta)$ is a homotopy between $f$ and $g$ relative to $S^1\subset X$.
+\end{exmp}
+
+\begin{definition}
+A \textit{deformation retraction of $X$ onto a subspace $A\subset X$} is a continuous map $F: X \times I \to X$ such that $F(x, 0) = x$ for each $x\in X$, $F(a, 1) = a$ for each $a\in A$, and $F(x, 1) \in A$ for each $x\in X$. Note that this is a homotopy. 
+\end{definition}
+
+\begin{exmp}  $\R^{n+1}$ deformation retracts onto $S^n$. 
+\end{exmp}
+\begin{proof}
+Define $f: \R^n \setminus \{0\} \to S^{n-1}$ by $f(x) = \frac{x}{|x|}$. This is clearly a retraction. Define $H : (\R^2 \setminus \{0\}) \times I \to \R^2 \setminus \{0\}$ by $(x, t) \mapsto (1-t)x +tf$. This a deformation retraction of $ \R^n \setminus \{0\}$ onto $S^{n-1}$, as desired. 
+\end{proof}
+
+\begin{definition}
+A space $X$ is called \textit{contractible} if it deformation retracts onto $\{p\}$ for some $p\in X$.
+\end{definition}
+
+\begin{exmp}
+$\R^n$ is contractible.
+\end{exmp}
+
+\begin{definition}
+Two spaces $X$ and $Y$ are \textit{homotopy equivalent $(\simeq)$} if there are continuous maps $f: X\to Y$ and $g: Y \to X$ such that $f\circ g \simeq \id_Y$ and $g\circ f \simeq \id_X$. In this case, we call $f$ a \textit{homotopy equivalence}.
+\end{definition}
+
+\begin{lemma}
+Homotopy equivalence of spaces is an equivalence relation.
+\end{lemma}
+\begin{proof}
+Let $\alpha : X \to Y$ and $\beta: Y \to Z$ denote the given homotopy equivalences. 
+\begin{claim}
+Let $f, f': X \to Y$ and $g,g' : Y \to Z$ be continuous. Suppose that $f\simeq f'$ and $g \simeq g'$. Then $gf \simeq g'f'$.
+\end{claim}
+\begin{proof}
+There exist homotopies $F: f \simeq f'$ and $G: g \simeq g'$. Then $H: X \times I \to Z$ given by $(x,t) \mapsto G((F(x, t)), t)$ is a homotopy $gf \simeq g'f'$.
+\end{proof}
+Both $\alpha$ and $\beta$ have homotopy inverses, say, $\alpha': Y \to X$ and $\beta': Z \to Y$, respectively.  We want to show that $\beta \alpha$ is a homotopy equivalence with  $\alpha ' \beta'$ a homotopy inverse. We apply Claim 1 and the fact that $\simeq$ is reflexive for maps to get $$(\beta \alpha)(\alpha' \beta') = \beta (\alpha \alpha ') \beta ' \simeq \beta \id_Y  \beta ' = \beta \beta' \simeq \id_Z  .$$ Similarly, we get $(\alpha' \beta')(\beta \alpha) \simeq \id_X$. This shows that homotopy equivalence is transitive. As it is clearly reflexive and symmetric, it is in fact an equivalence relation. 
+\end{proof}
+
+\begin{lemma}
+If $\tilde{f} \simeq f$ and $f: X \to Y$ is a homotopy equivalence, then $\tilde{f} : X \to Y$ is also a homotopy equivalence.
+\end{lemma}
+\begin{proof}
+Suppose that $f: X \to Y$ is a homotopy equivalence with $g: Y \to X$ a homotopy inverse. Also, suppose that $H: \tilde{f} \simeq f$ is a homotopy. We want to show that $\tilde{f}$ is a homotopy equivalence with $g$ a homotopy inverse. 
+\\ \\ Define $H' : Y \times I \to Y$ by $(x,t) \mapsto H(g(x), (1-t))$. This is a homotopy $\tilde{f} g \simeq f g$. By transitivity of $\simeq$, we see that $\tilde{f} g  \simeq \id_Y$. Moreover, the map $H'' : X \times I \to X$ given by $(x,t) \mapsto g(H(x,t))$ defines a homotopy $g \tilde{f} \simeq gf$. Hence $g\tilde{f} \simeq gf \simeq \id_X$. This completes the proof.
+\end{proof}
+
+\end{document}
