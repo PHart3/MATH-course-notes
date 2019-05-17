@@ -1,0 +1,482 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem{exmp}{Example}
+\newtheorem{nonexmp}{non-Example}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{exercise}{Exercise}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathbf P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\T}{\mathbf T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\renewcommand{\a}{\mathscr{A}}
+\renewcommand{\b}{\mathscr{B}}
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\newcommand{\y}{\mathscr{Y}}
+\renewcommand{\j}{\mathscr{J}}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator*{\SL}{SL}
+\DeclareMathOperator*{\SO}{SO}
+\DeclareMathOperator*{\SU}{SU}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\iso}{iso}
+\DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\ZFC}{ZFC}
+\DeclareMathOperator{\set}{\mathbf{Set}}
+\DeclareMathOperator{\Ab}{\mathbf{Ab}}
+\DeclareMathOperator{\Cmon}{\mathbf{CMon}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mod}{\mathbf Mod}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{Homotopy and K-theory seminar}
+\assignment{Talk \#10}
+\duedate{October 24, 2018}
+
+\begin{document}
+
+\begin{abstract}
+We continue to do low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2(-)$, in various settings. The main sources for this talk are nLab, Chapters II and III of \textit{The} K\textit{-book}, and Chapter 1 of Friedlander. 
+\end{abstract}
+
+
+\begin{definition}
+Let $\c$ be a category equipped with a ``subcategory'' $co(\c)$ of morphisms called \textit{cofibrations}. The pair $(\c, co)$ is a \textit{category with cofibrations} if the following conditions hold.
+\begin{enumerate}
+\item (W0) Every isomorphism in $\c$ is a cofibration.
+\item (W1) There is a base point $0$ in $\c$ such that the unique morphism $0 \rightarrowtail A$ for every $A \in \ob \c$.
+\item (W2) We have
+\[
+\begin{tikzcd}
+A \arrow[d] \arrow[r, tail] & B \arrow[d, dotted] \\
+C \arrow[r, dotted, tail] & B \cup_A C
+\end{tikzcd}.
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+We see that $B \coprod C$ always exists as the pushout $B \cup_0 C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A 0$ along $A \to 0$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofibration sequence}.
+\end{remark}
+
+\begin{definition}
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w(\c)$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Glueing axiom'' holds.
+\begin{enumerate}
+\item (W3) For any diagram
+\[
+\begin{tikzcd}
+C \arrow[d, "\sim"'] & A \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & B \arrow[d, "\sim"'] \\
+C' & A' \arrow[r, tail] \arrow[l] & B'
+\end{tikzcd}, \]
+the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a w.e.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Let $\c$ be a Waldhausen category. Define $K_0(\c)$ as the abelian group generated by $[C]$ for each object $C$ of $\c$ such that
+\begin{enumerate}
+\item $[C] = [C']$ if there some w.e. from $C$ to $C'$
+\item $[C] = [B] + [\faktor{C}{B}]$ for every $B \rightarrowtail  C \twoheadrightarrow \faktor{C}{B}$
+\item The weak equivalence classes of objects in $\c$ is a set.
+\end{enumerate}
+\end{definition}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item $[0] = 0$.
+\item $[B \coprod C] = [B] +[C]$.
+\item $[B \cup_A C] = [B]+[C]-[A]$.
+\item $[C]= 0$ whenever $0 \simeq C$.
+\end{enumerate}
+\end{prop}
+
+\begin{exmp}
+Let $\mathcal{R}_f(\ast)$ denote the category of finite CW complexes. Cofibrations and weak equivalences correspond to cellular inclusions  and weak homotopy equivalences, respectively. By homology theory, we get $K_0(\mathcal{R}_f) \cong \Z$.
+\end{exmp}
+
+\begin{definition}
+if $\c$ and $\d$ are Waldhausen, then a functor $F: \c \to \d$ is \textit{exact} if it (a) preserves base points, cofibrations, and weak equivalences and (b) for any $A \rightarrowtail B$ we have that $FB \cup_{FA} FC \to F(B\cup_A C)$ is an isomorphism. Note that $F$ induces a group map $K_0(F) :K_0(\c) \to K_0(\d)$.
+\end{definition}
+
+\begin{theorem}
+Let $F : \a \to \b$ be an exact functor. Assume the following.
+\begin{enumerate}
+\item A morphism $f$ is a w.e. iff $F(f)$ is a w.e.
+\item For any morphism $b : FA \to B$ in $\b$, there is some $a: A \rightarrowtail A'$ in $\a$ and a w.e. $b' : FA' \overset{\sim}{\longrightarrow} B$ in $\b$ such that $b = b' \circ F(a)$. Moreover, we may choose $a$ to be a w.e. whenever $b$ is a w.e.
+\end{enumerate}
+Then $F$ induces $K_0(\a) \cong K_0(\b)$.
+\end{theorem}
+\begin{proof}
+Apply condition (2) to any $0 \rightarrowtail B$ to get $FA' \overset{\sim}{\longrightarrow} B$. If this is a w.e., then there is some $A \overset{\sim}{\longrightarrow} A'$. Hence there is a bijection between the set $W$ of w.e. classes of objects of $\a$ and that in $\b$. \\ \\ The group $K_0(\b)$ is given by the free abelian group $\Z[W]$ modulo $[C] = [B] + [\faktor{C}{B}]$. Let $FA \overset{\sim}{\longrightarrow}  B$. Then applying condition (2) induces the diagram
+\[
+\begin{tikzcd}
+0 \arrow[d, no head] \arrow[d, no head] & FA \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & FA' \arrow[d, "\sim"'] \\
+0 & B \arrow[r, tail] \arrow[l] & C
+\end{tikzcd}.
+\]
+Apply the Glueing axiom to see that $F(\faktor{A'}{A}) \to \faktor{C}{B}$ is a w.e. Hence $[C] = [B] + [\faktor{C}{B}]$
+ holds iff $[A'] = [A] + [\faktor{A'}{A}]$ holds.
+\end{proof}
+
+
+\begin{definition}
+Let $R$ be a unital ring. Recall that direct limits in $\Mod_R$ always exist. Define $K_1 = \GL(R)^{\ab}$, where $\GL(R)$ denotes $\colim_n \GL(n, R)$.
+\end{definition}
+
+\begin{remark}
+The universal property of $\ab: \mathbf{Grp} \to \Ab$ induces the universal property of $K_1$ that any homomorphism $f: \GL(R) \to H$ with $H$ abelian has $f = g \circ \pi$ for some unique $g: K_1(R) \to H$.
+\end{remark}
+
+\begin{prop}
+Any ring map $f: R \to S$ induces a natural map $\GL(R) \to \GL(S)$. Hence $K_1$ is a functor $\mathbf{Rng} \to \Ab$.
+\end{prop}
+
+\begin{remark}
+Due to Whitehead, we know that the commutator subgroup $[\GL(R), \GL(R)]$ is equal to $E(R) = \bigcup_n E_n(R)$, the group of elementary matrices $E_{i, j}(r)$ for $r \in R$ and $i\ne j$. Thus, $K_1(R)$ can be viewed as the ``stabilized'' group of automorphisms of the trivial projective module modulo trivial automorphisms.
+\end{remark}
+
+\begin{exmp}
+If $F$ is a field, then $K_1(F) = F^{\times}$.
+\end{exmp}
+\begin{proof}
+It is each to check that $E_n(F) \cong \SL_n(F)$ for any $n\in \N$. Therefore, $E(F) \cong \SL(R)$.
+\end{proof}
+
+\begin{prop}
+Suppose $R$ is commutative. Consider the sequence $R^{\times} \cong \GL(1, R) \to \GL(R) \to K_1(R)$. This induces a natural split exact sequence.
+\[
+\begin{tikzcd}
+1 \arrow[r] & SK_1(R) \arrow[r, hook] & K_1(R) \arrow[r, "\det"] & R^{\times} \arrow[r] & 1,
+\end{tikzcd}
+\]
+where $SK_1(R)$ denotes $\ker(\det)$. Therefore, $K_1(R) \cong R^{\times} \times SK_1(R)$.
+\end{prop}
+
+\begin{exmp}
+Suppose $R$ is a Euclidean domain. Then $SK_1(R) =1$, so that $K_1(R) \cong R^{\times}$.
+\end{exmp}
+
+\begin{lemma}
+Let $D$ be a division ring. Then $K_1(D) \cong \faktor{\GL_n(D)}{E_n(D)}$ for any $n\geq 3$.
+\end{lemma}
+\begin{proof}
+Any invertible matrix over $D$ is reducible (a la Gaussian elimination) to a diagonal matrix of the form $(r, 1, \ldots, 1)$. Moreover, $E_n(D)\unlhd \GL_n(D)$ for each $n$. In particular, Dieudonn\'e (1943) showed that  $\faktor{\GL_n(D)}{E_n(D)} \cong \faktor{D^{\times}}{(D^{\times})'}$ for any $n\ne 2$. 
+\end{proof}
+
+\begin{lemma}
+Suppose $R$ is Noetherian of dimension $d$, so that $E_n(R)\unlhd \GL_n(R)$ for any $n\geq d+2$. Then $K_1(R) \cong \faktor{\GL_n(R)}{E_n(R)}$ for any $n \geq d+2$. 
+\end{lemma}
+\begin{proof}
+This is due to Vaserstein.
+\end{proof}
+
+\begin{remark}
+Let $D$ be a $d$-dimensional division algebra over the field $F:=Z(D)$. We know that $d =n^2$ for some integer $n$. By Zorn there is some maximal subfield $E\subset D$ such that $[E : F] = n$. Then $D \otimes_F E \cong M_n(E)$, where $M_n$ denotes the $n$-dimensional matrix ring over $E$. Any field with this property is called a \textit{splitting field} for $D$.
+\end{remark}
+
+\begin{definition}
+Let $E'$ be a splitting field for $D$. For any $r \in \N$, the inclusions $D \hookrightarrow M_n(E')$ and $M_r(D) \hookrightarrow M_{nr}(E')$ induce maps $D^{\times}\subset \GL_n(E') \overset{\det}{\longrightarrow} (E')^{\times}$ and $\GL_r(D)\to \GL_{nr}(E')  \overset{\det}{\longrightarrow} (E')^{\times}$ whose images are contained in $F^{\ast}$. {[[Why?]]} The induced maps are called the \textit{reduced norms} $N_{\red}$ for $D$.
+\end{definition}
+
+\begin{exmp}
+If $D = \H$, then $N_{\red}$ is the square of the usual norm. It induces an isomorphism $K_1(\H) \cong \R_+^{\times}$.
+\end{exmp}
+
+\begin{prop}
+Let $R$ be a commutative Banach algebra over $\R$ or $\C$. Recall that $\GL_n(R)$ and $\SL_n(R)$ are topological groups as subspaces of $\R^{n^2}$. We have that $E_n(R)$ is the path component of the identity matrix $I_n$ for any $n\geq 2$.
+\end{prop}
+
+\begin{corollary}
+We may identify $SK_1(R)$ with the set $\pi_0\SL(R)$. {[[Weibel takes this result as obvious, but here is my own justification.]]}
+\end{corollary}
+\begin{proof}
+Note that $E(R)\leq \SL_(R)$. By the third isomorphism theorem, we get $$ \faktor{\GL(R)}{E(R)}\big / \faktor{\SL(R)}{E(R)} \cong \faktor{\GL(R)}{\SL(R)}.$$ Thus, we get the short exact sequence 
+\[
+\begin{tikzcd}
+1 \arrow[r] & \faktor{\SL(R)}{E(R)} \arrow[r] & \faktor{\GL(R)}{E(R)}\cong K_1(R) \arrow[r] & \faktor{\GL(R)}{\SL(R)} \cong R^{\times} \arrow[r] & 1
+\end{tikzcd}
+\]
+By the previous proposition, we know that $\faktor{\SL(R)}{E(R)} \cong \pi_0\SL(R)$, giving the short exact sequence.
+\[
+\begin{tikzcd}
+1 \arrow[r] & \pi_0\SL(R) \arrow[r] & K_1(R) \arrow[r, "\det"] & R^{\times} \arrow[r] & 1
+\end{tikzcd}.
+\]
+\end{proof}
+\begin{exmp} $ $
+If $X$ is compact, then $SK_1(\R^X) \leftrightarrow [X, \SL(\R)] \cong [X, \SO]$ and $SK_1(\C^X) \leftrightarrow [X, \SL(\C)] \cong [X, \SU]$.
+In particular, $SK_1(\R^{S^1}) \leftrightarrow \pi_1 \SO \cong C_2$.
+\end{exmp}
+
+\begin{remark}
+Let $P$ be a finitely generated projective $R$-module. Each isomorphism $P \oplus Q \cong R^n$ induces a group map $\aut(P) \to \aut(P) \oplus \aut(Q) \cong \aut(R^n) \cong \GL_n(R)$. The group map $\aut(P) \to \GL(R)$ is independent of the choice of isomorphism up to inner automorphism of $\GL(R)$. Therefore, there is a well-defined homomorphism $\Phi: \aut(R) \to K_1(R)$.
+\end{remark}
+
+\begin{lemma}
+Suppose that $R$ is commutative and $T$ is an $R$-algebra. Then $K_1(T)$ has a natural module structure over $K_0(R)$.
+\end{lemma}
+\begin{proof}
+By the previous remark, for any $P \in \P(R)$ and $m\in \N$, there is a homomorphism $\Phi : \aut(P \otimes T^m) \to K_1(R\otimes T).$ For any $\beta \in \GL_m(T)$, define $[P] \cdot \beta = \Phi(1_P \otimes \beta)$. This action factors through $K_0(R)$ and $K_1(T)$, inducing an operation $K_0(R) \times K_1(T) \to K_1(R \otimes S)$. Now, since $T$ is an $R$-algebra, there is a ring map $R\otimes T \to T$. The induced composite $K_0(R) \times K_1(T) \to K_1(R \otimes T) \to K_1(T)$ is the desired module structure.
+\end{proof}
+
+\begin{theorem}
+By homology theory, one can show that $K_1(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
+\end{theorem}
+
+\begin{theorem}
+Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $Wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $(g, \pm 1)\mapsto (\pm g)$. Then a homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the \textit{Whitehead torsion} $\tau$, which is a certain function from continuous maps to $Wh_1(\pi)$.
+\end{theorem}
+
+\begin{theorem}{(The $s$-cobordism theorem)}
+Suppose that $W$, $M$, and $N$ are compact PL-manifolds and that $W$ is a cobordism of $M$ and $N$. Then if $\dim(M) \geq 5$, it follows that $(W, M, N) \cong (M \times [0, 1], M \times 0, M \times 1)$ iff $\tau= 0$.
+\end{theorem}
+
+\begin{corollary}
+Let $A$ denote the disjoint union of $W$, $CM$, and $CN$. Then $N$ is PL-homeomorphic to $\Sigma M$ iff $\tau = 0$, even though they are homeomorphic as spaces.
+\end{corollary}
+
+\begin{corollary}
+The Generalized Poincar\'e Conjecture.
+\end{corollary}
+
+\begin{definition}
+Let $I$ is an ideal in $R$. Define $GL(I)$ as the kernel of the map $\GL(R) \to \GL(\faktor{R}{I})$. Moreover, define $E(R, I)$ as the smallest normal subgroup of $E(R)$ that contains $E_{i, j}(x)$ for $r\in I$ and $i\ne j$.
+\end{definition}
+
+\begin{prop}
+$[\GL(I), \GL(I)] \subset E(R, I)\unlhd \GL(I)$
+\end{prop}
+
+\begin{definition}
+The \textit{relative group} $K_1(R, I)$ is the the abelian group $\faktor{\GL(I)}{E(R, I)}$.
+\end{definition}
+
+\begin{remark}
+Swan has shown that a ring homomorphism $f: R\to S$ that maps the ideal $I$ isomorphically to the ideal $J$ need not induce an isomorphism $K_1(R, I) \to K_1(S, J)$.
+\end{remark}
+
+\begin{prop}
+There is an exact sequence 
+\[
+\begin{tikzcd}
+{K_1(R, I)} \arrow[r] & K_1(R) \arrow[r] & K_1(\faktor{R}{I}) \arrow[r] & K_0(I) \arrow[r] & K_0(R) \arrow[r] & K_0(\faktor{R}{I})
+\end{tikzcd}.
+\] See III.2.3. in Weibel.
+\end{prop}
+
+\begin{definition}
+Let $n\geq 3$ and $R$ be a ring. The \textit{Steinberg group} $St_n(R)$ is the group generated by the symbols $x_{ij}(r)$ with $1\leq i\ne j\leq n$ and $r\in R$ that satisfy the following relations.
+\begin{enumerate}
+\item $$x_{ij}(r)x_{ij}(s) = x_{ij}(r+s)$$
+\item 
+\[ [x_{ij}(r), x_{kl}(s)] = 
+\begin{cases}
+1 & j\ne k, \quad i\ne l \\
+x_{il}(rs) & j= k, \quad i\ne l \\
+x_{kj}(-sr) & j \ne k, \quad i=l
+\end{cases} \].
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+There is a natural group surjection $\phi_n : St_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $St_n(R) \hookrightarrow St_{n+1}(R)$. Note that $St(R):= \colim_n St_n(R)$ exists. The $\phi_n$ thus induce a group surjection $\phi : St(R) \to E(R)$.
+\end{remark}
+
+\begin{definition}
+Define $K_2(R)  = \ker \phi$. We have an exact sequence
+\[
+\begin{tikzcd}
+1 \arrow[r] & K_2(R) \arrow[r] & St(R) \arrow[r, "\phi"] & GL(R) \arrow[r] & K_1(R) \arrow[r] & 1
+\end{tikzcd}.
+\]
+\end{definition}
+
+\begin{lemma}
+$K_2(R) = Z(St(R))$.
+\end{lemma}
+\begin{proof}
+That $K_2(R) \supset Z(St(R))$ follows from the fact that $Z(E(R))$ is trivial. The reverse containment is easy but longer. See Weibel, III.5.2.1.
+\end{proof}
+
+\begin{remark}
+$K_2(-) : \mathbf{Rng} \to \Ab$ is a functor.
+\end{remark}
+
+\begin{exmp} A Euclidean algorithm enables the following computations.
+\begin{enumerate}
+\item $K_2(\Z) \cong C_2$
+\item $K_2(\Z[i]) =1$
+\item $K_2(F) \cong K_2(F[t])$ when $F$ is a field
+\end{enumerate}
+\end{exmp}
+
+\begin{theorem}
+Write $K_2(n, R) = \ker \phi_n$. Suppose that $R$ is Noetherian of dimension $d$. Then $K_2(n, R) \cong K_2(R)$ for any $n\geq d +3$.
+\end{theorem}
+
+\begin{theorem}
+By homology theory, one can show that $K_2(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_2(R) \cong K_2(R)$.
+\end{theorem}
+
+\begin{exmp}
+$R$ and $S:= M_n(R)$ are Morita equivalent for any $n\geq 1$, so that $K_i(R) \cong K_i(M_n(R))$ for $i=0, 1, 2$. In one direction, we define $F: M \mapsto M^n$. In the other direction, we define $G: M \mapsto e_{11}M$ where $e_11$ denotes the matrix with $1$ in position $(1, 1)$ and $0$ elsewhere. Define the natural isomorphism $\id_{\Mod_R} \Rightarrow G\circ F$ by the components $f_M : M \to \{(m, 0, \ldots, 0) : m \in M\}$. Further, define the natural isomorphism $\id_{\Mod_S} \Rightarrow F\circ G$ by the components  $g_M : M \to (e_{11}M)^n$ given by $m\mapsto (e_{11}m, \ldots, e_{1n}m)$. Hence $\Mod_R$ and $\Mod_S$ are equivalent, hence Morita equivalence as they are preadditive.
+\end{exmp}
+
+\begin{lemma}
+Let $R$ be a commutative Banach algebra. Then there is a surjection from $K_2(R)$ onto $\pi_1\SL(R)$. 
+\end{lemma}
+\begin{proof}
+See Weibel, III.5.9.
+\end{proof}
+
+\begin{exmp}
+There is a surjection $K_2(\R) \to \pi_1 \SL_(\R) \cong \pi_1\SO \cong C_2$. Hence $K_2(\R)$ is nontrivial.
+\end{exmp}
+
+\begin{theorem}{(Matsumoto 1969)}
+Let $F$ be a field. Then $K_2(F)$ is isomorphic to the free abelian group with system of generators $\{a, b\}$  satisfying the following relations.
+\begin{enumerate}
+\item $\{ac, b\} = \{a, b\}\{c, b\}$
+\item $\{a, bd\} = \{a, b\}\{a, d\}$
+\item $\{a, 1-a\}=1$ when $a \ne 1 \ne 1-a$.
+\end{enumerate}
+The $\{a,b\}$ are called \textit{Steinberg symbols}.
+\end{theorem}
+\begin{remark}
+Suppose $A, B \in E(F)$ commute. Write $\phi(a) =A$ and $\phi(b) = B$. Then define $A \bigstar B =[a,b] \in K_2(R)$. If $a,b\in F$, we can alternatively define the Steinberg symbol $\{a, b\} = \begin{bmatrix}
+    r & & \\
+    & r^{-1} & \\
+    & & 1
+  \end{bmatrix}
+ \bigstar
+  \begin{bmatrix}
+    s & & \\
+    & 1 & \\
+    & & s^{-1}
+  \end{bmatrix}
+ $. 
+\end{remark}
+
+\begin{corollary}
+$K_2(\F_p^n) =1$ for any prime $p$ and $n\geq 1$.
+\end{corollary}
+\begin{proof}
+The proof is a computation. See Weibel, III.6.1.1.
+\end{proof}
+
+\begin{prop}
+If $F \supset \Q(t)$, then $|K_2(F)| = |F|$.
+\end{prop}
+
+\end{document}

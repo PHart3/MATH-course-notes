@@ -1,0 +1,448 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem{exmp}{Example}
+\newtheorem{nonexmp}{non-Example}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{exercise}{Exercise}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathbf P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\T}{\mathbf T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\renewcommand{\a}{\mathscr{A}}
+\renewcommand{\b}{\mathscr{B}}
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\newcommand{\y}{\mathscr{Y}}
+\renewcommand{\j}{\mathscr{J}}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator*{\SL}{SL}
+\DeclareMathOperator*{\SO}{SO}
+\DeclareMathOperator*{\SU}{SU}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\iso}{iso}
+\DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\ZFC}{ZFC}
+\DeclareMathOperator{\set}{\mathbf{Set}}
+\DeclareMathOperator{\Ab}{\mathbf{Ab}}
+\DeclareMathOperator{\Cmon}{\mathbf{CMon}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ar}{Ar}
+\DeclareMathOperator{\Mod}{\mathbf Mod}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{Homotopy and K-theory seminar}
+\assignment{Talk \#15}
+\duedate{November 12, 2018}
+
+\begin{document}
+
+\begin{abstract}
+We begin higher Waldhausen $K$-theory. The main sources for this talk are Chapter 8 of Rognes, Chapter IV.8 of Weibel, and nLab. For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985), 318-419. 
+\end{abstract}
+
+\begin{remark}
+Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : |w \c| \to K(\c)$ where $w \c$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to |w \c| \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, eventually rendering $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the algebraic $K$-theory spectrum of $\c$.
+\end{remark}
+
+\begin{definition}
+Let $\c$ be a category equipped with a subcategory $co(\c)$ of morphisms called \textit{cofibrations}. The pair $(\c, co\c)$ is a \textit{category with cofibrations} if the following conditions hold.
+\begin{enumerate}
+\item (W0) Every isomorphism in $\c$ is a cofibration.
+\item (W1) There is a base point $\ast$ in $\c$ such that the unique morphism $\ast \rightarrowtail A$ is a cofibration for any $A \in \ob \c$.
+\item (W2) We have a \textit{cobase change}
+\[
+\begin{tikzcd}
+A \arrow[d] \arrow[r, tail] & B \arrow[d, dotted] \\
+C \arrow[r, dotted, tail] & B \cup_A C
+\end{tikzcd}.
+\]
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+We see that $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A \ast$ along $A \to \ast$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofiber sequence}.
+\end{remark}
+
+\begin{definition}
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w\c$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Gluing axiom'' holds.
+\begin{enumerate}
+\item (W3) For any diagram
+\[
+\begin{tikzcd}
+C \arrow[d, "\sim"'] & A \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & B \arrow[d, "\sim"'] \\
+C' & A' \arrow[r, tail] \arrow[l] & B'
+\end{tikzcd}, \]
+the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a w.e.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+A Waldhausen category $(\c, w)$ is \textit{saturated} if whenever $fg$ makes sense and is a w.e., then $f$ is a w.e. iff $g$ is. 
+\end{definition}
+
+\begin{definition}
+We now introduce the main concept to be generalized.
+\\ \\ Let $\c$ be a category with cofibrations. Let the \textit{extension category} $S_2\c$ have as objects the cofiber sequences in $(\c, co\c)$ and as morphisms the triples $(f', f, f'')$ such that
+\[
+\begin{tikzcd}
+X' \arrow[r, tail] \arrow[d, "f'"] & X \arrow[r, two heads] \arrow[d, "f"] & X'' \arrow[d, "f''"] \\
+Y' \arrow[r, tail] & Y \arrow[r, two heads] & Y''
+\end{tikzcd}
+\] 
+commutes. This is pointed at $\ast \rightarrowtail \ast \twoheadrightarrow \ast$.
+\end{definition}
+
+\begin{definition}
+Suppose an arbitrary triple $(f', f, f'')$ as above has the property that whenever $f'$ and $f''$ are w.e., then so is $f$. Then we say $\c$ is \textit{extensional} or \textit{closed under extensions}.
+\end{definition}
+
+\begin{remark}
+Say that the morphism $(f', f, f'')$ is a cofibration if $f'$, $f''$, and $Y' \cup_{X'} X \to Y$ are cofibrations in $\c$. Say that  the same triple is a weak equivalence if $f'$, $f$, and $f''$ are w.e. in $\c$. This makes $S_2 \c$ into a Waldhausen category.
+\end{remark}
+
+\begin{definition}
+Let $q\geq 0$. Let the \textit{arrow category $\Ar[q]$ on $[q]$} have as objects ordered pairs $(i, j)$ with $i\leq j \leq q$ and as morphisms commutative diagrams of the form
+\[
+\begin{tikzcd}
+i \arrow[d, "\leq"'] \arrow[r, "\leq"] & j \arrow[d, "\leq"] \\
+i' \arrow[r, "\leq"'] & j'
+\end{tikzcd}.
+\] We view $[q]$ a full subcategory of $\Ar[q]$ via the embedding $[q] \overset{k \mapsto (0, k)}{\xrightarrow{\hspace*{1cm}}} \Ar[q]$.
+\end{definition}
+
+\begin{remark} $ $
+\begin{enumerate}
+\item Any triple $i\leq j \leq k$ determines the morphisms $(i, j) \to (i, k)$ and $(i, k) \to (j, k)$. Conversely, any morphism in the arrow category is a composition of such triples.
+\item $\Ar[q] \cong \mathbf{Fun}([1], [q])$ by identifying each pair $(i, j)$ with the functor satisfying $0 \mapsto i$ and $1 \mapsto j$.
+\end{enumerate}
+\end{remark}
+
+\begin{exmp}
+The category $\Ar[2]$ is generated by the commutative diagram
+\[
+\begin{tikzcd}
+{(0, 0)} \arrow[r] & {(0,1)} \arrow[r] \arrow[d] & {(0,2)} \arrow[d] \\
+ & {(1, 1)} \arrow[r] & {(1,2)} \arrow[d] \\
+ &  & {(2,2)}
+\end{tikzcd} .
+\]
+\end{exmp}
+
+\begin{definition}
+Let $\c$ be a category with cofibrations and $q\geq 0$. Define $S_q\c$ as the full subcategory of $\mathbf{Fun}(\Ar[q], \c)$ generated by $X: \Ar[q] \to \c$ such that
+\begin{enumerate}
+\item $X_{j, j} = \ast$ for each $j \in [q]$.
+\item $X_{i, j} \rightarrowtail X_{i, k} \twoheadrightarrow X_{j, k}$ is a cofiber sequence for any $i < j < k$ in $[q]$. Equivalently, if $i\leq j\leq k$ in $[q]$, then the square
+\[
+\begin{tikzcd}
+{X_{i,j}} \arrow[d, two heads] \arrow[r, tail] & {X_{i,k}} \arrow[d, two heads] \\
+{X_{j,j}=\ast} \arrow[r, tail] & {X_{j,k}}
+\end{tikzcd}
+\]
+is a pushout. 
+\end{enumerate}
+This is pointed at the constant diagram at $\ast$.
+\end{definition}
+
+\begin{remark}
+A generic object in $S_q\c$ looks like
+\[ \tag{$\ast$}
+\begin{tikzcd}
+\ast \arrow[r, tail] & X_1 \arrow[r, tail] \arrow[d, two heads] & \cdots \arrow[r, tail] & X_{q-1} \arrow[r, tail] \arrow[d, two heads] & X_q \arrow[d, two heads] \\
+ & \ast \arrow[r, tail] & \cdots \arrow[r, tail] & \faktor{X_{q-1}}{X_1} \arrow[d, two heads] \arrow[r, tail] & \faktor{X_q}{X_1} \arrow[d, two heads] \\
+ &  & \ddots & \vdots \arrow[d, two heads] & \vdots \arrow[d, two heads] \\
+ &  &  & \ast \arrow[r, tail] & \faktor{X_q}{X_{q-1}} \arrow[d, two heads] \\
+ &  &  &  & \ast
+\end{tikzcd}.
+\] where $X_q$ corresponds to $X_{0, q}$ and $\faktor{X_j}{X_i}$ to $X_{i, j}$ for any $1 \leq i \leq j \leq q$. 
+\end{remark}
+
+\begin{definition}
+Let $(\c, co\c)$ be a category with cofibrations. Let $coS_q\c \subset S_q \c$ consist of the morphisms $f: X \rightarrowtail Y$ of $\Ar[q]$-shaped diagrams such that for each $1\leq j \leq q$ we have
+\[
+\begin{tikzcd}
+{X_{0, j-1}} \arrow[d, "{f_{0, j-1}}"'] \arrow[r, tail] & {X_{0, j}} \arrow[d] \arrow[rdd, "{f_{0, j}}", bend left] &  \\
+{Y_{0, j-1}} \arrow[r, tail] \arrow[rrd, tail, bend right] & {X_{0, j} \cup_{X_{0, j-1}} Y_{0, j-1}} \arrow[rd, dashed, tail] &  \\
+ &  & {Y_{0, j}}
+\end{tikzcd}.
+\]
+\end{definition}
+
+\begin{prop}
+If $f: X \to Y$ is a cofibration of $S_q\c$, then 
+\[
+\begin{tikzcd}
+{X_{i, j}} \arrow[d, "{f_{i,j}}"', tail] \arrow[r, tail] & {X_{i, k}} \arrow[d, "{f_{i,k}}", tail] \\
+{Y_{i, j}} \arrow[r, tail] & {Y_{i,k}}
+\end{tikzcd}
+\] for any $i \leq j \leq k$ in $[q]$.
+\end{prop}
+\begin{proof}
+The proof is mostly an easy induction argument along with an application of Lemma 1 above. See Rognes, Lemma 8.3.12.
+\end{proof}
+
+\begin{lemma}
+$(S_q\c, coS_1 \c)$ is a category with cofibrations. 
+\end{lemma}
+\begin{proof}
+First notice that the composite of two cofibrations $g \circ f : X \to Y \to Z$ is a cofibration because we have
+\[
+\begin{tikzcd}
+{X_{0, j-1}} \arrow[r, tail] \arrow[d, "{f_{0, j-1}}"'] & {X_{0, j}} \arrow[d] \arrow[rd, "{f_{0, j}}", bend left] &  &  \\
+{Y_{0, j-1}} \arrow[d, "{g_{0, j-1}}"'] \arrow[r, tail] & {X_{0, j} \cup_{X_0, j-1} Y_{0, j-1}} \arrow[d] \arrow[r, tail] & {Y_{0, j}} \arrow[d] \arrow[rd, "{f_{0, j}}", bend left] &  \\
+{Z_{0, j-1}} \arrow[r, tail] & {X_{0, j} \cup_{X_{0, j-1}} Z_{0, j-1}} \arrow[r, tail] & {Y_{0, j} \cup_{Y_{0, j-1}} Z_{0, j-1}} \arrow[r, tail] & {Z_{0, j}}
+\end{tikzcd}.
+\]
+It's clear that any isomorphism or initial morphism in $S_q \c$ is a cofibration.
+\\ \\
+To see that (W2) is satisfied, let $f: X \to Y$ and $g : X \to Z$ be morphisms in $S_q \c$. It's easy to verify that each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a cofibration. Thus, each pushout $W_{i, j} := Y_{i,j} \cup_{X_{i,j}} Z_{i, j}$ exists.
+These form a functor $W: \Ar[q] \to \c$. If $i < j < k$, then we have $W_{i,j} \rightarrowtail W_{i, k} \twoheadrightarrow W_{j,k}$ because the left morphism factors as the composite of two cofibrations
+\[
+\begin{tikzcd}
+{Z_{i,j}} \arrow[d, "{f_{i,j} \cup \id}"'] \arrow[r, tail] & {Z_{i,k}} \arrow[d, "{f_{i,j} \cup \id}"] &  \\
+{Y_{i,j} \cup_{X_{i,j}} Z_{i,j}} \arrow[r, tail] & {Y_{i,j} \cup_{X_{i,j}} Z_{i,k}} \arrow[r, tail] & {Y_{i,k} \cup_{X_{i,k}} Z_{i,k}} \\
+ & {Y_{i,j} \cup_{X_{i,j}} X_{i,k}} \arrow[u, "{\id \cup g_{i,k}}"] \arrow[r, tail] & {Y_{i,k}} \arrow[u, "{\id \cup g_{i,k}}"']
+\end{tikzcd}
+.\] The fact that colimits commute confirms that $W_{j,k} \cong \faktor{W_{i,k}}{W_{i,j}}$ Hence $W$ is the pushout of $f$ and $g$. To verify that this is a cofibration, we must check that the pushout map $W_{0, j-1} \cup_{Z_{0, j-1}} Z_{0, j} \to W_{0, j}$ is a cofibration. But this follows from the pushout square
+\[
+\begin{tikzcd}
+{Y_{0, j-1}\cup_{X_{0, j-1}} X_{0, j}} \arrow[d] \arrow[r, tail] & {Y_{0, j}} \arrow[d] \\
+{Y_{0, j-1}\cup_{X_{0, j-1}} Z_{0, j}} \arrow[r, tail] & {Y_{0, j}\cup_{X_{0, j}} Z_{0, j}}
+\end{tikzcd}
+.\]
+\end{proof}
+
+\begin{definition}
+Let $(\c, w \c)$ be a Waldhausen category. Let $w S_q\c \subset S_q \c$ consist of the morphisms $f: X \overset{\sim}{\longrightarrow} Y$ of $\Ar[q]$-shaped diagrams such that the component $f_{0, j} : X_{0, j} \to Y_{0, j}$ is a w.e. in $\c$ for each $1\leq j \leq q$.
+\end{definition}
+
+\begin{prop}
+Let $f$ be a w.e. in $S_q \c$.  Each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a w.e. in $\c$.
+\end{prop}
+\begin{proof}
+Apply the Gluing axiom to the diagram
+\[
+\begin{tikzcd}
+{X_{0, j}} \arrow[d, "\cong"'] & {X_{0, i}} \arrow[l, tail] \arrow[r] \arrow[d, "\cong"'] & \ast \arrow[d, "="'] \\
+{Y_{0, j}} & {Y_{0, i}} \arrow[l, tail] \arrow[r] & \ast
+\end{tikzcd}.
+\] Then $X_{i, j} \cong X_{0, j} \cup_{X_{0, i}} \ast \overset{\sim}{\longrightarrow} Y_{0, j} \cup_{Y_{0, i}} \ast \cong Y_{i, j}$, as desired.
+\end{proof}
+
+\begin{lemma}
+$(S_q \c, wS_q \c)$ is a Waldhausen category. 
+\end{lemma}
+
+\begin{definition}
+Let $\c$ be a category with cofibrations. If $\alpha : [p] \to [q]$, then define $\alpha^{\ast} : S_q \c \to S_p \c$ by
+$$\alpha^{\ast}(X: \Ar[q] \to \c) = X \circ \Ar(\alpha) : \Ar[p] \to \Ar[q] \to \c.$$
+It's easy to check that this satisfies the two conditions of a diagram in $S_p \c$.
+Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of Remark 5 and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure the $s_i$ work.]]} 
+\end{definition}
+
+\begin{prop}
+Let $(\c, w \c)$ be a Waldhausen category. Each functor $\alpha^{\ast}: S_q \c \to S_p \c$ is exact, so that $(S_{\bullet}\c, wS_{\bullet} \c)$ is a simplicial Waldhausen category.
+\end{prop}	
+
+\begin{remark}
+The nerve $N_{\bullet}w S_{\bullet}\c$ is a bisimplicial set with $(p,q)$-bisimplices the diagrams of the form
+\[
+\begin{tikzcd}
+\ast \arrow[r, tail] & X_1^0 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^0 \arrow[r, tail] \arrow[d, "\sim"'] & \cdots \arrow[r, tail] & X_q^0 \arrow[d, "\sim"'] \\
+\ast \arrow[r, tail] & X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim"'] & \cdots \arrow[r, tail] & X_q^1 \arrow[d, "\sim"'] \\
+ & \vdots \arrow[d, "\sim"'] & \vdots \arrow[d, "\sim"'] &  & \vdots \arrow[d, "\sim"'] \\
+\ast \arrow[r, tail] & X_1^p \arrow[r, tail] & X_2^p \arrow[r, tail] & \cdots \arrow[r, tail] & X_q^p
+\end{tikzcd}
+\]
+such that $X^k_{i,j} \cong \faktor{X_j^k}{X_i^k}$ for every $i\leq j\leq q$ and $k\in [p]$. 
+\end{remark}
+
+\begin{lemma}
+There is a natural map $N_{\bullet} w \c \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma |w \c|\to |w S_{\bullet} \c|$ of classifying spaces.
+\end{lemma}
+\begin{proof}
+We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N_{\bullet} w S_q \c$. This defines a right skeletal structure on $N_{\bullet} w S_{\bullet} \c$. 
+\\ \\ If $q = 0$, then $w S_0 \c = S_0 \c = \ast$, so that $N_{\bullet} w S_0\c = \ast$ as well. If $q= 1$, then
+$w S_1 \c \cong w \c$. Thus, the right $1$-skeleton is equal to $N_{\bullet} w \c  \land \Delta_{\bullet}^1$, which in turn must be equal to the image $I$ of the canonical map $$\coprod_{q\leq 1} N_{\bullet} w S_q \c \times \Delta_{\bullet}^q \to N_{\bullet} w S_{\bullet} \c.$$ Now, the degeneracy map $s_0$ collapses $\{\ast\} \times \Delta_{\bullet}^1$, and the face maps $d_0$ and $d_1$ collapse $ N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}$. 
+Therefore, $I$ must equal $$N_{\bullet} w \c  \land \Delta_{\bullet}^1  = \frac{N_{\bullet} w \c \times \Delta_{\bullet}^1}{\{\ast\} \times \Delta_{\bullet}^1 \cup N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}}.$$  We have defined a natural inclusion map $\lambda : N_{\bullet} w \c \land \Delta_{\bullet}^1 \to  N_{\bullet} w S_{\bullet} \c$.
+\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$. {[[This is a tentative explanation offered by Thomas.]]}
+\end{proof}
+
+\begin{remark}
+The axiom (W3) implies that $w\c$ is closed under coproducts, making $|wS_{\bullet} \c|$ into an $H$-space via the map $$\coprod: |wS_{\bullet} \c| \times |wS_{\bullet} \c| \cong |wS_{\bullet} \c \times  wS_{\bullet} \c|\to |wS_{\bullet} \c|.$$
+\end{remark}
+
+\begin{definition}
+Let $(\c, w\c)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega | N_{\bullet} wS_{\bullet} \c|.$$ Then we have a right adjoint $\iota: |w \c | \to K(\c, w)$ to the based map $\sigma$.
+\\ \\ Moreover,
+let $F : (\c, w \c) \to (\d, w\d)$ be an exact functor. Then set $K(F) = \Omega | wS_{\bullet}F| : K(\c, w) \to K(\d, w)$. We have thus defined the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
+\end{definition}
+
+\begin{remark}
+Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $|iS_{\bullet}\a|$ (where $i$ denotes the iso category) and $BQ\a$ are homotopy equivalent. Hence our current definition of higher algebraic $K$-theory agrees with Quillen's.
+\end{remark}
+
+\begin{exmp}
+Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(R) = K(\P(R), i)$$ where the w.e. $i$ are precisely the injective $R$-linear maps with projective cokernel and the cofibrations are precisely the $R$-linear maps.
+\end{exmp}
+
+\begin{exmp}
+Assume that $\c$is a small Waldhausen category where $w\c$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $|s_{\bullet} \c| \hookrightarrow |iS_{\bullet} \c|$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
+\end{exmp}
+
+\begin{remark}
+Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $|w S_{\bullet} \c|$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
+\end{remark}
+
+\begin{definition}
+Define the \textit{$i$-th algebraic $K$-group} as $K_i(\c, w) = \pi_iK(\c, w)$ for each $i\geq 0$. 
+\end{definition}
+
+\begin{prop}
+$\pi_1|w S_{\bullet} \c| \cong K_0(\c, w)$.
+\end{prop}
+
+\begin{lemma}
+The group $K_0(\c, w)$ is generated by $[X]$ for every $X \in \ob \c$ such that $[X'] + [X''] = [X]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and $[X] = [Y]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
+\end{lemma}
+\begin{proof}
+We compute $\pi_1|N_{\bullet}w S_{\bullet} \c|$ based at the $(0,0)$-bisimplex $\ast$. Notice that $|N_{\bullet}w S_{\bullet} \c|$ has a CW structure {[[this is reasonable visually]]} with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
+\end{proof}
+
+\begin{corollary}
+We obtain the functors $K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$, called the \textit{algebraic $K$-group functors}.
+\end{corollary}
+\begin{proof}
+By Proposition 4, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $[X'] + [X''] = [X' \vee X''] = [X'' + X']$. Hence $K_0(\c, w)$ is also abelian.
+\end{proof}
+
+\begin{exmp}
+Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained from $X$ by attaching at least one cell such that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. If $\mathcal{R}_f(X)$ denotes the subcategory of those $Y$ obtained by attaching finitely many cells, then we write $A(X):= K(\mathcal{R}_f(X))$.
+\begin{lemma}
+$A_0(X)\cong \Z$.
+\end{lemma}
+\begin{proof}
+Weibel leaves this proof an an exercise.
+\end{proof}
+\end{exmp}
+
+\begin{definition}
+If $\b$ is a Waldhausen subcategory of $\c$, then it is \textit{cofinal in $\c$} is for any $X \in \ob \c$, there is some $X' \in \ob \c$ such that $X \coprod X' \in \ob \b$.
+\end{definition}
+
+\begin{theorem}
+Let $(\b, w)$ be cofinal in $(\c, w)$ and closed under extensions. Assume that $K_0(\b) = K_0(\c)$. Then $wS_{\bullet}\b \to wS_{\bullet}\c$ is a homotopy equivalence. Therefore, $K_i(\b) \cong K_i(\c)$ for every $i\geq 0$.
+\end{theorem}
+
+\end{document}

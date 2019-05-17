@@ -1,0 +1,435 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem{exmp}{Example}
+\newtheorem{nonexmp}{non-Example}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{exercise}{Exercise}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\vec H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\T}{\mathbf T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\renewcommand{\a}{\vec{a}}
+\renewcommand{\b}{\vec b}
+
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\newcommand{\y}{\mathscr{Y}}
+\renewcommand{\j}{\mathscr{J}}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\iso}{iso}
+\DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\ZFC}{ZFC}
+\DeclareMathOperator{\set}{\mathbf{Set}}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{Homotopy and K-theory seminar}
+\assignment{Talk \#5}
+\duedate{October 3, 2018}
+
+\begin{document}
+
+\begin{abstract}
+Even more basic category theory. The main sources for these notes are nLab, Rognes, Ch. 4, and Peter Johnstone's Part III lecture notes (Michaelmas 2015), Ch. 4.
+\end{abstract}
+
+\begin{definition}
+An object $X$ of $\c$ is \textit{initial} if for each $Y \in \ob \c$, there is a unique morphism $f : X \to Y$. Moreover, we say that $X$ is \textit{terminal} if for each $Z \in \ob \c$, there is a unique morphism $g : Z \to X$. Either condition is called a \textit{universal property} of $X$.
+\end{definition}
+
+\begin{definition}
+Any property $P$ of $\c$ has a dual property $P^{op}$ of $\c^{op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
+\end{definition}
+
+\begin{lemma}
+Being initial and being terminal are dual properties.
+\end{lemma}
+
+\begin{lemma}
+Any two initial objects of $\c$ are canonically isomorphic. The same holds for any two terminal objects of $\c$.
+\end{lemma}
+\begin{proof}
+Compose the two unique morphisms to get an isomorphism between the two initial objects. Apply duality to get the second claim.
+\end{proof}
+
+\begin{remark}
+Think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F(\hat{f}) \circ f = f'$.
+\[ \begin{tikzcd}
+X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F(\hat{f})"] \\% 
+ & F(X')
+\end{tikzcd}
+\]
+Dually, a \textit{universal arrow from $F$ to $X$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f: F(Y) \to X$ of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : F(X') \to X$, there exists a unique morphism $\hat{f}: X' \to Y$ such that $f' = f \circ F(\hat{f})$.
+\[ \begin{tikzcd}
+F(X') \arrow[r, dashed, "F(\hat{f})"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, "f"] \\% 
+ & X
+\end{tikzcd}
+\]
+\end{remark}
+
+\begin{remark}
+To see why this notion of universality agrees with the original one, we first generalize the notion of an arrow category.
+\end{remark}
+
+\begin{definition}
+Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. The \textit{slice} or \textit{left fiber category}, denoted by $(F/Y)$ or $(F \downarrow Y)$, has as objects pairs $(X, f)$ where $f: F(X) \to Y$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ such that $f = f' \circ F(g).$ 
+\end{definition}
+
+\begin{definition}
+The \textit{coslice} or \textit{right fiber category}, denoted by $(Y/F)$ or $(Y \downarrow F)$, has as objects pairs $(X, f)$ where $f: Y\to F(X)$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ such that $f' = F(g) \circ f.$
+
+\end{definition}
+
+\begin{remark}
+If $F^{op}:C^{op} \to D^{op}$ is opposite to the functor $F: \c \to \d$ and $Y \in \ob \d$, then $(Y/F)^{op} = {F^{op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true for any right fiber category ${Y}/{F}$ iff $P^{op}(Y, F)$ is true for any left fiber category ${F}/{Y}$. 
+\end{remark}
+
+\begin{prop}
+Let $F : \d \to \c$ be a functor and $x \in \ob C$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is initial object of the coslice $(x \downarrow F)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of the same category.
+\end{prop}
+\begin{proof}{[[I messed this up during my talk. It should be correct as written now.]]}
+Suppose that $u$ is universal and $f: x \to Fy$ is another object of $(x \downarrow F)$. Then there is some unique $\hat{f}: r \to y$ such that $F(\hat{f}) \circ u = f$. Thus $F(\hat{f})$ is a unique morphism of the coslice.
+\\ \\Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $(x \downarrow F)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ make $u$ a universal arrow.
+\end{proof}
+
+\begin{corollary}
+Any two universal arrows from $x$ to $F$ can be canonically identified by Lemma 2.
+\end{corollary}
+
+\begin{definition}
+A \textit{zero object} of $\c$ is an object that is both initial and terminal. A \textit{pointed category} is a category with a chosen zero object. 
+\end{definition}
+
+\begin{exmp}
+The unique initial object of $\set$ is $\emptyset$, and the terminal objects are precisely the singleton sets. Hence there is no zero object. Moreover, there are no initial or terminal objects in $\iso(\set)$.
+\end{exmp}
+
+\begin{definition}
+Given $X \in \ob \c$, the \textit{undercategory} ${X}/{\c}$ has as objects morphisms in $\c$ of the form $i : X \to Y$ where $X$ is fixed. Given $i: X \to Y$ and  $i' : X \to Y'$ in $\ob {X}/{\c}$, define the set of morphisms from $i$ to $i'$ as the morphisms $f: Y \to Y'$ where
+\[ \begin{tikzcd}
+X \arrow[r, "i"] \arrow[swap, dr,  " i' "] & Y \arrow[d, "f"] \\% 
+ & Y'
+\end{tikzcd}
+\]
+commutes. We call $i$ the \textit{structure morphism}.
+\\ \\ Composition and identity carry over exactly from $\c$.
+\end{definition}
+
+\begin{definition}
+Given $x \in \ob \c$, the \textit{overcategory} ${\c}/{X}$ has as objects morphisms in $\c$ of the form $i : Y \to X$ where $X$ is fixed. Given $i:  Y \to X$ and  $i' : Y' \to X$ in $\ob {\c}/{X}$, define the set of morphisms from $i$ to $i'$ as the morphisms $f: Y \to Y'$ where
+\[ \begin{tikzcd}
+Y \arrow[r, "f"] \arrow[swap, dr,  " i "] & Y' \arrow[d, "i '"] \\% 
+ & X
+\end{tikzcd}
+\]
+commutes. We again call $i$ the \textit{structure morphism}.
+\\ \\ Composition and identity carry over exactly from $\c$.
+\end{definition}
+
+\begin{remark}
+If $X \in \ob \c$, then $({X}/{\c})^{\op} = {\c^{op}}/{X}$. Thus, the under- and overcategories are dual in the sense that $P(X, \c)$ is true for any undercategory ${X}/{\c}$ iff $P^{\op}(X, \c)$ is true for any overcategory ${\c}/{X}$. 
+\end{remark}
+
+\begin{lemma}
+For any $X \in \c$, the identity morphism on $X$ is an initial object ${X}/{\c}$. Dually, it is a terminal object in ${\c}/{X}$.
+\end{lemma}
+\begin{proof}
+Any $i: X \to Y$ is itself the unique morphism from $\id_X$ to $i$.
+\end{proof}
+
+\begin{lemma}
+Let $X$ be an initial object of $\c$. The identity morphism on $X$ is a zero object ${\c}/{X}$. Dually, if $Y \in \ob \c$ is terminal, then $\id_Y$ is a zero object in ${Y}/{\c}$.
+\end{lemma}
+\begin{proof}
+We already know that $\id_X$ is terminal. If $p: Y \to X$ is an object in ${\c}/{X}$, then there is a unique morphism $f: X \to Y$. Then $f\circ p$ must equal $\id_X$.
+\end{proof}
+
+\begin{exmp}
+Let $(X, x)$ be a pointed set with $X= \{x\}$. Let $\set_{\ast}$ denotes the category of pointed sets with base point preserving functions. Then since $\set_{\ast} \cong {X}/{\set}$, it follows that $X$ is a zero object in $\set_{\ast}$.
+\end{exmp}
+
+\begin{definition}
+Given a morphism $\alpha : X \to Z$ in $\c$, define the \textit{under-and-overcategory} $(X/\c/Z)_{\alpha}$ as having triples $(Y, i, p)$ as obejcts where $i : X \to Y$ and $p: Y \to Z$ are morphisms in $\c$ such that $p\circ i = \alpha$. Define the set of morphisms from $(Y, i, p)$ to $(Y', u', p')$ as the morphisms $f: Y \to Y'$ such that 
+\[
+\begin{tikzcd}[row sep=large, column sep=large]
+X \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, blue, "\alpha", swap]
+& Y' \arrow[to=2-2, "p' "] \\
+|[alias=Z]| Y \arrow[to=1-2, ur, red, "f"] \arrow[to=2-2, "p"] 
+& Z
+\arrow[from=ul, to=1-2, "i' "]
+\end{tikzcd}
+\]
+commutes. If $\alpha = \id_X$, then we call $(X/\c/X)_{\id_X}$ the category of \textit{retractive} objects over $X$ as each triple $(Y, i, p)$ is a retraction of $Y$ onto $X$.
+\end{definition}
+
+\begin{exmp}
+If $F: \c \to \c$ is the identity functor, then the undercategory $Y/\c$ equals the right fiber category $Y/F$ while the overcategory $\c/Y$ equals the left fiber category $F/Y$.
+\end{exmp}
+
+\begin{definition}
+Let $\j$ be a category. A \textit{diagram of shape $\j$ in $\c$} is a functor $F: \j \to \c$.
+\end{definition}
+
+\begin{definition}
+Given a functor $F: \j \to \c$ and $X \in \ob \c$, a \textit{cone over $F$} consists of an \textit{apex} $X\in \ob \c$ and legs $f_j : X \to F(j)$ for each $J \in \ob \j$ such that for any $\alpha : j \to j'$, 
+\[ \begin{tikzcd}
+X \arrow[r, "f_j"] \arrow[swap, dr,  " f_{j'} "] & F(j) \arrow[d, "F\alpha"] \\% 
+ & F(j')
+\end{tikzcd}
+\]
+commutes. This is just a natural transformation $\Delta_{\j} X \Rightarrow F$ where $\Delta_{\j} X$ denotes the constant functor on $\j$ at $X$. If $\j$ is small, then $\Delta_{\j}$ is just a functor from $\c$ to $\mathbf{Fun}(\j, \c)$.
+\end{definition}
+
+\begin{definition}
+The \textit{category of cones over $F$} is the right fiber category $X/F$. The \textit{category of cones under $F$} is the left fiber category  $F/X$.
+\end{definition}
+
+\begin{definition}
+Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta_{\c} g : \Delta_{\c} Y \Rightarrow \Delta_{\c} Z$ be the natural transformation with components $X \mapsto g$. A \textit{colimit} for the functor $F: \c \to \d$ consists of an object $Y$ of $\d$ and a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$. We write $Y = \colim_{\c} F$.
+\begin{definition} We say that $\d$ admits \textit{all $\c$-shaped colimits} if each functor $G: \c \to \d$ has a colimit and that $\d$ is \textit{cocomplete} if each functor $G : \c \to \d$ with $\c$ small has a colimit.
+\end{definition}
+\end{definition}
+
+\begin{remark}
+If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in the right fiber category $F/\Delta_{\c}$, which has as objects pairs $(Z, j: F \to \Delta Z)$ and as morphisms from $(Y, i)$ to $(Z, j)$ the morphisms $g : Y \to Z$ in $\d$ such that $\Delta g \circ i = j$.
+\begin{remark}
+Notice that there is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta Z)$ iff $Y = \colim_{\c}F$.
+\end{remark}
+\end{remark}
+
+\begin{prop}
+Any two colimits are canonically isomorphic.
+\end{prop}
+\begin{proof}
+When $\c$ is small, this is immediate from Lemma 2. But note that the proof of Lemma 2 does not require that $\c$ be locally small (a property which Rognes stipulates of any category). 
+\end{proof}
+
+\begin{lemma}
+Assume that $\d$ admits all $\c$-shapes colimits and that $\c$ is small. Then a (possibly global) global choice function $\colim_\c : \mathbf{Fun}(\c, \d) \to \d$ given by choosing a colimit for each functor determines a functor that is left adjoint to the constant diagram functor $\Delta_{\c} : \d \to \mathbf{Fun}(\c, \d)$.
+\end{lemma}
+\begin{proof}
+For any functor $F : \c \to \d$, there is a bijection $\d(\colim_{\c} F, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta_{\c}Z)$.
+\end{proof}
+
+\begin{definition}
+A \text{limit} of the functor $F: \c \to \d$ is the colimit of $F^{op} : \c^{op} \to \d^{op}$.
+\end{definition}
+
+\begin{remark}
+Explicitly,  a limit for $F: \c \to \d$ is an object $Z$ of $\d$ and a natural transformation $p: \Delta_{\c}Z \Rightarrow F$ such that for any $Y \in \ob \d$ and natural transformation $q: \Delta_{\c}Y \Rightarrow F$, there is a unique morphism $g: Y \to Z$ such that $ q= p \circ \Delta_{\c}g$.
+\end{remark}
+
+\begin{remark}
+The colimit of a functor $F$ is the limit of $F^{op}$. Hence limit and colimit are dual properties, and the above results for colimits can be dualized.
+\end{remark}
+
+\begin{exmp}
+If $\c$ is the empty category, then the empty functor $F: \c \to \d$ has $F/\Delta_{\c}\cong \d$, so that the colimit is an initial object of $\d$.
+\end{exmp}
+
+\begin{definition}
+Let $\j$ be a discrete small category. A diagram of shape $\j$ is a family $\{A_i\}_{i\in J}$. A limit for this diagram is the \textit{product} $\prod_i A_i$ equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique $f: U \to \prod_i A_i$ with $\pi_i \circ f = f_i$. 
+\\ \\ Dually, a colimit for the diagram is the \textit{coproduct} $\sum_i A_i$ equipped with inclusions $u_i : A_i \to \sum_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique $f : \sum_i A_i \to Y$ with $f_i = f \circ u_i$.
+\end{definition}
+
+\begin{exmp}
+Familiar examples include disjoint unions, free products, cartesian products, and direct products. 
+\end{exmp}
+
+\begin{definition}
+Let $\j$ be the category $\bullet \rightrightarrows \bullet$. Then  a diagram of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over this with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $ff_1=f_2 = gf_1$. If such an object $C$ together with $f_1$ is the limit of the diagram, then we say it is the \textit{equalizer} of $f$ and $g$. Dually, a colimit is called the \textit{coequalizer}.
+\end{definition}
+
+\begin{exmp}
+The equalizer in $\set$ of $f, g: X \to Y$ is the subset $X':= \{x \in X : f(x) = g(x)\}$ together with the inclusion $X' \hookrightarrow X$. The coequalizer of $(f, g)$ if $\faktor{Y}{\sim}$ together with the quotient map on $B$ where $\sim$ is the smallest equivalence relation under which $f(x) \sim g(x)$ for every $x$.
+\end{exmp}
+
+\begin{exmp}
+The same idea applies to $\mathbf{Grp}$. The relation $\sim$ just becomes a particular minimal normal subgroup.
+\end{exmp}
+
+\begin{definition}
+Let $\j$ be the category $\bullet \rightarrow \bullet \leftarrow \bullet$. Then a diagram of this shape looks like $B \overset{f}{\longrightarrow} D \overset{g}{\longleftarrow} A$, while a cone over this diagram looks like 
+\[
+\begin{tikzcd}[row sep=large, column sep=large]
+C \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, "\alpha", swap]
+& A \arrow[to=2-2, "g "] \\
+|[alias=Z]| B  \arrow[to=2-2, "f"] 
+& D
+\arrow[from=ul, to=1-2, "j "]
+\end{tikzcd}
+\]
+If such an object $C$ together with $i$ and $j$ is the limit of this diagram, then we call it the \textit{pullback} of $f$ and $g$, denoted by $B \times_{D} A$.
+\end{definition}
+
+\begin{definition}
+We can perform an analogous construction for $\j^{op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{D} A$.
+\end{definition}
+
+\begin{exmp}
+The pullback in $\set$ of $f: X \to Z$ and $g: Y \to Z$ is the subset $\{(x,y) \in X \times Y : f(x) = g(y)\}$, called the \textit{fiber product} of $X$ and $Y$ over $Z$.
+\end{exmp}
+
+\begin{theorem}{(Freyd)} $ $
+\begin{enumerate}
+\item If $\c$ has equalizers and all small (resp. finite) products, then it has all small (resp. finite) limits.
+\item If $\c$ has pullbacks and a terminal object, then it has all finite limits.
+\end{enumerate}
+\end{theorem}
+\begin{proof} $ $
+\begin{enumerate}
+\item See Johnstone, Theorem 4.9.
+\item By part 1, it suffices to show that $\c$ has equalizers and all finite products. By assumption there is some terminal object $1$. Then any product $A_1 \times A_2$ can be realized as the pullback of $A_1 \rightarrow 1 \leftarrow A_2$. By induction $\c$ has all finite products. Moreover, for morphisms $f,g : A \to B$, note that any cone over the diagram $A \underset{(1_A, g)}{\longrightarrow} A \times B \underset{(1_A, f)}{\longleftarrow} A$ admits morphisms $h: A \to C$ and $k : C \to A$ such that $h=k$ and $fk = gh$. Thus the pullback for this diagram is an equalizer for $(f, g)$, completing the proof.
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Both $\mathbf{Set}$ and $\mathbf{Grp}$ are complete and cocomplete (or \textit{bicomplete}).
+\end{corollary}
+
+\begin{remark}
+It turns out that adjoints interact nicely with (co)limits under mild conditions.
+\end{remark}
+
+\begin{prop}
+Let $F: \c \to \d$ and $G : \d \to \c$ be an adjoint pair and $\e$ small. If $X: \e \to \c$ is a functor with $\colim_{\e}X$, then $$\colim_{\e}(F \circ X) = F(\colim_{\e} X).$$
+Dually, if $Y: \e \to \d$ is a functor with $\lim_{\e}Y$, then $$ \lim_{\e}(G \circ Y)=  G(\lim_{\e} Y) .$$ 
+\end{prop}
+\begin{proof}
+We have the following chain of natural bijections for each $Y \in \d$: $$ \d(F(\colim_{\e}), Y) \cong \c(\colim_{\e} X, G(Y)) \cong \lim_{\e} \c(X(-), G(Y)) \cong \lim_{\e} \d(F(X(-)), Y) \cong \mathbf{Fun}(\e, \d)(F \circ X, \Delta Y).$$ The second bijection follows from the fact that both sets can be identified with the components of the natural transformations from $X$ to $\Delta G(Y)$.
+\\ \\ The second claim follows by duality.
+\end{proof}
+
+\begin{definition}
+Let $F : \c \to \d$ be a functor. The \textit{fiber category} $F^{-1}(Y)$ is the full subcategory of $\c$ generated by the objects $X$ with $F(X) =Y$.
+\end{definition}
+
+\begin{definition}
+Suppose $\c$ has terminal object $1$. A \textit{cofiber} of a morphism $f: X \to Y$ is a pushout of the diagram $1 \leftarrow X \rightarrow Y$. We write $Y/X$. Further, given a morphism $p: 1 \to Y$, the \textit{fiber} of $f$ at $p$ is a pullback of $1 \rightarrow Y \leftarrow X$. We write $f^{-1}(p)$.
+\end{definition}
+
+\begin{definition}
+Let $F : \c \to \d$ be a functor. For each $Y \in \ob \d$, there is a full and faithful functor $F^{-1}(Y)  \rightarrowtail F/Y$ given by $X \mapsto (X, \id_Y)$. We say that $\c$ is a \textit{precofibered category} over $\d$ if this functor admits a left adjoint given by $(Z, g: F(Z) \to Y) \mapsto g_{\ast}(Z)$.
+\\ \\
+Moreover, there is a full and faithful functor $F^{-1}(Y) \rightarrowtail Y/F$ defined in the same way. We say that $\c$ is a \textit{prefibered category} over $\d$ if this functor admits a right adjoint given by $(Z, g: Y \to F(Z)) \mapsto g_{\ast}(Z)$.
+\end{definition}
+
+\begin{definition}
+Let $F ; \c \to \d$ be a functor and $f: c' \to c$ be a morphism in $\c$. We say $f$ is \textit{cartesian} if for any morphism $f' : c'' \to c$ in $\c$ and $g : F(c'') \to F(c')$ in $\d$ such that $Ff \circ g = Ff'$, there exists a unique $\phi : c'' \to c$ such that $f' = f \circ \phi$ and $F\phi = g$. In other words, any filling of the following diagram can be lifted to a filling in $\d$.
+\[ \begin{tikzcd}
+c'' \arrow[r, dashed, "\exists!"] \arrow[swap, dr,  " f' "] & c' \arrow[d, "f"] \\% 
+ & c
+\end{tikzcd}
+\]
+\end{definition}
+
+\begin{definition}
+We say that $F$ is a \textit{fibration} if for any $c \in \c$ and morphism $f: d \to Fc$, there is a cartesian $\phi : c' \to c$ such that $F\phi =f$. Such $\phi$ is called a \textit{cartesian lifting} of $f$ to $c$.
+\end{definition}
+
+\begin{exmp}
+Let $\mathbf{Mod}$ denote the category of left $R$-modules where $R$ is a ring. Then the forgetful functor $U: \mathbf{Mod} \to \mathbf{Ring}$ is a fibration.
+\end{exmp}
+
+\end{document}

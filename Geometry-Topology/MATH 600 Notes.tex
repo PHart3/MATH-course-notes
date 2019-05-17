@@ -1,0 +1,1899 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz-cd}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{ mathrsfs }
+\usepackage{hyperref}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{question}{Question}
+\newtheorem*{notation}{Notation}
+\newtheorem{exmp}{Example}
+\newtheorem{claim}{Claim}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{note}{Note}
+\newtheorem*{aside}{Aside}
+\newtheorem{exercise}{Exercise}
+\newtheorem{prop}{Proposition}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb{RP}}
+\renewcommand{\S}{\mathbb S}
+\newcommand{\T}{\mathcal T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\renewcommand{\a}{\vec{a}}
+\renewcommand{\b}{\vec b}
+\renewcommand{\c}{\vec c}
+\renewcommand{\d}{\vec d}
+\newcommand{\e}{\vec e}
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\j}{\vec j}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\y}{\vec y}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\newcommand{\intprodl}{%
+    \mathbin{\scalebox{1.5}{$\lrcorner$}}%
+}
+\newcommand{\intprodr}{%
+    \mathbin{\scalebox{1.5}{$\llcorner$}}%
+}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\dr}{dR}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\vf}{\mathscr{X}}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{MATH 600}
+\assignment{Fall 2018}
+
+\begin{document}
+
+\begin{abstract}
+These notes are based on Davi Maximo's lectures for the course ``Geometric Analysis and Topology I'' given at UPenn along with Lee's \textit{Smooth Manifolds} and Spivak's \textit{A Comprehensive Introduction to Differential Geometry, Vol. 1}. Any mistake in what follows is my own.
+\end{abstract}
+
+\begin{center}
+{\textbf{(Lecture 1)}} 
+\end{center}
+
+\theoremstyle{definition}
+\begin{definition}{A space $M$ is a \textit{(topological) $n$-dimensional manifold} (or \textit{$n$-manifold}) if it is 
+\begin{itemize}
+\item Hausdorff, 
+\item second-countable, and 
+\item locally Euclidean of dimension $n$, i.e., for any $x\in M$, there exist an open $U\ni x$ and a homeomorphism $\phi : U \to V$ for some open $V\subset \R^n$.
+\end{itemize}
+}
+\end{definition}
+
+\begin{definition} $ $
+\begin{enumerate}
+\item Let $M$ be an $n$-manifold. A \textit{coordinate} chart is a tuple $(U, \phi)$ of an open subset $U\subset M$ and a homeomorphism $\phi: U \to \underset{\text{open}} W \subset \R^n$.
+\item If $(U, \phi)$ is a coordinate chart, then we call elements of the set $\{(\pi_1(\phi(p)), \ldots, \pi_n(\phi(p)) \mid p \in U\}$ \textit{local coordinates on $U$}.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+We will use the symbols $x^i$ and $x_i$ interchangeably for local coordinates. 
+\end{notation}
+
+
+\theoremstyle{definition}
+\begin{definition}Given charts $(U, \phi)$, $(V, \psi)$ with $U \cap V \ne \emptyset$, we say that the two are \textit{$C^k$-compatible} if the \textit{transition map $\psi \circ \phi^{-1}$}
+ \[
+  \begin{tikzcd}
+    U \arrow{r}{\phi} \arrow[swap]{dr}{\psi} & \phi(U\cap V) \arrow{d}{\psi \circ \phi^{-1}} \\
+     & \psi(U \cap V)
+  \end{tikzcd}
+\]
+is $C^k$.
+\end{definition}
+
+\theoremstyle{definition}
+\begin{definition}{A collection of charts $(U_\alpha, \phi_\alpha)$ which covers a manifold $M$ and is pairwise $C^k$-compatible is called a \textit{$C^k$-atlas for $M$}.}
+\end{definition}
+
+\begin{exmp}
+Consider $(\R, x \mapsto x)$ and $(\R, x \mapsto x^3)$. Since $x \mapsto x^{\frac{1}{3}}$ is not differentiable at $0$, these charts do not form a $C^1$-atlas on $\R$.
+\end{exmp}
+
+\theoremstyle{definition}
+\begin{definition}{An atlas $A$ is \textit{maximal} if it contains every chart that is $C^{\infty}$- (or smoothly) compatible with every chart in $A$.}
+\end{definition}
+
+\theoremstyle{lemma}
+\begin{lemma}{} $ $
+
+
+\begin{enumerate}
+\item Every smooth atlas is contained in a unique maximal atlas.
+\item Two smooth atlases are contained in the same maximal atlas  if and only if their union is also a smooth atlas.
+\end{enumerate}
+
+\end{lemma}
+
+
+
+\begin{remark}{This shows that an atlas is maximal  if and only if it's maximal in the usual in the set-theoretic sense.}
+\end{remark}
+
+\theoremstyle{definition}
+\begin{definition}{A manifold $M$ is \textit{smooth} if it admits a maximal smooth atlas, also known as a \textit{smooth structure}.}
+\end{definition}
+
+\begin{remark}{Our previous lemma shows that it's enough to construct any smooth atlas for $M$ to show it's a smooth manifold.}
+\end{remark}
+
+
+\begin{remark}{An open problem is whether there is more than one smooth structure on $S^4$. This is known for each $n \ne 4$. Milnor (1958) gave an affirmative answer for $\S^7$.}
+\end{remark}
+
+\begin{center}
+{\textbf{(Lecture 2)}} 
+\end{center}
+
+\theoremstyle{lemma}
+\begin{lemma}{If $M$ admits a smooth structure, then $M$ admits uncountably many smooth structures.} 
+\end{lemma}
+
+
+\begin{remark}{There exists a $10$-dimensional topological manifold that admits no smooth structure (Kevaire 1961)} 
+\end{remark}
+
+\begin{remark}{Any $2$- or $3$-dimensional manifold admits a smooth structure.} 
+\end{remark}
+
+\begin{exmp}{The following are examples of smooth structures on topological manifolds.}
+
+\begin{enumerate}
+\item Any real vector space $V$ where $\dim(V) = n$ has a canonical smooth structure as follows. Endow $V$ with any norm, since all norms on a finite-dimensional space are equivalent and hence generate the same topology. Pick any basis $B\coloneqq  (b_1, \ldots, b_n)$ of $V$.  Define the isomorphism  $T: V \to \R^n$ by $b_i \mapsto e_i$ where $e_i$ denotes the standard basis. This is also a diffeomorphism, implying that $V$ is a topological manifold and that $(V, T)$ is an atlas on $V$. If $B'$ is any other basis of $V$ and $T'$ the corresponding isomorphism, then the transition map $T' \circ T^{-1}: \R^n \to \R^n$ is a linear isomorphism, hence a diffeomorphism. By Lemma 1(2), it follows that any two bases determine the same smooth structure on $V$. 
+\item The restriction of a smooth structure on  a manifold $M$ to an open subset $U \subset M$ is called an open submanifold. 
+\item By our previous two examples, $\GL(n, \F) \subset \M(n, \F)$ is a smooth manifold.
+\item Let $U\subset \R^n$ be open and $F: U \to \R^m$ be continuous. Let $\Gamma(F)$ be the graph of $F$ and $\pi_1\restriction_\Gamma(F)$ be the restriction of the projection $(x, y)\mapsto x$. This is a homeomorphism between $\Gamma(F)$ and $U$. Hence $(\pi_1 \restriction_\Gamma(F), \Gamma(F))$ is a smooth atlas.
+\item For each $i = 1, 2, \ldots, n+1$, let $U_i^+ \coloneqq  \{ \x \in \R^{n+1}: x_i >0\}$. Define $U_i^-$ similarly. The $U_i^{\pm}$ cover $\S^n$. Define the map $f: B_1(0)\subset \R^n \to \R$ by $f(\u) = \sqrt{1 - |\u|^2}$. Define $x_i: B_1(0) \to \R$ by $f(x_1, \ldots, \widehat{x_i}, \ldots x_n)$.  Then $\Gamma(x_i) = U_i^+ \cap \S^n$ and $\Gamma(-x_i) = U_i^- \cap \S^n$. By our previous example, these graphs with their corresponding projections form a smooth structure on $\S^n$.
+\item Let $f: \underset{\text{open}}U\subset \R^m \to \R$ be smooth. For $c \in \R$, let $M_c: = f^{-1}(c)$. Assume that the total derivative $\nabla f(a)$ is nonzero for each $a \in M_c$.  Then $f_{x_i}(a) \ne 0$ for some $1 \leq i \leq m$. Then by the Implicit Function Theorem there is some smooth $F: \R^{m-1} \to \R$ given by $x_i = F(x_1, \ldots, \widehat{x_i}, \ldots, x_m)$ on some neighborhood $U_a\subset \R^m$ of $a$ such that $f^{-1}(c) \cap U_a$ is the graph of $F$.  Then the $f^{-1}(c) \cap U_a$ together with their graph coordinates define a smooth atlas on $M_c$.
+\item For each $i = 1, \ldots, n+1$, let $\tilde{U_i}\coloneqq  \{\x \in \R^{n+1} : x_i \ne 0\}$. Let $\pi: \R^{n+1} \setminus\{0\} \to \RP^n$ be the quotient map and $U_i \coloneqq  \pi(\tilde{U_i})$. Since $\tilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\tilde{U_i}}$ is a quotient map (Munkres, Theorem 22.1). Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto (\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i})$, which has inverse $(x_1, \ldots, x_n) \mapsto [x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n]$. Since $f_i \circ \pi$ is continuous, so is $f_i$ (Munkres, Theorem 22.2). Hence $f_i$ is a homeomorphism. It's easy to check that each transition $f_i \circ f_j^{-1}$ is smooth. Thus, the $(U_i, f_i)$ define a smooth atlas on $\RP^n$.
+\item Let $M_1 \times \cdots \times M_k$ be a product of $n_i$-dimensional smooth manifolds. Then this is a smooth manifold of dimension $n_1 + \cdots + n_k$.
+\end{enumerate}
+
+\end{exmp}
+
+\begin{exercise} Show that $\RP^n$ is second countable and Hausdorff. 
+\end{exercise}
+
+\begin{proof}
+Recall that $\faktor{\S^n}{\sim} \cong \RP^n$ where $x \sim y$ if $y = -x$. Thus it suffices to show these properties are true of $P^n\coloneqq  \faktor{\S^n}{\sim}$. 
+\\ First, let $B\coloneqq \{V_n\}$ denote the usual countable basis of $\S^n$ inherited from $\R^{n+1}$. If $p\in U\subset P^n$ is open, then $\pi^{-1}(U)$ is a neighborhood of $\pi^{-1}(p)$, which equals $\{a, -a\}$ for some point $a$ on the sphere.  There is some ball $B \ni B_q(r) \cap \S^n \ni a$ with $q\in \Q$ and $r \in \Q^{n+1}$. Then $B \in B_q(-r) \cap \S^n \ni -a$. Note that the union of these two balls is contained in $\pi^{-1}(U)$ and is saturated, hence is mapped to a neighborhood $N \subset U$ of $p$. Thus $\pi(V_n)$ for $n\in \N$ is a countable basis of $P^n$.
+\\ The proof of being Hausdorff is pretty much the same idea.
+\end{proof}
+
+\begin{lemma}{\textbf{(Smooth manifold construction lemma)}}
+Let $M$ be a set and $\{U_\alpha\}$ a collection of subsets with injections $\phi_\alpha : U_\alpha \to \R^n$ such that
+\begin{enumerate}
+\item Each $\phi_\alpha(U_\alpha)$ is open.
+\item Any $\phi_\alpha(U_\alpha \cap U_\beta)$, $\phi_\beta(U_\alpha \cap U_\beta)$ are open.
+\item If $U_\alpha \cap U_\beta \ne \emptyset$, then $\phi_\alpha \circ \phi_\beta^{-1}$ is smooth. 
+\item Countably many $U_\alpha$ cover $M$.
+\item If $p, q\in M$ with $p\ne q$, then either both are in $U_\alpha$ for some $\alpha$ or they can be separated by sets in $\{U_\alpha\}$
+\end{enumerate}
+
+Then $M$ has a unique smooth manifold structure with $(U_\alpha, \phi_\alpha)$ as charts. 
+\end{lemma}
+
+\begin{proof}
+We show that the $U_a$ give a topology on $M$.
+\end{proof}
+
+\begin{definition}
+If $M^n$ is an $n$-dimensional manifold and $f: M^n \to \R$ is a function, we say that $f$ is \textit{differentiable at $p$} if there is some chart $(U_\alpha, \phi_\alpha)$ such that the coordinate representation $f\circ \phi_\alpha^{-1}: \phi(U_\alpha) \to \R$ is differentiable at $p$.
+\end{definition}
+
+\begin{lemma}
+If $f \circ \phi^{-1}$ is differentiable at $\phi(p)$ and $\psi: V \to \R^n$ is another coordinate neighborhood of $p\in M^n$, then $f \circ \psi^{-1}: \phi(V) \to \R$ is also differentiable at $\phi(p)$. In particular, our previous definition is coordinate-independent. 
+\end{lemma}
+
+\begin{proof}
+\begin{tikzcd}[row sep=large, column sep=large]
+U \cap V \arrow[to=Z, "\phi", swap] \arrow[to=2-2, dr, blue, "\psi", swap]
+& \R \\
+|[alias=Z]| \phi(U \cap V) \arrow[to=1-2, ur, red, "f\circ \phi^{-1}"] 
+& \psi(U \cap V)
+\arrow[from=ul, to=1-2, "f"] \arrow[to=Z, "\phi \circ \psi^{-1}"] \arrow[to=1-2, "f \circ \psi^{-1}", swap] 
+\end{tikzcd}
+
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 3)}} 
+\end{center}
+
+\begin{definition}
+Let $M^n$ and $N^k$ be smooth manifolds. We say that $F: M \to N$ is \textit{smooth at $p \in M$} if there are charts $(V, \phi) \ni p$ and $(V', \psi) \ni F(p)$ with $F(V) \subset V'$ such that the coordinate representation $\psi \circ F \circ \phi^{-1}$ is smooth.
+\end{definition}
+\[
+\begin{tikzcd}[row sep=large, column sep = large]
+V \arrow[r, "F"] \arrow[d, "\phi", swap]
+& V' \arrow[d, "\psi"] \\
+\phi(V) \arrow[r, "\psi \circ F \circ \phi^{-1}"]
+& \psi(V')
+\end{tikzcd}
+\]
+
+\begin{remark}
+This definition is independent of coordinates. If $(U, \bar{\phi})$ and $(U', \bar{\psi})$ are other charts around $p$ and $F(p)$, respectively, then $$\bar{\psi} \circ F \circ \phi^{-1} = (\bar{\psi} \circ \psi^{-1}) \circ (\psi \circ F \circ \phi^{-1})$$ $$\psi \circ F\circ \bar{\phi}^{-1} = (\psi \circ F \circ \phi^{-1}) \circ (\phi \circ \bar{\phi}^{-1}),$$ which are smooth a $p$ as compositions of smooth maps.
+\end{remark}
+
+\begin{remark}
+Smooth implies continuous.
+\end{remark}
+\begin{proof}
+Using the notation from our last definition, we see that for each $p\in M$, there is a neighborhood $V$ of $p$ such that $F\restriction_V =  \psi^{-1} \circ \psi \circ F \circ \phi^{-1} \circ \phi$ is a composition of continuous maps (as we know smooth implies continuous for maps between Euclidean spaces) and thus itself continuous. We can glue these restrictions together to conclude that $F$ is continuous. 
+\end{proof}
+
+
+\begin{remark} $ $
+\begin{enumerate}
+\item Given $F:M\to N$, if every $p\in M$ has a neighborhood $U_p$ so that $F\restriction_{U_p}$ is smooth, then $F$ is smooth.
+\item Conversely, the restriction of any smooth map to an open subset is smooth. 
+\end{enumerate}
+\end{remark}
+
+\begin{exmp}
+The natural projection $\pi : \R^{n+1}\setminus \{0\} \to \RP^n$ is smooth. Let $v \in (\R^{n+1} \setminus \{0\}, \id)$. Let $(U_i, \phi_i) \in A_n$ be a neighborhood of $\pi(p)$. Since $\pi$ is continuous, $S \coloneqq  \pi^{-1}(U_i) \cap  (\R^{n+1} \setminus \{0\})$ is a neighborhood of $v$. Further, $\phi_i \circ \pi \circ \id : S \to \phi_i(U_i)$ is given by $x\mapsto \frac{(x_1, \ldots, \widehat{x_i}, \ldots, x_{n+1})}{x_i}$, which is smooth.
+\end{exmp}
+
+\begin{definition} A smooth map with smooth inverse is called a \textit{diffeomorphism}.
+\begin{note} This defines an equivalence relation $\approx$ between smooth manifolds. \end{note}
+\end{definition}
+
+\begin{remark} If $M^n \approx N^k$, then $n =k$.
+\end{remark}
+
+\begin{exmp}{The following are diffeomorphisms.}
+\begin{enumerate}
+\item $(\R, \id) \approx (\R, x\mapsto x^{\frac{1}{3}})$ via $F: x \mapsto x^3$.
+\item $F: \B^n \to \R^n$ given by $F(x) = \frac{x}{\sqrt{1-|x|^2}}$ is a diffeomorphism with inverse $G(y) = \frac{y}{\sqrt{1+|y|^2}}$.
+\item  $\faktor{\S^n}{\sim} \approx \RP^n$.
+\item If $M$ is a smooth manifold and $(U, \phi)$ a chart, then $\phi: U \to (\phi(U), \id)$ is a diffeomorphism.
+
+\end{enumerate}
+\end{exmp}
+
+\begin{definition}
+If $M$ is any topological space and $f:M \to \R^n$ is continuous, then the \textit{support of $f$} is $$\supp f \coloneqq  \cl(\{x \in M: f(x) \ne 0\}).$$
+\end{definition}
+
+\begin{lemma}
+Given any $0<r_1<r_2$, there is some smooth function $H: \R^n \to \R$ such that $H =1$ on $\bar{B}_{r_1}(0)$, $0<H <1$ on $B_{r_2}(0)\setminus \bar{B}_{r_1}(0)$, and $H=1$ elsewhere. 
+\end{lemma}
+
+\begin{proof}
+We construct such an $H$. First recall that $f: \R \to \R$ given by $e^{-\frac{1}{t}}$ for $t>0$ and $0$ otherwise is smooth. Now define $h: \R \to \R$ by $h(t) = \frac{f(r_2-t)}{f(r_2-t)+ f(t-r_1)}$. Finally, define $H: \R^n \to \R$ by $H(x) = h(|x|)$.
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 4)}} 
+\end{center}
+
+\begin{definition}
+Let $\mathcal{U}$ be an open cover of a topological space $X$. We say that 
+\begin{enumerate}
+\item the open cover $\mathcal{V}$ is a \textit{refinement} of $\mathcal{U}$ if for every $V\in \mathcal{V}$, there is some $U \in \mathcal{U}$ such that $V \subset U$.
+\item $\mathcal{U}$ is \textit{locally finite} if each $x\in X$ has some neighborhood that intersects only finitely many $U \in \mathcal{U}$. 
+\item $X$ is \textit{paracompact} if every open cover of $X$ admits a locally finite refinement.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} Let $M$ be a topological space and $\X\coloneqq (X_\alpha)_{\alpha \in A}$ be an open cover. A \textit{partition of unity subordinate to $\X$} is a family $(\psi_\alpha)_{\alpha \in A}$ of continuous functions $\psi_\alpha : M \to \R$ such that
+\begin{enumerate}
+\item $0\leq \psi_\alpha(x) \leq 1$ for each $\alpha$ and $x$.
+\item $\supp \psi_\alpha \subset X_\alpha$ for each $\alpha$.
+\item The family $(\supp \psi_\alpha)$ is locally finite, in that every point $p\in M$ has a neighborhood $V_p$ such that $V_p \cap \supp \psi_\alpha \ne \emptyset$ for at most finitely many $\alpha$. In particular, $M$ is paracompact.
+\item $\sum_{\alpha \in A} \psi_\alpha(x) = \sup\{\sum_{\alpha \in F}\psi(x) : \underset{\text{finite}} F \subset A\} = 1$ for each $x$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+Every topological manifold $M$ is paracompact. 
+\end{lemma}
+
+\begin{proof}
+Since $M$ has a countable atlas, it has a countable basis $\{B_n\}$ of precompact coordinate balls. (The continuous image of a precompact set into a Hausdorff space is also precompact.)
+\\ \\
+\underline{Step 1:} By induction, we can build a countable covering $\{U_n\}$ of precompact sets such that $\cl(U_{n-1}) \subset U_n$ and $B_n \subset U_n$ for each $n$.
+\\ \\
+\underline{Step 2:} We build a countable locally finite open cover $\{V_n\}$. Set $V_n = \cl(U_n) \setminus U_{n-2}$ for $n > 2$ and $V_n = U_n$ otherwise. Note that every $V_n$ intersects only finitely many other $V_j$, hence $\{V_n\}$ is locally finite.
+\\ \\
+\underline{Step 3:} Let $\{X_\alpha\}$ be any open cover. For any $p \in M$, there is some $\alpha$ with $p\in X_\alpha$ and some neighborhood $W_p$ that intersects $V_j$ for only finitely many natural $j$. Set $\widetilde{W}_p = W_p \cap X_\alpha$. Then the $\widetilde{W}_p$ cover $M$. Since each $V_j$ is precompact by construction, we know $V_j$ has a finite subcover $\widetilde{W}_{p_{j_{k_1}}}, \ldots, \widetilde{W}_{p_{j_{k_j}}}$. Then $V_j = (V_j \cap \widetilde{W}_{p_{j_{k_1}}}) \cup \cdots \cup (V_j \cap \widetilde{W}_{p_{j_{k_j}}})$. Therefore, $\{(V_j \cap \widetilde{W}_{p_{j_{k_1}}}), \ldots, (V_j \cap \widetilde{W}_{p_{j_{k_j}}})\}_{j \in \N}$ is a locally finite refinement of $\{X_\alpha\}$, as desired.
+\end{proof}
+
+\begin{remark}
+If $X$ is connected, then $X$ is paracompact if and only if it is second-countable.  
+\end{remark}
+
+\begin{theorem}{\textbf{(Existence of partition of unity)}}
+If $M$ is a smooth manifold, then any open cover $\mathcal{X}\coloneqq \{X_{\alpha}\}_{\alpha \in A}$ of $M$ admits a partition of unity. 
+\end{theorem}
+\begin{proof}
+For each $\alpha \in A$, we can find a countable basis $\mathcal{C}_{\alpha}$ of precompact  coordinate balls (centered at $0$) for $X_{\alpha}$. Then $\mathcal{C}\coloneqq \bigcup_{\alpha} \mathcal{C}_{\alpha}$ is a basis for $M$. Since $M$ is paracompact, $\mathcal{X}$ admits a locally finite refinement $\{C_i\}$ consisting of elements of $\mathcal{C}$. Note that the cover $\{\cl(B_i)\}$ is also locally finite. There are coordinate balls $C_i' \subset X_{\alpha_i}$ such that $ C_i'\supset \cl(C_i)$. For each $i$, let $\phi_i : C_i' \to \R^n$ be a smooth coordinate map so that $\phi_i(C_i') \supset \phi(C_i)$ and $\phi(\cl(C_i)) = \cl(\phi(C_i))$. Define $f_i: M \to \R$ by $$f_i(x) = \begin{cases}  H_i \circ \phi_i &   x\in C_i' \\ 0 & x \in M \setminus \cl(C_i)    \end{cases}      $$ where $H_i: \R^n \to \R$ is a smooth function that is positive on $\phi_i(C_i)$ and zero elsewhere, as in Lemma 5. Note that $f_i$ is well-defined because $f_i=0$ on $C_i' \setminus \cl(C_i)$. Also, it is smooth by the gluing lemma for open sets. 
+\\ \\
+Define $f: M \to \R$ by $f(x) = \sum_{i}f_i(x)$, which is a finite sum and hence well-defined. We see that $f$ is a smooth function and that $f(x) >0$ for each $x\in M$. Then $g_i(x) \equiv \frac{f_i(x)}{f(x)}$ defines a smooth function $M \to \R$ for each $i$, so that $\sum_i g_i(x) = 1$ and $0\leq g_i(x) \leq 1$ for each $x\in M$. Note that $\supp(g_i) = \cl(C_i)$. 
+\\ \\
+For each $\alpha \in A$, define $\psi_{\alpha} : M \to \R$ by $$\psi_{\alpha}(x) = \sum_{i:\ \alpha_i=\alpha}g_i(x)     .$$ Interpret this as the zero function when there are no $i$ such that $\alpha_i = \alpha$.  Note that each $\psi_{\alpha}$ is smooth as a finite sum of smooth functions and satisfies $0\leq  \psi_{\alpha} \leq 1$. Moreover, we have that $$\supp(\psi_{\alpha}) = \cl \big(\bigcup_{i:\ \alpha_i=\alpha} C_i \big )= \bigcup_{i:\ \alpha_i=\alpha} \cl(C_i). $$ Since $\{\cl(C_i)\}$ is locally finite, so is $\{\supp(\psi_{\alpha})\}_{\alpha \in A}$. Finally, the fact that $\alpha_i \in A$ implies that $$\sum_{\alpha} \psi_{\alpha}(x) = \sum_i g_i(x) =1$$ for each $x\in M$. Therefore, we may take $\{\psi_{\alpha}\}$ as our desired partition of unity. 
+\end{proof}
+
+\begin{corollary}
+If $A \subset U \subset M$ with $A$ closed and $U$ open in $M$, then there is a  \textit{(smooth) bump function} $f: M \to \R$ such that $f(x) = 1$ for each $x\in A$ and $f(x) =0$ outside a neighborhood of $A$.
+\end{corollary}
+
+\begin{proof}
+Since $\{U, M \setminus A\}$ is an open cover of $M$, there is a partition of unity $\phi_1, \phi_2$ such that $\supp \phi_1 \subset U$, $\supp \phi_2 \subset M \setminus A$, and $\phi_1 + \phi_2 = 1$. Hence $\phi_1 \restriction_A = 1 - 0 = 1$. And $\phi_1 \restriction_{M\setminus U} = 0$.
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 5)}} 
+\end{center}
+
+\begin{corollary}{\textbf{(Whitney)}}
+Let $M$ be a smooth manifold and $K \subset M$ be closed. Then there exists a non-negative smooth $f: M \to \R$ such that $f^{-1}(0) =K$.
+\end{corollary}
+
+\begin{remark}
+Hence closed subsets of smooth manifolds are completely characterized as the $0$-level sets of smooth maps. To be the $0$-level set of analytic maps, such as polynomials, is much more special (cf. algebraic geometry).
+\end{remark}
+
+\begin{proof}
+First assume $M=\R^n$ for some $n$. We have $M\setminus K$ open, which is thus the union of countably many balls $B_{r_i}(x_i)$ with $r_i \leq 1$. Construct, as in Lemma 5, a smooth bump function $h: \R^n \to \R$ such that
+ $h(x) =1$ on $\bar{B}_{\frac{1}{2}}(0)$ and that $h$ is supported in $B_1(0)$.  By our construction of $h$, we can verify that for each $i\in \N$, there is some $C_i \geq 1$ that bounds any of the partials of $h$ up through order $i$. 
+ \\ \\ Define $f: \R^n \to \R$ by $\sum_{i=1}^\infty \frac{r_i^i}{2^iC_i}h (\frac{x-x_i}{r_i})$. Each $i$-th term is bounded by $\frac{1}{2^i}$, implying by Weierstrass M-test that $f$ is well-defined and continuous. Since $h$ is zero outside $B_1(0)$, we see that $f^{-1}(0) = K$. To see that $f$ is smooth, assume by induction that $f$ is $C^{k-1}$ for a given $k \geq 1$. By the chain rule and induction, we can write any $k$-th partial $D_k$ of the $i$-th term of the series defining $f$ as $\frac{(r_i)^{i-k}}{2^iC_i} D_kh(\frac{x-x_i}{r_i})$. As $h$ is smooth, this expression is $C^1$. And since $r_i \leq 1$ and $C_i$ bounds all partials up to order $i$, it is eventually bounded by $\frac{1}{2^i}$. Hence the series of these expressions converges uniformly to a continuous function. By Theorem C.31 in Lee, it follows that $D_kf$ exists and is continuous, completing the induction. 
+\\ \\ Now, assume $M$ is arbitrary. Find a cover $(B_\alpha)$ of smooth coordinate balls for $M$. Let $\{\phi_\alpha\}$ be a partition of unity subordinate to this cover. Note that each $B_\alpha$ is diffeomorphic to $\R^n$. Since the property of admitting a non-negative smooth $f: M \to \R$ with $f^{-1}(0) = K$ can be stated in the language of smooth manifolds, it is invariant under diffeomorphism. Thus, there is some non-negative smooth $f_\alpha : B_\alpha \to \R$ where $f^{-1}(0) = K \cap B_\alpha$ for each $\alpha$. Then we can check that $g = \sum_{\alpha} \phi_\alpha f_\alpha$ is the desired function.
+\end{proof}
+
+\begin{corollary}
+Let $M$ be a smooth manifold and $K \subset M$ be closed. Let $c >0$. Then there exists a non-negative smooth $f: M \to \R$ such that $f^{-1}(c) =K$.
+\end{corollary}
+
+\begin{exercise}
+Prove that the restriction of a smooth map on $\R^{n+1}$ to $\S^n$ is smooth. 
+\end{exercise}
+
+\begin{center}
+{\textbf{(Lecture 6)}} 
+\end{center}
+
+\begin{remark}
+Imagine the tangent space of $\S^n$ at a point $p$ as all of the directions from $p$ with respect to which I can find the rate of change of a smooth map $f$ given that I'm only allowed to roam through $\S^n$. 
+\end{remark}
+
+
+\begin{definition}
+Given $a \in \R^n$, a map $\omega: C^{\infty}(\R^n) \to \R$ is called a \textit{derivation at $a$} if it
+\begin{enumerate}[label=\alph*.]
+\item is linear over $\R$
+\item satisfies $\omega(fg) = f(a)\omega(g) + g(a) \omega(f)$ for any $f, g \in C^{\infty}(\R^n)$. 
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+If $f$ is constant, then $\omega f =0$ for any derivation $\omega$.
+\end{remark}
+
+\begin{exmp}
+if $u \in \R^n$, recall the directional derivative of $f\in C^{\infty}(\R^n)$ in the direction $u$ at $a$ is defined as $$D_uf(a) = \lim_{h \to 0} \frac{1}{h}(f(a+hu) -f(a)) = \frac{d}{d{h}}\rvert_{h=0} f(a+hu).$$ Then this is a derivation of $f$ at $a$. 
+\end{exmp}
+
+\begin{theorem}
+For $a \in \R^n$, define $L_a : \R_a^n \to T_a\R^n$ by $v_a \mapsto D_v\rvert_a$. This is an isomorphism. 
+\end{theorem}
+\begin{proof}
+$L_a$ is clearly linear, so we just prove that it is injective and surjective. 
+\\ \\
+Suppose $u, v \in \R_a^n$ and $L_a(u) = L_a(v)$. Then by linearity $L_a(u-v) = 0$, implying $\frac{d}{d{t}}\rvert_{t=0} f(a + t(u-v)) = 0$ for any smooth function $f$. But if $u-v \ne 0$, then this says that, for any $f$, the directional derivative of $f$ at $a$ in the direction of a certain nonzero vector vanishes, which is clearly false. Hence $u=v$, and $L_a$ is injective. 
+\\ \\
+Next, suppose $\omega \in T_a\R^n$ and consider the coordinate projection $x^i : \R^n \to \R$ for each $i=1, \ldots, n$. Set $v_i = \omega(x^i)$ and write $v= v_ie_i$. We show that $L_a(v) = D_v\rvert_a = \omega$. By Taylor's Theorem, for any $f\in C^{\infty}(\R^n)$ we can write $$f(x) = f(a) + \sum_{i=1}^n f_{x_i}(a)(x_i-a_i) + c\sum_{i, j=1}^n(x_i - a_i)(x_j-a_j) \int_{0}^1(1-t) \frac{\partial^2{f}}{\partial{x_i}\partial{x_j}}(a+t(x-a))dt$$ for some $c >0$. Each term of the second sum is the product of two smooth functions vanishing at $a$. We can apply the product rule and linearity of $\omega$ to conclude that $$\omega f = \omega (\sum_{i=1}^n f_{x_i}(a)(x_i-a_i)) =\sum_{i=1}^n \omega(f_{x_i}(a)(x_i -a_i)) = \sum_{i=1}^n f_{x_i}(a)( \omega(x_i) -\omega(a_i))= \sum_{i=1}^n f_{x_i}(a)v_i =  D_v\rvert_a f.$$
+\end{proof}
+
+\begin{corollary}
+We have $\dim(T_a\R^n) = n$, where the partial derivatives $\{\frac{\partial}{\partial{x_i}}\rvert_a\}_{1\leq i \leq n}$ form a basis for $T_a\R^n$. 
+\end{corollary}
+
+\begin{definition}
+If $M$ is a smooth manifold and $p\in M$, an $\R$-linear map $v: C^{\infty}(M) \to \R$ is called a \textit{derivation at $p$} if $v(fg) = f(p)v(g) + v(f)g(p)$ for any $f$ and $g$.
+\end{definition}
+
+\begin{definition}
+The tangent space of $M$ at $p$ is defined as 
+$T_pM = \{\omega : C^{\infty}(M) \to \R : \omega$ is a derivation of $M$ at $p\}$.
+\end{definition}
+
+\begin{definition}
+Given smooth manifolds $M$ and $N$, a smooth map $F: M \to N$, and $p\in M$,  we define the \textit{differential of $F$ at $p$} as $dF_p: T_pM \to T_{F(p)}N$ given by $dF_p(v)(f) = v(f \circ F)$, which is linear because $v$ is linear. It's easy to verify that this satisfies the product rule. We call $dF_p(v)$ the pushforward of $v$ by $dF$.
+\end{definition}
+
+\begin{prop}
+Given $M, N, P$ smooth manifolds, $F: M \to N$, $G: N \to P$ smooth maps, and $p\in M$, the following hold. 
+\begin{enumerate}
+\item $dF_p: T_pM \to T_{F(p)}N$ is linear. 
+\item $d(G \circ F)_p = dG_{F(p)} \circ dF_p : T_pM \to T_{G(F(p))}P$.
+\item $d(\id_M)_p = \id : T_pM \to T_pM$.
+\item If $F$ is a diffeomorphism, then $dF_p$ is an isomorphism with inverse $d(F^{-1})_{F(p)}$.
+\end{enumerate}
+\end{prop}
+
+\begin{aside}
+This shows that mapping $(M, p)$ to $T_pM$ and $F: (M, p) \to(N, F(p))$ to $dF\vert_p$ defines a functor from $\mathsf{Diff}_{\ast}$ to $\mathsf{Vec}_{\R}$, called the tangent space functor.
+\end{aside}
+
+\begin{lemma}
+Let $v \in T_pM$ and $f, g\in C^{\infty}(M)$. Then if $f$ and $g$ agree on some neighborhood $N_p$ of $p$, then $vg = vf$. 
+\end{lemma}
+\begin{proof}
+Set $h = f-g$, so that $h$ vanishes on $N_p$. Find a smooth bump function $\phi: M \to \R$ such that $\phi \equiv 1$ on $\supp(h)$ and $\supp(\phi) \subset M \setminus \{p\}$. Then $\phi h(x) = h(x)$ for any $x\in M$. Since $\phi$ and $h$ vanish at $p$, it follows that $vf -vg = vh = v(\phi h) = 0.$
+\end{proof}
+
+\begin{prop}
+If $M$ is an $n$-dimensional smooth manifold, then $\dim(T_pM) =n$ for every $p\in M$. In particular, we identify the standard basis by $e_i \leftrightarrow (0, \ldots, 0, \frac{\partial}{\partial{x_i}}\rvert_p, 0 \ldots, 0)$.
+\end{prop}
+
+\begin{center}
+{\textbf{(Lecture 7)}} 
+\end{center}
+
+\begin{remark}
+Given $p\in M$, find a chart $(U, \phi)\ni p$. Then $d\phi_p : T_pM \cong T_pU\to T_{\phi(p)}\phi(U) \cong T_p \R^n$ is an isomorphism. This choice of chart gives a natural choice of basis for $T_pM$: $$\{\frac{\partial}{\partial{x_i}}\rvert_{p} \}_{1\leq i \leq n}$$ where $$\frac{\partial}{\partial{x_i}}\rvert_{p}\coloneqq  (d\phi_p)^{-1}(\frac{\partial}{\partial{x_i}}\rvert_{\phi(p)}) = (d\phi^{-1})_{\phi(p)}(\frac{\partial}{\partial{x_i}}\rvert_{\phi(p)}).$$.
+\end{remark}
+
+\begin{remark}
+Let $F: M \to N$ be smooth with $M\subset \R^n$ and $N \subset \R^m$ open. Then by the chain rule we get 
+$$dF_p(\frac{\partial}{\partial{x_i}}\rvert_{p})f = \frac{\partial}{\partial{x_i}}\rvert_{p}(f \circ F) = \frac{\partial}{\partial{x_i}}\rvert_{p}(f(F_1, \ldots, F_m)) =\sum_{j=1}^m  \frac{\partial{f}}{\partial{F_j}}(F(p))\frac{\partial{F_j}}{\partial{x_i}}(p)= \sum_{j=1}^m \frac{\partial{F_j}}{\partial{x_i}}(p) (\frac{\partial}{\partial{y_j}}\rvert_{F(p)})f.$$ Therefore, $dF_p$ can be represented by the familiar $m\times n$ Jacobian matrix of $F$ at $p$, 
+ $$DF(p) \coloneqq  \begin{bmatrix}  \vdots & & \vdots \\ \frac{\partial{F_j}}{\partial{x_1}}(p)  & \cdots & \frac{\partial{F_j}}{\partial{x_n}}(p)  \\ \vdots & & \vdots  
+\end{bmatrix},$$ which acts on $\R^n \cong T_pM$.
+\\ \\
+Now consider the general case $F: M \to N$ smooth between manifolds. For $p \in M$, choose charts $(U, \phi) \ni p$ and $(V, \psi) \ni F(p)$. Then the Euclidean map $\hat{F}\coloneqq  \psi \circ F \circ \phi^{-1} : \phi(F^{-1}(V) \cap U) \to \psi(V)$ is smooth. If $\hat{p}\coloneqq  \phi(p)$, it follows from our previous remark that $d\hat{F}_{\hat{p}}$ is represented by the Jacobian of $\hat{F}$ at $\hat{p}$. Noting that $F \circ \phi^{-1} = \psi^{-1} \circ \hat{F}$, we compute
+$$dF_p(\frac{\partial}{\partial{x_i}}\rvert_p) =  dF_p(d(\phi^{-1})\rvert_{\hat{p}}(\frac{\partial}{\partial{x_i}}\rvert_{\hat{p}})) = d(\psi^{-1})\rvert_{\hat{F}(\hat{p})}(d\hat{F}\rvert_{\hat{p}}(\frac{\partial}{\partial{x_i}}\rvert_{\hat{p}}))$$
+$$= d(\psi^{-1})\rvert_{\hat{F}(\hat{p})}\big(\sum_{j=1}^m \frac{\partial{\hat{F}_j}}{\partial{x_i}}(\hat{p})\frac{\partial}{\partial{y_j}}\rvert_{\hat{F}(\hat{p})}\big) = 
+\sum_{j=1}^m \frac{\partial{\hat{F}_j}}{\partial{x_i}}(\hat{p})\frac{\partial}{\partial{y_j}}\rvert_{F(p)}.
+$$
+Therefore, $dF_p$ can be represented by the Jacobian matrix of $\hat{F}$ at $\hat{p}$. 
+\end{remark}
+
+\begin{remark}
+Given two distinct pairs of coordinates for $p$ and $F(p)$, the respective Jacobian matrices are related by the familiar change-of-basis matrix. In particular, they are similar. For details, see Lee, pages 63-65.
+\end{remark}
+
+\begin{definition}
+Given a smooth manifold $M$, we define a notion of a smoothly varying tangent space, called the \textit{tangent bundle of $M$} by the set  $$TM = \coprod_{p \in M} T_pM$$ endowed with a natural topology induced by the projection $\pi: TM \to M$, $(\phi, p) \mapsto p$.
+\end{definition}
+
+\begin{exmp}
+As $\R_a^n$ is canonically isomorphic to $\R^n$, we have $T\R^n \cong \coprod_{a\in \R^n} \{a\} \times \R^n = \R^n \times \R^n$.
+\end{exmp}
+
+\begin{center}
+{\textbf{(Lecture 8)}} 
+\end{center}
+
+\begin{prop}
+For any smooth $n$-dimensional manifold $M$, the tangent bundle $TM$ has a natural topology and smooth structure so that it's a $2n$-dimensional smooth manifold and the projection $\pi : TM \to M$ is smooth.
+\end{prop}
+\begin{proof}
+Given a chart $(U, \phi)$, define $\tilde{\phi}: \pi^{-1}(U) \to \R^n$ by $v_i\frac{\partial}{\partial{x_i}}\vert_p \mapsto (x^1(p), \ldots, x^n(p), v_1, \ldots, v_n)$ where $\phi = (x^1, \ldots, x^n)$. We call the $\tilde{\phi}((f, p))$ the natural coordinates on $TM$. This is continuous with $\Ima \tilde{\phi} = \phi(U) \times \R^n$, which is open. Further, $\tilde{\phi}^{-1}$ on $\phi(U) \times \R^n$ is given by $(x_1, \ldots, x_n, v_1, \ldots, v_n)\mapsto v_i \frac{\partial}{\partial{x_i}}\vert_{\phi^{-1}(x)}$. Define $\{(\pi^{-1}(U), \tilde{\phi})\}$ as charts on $TM$. Given charts $(\pi^{-1}(U), \tilde{\phi}), (\pi^{-1}(V), \tilde{\psi})$, it's straightforward to check that $\tilde{\psi} \circ \tilde{\phi}^{-1}: \phi(U \cap V)\times \R^n \to \psi(U \cap V)\times \R^n$ is smooth.
+\\ \\
+Next, notice that if we take a countable cover $\{U_i\}$ of $M$ by smooth coordinate domains, then $\{\pi^{-1}(U_i)\}$ satisfies the conditions of Lemma 3.
+\\ \\
+Finally, to see that $\pi : TM \to M$ is smooth, note that its coordinate representation at every point is given by the projection $\pi:\R^{2n} \to \R^n$, $(x,v) \mapsto x$.
+\end{proof}
+
+\begin{definition}
+Given $F: M \to N$ is smooth, define the \textit{global differential} $dF: TM \to TN$ of $F$ by $dF(\phi, p) = dF_p(\phi)$.
+\end{definition}
+
+\begin{prop}
+The global differential $dF: TM \to TN$ is smooth.
+\end{prop}
+
+\begin{aside}
+This shows that mapping $M$ to $TM$ and $F$ to $dF$ defines a functor from $\mathsf{Diff}$ to itself, called the tangent functor.
+\end{aside}
+
+\begin{remark}
+If $F$ is a diffeomorphism, then so is $dF$ with $d(F^{-1}) = (df)^{-1}$.
+\end{remark}
+
+\begin{definition}
+Given a smooth curve $\gamma : J \to M$ and $t_0 \in J$, the \textit{velocity of $\gamma$ at $t_0$} is defined as $$\gamma'(t_0) = d\gamma \big(\frac{d}{dt}\vert_{t_0} \big) \in T_{\gamma(t_0)}M.$$
+\end{definition}
+
+\begin{remark}
+Let $(U, \phi) \ni \gamma(t_0)$ be chart on $M$. Then $\gamma'(t_0) = \frac{d\gamma^i}{dt} \frac{\partial}{\partial{x_i}}\vert_{\gamma(t_0)}$.
+\end{remark}
+
+\begin{prop}
+Every $v \in T_pM$ is the velocity of some smooth curve $\gamma : J \to M$ at $0$ such that $\gamma(0)=p$.
+\end{prop}
+\begin{proof}
+Let $(U, \phi)$ be a chart centered at $p$. Write $v = v_i \frac{\partial}{\partial{x_i}}\vert_{p}$. For $\epsilon >0$ small, define $\gamma: (-\epsilon , \epsilon) \to U$ by $\gamma(t) = \phi^{-1}(tv_1, \ldots, tv_n)$. Our previous remark implies that $\gamma'(0) = v$.
+\end{proof}
+
+\begin{prop}
+Let $v \in T_pM$. Then $dF_p(v) = (F \circ \gamma)'(0)$ for any smooth $\gamma : J \to M$ such that $\gamma(0)=p$ and $\gamma'(0) =v$.
+\end{prop}
+
+\begin{aside}
+A \textit{smooth function element on $M$} is a pair $(f, U)$ with $U\subset M$ open and $f: M \to \R$ smooth. Say that $(f, U) \sim (g, V)$ if $p\in U \cap V$ and $f \equiv g$ on some neighborhood of $p$. The class $[(f, U)]\coloneqq [f]_p$ is called the \textit{germ of $f$ at $p$}. The set of such classes is denoted by $C^{\infty}_p(M)$. This is an associative algebra over $\R$. \\ \\ Define a \textit{derivation of $C^{\infty}_p(M)$} as a linear map $v: C^{\infty}_p(M) \to \R$ such that $v[fg]_p = f(p)v[g]_p+g(p)v[f]_p$.  \\ \\ The tangent space $\mathcal{D}_pM$ of such derivations serves as an equivalent (via isomorphism) definition of the tangent space of $M$ at $p$.
+\end{aside}
+
+\begin{center}
+{\textbf{(Lecture 9)}} 
+\end{center}
+
+\begin{theorem}{\textbf{(Inverse function theorem)}}
+If $F: M \to N$ is smooth and $dF_p$ is invertible, then there are connected neighborhoods  $U_0$ of $p$ and $V_0$ of $F(p)$ such that $F\restriction_{U_0}: U_0 \to V_0$ is a diffeomorphism.
+\end{theorem}
+\begin{proof}
+Notice that $M$ and $N$ have equal dimension (say $n$) because $dF_p$ is invertible. Choose charts $(U, f)$ centered at $p$ and $(V, g)$ centered at $F(p)$ such that $F(U) \subset V$. Then $\widehat{F}\coloneqq  g \circ F \circ f^{-1}$ is smooth map from $\widehat{U}\coloneqq f(U)\subset \R^n$ to $\widehat{V}\coloneqq g(V)\subset \R^n$ with $\widehat{F}(0) =0$. Now $d\widehat{F}_0$ is invertible as the composition of three invertible maps. The Euclidean inverse function theorem implies that there are open balls $B_{r}(0)$ and $B_s(0)$ such that $\widehat{F} : B_r(0) \to B_s(0)$ is a diffeomorphism. Then $F: f^{-1}(B_r(0)) \to g^{-1}(B_s(0))$ is a diffeomorphism.
+\end{proof}
+
+\begin{corollary}
+If $dF_p$ is nonsingular at each $p\in M$, then $F$ is a local diffeomorphism.
+\end{corollary}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item The finite product of local diffeomorphisms is a local diffeomorphism.
+\item The composition of two local diffeomorphisms is a local diffeomorphism.
+\item Any bijective local diffeomorphism is a diffeomorphism.
+\item A map $F$ is a local diffeomorphism if and only if each point in $\dom(F)$ has a neighborhood where $F$'s coordinate representation is a local diffeomorphism.
+\end{enumerate}
+\end{prop}
+
+\begin{definition}
+The \textit{rank of a smooth map $F$ at a point $p$} is the rank of $dF_p$. If the rank of $F$ is equal at each point, then we say $F$ has constant rank.
+\end{definition}
+
+\begin{theorem}{\textbf{(Constant rank theorem)}}
+Let $F: M^m \to N^n$ be smooth with constant rank $r\leq m, n$. Then for each $p\in M$, there are charts $(U, f)$ centered at $p$ and $(V, g)$ centered at $F(p)$ with $F(U) \subset V$ where the coordinate representation of $F$ is given by $$\widehat{F}(x_1, \ldots, x_r, x_{r+1}, \ldots x_m) = (x_1, \ldots, x_r, 0,\ldots, 0).$$
+\begin{note}
+If $m=n =r$, then this follows immediately from the inverse function theorem. 
+\end{note}
+
+\begin{remark}
+The global condition on the rank of $F$ cannot be weakened, as the space of $n\times m$ matrices of rank $r$ need not be open. For example, consider $A(t) = \begin{bmatrix} 1 & t \\ 1 & 1 \end{bmatrix}$, which has rank $2$ for $t\ne 1$ and rank $1$ otherwise.
+\end{remark}
+\end{theorem}
+
+\begin{proof}{\textit{(Constant rank theorem)}}
+Since our statement is local, we may assume that $M\subset \R^m$ and $N\subset \R^n$ are open subsets. Since $DF(p)$ has rank $r$, it has some invertible $r\times r$ sub-matrix, which we may assume is the upper left sub-matrix $\big(\frac{\partial{F^i}}{\partial{x^j}}\big )_{i,j\in [r]}$. Write $(x,y) = (x^1, \ldots, x^r, y^1, \ldots, y^{m-r})$ and $(v,w) = (v^1, \ldots, v^r, w^1, \ldots, w^{n-r})$ for the standard coordinates of $\R^m$ and $\R^n$, respectively. By applying translations, we may assume that $p=(0,0)$ and $F(p)= (0,0)$. Let $F(x,y)= (Q(x,y), R(x,y))$ for some smooth $Q: M \to \R^r$ and $R: M \to \R^{n-r}$. Then the Jacobian matrix $\big (\frac{\partial{Q^i}}{\partial{x^j}} \big )$ is invertible at $(0,0)$ by hypothesis. 
+\\ \\
+Define $f : M \to \R^m$ by $(x,y) \mapsto (Q(x,y), y)$. Define the \textit{Kronecker delta} symbol $\delta_i^j$ by $\delta_i^j = 1$ when $i=j$ and $0$ otherwise.  Then $$D[f](0,0) \begin{bmatrix} \frac{\partial{Q^i}}{\partial{x^j}}(0,0) & \frac{\partial{Q^i}}{\partial{y^j}}(0,0) \\ 0 & \delta^i_j     \end{bmatrix}   .$$ Since $$\det(D[f](0,0)) = \det \big ( \frac{\partial{Q^i}}{\partial{x^j}}(0,0) \big) \cdot \det(\delta^i_j) = \det \big ( \frac{\partial{Q^i}}{\partial{x^j}}(0,0)  \big) \ne 0,$$ it follows that $D[f]$ is invertible at $(0,0)$. 
+\\ \\Thus, we can apply the inverse function theorem to get a connected open set $U_0 \ni (0,0)$ and an open cube $\widetilde{U}_0 \ni f(0,0) = (0,0)$ such that $f: U_0 \to \widetilde{U}_0$ is a diffeomorphism.  Let $f^{-1}(x,y) =(A(x,y), B(x,y))$. Then $(x,y) = f(A(x,y), B(x,y)) = (Q(A(x,y), B(x,y)), B(x,y))$, so that $y = B(x,y)$. Hence $$f^{-1}(x,y) = (A(x,y), y).$$ Additionally, $Q(A(x,y), y)=x$ since $f\circ f^{-1} = \id_{\widetilde{U}_0}$. If $\widetilde{R} : \widetilde{U}_0 \to \R^{n-r}$ is defined by $(x,y) \mapsto R(A(x,y), y)$, then $$F\circ f^{-1}(x,y) = (x, \widetilde{R}(x,y)).$$ Therefore, $$D[F\circ f^{-1}](x,y)  =  \begin{bmatrix}    \delta^i_j & 0 \\ 
+\frac{\partial{\widetilde{R}^i}}{\partial{x^j}}(x,y) & \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y)    \end{bmatrix} $$ for any $(x,y) \in \widetilde{U}_0$. It's clear that the first $r$ columns of this matrix are linearly independent. But since $f^{-1}$ is a diffeomorphism, it has rank $r$ on $\widetilde{U}_0$. It follows that $ \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y) =0$ for each $(x,y) \in \widetilde{U}_0$. But $\widetilde{U}_0$ was chosen to be an open cube, so that $\widetilde{R}(x,y) = \widetilde{R}(x,0)$. If $S(x) \coloneqq \widetilde{R}(x,0)$, then $F \circ f^{-1}(x,y) = (x, S(x))$. 
+\\ \\ Now, let $V_0 = \{(v,w) \in N \mid (v,0)\in \widetilde{U}_0\}$, which is a neighborhood of $(0,0)$ in  $N$. Since $\widetilde{U}_0$ is a cube, we see that $F \circ f^{-1}(\widetilde{U}_0) \subset V_0$. Hence $F(U_0) \subset V_0$.  Define $g : V_0 \to \R^n$ by $(v,w) \mapsto (v, w-S(v))$, which is smooth with inverse $g^{-1}(s,t) = (s, t + S(s))$. Then $$\widehat{F}(x,y) = g \circ F \circ f^{-1}(x,y) = (x, S(x) - S(x)) = (x,0),$$ as desired.
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 10)}} 
+\end{center}
+
+\begin{definition}
+A smooth map $F: M \to N$ is a \textit{(smooth) submersion} if its rank is constant at $\dim(N)$. It is an \textit{immersion} if its constant at $\dim(M)$.
+\end{definition}
+
+\begin{definition}
+A \textit{topological embedding} is a continuous map $F: M \to N$ which is a homeomorphism onto $F(M)$.
+\end{definition}
+
+\begin{exmp}
+The map $\gamma: \R \to \R^2$ defined by $t\mapsto (t^3, 0)$ is a smooth topological embedding but not an immersion, since $\gamma'(0) =0$.
+\end{exmp}
+
+\begin{exmp}
+The curve $f: (-\pi, \pi) \to \R^2$ defined by $f(t) = (\sin 2t , \sin t)$ is called a lemniscate and defined a figure-eight curve. This is not a topological embedding, because the figure-eight is compact whereas $(-\pi, \pi)$ is not. But it is a smooth immersion as $f'$ never vanishes. 
+\end{exmp}
+
+\begin{definition}
+A map is a \textit{smooth embedding} if it both a topological embedding and a smooth immersion.
+\end{definition}
+
+\begin{exmp}
+There is a smooth embedding of $\RP^2$ into $\R^4$ but not into $\R^3$
+\end{exmp}
+
+\begin{exmp}
+If $U \subset M$ is open, then the inclusion $U \hookrightarrow M$ is a smooth embedding.
+\end{exmp}
+
+\begin{definition}
+A manifold $ S\subset M$ in the subspace topology is an \textit{embedded} (or \textit{regular}) \textit{submanifold} if it has a smooth structure such that the inclusion $S \hookrightarrow M$ is smooth.
+\end{definition}
+
+\begin{remark}
+The image of a smooth embedding is an embedded submanifold.
+\end{remark}
+
+\begin{definition}
+If $S \subset M$ is an embedded submanifold, then $\dim M - \dim S$ is called the \textit{codimension of $S$ in $M$}.
+\end{definition}
+
+\begin{prop}
+Let $U \subset M$ be open and $f: U \to N$ be smooth where $\dim M = m$ and $\dim N = n$. If $\Gamma(f)$ denotes the graph of $f$, then it is an embedded $m$-dimensional manifold of $M \times N$.
+\end{prop}
+\begin{proof}
+Define $\gamma_f(x) : U \to M \times N$ by $\gamma_f(x) = (x, f(x))$. It's easy to check this is a smooth embedding.
+\end{proof}
+
+\begin{definition}
+We say $S$ has the \textit{local $k$-slice condition} if for each $p\in S$, there is a chart $(U, f)\ni p$ for $M$ such that $f(U \cap S) = \{x\in \R^n : x^{k+1} = \cdots = x^m = 0\}$, where $m = \dim M$.
+\end{definition}
+
+\begin{theorem}
+Let $M^n$ be a smooth manifold. If $S\subset M$ is an embedded manifold with $\dim S = k$, then $S$ has the local $k$-slice condition. Conversely, if $S\subset M$ has the local $k$-slice condition, then $S$ is a manifold in the subspace topology and has a smooth structure making it an embedded submanifold of dimension $k$.
+\end{theorem}
+\begin{proof}
+See Lee, Theorem 5.8.
+\end{proof}
+
+\begin{exmp}
+For any $n$, $\S^n \subset \R^{n+1}$ is an embedded hypersurface because it is locally the graph of smooth map and thus has the local $n$-slice condition.
+\end{exmp}
+
+\begin{theorem}
+Let $F: M^m \to N^n$ be smooth with constant rank $r$. Each level set of $F$ is an embedded submanifold of codimension $r$ in $M$.
+\end{theorem}
+\begin{proof}
+Set $k = m -r$. Let $c \in N$ and $p \in F^{-1}(c)$. By the constant rank theorem, there are charts $(U, f)$ centered at $p$ and $(V, g)$ centered at $F(p) = c$ for which $F$ has coordinate representation $(x_1, \ldots, x_r, x_{r+1}, \ldots, x_m) \mapsto (x_1, \ldots, x_r, 0, \ldots, 0)$, which must send each point in $f(F^{-1}(c) \cap U)$ to $0$.  Thus, $f(F^{-1}(c) \cap U)$ equals the $k$-slice $\{x \in \R^m : x_1 = \cdots = x_r = 0\}$. By Theorem 5, $S$ is an embedded submanifold of dimension $k$.
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 11)}} 
+\end{center}
+
+\begin{remark}
+Can $M^n$ with $n\geq 1$ be homeo-/diffeomorphic to $M\setminus \{p\}$? 
+\end{remark}
+
+\begin{remark}
+We can generalize our last theorem to maps that are not necessarily of constant rank.
+\end{remark}
+
+\begin{definition}
+Let $\phi : M \to N$ be smooth. We say that $p\in M$ is a
+\begin{enumerate}
+\item \textit{regular point} if $d\phi_p$ is surjective.
+\item  \textit{critical point} otherwise.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+With notation as before, we say that $c \in N$ is a
+\begin{enumerate}
+\item  \textit{regular value} if each point in $\phi^{-1}(c)$ is regular.
+\item  \textit{critical value} otherwise.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Every regular level set of a smooth map $F: M^m \to N^n$ is an embedded submanifold of codimension $n$.
+\end{theorem}
+\begin{proof}
+Let $c \in N$. Note that since the subspace of full-rank matrices is open, the set $U$ of points $p\in M$ where $dF_p$ is surjective is open in $M$. Hence $F\restriction_U : U \to N$ is a smooth submersion. In particular it has constant rank n, so that $F^{-1}(c)$ is an embedded submanifold with codimension $n$ of $U$ , which itself is an open submanifold of $M$.
+\end{proof}
+
+\begin{exmp}
+$\S^n$ is the regular level set of the smooth function $x\mapsto |x|^2$.
+\end{exmp}
+
+\begin{theorem}{\textbf{(Sard)}}
+If $F: M \to N$ is smooth, then the set of critical values of $F$ has measure zero in $N$.
+\end{theorem}
+
+\begin{prop}
+Suppose $M$ is smooth and $S\subset M$ is embedded. Then for any $f \in C^{\infty}(S)$, then there is some neighborhood $U$ of $S$ in $M$ and $\hat{f} \in C^{\infty}(U)$ such that $\hat{f}\restriction_S = f$.
+\end{prop}
+\begin{prop}
+The tangent space of a submanifold $S \subset M$ at $p\in S$ is just the image of the injective canonical map $di_p : T_pS \to T_p M$ where $i$ denotes inclusion. More concretely, this is equal to $$A\coloneqq \{ \gamma ' (0) \in T_pM : \gamma : (-\epsilon, \epsilon) \to S \text{ and } \gamma(0) =p\}.$$
+\end{prop}
+\begin{proof}
+Let $v \in T_pS$. We know that $v= \gamma'(0)$ for some curve $\gamma$ in $S$. Then $i \circ \gamma$ is a curve in $M$ with $(i \circ \gamma)'= di_p(v)$. Conversely, let $v\coloneqq  w'(0) \in A$. We have $w = j \circ w$ where $j: i(S) \to S$ is the reverse inclusion. Since $(j \circ w)'(0) = dj_p(v) \in T_pS$, it follows that $d_i((j \circ w)'(0)) = v$.
+\end{proof}
+
+
+\begin{remark}
+The gradient $\nabla F$ has two main properties.
+\begin{enumerate}
+\item It is orthogonal to the level sets of $F$.
+\item $dF_p(v) = \langle \nabla F_p, v\rangle$.
+\end{enumerate}
+But we don't have an inner product on $M$ unless $M$ is a Riemannian manifold, which by definition has a smoothly varying inner product. 
+\end{remark}
+
+\begin{center}
+{\textbf{(Lecture 12)}} 
+\end{center}
+
+\begin{definition}
+If $\pi : M \to N$ is a continuous map, a \textit{section of $\pi$} is a continuous right inverse for $\pi$.
+\end{definition}
+
+\begin{definition}
+A \textit{(smooth) vector field} $X$ is a smooth section of the projection $\pi : TM \to M$, i.e., $X_p\coloneqq  F(p) \in T_pM$ for each $p \in M$. 
+Let $\mathscr{X}(M)$ denote the space of smooth vector fields in $M$.
+\end{definition}
+
+\begin{remark}
+Given a chart $U$ on $M$, if $p\in U$, then we can write $X_p = \sum_i r_i \frac{\partial}{\partial x_i}\rvert_p$ for some unique real coefficients $r_i$. Define each $X^i : U \to \R$ by $X_i(p) = r_i$. Then $X_p = \sum_i X_i(p) \frac{\partial}{\partial x_i}\rvert_p.$
+\end{remark}
+
+\begin{definition}
+We call such $X_i$ the \textit{component functions of $X$} for the chart $U$.
+\end{definition}
+
+\begin{prop}
+A vector field $X$ is smooth if and only if each component function in any given chart is smooth.
+\end{prop}
+
+\begin{remark}
+$\mathscr{X}(M)$ is a module over $C^{\infty}(M)$ by the action $f \cdot X = (p \mapsto f(p)X_p)$.
+\end{remark}
+
+\begin{lemma}
+If $S$ is a closed subset of $M$ and $X$ a smooth vector field along $S$, then there is an extension of $X$ to a smooth vector field on $M$.
+\end{lemma}
+
+\begin{definition} Let $U \subset M^n$ be open and $X_1, \ldots, X_k \in \mathscr{X}(M)$. 
+\begin{enumerate}
+\item  $X_1, \ldots, X_k$ are \textit{linearly independent} if for any $p\in U$, we have $\{X_1(p), \ldots, X_k(p)\}$ linearly independent in $T_pM$.
+\item If $k=n$ and $X_1, \ldots, X_k$ are linearly independent, then $\{X_1, \ldots, X_k\}$ is a \textit{local frame} in $U$.
+\end{enumerate}
+\end{definition}
+
+\begin{exmp}
+The basis vectors $p\mapsto \frac{\partial}{\partial{x_i}}\rvert_p$ form a local frame for a given chart $U$ around $p$, called the \textit{coordinate frame}.
+\end{exmp}
+
+\begin{definition}
+A  local frame for $U$ is called a \textit{global frame} if $U =M$. If such a frame exists, then $M$ is called \textit{parallelizable}.
+\end{definition}
+
+\begin{exmp}
+$\R^n$ is parallelizable via the standard coordinate vector fields.
+\end{exmp}
+
+\begin{lemma}
+$M$ is parallelizable if and only if $TM \approx M \times \R^n$.
+\end{lemma}
+
+\begin{remark}{\textbf{(Kervaire)}}
+$\S^n$ is parallelizable if and only if $n\in \{0, 1, 3, 7\}$.
+\end{remark}
+
+\begin{exmp}
+Any Lie group is parallelizable. 
+\end{exmp}
+
+\begin{remark}
+Note that $\vf(M)$ acts on $C^{\infty}(U)$ for $U \subset M$ via $X \cdot f = (p \mapsto X_p(f))$. Given $X \in \vf(M)$ fixed, this induces a linear map $X : C^{\infty}(U) \to C^{\infty}(U)$ satisfying the product rule $X(fg) = fXg  + gXf$. We cal such a map a \textit{derivation} of $C^{\infty}(U)$.
+\\ \\ Moreover, if $F: M \to N$ is smooth, then we have $dF_pX(p) \in T_{F(p)}N$ for each $p \in M$. But this may not define a vector field on $N$, since $F$ may not be surjective.
+\end{remark}
+
+\begin{exmp}
+Note that for $X, Y \in \vf(M)$, $X(Yf)$ need not be a derivation. Indeed, let $M= \R^2$, $X= \frac{\partial}{\partial{x}}$, and $Y = x \frac{\partial}{\partial{y}}$. If $f(x,y)=x$ and $g(x, y) = y$, then $XY(fg) = 2x$ whereas $fXY(g) + gXY(f) = x$, so that $XY(f)$ is not a derivation.
+\end{exmp}
+
+\begin{definition}
+Let $X, Y \in \vf(M)$. Then $[X, Y] \coloneqq  XY - YX : C^{\infty}(M)\to C^{\infty}(M)$ is called the \textit{Lie bracket of $X$ and $Y$}.
+\end{definition}
+
+\begin{remark} {(Clairaut)}
+If $X_i = \frac{\partial}{\partial{x_i}}\in \vf(M)$, then $[X_i, X_j] = 0$ for any $1\leq i,j \leq n$.
+\end{remark}
+
+\begin{prop}
+A map $D: C^{\infty}(M) \to C^{\infty}(M)$ is a derivation if and only if there is some $X \in \vf(M)$ such that $Df = Xf$ for any $f$.
+\end{prop}
+\begin{proof}
+We've established the backward implication. Conversely, assume that $D$ is a derivation. Define $X : M \to TM$ by $X_p(f) = (Df)(p)$. Since $Df = Xf$ is smooth for each $X$, it follows that $X$ is smooth by Lee, Proposition 8.14.
+\end{proof}
+
+\begin{prop}
+Any Lie bracket $[X, Y]$ is a smooth vector field.
+\end{prop}
+\begin{proof}
+By our last proposition, it suffices to show that $[X, Y]$ is a derivation. Let $f, g$ be smooth functions on $M$. Then
+$$  [X, Y](fg) = X(Y(fg)) - Y(X(fg)) =  X(fYg + gYf) - Y(fXg + gXf) = XfYg + XgYf - YfXg - YgXf$$ $$= fXYg + YgXf + gXYf + YfXg - fYXg - XgYf - gYXf - XfYg = fXYg + gXYf - fYXg - gYXf$$ $$= f[X,Y]g + g[X,Y]f
+.$$
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 13)}} 
+\end{center}
+
+\begin{definition}
+The function $[X, Y] : M \to TM$ is given by $p\mapsto (f \mapsto X_p(Yf) - Y_p(Xf))$.
+\end{definition}
+
+\begin{prop}
+Write $X = X^i\frac{\partial}{\partial{x_i}}$ and $Y = Y^j \frac{\partial}{\partial{x_j}}$ in local coordinates. Then $$[X, Y] = \sum_{i, j}(X^i \frac{\partial{Y^j}}{\partial{x_i}} - Y^i\frac{\partial{X^j}}{\partial{x_i}})\frac{\partial}{\partial{x_j}}.$$
+\end{prop}
+\begin{proof}
+Since $[X, Y]$ is a vector field, $([X, Y]f) \restriction_U = [X, Y](f\restriction_U)$ for any open $U \subset M$. Therefore, we can compute, say, $Xf$ in a coordinate expression for $X$.  We can apply the product rule and Clairaut to get
+$$[X, Y]f = X^i \frac{\partial}{\partial{x_i}} (Y^j \frac{\partial{f}}{\partial{y_j}}) - Y^j \frac{\partial}{\partial{x_j}} (X^i \frac{\partial{f}}{\partial{x_i}}) =  X^i \frac{\partial{Y^j}}{\partial{x_i}}\frac{\partial{f}}{\partial{x_j}} + X^i Y^j \frac{\partial^2{f}}{\partial{x_i}{x_j}} - Y^j \frac{\partial{X^i}}{\partial{x_j}}\frac{\partial{f}}{\partial{x_i}} - Y^j X^i \frac{\partial^2{f}}{\partial{x_j}{x_i}}$$ $$= X^i \frac{\partial{Y^j}}{\partial{x_i}}\frac{\partial{f}}{\partial{x_j}} -  Y^j \frac{\partial{X^i}}{\partial{x_j}}\frac{\partial{f}}{\partial{x_i}} = \sum_{i, j}(X^i \frac{\partial{Y^j}}{\partial{x_i}} - Y^i\frac{\partial{X^j}}{\partial{x_i}})\frac{\partial}{\partial{x_j}}.$$
+\end{proof}
+
+\begin{remark}
+It's a fact that if $X_1, \ldots, X_n \in \vf(U)$ such that $[X_i, X_j]= 0$, then there are local coordinates $x^i : V \to \R$ such that $X_i  =\frac{\partial}{\partial{x^i}}$. This is a converse to Clairaut.
+\end{remark}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item (Bilinearity) For any $a,b \in \R$, $$[aX + bY, Z] = a[X, Z] + b[Y, Z]$$ $$[Z, aX + bY] = a[Z, X] + b[Z, Y]. $$ 
+\item (Antisymmetry) $$[X, Y] = -[Y,X].$$
+\item (Jacobi Identity) $$[X, [Y, Z]]+ [Y, [Z, X]] + [Z, [X, Y]] =0  . $$
+\item For any $f, g \in C^{\infty}(M)$, $$[fX, gY] = fg[X, Y] + (fXg)Y - (gYf)X, $$ where $fX$ denotes the module action $f \cdot X$.
+\end{enumerate}
+\end{prop}
+\begin{proof} Compute directly. \end{proof}
+
+\begin{definition}
+Let $X \in \vf(M)$ and $Y \in \vf(N)$. Let $F: M \to N$ be a diffeomorphism. The \textit{pushforward of $X$ by $F$}, denoted by $F_{\ast}X$, is the vector field on $N$ given by $q \mapsto dF_{F^{-1}(q)}(X_{F^{-1}(q)})$.
+\end{definition}
+
+\begin{definition}
+Let $X \in \vf(M)$ and $Y \in \vf(N)$. If $F: M \to N$ is a diffeomorphism, then $X$ and $Y$ are \textit{$F$-related} if $Y = F_{\ast}X$.
+\end{definition}
+
+\begin{remark}
+$X(f \circ F) = (Yf) \circ F$ if and only if $X$ and $Y$ are $F$-related.
+\end{remark}
+
+\begin{theorem}{\textbf{(Naturality of the Lie bracket)}}
+Suppose $F: M \to N$ is a diffeomorphism and $X, Y \in \vf(M)$. Then $F_{\ast}[X, Y] = [F_{\ast}X, F_{\ast}Y]$.
+\end{theorem}
+\begin{proof}
+Let $ f\in C^{\infty}(M)$. By our previous remark, we see that $XY(f \circ F) = X(F_{\ast}Yf \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F$, and likewise $YX(f \circ F) = F_{\ast}Y(F_{\ast}X f) \circ F$. Thus, $$[X, Y](f \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F - F_{\ast}Y(F_{\ast}X f) \circ F = ([F_{\ast}X, F_{\ast}Y] f) \circ F.$$ We conclude by again applying our previous remark.
+\end{proof}
+
+\begin{corollary}
+Let $S \subset M$ be a submanifold. If $X, Y \in \vf(M)$ have $X_p, Y_p \in T_p(S)$ for each $p\in S$, then $[X, Y]_p \in T_p(S)$ as well.
+\end{corollary}
+\begin{proof}
+Let $i : S \to M$ denote inclusion. Then  there are $X', Y' \in \vf(S)$ with $X'$ $i$-related to $X\restriction_S$ and $Y'$ to $Y\restriction_S$. This implies $[X', Y']$ is $i$-related to $[X, Y]\restriction_S$, which in turn implies that $[X, Y]_p \in T_p(S)$ for any $p\in S$.  
+\end{proof}
+
+\begin{definition}
+Let $M$ be a topological space. A \textit{(real) vector bundle of rank $k$ over $M$} is a topological space $E$ endowed with the following structure.
+\begin{enumerate}
+\item A surjective continuous map $\pi : E \to M$.
+\item For each $p \in M$, $E_p\coloneqq  \pi^{-1}(p)$ is endowed with the structure of a $k$ dimensional real vector space.
+\item For each $p\in M$, there is a neighborhood $U_p$ in $M$ and a homeomorphism $\phi :\pi^{-1}(U) \to U \times \R^k$ such that
+\begin{enumerate}
+\item $\pi_U \circ \phi  = \pi \restriction_{\pi^{-1}(U)}$, where $\pi_U : U \times \R^k \to U$ is the projection.
+\item For each $q\in U$, $\phi \restriction_{E_q}$ is a linear isomorphism $E_q \cong \{q\} \times \R^k \cong \R^k.$
+\end{enumerate}
+\end{enumerate}
+If $M$ and $E$ are smooth manifolds and $\pi$ and the $\psi$ are smooth, then $E$ is called a \textit{smooth vector bundle}.
+\end{definition}
+
+\begin{exmp}
+The Mobius strip and $S^1 \times \R$ are different vector bundles over $S^1$.
+\end{exmp}
+
+\begin{remark}
+We can always construct a global section for a smooth vector bundle by using partition of unity. But we cannot always ensure that it is non-vanishing, as shown by the hairy ball theorem for bundles over $\S^2$.
+\end{remark}
+
+\begin{center}
+{\textbf{(Lecture 14)}} 
+\end{center}
+
+\begin{lemma}{\textbf{(Vector bundle construction lemma)}}
+Let $M^n$ be a smooth manifold and suppose that for any $p\in M$, there is some vector space $E_p$ of some fixed dimension $k$. Let $E\coloneqq  \coprod_{p\in M} E_p$ and $\pi : E \to M$ be the projection map. Further, suppose we have the following data.
+\begin{enumerate}
+\item an open cover $\{U_{\alpha}\}$.
+\item for each $\alpha$, a bijective $\phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha} \times \R^k$ whose restriction to each $E_p$ is a linear isomorphism to $\{p\}\times \R^k$.
+\item for each $U_{\alpha} \cap U_{\beta} \ne \emptyset$, a smooth map $\tau_{\alpha \beta} : U_{\alpha} \cap U_{\beta} \to \GL(k , \R)$ such that $\phi_{\alpha} \circ \phi_{\beta}^{-1}(p, v) = (p, \tau_{\alpha \beta}(p)v)$.
+\end{enumerate}
+Then $E$ has a unique topology and smooth structure making it into a smooth vector bundle of rank $k$ over $M$.
+\end{lemma}
+
+\begin{remark}
+The matrices $\tau_{\alpha \beta}(p)$ are called the \textit{transition functions} of the vector bundle $E$. They satisfy the so-called cocycle condition in that $\tau_{\alpha \alpha}(p) = I_k$ and $\tau_{\alpha \beta}(p)\tau_{\beta \gamma}(p)\tau_{\gamma \alpha}(p) = I_k$.
+\end{remark}
+
+\begin{definition}
+If $V$ is a real vector space, then define the \textit{dual space} $V^{\ast} = \Hom(V, \R)$.
+\end{definition}
+\begin{prop} $ $ 
+\begin{enumerate}
+\item If $\dim(V) =n$, then $\dim(V^{\ast}) = n$.
+\item There is a canonical isomorphism $V \cong (V^{\ast})^{\ast}$ via $v \mapsto (\phi \mapsto \phi(v))$.
+\end{enumerate}
+\end{prop}
+\begin{definition}
+Let $v_1, \ldots, v_n$ be a basis for $V$. Then the \textit{dual basis} consists of $\phi_i : V \to \R$ given by $\phi_i(v_j) = 1$ when $i = j$ and $\phi_i(v_j)= 0$ otherwise.
+\end{definition}
+\begin{definition}
+Let $A : V \to W$ be linear. Then define the linear map $A^{\ast} : W^{\ast} \to V^{\ast}$ by $w \mapsto (v \mapsto w(Av))$.
+\end{definition}
+
+\begin{definition}
+Let $M^n$ be a smooth manifold. Define the \textit{cotangent space at $p$} as $T_p^{\ast}M$. Define the \textit{cotangent bundle of $M$} as $T^{\ast}M = \coprod_p T_p^{\ast}M$.
+\end{definition}
+
+\begin{lemma}
+$T^{\ast}M$ is a smooth $n$ vector bundle over $M$.
+\end{lemma}
+\begin{proof}
+Let $(U, \phi)$ be a smooth chart for $M$. Define $\phi : \pi^{-1}(U) \to U \times \R^n$ by $a_i \lambda^i\rvert_p \mapsto (p, a_1, \ldots, a_n)$, where $\{\lambda^i \rvert_p\}$ is a dual basis for $T_pM$. Then we apply the vector bundle construction lemma. See Lee, Proposition 11.9 for the straightforward details.
+\end{proof}
+
+\begin{remark}
+Let $(U, x^i)$ be smooth coordinates for $M^n$. Then $\psi: a_i\lambda^i\rvert_p \mapsto (x^1(p), \ldots, x^n(p), a_1, \ldots, a_n)$ is a local chart $(\pi^{-1}(U), \psi)$ for $T^{\ast}M$.
+\end{remark}
+
+\begin{definition}
+A section of $T^{\ast}M$ is called a \textit{covector field} or a \textit{(differential/smooth) 1-form}.
+\end{definition}
+
+\begin{center}
+{\textbf{(Lecture 15)}} 
+\end{center}
+
+\begin{definition}
+Define $Df : C^{\infty}(M) \to \Gamma(T^{\ast}M)$ by $f \mapsto (p\mapsto df_p)$ where $df_p(v) = vf$ for every $v\in T_pM$. We call $df$ the \textit{differential of $f$}.
+\end{definition}
+
+\begin{remark}
+Let $(U, x^i)$ be local coordinates for $M$. Let $(dx^i)$ denote the corresponding coordinate coframe on $U$. Write $df_p = A_i(p)dx^i\rvert_p$ for some functions $A_i : U \to \R$. Then $A_i(p) = df_p(\frac{\partial}{\partial{x^i}}\rvert_p) = \frac{\partial{f}}{\partial{x^i}}(p)$, so that $df_p = \frac{\partial{f}}{\partial{x^i}}(p) dx^i\rvert_p$. In this way, the differential of $f$ generalizes the gradient of a smooth function on $\R^n$.
+\end{remark}
+
+\begin{prop}
+If $M$ is connected, then $f$ is constant if and only if $df = 0$. 
+\end{prop}
+\begin{proof}
+Since $vf = 0$ for any derivation $v$ and constant $f$, the forward direction is clear. Conversely, suppose that $df = 0$ and let $p\in M$. Set $C = \{q \in M : f(q) = f(p)\}$. We want $C = M$. It suffices to show that $C$ is clopen. For any $q\in C$, choose a coordinate ball $U\ni p$. Then since $0 = df = \frac{\partial{f}}{\partial{x^i}}dx^i$, it follows that $\frac{\partial{f}}{\partial{x^i}} = 0$ for each $i$. Elementary calculus implies that $f$ must be constant on $U$. Hence $C$ is open. Since $C = f^{-1}(p)$, it is also closed.
+\end{proof}
+
+\begin{remark}
+Transition functions for changing coordinates. {[[???]]}
+\end{remark}
+
+\begin{definition}
+Let $F: M \to N$ be smooth. Let $\omega \in \Gamma(T^{\ast}N)$. Define the \textit{pullback $F^{\ast}\omega$ of $\omega$}  as the  element of $\Gamma(T^{\ast}M)$ given by $$F^{\ast}\omega \rvert_p (X \rvert_p) = \omega \rvert_{F(p)}(F_{\ast}\rvert_p X_p).$$ Note that unlike the pushforward, the pullback requires just that $F$ be smooth. 
+\end{definition}
+
+\begin{lemma}
+Let $F: M \to N$ be smooth, $\alpha, \beta \in \Gamma(T^{\ast} N)$ and $f, g \in C^{\infty}(N)$. Then $$F^{\ast}(f \alpha + g \beta) = (f \circ F)F^{\ast} \alpha + (g \circ F)F^{\ast} \beta.$$
+\end{lemma}
+\begin{proof}
+Let $X \in \vf(M)$. $$F^{\ast}(f \alpha + g\beta)\rvert_p(X_p) = (f \alpha + g \beta)\rvert_{F(p)}(F_{\ast}\rvert_p X_p) = 
+f(F(p))\alpha_{F(p)}(F_{\ast}\rvert_p  X_p)+ g(F(p))\beta_{F(p)}(F_{\ast}\rvert_p X_p)$$
+$$  = [(f\circ F)F^{\ast}\alpha]_p (X_p) + [(g\circ F) F^{\ast}\beta]_p(X_p).
+$$
+\end{proof}
+
+\begin{remark}
+Let $\gamma : J \subset \R \to M$ be a curve in $M$.  Note that $\Gamma(T^{\ast}\R) = \{f(t)dt : f : T \to \R\}$. Then
+$$ \omega \in \Gamma(T^{\ast}M) \implies \gamma^{\ast} \omega \in \Gamma(T^{\ast}\R) \implies \gamma^{\ast}\omega = f(t)dt$$ for some curve $f$ along $J$.
+\end{remark}
+
+\begin{definition}
+We define the \textit{integral of $\omega$ along $\gamma$} as $$\int_{\gamma} \omega = \int_J \gamma^{\ast}\omega.$$ 
+\end{definition}
+
+\begin{prop}
+Suppose $\phi$ is a positive reparameterization of $\gamma$. Then $\int_{\gamma} \omega = \int_{\gamma \circ \phi} \omega$.
+\end{prop}
+\begin{proof}
+See Lee, 11.31.
+\end{proof}
+
+\begin{definition}
+A differential $1$-form is \textit{closed} if $\frac{\partial{w_i}}{\partial{x^j}} - \frac{\partial{w_j}}{\partial{x^i}} =0$ for any $i,j$ where $w = w_i dx^i$.
+\end{definition}
+
+\begin{exercise}
+Being closed is a well-defined property.
+\end{exercise}
+
+\begin{exmp}
+By Clairaut, $df$ is closed for any $f\in C^{\infty}(M)$. 
+\end{exmp}
+
+\begin{center}
+{\textbf{(Lecture 16)}} 
+\end{center}
+
+\begin{theorem}{\textbf{(Universal property of the tensor product)}}
+Let $V_1, \ldots, V_k$ be (real) vector spaces. There exists a vector space $V_1 \otimes \cdots \otimes V_k$ (called the \textit{tensor product of the $V_i$}) and map $:\otimes : V_1\times \cdots \times V_k$ so that for any multilinear map $T: V_1 \times \cdots \times V_k \to W$, there is some unique linear $\widetilde{T} : V \otimes \cdots \otimes V_k \to W$ such that the following commutes.
+\[
+\begin{tikzcd}
+V_1 \times \cdots \times V_k \arrow[d, "\otimes"'] \arrow[r, "T"] & W \\
+V_1 \otimes \cdots \otimes V_k \arrow[ru, "\exists! \widetilde{T}"', dashed] & 
+\end{tikzcd}
+\]
+\end{theorem}
+\begin{proof}
+If we prove it when $k=2$, then we're done by induction. Let $\R\langle V_1 \times V_2 \rangle$ denote the free vector space on $V_1 \times V_2$, i.e., the set of all finite formal linear combinations of $V_1 \times V_2$. Set $$G = \langle (av_1, v_2) - a(v_1, v_2), (v_1, av_2) - a(v_1, v_2), (v_1 + w_1, v_2) - (v_1, v_2)-(w_1, v_2), (v_1, w_2 + v_2) - (v_1, w_2) -(v_1, v_2)\rangle.$$
+Given $T: V_1 \times V_2 \to W$ multilinear, define $\widetilde{T} : \R\langle V_1 \times V_2\rangle \to W$ by $\sum a_{(v_1, v_2)}(v_1, v_2) \mapsto \sum a_{(v_1, v_2)} T(v_1, v_2)$. Since $T$ is multilinear, $G \subset \ker \widetilde{T}$. Therefore, if $V_1 \otimes V_2 \coloneqq  \faktor{\R\langle V_1 \times V_2 \rangle}{G}$, then we get 
+\[
+\begin{tikzcd}
+\R\langle V_1 \times V_2 \rangle \arrow[d, "\pi"'] \arrow[r, "\tilde{T}"] & W \\
+V_1 \otimes V_2 \arrow[ru, "\widetilde{\widetilde{T}}"', dashed] & 
+\end{tikzcd}.
+\]
+Thus, if $i: V_1 \times V_2 \to \R\langle V_1 \times V_2 \rangle$ denotes inclusion, then $\widetilde{\widetilde{T}} \circ \pi \circ i = \widetilde{T} \circ i$, which gives the desired diagram. We see that $\widetilde{\widetilde{T}}$ is unique because it is uniquely determined by elements of the form $v_1 \otimes v_2\coloneqq  [(v_1, v_2)]$ by $T$ and every element of $V_1 \otimes V_2$ can be written as some linear combination of such elements.
+\end{proof}
+
+\begin{prop}
+If $a,b \in \R$, then $(av_1 + bw_1) \otimes v_2 = a(v_1 \otimes v_2) + b(w_1 \otimes v_2)$.
+\end{prop}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item $(\mathbf{Vect}_{\R}, \oplus, \otimes)$ is a semiring. 
+\item $V \otimes W \cong W \otimes V$.
+\item $V \otimes \R \cong V$.
+\item $(V \otimes W)^{\ast} \cong V^{\ast} \otimes W^{\ast}$.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+$V^{\ast} \otimes W^{\ast} \cong B(V, W)$ canonically where $B(V, W)$ denotes the space of bilinear maps $V \times W \to \R$.
+\end{prop}
+\begin{proof}
+Define $\Phi : V^{\ast} \times W^{\ast} \to B(V, W)$ by $(\omega, \eta) \mapsto ((v, w) \mapsto \omega(v) \eta(w))$.
+This is linear, hence induces
+\[
+\begin{tikzcd}
+V^{\ast}\times W^{\ast} \arrow[d, "\pi"'] \arrow[r, "\Phi"] & {B(V, W)} \\
+V^{\ast} \otimes W^{\ast} \arrow[ru, "{\widetilde{\Phi}}"', dashed] & 
+\end{tikzcd} .
+\]
+One can show that $\tilde{\Phi}$ is a natural isomorphism.
+\end{proof}
+
+\begin{remark}
+Our previous result can be generalized. $$V_1^{\ast} \otimes \cdots \otimes V_k^{\ast} \cong L(V_1, \ldots, V_k; \R). $$
+\end{remark}
+
+\begin{definition}{(tensor type)}
+We say that an element of $V_l^k\coloneqq  \underbrace{V^{\ast} \otimes \cdots \otimes V^{\ast}}_{k \text{ times}} \otimes \underbrace{V \otimes \cdots \otimes V}_{l \text{ times}}$ is a \textit{$(k, l)$-tensor}. A $(k, 0)$ tensor is called \textit{covariant}. A $(0, l)$-tensor is called \textit{contravariant}.
+\end{definition}
+
+\begin{definition}
+Let $M$ be a manifold. Then define the \textit{$(k, l)$-tensor bundle} $$T _l^k M = \coprod_{p\in M} (T_p)_l^k M.$$
+\end{definition}
+
+\begin{exercise}
+What is the dimension of $T_l^k M$?
+\end{exercise}
+
+\begin{exmp}
+$T^1 M = T^{\ast}M$, and $T_1 M = TM$.
+\end{exmp}
+
+\begin{remark}
+Suppose $(x^i)$ and $(y^i)$ are two local coordinate systems for $p\in M$. Then $$dx^{i_1} \otimes dx^{i_2} \otimes \cdots dx^{i_k} = (\frac{\partial{x^{i_1}}}{\partial{y^{l_1}}} dy^{p_1}) \otimes \cdots \otimes (\frac{\partial{x^{i_k}}}{\partial{y^{l_k}}} dy^{p_k})$$ $$ = \sum_{p_1, \ldots, p_k} \frac{\partial{x^{i_1}}}{\partial{y^{l_1}}}\cdots \frac{\partial{x^{i_k}}}{\partial{y^{l_k}}}  \otimes dy^{p_1} \otimes \cdots \otimes dy^{p_k}.$$
+\end{remark}
+
+\begin{definition}
+A \textit{$(k, l)$-tensor field} is a (smooth) section of $T_l^kM$. Let $\T_l^k(M)\coloneqq  \Gamma(T_l^kM)$.
+\end{definition}
+
+\begin{center}
+{\textbf{(Lecture 17)}} 
+\end{center}
+
+\begin{remark}
+Let $(U, x^i)$ be local coordinates for $M$. Then $A \in \T_k^l(M)$ can be written as $$A\rvert_p = A_{i_1 \ldots i_k}^{j_1\ldots j_l} dx^{i_1}\rvert_p \otimes \cdots \otimes dx^{i_k}\rvert_p \otimes \frac{\partial}{\partial{x^{j_1}}}\rvert_p \otimes \cdots \otimes \frac{\partial}{\partial{x^{j_l}}}\rvert_p$$ summed over $n^k\cdot n^l$ tensors.
+\end{remark}
+
+\begin{exmp}
+Define $\sigma = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}$, $X = X^k \frac{\partial}{\partial{x^k}}$, and $w = w_ldx^l$. Then $$\sigma(X, w) = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}(X^k \frac{\partial}{\partial{x^k}}, w_ldx^l) = \delta_j^i dx^j (X^k \frac{\partial}{\partial{x^k}}) \frac{\partial}{\partial{x^i}} w_ldx^l = \delta_j^i \delta_k^j X^k w_l\delta_i^l \underbrace{= w_kX^k}_{\text{[[Why?]]}} = w(X).$$ We say that $\sigma$ is \textit{invariant} in this case.
+\end{exmp}
+
+\begin{exmp}
+Show that $\delta_i^j dx^i \otimes dx^j$ is not an invariant tensor. 
+\end{exmp}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item Any $ \sigma \in \T_l^k(M)$ induces a $C^{\infty}(M)$-multilinear map $$\hat{\sigma} : \underbrace{\vf(M) \times \cdots \times \vf(M)}_{k \text{ times}} \times \underbrace{\vf^{\ast}(M) \times \cdots \times \vf^{\ast}(M)}_{l \text{ times}}\to C^{\infty}(M)$$  $$(X_1, \ldots, X_k, w_1, \ldots, w_l)\mapsto (p \mapsto \sigma (X_1\rvert_p, \ldots, X_k\rvert_p, w_1\rvert_p, \ldots, w_l\rvert_p).$$
+\item Any multilinear map over $C^{\infty}(M)$ is of the above form for some $(k,l)$-tensor field.
+\end{enumerate}
+\end{prop}
+
+\begin{exmp}
+The Lie bracket is not multilinear over $C^{\infty}(M)$, as $[fX + gY, Z] = f[X, Y] + g[Y, Z]-Z(f)X -Z(g)Y$.
+\end{exmp}
+
+\begin{remark}
+The smooth function $\hat{\sigma}_p$ above is determined completely by  the values $X_1(p), \ldots, X_k(p), w_1(p), \ldots, w_l(p)$.
+\end{remark}
+
+\begin{definition}
+A covariant $k$-tensor $T$ is \textit{alternating}  if for any vectors $Y, X_1, \ldots, X_{k-1}$, it follows that $$T(X_1, X_2, \ldots, Y, \ldots, Y, \ldots, X_{k-1}) =0.$$ This is also called a \textit{exterior form}.
+\end{definition}
+
+\begin{exmp}
+If $\sigma$ is a $0$-tensor or a $1$-tensor, then it is alternating.
+\end{exmp}
+
+\begin{prop} TFAE.
+\begin{enumerate}
+\item $T$ is alternating.
+\item $T(X_1, \ldots, X_k) =0$ whenever $\{X_1, \ldots,  X_k\}$ is linearly dependent.
+\item $T(X_1, \ldots, X_i, X_{i+1}, \ldots, X_k) = -T(X_1, \ldots, X_{i+1}, X_{i}, \ldots, X_k)$.
+\end{enumerate}
+\end{prop}
+
+\begin{definition}
+The space of alternating covariant $k$-tensors is a subspace of $T^k(V)$ that is denoted by $\bigwedge^k(V)$. Given $T\in T^k(V)$, define the \textit{alternation of $T$} as $$\Alt(T) : (V_1, \ldots, V_k) \mapsto \frac{1}{k!} \sum_{\sigma \in S_k} \sgn(\sigma) T(V_{\alpha(1)}, \ldots, V_{\sigma(k)}).$$
+\end{definition}
+
+\begin{exmp}
+$\Alt(T)(X, Y, Z)= \frac{1}{6}(T(X, Y, Z) + T(Y, Z, X) + T(Z, X, Y) -T(Y, X, Z)- T(Z, Y, X) -T(X, Z, Y)).$
+\end{exmp}
+
+\begin{exmp}
+Let $\{w^1, \ldots, w^n\}$ be a cobasis for the real vector space $V$. Then
+\begin{align*}
+& \Alt(w^1 \otimes \cdots \otimes w^n)(e_1, \ldots, e_n)\\ & = \frac{1}{n!} \sum_{\sigma \in S_n} \sgn(\sigma)w^1 \otimes \cdots \otimes w^n(e_{\sigma(1)}, \ldots, e_{\sigma(n)}) \\ & =  \frac{1}{n!} \sgn(\id_n) w^1 \otimes \cdots \otimes w^n(e_{1}, \ldots, e_{n}) \\ & = \frac{1}{n!}.
+\end{align*}
+\end{exmp}
+
+\begin{prop} $ $
+\begin{enumerate}
+\item $\Alt(T) \in \bigwedge^k(V)$.
+\item $\Alt(T) = T \iff T \in \bigwedge^k(V)$.
+\item $\Alt : T^k(V) \to \bigwedge^k(V)$ is linear. 
+\end{enumerate}
+\end{prop}
+
+\begin{center}
+{\textbf{(Lecture 18)}} 
+\end{center}
+
+\begin{lemma}
+Let $\{w^1, \ldots, w^n\}$ be a cobasis for the real vector space $V$. Let $k\leq n$. Then $$A\coloneqq   \{\Alt(w^{i_1} \otimes \cdots \otimes w^{i_k}) : 1 \leq i_1 < \cdots < i_k \leq n \} $$ is a basis for $\bigwedge^k(V)$.
+\end{lemma}
+\begin{proof}
+It's clear from our previous proposition, that $A$ spans $\bigwedge^k(V)$. It remains to show that $A$ is linearly independent. 
+\begin{exercise} $ $
+\begin{enumerate}
+\item If $(i_1, \ldots, i_k)$ is not pairwise distinct, then $\Alt(w^{i_1} \otimes \cdots \otimes w^{i_k}) = 0$.
+\item $\Alt(w^{i_1} \otimes \cdots \otimes w^{i_j} \otimes w^{i_{j+1}} \otimes \cdots \otimes w^{i_k}) = -\Alt(w^{i_1} \otimes \cdots \otimes w^{i_{j+1}} \otimes w^{i_{j}} \otimes \cdots \otimes w^{i_k}).$
+\end{enumerate}
+\end{exercise}
+Therefore, $\Span(A) = \Span\{\Alt(w^{i_1} \otimes \cdots \otimes w^{i_k}) : 1 \leq i_1 \leq \cdots \leq i_k \leq n \} $.
+\begin{exercise}
+Show that this implies that $A$ is linearly independent.
+\end{exercise}
+\end{proof}
+
+\begin{corollary}
+If $\dim(V) = n$, then $\dim \bigwedge^k(V) = {n\choose k} = \frac{n!}{k!(n-k)!}$.
+\end{corollary}
+
+\begin{definition}
+Define the \textit{wedge product} as the map $$\wedge : \bigwedge^k(V) \times \bigwedge^l(V) \to \bigwedge^{k+l}(V) \quad \quad (w, q) \mapsto w \wedge q \coloneqq  \frac{(k+l)!}{k! l!}\Alt(w\otimes q).$$  This is like the tensor product. The \textit{exterior algebra} $A^{\ast}$ is the algebra of alternating tensors under the wedge product.
+\end{definition}
+
+\begin{corollary}
+The set $\{w^{i_1} \wedge \cdots \wedge w^{i_k}  : 1 \leq i_1 < \cdots < i_k \leq n\}$ is a basis for $\bigwedge^k(V)$.
+\end{corollary}
+\begin{proof}
+For each $(i_1, \ldots, i_k)$, one can show that $w^{i_1} \wedge \cdots \wedge w^{i_k}$ and $\Alt(w^{i_1} \otimes \cdots \otimes w^{i_k} )$ differ by a real factor.
+\end{proof}
+
+\begin{remark}
+Let $B\coloneqq  \{e_1, \ldots, e_n\}$ be the standard basis for $V$. Note that $\underset{B}{\det} \in \bigwedge^n(V)$ by Proposition 24.
+But $\bigwedge^n(V) = 1$, so that $\underset{B}{\det} = c(w^1 \wedge \cdots \wedge w^n)$. But evaluating both sides at $(e_1, \ldots, e_n)$ gives $1 = c(1) = c$. Thus, $$\underset{B}{\det} = w^1 \wedge \cdots \wedge w^n.$$
+\end{remark}
+
+\begin{prop} Suppose that $\omega$, $\omega$, $\eta$, and $\eta'$ are exterior forms. The following are properties of the wedge product.
+\begin{enumerate}
+\item{(Bilinearity)} If $a, a' \in \R$, then 
+\begin{align*}
+(a\omega + a'\omega ')\wedge \eta &= a(\omega \wedge \eta) + a'(\omega' \wedge \eta)   \\   \eta \wedge (a\omega + a'\omega ') &= a(\eta \wedge \omega) + a'(\eta \wedge \omega' ). 
+\end{align*}
+\item{(Associativity)} $$(\eta \wedge \omega) \wedge \omega' =    \eta \wedge (\omega \wedge \omega') .$$
+\item{(Anticommutativity)} If $\omega \in \bigwedge^k(V)$ and $\eta \in \bigwedge^l(V)$, then $$\omega \wedge \eta = (-1)^{kl}\eta \wedge \omega.   $$
+\begin{corollary}
+If $\omega$ is a $1$-form, then $\omega \wedge \omega = 0$.
+\end{corollary}
+\item If $\omega^1, \ldots, \omega^k \in \bigwedge^1(V)$, then $$ \omega^1 \wedge \cdots \wedge \omega^k(v_1, \ldots, v_k) =\det(\omega^j(v_i)). $$
+\end{enumerate}
+\end{prop}
+
+\begin{definition}
+Let $M^n$ be a smooth manifold. Define the \textit{alternating bundle of rank $k$} as $$\bigwedge^k(M) = \coprod_{p\in M} \bigwedge^k(T_pM).  $$ A smooth section of $\bigwedge^k(M)$ is called a \textit{differential $k$-form}.
+\end{definition}
+
+\begin{remark}
+In local coordinates we have a basis $\{\frac{\partial}{\partial{x^i}}\rvert_p\}_{1\leq i \leq n}$ for $T_pM$ and a corresponding dual basis $\{dx^i\}$. Then for any $w \in \bigwedge^k(M)$, we can write $$ w = \sum_{1\leq i_1 < \cdots < i_k \leq n}w_{i_1, \ldots, i_k} dx^{i_1} \wedge \cdots \wedge dx^{i_k} $$ locally at $p$. Let $I\coloneqq  \{i_1 < \cdots < i_k\}$. Since $$dx^{i_1} \wedge \cdots \wedge dx^{i_l}\big( \frac{\partial}{\partial{x^{j_1}}}, \ldots, \frac{\partial}{\partial{x^{j_k}}} \big) = \delta^I_J$$ where $\delta^I_J = 1$ if and only if $I = J$ as sets, it follows that
+$w_{i_1, \ldots, i_k}  = w(\frac{\partial}{\partial{x^{i_1}}}, \ldots, \frac{\partial}{\partial{x^{i_k}}}).$ We abbreviate this by writing $$w = w_I dx^I,$$ where we tacitly sum over the $I$.
+\end{remark}
+
+\begin{remark}
+Write $w = w_Idx^I$ and $ w= \tilde{w}_J d\tilde{x}^J$ locally where $x, \tilde{x}: U \to \R^m$ are charts. A direct computation shows that $$\tilde{w}_J = w(\frac{\partial}{\partial{x^{j_1}}}, \ldots,  \frac{\partial}{\partial{x^{j_k}}}) = \sum_I \det(k \times k \text{ minor of }\frac{\partial{x}}{\partial{\tilde{x}}} \text{ relative to } i_1, \ldots, i_k \text{ and }j_1, \ldots, j_k). $$
+\end{remark}
+
+\begin{center}
+{\textbf{(Lecture 19)}} 
+\end{center}
+
+\begin{definition}
+Let $F: M \to N$ be smooth and $\omega \in \bigwedge^k(N)$. Define the \textit{pullback $F^{\ast}\omega$ of $\omega$ by $F$} as the differential $k$-form on $M$ given by $$F^{\ast} \omega\rvert_p(v_1, \ldots, v_k) = \omega_{F(p)}(dF_p(v_1), \ldots, dF_p(v_k)),$$
+\end{definition}
+
+\begin{remark}
+The pullback $F : \Omega^k(N) \to \Omega^k(M)$ is a linear map over $\R$. 
+\end{remark}
+
+\begin{prop}{\textbf{(Naturality of the pullback)}}
+$F^{\ast}(\omega \wedge \eta) = F^{\ast}(\omega) \wedge F^{\ast}(\eta).$
+\end{prop}
+
+\begin{lemma}
+In any local coordinates, $F^{\ast}(\sum_I \omega_I dy^{i_1} \wedge \cdots \wedge dy^{i_k}) = \sum_I (\omega_I \circ F)d(y^{i_1} \circ F) \wedge \cdots \wedge d(y^{i_k} \circ F).$
+\end{lemma}
+\begin{proof}
+{[[Did not understand.]]}
+\end{proof}
+
+\begin{exmp}
+Consider the transformation to polar coordinates $\R^2 \to \R^2$ given by $(r, \theta) \mapsto (r\cos \theta, r\sin \theta)$. This is the identity map with respect to different atlases on $\R^2$. Our previous lemma together with computational properties of $\wedge$ gives
+\begin{align*} & dx \wedge dy \\ & = d(r\cos \theta) \wedge d(r\sin \theta) \\ &=   (\cos \theta dr - r\sin \theta d\theta) \wedge (\sin \theta dr +r \cos \theta d\theta) \\ &= (\cos \theta dr - r\sin \theta d\theta) \wedge \sin \theta dr + (\cos \theta dr - r\sin \theta d\theta) \wedge r \cos \theta d\theta \\ & = (\cos \theta dr \wedge \sin \theta dr) - (r \sin \theta d \theta \wedge \sin \theta dr) +  (\cos \theta dr \wedge r \cos \theta d\theta) - (r\sin \theta d \theta \wedge r \cos \theta d \theta)\\ & =  - (r \sin \theta d \theta \wedge \sin \theta dr) +  (\cos \theta dr \wedge r \cos \theta d\theta) \\ & = r\sin^2\theta(dr \wedge d\theta) + r\cos^2 \theta(dr \wedge d\theta)\\ & = rdr \wedge d\theta.
+\end{align*}
+\end{exmp}
+
+\begin{center}
+{\textbf{(Lecture 20)}} 
+\end{center}
+
+\begin{definition}
+Let $\Omega^k(M)$ and $A^k(M)$ denote the vector space of differential $k$-forms on the manifold $M$. 
+Let $\omega \in A^k(M)$ and write $\omega_I dx^I$ in local coordinates. Define the \textit{exterior derivative} of $\omega$ as $$d\omega = d \omega_I \wedge dx^I.$$ Note that $d \omega = \frac{\partial}{\partial{x^j}}\omega_I dx^j \wedge dx^I.$ We call the operation $d : A^k(M) \to A^{k+1}(M)$ \textit{exterior differentiation}.
+\end{definition}
+
+\begin{remark}
+If we view $\Omega^k : \textbf{Diff}^{\text{op}} \to \textbf{Vec}_{\R}$ as the presheaf sending each smooth map $f$ to the pullback $f^{\ast}$, then the exterior derivative becomes a natural transformation $\Omega^k \Rightarrow \Omega^{k+1}$.  
+\end{remark}
+
+\begin{definition} Let $\omega \in A^k(M)$.
+\begin{enumerate}
+\item We say that $\omega$ is \textit{closed} if $d \omega = 0$.
+\item We say that $\omega$ is \textit{exact} if $\omega = d \eta$ for some $\eta \in A^{k-1}(M)$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma} Suppose $M = \R^n$.
+\begin{enumerate}
+\item $d$ is linear over $\R$.
+\item $d( \omega \wedge \eta) = d \omega \wedge \eta + (-1)^k\omega \wedge d \eta.$
+\item $d \circ d \equiv 0$.
+\item $d(F^{\ast} \omega) = F^{\ast}(d \omega).$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The first statement is obvious, and the last is an easy computation. Now, write $\omega = udx^I$ and $\eta = v dx^J$. By linearity, it suffices to compute $d(udx^I \wedge v dx^J)$ in order to verify the second statement. 
+\begin{align*}
+ d(\omega \wedge \eta) &= d(udx^I \wedge vdx^J) \\
+& = d(uvdx^I \wedge dx^J)
+\\ & = (vdu + udv) \wedge dx^I \wedge dx^J
+\\ & = (du \wedge dx^I) \wedge (v dx^J) \wedge (dv \wedge u dx^I) \wedge dx^J
+\\ & = (du \wedge dx^I) \wedge (v dx^J) \wedge (-1)^k(udx^I) \wedge (dv \wedge dx^J)
+\\ & = d( \omega \wedge \eta) = d \omega \wedge \eta + (-1)^k\omega \wedge d \eta .
+\end{align*}
+To prove the third statement, first observe that if $k=1$ and we write $\omega = \omega_jdx^j$, then $$d \omega =   \sum_{i, j}\frac{\partial{\omega_j}}{\partial{x^i}}dx^i \wedge dx^j = \sum_{i< j}\frac{\partial{\omega_j}}{\partial{x^i}}dx^i \wedge dx^j + \sum_{i>j}\frac{\partial{\omega_j}}{\partial{x^i}}dx^i \wedge dx^j =\sum_{i<j}(\frac{\partial{\omega_j}}{\partial{x^i}} - \frac{\partial{\omega_i}}{\partial{x^j}})dx^i \wedge dx^j.$$ This together with Clairaut implies that  $$d(du) =\frac{\partial^2{u}}{\partial{x^i}\partial{x^j}}dx^i \wedge dx^j = \sum_{i<j}( \frac{\partial^2{u}}{\partial{x^i}\partial{x^j}} - \frac{\partial^2{u}}{\partial{x^j}\partial{x^i}})dx^i \wedge dx^j = 0.  $$ Drop the assumption that $k=1$. Then expanding $d(d\omega)$ gives a sum of two summations of wedge products. One of which contains the term $d(d\omega_J)$, and the other contains the term $d(dx^{j_i})$. These both equal zero, hence the entire expression $d(d\omega)$ vanishes.
+\end{proof}
+
+\begin{corollary}
+The exterior derivative is well-defined.
+\end{corollary}
+\begin{proof}
+Let $(U, \phi)$ be a chart for $M$. Notice that $$d\omega = \phi^{\ast} d({\phi^{-1}}^{\ast}\omega).$$ Let $(V, \psi)$ be another chart. Then $$ (\phi \circ \psi^{-1})^{\ast} d({\phi^{-1}}^{\ast} \omega) =  d( (\phi \circ \psi^{-1})^{\ast}{\phi^{-1}}^{\ast} \omega).$$ Since $(\phi \circ \psi^{-1})^{\ast} = {\psi^{-1}}^{\ast} \circ \phi^{\ast}$ and $F^{\ast} \circ {F^{-1}}^{\ast}= \id$ for any diffeomorphism $F$, 
+it follows that $${\psi^{-1}}^{\ast} \circ \phi^{\ast}d({\phi^{-1}}^{\ast} \omega) = d({\psi^{-1}}^{\ast} \omega).$$ $\quad \implies$  $$\phi^{\ast}d({\phi^{-1}}^{\ast} \omega) = \psi^{\ast} d({\psi^{-1}}^{\ast} \omega).$$
+\end{proof}
+
+\begin{corollary}
+Any exact form is closed.
+\end{corollary}
+
+\begin{remark}
+It is not the case that any closed form is exact. Let $M\coloneqq  \R^2 \setminus \{0\}$. Define the $1$-form $\omega : M \to TM$ by $(x, y) \mapsto \frac{xdy - y dx}{x^2 + y^2}$. On the on hand, a direct computation shows that $d \omega =0$. On the other hand, recall from calculus that $\omega$ is exact on a connected open $\omega \subset M$ if and only if $\int_c \omega =0$ for any closed curve $c \subset \omega$. But if $\gamma : [0, 2\pi] \to M$ is given by $(\cos \theta, \sin \theta)$, then  $$ \int_{\gamma} \omega = \int_{0}^{2\pi} d\theta = 2\pi \ne 0 ,$$ hence $\omega$ is not exact.
+\end{remark}
+
+\begin{theorem}{\textbf{(Unique differentiation theorem)}}
+The exterior derivative is the unique operation $\bar{d} : A^k(M) \to A^{k+1}$ satisfying the three above properties along with the property that $\bar{d} f $ equals the differential of $f$ for any $f \in C^{\infty}(M)$.
+\end{theorem}
+
+\begin{prop} {(Naturality of the exterior derivative)}
+If $F$ is a smooth map, then $d(F^{\ast} \omega) = F^{\ast}(d \omega).$
+\end{prop}
+\begin{proof}
+This follows from the case $M = \R^n$, which is stated in Lemma 15.
+\end{proof}
+
+\begin{definition}
+Let $V$ be a finite-dimensional vector space. For each $v\in V$, define \textit{interior multiplication} as the linear map $i_v: \bigwedge^k(V) \to \bigwedge^{k-1}(V)$ given by $i_v \omega(w_1, \ldots, w_{k-1})= \omega(v, w_1, \ldots, w_{k-1}).$ Let $v \intprodl \omega \coloneqq  i_v \omega$. Then we may extend interior multiplication as follows. For each $X \in \vf(M)$ and $\omega \in A^k(M)$, define the $(k-1)$-form $X \intprodl \omega$ by $p\mapsto  X_p \intprodl \omega_p$.
+\end{definition}
+
+\begin{center}
+{\textbf{(Lecture 21)}} 
+\end{center}
+
+\begin{definition}
+Let $V$ be a finite-dimensional vector space. Suppose that $\{e_1, \ldots, e_n\}$ and $\{f_1, \ldots, f_n\}$ are two bases for $V$. We say that they are \textit{co-oriented} if the change-of-basis matrix  has positive determinant.
+\begin{note}
+This gives us two equivalence classes of bases for $V$, which we call the \textit{orientations for $V$}. If $[E_1, \ldots, E_n]$ is a given orientation for $V$, then we call any basis in it \textit{(positively) oriented} and any basis not in it \textit{negatively oriented}.
+\end{note}
+\end{definition}
+
+\begin{definition}
+An \textit{orientation} on a manifold $M$ is a continuous choice of orientation on each $T_pM$. 
+\end{definition}
+\begin{note}
+Equivalently, if $\{(U_{\alpha}, \phi_{\alpha})\}$ denotes the smooth structure on $M$, we say that $M$ is \textit{orientable} if the Jacobian $D[\phi_{\beta} \circ \phi_{\alpha}^{-1}]$ has positive determinant on $\phi_{\alpha}(U_{\alpha}\cap U_{\beta})$ for any $\alpha, \beta$.
+\end{note}
+
+\begin{exmp}
+$\S^n$ is orientable for any $n\geq 1$. For each $p \in \S^n$, say that $(v_1, \ldots, v_n)$ is positively oriented on $T_p\S^n$ if $(p, v_1, \ldots, v_n)$ is positively oriented on $\R^{n+1}$, i.e. is co-oriented with the standard basis for $\R^{n+1}$.
+\end{exmp}
+
+\begin{lemma}
+Let $\pi : E \to M$ be a smooth vector bundle and $V \subset E$ open. If $V_p$ is a convex subspace of $E_p$ for every $p\in M$, then there is some $\sigma \in \Gamma(E)$ such that $\sigma_p \in V_p$ for every $p$.
+\end{lemma}
+\begin{proof}
+Find a cover of $E$ by local trivializations $U_{\alpha}$ over $M$ along with smooth sections $\sigma_{\alpha}$ of them. We get some partition of unity $\psi_{\alpha}$ subordinate to $(U_{\alpha})$. Define $\sigma: M \to E$ as $\sum_{\alpha} \psi_{\alpha}\sigma_{\alpha} ,$ so that $\sigma \in \Gamma(E)$. Then $\sigma_p$ belongs to $V_p$ by convexity.
+\end{proof}
+
+\begin{prop}
+Suppose that $M$ is an $n$-manifold. Any nowhere vanishing $n$-form on $M$ gives rise to a unique orientation on $M$. Conversely, any orientation on $M$ gives rise to a nowhere vanishing $n$-form on $M$.
+\end{prop}
+\begin{proof}
+First, let $\omega \in A^n(M)$ be nowhere vanishing. For each $p \in M$, we see that $\omega_p$ defines an orientation $O_M^p$ on $M$ by saying that $[e_1, \ldots, e_n] \in  O_M$ if and only if $\omega_p(e_1, \ldots, e_n) >0$. It remains to show that if $p\in M$, then we can find some chart $U_p$ around $p$ and some local frame $(E_1, \ldots, E_n)_p$ on $U_p$ such that $\omega_q(E_1\rvert_q, \ldots, E_n\rvert_q) >0$ for every $q \in U_p$. To see this, pick any $U_p$ and local frame $(E_1, \ldots, E_n)_p$ on $U_p$. Write $\omega = fdE^1 \wedge \cdots \wedge dE^n$ locally for some smooth $f: U_p \to \R$. Since $\omega$ is nowhere vanishing, it follows that $$\omega(E_1, \ldots, E_n) = f \ne 0.$$ Since $f$ is continuous and $M$ connected, we see that $f>0$ or $f<0$. We may assume that $f>0$ as otherwise we choose $(-E_1, \ldots, -E_n)_p$ instead. 
+\\ \\
+Conversely, given $p\in M$ and an orientation $O_M^p$ on $T_pM$, say that $w \in \bigwedge^n(T_pM)$ is positively oriented if $w(e_1, \ldots, e_n) >0$ for any $[e_1, \ldots, e_n] \in O_M^p$. Then the subspace $\bigwedge^n_+(T_pM)$ is open and convex. By our previous lemma, we are done.
+\end{proof}
+
+\begin{definition}
+A diffeomorphism $F: M \to N$ between two oriented manifolds is \textit{orientation-preserving} if the isomorphism $dF_p$ maps positively oriented bases for $T_pM$ to positively oriented bases for $T_{F(p)}N$ for each $p\in M$. It is called \textit{orientation-reversing} if it maps positively oriented bases to negatively oriented ones.
+\end{definition}
+\begin{note}
+$F$ is orientation-preserving $\quad \iff \quad  \det(dF_p) >0$ for each $p \in M \quad \iff \quad F^{\ast}\omega$ is positively oriented for any positively oriented form $\omega$.
+\end{note}
+
+\begin{lemma}
+The antipodal map $\alpha : \S^n \to \S^n$ is orientation-preserving  if and only if $n$ is odd.
+\end{lemma}
+\begin{proof}
+We have the commutative diagram
+\[
+\begin{tikzcd}
+\S^n \arrow[r, "\alpha"] \arrow[d, hook] & \S^n \arrow[d, hook] \\
+\R^{n+1} \arrow[r, "\hat{\alpha}"] & \R^{n+1}
+\end{tikzcd}
+\]
+where $\hat{\alpha} : \x \mapsto -\x$. By inspecting $\det(I_{n+1})$, we see that $\hat{\alpha}$ is orientation-preserving  if and only if $n$ is odd. Thus, the restriction $\alpha$ has the same property.
+\end{proof}
+
+\begin{corollary}
+$\RP^n$ is not orientable when $n$ is even. 
+\end{corollary}
+\begin{proof}
+Suppose, for contradiction, that $\RP^n$ admits some orientation. Apply Proposition 27 to obtain a nowhere vanishing $n$-form $\omega$ on $\RP^n$. If $\pi : \S^n \to \RP^n$ denotes the natural projection, then we also obtain the nowhere vanishing $n$-form $\pi^{\ast}\omega$ on $\S^n$. Applying the same proposition shows that this determines the usual orientation on $\S^n$. Note that $\pi \circ \alpha = \pi$, so that $\alpha^{\ast} \pi^{\ast} \S^n = \pi^{\ast}\S^n$. But this implies that $\alpha$ preserves the orientation of $\S^n$, contrary of our previous lemma.
+\end{proof}
+
+\begin{prop}
+$\RP^n$ is orientable only if $n$ is even. 
+\end{prop}
+
+\begin{definition}
+Let $\H^n\coloneqq  \{(x^1, \ldots, x^n) \in \R^n : x^n \geq 0\}.$ An \textit{$n$-dimensional manifold with boundary} $M$ is a second-countable Hausdorff space that is locally homeomorphic to either an open Euclidean ball or an open subset in $\H^n$. Any point $p\in M$ is called an \textit{interior point} if it belongs to a chart homeomorphic to an open ball. It is called a \textit{boundary point} if it belongs to a boundary chart that maps $p$ into $\partial{\H^n}$.
+\end{definition}
+\begin{note}
+Every point in $M$ is either an interior or a boundary point, but not both.
+\end{note}
+
+\begin{prop}
+The set of boundary points $\partial{M}$ is an $(n-1)$-dimensional embedded submanifold of $M$.
+\end{prop}
+
+\begin{remark}
+Moreover, $\partial{M}$ inherits an orientation from $M$ when $M$ is oriented. This is called the \textit{induced} or \textit{Stokes orientation}. Indeed, we may construct a smooth  outward-pointing vector field $N$ along $\partial{M}$, which is nowhere tangent to $\partial{M}$. Therefore,  if $\omega$ denotes the orientation form for $M$, then the form $i^{\ast}_{\partial{M}}(N \intprodl \omega)$ is an orientation form form $\partial{M}$.
+\end{remark}
+\begin{exmp}
+$\S^n$ is orientable as the boundary of the closed unit ball.
+\end{exmp}
+
+\begin{center}
+{\textbf{(Lecture 22)}} 
+\end{center}
+
+\begin{note}
+Our treatment of integration will  follow Spivak rather than Lee.
+\end{note}
+
+\begin{definition}
+A \textit{singular $k$-cell on $M^n$} is a smooth map $\sigma : [0,1]^k \to M$.
+\end{definition}
+
+\begin{remark}
+Note that $0$-cells are precisely points in $M$ and $1$-cells are precisely smooth curves in $M$.
+\end{remark}
+
+\begin{definition}
+Let $A_0^k(\R^k)$ denote the space of $k$-forms with compact support. Let $\omega \in A_0^k(\R^k)$ and write $\omega = fdx^1\wedge \cdots \wedge dx^k$. Define $$ \int_{\R^k}\omega = \int_{\R^k} f(x^1, \ldots, x^k)dx^1\cdots dx^k  .$$
+\end{definition}
+
+\begin{exercise}
+Given another coordinate representation $\omega = gy^1 \wedge \cdots \wedge y^k$ with $\det(\frac{\partial{x}}{\partial{y}}) >0$, we have that $\int_{\R^k} f(x^1, \ldots, x^k)dx^1\cdots dx^k  = \int_{\R^k} g(x^1, \ldots, x^k)dy^1\cdots dy^k.$ Thus, our last definition makes sense.
+\end{exercise}
+
+\begin{definition}
+Let $\omega \in A^k(M)$ and $\sigma$ be a singular $k$-cell on $M$. Define $$ \int_{\sigma} \omega = \int_{[0,1]^k}\sigma^{\ast}\omega  .$$
+\end{definition}
+
+\begin{prop}
+Let $p: [0,1]^k \to [0,1]^k$ be a diffeomorphism. If $p$ is orientation-preserving, then $\int_{\sigma} \omega = \int_{\sigma \circ p} \omega$. If $p$ is orientation-reversing, then $\int_{\sigma} \omega = -\int_{\sigma \circ p} \omega.$
+\end{prop}
+
+\begin{definition}
+A \textit{singular $k$-chain on $M$} is a formal finite  $\R$-combination $\sigma = \sum_{i=1}^Na_i\sigma_i$ of singular $k$-cells on $M$. Define $$ \int_{\sigma} \omega= \sum_{i=1}^N a_i\int_{\sigma_i}\omega .$$
+\end{definition}
+
+\begin{definition}
+Let $\sigma$ be a singular $k$-cell on $M$. Let $i=1, \ldots, 2k$ and $\alpha =0,1$. Define the \textit{$(i, \alpha)$-face of $\sigma$} as the smooth map $\sigma_{(i, \alpha)}$ given by $$\sigma_{(i, \alpha)}(x^1, \ldots, x^k) = \sigma(x^1,\ldots, x^{i-1}, \alpha, x^{i}, \ldots, x^k).$$ Moreover, define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$  \partial{\sigma} = \sum_{i=1}^k(-1)^{i+1}(\sigma_{(i,1)}-\sigma_{(i,0)}) .$$
+\end{definition}
+
+\begin{definition}
+If $\sigma\coloneqq  \sum_{i=1}^Na_i\sigma_i$ is a singular $k$-chain, then define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$\partial{\sigma} = \sum_{i=1}^N a_i \partial{\sigma_i}   .$$ Note that $\int_{\partial{\sigma}}\omega = \sum_{i=1}^N a_i \int_{\partial{\sigma_i}}\omega$.
+\end{definition}
+
+\begin{definition}
+A singular $k$-chain $\sigma$ is a \textit{closed chain} if $\partial{\sigma}=0$.
+\end{definition}
+
+\begin{exercise}
+If $\sigma$ is any singular $k$-chain, then ${\partial{\sigma}}$ is closed.
+\end{exercise}
+
+\begin{theorem}{\textbf{(Stokes' theorem for chains)}}
+Let $\sigma$ be a $k$-chain and $\omega \in A^{k-1}(M)$. Then $\int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega$.
+\end{theorem}
+\begin{proof}
+For now, assume that $M= \R^k$ and $\sigma = I^k$. As the smooth structure on $\R^k$ is global, we may write $\omega = fdx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k$ for some distinguished $1\leq i \leq k$ and some smooth $f: \R^k \to \R$. We compute 
+\begin{align*}
+ d\omega & = df \wedge dx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k
+\\ & = \big (\sum_{j=1}^k\frac{\partial{f}}{\partial{x^j}}dx^j \big)\wedge dx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k
+\\ & = (-1)^{i-1} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k.
+\end{align*}
+Now, apply Fubini and the fundamental theorem of calculus (FTC) to obtain
+\begin{align*}
+ \int_{\sigma}d\omega & = (-1)^{i-1}\int_{[0,1]^k} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k
+\\ & = (-1)^{i-1}\int_0^1 \cdots \int_0^1 \big (\int_0^1  \frac{\partial{f}}{\partial{x^i}}dx^i \big)dx^1 \cdots \widehat{dx^i}  \cdots dx^k
+\\ & = (-1)^{i-1}\int_0^1 \cdots \int_0^1(f(x^1, \ldots, \underbrace{1}_{i\text{-th position}}, \ldots, x^k) - f(x^1, \ldots, \underbrace{0}_{i\text{-th position}}, \ldots, x^k))dx^1 \cdots \widehat{dx^i}  \cdots dx^k
+\\ & =  (-1)^{i-1}\big ( \int_{[0,1]^{k-1}} f(x^1, \ldots, 1, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k -\int_{[0,1]^{k-1}}f(x^1, \ldots, 0, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k \big )
+\\ & = (-1)^{i-1}\big (\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \big ) .
+\end{align*}
+Moreover, we compute
+$$ \int_{\partial{\sigma}}\omega = \sum_{j=1}^k(-1)^{j-1}\big (\int_{\sigma_{(j, 1)}}\omega - \int_{\sigma_{(j, 0)}}\omega \big ).$$
+Since $x^j$ is constant along the $(j, \alpha)$-face for each $\alpha = 0, 1$, it follows that $dx^j = 0$. Therefore, $$ \int_{\partial{\sigma}}\omega =   (-1)^{i-1}\big (\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \big ) = \int_{\sigma} d\omega.$$
+Finally, assume that $M$ is arbitrary and $\sigma $ is an arbitrary $k$-cell on $M$. By the special case just proved, we have that
+$$  \int_{\sigma}d\omega = \int_{[0,1]^k}\sigma^{\ast}(d\omega) = \int_{[0,1]^k}d(\sigma^{\ast}\omega) = \int_{\partial{[0,1]^k}}\sigma^{\ast} \omega = \int_{\partial{\sigma}} \omega .$$
+This clearly remains true if $\sigma$ is a $k$-chain on $M$.
+\end{proof}
+
+\begin{corollary}
+The FTC occurs precisely when $\sigma = I^1$ and $\omega = f$. This shows that Stokes' theorem for chains is equivalent to the FTC.
+\end{corollary}
+
+\begin{center}
+{\textbf{(Lecture 23)}} 
+\end{center}
+
+\begin{lemma}
+Let $M$ be an oriented manifold. Let $\omega \in A^n(M)$. Let $\sigma_1$ and $\sigma_2$ be singular $n$-cells on $M$ that can be extended to diffeomorphisms on (open) neighborhoods of $[0,1]^n$. Suppose that both are orientation-preserving. If $\supp \omega \subset  \sigma_1([0,1]^n) \cap \sigma_2([0,1]^n)$, then $\int_{\sigma_1} \omega = \int_{\sigma_2} \omega$.
+\end{lemma}
+\begin{proof}
+Since $\supp \omega \subset  \sigma_1([0,1]^n) \cap \sigma_2([0,1]^n)$, we may write $$\int_{\sigma_1} \omega = \int_{\sigma_2 \circ (\sigma_2^{-1} \circ \sigma_1)} \omega  \underbrace{=}_{\text{Prop. 30}} \int_{\sigma_2} \omega     .$$
+\end{proof}
+
+\begin{definition}
+Let $\omega \in A^n(M)$. Let $\sigma$ be an orientation-preserving singular $n$-cell on $M$. If $\supp \omega \subset \sigma([0,1]^n)$, then, by our previous lemma, we may define $$\int_M \omega = \int_{\sigma} \omega.$$
+
+In general, there exists an open cover $(U_{\alpha})$ of $M$ such that each $U_{\alpha} \subset \sigma_{\alpha}([0,1]^n)$ where $\sigma_{\alpha}$ is some orientation-preserving singular $n$-cell on $M$. Find a partition of unity $(\phi_{\alpha})$ subordinate to this cover. Note that each $\phi_{\alpha} \omega$ belongs to  $A^n(M)$ and is supported in $U_{\alpha}$. If $\omega$ is compactly supported, then $\supp \omega$ intersects at most finitely many $\supp \phi_{\alpha}$. In this case, we define $$\int_M \omega = \sum_{\alpha}  \int_M \phi_{\alpha} \omega$$ as this sum if finite. 
+\end{definition}
+
+\begin{lemma}
+If $(V_{\beta}, \psi_{\beta})$ be another such partition of unity, then $\sum_{\beta}\int_M\psi_{\beta} \omega = \sum_{\alpha}  \int_M \phi_{\alpha} \omega$. Hence our previous definition makes sense.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+ \sum_{\alpha}  \int_M \phi_{\alpha} \omega
+& =  \sum_{\alpha}  \int_M \phi_{\alpha} \sum_{\beta} \psi_{\beta} \omega
+\\ & = \sum_{\alpha} \sum_{\beta} \int_M \phi_{\alpha} \psi_{\beta} \omega
+ = \sum_{\beta} \sum_{\alpha} \int_M \psi_{\beta} \phi_{\alpha} \omega
+\\ & = \sum_{\beta}  \int_M \psi_{\beta} \sum_{\alpha} \phi_{\alpha} \omega
+ = \sum_{\beta}\int_M\psi_{\beta} \omega. 
+\end{align*}
+\end{proof}
+
+\begin{note}
+If $\omega$ is not assumed to be compact, then $\int_M \omega$ may be infinite but is still well-defined.
+\end{note}
+
+\begin{theorem}{\textbf{(Stokes)}}
+Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in A^{n-1}(M)$, then $$ \int_M d\omega = \int_{\partial{M}} \omega  .$$
+\end{theorem}
+\begin{proof} There are three cases to consider.
+\\ \\
+\underline{Case 1:} Suppose that there is some orientation-preserving $n$-cell $\sigma$ on $M$ such that $\supp \omega \subset \Int(\im \sigma)$ and $\im \sigma \cap \partial{M} =\emptyset$. By Stokes' theorem for chains, it follows that $$\int_M d\omega  = \int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega = 0 = \int_{\partial{M}} \omega    .$$
+\\ \\
+\underline{Case 2:} Suppose that there is some orientation-preserving $n$-cell $\sigma$ on $M$ such that $\supp \omega \subset  \im \sigma$, $\im \sigma \cap \partial{M} =\sigma_{(n,0)}([0,1]^{n-1})$, and $\supp \omega \cap \im \partial{\sigma} \subset \sigma_{(n,0)}$. By Stokes' theorem for chains, it follows that $$\int_M d\omega  = \int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega = (-1)^n \int_{\sigma_{(n,0)}} \omega .$$ Note that if $\mu$ is the usual orientation on $\H^n$, then the induced orientation on the boundary $\partial{\H^n}$ is equal to $(-1)^n \mu$. Therefore, $\sigma_{(n,0)} : [0,1]^{n-1}\to \partial{M}$ is orientation-preserving  if and only if $n$ is even. In either case, we have that $$(-1)^n \int_{\sigma_{(n,0)}} \omega = \int_{\partial{M}} \omega  ,$$ which completes this case.
+\\ \\
+\underline{Case 3:} In general, there exist an open cover $(U_{\alpha})$ of $M$ and a partition of unity $(\phi_{\alpha})$ subordinate to it such that each $\phi_{\alpha}\omega$ is an $(n-1)$-form of the kind in Case 1 or Case 2. Since $\sum_{\alpha} \phi_{\alpha}$ is constant, we see that $0 = d\big (\sum_{\alpha} \phi_{\alpha} \big ) = \sum_{\alpha} d \phi_{\alpha}$. Hence $ \sum_{\alpha} d \phi_{\alpha} \wedge \omega =0$, so that $\sum_{\alpha} \int_M d\phi_{\alpha} \wedge \omega =0$. From this we compute
+\begin{align*}
+ \int_M d\omega & = \int_M \sum_{\alpha} \phi_{\alpha} d\omega 
+ \\ & = \sum_{\alpha}\int_M \phi_{\alpha} d\omega
+\\ & =  \sum_{\alpha}\int_M d\phi_{\alpha} \wedge \omega + \phi_{\alpha} d\omega 
+\\ & =  \sum_{\alpha}\int_M d(\phi_{\alpha} \omega)
+\\ & = \sum_{\alpha} \int_{\partial{M}} \phi_{\alpha} \omega 
+\\ & =  \int_{\partial{M}} \omega .
+\end{align*}
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 24)}} 
+\end{center}
+
+\begin{definition}
+Given a manifold $M^n$ and integer $k\geq 1$, define the real vector spaces
+\begin{align*}
+  Z^k(M) &  = \{\omega \in A^k(M) : d\omega =0\}
+ \\  B^k(M) & = \{ d\eta : \eta \in A^{k-1}(M)\}.
+ \end{align*}
+ Since $B^k(M) \subset Z^k(M)$, we may form the quotient space $$ H_{\dr}^k(M) \coloneqq  \faktor{Z^k(M)}{B^k(M)},$$ called the \textit{$k$-th de Rham cohomology group of $M$}.
+\end{definition}
+
+\begin{remark}
+This is the same as the singular cohomology group over $\R$.
+\end{remark}
+
+\begin{note}
+$H_{\dr}^k(M)$ can be thought of as a quantitative measure of the number of holes in $M$.
+\end{note}
+
+\begin{theorem}
+If $M$ and $N$ are continuously homotopy equivalent, then $H_{\dr}^k \cong H_{\dr}^k$ for each $k\geq 1$.
+\end{theorem}
+
+\begin{lemma}{\textbf{(Poincar\'e)}}
+If $M$ is (smoothly) contractible, then $H_{\dr}^k(M) = 0$ for each $k\geq 1$.
+\end{lemma}
+\begin{proof}
+Assume that $k=1$. For each $t\in [0,1]$, define $\iota_t : M \to M \times [0,1]$ by $p\mapsto (p, t)$.
+\begin{claim} If $\omega$ is any closed $1$-form  on $M\times [0,1]$, then $\iota^{\ast}_1\omega -\iota^{\ast}_0\omega$ is exact. \end{claim}
+\begin{proof} If $\pi_M : M \times [0,1] \to M$ denotes the projection and $(U, x^i)$ denotes local coordinates on $M$, then $(\pi_M^{-1}(U), (\bar{x}^i, t))$ is a coordinate chart on $M \times [0,1]$ where $\bar{x}^i \coloneqq  x^i \circ \pi_M$. We thus have that $\omega = w_id\bar{x}^i+ f dt$. For each $\alpha =0,1$, we see that $$ \iota^{\ast}_{\alpha}\omega = \iota^{\ast}_{\alpha}(w_id\bar{x}^i +fdt)=w_i(-, \alpha)dx^i +0  .$$ Moreover, 
+\begin{align*}  0 & =d\omega
+\\ &  =dw_i \wedge d\bar{x}^i +df \wedge dt \\ & = (\text{terms not involving }dt) +\frac{\partial{w_i}}{\partial{t}}dt \wedge d\bar{x}^i 
+\\ & +\frac{\partial{f}}{\partial{\bar{x}^i}}d\bar{x}^i\wedge dt  . \end{align*}
+This implies that $\frac{\partial{w_i}}{\partial{t}} = \frac{\partial{f}}{\partial{\bar{x}^i}}$ for each $i$. For each $p\in U$, we compute the sum 
+$$ w_i(p, 1) -w_i(p,0) = \int_0^1  \frac{\partial{w_i}}{\partial{t}}(p, t)dt =  \int_0^1 \frac{\partial{f}}{\partial{\bar{x}^i}}(p,t)dt .$$ As a result, $$\iota^{\ast}_1 \omega -\iota^{\ast}_0 \omega =  \big( \int_0^1 \frac{\partial{f}}{\partial{\bar{x}^i}}(p,t)dt \big )dx^i .$$ Define $g: U \to \R$ by $\int_0^1f(p,t)dt$, so that $\frac{\partial{g}}{\partial{x^i}} = \int_0^1\frac{\partial{f}}{\partial{\bar{x}^i}}(p,t)dt$. It follows that $\iota^{\ast}_1 \omega -\iota^{\ast}_0 \omega  = \frac{\partial{g}}{\partial{x^i}}dx^i = dg.$
+\\ \\ Since the pullback is coordinate-independent, $g$ is as well.
+\end{proof}
+By assumption, there is some smooth map $H: M \times [0,1] \to M$ such that $H \circ \iota_1 =\id_M$ and $H \circ \iota_0 = e_{p_0}$ where $p_0 \in M$. Let $\omega$ be a closed $1$-form  on $M$. Then $H^{\ast} \omega$ is closed since pullbacks commute with exterior derivatives. Recall that the pullback is a contravariant functor. By Claim 1, it follows that $\iota^{\ast}_1H^{\ast}\omega - \iota^{\ast}_0 H^{\ast}\omega = \omega -0 = \omega$ is closed.
+\\ \\
+The generalization of this result to any positive integer $k$ follows from the next claim.
+\begin{remark}
+We have the decomposition $T_{(p,t)}M \times [0,1] = \ker d\pi\rvert_{(p,t)} \oplus \ker d\pi_M\rvert_{(p,t)}$ where $\pi: M \times [0,1]\to [0,1]$ denotes projection. Then any $1$-form $\omega$ on $M \times [0,1]$ may be written uniquely as $\omega = \omega_1 + \omega_2$ such that $\omega_i(v_1 + v_2) = \omega(v_i)$ for each $i=1, 2$. Hence there is some unique $f : M \times [0,1] \to \R$ such that $\omega_2 = f dt$. In general, one can show that if $\omega$ is a $k$-form on $M \times [0,1]$, then we can write $\omega$ uniquely as $$\omega = \omega_1 + (dt \wedge \eta)$$ where $\omega_1(v_1, \ldots, v_k) =0$ if some $v_i \in  \ker d\pi_M\rvert_{(p,t)}$ and $\eta$ is a $(k-1)$-form with the analogous property.
+\end{remark}
+\begin{claim}
+Define the $(k-1)$-form $I\omega$ on $M$ by $$I \omega \rvert_p(v_1, \ldots, v_{k-1}) = \int_0^1 \eta(p, t)(d\iota_t\rvert_{(p,t)}(v_1), \ldots, d\iota_t\rvert_{(p,t)}(v_{k-1}))dt   .$$ Then $\iota^{\ast}_1\omega  - \iota^{\ast}_0 \omega = d(I\omega) + I(d\omega)$. In particular, $\iota^{\ast}_1\omega  - \iota^{\ast}_0 \omega$ is exact whenever $d\omega =0$.
+\end{claim}
+\begin{proof}
+For an argument similar to our $k=1$ case,  see Spivak, Theorem 7.17. In particular, $I\omega$ and $\eta$ correspond to our $g$ and $f$, respectively.
+\end{proof}
+
+\end{proof}
+
+\begin{corollary}
+By Remark 46, $\R^2\setminus \{0\}$ is not contractible.
+\end{corollary}
+
+\begin{center}
+{\textbf{(Lecture 25)}} 
+\end{center}
+
+\begin{corollary}
+If $M$ is closed (i.e., compact without boundary) and orientable, then $M$ is not contractible.
+\end{corollary}
+\begin{proof}
+There is some positively oriented orientation form $\omega$ on $M$. Then $d\omega =0$, and $\int_M \omega >0$. But if $\omega = d \eta$ for some form $\eta$, then $\int_M \omega \underbrace{=}_{\text{Stokes}} \int_{\partial{M}} \eta =0$, a contradiction. Hence $H^n(M) \ne 0$.
+\end{proof}
+
+\begin{exmp}
+$\S^n$ is not contractible.
+\end{exmp}
+
+\begin{theorem}
+If $M$ is a (connected) orientable $n$-manifold, then there is an isomorphism $$\underbrace{H_c^n(M)}_{\text{compactly supported}} \overset{\cong}{\longrightarrow} \R, \quad [\omega] \mapsto \int_M \omega.$$
+\end{theorem}
+\begin{proof}
+Take for granted that the statement holds when $M = \R^n$. There is some compactly supported orientation form $\omega$ on $M$ such that $\int_M \omega \ne 0$ and $\supp \omega \subset \underbrace{U}_{\text{open}}\subset M$ . Let $\omega'$ be a compactly supported $n$-form on $M$. Find any partition of unity $(\phi_{\alpha})$ on $M$. Then $\omega' =\phi_1\omega' +\cdots + \phi_k \omega'$, Thus, we may assume  that $\supp \omega' \subset V$ where $V \approx \R^n$. We want to show that $\omega' =c\omega + d\eta$ for some $c\in \R$ and some $\eta \in A^{n-1}(M)$. Since $M$ is connected, there is some sequence $U=V_1, V_2, \ldots, V_r=V$ of open sets such that $V_i\approx \R^n$ and $V_i\cap V_{i+1} \ne \emptyset$ for each $i=1, \ldots, r-1$. For each $i=1, \ldots, r-1$, find forms $\omega_i$ on $M$ such $\int_M \omega_i \ne 0$ and $\supp \omega_i \subset V_i \cap V_{i+1}$.  It follows that 
+\begin{align*}
+ \omega_1  =& c_1\omega + d\eta_1
+\\ \omega_2  =& c_2\omega_1+ d\eta_2
+\\ & \vdots
+\\  \omega'  =&  c_r\omega_{r-1}+d\eta_r
+, \end{align*} as desired.
+\end{proof}
+
+\begin{remark}
+If $M$ and $N$ are closed orientable $n$-manifolds and $f: M \to N$ is smooth, then the pullback $f^{\ast}$ induces a linear map $f^{\ast}: H_{\dr}^n(N) \to H_{\dr}^n(M)$. We thus get a linear map $f^{\ast} : \R \to \R$, which shows that there is some  real number $a$ such that $$\int_{M} f^{\ast} \omega = a\int_N \omega$$ for every $\omega \in H_{\dr}^n(N) $. Such a scalar $a$ is called the \textit{degree of $f$}. 
+\end{remark}
+
+\begin{center}
+{\textbf{(Lecture 26)}} 
+\end{center}
+
+\begin{theorem}
+Let $M$ and $N$ be closed orientable $n$-manifolds and $f: M \to N$ be smooth. By Sard's theorem, find some regular value $q$ of $f$. For each $p\in f^{-1}(q)$, define 
+$ \sgn_pf = \begin{cases}
+1 & df_p \text{ orientation-preserving} 
+\\ -1  & df_p \text{ orientation-reversing} \end{cases}. $  Then $$\deg f = \sum_{p\in f^{-1}(q)} \sgn_pf$$ where we set $\deg f = 0$ if $f^{-1}(q) = \emptyset$.
+In particular, $\deg f$ is always an integer. 
+\end{theorem}
+\begin{proof}
+Since $f$ has constant rank $n$ and $\{q\}$ is closed, we see that $f^{-1}(q)$ is a compact $0$-dimensional submanifold  of $M$ and thus must be finite. Write $f^{-1}(q) = \{p_1, \ldots, p_k\}$. Find respective charts $U_1, \ldots, U_k$ which are pairwise disjoint so that each $u_i \in U_i$ is a regular point of $f$. Find a chart $(V, y^i)$ around $q$ such that the components of $f^{-1}(V)$ are precisely the $U_i$. Set $\omega = gdy^1 \wedge \cdots \wedge dy^n$ where $g$ is nonnegative and compactly supported in $V$. This implies that $f^{\ast}\omega \subset f^{-1}(V) =U_1 \sqcup \cdots \sqcup U_k$. Therefore, $$  \int_Mf^{\ast}\omega =\sum_{i=1}^k\int_{U_i}f^{\ast}\omega .$$ Since each $f\restriction_{U_i} : U_i \to V$ is a diffeomorphism, we have that $$ \int_{U_i}f^{\ast}\omega =
+\begin{cases}
+\int_{V} \omega & f\restriction_{U_i}  \text{ orientation-preserving} 
+\\ -\int_V\omega  & f\restriction_{U_i} \text{ orientation-reversing}
+\end{cases} .$$ As a result, $$\int_M f^{\ast} \omega  =\big (\sum_{p\in f^{-1}(q)} \sgn_pf \big)\int_V \omega =\big (\sum_{p\in f^{-1}(q)} \sgn_pf \big )\int_M \omega .$$
+\end{proof}
+
+\begin{exmp}
+Let $A_n: \S^n \to \S^n$ denote the antipodal map. Choose $p_0 \in \S^n$, which is a regular value of $A_n$. Hence $\deg A_n = (-1)^{n-1}$.
+\end{exmp}
+
+\begin{theorem}
+Suppose that $f,g: M \to N$ are (smoothly) homotopic maps. Then $f^{\ast} = g^{\ast}$ as linear maps. If $M$ and $N$ are compact orientable $n$-manifolds, it follows that $\deg f= \deg g$.
+\end{theorem}
+\begin{proof}
+By assumption, there exists a smooth map $H: M \times [0,1] \to M$ such that $H \circ \iota_0 =f$ and $H \circ \iota_1 = g$. Let $\omega \in Z^k(N)$. We apply Claim 2 above (including its notation) to compute
+\begin{align*}
+& g^{\ast} \omega - f^{\ast} \omega 
+\\ & = (H \circ \iota_1)^{\ast} \omega - (H \circ \iota_0)^{\ast} \omega
+\\ & = \iota_1^{\ast} (H^{\ast} \omega) -  \iota_0^{\ast} (H^{\ast} \omega)
+\\ & = d(IH^{\ast}\omega)+I(dH^{\ast}\omega) = d(IH^{\ast}\omega).
+\end{align*} 
+This implies that $f^{\ast}([\omega]) = g^{\ast}([\omega])$, as required. 
+\end{proof}
+
+\begin{corollary}{(Hairy ball theorem)} 
+If $n$ is even, then there is no non-vanishing vector field on $\S^n$.
+\end{corollary}
+\begin{proof}
+The identity $\id_{\S^n}$ has degree $1$ and thus is not homotopic to the antipodal map $A_n$. Suppose, for contradiction, that there is some non-vanishing $X\in \vf(\S^n)$. For each $p\in \S^n$, there is a unique great semicircle $\gamma_p$ traveling from $\underset{t=0}{p}$ to $\underset{t=1}{A(p)}$ whose tangent vector at $p$ equals $c X_p$ for some $c\in \R$. The smooth map $H(p, t) =\gamma_p(t)$ defines a homotopy between $\id_{\S^n}$  and $A_n$, a contradiction. 
+\end{proof}
+
+\begin{center}
+{\textbf{(Lecture 27)}} 
+\end{center}
+
+\begin{definition}
+Let $M$ be a manifold and $X\in \vf(M)$. We say that $\gamma : J \to M$ is an \textit{integral curve for $X$} if $\gamma'(t) = X_{\gamma(t)}$ for any $t\in J$.
+\end{definition}
+
+\begin{exmp}
+Set $M= \R^2$, $X = x\frac{\partial}{\partial{x}} + y \frac{\partial}{\partial{y}}$, and $\gamma(t) = (x(t), y(t))$. Then $\gamma'(t) = x'(t)\frac{\partial}{\partial{x}}  + y'(t)\frac{\partial}{\partial{y}}$.  The system $\begin{cases} x(t) = x'(t) \\ y(t) = y'(t) \end{cases}$ determines that 
+$\gamma(t) = e^t(x(0), y(0))$.
+\end{exmp}
+\begin{remark}
+In general, define the vector field $x^i\frac{\partial}{\partial{x^i}}$ on a chart $(U, x^i)$ for the $n$-manifold $M$. Then given an integral curve $\gamma(t) = (\gamma^1(t), \ldots, \gamma^n(t))$ for $X$ where $\gamma^i = \gamma \circ x^i$, we obtain the system $$ \gamma'^i(t) = X^i(\gamma^1(t), \ldots, \gamma^n(t)).  $$ Given that $\gamma(0) =p$, we have an initial value problem, to which we can always find a local solution.
+\end{remark}
+
+\begin{theorem}{\textbf{(Fundamental theorem for autonomous ODEs)}}
+Let $U\subset \R^n$ be open and $X: U \to \R^n$ is a smooth vector field.  Consider the initial value problem.
+$$(\ast) \quad \begin{cases} \gamma'^i(t) = X^i(\gamma^1(t), \ldots, \gamma^n(t)) \\ \quad  \gamma(t_0) =(c^1, \ldots, c^n) \end{cases}.$$ 
+\begin{enumerate}
+\item (Existence)  Let $t_0 \in \R$ and $x_0\in U$. There exist some interval $J_0 \ni t_0$ and open subset $U_0 \subset U$ such that for each $c\in U_0$, there is some $C^1$ curve $\gamma : J_0 \to U_0$ that solves  $(\ast)$.
+\item (Uniqueness)  Any two differentiable solutions to $(\ast)$ agree on the common domain.
+\item (Smoothness) Let $J_0$ and $U_0$ be as before. Define $\theta : J_0 \times U_0 \to U$ by $(t, x) \mapsto \gamma_x(t)$ where $\gamma_x : J_0 \to U$ uniquely solves $(\ast)$ with initial condition $\gamma(t_0) = x$. Then $\theta$ is smooth.
+\end{enumerate}
+\end{theorem}
+
+\begin{exmp}
+For any compact manifold $M$, we may stipulate that the $U_0$ form a finite cover $\{U_1, \ldots, U_k\}$ of $M$. Then make $J_0$ smalles than any of the corresponding intervals $J_1, \ldots, J_k$. This gives the smooth map $\theta : J \times \S^n \to \S^n$ defined by $(t, p) \mapsto \gamma_p^i(t)$.
+\end{exmp}
+
+\begin{corollary}
+Let $X$ be a smooth vector field on $M$ and $p\in M$. There is some $\epsilon >0$ and a smooth curve $\gamma : (-\epsilon , \epsilon) \to M$ such that $\gamma(0)= p$ and $\gamma$ is an integral curve for $X$.
+\end{corollary}
+
+\begin{definition}
+Let $\theta : \R \times M \to M$ be a group action on $M$. We call $\theta$ a \textit{global flow on $M$} if it is smooth, i.e., $\theta^p(t)\coloneqq  \theta(t, p) : \R \to M$ is smooth for every $p\in M$.
+The vector field $p\mapsto  (\theta^p)'(0)$  is called the \textit{infinitesimal generator of $\theta$}.
+\end{definition}
+
+\begin{question}
+When is a vector field an infinitesimal generator of  a global flow?
+\end{question}
+
+\begin{exmp}
+Define $X = x^3\frac{\partial}{\partial{x}}$ on $\R^2$. Then any integral curve $\gamma (t) = (x(t), y(t))$ for $X$ must satisfy
+\begin{align*}
+& \frac{dx}{dt} = x^3.
+ \implies  dx = x^3dt.
+\\ & \implies -\frac{1}{2x^2} = t+c.
+\\ & \implies x(t) = \frac{1}{\sqrt{c-2t}},
+\end{align*}
+which is not smooth on $\R$. Hence $X$ does not generate global flow.
+\end{exmp}
+
+\begin{lemma}{\textbf{(Escape lemma)}}
+Let $X \in \vf(M)$ and $\gamma$ be an integral curve for $X$. If the domain of $\gamma$ does not equal $\R$, then $\im \gamma$ is not contained in any compact set.
+\end{lemma}
+
+\begin{remark}
+If $M$ is compact, then every smooth vector field on $M$ generates a global flow.
+\end{remark}
+
+\begin{theorem}{\textbf{(Fundamental theorem on flows)}}
+Let $M$ be a manifold and $X\in \vf(M)$. There exist some unique maximal flow domain $D\subset \R \times M$ and unique flow $\phi: D \times \R \to M$ such that $X$ generates $\phi$ . We call $\phi$ the \textit{flow of $X$}.
+\end{theorem}
+
+\begin{corollary}
+If $M$ is a closed manifold, then $D = \R \times M$.
+\end{corollary}
+
+\begin{center}
+{\textbf{(Lecture 28)}} 
+\end{center}
+
+\begin{definition}
+Let $M$ be a manifold without boundary. Let $V\in \vf(M)$. Let $\theta$ denote the flow of $V$. For any $W\in \vf(M)$. Define the rough vector field $$ (\mathcal{L}_VW)_p  = \lim_{t\to 0}\frac{d(\theta_{-t})_{\theta_t(p)}(W_{\theta_{t}(p)})-W_p }{t}.$$ This is called the \textit{Lie derivative of $W$ with respect to $V$.}
+\end{definition}
+\begin{note}
+If $p\in M$, then $(\mathcal{L}_VW)_p$ exists and $\mathcal{L}_VW \in \vf(M)$. 
+\end{note}
+
+\begin{theorem}
+If $V, W\in \vf(M)$, then $\mathcal{L}_VW = [V, W]$.
+\end{theorem}
+\begin{proof}
+Define $\mathcal{R}(M)$ as the set of points $p\in M$ such that $V_p\ne 0$. Note that $\cl(\mathcal{R}(M)) = \supp V$. Let $p\in M$. We consider three cases.
+\begin{enumerate}
+\item Suppose $p\in \mathcal{R}(M)$. Then it's a fact that we can find smooth coordinates $(U, u^i)$ near $p$ such that $V= \frac{\partial}{\partial{u^1}}$. In these coordinates we thus have that $\theta_t(u) = (u^1 +t, u^2, \ldots, u^n)$. The Jacobian of ${\theta_{-t}}$ at each $t$ equals the identity. If $u\in U$, it follows that
+\begin{align*}
+& d(\theta_{-t})_{\theta_t(u)}(W_{\theta_{t(u)}})
+\\ & = d(\theta_{-t})_{\theta_t(x)} \big(W^j(u^1 + t, u^2, \ldots, u^n)\frac{\partial}{\partial{u^j}}\rvert_{\theta_t(u)}\big )
+\\ & = W^j(u^1 + t, u^2, \ldots, u^n)\frac{\partial}{\partial{u^j}}\rvert_{u}.
+\end{align*}
+From this we compute
+\begin{align*}
+& (\mathcal{L}_VW)_p= \frac{d}{dt}\rvert_{t=0} W^j(u^1 + t, u^2, \ldots, u^n)\frac{\partial}{\partial{u^j}}\rvert_{u}
+\\ & = \frac{\partial}{\partial{u^1}}W^j(u^1 , u^2, \ldots, u^n)\frac{\partial}{\partial{u^j}}\rvert_{u}
+\\ & = [V, W]_u
+.\end{align*}
+\item Suppose that $p\in \supp V \setminus \mathcal{R}(M)$. Since $\supp V$ is dense in $M$ and $TM$ is Hausdorff, it follows that $(\mathcal{L}_VW)_p = [V, W]_p$.
+\item If $p\in  M\setminus \supp V$, then $V$ vanishes on some neighborhood $H$ of $p$. This implies that $\theta_t = \id_H$, so that $d(\theta_{-t})_{\theta_t(p)}(W_{\theta_{t(p)}}) = W_p$. Hence $(\mathcal{L}_VW)_p =0 = [V, W]_p$.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Let $M$ be an $n$-manifold. A smooth local frame $(X_1, \ldots X_n)$ is called a \textit{commuting} or \textit{holonomic frame} if $[X_i, X_j]=0$ for any $1\leq i,j\leq n$.
+\end{definition}
+
+\begin{theorem}
+Let $(X_1, \ldots, X_k)$ be a linearly independent $k$-tuple of smooth commuting vector fields defined on an open set $W\subset M$. For any $p\in W$, there is some chart $(U, x^i)$ around $p$ such that $$X_i = \frac{\partial}{\partial{x^i}}$$ holds locally for each $i=1, \ldots, k$.
+\end{theorem}
+\begin{proof}
+This is messy. See Lee, Theorem 9.46.
+\end{proof}
+
+\begin{definition}
+Let $M$ be a manifold. A \textit{$k$-distribution on $M$} is a rank-$k$ smooth subbundle of $TM$.
+\end{definition}
+\begin{note}
+A $1$-distribution is precisely a vector field. 
+\end{note}
+
+\begin{definition}
+Let $N\subset M$ be a nonempty submanifold and $D$ be a distribution on $M$. Write $D = \bigcup_{p\in M}D_p$ as a family of subspaces. Then $N$ is called an \textit{integral manifold of $D$} if $D_p = T_pN$ for each $p\in N$. Moreover, we say that $D$ is \textit{integrable} if each $p\in M$ is contained in an integrable manifold of $D$.  
+\end{definition}
+
+\begin{definition}
+We say that the distribution $D$ is \textit{involutive} if $[X,Y]\in D$ whenever $X,Y \in D$. 
+\end{definition}
+
+\begin{prop}
+If $D$ is integrable, then it is involutive.
+\end{prop}
+
+\begin{theorem}{\textbf{(Frobenius)}}
+If $D$ is involutive, then it is integrable. 
+\end{theorem}
+
+\end{document}
