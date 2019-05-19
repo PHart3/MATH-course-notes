@@ -640,7 +640,7 @@ For finite groups, we can add information to our chain of implications in Remark
 \end{remark}
 
 \begin{remark}
-Symmetry groups of polynomials are similar to freely acting symmetry groups of homeomorphisms on topological spaces, giving a correspondence $\gal(f) \leftrightarrow \pi_1(X)$. 
+Symmetry groups of polynomials are similar to freely acting symmetry groups of homeomorphisms on topological spaces, giving a correspondence $\gal(f) \longleftrightarrow \pi_1(X)$. 
 
 Moreover, if the space $X$ has interesting underlying geometry, then the possibilities of $\pi_1(X)$ belonging to one of the classes of groups listed in Remark 12 are constrained. For example,
 a compact complex submanifold of $\CP^n$ is known as a Kahler manifold. It is known that any finite group is realizable as $\pi_1(X)$ for some Kahler manifold $X$.
@@ -1120,8 +1120,8 @@ Let $G$ be a group. A \textit{filtration $F^{\bullet}{G}$ on $G$} is a subnormal
 
 \begin{remark} Suppose that $F^{\bullet}G$ is a filtration on $G$.
 \begin{enumerate}
-\item If $i : H \hookrightarrow G$, then we get an induced filtration on $H$ given by $F^a{H}\coloneqq  i^{-1}(F^aG) = H \cap F^a{G}$.
-\item Similarly, if $q: G \to K$ is a quotient map, then we get an induced filtration on $K$ given by $F^aK\coloneqq  q(F^aG) = \faktor{F^aG}{F^aG \cap \ker q}$. {[[How does this define a series of subgroups?]]}
+\item If $i : H \hookrightarrow G$, then we get an induced filtration on $H$ given by $$F^a{H}\coloneqq  i^{-1}(F^aG) = H \cap F^a{G}.$$
+\item Similarly, if $q: G \to K$ is a quotient map, then we get an induced filtration on $K$ given by $$F^aK\coloneqq  q(F^aG) = \faktor{F^aG}{F^aG \cap \ker q}.$$ {[[How does this define a series of subgroups?]]}
 \end{enumerate}
 \end{remark}
 
@@ -1144,14 +1144,19 @@ Moreover, we compute
 \\ & = \{ x= bc_1c_2 : c_2\in {A} \cap \widetilde{B}, \  c_1 \in \widetilde{A} \cap {B}\} 
 \\ & = \{x = bc : c \in A \cap \widetilde{B}\} = B \cdot (A \cap \widetilde{B}).
 \end{align*} Therefore, $\faktor{B \cdot ( \widetilde{A} \cap \widetilde{B})}{ B \cdot (A \cap \widetilde{B})} \cong \faktor{\widetilde{A} \cap \widetilde{B}}{D}$. 
-\\ \\ The other isomorphism with $\faktor{\widetilde{A} \cap \widetilde{B}}{D}$ is obtained by swapping $A \leftrightarrow B$ and $\widetilde{A} \leftrightarrow \widetilde{B}$.
+\\ \\ The other isomorphism with $\faktor{\widetilde{A} \cap \widetilde{B}}{D}$ is obtained by swapping $A \longleftrightarrow B$ and $\widetilde{A} \longleftrightarrow \widetilde{B}$.
 \end{proof}
 
 \begin{corollary}
-$\gr_T^j\gr_F^iG \cong \gr_F^i \gr_T^j G$.
+$\gr_T^j\gr_F^i{G} \cong \gr_F^i \gr_T^j{G}$.
 \end{corollary}
 \begin{proof}
-Let $F^{\bullet}G$ be a filtration on $G$ and $H \unlhd G$. Then $F^i(\faktor{G}{H}) = \faktor{F^iG}{H \cap F^{i+1}G} = \faktor{H \cdot F^iG}{H}$ {[[Why does the last equality hold?]]}. Apply Zassenhaus to obtain {[[???]]}.
+Note that $\gr_F^i \gr_T^j{G} = \frac{F^i(\gr_T^j{G})}{F^{i+1}(\gr_T^j{G})}$. 
+Using the second isomorphism theorem, we see that $$F^i(\gr_T^j{G}) = \frac{F^i(T^j{G})}{F^i(T^j{G}) \cap T^{j+1}{G}} = \frac{T^j{G} \cap F^i{G}}{(T^j{G} \cap F^i{G}) \cap T^{j+1}{G}} \cong \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^i{G})}{T^{j+1}{G}} .$$ 
+Similarly, $F^{i+1}(\gr_T^j{G}) \cong \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^{i+1}{G})}{T^{j+1}{G}}.$ 
+It follows that $$\gr_F^i \gr_T^j{G} = \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^{i}{G})}{T^{j+1}{G} \cdot (T^j{G} \cap F^{i+1}{G})}.$$
+Likewise, we can show that
+$$\gr_T^j \gr_F^i{G} = \frac{F^{i+1}{G} \cdot (F^i{G} \cap T^{j}{G})}{F^{i+1}{G} \cdot (F^i{G} \cap T^{j+1}{G})}.$$ Thus, the assertion that $\gr_T^j\gr_F^i{G} \cong \gr_F^i \gr_T^j{G}$ is a special instance of the butterfly lemma. 
 \end{proof}
 
 \begin{definition}
@@ -1166,10 +1171,14 @@ We say $\{R^iG\}_{i=1}^t$ is a \textit{refinement} of $\{F^iG\}_{i=1}^s$ if ther
 Suppose $\{F^iG\}_{i=0}^s$ and $\{T^jG\}_{j=0}^t$ are filtrations on $G$. Then we can find respective refinements $\widetilde{F}^{\bullet}G$ and $\widetilde{T}^{\bullet}G$ which are equivalent to our original filtrations. Further, if the two original filtrations are non-repetitious, then we can choose the refinements to be non-repetitious as well. 
 \end{theorem}
 \begin{proof}
-Suppose $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_{i-1}^{(j)} \coloneqq  (F^{i-1}\cap T^j) \cdot F^i$. Then for any $q\leq i \leq s$, we get a filtration $$F^{i-1} = F^{i-1}\cdot F^i =\widetilde{F}_{i-1}^{(0)}\geq \widetilde{F}_{i-1}^{(1)}\geq \cdots \geq \widetilde{F}_{i-1}^{(t)} = F^i.$$ Thus, the $\widetilde{F}_{i-1}^{(j)}$ define a refinement of $F^{\bullet}G$. 
+Suppose $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_{i-1}^{(j)} =  (F^{i-1}\cap T^j) \cdot F^i$. Then for any $q\leq i \leq s$, we get a filtration $$F^{i-1} = F^{i-1}\cdot F^i =\widetilde{F}_{i-1}^{(0)}\geq \widetilde{F}_{i-1}^{(1)}\geq \cdots \geq \widetilde{F}_{i-1}^{(t)} = F^i.$$ Thus, the $\widetilde{F}_{i-1}^{(j)}$ define a refinement of $F^{\bullet}G$. 
 \\ \\ Likewise, $\widetilde{T}_{j-1}^{(i)} \coloneqq  (T^{j-1}\cap F^i) \cdot T^j$ defines a refinement of $T^{\bullet}G$.
 \\ \\ Finally, apply Zassenhaus to the system $F^i \unlhd F^{i-1} \leq G \geq T^{j-1} \unrhd T^j$ to get
-$$\faktor{\widetilde{F}_{i-1}^{(j-1)}}{\widetilde{F}_{i-1}^{(j)}} \cong \faktor{F^i\cdot (F^{i-1} \cap T^{j-1})}{F^i \cdot (F^{i-1} \cap T^j)} \cong \faktor{T^j \cdot (F^{i-1} \cap T^{j-1})}{T^j\cdot (F^i \cap T^{j-1})} \cong   \faktor{\widetilde{T}_{j-1}^{(i-1)}}{\widetilde{T}_{j-1}^{(i)}} .$$
+\begin{align*}
+\faktor{\widetilde{F}_{i-1}^{(j-1)}}{\widetilde{F}_{i-1}^{(j)}} & \cong \faktor{F^i\cdot (F^{i-1} \cap T^{j-1})}{F^i \cdot (F^{i-1} \cap T^j)}
+\\ &  \cong \faktor{T^j \cdot (F^{i-1} \cap T^{j-1})}{T^j\cdot (F^i \cap T^{j-1})}
+\\ &  \cong   \faktor{\widetilde{T}_{j-1}^{(i-1)}}{\widetilde{T}_{j-1}^{(i)}} .
+\end{align*}
 \end{proof}
 
 \begin{corollary}{\textbf{(Jordan-Holder)}}
