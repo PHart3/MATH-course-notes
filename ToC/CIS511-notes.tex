@@ -182,9 +182,12 @@
 These notes are based on Anindya De's ``Theory of Computation'' lectures given at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation, 3rd ed.} and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
 \end{abstract}
 
-\begin{center}
-{\textbf{(Lecture 1)}} 
-\end{center}
+\tableofcontents
+\newpage
+
+\section{Automata theory}
+
+\subsection{Lecture 1}
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -289,9 +292,7 @@ A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(
 \end{align*}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 2)}} 
-\end{center}
+\subsection{Lecture 2}
 
 \begin{definition}
 Let $\delta$ denote a transition function for the $\NFA$ $N$. Define the \textit{multi-step transition function} $$\hat{\delta} : Q\times \Sigma^{\ast} \to \P(Q)$$ inductively as follows.
@@ -365,9 +366,7 @@ Use a similar argument to the proof for an $\NFA$. In particular, set $$q_0^{(1)
 .\end{align*}
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 3)}} 
-\end{center}
+\subsection{Lecture 3}
 
 \begin{prop} Let $L_1, L_2\subset \Sigma^{\ast}$ be regular. 
 \begin{enumerate}[(a)]
@@ -434,9 +433,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\} \cong \N$. Also, we have that $\{0,1\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\{0,1\}^{\ast}) = \{L : L \text{ is a language over } \{0,1\}\}$. Since there is a surjection $$\{F: F \text{ is a finite automaton.}\} \to \{L : L \text{ is a regular language over } \{0,1\}\},$$ it follows that there are uncountably many non-regular languages over $\{0,1\}$.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 4)}} 
-\end{center}
+\subsection{Lecture 4}
 
 \begin{lemma}{\textbf{(Pumping)}} Let $L$ be a regular language. Then there exists $n_0 \in \N$ such that for any $x\in L$ with $|x|\geq n_0$, we may write $x=wyz$ such that
 \begin{enumerate}[(a)]
@@ -470,6 +467,8 @@ Let $D$ be a $\DFA$ with $\lvert{Q_D}\rvert =n$. Then $D$ recognizes an infinite
 The ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ is infinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle of states $c$ such that $c \cap p \ne \emptyset$. Note that $\lvert{c}\rvert \leq n$ and $\lvert{p}\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
 \end{proof}
 
+\section{Computability theory}
+
 \begin{definition}
 A \textit{Turing machine} is a $7$-tuple $$(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R)$$ where $\Gamma \supset \Sigma$ is finite such that there is some \textit{null character} $\bot \in \Gamma \setminus \Sigma$, $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, and $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. We call $\Sigma$ the \textit{input alphabet}, $\Gamma$ the \textit{tape alphabet}, $Q_F$ the set of \textit{accepting states}, and $Q_R$ the set of \textit{rejecting states}.
 \end{definition}
@@ -482,9 +481,7 @@ On any given input $x$, a $\TM$ can either \textit{accept} or \textit{reject} or
 A Turing machine is supposed to act as a minimal model of computation. It should be able to write, be able to move left and right, and have unconstrained memory.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 5)}} 
-\end{center}
+\subsection{Lecture 5}
 
 \begin{remark}
 Every finite automaton may be viewed as a Turing machine $M$ with the following properties. 
@@ -567,9 +564,7 @@ Then $L(M) = L$.
 The \textit{Church-Turing thesis} states that our pre-theoretic notion of algorithm is entirely captured by decidability (equivalently, $\lambda$-computability). 
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 6)}} 
-\end{center}
+\subsection{Lecture 6}
 
 \begin{definition}
 A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine except that the former's transition function is of the form $$ \delta : Q \times \Gamma^k \to Q \times \Gamma^k \times \{L, R\}^k  $$ where $k\in \N$.
@@ -631,9 +626,7 @@ There is an injective function $\iota$ from the set of Turning machines into $\{
 This is like constructing an interpreter for a programming language within the language itself. See Arora and Barak, Theorem 1.13 for a high-level proof.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 7)}} 
-\end{center}
+\subsection{Lecture 7}
 
 \begin{note}
 Alternatively, we can view $U_{\TM}$ as a ternary function with input $(\langle M \rangle,  w, 1^k)$ such that
@@ -706,9 +699,7 @@ Suppose that $L \leq_m L'$ and that $L'$ is decidable (resp. recursively enumera
 Find some $M$ that decides (resp. recognizes) $L'$ and some reduction $f$ from $L$ to $L'$. Construct the $\TM$ $N$ so that on input $w\in \Sigma^{\ast}$, we let $N$ compute $f(w)$ and then output whatever $M$ outputs on $f(w)$. Then $N$ decides (resp. recognizes) $L$. 
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 8)}} 
-\end{center}
+\subsection{Lecture 8}
 
 \begin{exmp}{\textbf{(Halting problem)}}
 Let $A_{\text{HALT}} \coloneqq \{\langle M, w \rangle \mid M$ halts on $w\}$. Then $A_{\text{HALT}}$ is undecidable.
@@ -775,9 +766,11 @@ If $M$ accepts $w$, then $L(M') = \{0,1\}^{\ast}$. Otherwise, $L(M') = \emptyset
 It's possible that both a language and its complement are not recursively enumerable. 
 \end{note}
 
-\begin{center}
-{\textbf{(Lecture 9)}} 
-\end{center}
+\newpage
+
+\section{Complexity theory}
+
+\subsection{Lecture 9}
 
 \begin{remark}
 Once we know that a question is decidable, we want to determine the amount of computational resources required to decide it. Such resources include 
@@ -839,9 +832,7 @@ Let $\varphi$ be a Boolean formula in conjunctive normal form (CNF). Suppose tha
 Define $\mathsf{CNF\text{-}SAT} = \{\langle \varphi \rangle : \varphi$ is satisfiable$\}$. Notice that this can be decided by a nondeterministic Turing machine in linear time.  There is, however, no known deterministic Turing machine running faster than brute force. 
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 10)}} 
-\end{center}
+\subsection{Lecture 10}
 
 \begin{lemma}
 A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $L = \{ x \mid \exists y.|y| \leq |x|^{c_1} \land V(x,y) = 1$ where $V$ runs in time $|x\cdot y|^{c_2}\}$. We call $V$ a \textit{verifier} and $y$ a \textit{witness}.
@@ -883,9 +874,7 @@ If $L_1 \leq_m^p L_2$ and $L_2 \in \mathbf{P}$, then $L_1 \in \mathbf{P}$.
 We say that $L$ is $\NP$-complete if $L \in \NP$ and for any $L' \in \NP$, $L' \leq_m^p L$. 
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 11)}} 
-\end{center}
+\subsection{Lecture 11}
 
 \begin{definition}
 A \textit{(Boolean) circuit} is a directed acyclic graph with a unique sink node such that 
@@ -930,9 +919,7 @@ Define $\mathsf{CIRCUIT{-}SAT} = \{ \langle C \rangle : \exists x. C(x) = 1\}$. 
 If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.|y|\leq |x|^{O(1)} \land V(x,y) =1 \land (x\notin L \implies \forall y. V(x,y)=0).$$ Thus, for each $n\in \N$, we can use our previous lemma to construct a circuit of size $n^{O(1)}$ such that $C(x,y) = V(x,y)$ for each string $x$ of size $n$ and each string $y$ with $|y|\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $|x|^{O(1)}$ such that $C_x(y) = V(x,y)$ for any $y$ with $|y|\leq |x|^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 12)}} 
-\end{center}
+\subsection{Lecture 12}
 
 \begin{corollary}
 Showing that $\mathsf{CIRCUIT{-}SAT}$ is not in $\mathbf{P}$ is equivalent to showing that $\mathbf{P} \ne \NP$.
@@ -976,9 +963,7 @@ Let $G$ be a graph with an independent set $S$ with $|S|\geq k$.  Then $V \setmi
 \end{enumerate}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 13)}} 
-\end{center}
+\subsection{Lecture 13}
 
 \begin{definition}
 We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L' \in \NP$.
@@ -1071,9 +1056,7 @@ Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $|U|\leq k$. Note that, 
 Using dynamic programming, one can show that there is a poly$(k, t)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\langle a_1, \ldots, a_k, t\rangle$ is on the order of \hl{$k\log{t}$}.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 14)}} 
-\end{center}
+\subsection{Lecture 14}
 
 \begin{definition} Let $S: \N \to \N$.
 \begin{enumerate}
@@ -1145,9 +1128,7 @@ Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. But $\ma
 $\mathsf{PSPACE} = \mathsf{NPSPACE}$.
 \end{corollary}
 
-\begin{center}
-{\textbf{(Lecture 15)}} 
-\end{center}
+\subsection{Lecture 15}
 
 \begin{theorem}{\textbf{(Savitch)}}
 Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. But we have that $$\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n)).$$
@@ -1198,9 +1179,7 @@ If $m$ denotes the size of $\varphi$, then $\mathcal{L}(m) = m^{O(1)} + \mathcal
 \end{enumerate}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 16)}} 
-\end{center}
+\subsection{Lecture 16}
 
 \begin{definition}
 A language $L$ is $\mathsf{PSPACE}$-complete if it belongs to $\mathsf{PSPACE}$ and for any $L' \in \mathsf{PSPACE}$, $L' \leq_m^p L$.
@@ -1223,9 +1202,7 @@ It follows that $|\varphi_{c_1, c_2, i}|\leq |\varphi_{c_1, c_2, i-1}| +O(S(n))$
 A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{|\text{(first input)}|})$ space and $$L = \{ x \mid \exists y.|y| \leq |x|^{c} \land V(x,y) = 1\}.$$ .
 \end{prop}
 
-\begin{center}
-{\textbf{(Lecture 17)}} 
-\end{center}
+\subsection{Lecture 17}
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1289,9 +1266,7 @@ If $s(n) \geq \log{n}$, then $\mathsf{NSPACE}(s(n)) = \mathbf{co}{-}\mathsf{NSPA
 Bertrand's postulate implies that some prime number between $N$ and $2N$ always exists.  Suppose that we want to find the least such prime $\tilde{p}$. Consider the probability $\mathbb{P}$ that a randomly chosen number between $N$ and $2N$ is prime. From the prime number theorem, it is known that $\mathbb{P} \approx \frac{N}{\log{N}}$. As a result, we can apply the AKS primality test $O(\log{N})$ times to find $\tilde{p}$ with high probability.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 18)}} 
-\end{center}
+\subsection{Lecture 18}
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1351,9 +1326,7 @@ Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whos
 Then $A$ accepts $\langle L \rangle$ with probability $1$ when $\det{L} = 0$. Also, it rejects with probability $\geq \frac{99}{100}$ when $\det{L} \ne 0$ because $$\mathbb{P}[\det(a_1, \ldots, a_n) =0] \leq \frac{1}{100}.$$ Since evaluating a polynomial is polynomial in its degree, we see that $A$ is polynomial in $n$.
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 19)}} 
-\end{center}
+\subsection{Lecture 19}
 
 \begin{exmp}
 Let $G=(V_1, V_2, E)$ be a bipartite graph with $|V_1=|V_2|=n$. 
@@ -1418,9 +1391,7 @@ Let $\mathbf{ZPP} \coloneqq \mathbf{RP} \cap \mathbf{co{-}RP}$.
 $L \in \mathbf{ZPP}$ if there exists a randomized algorithm that runs in expected polynomial time and never errs. 
 \end{note}
 
-\begin{center}
-{\textbf{(Lecture 20)}} 
-\end{center}
+\subsection{Lecture 20}
 
 \begin{theorem}
 If there exist $L \in \mathsf{DTIME}(2^{O(n)})$ and $\gamma >0$ such that $L$ requires circuits of size at least $2^{\gamma{n}}$, then $\mathbf{P} = \mathbf{BPP}$.
@@ -1452,9 +1423,7 @@ $\mathbf{BPP} \subset \mathbf{EXP}$.
 We see that $\mathsf{MAX{-}CLIQUE} \in \Sigma_2^p$ because it is defined by the formula ``there exists a choice of vertices $V_1$ such that for any choice of vertices $V_2$, $V_1$ is a clique of size $k$ and $V_2$ is either not a clique or of size smaller than $k$."
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 21)}} 
-\end{center}
+\subsection{Lecture 21}
 
 \begin{note} $ $
 \begin{enumerate}
@@ -1488,11 +1457,7 @@ $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \{0,1\}^m \fora
 \end{proof}
 \end{proof}
 
-\newpage
-
-\begin{center}
-{\textbf{(Lecture 22)}} 
-\end{center}
+\subsection{Lecture 22}
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1520,9 +1485,7 @@ Let $\mathsf{NIP}\coloneqq \{ \langle G_1, G_2 \rangle \mid G_1$ and $G_2$ are n
 \] 
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 23)}} 
-\end{center}
+\subsection{Lecture 23}
 
 \begin{prop}
 $\mathbf{IP}$ is closed under complementation. 
@@ -1555,9 +1518,7 @@ sx + t & = y \\ sx' +t & = y'
 is satisfied $\iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix} \begin{bmatrix} s \\ t    \end{bmatrix} = \begin{bmatrix} y \\ y' \end{bmatrix} \iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix}^{-1} \begin{bmatrix} y \\ y' \end{bmatrix}  = \begin{bmatrix} s \\ t    \end{bmatrix} $. Therefore, $$\mathbb{P}_{(s,t)\in_R \F_q\times \F_q}[h_{s,t}(x) = y \land h_{s,t}(x') = y'] = \frac{1}{q^2},$$ which proves that $h_{s,t}$ is a hash function.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 24)}} 
-\end{center}
+\subsection{Lecture 24}
 
 \begin{prop}
 Let $G$ and $H$ be graphs. 
@@ -1593,9 +1554,7 @@ Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ 
 \end{caseof}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 25)}} 
-\end{center}
+\subsection{Lecture 25}
 
 \begin{lemma}{\textbf{(Sum-check protocol)}}
 Let $n\in \N$ and choose a prime $2^{10n}\leq p\leq 2^{20n}$. Let  $\varphi(x_1, \ldots, x_n)$ be a 3cnf formula with $m$ clauses and let $\tilde{\varphi}(x_1, \ldots, x_n)$ be the polynomial obtained from $\varphi$ by the following translation rules.
@@ -1611,9 +1570,7 @@ For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \
 \end{lemma}
 
 
-\begin{center}
-{\textbf{(Lecture 26)}} 
-\end{center}
+\subsection{Lecture 26}
 
 \begin{proof} $ $
 \\First, we construct $(V, P)$ as follows. 
@@ -1645,9 +1602,7 @@ We can modify our last interactive protocol so that its first round has $P$ send
 $\mathbf{IP} = \mathsf{PSPACE}$.
 \end{theorem}
 
-\begin{center}
-{\textbf{(Final exam review ression)}} 
-\end{center}
+\subsection{Final exam review session}
 
 \begin{theorem}{\textbf{(Space hierarchy)}}
 If $f: \N \to \N$ satisfies $f(n) \geq \log{n}$, then $\mathsf{DSPACE}(f(n)) \subsetneq \mathsf{DSPACE}(f^2(n))$.

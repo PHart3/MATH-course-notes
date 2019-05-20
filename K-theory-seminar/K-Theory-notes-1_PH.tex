@@ -127,7 +127,12 @@
 \begin{document}
 
 \begin{abstract}
-More basic category theory. The main sources for these notes are nLab, Rognes, Ch. 3, and Peter Johnstone's Part III lecture notes (Michaelmas 2015), Ch. 1.
+More basic category theory. The main sources for this talk are the following.
+\begin{itemize}
+\item \textit{nLab}.
+\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 3.
+\item Peter Johnstone's lecture notes for ``Category Theory" (Mathematical Tripos Part III, Michaelmas 2015), Ch. 1.
+\end{itemize}
 \end{abstract}
 
 \begin{definition}
@@ -149,7 +154,7 @@ If every $f_A$ is an isomorphism, then the $(f_A)^{-1}$ define a natural transfo
 \end{remark}
 
 \begin{definition}
-Let $F, G, H: \c \to \d$ be functors. The \textit{identity natural transformation} $\id_F : F \Rightarrow F$ is given by $A \mapsto \id_{F(A)}$. Moreover, given natural transformations $\phi: F \to G$ and $\psi: G \to H$, define the \textit{composite natural transformation} $\psi \circ \phi$ by $A \mapsto (\psi \circ \phi)_A := \psi_{A} \circ \phi_{A}$.
+Let $F, G, H: \c \to \d$ be functors. The \textit{identity natural transformation} $\id_F : F \Rightarrow F$ is given by $A \mapsto \id_{F(A)}$. Moreover, given natural transformations $\phi: F \to G$ and $\psi: G \to H$, define the \textit{composite natural transformation} $\psi \circ \phi$ by $A \mapsto (\psi \circ \phi)_A \coloneqq \psi_{A} \circ \phi_{A}$.
 \end{definition}
 
 
@@ -198,7 +203,7 @@ The inversion isomorphism from a group $G$ to $G^{\op}$ defines a natural transf
 \end{exmp}
 
 \begin{definition}
-Let $\c$ and $\d$ be categories with $\c$ small. The $\textit{functor category}$ $\mathbf{Fun}(\c, \d):= \d^\c$ has functors $F: \c \to \d$ as objects and natural transformations as morphisms. 
+Let $\c$ and $\d$ be categories with $\c$ small. The $\textit{functor category}$ $\mathbf{Fun}(\c, \d)\coloneqq \d^\c$ has functors $F: \c \to \d$ as objects and natural transformations as morphisms. 
 \end{definition}
 
 \begin{remark}
@@ -269,11 +274,11 @@ The previous two lemmas are equivalent to the axiom of choice, as is the stateme
 \end{remark}
 
 \begin{definition}
-Fix $X \in \ob \c$. Define the functor $\y^X : \c \to \mathbf{Set}$ by $Y \mapsto \c(X, Y)$  and mapping each morphism $g: Y \to Z$ to $g_{\ast} : \c(X, Y) \to \c(X, Z)$ given by $f \mapsto gf$. We call $\c(X, -):=\y^X$ the set-valued functor \textit{corepresented} by $X$ in $\c$.
+Fix $X \in \ob \c$. Define the functor $\y^X : \c \to \mathbf{Set}$ by $Y \mapsto \c(X, Y)$  and mapping each morphism $g: Y \to Z$ to $g_{\ast} : \c(X, Y) \to \c(X, Z)$ given by $f \mapsto gf$. We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented} by $X$ in $\c$.
 \end{definition}
 
 \begin{definition}
-Fix $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$ by $Y \mapsto \c(Y, Z)$ and mapping each morphism $f: X \to Y$ in $\c$ to $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. We call $\c(-, Z):= \y^Z$ the set-valued functor \textit{represented} by $Z$ in $\c$.
+Fix $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$ by $Y \mapsto \c(Y, Z)$ and mapping each morphism $f: X \to Y$ in $\c$ to $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. We call $\c(-, Z)\coloneqq \y^Z$ the set-valued functor \textit{represented} by $Z$ in $\c$.
 \end{definition}
 
 \begin{definition}

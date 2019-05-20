@@ -166,10 +166,18 @@
 \begin{document}
 
 \begin{abstract}
-We give an introductory overview of homotopy type theory (HoTT). After covering some preliminary concepts from type theory, topology, and category theory, we work to state the \textit{univalence axiom}, a powerful property of HoTT. In doing this, we develop the notion both of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of type theory that have been particularly significant to HoTT. Finally, we discuss, briefly, how the constructive type theory known as cubical type theory reveals, in certain respects, the computational content of HoTT.
+We give an introductory overview of homotopy type theory (HoTT). After covering some preliminary concepts from type theory, topology, and category theory, we work to state the \textit{univalence axiom}, a strong feature of HoTT as formulated by Voevodsky. In doing this, we develop the notion both of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of type theory that have been particularly significant to HoTT. Finally, we discuss, briefly, how the constructive type theory known as cubical type theory reveals, in certain respects, the computational content of HoTT.
 \end{abstract}
 
-\begin{background}
+
+
+\tableofcontents
+\newpage
+
+
+\addcontentsline{toc}{section}{Background}
+\section*{Background}
+
 In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields Medalist who passed away in 2017. He wanted a logical system that could both handle certain higher-dimensional algebraic objects and facilitate formalization better than set theory could. In 2005 and 2006, the first homotopical models of intensional (dependent) type theory were constructed by Steve Awodey, Michael Warren, and Voevodsky. In 2012-13,  the IAS at Princeton held \textit{A Special Year on Univalent Foundations of Mathematics}, from which the standard reference \textit{Homotopy Type Theory: Univalent Foundations of Mathematics} was produced. This includes in its formulation of type theory Voevodsky's univalence axiom.
 
 One may think of HoTT as a topological (or, more generally, homotopical) version of what Robert Harper calls ``computational trinitarianism'':
@@ -179,11 +187,8 @@ One may think of HoTT as a topological (or, more generally, homotopical) version
 \text{Type Theory (Language)} \arrow[ru] \arrow[rr] &  & \text{Category Theory (Algebra)} \arrow[lu] \arrow[ll]
 \end{tikzcd}
 .\]
-\end{background}
 
-\begin{center}
-{\textbf{(Identity types)}} 
-\end{center}
+\section{Identity types}
 
 \begin{definition}
 Let $A$ be a type. The \textit{identity type $\id_A : A \to A \to \mathbf{Type}$} is given inductively  by the single constructor $$\refl : \prod_{a: A} \id_A(a,a).$$ We interpret $A$ to be a topological space and each inhabitant of $\id_A(x,y)$ to be a path from the point $x$ to the point $y$. The term $\refl_a$ is thought of as the constant path at the point $a$. Let $x \leadsto_A y$ denote the type $\id_A(x,y)$.
@@ -202,22 +207,22 @@ Given a dependent type $D: \prod {\{x,y:A\}}, \id_A(x,y) \to \mathbf{Type}$, sup
 \end{remark}
 
 \begin{lemma}
-Let $A: \mathbf{Type}$ and $x,y: A$. Then there is some function $\mathsf{sym}:(x\leadsto y) \to (y \leadsto x)$ such that $\mathsf{sym} (\refl_x) \equiv \refl_x$ for each $x:A$. Let $p^{-1} := \mathsf{sym}(p)$.
+Let $A: \mathbf{Type}$ and $x,y: A$. Then there is some function $\mathsf{sym}:(x\leadsto y) \to (y \leadsto x)$ such that $\mathsf{sym} (\refl_x) \equiv \refl_x$ for each $x:A$. Let $p^{-1} \coloneqq \mathsf{sym}(p)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod (x,y:A), (x\leadsto y) \to \mathbf{Type}$ by the judgment $$D(x,y,p) \equiv y \leadsto x .$$ By our construction of $\id$, we have the function term $$d:= \lambda x. \refl_x : \prod_{x:A}D(x,x,\refl_x).$$ By induction, we obtain an extension $J$ of $d$ such that $J(D, d, x, y, p) : y \leadsto x$ for every $p: x \leadsto y$. Letting $\mathsf{inv}(p) := J(D, d,x,y,p)$ completes the proof.
+Define $D: \prod (x,y:A), (x\leadsto y) \to \mathbf{Type}$ by the judgment $$D(x,y,p) \equiv y \leadsto x .$$ By our construction of $\id$, we have the function term $$d\coloneqq \lambda x. \refl_x : \prod_{x:A}D(x,x,\refl_x).$$ By induction, we obtain an extension $J$ of $d$ such that $J(D, d, x, y, p) : y \leadsto x$ for every $p: x \leadsto y$. Letting $\mathsf{inv}(p) \coloneqq J(D, d,x,y,p)$ completes the proof.
 \end{proof}
 
 \begin{lemma}
-Let $A: \mathbf{Type}$ and $x,y,z: A$. Then there is some function $\mathsf{trans} : (x\leadsto y) \to (y \leadsto z) \to (x \leadsto z)$ such that $\mathsf{trans}(q, \refl_z) \equiv q$ for any $q: y \leadsto z$. Let $p \ast q := \mathsf{trans}(p,q)$.
+Let $A: \mathbf{Type}$ and $x,y,z: A$. Then there is some function $\mathsf{trans} : (x\leadsto y) \to (y \leadsto z) \to (x \leadsto z)$ such that $\mathsf{trans}(q, \refl_z) \equiv q$ for any $q: y \leadsto z$. Let $p \ast q \coloneqq \mathsf{trans}(p,q)$.
 \end{lemma}
 \begin{proof}
-Define the dependent type $D$ over $\id_A$ by $$D(x, y, q) \equiv (y \leadsto z) \to (x \leadsto z).$$ We have the function term $$d :=\lambda z.\text{idmap}_{y\leadsto z} : \prod_{z: A} D(z, z, \refl_z)$$ where $\text{idmap}_{y\leadsto z} := \lambda q.q$. By induction, we get a suitable section $J$ of $D$ such that $J(D, d, p) : (y \leadsto z) \to (x\leadsto z)$ for each $p: x\leadsto y$.  Finally, let $\mathsf{trans}(p, -) := (D, d, p)(-)$.
+Define the dependent type $D$ over $\id_A$ by $$D(x, y, q) \equiv (y \leadsto z) \to (x \leadsto z).$$ We have the function term $$d \coloneqq\lambda z.\text{idmap}_{y\leadsto z} : \prod_{z: A} D(z, z, \refl_z)$$ where $\text{idmap}_{y\leadsto z} \coloneqq \lambda q.q$. By induction, we get a suitable section $J$ of $D$ such that $J(D, d, p) : (y \leadsto z) \to (x\leadsto z)$ for each $p: x\leadsto y$.  Finally, let $\mathsf{trans}(p, -) \coloneqq (D, d, p)(-)$.
 \end{proof}
 
 \begin{remark} Also, we can use the induction principle to show that $A$ is a groupoid whose structure is exactly similar to the groupoid structure of a topological space $X$, which we recall now.
 \begin{enumerate}
-\item Let $\gamma : I \to X$ in $X$ be a path in $X$. Then $\bar{\gamma}:= \gamma(1-t)$ is a path from $\gamma(1)$ to $\gamma(0)$, called the \textit{inverse of $\gamma$}. This fact corresponds to the function $\mathsf{sym}$. 
+\item Let $\gamma : I \to X$ in $X$ be a path in $X$. Then $\bar{\gamma}\coloneqq \gamma(1-t)$ is a path from $\gamma(1)$ to $\gamma(0)$, called the \textit{inverse of $\gamma$}. This fact corresponds to the function $\mathsf{sym}$. 
 \item Let $\phi, \psi: I \to X$ be paths in the topological space $X$ such that $\phi(1) = \psi(0)$. Then $\phi \ast \psi : I \to X$ defined by  $t\mapsto  \begin{cases} \phi(2t) & 0\leq t \leq \frac{1}{2} \\ \psi(2t-1) & \frac{1}{2} \leq t \leq 1 \end{cases}$ is a path from $\phi(0)$ to $\psi(1)$. This fact corresponds to the function $\mathsf{trans}$.
 \item Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ with $\ob(\Pi_1(X)) = X$ and $\Hom_{\Pi_1(X)}(x,y) = \{[\gamma]_{\simeq_p} \mid \gamma$ is a path from $x$ to $y\}$. The composition of morphisms is given by the operation $\ast$. 
 \end{enumerate}
@@ -227,17 +232,17 @@ It is straightforward but tedious to verify that $\Pi_1$ satisfies the definitio
 Our next result shows that if two terms of type $A$ are propositionally equal and $P$ is a property of inhabitants of $A$, then $P$ is true of one if and only if it is true of the other.
 
 \begin{lemma}{\textbf{(Transportion)}}
-Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$. Then there exists a function $\mathsf{transport}(p) : P(x) \to P(y)$ such that $\mathsf{transport}(\refl_x)(u) \equiv u$ for any $u: P(x)$. Let $p \cdot u := \mathsf{transport}(p)(u)$.
+Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$. Then there exists a function $\mathsf{transport}(p) : P(x) \to P(y)$ such that $\mathsf{transport}(\refl_x)(u) \equiv u$ for any $u: P(x)$. Let $p \cdot u \coloneqq \mathsf{transport}(p)(u)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $D(x,y,p) \equiv P(x) \to P(y)$. We have the function $d:= \lambda x.\text{idmap}_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
+Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $D(x,y,p) \equiv P(x) \to P(y)$. We have the function $d\coloneqq \lambda x.\text{idmap}_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
 \end{proof}
 
 \begin{lemma}
 Let $f: \prod_{x:A}P(x)$ and $p: x\leadsto_A y$. Then there is some path $f(p):p \cdot f(x) \leadsto_{P(y)} f(y)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d:= \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes the proof.
+Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d\coloneqq \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes the proof.
 \end{proof}
 
 \begin{corollary}
@@ -253,7 +258,7 @@ Simply recall that any non-dependent function is a special case of a dependent o
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$ and that $u: P(x)$. Then there is some path $$p_{\Sigma}(u) : (x, u) \leadsto_{\sum_{x:A}P(x)} (y, p\cdot u).$$
 \end{lemma}
 \begin{proof}
-Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $$D(x,y,p) \equiv \prod(u:P(x)), (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod (u:P(x)), (x,u) \leadsto (x,u)$. But then $$ d:=\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
+Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $$D(x,y,p) \equiv \prod(u:P(x)), (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod (u:P(x)), (x,u) \leadsto (x,u)$. But then $$ d\coloneqq\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
 \end{proof}
 
 As fiber bundles from topology possess the homotopy lifting property,  our last lemma encourages us to interpret the dependent sum $\sum_{x:A}P(x)$ as a fiber bundle over $A$.
@@ -316,7 +321,7 @@ Let $f: A \to B$ be a function. We say that $f$ is a \textit{(homotopy) isomorph
 \begin{definition}
 We say that a type $A$ is \textit{contractible} if 
 \[
-\mathsf{isContr}(A):= \sum_{a:A}\prod_{x:A}x \leadsto a
+\mathsf{isContr}(A)\coloneqq \sum_{a:A}\prod_{x:A}x \leadsto a
 \] is inhabited. In this case, we say that the first component of any inhabitant is the \textit{center of contraction}.
 \end{definition}
 \begin{note}
@@ -330,18 +335,16 @@ The one point type (denoted by $\ast$ or $\mathsf{unit}$) is contractible.
 This is easy to show by induction on $\mathsf{unit}$.
 \end{proof}
 
-\begin{center}
-{\textbf{(Type-theoretic equivalence)}} 
-\end{center}
+\section{Type-theoretic equivalence}
 
 We begin this section with a version of the set-theoretic inverse image.
 
 \begin{definition}
-Let $f: A \to B$ be a function and $b: B$. The \textit{homotopy fiber of $b$} is the space $$\hfiber(f,b) := \sum(a:A), f(a) \leadsto b .$$
+Let $f: A \to B$ be a function and $b: B$. The \textit{homotopy fiber of $b$} is the space $$\hfiber(f,b) \coloneqq \sum(a:A), f(a) \leadsto b .$$
 \end{definition}
 
 \begin{definition}
-A function $f: A \to B$ is an \textit{equivalence from $A$ to $B$} if $\hfiber(f,b)$ is contractible for each $b: B$, i.e., if some term has type $$\isequiv(f) := \prod(b: B),\mathsf{isContr}(\hfiber(f,b)).$$ In this case, we say that $A$ and $B$ are \textit{equivalent} and write the space of such equivalences as $A \simeq B$.
+A function $f: A \to B$ is an \textit{equivalence from $A$ to $B$} if $\hfiber(f,b)$ is contractible for each $b: B$, i.e., if some term has type $$\isequiv(f) \coloneqq \prod(b: B),\mathsf{isContr}(\hfiber(f,b)).$$ In this case, we say that $A$ and $B$ are \textit{equivalent} and write the space of such equivalences as $A \simeq B$.
 \end{definition}
 
 Our next notion corresponds to the overcategory.
@@ -433,9 +436,7 @@ WFE entails SFE.
 \end{theorem}
 
 
-\begin{center}
-{\textbf{(Univalence axiom)}} 
-\end{center}
+\section{Univalence axiom}
 
 \begin{lemma}
 For any types $A$ and $B$ and any path $p: A \leadsto_{\type} B$, there is some $v(A, B, p) : A \simeq B$.  
@@ -476,7 +477,7 @@ Suppose that $P: A \to \type$ and that there is some $K: \prod_{x:A}\mathsf{isCo
 Finally, by assuming the univalence axiom, we prove a fundamental result of category theory in our type theory.
 
 \begin{lemma}{\textbf{(Yoneda)}}
-Let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) := \prod(x:A), P(x) \to Q(x)$.
+Let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod(x:A), P(x) \to Q(x)$.
 \\ \\
 Assume that WFE holds. Then for any dependent type $P$ over $A$ and any $a: A$, there exists a natural equivalence $$ \alpha_{P,a} :\Hom(\mathsf{Y}(a), P)\simeq P(a) . $$ The term $ \alpha_{P,a} $ is natural in the sense that for any $p: a\leadsto a'$ and $\sigma : \Hom(P, P')$, the square
 \[
@@ -493,9 +494,7 @@ See Egbert Rijke's proof of this at the \href{https://homotopytypetheory.org/201
 By setting $\mathsf{Y}(b) = P$, we have that $\Hom(\mathsf{Y}(a), \mathsf{Y}(b)) \simeq a \leadsto b$.
 \end{corollary}
 
-\begin{center}
-{\textbf{(Models of type theory)}} 
-\end{center}
+\section{Models of type theory}
 
 This section is a brief and informal summary of certain research in HoTT.
 
@@ -514,7 +513,7 @@ A model of intensional type theory will have the following properties.
 .\] {[[I'm not sure how we get dependent sums.]]}
 \end{definition}
 
-\begin{remark} Any proof in our type theory produces a theorem in any model of it. It is known that the structure of Martin-Löf identity types is that of $\infty$-groupoids (i.e., $\infty$-categories in which any $k$-morphism is an equivalence).
+\begin{remark} Any proof in our type theory produces a theorem in any model of it. It is known that the structure of Martin-L\"of identity types is that of $\infty$-groupoids (i.e., $\infty$-categories in which any $k$-morphism is an equivalence).
 
 HoTT without univalence may be modeled in a certain extension of $\mathsf{ZFC}$. In 2006, Voevodsky showed that the category of Kan complexes (i.e., simplicial sets with Kan fillers) is a model of HoTT.  In it, a type family corresponds to a Kan fibration.  His construction, however, is non-constructive to some degree. Thus, it fails as a genuinely computational interpretation of HoTT.
 \end{remark}
@@ -522,7 +521,7 @@ HoTT without univalence may be modeled in a certain extension of $\mathsf{ZFC}$.
 \begin{remark}
 But Coquand has designed a so-called cubical model of HoTT, in which the univalence axiom is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model is a constructive account of the univalence axiom.  
 
-Anders Mörtberg has designed an experimental implementation of cubical type theory, called Cubicaltt, which is on his GitHub page.
+Anders M\"ortberg has designed an experimental implementation of cubical type theory, called Cubicaltt, which is on his GitHub page.
 \end{remark}
 
 \begin{further}

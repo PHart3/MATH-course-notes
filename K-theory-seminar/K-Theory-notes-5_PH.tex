@@ -148,7 +148,13 @@
 \begin{document}
 
 \begin{abstract}
-We begin higher Waldhausen $K$-theory. The main sources for this talk are Chapter 8 of Rognes, Chapter IV.8 of Weibel, and nLab. For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985), 318-419. 
+We begin higher Waldhausen $K$-theory. The main sources for this talk are the following.
+\begin{itemize}
+\item \textit{nLab}.
+\item Charles Weibel's \textit{The} K\textit{-book: an introduction to algebraic} K\textit{-theory}.  Chapter IV.8.
+\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 8.
+\end{itemize}
+For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985), 318-419. 
 \end{abstract}
 
 \begin{remark}
@@ -306,7 +312,7 @@ First notice that the composite of two cofibrations $g \circ f : X \to Y \to Z$ 
 \]
 It's clear that any isomorphism or initial morphism in $S_q \c$ is a cofibration.
 \\ \\
-To see that (W2) is satisfied, let $f: X \to Y$ and $g : X \to Z$ be morphisms in $S_q \c$. It's easy to verify that each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a cofibration. Thus, each pushout $W_{i, j} := Y_{i,j} \cup_{X_{i,j}} Z_{i, j}$ exists.
+To see that (W2) is satisfied, let $f: X \to Y$ and $g : X \to Z$ be morphisms in $S_q \c$. It's easy to verify that each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a cofibration. Thus, each pushout $W_{i, j} \coloneqq Y_{i,j} \cup_{X_{i,j}} Z_{i, j}$ exists.
 These form a functor $W: \Ar[q] \to \c$. If $i < j < k$, then we have $W_{i,j} \rightarrowtail W_{i, k} \twoheadrightarrow W_{j,k}$ because the left morphism factors as the composite of two cofibrations
 \[
 \begin{tikzcd}
@@ -428,7 +434,7 @@ By Proposition 4, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which
 \end{proof}
 
 \begin{exmp}
-Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained from $X$ by attaching at least one cell such that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. If $\mathcal{R}_f(X)$ denotes the subcategory of those $Y$ obtained by attaching finitely many cells, then we write $A(X):= K(\mathcal{R}_f(X))$.
+Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained from $X$ by attaching at least one cell such that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. If $\mathcal{R}_f(X)$ denotes the subcategory of those $Y$ obtained by attaching finitely many cells, then we write $A(X)\coloneqq K(\mathcal{R}_f(X))$.
 \begin{lemma}
 $A_0(X)\cong \Z$.
 \end{lemma}

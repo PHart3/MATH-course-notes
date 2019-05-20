@@ -161,12 +161,13 @@
 \begin{document}
 
 \begin{abstract}
-This covers some preliminary concepts from type theory, category theory, and topology. Each section is independent of the other two. Only the stuff about type theory is essential to my talk on HoTT. The section on category theory is included for a brief discussion at the end of my talk about models of HoTT.  The section on topology is the least important but is included so that you can interpret some major concepts from HoTT in a geometric way. The core of my talk should be comprehensible without the last two sections, but you may get a bit more from it if you read them (perhaps ignoring any proofs). (There are probably typos.)
+This covers some preliminary concepts from type theory, category theory, and topology. Each section is independent of the other two. Only the stuff about type theory is essential to my talk on HoTT. The section on topology will be useful for understanding the basic geometric interpretation of intensional type theory.
 \end{abstract}
 
-\begin{center}
-{\textbf{(Elements of type theory)}} 
-\end{center}
+\tableofcontents
+\newpage
+
+\section{Elements of type theory}
 
 We are given a language $\mathcal{L}$ consisting of certain terms, say, a variant of the untyped lambda calculus. We can enrich $\mathcal{L}$ with additional primitive objects called \textit{types}. If $a$ is a term and $A$ a type, then we write $a: A$ to express the \textit{judgment} (distinct from a proposition) that $a$ \textit{inhabits} or \textit{has type} $A$. We declare that types themselves inhabit types known as \textit{universes}, which are arranged in a cumulative hierarchy. $$\mathbf{Type}_0 :\mathbf{Type}_1 : \mathbf{Type}_2 : \cdots . $$ If instead we declared a single universe $\mathbf{Type}$ that every type inhabits, then we could encode Russel's paradox into our type theory. Our hierarchy avoids such a problem by tracking which level a newly formed type inhabits. For convenience, however, we usually avoid writing the level explicitly and use the term $\mathbf{Type}$ instead.
 \begin{exmp} The following (among others) will be base types of our language.
@@ -185,7 +186,7 @@ Moving now to dependent type theory, this section will assume familiarity with n
 \begin{enumerate}
 \item \underline{${\prod}$-Introduction:} If $ b: B(x)$ for any $x: A$, then $\lambda x. b : \prod_{x : A} B(x)$.
 \item \underline{${\prod}$-Elimination:} If $f:  \prod_{x : A} B(x)$ and $a: A$, then $f(a) : B(a)$.
-\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $(\lambda x.b)(a) \equiv b[x:=a]: B(a)$.
+\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $(\lambda x.b)(a) \equiv b[x\coloneqq a]: B(a)$.
 \item \underline{${\prod}$-Uniqueness:} If $f: \prod_{x:A} B(x)$, then $f \equiv \lambda x. f(x) : \prod_{x:A} B(x)$.
 \end{enumerate}
 Note that the ordinary function type $A \to B$ is a special case of the dependent product type. Naively, a dependent product type is comparable to a set-theoretic choice function. 
@@ -225,9 +226,82 @@ P \implies Q \arrow[r] & P \to Q \arrow[l] \\
 .\]
 \end{remark}
 
-\begin{center}
-{\textbf{(Elements of category theory)}} 
-\end{center}
+
+\section{Elements of algebraic topology}
+
+This sections assumes familiarly with elementary point-set topology.
+
+\begin{definition}
+Let $X$ and $Y$ be topological spaces and $I\coloneqq [0,1]$. Let $f,g: X \to Y$ be continuous maps. A \textit{homotopy from $f$ to $g$} is a continuous map $H: X \times I \to Y$ such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$ for each $x\in X$. We say that $f$ is \textit{homotopic to $g$}, written as $f\simeq g$.
+\end{definition}
+
+\begin{lemma}
+Homotopy equivalence of maps is an equivalence relation.
+\end{lemma}
+\begin{proof}
+Reflexivity is obvious.  Let $f, g, h : X \to Y$ be continuous. If $A: f \simeq g$ is a homotopy, then $A' : X \times I \to Y$ given by $(x,t) \mapsto A(x, 1-t)$ defines a homotopy $g\simeq f$, proving symmetry. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$ are homotopies. Define $H(x,t) = \begin{cases}
+F(x, 2t) & 0 \leq t \leq \frac{1}{2}
+\\ G(x, 2t-1) & \frac{1}{2} \leq t \leq 1
+\end{cases}.$ This is continuous by the gluing lemma. Thus, $H : f \simeq h$, as required. 
+\end{proof}
+
+\begin{definition}
+Let $\gamma, \hat{\gamma}: I \to X$ be continuous (i.e., paths in $X$) such that $\gamma(0) = \hat{\gamma}(0)$ and $\gamma(1) = \hat{\gamma}(1)$.  A \textit{path homotopy from $\gamma$ to $\hat{\gamma}$} is a homotopy $H: I \times I \to X$ such that $H(0,s) = \gamma(0)$ and $H(1,s) = \gamma(1)$ for each $s\in I$.
+\end{definition}
+
+\begin{note}
+$S^n \coloneqq \{x\in \R^{n+1} : |x| =1\}$, and $D^n \{x\in \R^n : |x|\leq 1\}$.
+\end{note}
+
+\begin{exmp}
+Let $X\coloneqq D^2 \setminus \{0\}$. Define $f: X \to X$ by $f(r, \theta) = (r, \theta)$ and $g: X \to X$ by $g(r, \theta) = (1, \theta)$. Then the map $F: X \times I \to X$ given by  $F((r, \theta), t)=  (t+ (1-t)r, \theta)$ is a homotopy between $f$ and $g$ relative to $S^1\subset X$.
+\end{exmp}
+
+\begin{definition}
+A \textit{deformation retraction of $X$ onto a subspace $A\subset X$} is a continuous map $F: X \times I \to X$ such that $F(x, 0) = x$ for each $x\in X$, $F(a, 1) = a$ for each $a\in A$, and $F(x, 1) \in A$ for each $x\in X$. Note that this is a homotopy. 
+\end{definition}
+
+\begin{exmp}  $\R^{n+1}$ deformation retracts onto $S^n$. 
+\end{exmp}
+\begin{proof}
+Define $f: \R^n \setminus \{0\} \to S^{n-1}$ by $f(x) = \frac{x}{|x|}$. This is clearly a retraction. Define $H : (\R^2 \setminus \{0\}) \times I \to \R^2 \setminus \{0\}$ by $(x, t) \mapsto (1-t)x +tf$. This a deformation retraction of $ \R^n \setminus \{0\}$ onto $S^{n-1}$, as desired. 
+\end{proof}
+
+\begin{definition}
+A space $X$ is called \textit{contractible} if it deformation retracts onto $\{p\}$ for some $p\in X$.
+\end{definition}
+
+\begin{exmp}
+$\R^n$ is contractible.
+\end{exmp}
+
+\begin{definition}
+Two spaces $X$ and $Y$ are \textit{homotopy equivalent $(\simeq)$} if there are continuous maps $f: X\to Y$ and $g: Y \to X$ such that $f\circ g \simeq \id_Y$ and $g\circ f \simeq \id_X$. In this case, we call $f$ a \textit{homotopy equivalence}.
+\end{definition}
+
+\begin{lemma}
+Homotopy equivalence of spaces is an equivalence relation.
+\end{lemma}
+\begin{proof}
+Let $\alpha : X \to Y$ and $\beta: Y \to Z$ denote the given homotopy equivalences. 
+\begin{claim}
+Let $f, f': X \to Y$ and $g,g' : Y \to Z$ be continuous. Suppose that $f\simeq f'$ and $g \simeq g'$. Then $gf \simeq g'f'$.
+\end{claim}
+\begin{proof}
+There exist homotopies $F: f \simeq f'$ and $G: g \simeq g'$. Then $H: X \times I \to Z$ given by $(x,t) \mapsto G((F(x, t)), t)$ is a homotopy $gf \simeq g'f'$.
+\end{proof}
+Both $\alpha$ and $\beta$ have homotopy inverses, say, $\alpha': Y \to X$ and $\beta': Z \to Y$, respectively.  We want to show that $\beta \alpha$ is a homotopy equivalence with  $\alpha ' \beta'$ a homotopy inverse. We apply Claim 1 and the fact that $\simeq$ is reflexive for maps to get $$(\beta \alpha)(\alpha' \beta') = \beta (\alpha \alpha ') \beta ' \simeq \beta \id_Y  \beta ' = \beta \beta' \simeq \id_Z  .$$ Similarly, we get $(\alpha' \beta')(\beta \alpha) \simeq \id_X$. This shows that homotopy equivalence is transitive. As it is clearly reflexive and symmetric, it is in fact an equivalence relation. 
+\end{proof}
+
+\begin{lemma}
+If $\tilde{f} \simeq f$ and $f: X \to Y$ is a homotopy equivalence, then $\tilde{f} : X \to Y$ is also a homotopy equivalence.
+\end{lemma}
+\begin{proof}
+Suppose that $f: X \to Y$ is a homotopy equivalence with $g: Y \to X$ a homotopy inverse. Also, suppose that $H: \tilde{f} \simeq f$ is a homotopy. We want to show that $\tilde{f}$ is a homotopy equivalence with $g$ a homotopy inverse. 
+\\ \\ Define $H' : Y \times I \to Y$ by $(x,t) \mapsto H(g(x), (1-t))$. This is a homotopy $\tilde{f} g \simeq f g$. By transitivity of $\simeq$, we see that $\tilde{f} g  \simeq \id_Y$. Moreover, the map $H'' : X \times I \to X$ given by $(x,t) \mapsto g(H(x,t))$ defines a homotopy $g \tilde{f} \simeq gf$. Hence $g\tilde{f} \simeq gf \simeq \id_X$. This completes the proof.
+\end{proof}
+
+\section{Elements of category theory}
 
 This section assumes a familiarity with the basic definitions of category theory.
 
@@ -283,7 +357,7 @@ because $\alpha$ is a natural transformation. By evaluating this at the morphism
 \end{proof}
 
 \begin{corollary}
-Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi:= h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map $$h_x(y) \to F(y)$$ $$ f \mapsto F(f)(\xi).$$ This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
+Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi\coloneqq h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map $$h_x(y) \to F(y)$$ $$ f \mapsto F(f)(\xi).$$ This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
 \\ \\ By Yoneda, $F$ is representable by $x$ if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
 \end{corollary}
 
@@ -355,80 +429,5 @@ A \textit{weak factorization system} on a category $\c$ is a pair $(\mathscr{L},
 \end{enumerate}
 \end{definition}
 
-\begin{center}
-{\textbf{(Elements of algebraic topology)}} 
-\end{center}
-
-This sections assumes familiarly with elementary point-set topology.
-
-\begin{definition}
-Let $X$ and $Y$ be topological spaces and $I:= [0,1]$. Let $f,g: X \to Y$ be continuous maps. A \textit{homotopy from $f$ to $g$} is a continuous map $H: X \times I \to Y$ such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$ for each $x\in X$. We say that $f$ is \textit{homotopic to $g$}, written as $f\simeq g$.
-\end{definition}
-
-\begin{lemma}
-Homotopy equivalence of maps is an equivalence relation.
-\end{lemma}
-\begin{proof}
-Reflexivity is obvious.  Let $f, g, h : X \to Y$ be continuous. If $A: f \simeq g$ is a homotopy, then $A' : X \times I \to Y$ given by $(x,t) \mapsto A(x, 1-t)$ defines a homotopy $g\simeq f$, proving symmetry. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$ are homotopies. Define $H(x,t) = \begin{cases}
-F(x, 2t) & 0 \leq t \leq \frac{1}{2}
-\\ G(x, 2t-1) & \frac{1}{2} \leq t \leq 1
-\end{cases}.$ This is continuous by the gluing lemma. Thus, $H : f \simeq h$, as required. 
-\end{proof}
-
-\begin{definition}
-Let $\gamma, \hat{\gamma}: I \to X$ be continuous (i.e., paths in $X$) such that $\gamma(0) = \hat{\gamma}(0)$ and $\gamma(1) = \hat{\gamma}(1)$.  A \textit{path homotopy from $\gamma$ to $\hat{\gamma}$} is a homotopy $H: I \times I \to X$ such that $H(0,s) = \gamma(0)$ and $H(1,s) = \gamma(1)$ for each $s\in I$.
-\end{definition}
-
-\begin{note}
-$S^n := \{x\in \R^{n+1} : |x| =1\}$, and $D^n \{x\in \R^n : |x|\leq 1\}$.
-\end{note}
-
-\begin{exmp}
-Let $X:= D^2 \setminus \{0\}$. Define $f: X \to X$ by $f(r, \theta) = (r, \theta)$ and $g: X \to X$ by $g(r, \theta) = (1, \theta)$. Then the map $F: X \times I \to X$ given by  $F((r, \theta), t)=  (t+ (1-t)r, \theta)$ is a homotopy between $f$ and $g$ relative to $S^1\subset X$.
-\end{exmp}
-
-\begin{definition}
-A \textit{deformation retraction of $X$ onto a subspace $A\subset X$} is a continuous map $F: X \times I \to X$ such that $F(x, 0) = x$ for each $x\in X$, $F(a, 1) = a$ for each $a\in A$, and $F(x, 1) \in A$ for each $x\in X$. Note that this is a homotopy. 
-\end{definition}
-
-\begin{exmp}  $\R^{n+1}$ deformation retracts onto $S^n$. 
-\end{exmp}
-\begin{proof}
-Define $f: \R^n \setminus \{0\} \to S^{n-1}$ by $f(x) = \frac{x}{|x|}$. This is clearly a retraction. Define $H : (\R^2 \setminus \{0\}) \times I \to \R^2 \setminus \{0\}$ by $(x, t) \mapsto (1-t)x +tf$. This a deformation retraction of $ \R^n \setminus \{0\}$ onto $S^{n-1}$, as desired. 
-\end{proof}
-
-\begin{definition}
-A space $X$ is called \textit{contractible} if it deformation retracts onto $\{p\}$ for some $p\in X$.
-\end{definition}
-
-\begin{exmp}
-$\R^n$ is contractible.
-\end{exmp}
-
-\begin{definition}
-Two spaces $X$ and $Y$ are \textit{homotopy equivalent $(\simeq)$} if there are continuous maps $f: X\to Y$ and $g: Y \to X$ such that $f\circ g \simeq \id_Y$ and $g\circ f \simeq \id_X$. In this case, we call $f$ a \textit{homotopy equivalence}.
-\end{definition}
-
-\begin{lemma}
-Homotopy equivalence of spaces is an equivalence relation.
-\end{lemma}
-\begin{proof}
-Let $\alpha : X \to Y$ and $\beta: Y \to Z$ denote the given homotopy equivalences. 
-\begin{claim}
-Let $f, f': X \to Y$ and $g,g' : Y \to Z$ be continuous. Suppose that $f\simeq f'$ and $g \simeq g'$. Then $gf \simeq g'f'$.
-\end{claim}
-\begin{proof}
-There exist homotopies $F: f \simeq f'$ and $G: g \simeq g'$. Then $H: X \times I \to Z$ given by $(x,t) \mapsto G((F(x, t)), t)$ is a homotopy $gf \simeq g'f'$.
-\end{proof}
-Both $\alpha$ and $\beta$ have homotopy inverses, say, $\alpha': Y \to X$ and $\beta': Z \to Y$, respectively.  We want to show that $\beta \alpha$ is a homotopy equivalence with  $\alpha ' \beta'$ a homotopy inverse. We apply Claim 1 and the fact that $\simeq$ is reflexive for maps to get $$(\beta \alpha)(\alpha' \beta') = \beta (\alpha \alpha ') \beta ' \simeq \beta \id_Y  \beta ' = \beta \beta' \simeq \id_Z  .$$ Similarly, we get $(\alpha' \beta')(\beta \alpha) \simeq \id_X$. This shows that homotopy equivalence is transitive. As it is clearly reflexive and symmetric, it is in fact an equivalence relation. 
-\end{proof}
-
-\begin{lemma}
-If $\tilde{f} \simeq f$ and $f: X \to Y$ is a homotopy equivalence, then $\tilde{f} : X \to Y$ is also a homotopy equivalence.
-\end{lemma}
-\begin{proof}
-Suppose that $f: X \to Y$ is a homotopy equivalence with $g: Y \to X$ a homotopy inverse. Also, suppose that $H: \tilde{f} \simeq f$ is a homotopy. We want to show that $\tilde{f}$ is a homotopy equivalence with $g$ a homotopy inverse. 
-\\ \\ Define $H' : Y \times I \to Y$ by $(x,t) \mapsto H(g(x), (1-t))$. This is a homotopy $\tilde{f} g \simeq f g$. By transitivity of $\simeq$, we see that $\tilde{f} g  \simeq \id_Y$. Moreover, the map $H'' : X \times I \to X$ given by $(x,t) \mapsto g(H(x,t))$ defines a homotopy $g \tilde{f} \simeq gf$. Hence $g\tilde{f} \simeq gf \simeq \id_X$. This completes the proof.
-\end{proof}
 
 \end{document}

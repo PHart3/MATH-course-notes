@@ -142,16 +142,21 @@
 \begin{document}
 
 \begin{abstract}
-We begin low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2(-)$, in various settings. The main sources for this talk are nLab, Chapters I and II of \textit{The} K\textit{-book}, and Chapter 1 of Friedlander. 
+We begin low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2(-)$, in various settings. The main sources for this talk are the following.
+\begin{itemize}
+\item \textit{nLab}.
+\item Charles Weibel's \textit{The} K\textit{-book: an introduction to algebraic} K\textit{-theory}. Chapters I and II.
+\item Eric M. Friedlander's \textit{An Introduction to} K\textit{-theory}, Chapter 1.
+\end{itemize}
 \end{abstract}
 
 \begin{definition}
 Recall that the forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab$, called the \textit{group completion} functor. For any commutative monoid $(C, +)$, we call the abelian group $K(C)$ the \textit{Grothendieck group of $G$}, which is constructed as follows.
-\\ \\ Consider $S:= \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$(a_1 + b_2 +k = b_1 + a_2 +k)$$ for some $k\in C$. Note that $\sim = \sim'$ where $(a_1, b_1) \sim' (a_2, b_2)$ if $$(a_1 + k_1, b_1 + k_1) = (a_2 +k_2, b_2 + k_2)$$ for some $(k_1, k_2) \in C\times C$. Then set $K(C) = (S, +)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Notice that $\sim'$ makes it clear that $[a_1, b_1]^{-1} = [b_1, a_1]$.
+\\ \\ Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$(a_1 + b_2 +k = b_1 + a_2 +k)$$ for some $k\in C$. Note that $\sim = \sim'$ where $(a_1, b_1) \sim' (a_2, b_2)$ if $$(a_1 + k_1, b_1 + k_1) = (a_2 +k_2, b_2 + k_2)$$ for some $(k_1, k_2) \in C\times C$. Then set $K(C) = (S, +)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Notice that $\sim'$ makes it clear that $[a_1, b_1]^{-1} = [b_1, a_1]$.
 \end{definition}
 
 \begin{prop}
-The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto [x]:=[x, 0]$ is injective iff $C$ is a cancellation monoid.
+The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto [x]\coloneqq[x, 0]$ is injective iff $C$ is a cancellation monoid.
 \end{prop}
 
 \begin{lemma}{(Universal property of the Grothendieck group)} $ $
@@ -202,7 +207,7 @@ $\P(R_1 \times R_2) \cong \P(R_1) \times \P(R_2)$. Therefore, $K_0$ can be compu
 \begin{remark}
 $K_0(-)$ defines a functor from $\mathbf{Ring}$ to $\Ab$. Let $f: R \to S$ be a ring homomorphism and $P$ be a finitely generated projective $R$-module. The assignment of $f$ under $K_0(-)$ goes as follows.
 \begin{enumerate}
-\item Construct $S\otimes_R P$, the base extension of $P$. This is the \textit{unique} $S$-module $(s', s \otimes p) \mapsto  s's \times p$ compatible with the $R$-module structure on $S$ induced by $f$. This is also an $R$-module with $f(r) \cdot t := r\cdot t$ for $t\in S \otimes_R P$. We know that $P \oplus Q$ is free for some $R$-module $Q$. Since $S\otimes_R (P \oplus Q) \cong_S (S \otimes_R P)\oplus (S \otimes_R Q)$ and $P\oplus Q$ is free over $S$ via $f$, it follows that  $S \otimes_R P$ is a finitely generated projective $S$-module.
+\item Construct $S\otimes_R P$, the base extension of $P$. This is the \textit{unique} $S$-module $(s', s \otimes p) \mapsto  s's \times p$ compatible with the $R$-module structure on $S$ induced by $f$. This is also an $R$-module with $f(r) \cdot t \coloneqq r\cdot t$ for $t\in S \otimes_R P$. We know that $P \oplus Q$ is free for some $R$-module $Q$. Since $S\otimes_R (P \oplus Q) \cong_S (S \otimes_R P)\oplus (S \otimes_R Q)$ and $P\oplus Q$ is free over $S$ via $f$, it follows that  $S \otimes_R P$ is a finitely generated projective $S$-module.
 \item We've just defined a monoid homomorphism $\tilde{f} : \P(R) \to \P(S)$.
 \item Apply the universal property of $K$ to find the filling 
 \[
@@ -250,7 +255,7 @@ The map $f: \N \to \P(R)$ defined by $n \mapsto R^n$ induces a homomorphism $\ph
 
 
 \begin{exmp}
-Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by Lemma 4. Letting $K:= \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups, so that $K_0(R) \cong \Z \oplus K$.
+Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by Lemma 4. Letting $K\coloneqq \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups, so that $K_0(R) \cong \Z \oplus K$.
 \[
 \begin{tikzcd}
 1 \arrow[r] & K \arrow[r] & K_0(R) \arrow[r] & \mathbb Z \arrow[r] & 1
@@ -301,7 +306,7 @@ An $R$-module $M$ is a \textit{componentwise free module} if we have $R = \prod_
 Let $R$ be commutative. The monoid $L$ of finitely generated componentwise free $R$-modules has is isomorphic to $[\spec(R), \N]$.
 \end{lemma}
 \begin{proof}
-Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that $\im f$ is finite, say $\{n_1, \ldots, n_c\}$. It's also possible to write $R= R_1 \times \cdots \times R_c$. Then $R^f := R_1^{n_1} \times \cdots \times R_c^{n_c}$ is a finitely generated componentwise free $R$-module. Moreover, $f \mapsto R^f$ has inverse $\rk$ restricted to componentwise free modules.
+Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that $\im f$ is finite, say $\{n_1, \ldots, n_c\}$. It's also possible to write $R= R_1 \times \cdots \times R_c$. Then $R^f \coloneqq R_1^{n_1} \times \cdots \times R_c^{n_c}$ is a finitely generated componentwise free $R$-module. Moreover, $f \mapsto R^f$ has inverse $\rk$ restricted to componentwise free modules.
 \end{proof}
 
 
@@ -407,7 +412,7 @@ A vector bundle $p: E \to X$ is a \textit{componentwise trivial bundle} if we ca
 The submonoid of componentwise trivial bundles over $X$ is isomorphic to $[X, \N]$.
 \end{lemma}
 \begin{proof}
-Send a given map $f: X \to \N$ to $T^f := \coprod_{i \in \N} (f^{-1}(i) \times \F)$. Conversely, if $E$ be a componentwise trivial bundle, then $E \cong T^{\widehat{\dim}(E)}$.
+Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N} (f^{-1}(i) \times \F)$. Conversely, if $E$ be a componentwise trivial bundle, then $E \cong T^{\widehat{\dim}(E)}$.
 \end{proof}
 
 \begin{remark}
@@ -438,8 +443,8 @@ Our results thus far can be extended to symmetric monodical categories because t
 \begin{exmp} The following are examples of symmetric monoidal category	.
 \begin{enumerate}
 \item $k$-vector spaces with $\otimes_k$.
-\item Any category with finite coproducts where $s \square t:= s \amalg t$.
-\item The category of pointed topological spaces where $s \square t := s \wedge t $ and $e:= S^0$.
+\item Any category with finite coproducts where $s \square t\coloneqq s \amalg t$.
+\item The category of pointed topological spaces where $s \square t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
 \end{enumerate} 
 \end{exmp}
 

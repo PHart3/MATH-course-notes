@@ -155,24 +155,27 @@
 These notes are based on Tony Pantev's ``Algebra I'' lectures given at UPenn. Any mistake in what follows is my own.
 \end{abstract}
 
-\begin{center}
-{\textbf{(Lecture 1)}} 
-\end{center}
+\tableofcontents
+\newpage
+
+\section{Group actions}
+
+\subsection{Lecture 1}
 
 \begin{definition} 
-A \textit{(left) action of a group $G$ on a set $S$} is a homomorphism $\theta : G \to \aut(S)$. Equivalently, a group action is a function $\alpha : G \times S \to S$ such that 
+A \textit{(left) action of a group $G$ on a set $S$} is a homomorphism $\theta : G \to \aut(S)$. Equivalently, a group action is a function $a : G \times S \to S$ such that 
 \begin{itemize}
-\item $\alpha(g, \alpha(g', x)) = \alpha(gg', x)$ and
-\item $\alpha(e, x) = x$
+\item $a(g, a(g', x)) = a(gg', x)$ and
+\item $a(e, x) = x$
 \end{itemize}
 for any $g,g' \in G$ and $x\in S$. 
 \end{definition}
 
 \begin{definition}
-A \textit{right group action} is a function $\beta: S \times G \to S$ such that 
+A \textit{right group action} is a function $b: S \times G \to S$ such that 
 \begin{itemize}
-\item $\beta(\beta(x, g), g') = \beta(x, gg')$ and
-\item $\beta(x, e) = x$
+\item $b(b(x, g), g') = b(x, gg')$ and
+\item $b(x, e) = x$
 \end{itemize}
 for any $x\in S$ and $g,g' \in G$ . 
 \end{definition}
@@ -269,9 +272,7 @@ G \arrow{r}{\theta} \arrow[swap]{dr} & \aut(S) \arrow{d} \\%
 
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 2)}}
-\end{center}
+\subsection{Lecture 2}
 
 
 \begin{definition}  $ $
@@ -316,9 +317,7 @@ G \arrow{r} \arrow[swap]{dr} & \aut(\Q[\tilde{\beta}]) \\%
 Now, consider $f(x) = (x^2 -3)(x^2 -5)$, which has roots $\{\pm \sqrt{3}, \pm \sqrt{5}\}$. Then $\gal(f) \subset S_4$. Note that $g\cdot q= q$ for each $g \in \gal(f)$ and $q\in \Q$. If $\sigma(1) =3$, then $g(\sigma)(\beta_1^2) = g(\sigma)  (3) = \beta_3^2 = 5$, which is impossible. By similar reasoning, it follows that $\gal(f) = \{(1), (1 2), (3 4), (1 2)(3 4)\} \cong \Z_2 \times \Z_2$.
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 3)}}
-\end{center}
+\subsection{Lecture 3}
 
 \begin{notation}
 Let $\{\text{Orbits}\} \coloneqq  G \diagdown S$.
@@ -414,9 +413,7 @@ If $G$ is finite, then $$|G| = |Z(G)| + \sum_{{\substack{C \text{ conj. class} \
 \end{enumerate}
 \end{exercise}
 
-\begin{center}
-{\textbf{(Lecture 4)}} 
-\end{center}
+\subsection{Lecture 4}
 
 \begin{corollary} If $G$ is finite and $H\leq G$ with $[G:H] =p$ where $p$ is the least prime dividing $|G|$, then $H\unlhd G$.
 \end{corollary}
@@ -443,6 +440,8 @@ Let $p$ be a prime. A finite group $G$ is called a \textit{$p$-group} if $|G| = 
 \item The class equation implies that $|Z(G)| \equiv 0 \mod p$. Since $|Z(G)|>0$, it follows that $|Z(G)|\geq p$.
 \end{enumerate}
 \end{proof}
+
+\section{Solvable and nilpotent groups}
 
 \begin{definition} Let $G$ be any group.
 \begin{enumerate}
@@ -505,9 +504,7 @@ Every $p$-group $G$ is nilpotent.
 Set $G_0 = \{e\}$, $G_1 = Z(G)$, and, for $i>1$, $G_{i}$ such that $G \geq G_i \geq G_{i-1}$ and $\faktor{G_i}{G_{i-1}} = Z(\faktor{G}{G_{i-1}})$. Since any quotient of $G$ is a $p$-group, it has nontrivial center unless it equals $G$.  Thus, the $G_i$ form a strictly increasing sequence bounded above by $G$. Since $G$ is finite, $G = G_k$ for some $k$. Note that each $G_i$ is the pullback of a normal subgroup under the natural projection and thus itself normal in $G$, completing the proof.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 5)}}
-\end{center}
+\subsection{Lecture 5}
 
 \begin{exmp}  $ $
 \begin{enumerate}
@@ -623,9 +620,7 @@ Recall that $A_4 \unrhd \{(1), (1\;2), (3\; 4), (1\;2)(3\;4)\}\cong C_2 \times C
 Next, note that $\Delta A_4 \subset \Delta A_n$ for $n\geq 5$. Thus $(1\; 2)(3\; 4)\in \Delta A_n=\Delta^{(2)}S_n\subset S_n$ for $n\geq 4$. This implies that $\Delta A_n \unlhd S_n$ so that $\Delta A_n$ contains all conjugates of $(1\; 2)(3\; 4)$. But since two permutations are conjugate exactly when they have the same cycle type, it follows for $n\geq 5$ that  $\Delta A_n = A_n$. (Hence $A_n$ is not solvable when $n\geq 5$.)
 \end{proof}
 
-\begin{center}
- {\textbf{(Lecture 6)}}
-\end{center}
+\subsection{Lecture 6}
 
 \begin{remark}
 In Galois theory, one finds that a polynomial $f(x)$ over $\Q$ is solvable in radicals if and only if the group $\gal(f)$ is solvable. 
@@ -665,6 +660,8 @@ This follows from the fact that $G$ has nontrivial center as a result of the cla
 Show that $G$ from our last example is isomorphic to either $C_p \times C_p$ or $C_{p^2}$.
 \end{exercise}
 
+\section{Sylow theorems}
+
 \begin{definition}
 Let $G$ be a group with $|G|= p^km$ for $p$ prime, $k\geq 1$, $m\geq 1$, and $(p,m) =1$. Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $|H| = p^k$.
 \end{definition}
@@ -688,9 +685,7 @@ We have another proof of Weak Sylow-I. Let $|G| = p^{\beta}m$ with $(p, m) =1$. 
 Use the fact that every $p$-group is nilpotent to prove that a finite group contains a $p$-subgroup of every possible order.
 \end{exercise}
 
-\begin{center}
-{\textbf{(Lecture 7)}} 
-\end{center}
+\subsection{Lecture 7}
 
 \begin{theorem}{\textbf{(Sylow-II)}} Let $G$ have $|G|= p^{\beta}m$ as before. Then the following hold.
 \begin{enumerate}
@@ -755,9 +750,7 @@ If $|G| = pq$ for primes $p<q$ such that $q \not \equiv 1 \mod p$, then $G\cong 
 Every group of order $45$ is abelian.
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 8)}}
-\end{center}
+\subsection{Lecture 8}
 
 \begin{theorem}{\textbf{(Fundamental theorem of finite abelian groups)}}
 If $G$ is a finite abelian group, then $$ G \cong \Z/u_1 \times \cdots \times \Z/u_n$$ such that each $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$.
@@ -779,9 +772,9 @@ One can show that by elementary row and column operations, $C$ is equivalent to 
 We may adapt this proof to show that if $A$ is a finitely generated abelian group, then $$A \cong \Z^r \times \Z/u_1 \times \cdots \times \Z/u_n$$ for some integer $r\geq 0$. 
 \end{remark}
 
-\begin{center}
- {\textbf{(Lecture 9)}}
-\end{center}
+\section{Composition series}
+
+\subsection{Lecture 9}
 
 \begin{definition}
 A group $G$ is \textit{simple} if it has no nontrivial proper normal subgroup.
@@ -872,9 +865,7 @@ If  \[
 is a split exact sequence, then we say $G$ is essentially a product of $H$ and $K$ by way of the inclusions $H \overset{i}{\hookrightarrow} G$ and $K \overset{s}{\hookrightarrow} G$. Further, we have $HS \cong G$ and $H \unlhd G$ where $S\coloneqq s(K) \cong K$. To see that $G = HS$, note if $g \in G$, then $q(g) \in K$ and $x\coloneqq  s(q(g)) = g \in S$ with $q(gx^{-1}) = q(g)q(x)^{-1} = e$, implying that $gx^{-1} \in \ker q = H$.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 10)}}
-\end{center}
+\subsection{Lecture 10}
 
 \begin{remark}
 Recall that $G$ decomposes as the (direct) product of $G_1, \ldots, G_k$, i.e., the map $$\phi : G_1 \times \cdots \times G_k \to G, \quad  (g_1, \cdots, g_k) \mapsto g_1\cdots g_k$$ is an isomorphism, if and only if
@@ -979,9 +970,7 @@ commutes.
 Let $H(V, W)$ denote the Heisenberg group. Show that $0 \to \R \to H(V, W) \to V \to 0$ cannot be split.
 \end{exercise}
 
-\begin{center}
-{\textbf{(Lecture 11)}}
-\end{center}
+\subsection{Lecture 11}
 
 \begin{definition}
 A group $G$ is \textit{indecomposable} if it cannot be written as the direct product of two nontrivial subgroups. By convention, the trivial group is not indecomposable. 
@@ -1070,19 +1059,17 @@ For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives t
 It remains to show that $\phi \restriction_K$ is nilpotent. But it's clear that $(\phi \restriction_K)^a = e$.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 12)}}
-\end{center}
+\subsection{Lecture 12}
 
 \begin{corollary} 
-Suppose $G$ is indecomposable and has ACC + DCC, then any normal $\phi : G \to G$ is either nilpotent or an automorphism.
+Suppose that $G$ is indecomposable and has ACC + DCC. Then any normal $\phi : G \to G$ is either nilpotent or an automorphism.
 \end{corollary}
 
 \begin{lemma}
 Suppose $G$ is indecomposable and has ACC + DCC and that $\phi$ and $\psi$ are endomorphisms such that $\phi + \psi$ is an endomorphism. Then if $\phi$ and $\psi$ are nilpotent, so is $\phi + \psi$.
 \end{lemma}
 \begin{proof}
-By our previous corollary, assuming that $\phi + \psi$ is not nilpotent, it must be an automorphism. Set $\gamma = (\phi + \psi)^{-1}$. Then $\underbrace{\phi \circ \gamma}_U + \underbrace{\psi \circ \gamma}_V = (\phi +\psi) \circ \gamma = \id_G$. Hence $U + V = \id_G$. We call $U$ and $V$ a \textit{normal decomposition} of $\id_G$. We see that $V + U$ is also a normal decomposition of $\id_G$ by applying $(-)^{-1}$ to $U(x)V(x) =x$ for any $x \in G$.
+By our previous corollary, assuming that $\phi + \psi$ is not nilpotent, it must be an automorphism. Set $\gamma = (\phi + \psi)^{-1}$. Then $\underbrace{\phi \circ \gamma}_U + \underbrace{\psi \circ \gamma}_V = (\phi +\psi) \circ \gamma = \id_G$. Hence $U + V = \id_G$. (We call $U$ and $V$ a \textit{normal decomposition} of $\id_G$.) We see that $V + U$ is also a normal decomposition of $\id_G$ by applying $(-)^{-1}$ to $U(x)V(x) =x$ for any $x \in G$.
 Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker U\geq \gamma^{-1}(\ker \phi) \cup \{e\} > \{e\}$. Likewise, $\ker V > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$, implying that $G$ is trivial. This contradicts that $G$ is indecomposable.
 \end{proof}
 
@@ -1107,9 +1094,7 @@ Suppose that $G$ is finite and that $$ G = F^0G \geq F^1G \geq \cdots \geq F^sG 
 If $F^{\bullet}G$ and $T^{\bullet}G$ are two composition series for $G$, then they are \textit{equivalent} or \textit{isomorphic} if $\gr_F(G) \cong \gr_T(G)$.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 13)}} 
-\end{center}
+\subsection{Lecture 13}
 
 \begin{definition}
 Let $G$ be a group. A \textit{filtration $F^{\bullet}{G}$ on $G$} is a subnormal series
@@ -1188,9 +1173,9 @@ Any two composition series of $G$ are equivalent.
 Since each intermediate term in a composition series is a maximal normal subgroup, neither series admits a proper refinement. Hence any refinement must be identical to the original series. Hence Schreier completes the proof.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lectures 14 and 15)}}
-\end{center}
+\section{Group cohomology}
+
+\subsection{Lectures 14 and 15}
 
 \begin{remark} 
 Suppose that 
@@ -1328,9 +1313,7 @@ Define $f : K \times K\to G$ by $(x, y) \mapsto s(x)s(y)s(xy)^{-1}$. This is a h
 We say that $f$ is \textit{normalized} if $f(e, y) = f(x, e) =e$ for any $x,y \in K$. Note that if $s$ is \textit{normalized}, i.e., preserves the identity, then $f$ is automatically normalized.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 16)}}
-\end{center}
+\subsection{Lecture 16}
 
 \begin{lemma} 
 Let $\xi$ be as before with $s$ and hence $f$ normalized. Then the data $(K, (A, \alpha), f)$ determines $\xi$ up to isomorphism.
@@ -1403,9 +1386,9 @@ Find all extensions of $\faktor{\Z}{2}\cong \M_2 \coloneqq  \{\pm1\}$ by $\Z$. T
 Hence $a = 0$, and $f = 0$. This implies that $HH^2 = 0$ with $\Z \rtimes_{\alpha} \M_2$ being the unique extension. 
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 17)}}
-\end{center}
+\section{Categories and functors}
+
+\subsection{Lecture 17}
 
 \begin{definition} 
 A \textit{category $\c$} consists of
@@ -1456,9 +1439,7 @@ We call $F$ \textit{contravariant} is it is a covariant functor $F: \c^{\op} \to
 We call a contravariant functor $\c \to \d$ a \textit{presheaf of $\c$ with values in $\d$}.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 18)}}
-\end{center}
+\subsection{Lecture 18}
 
 \begin{exmp}  The following are examples of functors.
 \begin{enumerate}
@@ -1521,9 +1502,7 @@ $$ \Sing_n(\underset{\text{continuous}}{u : X \to Y}) : \Sing_n(X) \to \Sing_n(Y
 Show that $\c$ is essentially small  if and only if it is equivalent to a small category. 
 \end{exercise}
 
-\begin{center}
-{\textbf{(Lectures 19 and 20)}}
-\end{center}
+\subsection{Lectures 19 and 20}
 
 \begin{exmp} 
 Let $\c \coloneqq  \mathbf{Vector}_k^n$ and $\d \coloneqq  B\Mat_n(k)$. There is a functor $F : \d \to \c$ given by $\ast \mapsto k^n$ and $A \mapsto (v \mapsto Av)$. Construct an inverse $G: \c \to \d$ via the axiom of choice by choosing a basis for each $V \in \c$ and mapping each linear map $f$ to the matrix of $f$ in the chosen bases. Then $\c$ and $\d$ are equivalent via $F$ and $G$.
@@ -1553,6 +1532,8 @@ If $\c$ is a category, then we call $\a$ a subcategory of $\c$ if
 \begin{exmp}
 The inclusion functor $i : \a \to \c$ is faithful.
 \end{exmp}
+
+\section{Yoneda lemma}
 
 \begin{remark}
 Notice that $\Hom_{\mathbf{Set}}(\ast, x) \overset{\sim}{\longrightarrow} x$ for any set $x$. In general, we make the following definition.
@@ -1625,9 +1606,7 @@ $([0,1], M)$ is the terminal object in $\c$.
 \end{theorem}
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 21)}}
-\end{center}
+\subsection{Lecture 21}
 
 \begin{definition} Let $\c$ be a category and $I$ be any set. Let $A_{\alpha} \in \ob \c$ for each $\alpha \in I$.
 \begin{enumerate}
@@ -1677,9 +1656,7 @@ Now, let $\{A_{\alpha}\}$ be a collection of $R$-modules. If we endow the Cartes
 \end{enumerate}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 22)}}
-\end{center}
+\subsection{Lecture 22}
 
 \begin{theorem}
 The category $\mathbf{Grp}$ has arbitrary coproducts and fibered coproducts.
@@ -1702,6 +1679,7 @@ G_{\alpha} \arrow[ru, hook] &
 \end{enumerate}
 \end{exmp}
 
+\section{Adjoint functors}
 
 \begin{definition}
 The bifunctor $\Hom_{\c}({-}, {-}) : \c^{\op} \times \c \to \mathbf{Set}$ maps any morphism $(f, g)$ in $\c^{\op} \times \c$ to the set map $\varphi \mapsto g \circ \varphi \circ f$.
@@ -1740,9 +1718,7 @@ Conversely, if $(L, R, \xi, \eta)$ satisfies $\eta \circ \xi \cong \id_L$ and $\
 \end{enumerate}
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 23)}}
-\end{center}
+\subsection{Lecture 23}
 
 \begin{exmp}
 \begin{enumerate}
@@ -1823,9 +1799,7 @@ If we assume the continuum hypothesis, then this implies that $S \cong T$.
 \end{remark}
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 24)}}
-\end{center}
+\subsection{Lecture 24}
 
 \begin{remark}
 For any group $G$, we have $$\Hom_{\mathbf{Grp}}(\Fr(|G|), G) \cong \Hom_{\mathbf{Set}}(|G|, |G|)\ni \id_{|G|}.$$ Thus, there is a unique group map $\phi : \Fr(|G|) \to G$ such that $\phi \restriction_{|G|} = \id_{|G|}$. This implies that $\phi$ is surjective, so that $G$ is the quotient of a free group.
@@ -1855,6 +1829,8 @@ Suppose that the set $S$ generates $G$ and that the set $T$ generates $\ker(\Fr(
 Any subgroup of a free group is free.
 \end{theorem}
 
+\section{Polynomial rings}
+
 \begin{note}
 Our main setting for ring theory will be $\mathbf{CommRing}$, the category of unital, associative, commutative rings.
 \end{note}
@@ -1871,9 +1847,7 @@ By convention, we let $\deg(0)= {-}\infty$.
 $\deg(p_1 + p_2) \leq \max(\deg p_1, \deg p_2)$.
 \end{lemma}
 
-\begin{center}
-{\textbf{(Lecture 25)}}
-\end{center}
+\subsection{Lecture 25}
 
 \begin{definition}
 Let $S$ be a set. Note that $\underbrace{\Fun^{\fs}(S, \Z_{\geq 0})}_{\text{finite support}}$ is an additive monoids because $\Z$ is one. View its elements as monomials in elements of $S$. For any $s\in S$, define $t_s : S \to \Z_{\geq 0}$ by $x \mapsto \begin{cases} 0 & s \ne x \\ 1 & s =x \end{cases}.$ Then for any $\xi \in \Fun^{\fs}(S, \Z_{\geq 0})$, we write $\xi = \prod_{s\in S}t_s^{\xi(s)} =\prod_{s\in \supp(\xi)}t_s^{\xi(s)}$.
@@ -1946,9 +1920,9 @@ If $S$ and $T$ are sets, then $S\cong T \iff \Z[S]\cong \Z[T]$.
 See Lemma 14.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 26)}}
-\end{center}
+\section{Noetherian and Artinian modules}
+
+\subsection{Lecture 26}
 
 \begin{remark}
 Suppose that $A$ is an abelian group. Then $(\ed(A), +, \circ)$ is a ring. 
@@ -2017,15 +1991,15 @@ Any ring is a bimodule over itself via left and right multiplication.
 \end{enumerate}
 \end{lemma}
 \begin{proof} $ $ \\
-$(a) \implies (b)$ is easy to show by an iteration argument.
-\\ \\ $(b) \implies (c)$. If $M$ has the maximal property, then so does every submodule. Hence it suffices to the prove the following lemma.
+(a) $\implies$ (b) is easy to show by an iteration argument.
+\\ \\ (b) $\implies$ (c). If $M$ has the maximal property, then so does every submodule. Hence it suffices to the prove the following lemma.
 \begin{lemma}
 If the $R$-module $M$ has the maximal property, then $M$ is finitely generated.
 \end{lemma}
 \begin{proof}
 Let $\mathcal{F}$ denote the set of any finitely generated submodule $N\subset M$. This is partially ordered by $\subset$ and nonempty. We can apply Zorn's Lemma to obtain a maximal element $T$ of $\mathcal{F}$. If $T=M$, then we are done. Otherwise, choose $m\in M \setminus T$. Then $T + (m) \in \mathcal{F}$, contrary to the choice of $T$. 
 \end{proof}
-$(c) \implies (a)$. Let $M_1 \subset M_2 \subset \cdots \subset M$ be an ascending chain of submodules of $M$. Then set $N= \bigcup_{i=1}^{\infty} M_i$, which is a submodule, hence finitely generated by hypothesis. Let $x_1, \ldots. x_s$ denote the generators. Then each $x_k \in M_{i_k}$ for some some $i_k$. Set $n= \max\{i_k : 1\leq k \leq s\}$, so that $N = M_n$.
+(c) $\implies$ (a). Let $M_1 \subset M_2 \subset \cdots \subset M$ be an ascending chain of submodules of $M$. Then set $N= \bigcup_{i=1}^{\infty} M_i$, which is a submodule, hence finitely generated by hypothesis. Let $x_1, \ldots. x_s$ denote the generators. Then each $x_k \in M_{i_k}$ for some some $i_k$. Set $n= \max\{i_k : 1\leq k \leq s\}$, so that $N = M_n$.
 \end{proof}
 
 \begin{lemma} TFAE.
@@ -2035,9 +2009,7 @@ $(c) \implies (a)$. Let $M_1 \subset M_2 \subset \cdots \subset M$ be an ascendi
 \end{enumerate}
 \end{lemma}
 
-\begin{center}
-{\textbf{(Lecture 27)}}
-\end{center}
+\subsection{Lecture 27}
 
 \begin{prop} $ $
 \begin{enumerate}
@@ -2161,13 +2133,10 @@ $\Omega$ is generated by $\{\alpha_1, \ldots, \alpha_{k_n}, f_1, \ldots, f_s\}$ 
 \end{lemma}
 \begin{proof}
 Let $f\in \Omega$. Write $f = \beta x^r + O(x^{r-1})$ for some $r \geq 1$. Then $\beta \in \widetilde{\Omega}$. It follows that $\beta = \sum_{i=1}^s c_ib_i$ for some $c_i \in A$. If $r \geq n$, then $f -\sum_{i=1}^s c_ix^{r-n}f_i$ has degree $< r$. We can repeat this to see that $f - (\text{some combination of } f_i \text{ with coefficients in } A[x])$ will have degree $\leq n$. That is, there are $g_1, \ldots, g_s \in A[x]$ such that $\deg(f - \sum_{i=1}^sg_if_i) \leq n$. But we're done because $f - \sum_{i=1}^sg_if_i \in \Omega \cap A[x]_n$.
-\end{proof}
-As $\Omega$ was arbitrary, it follows that $A[x]$ is Noetherian as an $A[x]$-module. 
+\end{proof}$ $As $\Omega$ was arbitrary, it follows that $A[x]$ is Noetherian as an $A[x]$-module. 
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 28)}}
-\end{center}
+\subsection{Lecture 28}
 
 \begin{corollary}
 If $A \in \ob \mathbf{CommRing}$ is Noetherian, then $A[x_1, \ldots, x_n]$ is also Noetherian.
@@ -2191,6 +2160,8 @@ If $A$ is Noetherian and $B$ is a finitely generated commutative $A$-algebra, th
 We have a ring embedding $i: A \to B$. As $B$ is finitely generated as an $A$-algebra, there exists a map $\phi: A[x_1, \ldots, x_n] \twoheadrightarrow B$ of $A[x_1, \ldots, x_n]$-modules. By a previous corollary, $A[x_1, \ldots, x_n]$ is Noetherian, which implies that $B$ is the quotient of a Noetherian $A[x_1, \ldots, x_n]$-module. Hence $B$ is also Noetherian as a module over $A[x_1, \ldots, x_n]$. Let $I\unlhd B$ be an ideal. Then $I$ is a submodule over $A[x_1, \ldots, x_n]$ via $\phi$ and thus is finitely generated as such. It follows automatically that $I$ is also finitely generated as a $B$-module.
 \end{proof}
 
+\section{Hilbert's theorem on invariants}
+
 \begin{definition}
 Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be a group. We say that $G$ \textit{acts on $B$ as an $A$-algebra} if there is an action $\rho : G \to \aut_{\mathbf{Set}}(B)$ such that each  $\rho_g  : B \to B$ is an \textit{algebra isomorphism}, i.e., 
 \begin{align*}
@@ -2213,9 +2184,9 @@ It is known that any elementary symmetric polynomial can be expressed in terms o
 Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $\{S(u_i^k)\}_{i=1, \ldots, m,\ k=1, \ldots, |G|}$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{|G|}$ can be written as a $B$-combination of $1, u_i, \ldots, u_i^{|G|-1}$. {[[Why?]]} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where each $0\leq \alpha_i <|G|$. We may thus write $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha}, \quad \alpha_i < |G|, \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha})$. As each $\alpha_i<|G|$,  the set $\{S(u^{\alpha})\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 29)}}
-\end{center}
+\section{Projective and injective modules}
+
+\subsection{Lecture 29}
 
 \begin{note}
 We now turn to the homology of modules, which offers a quantitative measure of the complexity of objects in $R{-}\mathbf{Mod}$.
@@ -2225,16 +2196,18 @@ We now turn to the homology of modules, which offers a quantitative measure of t
 An \textit{additive invariant of modules} is a class function $\phi : \ob(R{-} \mathbf{Mod}) \to \Z$ such that for every $R$-module $M$ and submodule $N\subset M$ we have $\phi(M) = \phi(N) + \phi \big(\faktor{M}{N} \big)$. 
 \end{definition}
 
-\begin{exmp} $ $
-\begin{enumerate}
-\item $\dim_k : \ob(\mathbf{Vect}_k) \to \Z$ where $k$ is a field.
-\item  \begin{definition} An $R$-module $M$ is called
+\begin{definition} An $R$-module $M$ is called
 \begin{enumerate}
 \item \textit{simple} if it has no proper nontrivial submodules.
 \item \textit{indecomposable} if $M = M_1 \coprod M_2$ implies that $M_1$ or $M_2$ is trivial.
 \end{enumerate}
-We have exact analogues of Jordan-Holder and Krull-Schmidt for $R{-}\mathbf{Mod}$. Define the \textit{length of $M$} as the length of any composition series of $M$. By Jordan-Holder, the length function $\lambda : \ob(R{-} \mathbf{Mod}) \to \Z \cup \{\infty\}$ is an additive invariant.
 \end{definition}
+
+\begin{exmp} $ $
+\begin{enumerate}
+\item $\dim_k : \ob(\mathbf{Vect}_k) \to \Z$ where $k$ is a field.
+\item  
+We have exact analogues of Jordan-Holder and Krull-Schmidt for $R{-}\mathbf{Mod}$. Define the \textit{length of $M$} as the length of any composition series of $M$. By Jordan-Holder, the length function $\lambda : \ob(R{-} \mathbf{Mod}) \to \Z \cup \{\infty\}$ is an additive invariant.
 \end{enumerate}
 \end{exmp}
 
@@ -2273,9 +2246,12 @@ This proof works for any abelian category.
 \end{note}
 \item If $M \in \ob(R^{\op}{-}\mathbf{Mod})$, then we have the functor $(-) \otimes_R M : R{-}\mathbf{Mod} \to \Z {-}\mathbf{Mod}$. If $M$ is an $R$-module, then we have the functor $M \otimes_R (-) : R^{\op}{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$. Both are right exact.
 \begin{proof}
-We verify that $M \otimes_R (-) : R^{\op}{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ is right exact.  Let \begin{tikzcd}
+We verify that $M \otimes_R (-) : R^{\op}{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ is right exact.  Let 
+\[
+\begin{tikzcd}
 0 \arrow[r] & X' \arrow[r, "f"] & X \arrow[r, "g"] & X'' \arrow[r] & 0
-\end{tikzcd} be a short exact sequence of  right $R$-modules. Apply the functor to get a sequence of abelian groups.
+\end{tikzcd} 
+\] be a short exact sequence of  right $R$-modules. Apply the functor to get a sequence of abelian groups.
 \[
 \begin{tikzcd}
 0 \arrow[r] & M\otimes_R X' \arrow[r, "\id_M \otimes f"] & M\otimes_R X \arrow[r, "\id_M \otimes g"] & M\otimes_R X'' \arrow[r] & 0
@@ -2317,9 +2293,7 @@ X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
 \end{enumerate}
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 30)}}
-\end{center}
+\subsection{Lecture 30}
 
 \begin{prop}
 An $R$-module $M$ is projective  if and only if it is a direct summand of a free $R$-module, i.e., $M \coprod N$ is free for some $R$-module $N$.

@@ -130,9 +130,13 @@
 These notes are based on Davi Maximo's lectures for the course ``Geometric Analysis and Topology I'' given at UPenn along with Lee's \textit{Smooth Manifolds} and Spivak's \textit{A Comprehensive Introduction to Differential Geometry, Vol. 1}. Any mistake in what follows is my own.
 \end{abstract}
 
-\begin{center}
-{\textbf{(Lecture 1)}} 
-\end{center}
+
+\tableofcontents
+\newpage
+
+\section{Smooth manifolds}
+
+\subsection{Lecture 1}
 
 \theoremstyle{definition}
 \begin{definition}{A space $M$ is a \textit{(topological) $n$-dimensional manifold} (or \textit{$n$-manifold}) if it is 
@@ -206,9 +210,7 @@ Consider $(\R, x \mapsto x)$ and $(\R, x \mapsto x^3)$. Since $x \mapsto x^{\fra
 \begin{remark}{An open problem is whether there is more than one smooth structure on $S^4$. This is known for each $n \ne 4$. Milnor (1958) gave an affirmative answer for $\S^7$.}
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 2)}} 
-\end{center}
+\subsection{Lecture 2}
 
 \theoremstyle{lemma}
 \begin{lemma}{If $M$ admits a smooth structure, then $M$ admits uncountably many smooth structures.} 
@@ -281,9 +283,9 @@ U \cap V \arrow[to=Z, "\phi", swap] \arrow[to=2-2, dr, blue, "\psi", swap]
 
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 3)}} 
-\end{center}
+\section{Smooth maps}
+
+\subsection{Lecture 3}
 
 \begin{definition}
 Let $M^n$ and $N^k$ be smooth manifolds. We say that $F: M \to N$ is \textit{smooth at $p \in M$} if there are charts $(V, \phi) \ni p$ and $(V', \psi) \ni F(p)$ with $F(V) \subset V'$ such that the coordinate representation $\psi \circ F \circ \phi^{-1}$ is smooth.
@@ -349,9 +351,7 @@ Given any $0<r_1<r_2$, there is some smooth function $H: \R^n \to \R$ such that 
 We construct such an $H$. First recall that $f: \R \to \R$ given by $e^{-\frac{1}{t}}$ for $t>0$ and $0$ otherwise is smooth. Now define $h: \R \to \R$ by $h(t) = \frac{f(r_2-t)}{f(r_2-t)+ f(t-r_1)}$. Finally, define $H: \R^n \to \R$ by $H(x) = h(|x|)$.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 4)}} 
-\end{center}
+\subsection{Lecture 4}
 
 \begin{definition}
 Let $\mathcal{U}$ be an open cover of a topological space $X$. We say that 
@@ -408,9 +408,7 @@ If $A \subset U \subset M$ with $A$ closed and $U$ open in $M$, then there is a 
 Since $\{U, M \setminus A\}$ is an open cover of $M$, there is a partition of unity $\phi_1, \phi_2$ such that $\supp \phi_1 \subset U$, $\supp \phi_2 \subset M \setminus A$, and $\phi_1 + \phi_2 = 1$. Hence $\phi_1 \restriction_A = 1 - 0 = 1$. And $\phi_1 \restriction_{M\setminus U} = 0$.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 5)}} 
-\end{center}
+\subsection{Lecture 5}
 
 \begin{corollary}{\textbf{(Whitney)}}
 Let $M$ be a smooth manifold and $K \subset M$ be closed. Then there exists a non-negative smooth $f: M \to \R$ such that $f^{-1}(0) =K$.
@@ -435,9 +433,9 @@ Let $M$ be a smooth manifold and $K \subset M$ be closed. Let $c >0$. Then there
 Prove that the restriction of a smooth map on $\R^{n+1}$ to $\S^n$ is smooth. 
 \end{exercise}
 
-\begin{center}
-{\textbf{(Lecture 6)}} 
-\end{center}
+\section{Tangent vectors}
+
+\subsection{Lecture 6}
 
 \begin{remark}
 Imagine the tangent space of $\S^n$ at a point $p$ as all of the directions from $p$ with respect to which I can find the rate of change of a smooth map $f$ given that I'm only allowed to roam through $\S^n$. 
@@ -513,9 +511,7 @@ Set $h = f-g$, so that $h$ vanishes on $N_p$. Find a smooth bump function $\phi:
 If $M$ is an $n$-dimensional smooth manifold, then $\dim(T_pM) =n$ for every $p\in M$. In particular, we identify the standard basis by $e_i \leftrightarrow (0, \ldots, 0, \frac{\partial}{\partial{x_i}}\rvert_p, 0 \ldots, 0)$.
 \end{prop}
 
-\begin{center}
-{\textbf{(Lecture 7)}} 
-\end{center}
+\subsection{Lecture 7}
 
 \begin{remark}
 Given $p\in M$, find a chart $(U, \phi)\ni p$. Then $d\phi_p : T_pM \cong T_pU\to T_{\phi(p)}\phi(U) \cong T_p \R^n$ is an isomorphism. This choice of chart gives a natural choice of basis for $T_pM$: $$\{\frac{\partial}{\partial{x_i}}\rvert_{p} \}_{1\leq i \leq n}$$ where $$\frac{\partial}{\partial{x_i}}\rvert_{p}\coloneqq  (d\phi_p)^{-1}(\frac{\partial}{\partial{x_i}}\rvert_{\phi(p)}) = (d\phi^{-1})_{\phi(p)}(\frac{\partial}{\partial{x_i}}\rvert_{\phi(p)}).$$.
@@ -547,9 +543,7 @@ Given a smooth manifold $M$, we define a notion of a smoothly varying tangent sp
 As $\R_a^n$ is canonically isomorphic to $\R^n$, we have $T\R^n \cong \coprod_{a\in \R^n} \{a\} \times \R^n = \R^n \times \R^n$.
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 8)}} 
-\end{center}
+\subsection{Lecture 8}
 
 \begin{prop}
 For any smooth $n$-dimensional manifold $M$, the tangent bundle $TM$ has a natural topology and smooth structure so that it's a $2n$-dimensional smooth manifold and the projection $\pi : TM \to M$ is smooth.
@@ -601,9 +595,7 @@ Let $v \in T_pM$. Then $dF_p(v) = (F \circ \gamma)'(0)$ for any smooth $\gamma :
 A \textit{smooth function element on $M$} is a pair $(f, U)$ with $U\subset M$ open and $f: M \to \R$ smooth. Say that $(f, U) \sim (g, V)$ if $p\in U \cap V$ and $f \equiv g$ on some neighborhood of $p$. The class $[(f, U)]\coloneqq [f]_p$ is called the \textit{germ of $f$ at $p$}. The set of such classes is denoted by $C^{\infty}_p(M)$. This is an associative algebra over $\R$. \\ \\ Define a \textit{derivation of $C^{\infty}_p(M)$} as a linear map $v: C^{\infty}_p(M) \to \R$ such that $v[fg]_p = f(p)v[g]_p+g(p)v[f]_p$.  \\ \\ The tangent space $\mathcal{D}_pM$ of such derivations serves as an equivalent (via isomorphism) definition of the tangent space of $M$ at $p$.
 \end{aside}
 
-\begin{center}
-{\textbf{(Lecture 9)}} 
-\end{center}
+\subsection{Lecture 9}
 
 \begin{theorem}{\textbf{(Inverse function theorem)}}
 If $F: M \to N$ is smooth and $dF_p$ is invertible, then there are connected neighborhoods  $U_0$ of $p$ and $V_0$ of $F(p)$ such that $F\restriction_{U_0}: U_0 \to V_0$ is a diffeomorphism.
@@ -649,9 +641,7 @@ Define $f : M \to \R^m$ by $(x,y) \mapsto (Q(x,y), y)$. Define the \textit{Krone
 \\ \\ Now, let $V_0 = \{(v,w) \in N \mid (v,0)\in \widetilde{U}_0\}$, which is a neighborhood of $(0,0)$ in  $N$. Since $\widetilde{U}_0$ is a cube, we see that $F \circ f^{-1}(\widetilde{U}_0) \subset V_0$. Hence $F(U_0) \subset V_0$.  Define $g : V_0 \to \R^n$ by $(v,w) \mapsto (v, w-S(v))$, which is smooth with inverse $g^{-1}(s,t) = (s, t + S(s))$. Then $$\widehat{F}(x,y) = g \circ F \circ f^{-1}(x,y) = (x, S(x) - S(x)) = (x,0),$$ as desired.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 10)}} 
-\end{center}
+\subsection{Lecture 10}
 
 \begin{definition}
 A smooth map $F: M \to N$ is a \textit{(smooth) submersion} if its rank is constant at $\dim(N)$. It is an \textit{immersion} if its constant at $\dim(M)$.
@@ -722,9 +712,7 @@ Let $F: M^m \to N^n$ be smooth with constant rank $r$. Each level set of $F$ is 
 Set $k = m -r$. Let $c \in N$ and $p \in F^{-1}(c)$. By the constant rank theorem, there are charts $(U, f)$ centered at $p$ and $(V, g)$ centered at $F(p) = c$ for which $F$ has coordinate representation $(x_1, \ldots, x_r, x_{r+1}, \ldots, x_m) \mapsto (x_1, \ldots, x_r, 0, \ldots, 0)$, which must send each point in $f(F^{-1}(c) \cap U)$ to $0$.  Thus, $f(F^{-1}(c) \cap U)$ equals the $k$-slice $\{x \in \R^m : x_1 = \cdots = x_r = 0\}$. By Theorem 5, $S$ is an embedded submanifold of dimension $k$.
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 11)}} 
-\end{center}
+\subsection{Lecture 11}
 
 \begin{remark}
 Can $M^n$ with $n\geq 1$ be homeo-/diffeomorphic to $M\setminus \{p\}$? 
@@ -785,9 +773,7 @@ The gradient $\nabla F$ has two main properties.
 But we don't have an inner product on $M$ unless $M$ is a Riemannian manifold, which by definition has a smoothly varying inner product. 
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 12)}} 
-\end{center}
+\subsection{Lecture 12}
 
 \begin{definition}
 If $\pi : M \to N$ is a continuous map, a \textit{section of $\pi$} is a continuous right inverse for $\pi$.
@@ -882,9 +868,7 @@ $$  [X, Y](fg) = X(Y(fg)) - Y(X(fg)) =  X(fYg + gYf) - Y(fXg + gXf) = XfYg + XgY
 .$$
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 13)}} 
-\end{center}
+\subsection{Lecture 13}
 
 \begin{definition}
 The function $[X, Y] : M \to TM$ is given by $p\mapsto (f \mapsto X_p(Yf) - Y_p(Xf))$.
@@ -938,6 +922,8 @@ Let $S \subset M$ be a submanifold. If $X, Y \in \vf(M)$ have $X_p, Y_p \in T_p(
 Let $i : S \to M$ denote inclusion. Then  there are $X', Y' \in \vf(S)$ with $X'$ $i$-related to $X\restriction_S$ and $Y'$ to $Y\restriction_S$. This implies $[X', Y']$ is $i$-related to $[X, Y]\restriction_S$, which in turn implies that $[X, Y]_p \in T_p(S)$ for any $p\in S$.  
 \end{proof}
 
+\section{Vector bundles}
+
 \begin{definition}
 Let $M$ be a topological space. A \textit{(real) vector bundle of rank $k$ over $M$} is a topological space $E$ endowed with the following structure.
 \begin{enumerate}
@@ -960,9 +946,7 @@ The Mobius strip and $S^1 \times \R$ are different vector bundles over $S^1$.
 We can always construct a global section for a smooth vector bundle by using partition of unity. But we cannot always ensure that it is non-vanishing, as shown by the hairy ball theorem for bundles over $\S^2$.
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 14)}} 
-\end{center}
+\subsection{Lecture 14}
 
 \begin{lemma}{\textbf{(Vector bundle construction lemma)}}
 Let $M^n$ be a smooth manifold and suppose that for any $p\in M$, there is some vector space $E_p$ of some fixed dimension $k$. Let $E\coloneqq  \coprod_{p\in M} E_p$ and $\pi : E \to M$ be the projection map. Further, suppose we have the following data.
@@ -1013,9 +997,7 @@ Let $(U, x^i)$ be smooth coordinates for $M^n$. Then $\psi: a_i\lambda^i\rvert_p
 A section of $T^{\ast}M$ is called a \textit{covector field} or a \textit{(differential/smooth) 1-form}.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 15)}} 
-\end{center}
+\subsection{Lecture 15}
 
 \begin{definition}
 Define $Df : C^{\infty}(M) \to \Gamma(T^{\ast}M)$ by $f \mapsto (p\mapsto df_p)$ where $df_p(v) = vf$ for every $v\in T_pM$. We call $df$ the \textit{differential of $f$}.
@@ -1078,9 +1060,9 @@ Being closed is a well-defined property.
 By Clairaut, $df$ is closed for any $f\in C^{\infty}(M)$. 
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 16)}} 
-\end{center}
+\section{Differential forms}
+
+\subsection{Lecture 16}
 
 \begin{theorem}{\textbf{(Universal property of the tensor product)}}
 Let $V_1, \ldots, V_k$ be (real) vector spaces. There exists a vector space $V_1 \otimes \cdots \otimes V_k$ (called the \textit{tensor product of the $V_i$}) and map $:\otimes : V_1\times \cdots \times V_k$ so that for any multilinear map $T: V_1 \times \cdots \times V_k \to W$, there is some unique linear $\widetilde{T} : V \otimes \cdots \otimes V_k \to W$ such that the following commutes.
@@ -1159,9 +1141,7 @@ Suppose $(x^i)$ and $(y^i)$ are two local coordinate systems for $p\in M$. Then 
 A \textit{$(k, l)$-tensor field} is a (smooth) section of $T_l^kM$. Let $\T_l^k(M)\coloneqq  \Gamma(T_l^kM)$.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 17)}} 
-\end{center}
+\subsection{Lecture 17}
 
 \begin{remark}
 Let $(U, x^i)$ be local coordinates for $M$. Then $A \in \T_k^l(M)$ can be written as $$A\rvert_p = A_{i_1 \ldots i_k}^{j_1\ldots j_l} dx^{i_1}\rvert_p \otimes \cdots \otimes dx^{i_k}\rvert_p \otimes \frac{\partial}{\partial{x^{j_1}}}\rvert_p \otimes \cdots \otimes \frac{\partial}{\partial{x^{j_l}}}\rvert_p$$ summed over $n^k\cdot n^l$ tensors.
@@ -1229,9 +1209,7 @@ Let $\{w^1, \ldots, w^n\}$ be a cobasis for the real vector space $V$. Then
 \end{enumerate}
 \end{prop}
 
-\begin{center}
-{\textbf{(Lecture 18)}} 
-\end{center}
+\subsection{Lecture 18}
 
 \begin{lemma}
 Let $\{w^1, \ldots, w^n\}$ be a cobasis for the real vector space $V$. Let $k\leq n$. Then $$A\coloneqq   \{\Alt(w^{i_1} \otimes \cdots \otimes w^{i_k}) : 1 \leq i_1 < \cdots < i_k \leq n \} $$ is a basis for $\bigwedge^k(V)$.
@@ -1298,9 +1276,7 @@ $w_{i_1, \ldots, i_k}  = w(\frac{\partial}{\partial{x^{i_1}}}, \ldots, \frac{\pa
 Write $w = w_Idx^I$ and $ w= \tilde{w}_J d\tilde{x}^J$ locally where $x, \tilde{x}: U \to \R^m$ are charts. A direct computation shows that $$\tilde{w}_J = w(\frac{\partial}{\partial{x^{j_1}}}, \ldots,  \frac{\partial}{\partial{x^{j_k}}}) = \sum_I \det(k \times k \text{ minor of }\frac{\partial{x}}{\partial{\tilde{x}}} \text{ relative to } i_1, \ldots, i_k \text{ and }j_1, \ldots, j_k). $$
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 19)}} 
-\end{center}
+\subsection{Lecture 19}
 
 \begin{definition}
 Let $F: M \to N$ be smooth and $\omega \in \bigwedge^k(N)$. Define the \textit{pullback $F^{\ast}\omega$ of $\omega$ by $F$} as the differential $k$-form on $M$ given by $$F^{\ast} \omega\rvert_p(v_1, \ldots, v_k) = \omega_{F(p)}(dF_p(v_1), \ldots, dF_p(v_k)),$$
@@ -1327,9 +1303,7 @@ Consider the transformation to polar coordinates $\R^2 \to \R^2$ given by $(r, \
 \end{align*}
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 20)}} 
-\end{center}
+\subsection{Lecture 20}
 
 \begin{definition}
 Let $\Omega^k(M)$ and $A^k(M)$ denote the vector space of differential $k$-forms on the manifold $M$. 
@@ -1399,9 +1373,7 @@ This follows from the case $M = \R^n$, which is stated in Lemma 15.
 Let $V$ be a finite-dimensional vector space. For each $v\in V$, define \textit{interior multiplication} as the linear map $i_v: \bigwedge^k(V) \to \bigwedge^{k-1}(V)$ given by $i_v \omega(w_1, \ldots, w_{k-1})= \omega(v, w_1, \ldots, w_{k-1}).$ Let $v \intprodl \omega \coloneqq  i_v \omega$. Then we may extend interior multiplication as follows. For each $X \in \vf(M)$ and $\omega \in A^k(M)$, define the $(k-1)$-form $X \intprodl \omega$ by $p\mapsto  X_p \intprodl \omega_p$.
 \end{definition}
 
-\begin{center}
-{\textbf{(Lecture 21)}} 
-\end{center}
+\subsection{Lecture 21}
 
 \begin{definition}
 Let $V$ be a finite-dimensional vector space. Suppose that $\{e_1, \ldots, e_n\}$ and $\{f_1, \ldots, f_n\}$ are two bases for $V$. We say that they are \textit{co-oriented} if the change-of-basis matrix  has positive determinant.
@@ -1487,9 +1459,9 @@ Moreover, $\partial{M}$ inherits an orientation from $M$ when $M$ is oriented. T
 $\S^n$ is orientable as the boundary of the closed unit ball.
 \end{exmp}
 
-\begin{center}
-{\textbf{(Lecture 22)}} 
-\end{center}
+\section{Integration}
+
+\subsection{Lecture 22}
 
 \begin{note}
 Our treatment of integration will  follow Spivak rather than Lee.
@@ -1569,9 +1541,7 @@ This clearly remains true if $\sigma$ is a $k$-chain on $M$.
 The FTC occurs precisely when $\sigma = I^1$ and $\omega = f$. This shows that Stokes' theorem for chains is equivalent to the FTC.
 \end{corollary}
 
-\begin{center}
-{\textbf{(Lecture 23)}} 
-\end{center}
+\subsection{Lecture 23}
 
 \begin{lemma}
 Let $M$ be an oriented manifold. Let $\omega \in A^n(M)$. Let $\sigma_1$ and $\sigma_2$ be singular $n$-cells on $M$ that can be extended to diffeomorphisms on (open) neighborhoods of $[0,1]^n$. Suppose that both are orientation-preserving. If $\supp \omega \subset  \sigma_1([0,1]^n) \cap \sigma_2([0,1]^n)$, then $\int_{\sigma_1} \omega = \int_{\sigma_2} \omega$.
@@ -1624,9 +1594,9 @@ Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in A^{n-1
 \end{align*}
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 24)}} 
-\end{center}
+\section{De Rham cohomology}
+
+\subsection{Lecture 24}
 
 \begin{definition}
 Given a manifold $M^n$ and integer $k\geq 1$, define the real vector spaces
@@ -1682,9 +1652,7 @@ For an argument similar to our $k=1$ case,  see Spivak, Theorem 7.17. In particu
 By Remark 46, $\R^2\setminus \{0\}$ is not contractible.
 \end{corollary}
 
-\begin{center}
-{\textbf{(Lecture 25)}} 
-\end{center}
+\subsection{Lecture 25}
 
 \begin{corollary}
 If $M$ is closed (i.e., compact without boundary) and orientable, then $M$ is not contractible.
@@ -1714,9 +1682,7 @@ Take for granted that the statement holds when $M = \R^n$. There is some compact
 If $M$ and $N$ are closed orientable $n$-manifolds and $f: M \to N$ is smooth, then the pullback $f^{\ast}$ induces a linear map $f^{\ast}: H_{\dr}^n(N) \to H_{\dr}^n(M)$. We thus get a linear map $f^{\ast} : \R \to \R$, which shows that there is some  real number $a$ such that $$\int_{M} f^{\ast} \omega = a\int_N \omega$$ for every $\omega \in H_{\dr}^n(N) $. Such a scalar $a$ is called the \textit{degree of $f$}. 
 \end{remark}
 
-\begin{center}
-{\textbf{(Lecture 26)}} 
-\end{center}
+\subsection{Lecture 26}
 
 \begin{theorem}
 Let $M$ and $N$ be closed orientable $n$-manifolds and $f: M \to N$ be smooth. By Sard's theorem, find some regular value $q$ of $f$. For each $p\in f^{-1}(q)$, define 
@@ -1758,9 +1724,9 @@ If $n$ is even, then there is no non-vanishing vector field on $\S^n$.
 The identity $\id_{\S^n}$ has degree $1$ and thus is not homotopic to the antipodal map $A_n$. Suppose, for contradiction, that there is some non-vanishing $X\in \vf(\S^n)$. For each $p\in \S^n$, there is a unique great semicircle $\gamma_p$ traveling from $\underset{t=0}{p}$ to $\underset{t=1}{A(p)}$ whose tangent vector at $p$ equals $c X_p$ for some $c\in \R$. The smooth map $H(p, t) =\gamma_p(t)$ defines a homotopy between $\id_{\S^n}$  and $A_n$, a contradiction. 
 \end{proof}
 
-\begin{center}
-{\textbf{(Lecture 27)}} 
-\end{center}
+\section{Integral curves and flows}
+
+\subsection{Lecture 27}
 
 \begin{definition}
 Let $M$ be a manifold and $X\in \vf(M)$. We say that $\gamma : J \to M$ is an \textit{integral curve for $X$} if $\gamma'(t) = X_{\gamma(t)}$ for any $t\in J$.
@@ -1828,9 +1794,7 @@ Let $M$ be a manifold and $X\in \vf(M)$. There exist some unique maximal flow do
 If $M$ is a closed manifold, then $D = \R \times M$.
 \end{corollary}
 
-\begin{center}
-{\textbf{(Lecture 28)}} 
-\end{center}
+\subsection{Lecture 28}
 
 \begin{definition}
 Let $M$ be a manifold without boundary. Let $V\in \vf(M)$. Let $\theta$ denote the flow of $V$. For any $W\in \vf(M)$. Define the rough vector field $$ (\mathcal{L}_VW)_p  = \lim_{t\to 0}\frac{d(\theta_{-t})_{\theta_t(p)}(W_{\theta_{t}(p)})-W_p }{t}.$$ This is called the \textit{Lie derivative of $W$ with respect to $V$.}
@@ -1872,6 +1836,8 @@ Let $(X_1, \ldots, X_k)$ be a linearly independent $k$-tuple of smooth commuting
 \begin{proof}
 This is messy. See Lee, Theorem 9.46.
 \end{proof}
+
+\section{Distributions}
 
 \begin{definition}
 Let $M$ be a manifold. A \textit{$k$-distribution on $M$} is a rank-$k$ smooth subbundle of $TM$.
