@@ -151,7 +151,7 @@ These notes are based on Davi Maximo's lectures for the course ``Geometric Analy
 \begin{definition} $ $
 \begin{enumerate}
 \item Let $M$ be an $n$-manifold. A \textit{coordinate} chart is a tuple $(U, \phi)$ of an open subset $U\subset M$ and a homeomorphism $\phi: U \to \underset{\text{open}} W \subset \R^n$.
-\item If $(U, \phi)$ is a coordinate chart, then we call elements of the set $\{(\pi_1(\phi(p)), \ldots, \pi_n(\phi(p)) \mid p \in U\}$ \textit{local coordinates on $U$}.
+\item If $(U, \phi)$ is a coordinate chart and $\pi_i : \R^n \to \R$ denotes the $i$-th projection map, then we call elements of the set $\{(\pi_1(\phi(p)), \ldots, \pi_n(\phi(p))) \mid p \in U\}$ \textit{local coordinates on $U$}.
 \end{enumerate}
 \end{definition}
 
@@ -160,8 +160,10 @@ We will use the symbols $x^i$ and $x_i$ interchangeably for local coordinates.
 \end{notation}
 
 
-\theoremstyle{definition}
-\begin{definition}Given charts $(U, \phi)$, $(V, \psi)$ with $U \cap V \ne \emptyset$, we say that the two are \textit{$C^k$-compatible} if the \textit{transition map $\psi \circ \phi^{-1}$}
+\begin{definition} $ $
+\begin{enumerate}
+\item 
+Given charts $(U, \phi)$, $(V, \psi)$ with $U \cap V \ne \emptyset$, we say that the two are \textit{$C^k$-compatible} if the \textit{transition map $\psi \circ \phi^{-1}$}
  \[
   \begin{tikzcd}
     U \arrow{r}{\phi} \arrow[swap]{dr}{\psi} & \phi(U\cap V) \arrow{d}{\psi \circ \phi^{-1}} \\
@@ -169,10 +171,8 @@ We will use the symbols $x^i$ and $x_i$ interchangeably for local coordinates.
   \end{tikzcd}
 \]
 is $C^k$.
-\end{definition}
-
-\theoremstyle{definition}
-\begin{definition}{A collection of charts $(U_\alpha, \phi_\alpha)$ which covers a manifold $M$ and is pairwise $C^k$-compatible is called a \textit{$C^k$-atlas for $M$}.}
+\item A collection of charts $(U_\alpha, \phi_\alpha)$ which covers a manifold $M$ and is pairwise $C^k$-compatible is called a \textit{$C^k$-atlas for $M$}.
+\end{enumerate}
 \end{definition}
 
 \begin{exmp}
@@ -207,7 +207,7 @@ Consider $(\R, x \mapsto x)$ and $(\R, x \mapsto x^3)$. Since $x \mapsto x^{\fra
 \end{remark}
 
 
-\begin{remark}{An open problem is whether there is more than one smooth structure on $S^4$. This is known for each $n \ne 4$. Milnor (1958) gave an affirmative answer for $\S^7$.}
+\begin{remark}{An open problem is whether there is more than one smooth structure on $\S^4$. This is known for each $n \ne 4$. Milnor (1958) gave an affirmative answer for $\S^7$.}
 \end{remark}
 
 \subsection{Lecture 2}
@@ -232,7 +232,7 @@ Consider $(\R, x \mapsto x)$ and $(\R, x \mapsto x^3)$. Since $x \mapsto x^{\fra
 \item Let $U\subset \R^n$ be open and $F: U \to \R^m$ be continuous. Let $\Gamma(F)$ be the graph of $F$ and $\pi_1\restriction_\Gamma(F)$ be the restriction of the projection $(x, y)\mapsto x$. This is a homeomorphism between $\Gamma(F)$ and $U$. Hence $(\pi_1 \restriction_\Gamma(F), \Gamma(F))$ is a smooth atlas.
 \item For each $i = 1, 2, \ldots, n+1$, let $U_i^+ \coloneqq  \{ \x \in \R^{n+1}: x_i >0\}$. Define $U_i^-$ similarly. The $U_i^{\pm}$ cover $\S^n$. Define the map $f: B_1(0)\subset \R^n \to \R$ by $f(\u) = \sqrt{1 - |\u|^2}$. Define $x_i: B_1(0) \to \R$ by $f(x_1, \ldots, \widehat{x_i}, \ldots x_n)$.  Then $\Gamma(x_i) = U_i^+ \cap \S^n$ and $\Gamma(-x_i) = U_i^- \cap \S^n$. By our previous example, these graphs with their corresponding projections form a smooth structure on $\S^n$.
 \item Let $f: \underset{\text{open}}U\subset \R^m \to \R$ be smooth. For $c \in \R$, let $M_c: = f^{-1}(c)$. Assume that the total derivative $\nabla f(a)$ is nonzero for each $a \in M_c$.  Then $f_{x_i}(a) \ne 0$ for some $1 \leq i \leq m$. Then by the Implicit Function Theorem there is some smooth $F: \R^{m-1} \to \R$ given by $x_i = F(x_1, \ldots, \widehat{x_i}, \ldots, x_m)$ on some neighborhood $U_a\subset \R^m$ of $a$ such that $f^{-1}(c) \cap U_a$ is the graph of $F$.  Then the $f^{-1}(c) \cap U_a$ together with their graph coordinates define a smooth atlas on $M_c$.
-\item For each $i = 1, \ldots, n+1$, let $\tilde{U_i}\coloneqq  \{\x \in \R^{n+1} : x_i \ne 0\}$. Let $\pi: \R^{n+1} \setminus\{0\} \to \RP^n$ be the quotient map and $U_i \coloneqq  \pi(\tilde{U_i})$. Since $\tilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\tilde{U_i}}$ is a quotient map (Munkres, Theorem 22.1). Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto (\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i})$, which has inverse $(x_1, \ldots, x_n) \mapsto [x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n]$. Since $f_i \circ \pi$ is continuous, so is $f_i$ (Munkres, Theorem 22.2). Hence $f_i$ is a homeomorphism. It's easy to check that each transition $f_i \circ f_j^{-1}$ is smooth. Thus, the $(U_i, f_i)$ define a smooth atlas on $\RP^n$.
+\item For each $i = 1, \ldots, n+1$, let $\tilde{U_i}\coloneqq  \{\x \in \R^{n+1} : x_i \ne 0\}$. Let $\pi: \R^{n+1} \setminus\{0\} \to \RP^n$ be the quotient map and $U_i \coloneqq  \pi(\tilde{U_i})$. Since $\tilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\tilde{U_i}}$ is a quotient map.\footnote{Munkres, James. Theorem 22.1. \textit{Topology}.} Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto (\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i})$, which has inverse $(x_1, \ldots, x_n) \mapsto [x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n]$. Since $f_i \circ \pi$ is continuous, so is $f_i$.\footnote{Munkres, James. Theorem 22.2. \textit{Topology}.} Hence $f_i$ is a homeomorphism. It's easy to check that each transition $f_i \circ f_j^{-1}$ is smooth. Thus, the $(U_i, f_i)$ define a smooth atlas on $\RP^n$.
 \item Let $M_1 \times \cdots \times M_k$ be a product of $n_i$-dimensional smooth manifolds. Then this is a smooth manifold of dimension $n_1 + \cdots + n_k$.
 \end{enumerate}
 
@@ -411,7 +411,7 @@ Since $\{U, M \setminus A\}$ is an open cover of $M$, there is a partition of un
 \subsection{Lecture 5}
 
 \begin{corollary}{\textbf{(Whitney)}}
-Let $M$ be a smooth manifold and $K \subset M$ be closed. Then there exists a non-negative smooth $f: M \to \R$ such that $f^{-1}(0) =K$.
+Let $M$ be a smooth manifold and $K \subset M$ be closed. Then there exists a non-negative smooth function $f: M \to \R$ such that $f^{-1}(0) =K$.
 \end{corollary}
 
 \begin{remark}
@@ -939,7 +939,7 @@ If $M$ and $E$ are smooth manifolds and $\pi$ and the $\psi$ are smooth, then $E
 \end{definition}
 
 \begin{exmp}
-The Mobius strip and $S^1 \times \R$ are different vector bundles over $S^1$.
+The Mobius strip and $\S^1 \times \R$ are different vector bundles over $\S^1$.
 \end{exmp}
 
 \begin{remark}
