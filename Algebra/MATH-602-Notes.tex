@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumerate}
+  \usepackage{enumitem}
  \usepackage{stmaryrd}
  \usepackage{bm}
 \usepackage{amsfonts}
@@ -533,7 +534,7 @@ To complete the proof that each implication is strict, it suffices to produce a 
 
 \begin{exmp}
 Let $V$ be a finite-dimensional vector space over $\R$. Let $\omega: V\times V\to \R$ be a bilinear map on $V$ such that
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $\omega$ is skew-symmetric, i.e., $\omega(x,y) = -\omega(y,x)$
 \item If $\omega(x,y) =0$ for every $y \in V$, then $x=0$.
 \end{enumerate}
@@ -1051,7 +1052,7 @@ If $G$ has ACC and DCC and $\phi: G \to G$ is normal, then $G = K \times H$ wher
 \end{lemma}
 \begin{proof}
 For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives the normal series $$G= H_0 \geq H_1 \geq \cdots$$ $$K_1 \leq K_2 \leq \cdots \leq G.$$ Find $a \in \N$ where both stabilize. Set $H = H_a$ and $K = K_a$. Then $\phi(H) = \phi(\phi^a(H)) = \phi^{a+1}(H) = H_{a+1} = H_a = H$. Further, $\phi(K) = \phi(K_a) = \{\phi(x) : x \in \ker \phi^a\}$. implying $\phi^a\phi(x) = \phi(\phi^a(x)) =e$. Hence both $H$ and $K$ are stable under $\phi$. Note that we've shown $\phi \restriction_H$ is surjective. By our last proposition, $\phi \restriction_H$ is an isomorphism provided that $H$ has ACC and DCC. But we can show $G = K \times H$ as follows.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item Let $x \in K \cap H$. Then $x \in H = H_a = \phi^a(G) \implies \phi^a(G) = x$ for some $g \implies \phi^a(\phi^a(g)) = \phi^a(x) =  0 \implies g \in K_{2a} = K_a = K \implies \phi^a(g) = e \implies x =e$. 
 \item Let $g \in G$. Then $ \phi^a(g) \in H = H_a = H_{2a} \implies \phi^a(g) = \phi^{2a}(x)$ for some $x\in G \implies \phi^a(g \phi^a(x^{-1})) =e \implies g\phi^a(x) \implies g\phi^a(x^{-1}) \in K_a =K \implies g = kh$ for some $k\in K$ and $h\in H$.
 \item $H, K \unlhd G$,
@@ -1984,7 +1985,7 @@ Any ring is a bimodule over itself via left and right multiplication.
 \end{definition}
 
 \begin{lemma} Let $M$ be an $R$-module. TFAE.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $M$ is Noetherian.
 \item $M$ has the maximal property. 
 \item Every submodule of $M$ is finitely generated. 
@@ -2003,7 +2004,7 @@ Let $\mathcal{F}$ denote the set of any finitely generated submodule $N\subset M
 \end{proof}
 
 \begin{lemma} TFAE.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $M$ is Artinian.
 \item $M$ has the minimal property.
 \end{enumerate}

@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumerate}
+  \usepackage{enumitem}
  \usepackage{stmaryrd}
  \usepackage{bm}
 \usepackage{amsfonts}
@@ -474,7 +475,7 @@ Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. C
 
 \begin{exmp}
 Here are some natural choices for $S$.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $S = \{1, x, x^2, \ldots \}$ with $x$ not nilpotent.
 \item $S = R^{\times}$.
 \item $S = \{r\in R : r$ is not a zero divisor.$\}$.
@@ -614,7 +615,7 @@ Apply Zorn's lemma.
 
 \begin{definition}
 Let $A$ be a ring. We call $A$ a \textit{local} ring if any of the following equivalent conditions holds.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $A$ has a unique maximal ideal $\frak{m}$.
 \item $A \setminus A^{\times}$ is an ideal.
 \item If $\frak{m}$ is maximal and $x\in \frak{m}$, then $1+x \in A^{\times}$. 
@@ -664,7 +665,7 @@ $\dim{A_{\p}} = \mathsf{ht}(\p)$, and $\dim{A} = \sup \{ \dim{A_{\frak{m}}} \mid
 \begin{remark}
 Any information about $A$, any prime ideal in $A$, any localization in $A$, and their relations can be packaged in a geometrical entity: specifically, a topological space along with a distinguished class of maps. 
 \\ \\ Let $X\coloneqq  \mathsf{Spec}(A)$, the set of all prime ideals in $A$.  For any $f\in A$, define the \textit{principal open subset associated with $f$} as $$X_f = \{ \p \in X \mid f\notin \p\}.$$  Such subsets satisfy 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $X_f \cap X_g = X_{fg}$.
 \item $X_{f^n} = X_f$, $X_f = X \iff f\notin \p \ \forall \p \text{ prime} \iff f\in A^{\times}$.
 \item $X_f = \emptyset \iff f \in \bigcap_{\p \subset X} \p$.
@@ -836,7 +837,7 @@ Let $m_1, \ldots, m_k$ be a generating set for $M$. Then $\bar{m}_1, \ldots, \ba
 
 \begin{theorem}
 Let $A$ be a local ring and $M$ an $A$-module. Assume that one of the following conditions holds.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $A$ is Noetherian with $M$ finitely generated.
 \item $M$ is finitely presentable.
 \end{enumerate}
@@ -896,7 +897,7 @@ If $h(x) \in K[x]$ is irreducible, then the ring $\faktor{K[x]}{(h)}$ is a field
 Recall that $K[x]$ is a Euclidean domain, in particular, a PID.
 \begin{lemma}
 Let $A$ be a PID and $u\in A$ be nonzero. Then the following are equivalent.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $\faktor{A}{(u)}$ is a field.
 \item $(u)$ is prime.
 \item$u$ is simple.
@@ -941,7 +942,7 @@ If $\min_u(x) = f(x)g(x)$, then $0 = \min_u(u) = f(u) g(u)$, so that either $f(u
 
 \begin{theorem}
 Let $L \supset K$ be a field extension and $u\in L$.  Then 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $u$ is algebraic over $K$ if and only if $K[u]$ is a finite dimensional vector space over $K$.
 \item if $u$ is algebraic, then $[K(u) : K] = \deg{\min_u}$. 
 \end{enumerate}
@@ -1029,7 +1030,7 @@ Now, suppose that $\tilde{\varphi} : \widetilde{K} \to F$ is any homormophism su
 
 \begin{definition}
 If $K$ is a field and $f(x) \in K[x]$, then a field extension $L \supset K$ is a \textit{splitting field for $f$} if
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $f(x) = a \prod_{i=1}^n (x-c_i)$ with $a, c_i \in L$ and
 \item $L = K(c_1, \ldots, c_n)$.
 \end{enumerate}
@@ -1274,13 +1275,13 @@ If $L \supset K$ is a field extension, then define the \textit{Galois group} $$\
 
 \begin{theorem}
 Let $L \supset K$ be a field extension of degree $n<\infty$. Let $G \leq  \gal(L/K)$. Then the following hold.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $L^G = K \iff |G| = n$.
 \item  If $L^G = K$ and $K \subset P \subset Q \subset L$ is a chain of field extensions, then every homomorphism $\varphi : P \to L$ over $K$ extends to a homomorphism $Q \to L$ in exactly $[Q:P]$ ways. 
 \end{enumerate}
 \end{theorem}
 \begin{proof} $ $
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item For the ($\Longleftarrow$) direction, note that if $G \leq \aut(L)$, then tautologically $G \leq \gal(L/L^G)$. Hence $|G| \leq |\gal(L/L^G)| = [L: L^G]$. If $G \leq \gal(L/K)$, then $L \subset L^G \subset L$, so that $[L:L^G]\leq [L:K] =n$. This means $|G|\leq n$.
 
 Conversely, let $L^G =K$.  Take $\alpha \in L$ and let $\orb_G(\alpha) = \{\lambda_1, \ldots, \lambda_m\} \subset L$. Consider $$f(x) = \prod_{i=1}^m (x-\lambda_i) \in L[x].$$ But the coefficients are symmetric polynomials in $\lambda_i$, and any $g\in G$ permutes the $\lambda_i$. In this case, $g$ permutes the coefficients of $f(x)$. Hence $f(x) \in L^G[x] = K[x]$. By construction, $\alpha$ is a root of $f(x)$, the minimal polynomial of $\alpha$.  We can decompose $f(x)$ into linear factors in $L$.
@@ -1422,7 +1423,7 @@ Let $L \supset K$ be a Galois extension. Then the function given by $(K \subset 
 \end{theorem}
 \begin{proof}
 Consider $K \subset P \subset L$ and $K \subset L^{\gal(L/P)} \subset L$. Then $L^{\gal(L/P)}\supset P$. From a theorem from two lectures ago, we have the following two results.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $[L:P] = |\gal(L/P)|$ for any $K \subset P \subset L$. 
 \item $[L: L^G] = |G|$ for any $G \leq \gal(L/K)$. 
 \end{enumerate}
@@ -1507,14 +1508,14 @@ If $K$ is a field with characteristic $0$, $f(x) \in K[x]$ is irreducible, and $
 ($\Longleftarrow$) We have a series $$ G = G^{(0)} \unrhd G^{(1)} \unrhd \cdots \unrhd G^{(s)} \unrhd \{e\} ,$$ which we can refine to get a normal series $$  G=G_0 \unrhd G_1 \unrhd \cdots \unrhd G_r = \{e\}  $$ such that $G_{i+1}/G_i \cong \Z/n_i$. Letting $K_i = L^{n_i}$, we have a tower $$ K= K_0 \subset K_1 \subset \cdots \subset K_r = L  .$$ Let $F$ be the cyclotomic field that contains all roots of $1$ of order $n= n_1n_2 \cdots n_r$. Consider the tower $$KF \subset K_1F \subset \cdots \subset K_r F = LF.$$  Then $K_{n_i}F \supset K_1F$ is a cyclic extension of degree dividing $n_i$.
 \begin{lemma}
 Let $K$ be a field and let $n$ have $\Char{K} \nmid n$. Suppose that $K \supset \mu_n$. Then
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item for any $\alpha \in K$, the extension $K(\sqrt[n]{\alpha}) \supset K$  is cyclic of order dividing $n$, and
 \item for every $\widetilde{K} \supset K$ Galois and cyclic of order $n$, there exists $\alpha \in K$ such that $\widetilde{K} \cong K(\sqrt[n]{\alpha})$.
 \end{enumerate}
 Note that (b) implies that $K_{i+1}F \supset K_iF$ for every $i$.
 \end{lemma}
 \begin{proof} $ $
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item By definition, $K(\sqrt[n]{\alpha})$ contains some root of $x^n - \alpha$. But $K$ contains $\mu_n$, so that $K(\sqrt[n]{\alpha})$ contains every root of $x^n - \alpha$. Thus, $K(\sqrt[n]{\alpha})$ is the splitting field for $x^n - \alpha$. Hence $K(\sqrt[n]{\alpha}) \supset K$ is Galois.
  If $\sigma \in \gal(K(\sqrt[n]{\alpha}) / K)$, then $ \sigma(\sqrt[n]{\alpha}) = \underbrace{\zeta_{\sigma}}_{\text{ some } n\text{-th root of 1 depending on } \sigma} \sqrt[n]{\alpha}$. Then we get a map $$\zeta : \gal(K(\sqrt[n]{\alpha})/K) \to \mu_n$$ given by $ \sigma \mapsto \zeta_{\sigma}$. But since $K \supset \mu_n$, if $\sigma, \tau \in \gal(K(\sqrt[n]{\alpha})/K)$, then $\sigma(\tau(\sqrt[n]{\alpha})) = \sigma(\zeta_{\tau}\sqrt[n]{\alpha})= \sigma(\zeta_{\tau})\sigma(\sqrt[n]{\alpha})$. As $\zeta_{\tau} \in \mu_n \subset K$, we see that $\sigma(\zeta_{\tau}) = \zeta_{\tau}$. This implies that $$ \sigma(\tau(\sqrt[n]{\alpha})) =  \zeta_{\tau}\zeta_{\sigma}\sqrt[n]{\alpha} .$$ But $\sigma(\tau(\sqrt[n]{\alpha})) = \zeta_{\tau \sigma}\sqrt[n]{\alpha}$ as well, so that $\zeta_{\tau \sigma} = \zeta_{\tau} \zeta_{\sigma}$. This shows that $\zeta$ is a homomorphism. 
  
@@ -1562,13 +1563,13 @@ Let $K_1$ and $K_2$ be finite extensions of $k$, so that $K_1 = k(a_1, \ldots, a
 
 \begin{lemma}
 Suppose that $K$ and $F$ are two finite field extensions of $k$. Then
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item If $K\supset k$ is Galois, then so is $KF\supset F$.
 \item $\gal(KF/F) = \gal(K/ K \cap F)$.
 \end{enumerate}
 \end{lemma}
 \begin{proof} $ $
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item  If $K\supset k$ is Galois, then $K$ is the splitting field of some separable polynomial $f(x) \in k[x]$. Thus, $KF$ is the splitting field of $f(x)$ viewed over $F$. But if $f$ is separable over $k$, then it is separable over $F$. Therefore, $KF \supset F$ is Galois.
 \item Consider the tower of extensions $k \subset K \subset KF$. The main theorem of Galois theory says that $\gal(K/k) \unlhd \gal(KF/k)$ since $K\supset k$ is assumed to be Galois. Thus, if $\sigma \in \gal(KF/k)$, then $\sigma(K) \subset K$. Indeed, $\sigma(K) = K$ as a subfield in $KF$ if and only if $\sigma(K) = (KF)^{\gal(KF/K)}$. Let $g\in \gal(KF/K) \subset \gal(KF/k)$. Then $g(x) = x$ for any $x\in K$. 
 
@@ -1656,7 +1657,7 @@ We see that $\pi$ cannot be constructed over $\Q$, i.e., we cannot square the ci
 \end{exmp} 
 Moreover, if $\alpha$ is algebraic over $\Q(a_1, \ldots, a_k)$, then $\alpha$ can be constructed by our previous theorem if and only if the minimal polynomial of $\alpha$ has degree power of $2$.
 \begin{exmp} $ $
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item \underline{Doubling the cube.} Given a segment of length one, construct a segment of length $\sqrt[3]{2}$. Since the minimal polynomial of $\sqrt[3]{2}$ is $x^3-2$, such a construction is impossible.
 \item \underline{Trisecting an angle $\varphi$.} Given a segment of length $\cos{\varphi}$, construct a segment of length $\cos(\frac{\varphi}{3})$. The minimal polynomial of $\cos(\frac{\varphi}{3})$ over $\Q(\cos{\varphi})$ is $4x^3 - 3x - \cos{\varphi}$. In general, this is irreducible, in which case our construction is impossible. 
 \item \underline{Constructing regular $n$-gons.} Given a segment of length $i$, construct a segment of length $\cos(\frac{2\pi}{n})$. This is possible if and only if $e^{\frac{2\pi i}{n}}$ is expressible in quadratic radicals over $\Q$. In turn, this happens if and only if $\underbrace{[\Gamma_n : \Q]}_{\varphi(n)} = 2^s$. For example, if $p$ is prime, then we can construct a regular $p$-gon if and only if $1+2^k$ for some $k$. Currently, the largest known such $p$ is $\num{65537}$.
@@ -2234,7 +2235,7 @@ has exact rows and exact left two columns, then the third column is also exact.
 
 \begin{lemma}
 Suppose that $\c$ is strongly pre-triangulated and let $\alpha : M \to N$ be a morphism in $\c$ such that $\alpha$ is injective (i.e., $\ker{\alpha}$ exists and is trivial) with $d{\alpha} =0$ and $\alpha$ is split (i.e.,  there exists $\beta : N \to M$ with $p \circ \alpha = \id_M$ ). We call such an $\alpha$ a \textit{split monomorphism in $\c$}. Then the following statements hold.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item The map $\cone(\alpha) \to N/M$ is a homotopy equivalence.
 \item Any morphism in $\c$ is homotopy equivalent to a split mono, i.e., given $ f: M \to L$, we can construct a natural diagram 
 \[
@@ -2488,7 +2489,7 @@ If $\v$ is a strict full thick triangulated subcategory	 of $\d$, then $q : \d \
 
 \begin{definition}
 If $\d$ is triangulated and $\u, \v \subset \d$ are strict full triangulated subcategories, then $(\u, \v)$ is an \textit{admissible pair of subcategories} if 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $\Hom_{\d}(x,y) =0$ for any $x \in \ob{u}$ and $y \in \ob{\v}$ and
 \item any object $z \in \ob{\d}$ fits in a distinguished triangle $x \to z \to y \to x[1]$ with $x \in \ob{\u}$ and $y \in \ob{\v}$. 
 \end{enumerate}

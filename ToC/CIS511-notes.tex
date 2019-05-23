@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumerate}
+  \usepackage{enumitem}
  \usepackage{stmaryrd}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -212,7 +213,7 @@ Finite automata are characterized by $O(1)$ memory and passing over their inputs
 Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is an ordered $5$-tuple $$M\coloneqq (Q, \Sigma, q_0, \delta, Q_F)  $$ where  $|Q| = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
 \\ \\
 Intuitively, an automaton $M$ is a $\DFA$ if
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $M$ has a finite number of states $Q$,
 \item $M$ has a unique \textit{starting state $q_0$},
 \item for every state $q$ and every symbol $\sigma \in \Sigma$, there is a unique next state $\delta(q, \sigma)$,
@@ -369,7 +370,7 @@ Use a similar argument to the proof for an $\NFA$. In particular, set $$q_0^{(1)
 \subsection{Lecture 3}
 
 \begin{prop} Let $L_1, L_2\subset \Sigma^{\ast}$ be regular. 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $\overline{L_1}\coloneqq \Sigma^{\ast} \setminus L_1 = (L_1)^c$ is regular.
 \begin{corollary}
 If $L$ is finite or cofinite, then it is regular.
@@ -380,7 +381,7 @@ If $L$ is finite or cofinite, then it is regular.
 \end{enumerate}
 \end{prop} 
 \begin{proof} By assumption, there exist $\DFA$'s $M_1$ and $M_2$ such that $L_1 = L(M_1)$ and $L_2 = L(M_2)$.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item Construct a new $\DFA$ $M_3$ by making every final state of $M_1$ non-final and vice versa. Then $L(M_3) = \overline{L_1}$.
 \item Construct an $\epsilon$-$\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
 \item Note that $L_1 \cap L_2 = (\overline{L_1} \cup \overline{L_2})^c$.  Now apply (a) and (b).
@@ -436,7 +437,7 @@ There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\
 \subsection{Lecture 4}
 
 \begin{lemma}{\textbf{(Pumping)}} Let $L$ be a regular language. Then there exists $n_0 \in \N$ such that for any $x\in L$ with $|x|\geq n_0$, we may write $x=wyz$ such that
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $|y| >0$,
 \item $|wy|\leq n_0$, and
 \item if $i\geq 0$, then $wy^iz \in L$ where $y^i \coloneqq \underbrace{y\cdots y}_{i \text{ times}}$.
@@ -485,7 +486,7 @@ A Turing machine is supposed to act as a minimal model of computation. It should
 
 \begin{remark}
 Every finite automaton may be viewed as a Turing machine $M$ with the following properties. 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $M$ never writes on the tape.
 \item $M$'s read-write head moves to the right only.
 \item $M$ writes on just a finite portion of the tape.
@@ -499,7 +500,7 @@ Adding a stay option $S$ to the set $\{L, R\}$ would not increase a Turing machi
 
 \begin{definition}
 Let $M$ be a Turing machine. Let $q\in Q$ and $u,v\in \Gamma^{\ast}$. We say that the \textit{configuration of $M$} is $uqv$ if 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item the current state of $M$ is $q$,
 \item the current tape contents is precisely $uv$, and
 \item the current head location is the first symbol of $v$.
@@ -509,7 +510,7 @@ We call this an \textit{accepting configuration} if $q \in Q_F$ and a \textit{re
 
 \begin{definition}
 Let $a,b,c\in \Gamma$ and $u,v\in \Gamma^{\ast}$. Let $p,q\in Q$. We say that the configuration $C_1$ \textit{yields} the configuration $C_2$ in the following cases. 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item $uapbv$ yields $uqacv$ when $\delta(p,b) = (q, c, L)$.
 \item $uapbv$ yields $uacqv$ when $\delta(p, b) = (q, c, R)$. 
 \end{enumerate}
@@ -648,7 +649,7 @@ $A_{\TM}$ is undecidable.
 \end{theorem}
 \begin{proof}
 Suppose, for contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item Given a binary string $x$, run $M$ on $(\langle M_x \rangle, \langle M_x \rangle)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
 \item Let $N$ reject when $M$ accepts and $N$ accept when $M$ rejects.
 \end{enumerate}
@@ -774,7 +775,7 @@ It's possible that both a language and its complement are not recursively enumer
 
 \begin{remark}
 Once we know that a question is decidable, we want to determine the amount of computational resources required to decide it. Such resources include 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item time
 \item space
 \item parallelism 
@@ -896,7 +897,7 @@ Every function $g: \{0,1\}^n \to \{0,1\}$ can be computed by a circuit of size $
 \end{lemma}
 \begin{proof}
 We use induction to show that any $g:\{0,1\}^n \to \{0,1\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item If $g= \id_{\{0,1\}}$, then $g$ can be computed by a circuit of size $0$.
 \item If $g(0) =1$ and $g(1) =0$, then $g(x) = \neg x$.
 \item If $g(0) = g(1) = 0$, then $g(x) = x \land \neg x$.
@@ -1007,7 +1008,7 @@ Let $\mathsf{Steiner{-}tree} \coloneqq \{\langle G, C, W \rangle \mid C$ has a S
 \begin{proof}
 It's clear that $\mathsf{Steiner{-}tree} $ is in $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = (V, E)$ be a graph with a vertex cover $S$ of size $k$. 
 \\ \\ Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item Let $([u], [v])\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
 \item If $(u,v) \in E$, then let $([u], [u,v]), ([u, v], [v]) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
 \item If $(v,w) \in E$ and $u,v,w$ are pairwise distinct, then let $([u], [v,w]) \in E'$ and and set $w'([u], [v,w]) = 2$.
@@ -1299,7 +1300,7 @@ $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 \end{remark}
 
 \begin{prop} $ $
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $[{-}2^n, 2^n]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
 \item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $\mathbb{P}[p(x) =0] \leq \frac{d}{|S|}$ for any $x\in_R S$.
 \end{enumerate}
