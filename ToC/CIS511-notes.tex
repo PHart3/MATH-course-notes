@@ -1418,10 +1418,17 @@ $\mathbf{BPP} \subset \mathbf{EXP}$.
 \item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \{0,1\}^{p_1(|x|)} \forall \overline{x_2} \in  \{0,1\}^{p_2(|x|)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(|x|)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
 \item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \{0,1\}^{p_1(|x|)} \exists \overline{x_2} \in  \{0,1\}^{p_2(|x|)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(|x|)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
 \end{enumerate}
+The \textit{polynomial hierarchy} is the set of languages $\mathbf{PH} \equiv \bigcup_{i\in \N}\Sigma_p^i$.
 \end{definition}
 
+\begin{aside}
+For a given (finite) \textit{vocabulary} $\sigma$, let $\mathsf{STRUC}[\sigma]$ denote the set of all  finite structures of $\sigma$ equipped with a total ordering. Consider the set $$\mathcal{B} \coloneqq \{I_b \mid I_b :   \mathsf{STRUC}[\sigma] \to \{0,1\},\  \sigma \text{ is a vocabulary}\}.$$ For each  function $I_b :  \mathsf{STRUC}[\sigma] \to \{0,1\}$, let $$\mathcal{L}_{I_b} = \{A \in \mathsf{STRUC}[\sigma] \mid I_b(A) = 1\},$$ called a $\textit{Boolean query}$. 
+
+Consider the set $\mathcal{B} \coloneqq \{ \mathcal{L}_{I_b} \mid I_b \in \mathcal{B}\}$ of all Boolean queries. Let $\mathbf{SO}$ denote the set of all Boolean queries expressible in second-order logic. That is, $\mathcal{L}_{I_b} \in \mathbf{SO}$ iff there is some second-order sentence $\varphi$ such that $$I_b(A) =1 \iff A \models \varphi.$$ It is known that $\mathbf{SO} = \mathbf{PH}$. This is a well-known result of so-called \textit{descriptive complexity theory}, a branch of finite model theory.
+\end{aside}
+
 \begin{exmp} 
-We see that $\mathsf{MAX{-}CLIQUE} \in \Sigma_2^p$ because it is defined by the formula ``there exists a choice of vertices $V_1$ such that for any choice of vertices $V_2$, $V_1$ is a clique of size $k$ and $V_2$ is either not a clique or of size smaller than $k$."
+We see that $\mathsf{MAX{-}CLIQUE} \in \Sigma^2_p$ because it is defined by the formula ``there exists a choice of vertices $V_1$ such that for any choice of vertices $V_2$, $V_1$ is a clique of size $k$ and $V_2$ is either not a clique or of size smaller than $k$."
 \end{exmp}
 
 \subsection{Lecture 21}
@@ -1542,14 +1549,14 @@ Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ 
 }}
 
 \begin{caseof}
-\case{Suppose that $|S| \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, $$ \mathbb{P}_{h \in_R \H}[\exists x \in S, \ h(x) = y] \leq \frac{|S|}{2^l} \leq  \frac{|K|}{2 \cdot 2^l} = \frac{p}{2}  $$ where $p\coloneqq \frac{|K|}{2^l}$.}
+\case{Suppose that $|S| \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\lvert{K}\rvert}{2^l}$, then $$ \mathbb{P}_{h \in_R \H}[\exists x \in S, \ h(x) = y] \leq \frac{\lvert{S}\rvert}{2^l} \leq  \frac{\lvert{K}\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
 \case{Suppose that $|S| \geq K$.} {We compute 
 \begin{align*}
 \mathbb{P}_{h \in \H}[\exists x \in S, \ h(x) =y] & \geq \sum_{x \in S} \mathbb{P}[h(x) = y] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \mathbb{P}[h(x) = y \land h(x') = y]  
 \\ & \geq \frac{|S|}{2^l} - \underbrace{\frac{|S|(|S|-1)}{2}}_{|S| \choose 2}\cdot \frac{1}{2^{2l}}
 \\ & = \frac{|S|}{2^l} \big (  1- \frac{|S| -1}{2} \cdot \frac{1}{2^l}    \big )
-\\ & \geq \frac{S}{2^l} \big (  1 - \frac{|S|}{2 \cdot 2^l}    \big )
-\\ & \geq \frac{K}{2^l} \big (  1 - \frac{S}{s \cdot s^l}    \big )
+\\ & \geq \frac{|S|}{2^l} \big (  1 - \frac{|S|}{2 \cdot 2^l}    \big )
+\\ & \geq \frac{K}{2^l} \big (  1 - \frac{|S|}{2 \cdot 2^l}    \big )
 \\ & \geq \frac{3}{4}\cdot p
 .  \end{align*}}
 \end{caseof}
