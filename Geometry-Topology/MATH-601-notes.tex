@@ -26,21 +26,49 @@
 \usepackage{adjustbox}
 \usepackage{ bbold }
 \usepackage{media9}
+
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem*{notation}{Notation}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
 \newtheorem*{question}{Question}
-\newtheorem{exmp}{Example}
-\newtheorem{claim}{Claim}
-\newtheorem{fact}{Fact}
+\newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{note}{Note}
-\newtheorem{exercise}{Exercise}
-\newtheorem{prop}{Proposition}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -458,7 +486,7 @@ X\times \{0\} \arrow[ru, "f"] \arrow[rrrd] &  & A\times I \cup X \times \{0\} \a
 .\] If $A$ is closed then $H\cup f$ is certainly continuous. If $A$ is not closed, then our argument needs to be more careful. 
 \end{proof}
 
-\begin{exmp} $ $
+\begin{exmp}\label{ex12} $ $
 \begin{enumerate}[label=(\alph*)]
 \item $S^{n-1} \hookrightarrow D^n$ is a cofibration. 
 \begin{proof}
@@ -481,7 +509,7 @@ Suppose, for contradiction, that there is some retraction $r: I \times I \to A \
 Any CW pair $(X,A)$ satisfies HEP.
 \end{lemma}
 \begin{proof}
-Notice that $X^n \times I$ is obtained from $X^n \times \{0\} \cup (X^{n-1} \cup A^n) \times I$ by attaching a certain number of copies of $D^n \times I$ along $D^n \times \{0\} \cup S^{n-1} \times I$. Recall the deformation retraction $r$ from Example 12(b). Thus, we obtain a deformation retraction $r_n$ of $X^n \times I$ onto $X^n \times \{0\} \cup (X^{n-1} \cup A^n) \times I$.
+Notice that $X^n \times I$ is obtained from $X^n \times \{0\} \cup (X^{n-1} \cup A^n) \times I$ by attaching a certain number of copies of $D^n \times I$ along $D^n \times \{0\} \cup S^{n-1} \times I$. Recall the deformation retraction $r$ from  \cref{ex12}(b). Thus, we obtain a deformation retraction $r_n$ of $X^n \times I$ onto $X^n \times \{0\} \cup (X^{n-1} \cup A^n) \times I$.
 
 Define $U_n = X\times \{0\} \cup (X^n \cup A) \times I$ for each $n\geq -1$ with $X^{n-1} = \emptyset$. Note that $U_n = (X^n \times I) \cup U_{-1}$. Extend each $r_n$ to the homotopy $\hat{r}_n : U_n \times I \to U_n$ given by setting $\hat{r}_n(x) = x$ for each $x\in U_{-1}$. This is continuous since $A$ is closed and $(X^n \times I) \cap U_{-1} = X^n \times \{0\} \cup A^n \times I \subset X^n \times \{0\} \cup (X^{n-1} \cup A^n) \times I$. Then each $\hat{r}_n$ is a deformation retraction of $U_n$ onto $U_{n-1}$.  Perform $\hat{r}_n$ during the $t$-interval $[\frac{1}{2^{n+1}}, \frac{1}{2^n}]$.  The infinite sequential concatenation $R$ of the $\hat{r}_n$ is continuous at $t=0$ when restricted to each $X^n \times I^2$  and is thus continuous on $\bigcup_n U_n = X \times I^2$. Therefore, $R$ is a deformation retraction of $X\times I$ onto $U_{-1} = X\times \{0\} \cup A\times I$.
 \end{proof}
@@ -635,7 +663,7 @@ $\pi_1(X \times Y, (x_0, y_0)) \cong \pi_1(X, x_0) \times \pi_1(Y, y_0)$.
 Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection. Suppose that there is some $\widetilde{F}_0 : Z \times \{0\} \to Y$ such that $p \circ \widetilde{F}_0 = F_0$. Then there exists a unique map $\widetilde{F} : Z \times I \to Y$ such that $p \circ \widetilde{F} = F$ and $\widetilde{F} \restriction_{Z\times \{0\}} = \widetilde{F}_0$.
 \end{lemma}
 
-\begin{corollary}{\textbf{(Path lifting property)}}
+\begin{corollary}[Path lifting property]
 \begin{enumerate}
 \item If $\gamma : I \to X$ is a path and $y_0 \in Y$ with $p(y_0) = \gamma(0)$, then there exists a unique $\tilde{\gamma} : I \to Y$ such that $\tilde{\gamma}(0) = y_0$ and $p \circ \tilde{\gamma} = \gamma$.
 \item Let $\gamma_0, \gamma_1$ be two paths in $X$ and let $H : \gamma_0 \simeq_p \gamma_1$. Let $\tilde{\gamma}_0$ and $\tilde{\gamma}_1$ be respective lifts such that $\tilde{\gamma}_0 (0) = \tilde{\gamma}_1(0)$. Then there exists a unique $\widetilde{H} : \tilde{\gamma}_0 \simeq_p \tilde{\gamma}_1$ such that $p \circ \widetilde{H} = H$.
@@ -668,7 +696,7 @@ Suppose, for contradiction, that there is some retraction $r$. Then we get an in
 .\] But $r_{\ast} \circ i_{\ast} = (r \circ i )_{\ast} = (\1_{S^1})_{\ast} = \1_{\pi_1(S^1)}$. Thus, $r_{\ast}$ is surjective, which is impossible. 
 \end{proof}
 
-\begin{corollary}{\textbf{(Brouwer fixed point theorem in dimension 2)}}
+\begin{corollary}[Brouwer fixed point theorem in dimension 2]
 If $\varphi : D^2 \to D^2$ is  any map, then $\varphi(x_0) = x_0$ for some $x_0 \in D^2$.
 \end{corollary}
 \begin{proof}
@@ -679,7 +707,7 @@ If not, then we may define a retraction $r$ of $D^2$ onto $S^1$ as follows. For 
 
 We give a proof of a result that we've already used.
 
-\begin{lemma}{\textbf{(Homotopy lifting property)}}
+\begin{lemma}[Homotopy lifting property]
 Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection. Suppose that there is some $\widetilde{F}_0 : Z \times \{0\} \to Y$ such that $p \circ \widetilde{F}_0 = F_0$. Then there exists a unique map $\widetilde{F} : Z \times I \to Y$ such that $p \circ \widetilde{F} = F$ and $\widetilde{F} \restriction_{Z\times \{0\}} = \widetilde{F}_0$.
 \end{lemma}
 \begin{proof}
@@ -702,7 +730,7 @@ Let $p: (Y, y_0) \to (X, x_0)$  be a covering map. Then $p_{\ast} : \pi_1(Y, y_0
 Let $[\gamma] \in \ker{p_{\ast}}$, so that $[p\circ \gamma] = [c_{x_0}]$. By the path lifting property, there must be some homotopy $\gamma \simeq_p c_{y_0}$. Thus, $[\gamma] = 0$.
 \end{proof}
 
-\begin{theorem}{\textbf{(Fundamental theorem of algebra)}}
+\begin{theorem}[Fundamental theorem of algebra]
 Any nonconstant $p(x) \in \C[x]$ has a root. 
 \end{theorem}
 \begin{proof}
@@ -728,7 +756,7 @@ G_{\alpha} \arrow[ru, "\varphi_{\alpha}"'] \arrow[u, hook] &
 This is exactly the coproduct in $\mathbf{Grp}$, which always exists.
 \end{note}
 
-\begin{theorem}{\textbf{(van Kampen)}}
+\begin{theorem}[van Kampen]
 Write the space $X$ as the union $\bigcup_{\alpha \in A} A_{\alpha}$ of path connected open subsets $A_{\alpha}$ . Assume that each $A_{\alpha}$ is path connected and that each $A_{\alpha} \cap A_{\beta}$ is path connected. Then $$\Phi : \ast_{\alpha} \pi_1(A_{\alpha}) \to \pi_1(X)$$ is surjective. Moreover, if each $A_{\alpha} \cap A_{\beta} \cap A_{\delta}$ is path connected, then $\ker{\Phi}$ is precisely the normal subgroup $N$ generated by every element of the form $$ i_{\alpha \beta} (\gamma ) i_{\beta \alpha}(\gamma^{-1}), \quad \gamma \in \pi_1(A_{\alpha} \cap A_{\beta})$$ where $i_{\alpha \beta} : \pi_1(A_{\alpha} \cap A_{\beta}) \to \pi_1(A_{\alpha})$ denotes the map induced by inclusion.  In this case, $\pi_1(X) \cong \faktor{\ast_{\alpha} G_{\alpha}}{N}$ where $G_{\alpha} \coloneqq  \pi_1(A_{\alpha})$. .
 \end{theorem}
 
@@ -838,7 +866,7 @@ The so-called Reeb torus demonstrates that there are foliations on $S^3$.
 If $M = \coprod_{\alpha} \L_{\alpha}$, then $\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}$ (where $x\in L_{\alpha_x}$) is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. Frobenius states the converse of this. 
 \end{remark}
 
-\begin{note}{\textbf{(Wirtinger presentation)}} 
+\begin{note}[Wirtinger presentation] 
 Draw our knot $K$ as follows. Take a finitely many arcs $\alpha_1, \ldots, \alpha_n$ such that each $\alpha_i$ is connected to $\alpha_{i+1} \mod n$. Orient the knot so that the arcs are labeled in the direction of the orientation. Draw a short arrow $x_i$ passing under each $\alpha_i$ from right to left. The $x_i$ represent loops starting at a base point going under the arc from its base to head and back to base. At each crossing, we get a relation among the $x_i$ as follows.
 \begin{figure}[H]
 \centering
@@ -899,7 +927,7 @@ If $p: (Y, y_0) \to (X, x_0)$ is a covering map, then there is an isomorphism of
 Let $\gamma$ be a loop in $(X, x_0)$. Lift it to $\tilde{\gamma}$ such that $\tilde{\gamma}(0) = y_0$. Set $\alpha(\gamma) = \tilde{\gamma}(1) \in p^{-1}(x_0)$. The map $\alpha : \faktor{\pi_1(X, x_0)}{p_{\ast}\pi_1(Y, y_0)} \to p^{-1}(x_0)$ is well-defined since $\widetilde{h \ast \gamma} = \tilde{h} \ast \tilde{\gamma}$ when $[h] \in p_{\ast}\pi_1(Y, y_0)$. It is surjective because $Y$ is path connected. If $\alpha(\gamma_1) = \alpha(\gamma_2)$, then $\tilde{\gamma}_1\ast \tilde{\gamma}_2^{-1}= \widetilde{\gamma_1 \ast \gamma_2^{-1}}$ is a loop in $(Y, y_0)$, so that $\gamma_1 \ast \gamma_2^{-1}  \in p_{\ast}\pi_1(Y, y_0)$. This shows that $\alpha$ is injective as well.
 \end{proof}
 
-\begin{lemma}{\textbf{(Lifting criterion)}}
+\begin{lemma}[Lifting criterion]
 Let $p: (Y, y_0) \to (X, x_0)$ be a covering map and $f: (Z, z_0) \to (X, x_0)$ a map with $Z$ path connected and locally path connected.  Then there exists some map $\tilde{f}$ fitting into the commutative diagram \[
 \begin{tikzcd}
  & Y \arrow[d, "p"] \\
@@ -914,7 +942,7 @@ Z \arrow[r, "f"'] \arrow[ru, "\tilde{f}", dashed] & X
 \\ \\ It remains to verify that $\tilde{f}$ is continuous. Find some path $\lambda : z_0 \leadsto z$. We know that there is some neighborhood $U \ni f(z)$ that is is evenly covered by $p$. Let $\widetilde{U}$ denote the sheet containing $\tilde{f}(z)$ and find some homeomorphism $p : \widetilde{U} \to U $. Find some path connected neighborhood $V\ni z$ such that $f(Z) \subset U$. Let $z' \in V$. Find some path $\eta : z \leadsto z'$. Then the path $(f \lambda )\ast (f \eta)$ lifts to $(\widetilde{f \lambda}) \ast (\widetilde{f \eta})$ where $\widetilde{f\eta} = p^{-1}f\eta$. As $z'$ was arbitrary in $V$, this implies that $\tilde{f}\restriction_V =p^{-1}f\restriction_V$, which is continuous. Hence $\tilde{f}$ is continuous as well. 
 \end{proof}
 
-\begin{prop}{\textbf{(Unique lifting property)}}
+\begin{prop}[Unique lifting property]
 Let $p: Y \to X$ be a covering map and $f: Z \to X$ a map with $\tilde{f}_1, \tilde{f}_2 : Z \to Y$ lifts of $f$. Let $Z$ be connected. If there is some $z_0 \in Z$ such that $\tilde{f}_1(z_0) = \tilde{f}_2(z_0)$, then $\tilde{f}_1 =  \tilde{f}_2$.
 \end{prop}
 
@@ -1144,7 +1172,7 @@ We get a functor $C_{\bullet}: \Delta \to \ch$ given by $(K, \Sigma) \mapsto (C_
 \]
 \end{note}
 
-\begin{remark}{\textbf{(Singular simplex)}}
+\begin{remark}[Singular simplex]
 The $\textit{Hauptvermutung}$ is the conjecture that if $X$ is a nice topological space such as a manifold, then for any two triangulations of $X$, you  can get from one to the other in a combinatorial way. It turns out that this is false. Hence we cannot fill our above diagram with a functor $\mathbf{Top} \to \Delta$.
 
 Eilenberg and Steenrod, however, created the following approach to obtain certain reverse arrows in our diagram. Let $X$ be a space. A \textit{singular $q$-simplex on $X$}  is a continuous map $\Delta^q \to X$. Let $\text{Sing}_q(X)$ denote the set of all singular $q$-simplices on $X$. Let $C_q(X)$ be the free abelian group on $\text{Sing}_q(X)$. Define $\partial_{q} : C_q(X) \to C_{q-1}(X)$ by 
@@ -1247,9 +1275,9 @@ $H_{\ast}(X) \cong \bigoplus_{X_{\alpha} \in \pi_0(X)} H_{\ast}(X_{\alpha})$.
 because $\Delta^k$ is path connected. Therefore, $C_{\ast}(X) \cong \bigoplus_{\alpha} C_{\ast}(X_{\alpha})$.
 \end{proof}
 
-\begin{note}
-Our proof of the last theorem shows that the functor $C_{\ast}(-) : \mathbf{Top} \to \mathbf{Ch}$ preserves coproducts. 
-\end{note}
+\begin{corollary}
+The functor $C_{\ast}(-) : \mathbf{Top} \to \mathbf{Ch}$ preserves coproducts. 
+\end{corollary}
 
 \begin{lemma}
 The functor $H_{\ast}(-) : \mathbf{Ch} \to \mathbf{Ab}$ preserves coproducts. 
@@ -1263,7 +1291,7 @@ Let $S$ be a set and $(A_s, \partial)$ be a chain complex for each $s\in S$. Not
 $H_{\ast}(S^0) = \begin{cases} \Z \times \Z & \ast = 0 \\ 0 & \ast \ne 0 \end{cases}.$
 \end{exmp}
 
-\begin{definition}{\textbf{(Reduced homology)}}
+\begin{definition}[Reduced homology]
 Define $\epsilon :C_0(X) \to \Z$ by $\sum a_x \cdot x \mapsto \sum a_x$. Note that $$(\epsilon \circ \partial)(\sigma : \Delta^1 \to X) = \epsilon(1 \cdot \sigma(v_1) - 1 \cdot \sigma(v_0)) = 1-1 =0.$$ This induces a map $\epsilon : H_0(X) \to \Z$. Let $$\widetilde{C}_k(X) = \begin{cases} C_k(X) & k >0 \\ \ker{\epsilon} & k =0 \end{cases}.$$ Define $$\widetilde{H}_k(X) = H_k(\widetilde{C}_k(X)).$$ Note that $\widetilde{H}_k(X) = H_k(X)$ for any $k>0$.
 \end{definition}
 
@@ -1294,11 +1322,11 @@ We have a commutative diagram
 .\] The three columns and the top two rows are exact. The nine lemma implies that the bottom row is exact.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{c10}
 $\widetilde{H}_0(X)=0$ whenever $X$ is path connected. 
 \end{corollary}
 
-\begin{definition}{\textbf{(Relative homology)}}
+\begin{definition}[Relative homology]
 Given a pair $(X,A)$ with $A\subset X$, define $C_{\ast}(X,A) = \faktor{C_{\ast}(X)}{C_{\ast}(A)}$. Since $\partial : C_{\ast}(A) \to C_{\ast}(A)$, this descends to a map $\partial : C_{\ast}(X,A) \to C_{\ast}(X,A)$. Define $ H_{\ast}(X,A) = H_{\ast}(C_{\ast}(X,A))   .$
 \end{definition}
 
@@ -1321,7 +1349,7 @@ If $(X,A)$ is a good pair, then $H_{\ast}(X,A) \cong \widetilde{H}_{\ast}(X/A)$.
 $H_{\ast}(D^n, S^{n-1}) \cong \widetilde{H}_{\ast}(S^n)$.
 \end{exmp}
 
-\begin{lemma} Let $X$ be a path connected space and $A\subset X$.
+\begin{lemma}\label{l21} Let $X$ be a path connected space and $A\subset X$.
 \begin{enumerate}
 \item $H_0(X) \cong \Z$.
 \item The map $i_{\ast}: H_0(A) \to H_0(X)$ induced by inclusion is surjective. 
@@ -1334,7 +1362,7 @@ $H_{\ast}(D^n, S^{n-1}) \cong \widetilde{H}_{\ast}(S^n)$.
 \end{enumerate}
 \end{proof}
 
-\begin{lemma}{\textbf{(Snake)}}
+\begin{lemma}[Snake]
 Suppose that $A$, $B$, and $C$ are three chain complexes and $i: A \to B$ and $j: B \to C$ are chains maps such that for each $k$, the sequence $0 \to A_k \to B_k \to C_k \to 0$ is exact. Then there exists a \textit{long exact sequence in homology}
 \[
 \begin{tikzcd}
@@ -1389,7 +1417,7 @@ Conversely, let $[f]\in \ker{i(\bullet)}$, so that $[if] =0$. Then $if=\partial{
 
 
 
-\begin{corollary}
+\begin{corollary}\label{c11}
 Note that we have a canonical short exact sequence $0 \to C_{\ast}(A) \to C_{\ast}(X) \to C_{\ast}(X,A) \to 0$. Therefore, for any pair $(X,A)$, there exists a long exact sequence
 \[
 \begin{tikzcd}
@@ -1400,7 +1428,7 @@ Note that we have a canonical short exact sequence $0 \to C_{\ast}(A) \to C_{\as
 .\]
 \end{corollary}
 
-\begin{note} By Lemma 21, the bottom row
+\begin{note} By \cref{l21}, the bottom row
 \[
 \begin{tikzcd}
 H_0(A) \arrow[r]         & H_0(X) \arrow[r]     & {H_0(X,A)} \arrow[r]     & 0
@@ -1412,13 +1440,13 @@ H_0(A) \arrow[r]         & H_0(X) \arrow[r]     & {H_0(X,A)} \arrow[r]     & 0
 A \textit{triangle of spaces} is a triple $(X, A, B)$ such that $X \supset A \supset B$.
 \end{definition}
 
-\begin{corollary}
+\begin{corollary}\label{c12}
 Let $(X, A, B)$ be a triangle. The short exact sequence $0 \to C_{\ast}(A, B) \to C_{\ast}(X, B) \to C_{\ast}(X, A) \to 0$ induces a long exact sequence $$ \cdots \to  H_k(A, B) \to H_k(X, B) \to H_k(X, A) \to H_{k-1}(A, B) \to \cdots   .$$
 \end{corollary}
 
 \subsection{Lecture 11}
 
-\begin{theorem}{\textbf{(Excision)}}
+\begin{theorem}[Excision]
 If $(X, A)$ is a pair and $Z\subset A$ such that $\cl(Z) \subset \mathring{A}$. Then you can \textit{excise} $Z$ in that the inclusion of pairs $(X\setminus Z, A \setminus Z) \hookrightarrow (X, A)$ induces an isomorphism of homology. 
 \end{theorem}
 
@@ -1433,7 +1461,7 @@ There is some neighborhood $U$ of $A$ that deformation retracts onto $A$. For ea
                                            &                             &                                                                     \\
 {H_k(X/A, A/A)} \arrow[r, "3"']            & H_k(X/A. U/A)               & {H_k(X/A \setminus A/A, U/A \setminus A/A)} \arrow[l, "4"]         
 \end{tikzcd}
-\] commutes. Arrow 1 is an isomorphism due to the exactness of the sequence $$\underbrace{H_k(U, A)}_{0} \to H_k(X,A) \to H_k(X,U) \to \underbrace{H_{k-1}(U,A)}_{0}$$ obtained from Corollary 11. Similarly, arrow 3 is an isomorphism. Arrows 2 and 4 are isomorphisms by excision. Arrow 7 is an isomorphism since $(X\setminus A , U \setminus A) \hookrightarrow (X/A \setminus A/A, U/A \setminus A/A)$ is a homeomorphism of pairs. Therefore, arrow $5$ is an isomorphism since out diagram commutes. . 
+\] commutes. Arrow 1 is an isomorphism due to the exactness of the sequence $$\underbrace{H_k(U, A)}_{0} \to H_k(X,A) \to H_k(X,U) \to \underbrace{H_{k-1}(U,A)}_{0}$$ obtained from \cref{c11}. Similarly, arrow 3 is an isomorphism. Arrows 2 and 4 are isomorphisms by excision. Arrow 7 is an isomorphism since $(X\setminus A , U \setminus A) \hookrightarrow (X/A \setminus A/A, U/A \setminus A/A)$ is a homeomorphism of pairs. Therefore, arrow $5$ is an isomorphism since out diagram commutes. . 
 \end{proof}
 
 \begin{definition}
@@ -1444,7 +1472,7 @@ A based space $(X,x_0)$ is \textit{nondegenerate} if the pair $(X, \{x_0\})$ is 
 Let $\{(X_{\alpha}, x_{\alpha})\}_{\alpha}$ be a set of nondegenerate bases spaces. Then $\widetilde{H}_{\ast}(\bigvee_{\alpha} X_{\alpha}) \cong \bigoplus_{\alpha} \widetilde{H}_{\ast}(X_{\alpha}).$
 \end{corollary}
 \begin{proof}
-Note that $\bigvee_{\alpha} X_{\alpha} = \faktor{\coprod_{\alpha}X_{\alpha}}{\coprod_{\alpha} \{x_{\alpha}\}}$. Now apply Corollary 12 together with the fact that the functor $H_{\ast}({-}, {-}): \mathbf{Top}\times \mathbf{Top} \to \mathbf{Ab}$ preserves coproducts. 
+Note that $\bigvee_{\alpha} X_{\alpha} = \faktor{\coprod_{\alpha}X_{\alpha}}{\coprod_{\alpha} \{x_{\alpha}\}}$. Now apply \cref{c12} together with the fact that the functor $H_{\ast}({-}, {-}): \mathbf{Top}\times \mathbf{Top} \to \mathbf{Ab}$ preserves coproducts. 
 \end{proof}
 
 \begin{definition}
@@ -1476,7 +1504,7 @@ Induct on the $k$-skeleton of $K$. The case where $k=0$ is obvious. Suppose that
 \end{tikzcd} .
 }
 \]
-\begin{lemma}{\textbf{(Five lemma)}}
+\begin{lemma}[Five lemma]
 Consider the following commutative diagram in an abelian category with exact rows.
 \[
 \begin{tikzcd}
@@ -1507,11 +1535,11 @@ Any cycle $c\in C_i(|K|)$ is finite linear combination of singular simplices. Ou
 
 \subsection{Lecture 12}
 
-\begin{theorem}{\textbf{(Excision)}}
+\begin{theorem}[Excision]
 If $(X, A)$ is a pair and $Z\subset A$ such that $\cl(Z) \subset \mathring{A}$. Then you can \textit{excise} $Z$ in that the inclusion of pairs $(X\setminus Z, A \setminus Z) \hookrightarrow (X, A)$ induces an isomorphism of homology. 
 \end{theorem}
 
-\begin{lemma}
+\begin{lemma}\label{l25}
 The excision theorem holds if and only if whenever $X= \mathring{A} \cup \mathring{B}$, the inclusion of pairs $(B, A\cap B) \to (X,A)$ induces an isomorphism on homology $H_{\ast}(B, A\cap B) \to H_{\ast}(X,A)$.
 \end{lemma}
 \begin{proof}
@@ -1657,7 +1685,7 @@ Then $T_m$ is a homotopy between $\1$ and $S^m$. Indeed,
 \end{align*}
 \end{remark}
 
-\begin{lemma}{\textbf{(Lebesgue covering)}}
+\begin{lemma}[Lebesgue covering]
 Let $Z$ be a compact metric space. Let $\U =\{U_{\alpha}\}$ be an open cover of $Z$. Then $\exists \delta >0$ (called a \textit{Lebesgue number for $\U$}) such that for any set $S$ with $\text{diam}(S) < \delta$, $S$ is contained in $U_{\alpha}$ for some $\alpha$.
 \end{lemma}
 
@@ -1696,8 +1724,8 @@ Note that $ S^{m(\sigma)}{\sigma} \in C_n^{\U}$ and that the term $T_{m(\sigma)}
 \end{enumerate}
 \end{proof}
 
-\begin{proof}{\textbf{(Excision theorem)}}
-We prove the equivalent statement expressed in Lemma 25. Write $X = \mathring{A}\cup \mathring{B}$ with $A,B\subset X$. Let $\U =\{A, B\}$. Note that $C_{\ast}(A)$ is a subcomplex of $C_{\ast}^{\U}(X)$. The diagram
+\begin{proof}[Excision theorem]
+We prove the equivalent statement expressed in \cref{l25}. Write $X = \mathring{A}\cup \mathring{B}$ with $A,B\subset X$. Let $\U =\{A, B\}$. Note that $C_{\ast}(A)$ is a subcomplex of $C_{\ast}^{\U}(X)$. The diagram
 \[
 \begin{tikzcd}
 0 \arrow[r] & C_{\ast}(A) \arrow[r] \arrow[d, "\text{q-iso}"] & C_{\ast}^{\U}(X) \arrow[r] \arrow[d, "\text{q-iso}"] & C_{\ast}^{\U}(X)/C_{\ast}(A) \arrow[r] \arrow[d] & 0 \\
@@ -1706,7 +1734,7 @@ We prove the equivalent statement expressed in Lemma 25. Write $X = \mathring{A}
 \] commutes. The five lemma implies that the third vertical arrow is a quasi-isomorphism as well. Finally, note that the inclusion map $\faktor{C_{\ast}(B)}{C_{\ast}(A\cap B)} \to \faktor{C_{\ast}^{\U}(X)}{C_{\ast}(A)}$ is a quasi-isomorphism since both the domain and codomain are free groups with basis the singular $n$-simplices in $B$ that are outside $A$.
 \end{proof}
 
-\begin{corollary}{\textbf{(Mayer-Vietoris (MV) sequence)}}
+\begin{corollary}[Mayer-Vietoris (MV) sequence]
 Let $X= \mathring{A} \cup \mathring{B}$. Then there exists a LES 
 \[
 \begin{tikzcd}
@@ -1772,11 +1800,11 @@ H_0(X) \arrow[r]                          & H_0(C_{+}{X})\oplus H_0(C_{-}{X}) \a
 \] shows that $H_1(\Sigma{X}) =0$.
 \end{exmp}
 
-\begin{theorem}{\textbf{(Brouwer's invariance of domain)}}
+\begin{theorem}[Brouwer's invariance of domain]
 Let $U\subset \R^n$ be open and $V\subset \R^m$ be open. If $U \cong V$, then $n=m$.
 \end{theorem}
 \begin{proof}
-Let $x\in U$ and consider $H_{\ast}(U \setminus \{x\})$. By excision, we get $H_{\ast}(U, U \setminus \{x\}) \cong H_{\ast}(\R^n, \R^n \setminus \{x\})$. By Corollary 10, we also get a LES
+Let $x\in U$ and consider $H_{\ast}(U \setminus \{x\})$. By excision, we get $H_{\ast}(U, U \setminus \{x\}) \cong H_{\ast}(\R^n, \R^n \setminus \{x\})$. By \cref{c10}, we also get a LES
 \[
 \begin{tikzcd}
 H_{k}(\R^n \setminus \{x\}) \arrow[r] & H_{k}(\R^n) \arrow[r] & {H_{k}(\R^n, \R^n \setminus \{x\})} \arrow[r] & H_{k-1}(\R^n \setminus \{x\}) \arrow[r] & H_{k -1}(\R^n)
@@ -1851,7 +1879,7 @@ Let $f: S^n \to S^n$ and $x\in S^n$ such that $f^{-1}(x)= \{x_1, \ldots, x_m\}$.
 {H_n(S^n, S^n\setminus \{x_i\})} & {H_n(S^n, S^n \setminus \{f^{-1}(x)\})} \arrow[r, "f_{\ast}"] \arrow[l, "p_i"]                & {H_n(S^n, S^n \setminus \{x\})}               \\
                                  & H_n(S^n) \arrow[lu, "\cong"] \arrow[u, "j"'] \arrow[r, "f_{\ast}"] \arrow[u]                  & H_n(S^n) \arrow[u, "\cong"']                 
 \end{tikzcd}
-\] where the two upper isomorphisms come from excision and the two lower isomorphisms come from the LES of Corollary 10. Therefore, the homomorphism $f_{\ast} : H_n(U_i, U_i \setminus \{x_i\}) \to H_n(V, V\setminus \{x\})$ can be viewed as a homomorphism $f_{\ast} : \Z \to \Z$, so that $f_{\ast}(g) = \alpha g$ for some $\alpha \in \Z$. We call $\alpha$ the \textit{local degree of $f$ at $x$}, written as $\deg_{x_i}{f}$.
+\] where the two upper isomorphisms come from excision and the two lower isomorphisms come from the LES of \cref{c10}. Therefore, the homomorphism $f_{\ast} : H_n(U_i, U_i \setminus \{x_i\}) \to H_n(V, V\setminus \{x\})$ can be viewed as a homomorphism $f_{\ast} : \Z \to \Z$, so that $f_{\ast}(g) = \alpha g$ for some $\alpha \in \Z$. We call $\alpha$ the \textit{local degree of $f$ at $x$}, written as $\deg_{x_i}{f}$.
 \end{note}
 
 \begin{lemma}
@@ -1892,7 +1920,7 @@ H_k(X^n) \cong H_k(X^{n+1}) \cong H_k(X^{n+2}) \cong \cdots
 \end{enumerate}
 \end{proof}
 
-\begin{definition}{\textbf{(Cellular homology)}}
+\begin{definition}[Cellular homology]
 Let $X$ be a CW-complex. Consider the three pairs $(X^{n+1}, X^n)$, $(X^n, X^{n-1})$, and $(X^{n-1}, X^{n-2})$. We have a commutative diagram
 \[
 \begin{tikzcd}
@@ -1913,7 +1941,7 @@ For any CW-complex $X$, $H_n^{CW}(X) \cong H_n(X)$.
 Note that $H_n(X) \cong \faktor{H_n(X^n)}{\im{\partial_{n+1}}}$. Since $j_n$ is injective, $$\im{d_{n+1}} = \im{j_n{\partial_{n+1}}} = j_n(\im{\partial_{n+1}}) \cong \im{\partial_{n+1}}$$. Since $j_{n-1}$ is injective as well, we get $$H_n(X^n) \cong j_n(H_n(X^n)) = \im{j_n} = \ker{\partial_n} = \ker{d_n}.$$ Thus, $j_n : H_n(X^n) \overset{\cong}{\longrightarrow} \ker{d_n}$ such that $j_n(\im{\partial_{n+1}}) = \im{d_{n+1}}$, which implies that $$ \faktor{H_n(X^n)}{\im{\partial_{n+1}}} \cong \faktor{\ker{d_n}}{\im{d_{n+1}}} = H_n^{CW}(X).$$
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{c19}
 If $X$ is connected and contains only one $0$-cell, then $d_1 : H_1(X^1, X^0) \to H_0(X^0)$ is the zero map.
 \end{corollary}
 
@@ -1925,7 +1953,7 @@ If $X$ is a CW-complex with no $n$-cells, then $H_n(X) =0$.
 Recall that $\CP^n = e^0 \cup e^2 \cup e^4 \cup \cdots \cup e^{2n}$. Hence each map $d_i =0$, so that $H_k^{CW}(\CP^n)\cong H_k(X^k, X^{k-1})$. Therefore, $$H_k(\CP^n) = \begin{cases}  \Z & k \text{ even and } k\leq 2n  \\ 0 & \text{otherwise}  \end{cases}.$$
 \end{exmp}
 
-\begin{prop}{\textbf{(Cellular boundary formula)}}
+\begin{prop}[Cellular boundary formula]
 Let $X$ be a CW-complex and $n>1$. Let $d_{\alpha \beta}$ denote the degree of the composition $$S_{\alpha}^{n-1} \overset{\varphi_{\alpha}}{\longrightarrow} X^{n-1} \overset{q_{\beta}q}{\longrightarrow} S_{\beta}^{n-1}$$ where $\varphi_{\alpha}$ denotes the attaching map of $e_{\alpha}^n$, $q: X^{n-1} \to \faktor{X^{n-1}}{X^{n-2}}$ denotes the quotient map, and $q_{\beta} : \faktor{X^{n-1}}{X^{n-2}} \to S_{\beta}^{n-1}$ denote the map collapsing $X^{n-1} \setminus e_{\beta}^{n-1}$ to a point. Then $$  d_n(e_{\alpha}^n) = \sum_{\beta} d_{\alpha{\beta}}e_{\beta}^{n-1} .$$ Note that his summation contains only finitely many terms since $\varphi_{\alpha}$ has compact image and thus intersects only finitely cells $e_{\beta}^{n-1}$.
 \end{prop}
 \begin{proof}
@@ -1962,7 +1990,7 @@ Let $\Delta_{\alpha{\beta}}\coloneqq  q_{\beta}q \varphi_{\alpha}$. Then we have
 \begin{definition} $ $
 \begin{enumerate}
 \item Let $G$ be a finitely generated abelian group. We can write $G$ uniquely as  $\Z^m \times T_1 \times \cdots \times T_s$ where each $T_i$ is a  finite cyclic group. Define $\rnk{G} = m$.
-\item Let $X$ be a space whose singular chain complex is finite. The \textit{Euler characteristic $\chi(X)$ of $X$} is $ \sum_n({-}1)^n\rnk{H_n(X)}$, which is a finite sum by Corollary 19.
+\item Let $X$ be a space whose singular chain complex is finite. The \textit{Euler characteristic $\chi(X)$ of $X$} is $ \sum_n({-}1)^n\rnk{H_n(X)}$, which is a finite sum by \cref{c19}.
 \end{enumerate}
 \end{definition}
 
@@ -2014,7 +2042,7 @@ Let $R$ be a (unital) ring. Let $M$ be an $R$-module and $N$ be a right $R$-modu
 \end{enumerate}
 \end{prop}
 
-\begin{definition}{\textbf{(Homology with coefficients)}}
+\begin{definition}[Homology with coefficients]
 Let $G$ be an abelian group and $X$ be a space.  Define $(C_{\ast}(X; G), \partial) =(C_{\ast} \otimes_{\Z} G, \partial \otimes \1) $ and $H_{\ast}(X;G) = H_{\ast}(C_{\ast}(X;G))$.
 \end{definition}
 
@@ -2070,14 +2098,14 @@ Let $X$ be an $n$-manifold and $x\in X$. Let $U$ be a coordinate ball around $x$
  {H}_k(X, X \setminus x) & \cong {H}_k(U, U \setminus x)  \\ &   \cong \widetilde{H}_{k-1}(U\setminus x) \\ & \cong  \widetilde{H}_{k-1}(S^{n-1})  \cong \begin{cases} 0 & k \ne n \\ \Z & k =n \end{cases}.\end{align*} There are precisely two generators of  $\widetilde{H}_n(U, U \setminus x)$, a choice $\alpha_x$ of which is called a \textit{local orientation of $X$ at $x$}.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{lem}
 Given $\alpha_x \in H_n(X, X\setminus x)$, there exist a neighborhood $U$ of $x$ and $\alpha_U \in H_n(X, X \setminus U)$ such that $j_x^U(\alpha_U) = \alpha_x$ where $j_x^U : H_n(X, X \setminus U) \to H_n(X, X \setminus x)$.
 \end{lemma}
 \begin{proof}
 Let $c$ be a relative cycle representing $\alpha_x$. Then $\supp{\partial{c}} \subset X \setminus x$. Let $U = X \setminus \supp{\partial{c}}$ and $\alpha_U = [c] \in H_n(X, X\setminus U)$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lem2}
 Every neighborhood $W$ of $x$ contains some neighborhood $U$ of $x$ such that for each $y \in U$, $j_y^U : H_n(X, X\setminus U) \to H_n(X, X\setminus y)$ is an isomorphism. 
 \end{lemma}
 \begin{proof}
@@ -2095,7 +2123,7 @@ An  $n$-manifold $X$ is \textit{orientable} if for any $x\in X$, we can choose a
 \end{definition}
 
 \begin{remark}
-Let $X$ be an $n$-manifold. Any inclusion $U \subset V$ of open sets induces a map $H_n(X, X \setminus V) \to H_n(X, X \setminus U)$. Thus, $$U \mapsto H_n(X, X \setminus U)$$ defines a presheaf $\mathcal{O}_n$ on $X$, called the \textit{orientation sheaf of $X$}. By our last two lemmas along with excision, this is a \textit{locally constant sheaf} in that for any $x\in X$, there is some open set $V \ni x$ such that $U \subset V \mapsto H_n(X, X \setminus U)$ is constant.
+Let $X$ be an $n$-manifold. Any inclusion $U \subset V$ of open sets induces a map $H_n(X, X \setminus V) \to H_n(X, X \setminus U)$. Thus, $$U \mapsto H_n(X, X \setminus U)$$ defines a presheaf $\mathcal{O}_n$ on $X$, called the \textit{orientation sheaf of $X$}. By \cref{lem} and \cref{lem2} along with excision, this is a \textit{locally constant sheaf} in that for any $x\in X$, there is some open set $V \ni x$ such that $U \subset V \mapsto H_n(X, X \setminus U)$ is constant.
 \end{remark}
 
 \begin{definition}
@@ -2287,7 +2315,7 @@ To see that $h$ is well-defined, suppose that $\varphi = \delta{\psi}$ for some 
 \end{enumerate}
 \end{exmp}
 
-\begin{theorem}{\textbf{(Universal coefficient theorem (for cohomology))}}
+\begin{theorem}[Universal coefficient theorem (for cohomology)]
 There exists a non-canonical split short exact sequence $$\begin{tikzcd}
 0 \arrow[r] & \ext(H_{n-1}(C), G) \arrow[r] & H^n(C; G) \arrow[r, "h"] & \Hom(H_n(C), G) \arrow[r] & 0
 \end{tikzcd}     .$$
@@ -2436,7 +2464,7 @@ We can view $H^{\ast}(X; R)$ as the \textit{graded ring} $(\bigoplus_{k\geq 0} H
 The cup product is a graded ring homomorphism. 
 \end{prop}
 
-\begin{theorem}{\textbf{(K\"unneth (special case))}}
+\begin{theorem}[K\"unneth (special case)]
 Suppose that  $X$ and $Y$ are CW-complexes such that $H^n(Y; R)$ is a finitely generated free $R$-module for each $n$. Then $\times$ induces a ring isomorphism $H^{\ast}(X; R) \otimes_R H^{\ast}(Y; R) \to H^{\ast}(X\times Y; R),$ i.e.,  $$\bigoplus_{p+q= n} H^p(X; R) \otimes_R H^q(Y; R) \cong H^n(X\times Y; R)$$ for each $n$. 
 \end{theorem}
 
@@ -2488,7 +2516,7 @@ Let $Y$ be a CW-complex and $H^{\ast}(Y; R)$ be free over $R$. Consider the func
  \end{align*} where $X$ is a CW-complex. If $A= \emptyset$, then the map $\mu : h_1^{\ast}(X) \to h_2^{\ast}(X)$ given by $a \otimes b \mapsto a \times b$ defines a natural transformation $h_1^{\ast}({-}) \to h_2^{\ast}({-})$. 
 \end{prop}
 
-\begin{proof}{\textbf{(K\"unneth)}}
+\begin{proof}[K\"unneth]
 It suffices to show that $\mu : h_1^{\ast}(X) \to h_2^{\ast}(X)$ is an isomorphism when $X = \pt$. But, in this case, $\mu$ is precisely the map $R\otimes_R H^n(Y; R) \to H^n(Y; R)$ given by $\ r \otimes y \mapsto ry$, which is a well-known isomorphism.  
 \end{proof}
 
@@ -2498,7 +2526,7 @@ It suffices to show that $\mu : h_1^{\ast}(X) \to h_2^{\ast}(X)$ is an isomorphi
 
 \subsection{Lecture 20}
 
-\begin{theorem}{\textbf{(K\"unneth (special case))}}
+\begin{theorem}[K\"unneth (special case)]
 Let $(X, A)$ and $(Y, B)$ be CW-pairs. If $H^k(Y, B; R)$ is a finitely generated free $R$-module for each $k$, then $$ H^{\ast}(X, A; R) \otimes_R H^{\ast}(X, B; R) \overset{\times}{\longrightarrow} H^{\ast}(X \times Y, A \times Y \cup X \times B; R)$$ is a ring isomorphism. 
 \end{theorem}
 
@@ -2628,7 +2656,7 @@ The cap product induces a map $H_k(X; R) \times H^l(X; R)  \overset{\frown}{\lon
 If $\sigma$ is a cycle and $\varphi$ a cocycle, then clearly $\sigma \frown \varphi$ is a cycle. Also, if $\sigma = \partial{d}$ and $\delta{\varphi}=0$, then $\sigma \frown \varphi = \partial{d} \frown \varphi = \pm \partial(d \frown \varphi)$. Hence the cap product of a boundary and cocycle is a boundary. Similarly, the cap product of a cycle and coboundary is a boundary.
 \end{proof}
 
-\begin{theorem}{\textbf{(Poincar\'e duality (PD))}}
+\begin{theorem}[Poincar\'e duality (PD)]
 Let $X$ be a closed $R$-oriented $n$-manifold. Then the map $H^l(X; R) \to H_{n-l}(X;R)$ given by $\varphi \mapsto [X] \frown \varphi$ is an isomorphism for every $l$. 
 \end{theorem}
 
@@ -2647,7 +2675,7 @@ H_k(X, A \cup B) \times H^l(X, A) & \overset{\frown}{\longrightarrow} H_{k-l}(X,
 \end{align*}
 \end{note}
 
-\begin{prop}{\textbf{(Projection formula)}}
+\begin{prop}[Projection formula]
 Let $f: X \to Y$ be a map of spaces. Let $[\sigma] \in H_k(X)$ and $[\varphi] \in H^l(Y)$. Then $$f_{\ast}([\sigma]) \frown [\varphi] = f_{\ast}([\sigma] \frown f^{\ast}([\varphi]))    $$ in $H_{k-l}(Y)$.
 \end{prop}
 
@@ -2698,14 +2726,14 @@ The functor $\varinjlim : \mathbf{Ab}^I \to \mathbf{Ab}$ sends any morphism $\{w
 We have that $C_c^i(X; R) = \bigcup_{K \subset X} C^i(X, X \setminus K; R)$ with  $K$ compact in $X$. Note that the set $K_X$ of compact sets in $X$ is a directed set both under inclusion $\subset$ (for a directed system of homology groups) and under reverse inclusion $\supset$ (for a directed system of cohomology groups). 
 \end{exmp}
 
-\begin{prop} $ $
+\begin{prop}\label{prop25} $ $
 \begin{enumerate} 
 \item Let $I$ be a directed set. Let $X= \bigcup_{\alpha \in I}X_{\alpha}$ such that any compact set in $X$ is contained in some $X_{\alpha}$. Then $\varinjlim H_i(X_{\alpha}; G) \cong H_i(X; G)$ for each $i$.
 \item $\varinjlim_{K_X} H^i(X, X \setminus X_{\alpha}; R) \cong H^i_c(X; R)$.
 \end{enumerate}
 \end{prop}
 
-\begin{remark}{\textbf{(De Rham homology)}}
+\begin{remark}[De Rham homology]
 Let $X$ be a smooth $n$-manifold and consider its de Rham cochain complex $(\Omega^i(X), d)$. The \textit{de Rham homology $H_i(X)$} arises from the chain complex given by $$\Omega_i(X) \equiv \Omega^i(X)^{\vee} = \R[\{f : \Omega^i(X) \to \R \mid f \text{ continuous}\}]$$ and $\partial{\xi} \equiv \xi{d}$. Note that $ \Omega^i(X)^{\vee}$ is compactly supported. 
 
 Suppose that $X$ is closed and oriented. The linear functional $\Omega^n(X) \to \R$ given by $\omega  \mapsto \int_X \omega$ is called an \textit{$n$-current}. Let $S \subset X$ be a closed $k$-submanifold. Then $ \eta \mapsto \int_S d{\eta \restriction_S} = \int_{\partial{S}} \eta \restriction_S =0$ defines a $(k-1)$-current $\Omega^{k-1}(X) \to \R$. We can view an element of $\Omega_i(X)$ as a distribution-valued form.
@@ -2760,7 +2788,7 @@ Apply the five lemma to the diagram of our last proposition.
 \end{proof}
 \item Suppose that $X$ equals the union of a sequence of open sets $U_1 \subset U_2 \subset \cdots$. If each $D_{U_i} : H^k_c(U_i) \to H_{n-k}(U_i)$ is an isomorphism, then so is $D_X$.
 \begin{proof}
-By excision, we have that $$H^k_c(U_i) \cong \varinjlim_{K_{U_i}}H^k(U_i, U_i \setminus K) \cong  \varinjlim_{K_{U_i}}H^j(X, X \setminus K) $$ for each $i$. From this, we see that there are natural maps $H^k_c(U_i) \to H^k_c(U_{i+1})$. Hence we can take $\varinjlim H^k_c(U_i) \cong H^k_c(X)$. Also, Proposition 25(1) implies that $\varinjlim H_{n-k}(U_i) \cong H_{n-k}(X)$, so that $D_X = \varinjlim D_{U_i}$. The direct limit  preserves any isomorphism  since it is a functor. Therefore, $D_X$ is an isomorphism.
+By excision, we have that $$H^k_c(U_i) \cong \varinjlim_{K_{U_i}}H^k(U_i, U_i \setminus K) \cong  \varinjlim_{K_{U_i}}H^j(X, X \setminus K) $$ for each $i$. From this, we see that there are natural maps $H^k_c(U_i) \to H^k_c(U_{i+1})$. Hence we can take $\varinjlim H^k_c(U_i) \cong H^k_c(X)$. Also, \cref{prop25}(1) implies that $\varinjlim H_{n-k}(U_i) \cong H_{n-k}(X)$, so that $D_X = \varinjlim D_{U_i}$. The direct limit  preserves any isomorphism  since it is a functor. Therefore, $D_X$ is an isomorphism.
 \end{proof}
 \begin{note}
 Our proof of Step 2 works so long as the directed set is totally ordered.
@@ -2844,7 +2872,7 @@ Consider the composition $$H^{n-k}(X ; R) \stackrel{h}{\longrightarrow} \operato
 For any $4k$-manifold $X$, both $\rnk{H^{2k}}$ and the signature of $B : H^{2k} \times H^{2k} \to H^{4k}$ are \hl{topological} invariants over $\R$ where the \textit{signature of $B$} is $\#$(positive eigenvalues of $B$) $-$ $\#$(negative eigenvalues of $B$). The former, however, is the only such invariant over $\C$.
 \end{remark}
 
-\begin{theorem}{\textbf{(Friedman)}}
+\begin{theorem}[Friedman]
 Any oriented closed simply connected $4k$-manifold is classified up to homeomorphism by the signature of $B$ (along with, sometimes, a $\Z/2$-valued invariant).
 \end{theorem}
 
@@ -2870,7 +2898,7 @@ Let $M$ be a compact $n$-manifold with boundary. Find $ \partial{M} \times [0,1)
 If $M$ is $R$-oriented, then we obtain a relative fundamental class $[M] \in H_n(M, \partial{M}; R)$, which restricts to a given orientation at every point in $M \setminus \partial{M}$.
 \end{corollary}
 
-\begin{theorem}{\textbf{(Lefschetz duality)}}
+\begin{theorem}[Lefschetz duality]
 Let $M^n$ be an $R$-oriented compact manifold with boundary. Then the map $D_M: H^k(M, \partial{M}; R) \to H_{n-k}(M; R)$ given by $D{\varphi} = [M] \frown \varphi$ is an isomorphism. 
 \end{theorem}
 \begin{proof}
@@ -3002,7 +3030,7 @@ $\mathcal{L}_V{\omega} = i_V{d(\omega)} + d(i_V{\omega}).$
 \end{enumerate}
 \end{prop}
 
-\begin{lemma}{\textbf{(Poincar\'e)}}
+\begin{lemma}[Poincar\'e]
  Let $F: M \times I \to N$ be a smooth map where $N$ is a smooth manifold. Let $i_{{-}}$ denote interior multiplication. 
  For any $t\in I$, define $j_t: M \to M\times I$ by $j_t(p) = (p,t)$.
  For any $q\in \N$, define $\sigma  : \Omega^q(N) \to \Omega^{q-1}(M)$ by $$(\sigma{\omega})_p = (x \mapsto \int_0^1 j_t^{\ast}i_{\frac{\partial}{\partial{t}}}(F^{\ast}{\omega})(x) dt)$$ where $x\in \bigwedge^{q-1}(T_p^{\ast}{M})$. Then $(d\sigma + \sigma d)\omega = F_1^{\ast} \omega - F_0^{\ast}\omega$. That is, $\sigma$ is a cochain homotopy $F^{\ast}_0 \Rightarrow F^{\ast}_1$.
@@ -3041,7 +3069,7 @@ It is easy to check that our sequence is exact at $\Omega^0(U)$. We must show th
  If $\U$ is a finite good cover of $M$, then $H^{\ast}_{\dr}(M) \cong  \check{H}^{\ast}(\U; \R)$.
 \end{corollary}
 
-\begin{theorem}{\textbf{(De Rham)}}
+\begin{theorem}[De Rham]
 Let $M$ be a smooth manifold and let $(\Omega^{\ast}(M), d)$ denote the cochain complex of differential forms. Then $H_{\dr}^{\ast}(M) \equiv H^{\ast}(\Omega^{\ast}(M), d)$.  If $M$ is  paracompact, then $$H^{\ast}_{\dr}(M) \cong H^{\ast}(M; \R)$$ as graded rings.
 \end{theorem}
 \begin{proof}
@@ -3057,7 +3085,7 @@ Choose a finite good cover $\U$ of $M$. We have just proven that $H^{\ast}_{\dr}
 Let $X$ be a space and $\Op(X)$ denote the category of open sets in $X$. A \textit{presheaf on $X$} is a functor $F: \Op(X)^{\op} \to \mathbf{Ab}$ such that $F(\emptyset) =0$. If $V\subset X$ is open, then any $s\in F(V)$ is called a \textit{section of $U$}. If $i : U \hookrightarrow V$, then $F(i): F(V) \to F(U)$ is called a \textit{restriction morphism} and is denoted by $r_{UV}$. Let $r_{UV}(s)\coloneqq  s \restriction_U$. Let $\mathbf{PreSh}_X$ denote the category of presheaves on $X$.
 \end{definition}
 
-\begin{remark}{\textbf{(\v{C}ech cohomology)}}
+\begin{remark}[\v{C}ech cohomology]
 We can build a cohomology theory of presheaves as follows. Let $X$ be a space with $\mathcal{U}$ an open cover. Let $F$ be a presheaf on $X$.  Let $\check{C}(\mathcal{U}, F)$ denote the chain complex
 $$   \prod_{\alpha_0}F(U_{\alpha_0}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1} F(U_{\alpha_0 \alpha_1}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1\alpha_2}F(U_{\alpha_0\alpha_1\alpha_2}) \overset{\delta}{\longrightarrow} \cdots 
 $$  where for any $f = (\underbrace{f_{\alpha_0\ldots \alpha_p}}_{\in F(U_{\alpha_0\ldots \alpha_p})})$, we take $(\delta{f})_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1} ({-}1)^i f_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_{p+1}} \restriction_{U_{\alpha_0\ldots \alpha_{p+1}}}.$ Define the \textit{$p$-th \v{C}ech cohomology group} as $$\check{H}^p(X, F) = \varinjlim_{\mathcal{R}} \check{H}^p(\mathcal{U}, F)  $$ where $\mathcal{R}$ denotes the set of all open covers of $X$ ordered by refinement. 
@@ -3144,7 +3172,7 @@ $\mathbf{Sh}_{X}$ is an abelian category.
 There are no projectives in $\mathbf{Sh}_{X}$.
 \end{exercise}
 
-\begin{prop}{\textbf{(Baer)}}
+\begin{prop}[Baer]
 Let $I$ be a right $R$-module. Then $I$ is injective if and only if for any right ideal $J \unlhd R$, any map $\alpha : J \to I$ extends to a map $\tilde{\alpha} : R \to I$.
 \end{prop}
 \begin{proof}
@@ -3191,7 +3219,7 @@ This is precisely Poincar\'e's lemma.
 \end{enumerate}
 \end{exmp}
 
-\begin{definition}{\textbf{(Sheaf cohomology)}}
+\begin{definition}[Sheaf cohomology]
  To derive $\ext^{\ast}_{\mathbf{Sh}}(F, G)$, take an injective resolution $I^{\bullet}$ of $G$ and then form the complex $$\Hom_{\mathbf{Sh}}(F, I^0) \to \Hom_{\mathbf{Sh}}(F, I^1) \to \cdots.$$ Then define $\ext^{\ast}_{\mathbf{Sh}_{X}}(F, G)$ as the cohomology of this complex. Note that $\Hom_{\mathbf{Sh}}(\underline{\Z}, I^{\bullet}) = I^{\bullet}(X)$. We define the cohomology $H^{\ast}(X, G)$ of $G$ as $\ext_{\mathbf{Sh}}(\underline{\Z}, G)$.  Standard homological algebra shows that this si independent of our choice of injective resolution.  
 \end{definition}
 
@@ -3199,7 +3227,7 @@ This is precisely Poincar\'e's lemma.
 A sheaf $F$ on $X$ is \textit{flabby} if for any $U$, $F(X) \to F(U)$ is surjective. Equivalently, a sheaf $F$ on $X$ is flabby if $F(V) \to F(U)$ is surjective for any inclusion $U \subset V$.
 \end{definition}
 
-\begin{exmp}{\textbf{(Godement's construction)}}
+\begin{exmp}[Godement's construction]
 Given any sheaf $G$, define a new sheaf $\Gd(G)$ by 
 \begin{align*}
 \Gd(G)(U) & =  \prod_{x\in U}G_x
@@ -3286,7 +3314,7 @@ Note that the direct sum of two injective abelian groups is injective.\footnote{
 \begin{tikzcd}
 0 \arrow[r] & E(X) \arrow[r, "g\circ f"] & {I^{0,0}} \arrow[r, "\delta + d"] & {I^{1,0} \oplus I^{0,1} } \arrow[r] & {I^{2,0}\oplus I^{1,1} \oplus I^{0,2}} \arrow[r] & \cdots
 \end{tikzcd}
-\] where $f: E(X) \to F^0(X)$ and $g: F^0 \to I^{0,0}$. Clearly $g\circ f$ is injective. Moreover, since $\tot(I^{\bullet, \bullet}$ is bounded and has exact columns, it follows that each term of our sequence after $I^{0,0}$ is exact. Thus, it remains to verify that out sequence is exact at $I^{0,0}$.
+\] where $f: E(X) \to F^0(X)$ and $g: F^0 \to I^{0,0}$. Clearly $g\circ f$ is injective. Moreover, since $\tot(I^{\bullet, \bullet})$ is bounded and has exact columns, it follows that each term of our sequence after $I^{0,0}$ is exact. Thus, it remains to verify that out sequence is exact at $I^{0,0}$.
 \\ \\
 Suppose that $x\in \ker \delta +d$. Then $(\delta(x), d(x)) = (0,0)$, so that $g(y) = x$ for some $y \in F^0(X)$. Since $g$ is injective and $$g(\delta(y)) = \delta(g(y)) = \delta(x) =0 $$, we see that $\delta(y) =0$. Hence there is some $y' \in E(X)$ such that $f(y') = y$. This implies that $g(f(y')) = x$, which thus belongs to $\im{g\circ f}$.
 \\ \\
@@ -3442,7 +3470,7 @@ I(d{\omega})(\sigma) & = \int_{\Delta^{p+1}}\sigma^{\ast}d{\omega}
 \end{align*}
 \end{proof}
 
-\begin{theorem}{\textbf{(De Rham)}}
+\begin{theorem}[De Rham]
 $I^{\bullet}$ induces an isomorphism $I: H^{p}(\Omega^{\bullet}(X)) \to H^{p}(\frak{S}_{\infty}^{\bullet}(X; \R))$ for each $p$.
 \end{theorem}
 \begin{proof}
@@ -3612,7 +3640,7 @@ There exists a trivializing cover of $\widetilde{X}$ with $\varphi_{\alpha} : \w
 \underline{(2) $\implies$ (3)} Given $(E, \nabla)$ with $\nabla$ flat and $\gamma$ a path based at $x_0 \in X$, let $h(\gamma) : E_{x_0} \to E_{x_0}$. This is an isomorphism that depends only on the homotopy class of $\gamma$.
 \end{proof}
 
-\begin{prop}{\textbf{(De Rham theorem for local systems)}}
+\begin{prop}[De Rham theorem for local systems]
 Let $(E, \nabla)$ be flat and $\nabla^2 =0$. Then $(\Omega^{\bullet}(X; E), \nabla)$ is a complex, and $$H^{\ast}(\Omega^{\bullet}(X; E), \nabla) \cong H^{\ast}(X; \underline{E})$$ where $\underline{E}$ denotes the locally constant sheaf that is defined by the flat structure that $E$ obtains  from $\nabla$, i.e., $\underline{E}(U) = \{s_{\alpha} : U \cap U_{\alpha} \to \GL_k(\R) \mid s_{\alpha}$ is locally constant and $s_{\alpha} = g_{\alpha{\beta}}s_{\beta}\}$.
 \end{prop}
 

@@ -21,16 +21,46 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{nonexmp}{non-Example}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -172,7 +202,7 @@ K(A) \arrow[swap, r, "\exists! \tilde{f}", dashed] & B
 Define $\tilde{f}$ by $[a_1, b_1]\mapsto f(a_1) - f(b_1)$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{L2}
 $K(C_1 \times C_2) \cong K(C_1) \times K(C_2)$.
 \end{lemma}
 
@@ -180,7 +210,7 @@ $K(C_1 \times C_2) \cong K(C_1) \times K(C_2)$.
 A submonoid $L$ of $C$ is \textit{cofinal} if for any $c\in C$, there is some $c' \in C$ such that $c + c' \in L$.
 \end{definition}
 
-\begin{prop} Let $L$ be cofinal in commutative $C$.
+\begin{prop}\label{prop2} Let $L$ be cofinal in commutative $C$.
 \begin{enumerate}
 \item Any element of $K(C)$ can be written as $[m]-[n]$ for some $m, n\in  C$.
 \item $K(L) \leq K(C)$.
@@ -189,7 +219,7 @@ A submonoid $L$ of $C$ is \textit{cofinal} if for any $c\in C$, there is some $c
 \end{enumerate}
 \end{prop}
 
-\begin{exmp} $ $
+\begin{exmp}\label{Z} $ $
 \begin{enumerate}
 \item $K(\N) \cong \Z$ via $[a_1, b_1] \mapsto a_1 - b_1$.
 \item $K(\Z^{\times}) \cong \Q^{\times}$ via $[a_1, b_1] \mapsto \frac{a_1}{b_1}$.
@@ -201,7 +231,7 @@ Let $R$ be a unital ring. Let $(\P(R), \oplus, \otimes_R)$ denote the semiring  
 \end{definition}
 
 \begin{lemma}
-$\P(R_1 \times R_2) \cong \P(R_1) \times \P(R_2)$. Therefore, $K_0$ can be computed componentwise by Lemma 2. 
+$\P(R_1 \times R_2) \cong \P(R_1) \times \P(R_2)$. Therefore, $K_0$ can be computed componentwise by \cref{L2}. 
 \end{lemma}
 
 \begin{remark}
@@ -226,7 +256,7 @@ Therefore, if we added $R^{\infty}$ to $\P(R)$, then we would have $[P] = 0$ for
 \end{remark}
 
 \begin{exmp}
-If $R =F$ is a field, then $\P(R) \cong \N$ and, by Example 1, $K_0(R) \cong \Z$. 
+If $R =F$ is a field, then $\P(R) \cong \N$ and, by \cref{Z}, $K_0(R) \cong \Z$. 
 
 We can generalize this phenomenon a bit.
 \end{exmp}
@@ -239,7 +269,7 @@ A ring $R$ has the \textit{invariant basis property (IBP)} if $R^n \not \cong R^
 An $R$-module $P$ is \textit{stably free} of rank $m-n$ if $P \oplus R^m \cong R^n$ for some $m$ and $n$.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{L4}
 The map $f: \N \to \P(R)$ defined by $n \mapsto R^n$ induces a homomorphism $\phi : \Z \to K_0(R)$.
 \begin{enumerate}
 \item $\phi$ is injective iff $R$ has the IBP.
@@ -248,14 +278,14 @@ The map $f: \N \to \P(R)$ defined by $n \mapsto R^n$ induces a homomorphism $\ph
 \end{lemma}
 \begin{proof} $ $
 \begin{enumerate}
-\item By Lemma 3(4), we know that $[P] = [Q]$ in $K_0(R)$ iff $P\oplus R^m \cong Q\oplus R^m$ for some $m$. 
+\item By \cref{prop2}(4), we know that $[P] = [Q]$ in $K_0(R)$ iff $P\oplus R^m \cong Q\oplus R^m$ for some $m$. 
 \item $[P]= [R^n]$ iff $P$ is stably free.
 \end{enumerate}
 \end{proof}
 
 
 \begin{exmp}
-Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by Lemma 4. Letting $K\coloneqq \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups, so that $K_0(R) \cong \Z \oplus K$.
+Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by \cref{L4}. Letting $K\coloneqq \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups, so that $K_0(R) \cong \Z \oplus K$.
 \[
 \begin{tikzcd}
 1 \arrow[r] & K \arrow[r] & K_0(R) \arrow[r] & \mathbb Z \arrow[r] & 1
@@ -276,7 +306,7 @@ A ring $R$ is \textit{von Neumann regular} if $(\forall r \in R)(\exists x_r\in 
 \\ \\ Kaplansky (1998) proved that any projective $R$-module is some direct sum of $(e)$ with $e$ idempotent. It follows that $\faktor{E}{\sim}$ determines $K_0(R)$.
 \end{exmp}
 
-\begin{prop}
+\begin{prop}\label{Krull}
 Let $R$ be commutative. It can be shown that the following are equivalent.
 \begin{enumerate}
 \item $R_{\red}$ is a commutative von Neumann regular ring.
@@ -285,7 +315,7 @@ Let $R$ be commutative. It can be shown that the following are equivalent.
 \end{enumerate}
 \end{prop}
 
-\begin{lemma}
+\begin{lemma}\label{L5}
 If $I\subset R$ is nilpotent, then it's not hard to show that $\P(\faktor{R}{I}) \cong \P(R)$, hence $K_0(R) \cong K_0(\faktor{R}{I}).$
 \end{lemma}
 
@@ -302,7 +332,8 @@ Let $R$ be a commutative ring. The \textit{rank} of a finitely generated project
 \begin{definition}
 An $R$-module $M$ is a \textit{componentwise free module} if we have $R = \prod_{i=1}^n R_i$ and $M \cong \prod_{i=1}^n R_i^{c_i}$ for some integers $c_i$. Note that $M$ must be projective in this case.
 \end{definition}
-\begin{lemma}
+
+\begin{lemma}\label{L6}
 Let $R$ be commutative. The monoid $L$ of finitely generated componentwise free $R$-modules has is isomorphic to $[\spec(R), \N]$.
 \end{lemma}
 \begin{proof}
@@ -314,13 +345,13 @@ Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that 
 If $R$ is a $0$-dimensional commutative ring, then $$K_0(R) \cong [\spec(R), \Z],$$ where $[X, Y]$ denotes the semiring of continuous maps $f: X\to Y$.
 \end{theorem}
 \begin{proof}
-We have that $R_{\red}$ is a commutative von Neumann regular ring by Proposition 3. Any ideal $(d)$ in $R_{\red}$  where $d$ is idempotent is componentwise free. By Kaplansky, every object $X$ of $\P(R)$ is therefore componentwise free. Therefore, $\P(R_{\red}) \cong [\spec(R_{\red}), \N]$, giving $K_0(R_{\red}) \cong [\spec(R_{\red}), \Z]$. By Lemma 5 and the fact that $\spec(R_{\red})$ is homeomorphic to $\spec(R)$, it follows that $K_0(R)\cong [\spec(R_{\red}), \Z] \cong [\spec(R), \Z]$.
+We have that $R_{\red}$ is a commutative von Neumann regular ring by \cref{Krull}. Any ideal $(d)$ in $R_{\red}$  where $d$ is idempotent is componentwise free. By Kaplansky, every object $X$ of $\P(R)$ is therefore componentwise free. Therefore, $\P(R_{\red}) \cong [\spec(R_{\red}), \N]$, giving $K_0(R_{\red}) \cong [\spec(R_{\red}), \Z]$. By \cref{L5} and the fact that $\spec(R_{\red})$ is homeomorphic to $\spec(R)$, it follows that $K_0(R)\cong [\spec(R_{\red}), \Z] \cong [\spec(R), \Z]$.
 \end{proof}
 
 \begin{remark}
 When $R$ is commutative, let $H_0(R): = [\spec(R), \Z]$. If $R$ is Noetherian, then $H_0(R) \cong \Z^c$ where $c <\infty$ denotes the number of components of $H_0(R)$. If $R$ is a domain, then $H_0(R)$ is connected, implying $H_0(R) \cong \Z$.
 
-The submonoid $L\subset \P(R)$ of componentwise free modules is cofinal, so that $K(L) \leq K_0(R)$. Moreover, $K(L) \cong H_0(R)$ by Lemma 6.
+The submonoid $L\subset \P(R)$ of componentwise free modules is cofinal, so that $K(L) \leq K_0(R)$. Moreover, $K(L) \cong H_0(R)$ by \cref{L6}.
 
 The rank of a projective module induces a homomorphism $\rank: K_0(R) \to H_0(R)$. Since $\rank(R^f) = f$ for any $R^f \in L$, we see that
 \[
@@ -388,7 +419,7 @@ $KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f
 If $X$ and $Y$ are homotopy equivalent, then $K(X) \cong K(Y)$.
 \end{lemma}
 \begin{proof}
-Apply the Homotopy Invariance Theorem (HIT), which states that if $Y$ is paracompact and $f, g: Y \to X$ are homotopic, then $f^{\ast}E \cong g^{\ast}E$ for any vector bundle $E$ over $X$.
+Apply the homotopy invariance theorem (HIT), which states that if $Y$ is paracompact and $f, g: Y \to X$ are homotopic, then $f^{\ast}E \cong g^{\ast}E$ for any vector bundle $E$ over $X$.
 \end{proof}
 
 \begin{exmp} $ $
@@ -396,7 +427,7 @@ Apply the Homotopy Invariance Theorem (HIT), which states that if $Y$ is paracom
 \item $K_{top}(\ast) = \Z$.
 \item If $X$ is contractible, then the HIT implies $KO(X) = KU(X) = \Z$
 \item We compute the following groups. See I.4.9 of \textit{The K-book} for a justification.
-$$KO(S^1) \cong \Z \times C_2 \quad KU(S^1) \cong \Z$$ $$KO(S^2) \cong \Z \times C_2   \quad KU(S^2) \cong \Z \times \Z$$  $$KO(S^3) \cong KU(S^3) \cong \Z $$   $$ K)(S^4) \cong KU(S^4) \cong \Z \times \Z$$
+$$KO(S^1) \cong \Z \times C_2 \quad KU(S^1) \cong \Z$$ $$KO(S^2) \cong \Z \times C_2   \quad KU(S^2) \cong \Z \times \Z$$  $$KO(S^3) \cong KU(S^3) \cong \Z $$   $$ KO(S^4) \cong KU(S^4) \cong \Z \times \Z$$
 \end{enumerate}
 \end{exmp}
 
@@ -416,7 +447,7 @@ Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N} (f^{-1}(i) \
 \end{proof}
 
 \begin{remark}
-Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $Vect_{\F}(X)$ by the Subbundle Theorem (proven using Riemannian geometry), giving $\Z \leq [X, \Z] \leq K_{top}(X)$.
+Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $Vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), giving $\Z \leq [X, \Z] \leq K_{top}(X)$.
 \end{remark}
 
 \begin{remark}

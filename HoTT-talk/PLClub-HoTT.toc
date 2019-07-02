@@ -3,5 +3,5 @@
 \contentsline {section}{\numberline {2}Type-theoretic equivalence}{5}{section.2}
 \contentsline {section}{\numberline {3}Univalence axiom}{7}{section.3}
 \contentsline {section}{\numberline {4}Models of type theory}{8}{section.4}
-\contentsline {section}{Further reading}{8}{remark.5}
+\contentsline {section}{Further reading}{8}{remark.4.0.3}
 \contentsline {section}{Sources}{9}{section*.3}

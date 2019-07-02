@@ -22,7 +22,7 @@
 \contentsline {section}{\numberline {4}Cohomology}{45}{section.4}
 \contentsline {subsection}{\numberline {4.1}Lecture 19}{47}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Lecture 20}{50}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Lecture 21}{53}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Lecture 21}{52}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Lecture 22}{55}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Lecture 23}{57}{subsection.4.5}
 \contentsline {subsection}{\numberline {4.6}Lecture 24}{63}{subsection.4.6}

@@ -21,16 +21,46 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{nonexmp}{non-Example}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep

@@ -21,16 +21,46 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{nonexmp}{non-Example}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -295,7 +325,7 @@ If $f: X \to Y$ is a cofibration of $S_q\c$, then
 \] for any $i \leq j \leq k$ in $[q]$.
 \end{prop}
 \begin{proof}
-The proof is mostly an easy induction argument along with an application of Lemma 1 above. See Rognes, Lemma 8.3.12.
+See Rognes, Lemma 8.3.12.
 \end{proof}
 
 \begin{lemma}
@@ -415,7 +445,7 @@ Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$,
 Define the \textit{$i$-th algebraic $K$-group} as $K_i(\c, w) = \pi_iK(\c, w)$ for each $i\geq 0$. 
 \end{definition}
 
-\begin{prop}
+\begin{prop}\label{P4}
 $\pi_1|w S_{\bullet} \c| \cong K_0(\c, w)$.
 \end{prop}
 
@@ -430,7 +460,7 @@ We compute $\pi_1|N_{\bullet}w S_{\bullet} \c|$ based at the $(0,0)$-bisimplex $
 We obtain the functors $K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$, called the \textit{algebraic $K$-group functors}.
 \end{corollary}
 \begin{proof}
-By Proposition 4, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $[X'] + [X''] = [X' \vee X''] = [X'' + X']$. Hence $K_0(\c, w)$ is also abelian.
+By \cref{P4}, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $[X'] + [X''] = [X' \vee X''] = [X'' + X']$. Hence $K_0(\c, w)$ is also abelian.
 \end{proof}
 
 \begin{exmp}

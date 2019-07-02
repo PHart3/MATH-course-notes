@@ -27,19 +27,49 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+    
+    
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{note}{Note}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{question}{Question}
+\newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
 \newtheorem*{notation}{Notation}
-\newtheorem{claim}{Claim}
-\newtheorem{remark}{Remark}
-\newtheorem{prop}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{exercise}{Exercise}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -283,7 +313,7 @@ G \arrow{r}{\theta} \arrow[swap]{dr} & \aut(S) \arrow{d} \\%
 \end{enumerate}
 \end{definition}
 
-\begin{exmp}{\textbf{(The permutation representation)}}
+\begin{exmp}[The permutation representation]
 Set $S = \{1, \ldots, n\}$ and $G = S_n$. Then $\theta^{\ast}(x_1, \ldots, x_n) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$, where $x_i \in X$ for a fixed set $X$. If $X$ is a field, then $X^S \cong X^n$ is an $n$-dimensional vector space and $\theta^\ast$ is an $X$-linear representation of $S_n$.
 
 \[ \begin{tikzcd}
@@ -302,7 +332,7 @@ Our previous example holds for any action $\theta: F \to \aut(S^k)$ where $k$ is
 Given an action $\theta: G \to \aut(S)$, we get an action $\P(\theta): G \to \aut(\P(S))$ given by $g \mapsto (X \mapsto \theta(g)(X))$. Since $\P(S) \sim (\Z_2)^S$, we see that $\P(\theta)$  is a $\Z_2$-linear representation of $G$. Therefore, any action of $G$ on $S$ induces a representation of $G$.
 \end{exmp}
 
-\begin{exmp}{\textbf{(Galois theory)}}
+\begin{exmp}[Galois theory]
 Let $f(x) = a_nx^n + \cdots + a_0$ over $\Q$ where $a_n \ne 0$. We know $f(x) = a_n(x-\beta_1)\cdots (x-\beta_n)$ for some $(\beta_1, \ldots, \beta_n) \in \C^n$. It's true that each $\beta_i = f(a_0, \ldots, a_n)$ for some algebraic function $f$  if and only if a certain symmetry group of $\{B_i\}$ has a special property (to be covered next semester).
 \\ \\ Let $\Q[\tilde{\beta}]\coloneqq  \Q[\beta_1, \ldots, \beta_n] = \{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\}$. Let the Galois group of $f$ $$\gal(f)\coloneqq  \{\sigma \in S_n : \exists g(\sigma) : \Q[\tilde{\beta}] \to \Q[\tilde{\beta}] \text{ bijection with } g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)}) \text{ for } F \in \Q[x_1, \ldots, x_n]\}.$$
 
@@ -399,11 +429,11 @@ If $\theta : G \to \aut(S)$ is a transitive action, then $\theta$ is isomorphic 
 If $\theta : G \to \aut(S)$ is an action, then $S = \coprod_{O \in G\diagdown S} O$ and $\theta = \coprod_{O \in G \diagdown S} \theta_O$ where each $\theta_O$ is isomorphic to the left translation action of $G$ on $G/\stab_{\theta}(x)$ for any chosen $x\in S$. 
 \end{corollary}
 
-\begin{corollary}{\textbf{(Orbit-stabilizer theorem)}}
+\begin{corollary}[Orbit-stabilizer theorem]
 Let $G$ be a finite group and $\theta : G \to \aut(S)$ an action. Then $$ \lvert{\orb_{\theta}(x)}\rvert = \frac{|G|}{\lvert{\stab_{\theta}(x)}\rvert}     $$ for any $x\in S$. 
 \end{corollary}
 
-\begin{corollary}{\textbf{(Class equation)}}
+\begin{corollary}[Class equation]
 If $G$ is finite, then $$|G| = |Z(G)| + \sum_{{\substack{C \text{ conj. class} \\ |C| >1}}} |C|     .$$
 \end{corollary}
 
@@ -422,7 +452,7 @@ If $G$ is finite, then $$|G| = |Z(G)| + \sum_{{\substack{C \text{ conj. class} \
 Consider the left translation action $l : G \to \aut(G/H)$. Let $O$ be any orbit of the restricted action $l\restriction_H$, so that $|O| = \frac{|H|}{\lvert{\stab}\rvert}$. Since $|O| \mid |H|$, it follows that $|O|=1$ or $|O| \geq p$. But $[G:H] = p$, and there is already an orbit of size $1$. This implies that there are exactly $p$ orbits of size $1$. Thus, $l\restriction_H$ is trivial, and $H \unlhd G$.
 \end{proof}
 
-\begin{exercise}{\textbf{(Burnside's lemma)}} If $G$ and $S$ are finite and $\theta : G \to \aut(S)$ is an action, then for each $g\in G$, consider $\fix(g) \subset S$. Check that $$|G \diagdown S| = \frac{1}{|G|} \sum_g |\fix(g)|.$$ \underline{Hint:} Consider $\{(g,x): g \cdot x=x\} \subset G \times S$.
+\begin{exercise}[Burnside's lemma] If $G$ and $S$ are finite and $\theta : G \to \aut(S)$ is an action, then for each $g\in G$, consider $\fix(g) \subset S$. Check that $$|G \diagdown S| = \frac{1}{|G|} \sum_g |\fix(g)|.$$ \underline{Hint:} Consider $\{(g,x): g \cdot x=x\} \subset G \times S$.
 \end{exercise}
  
 \begin{definition}
@@ -479,7 +509,7 @@ We say that the derived series of $G$ \textit{terminates} if $\Delta^{(t+1)}G = 
 We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$. The least $t$ for which $\Delta^{(t)}$ is trivial is called the solvable length of $G$.
 \end{definition}
 
-\begin{exercise}{Prove the following assertions.}
+\begin{exercise}\label{ex7} Prove the following assertions.
 \begin{enumerate}
 \item Any subgroup or quotient of a solvable group is solvable.
 \item If $H\unlhd G$ and $\faktor{G}{H}$ are solvable, then so is $G$.
@@ -523,7 +553,8 @@ Determine the nilpotent dihedral groups.
 We claim that $D_n$ is nilpotent  if and only if $n$ equals a power of $2$. We know that any $p$-group is nilpotent. Conversely, if $n$ is odd, then $D_n$ has trivial center, hence is not nilpotent. Further, if $n= 2^km$ for $m$ odd and $k\geq 1$, then $Z(D_n) = \{e, m2^{k-1}\}$, so that $\faktor{D_n}{Z(D_n)} \cong D_{m2^{k-1}}$, which by induction we can assume is not nilpotent. Since every quotient of a nilpotent group is nilpotent, $D_n$ cannot be nilpotent when $n = 2^km$ for any $k\geq 0$. This proves the claim.
 \end{proof}
 
-\begin{remark} We have the following two chains of strict implications for certain classes of groups.
+\begin{remark}\label{r10}
+ We have the following two chains of strict implications for certain classes of groups.
 \begin{enumerate}
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ Polycyclic $\subsetneq$  Solvable.
@@ -580,7 +611,7 @@ Let $k$ be a field and  $B_n(k)$ denote all $n\times n$ matrices of the form
 \\
     \end{matrix}
   \right]
-  \] so that $\ker g \cong (k^{n-1}, +)$, which is abelian.  Two applications of Exercise 7(2) show that $B_n(k)$ is solvable, completing the proof.
+  \] so that $\ker g \cong (k^{n-1}, +)$, which is abelian.  Two applications of \cref{ex7}(2) show that $B_n(k)$ is solvable, completing the proof.
 \end{exmp}
 
 \begin{exmp}
@@ -628,7 +659,7 @@ In Galois theory, one finds that a polynomial $f(x)$ over $\Q$ is solvable in ra
 \end{remark}
 
 \begin{remark}
-For finite groups, we can add information to our chain of implications in Remark 12 as follows.
+For finite groups, we can add information to our chain of implications in \cref{r10} as follows.
 \begin{enumerate}
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ \textbf{Abelian} $\subsetneq$ Polycyclic $\bm =$  Solvable.
@@ -638,7 +669,7 @@ For finite groups, we can add information to our chain of implications in Remark
 \begin{remark}
 Symmetry groups of polynomials are similar to freely acting symmetry groups of homeomorphisms on topological spaces, giving a correspondence $\gal(f) \longleftrightarrow \pi_1(X)$. 
 
-Moreover, if the space $X$ has interesting underlying geometry, then the possibilities of $\pi_1(X)$ belonging to one of the classes of groups listed in Remark 12 are constrained. For example,
+Moreover, if the space $X$ has interesting underlying geometry, then the possibilities of $\pi_1(X)$ belonging to one of the classes of groups listed in \cref{r10} are constrained. For example,
 a compact complex submanifold of $\CP^n$ is known as a Kahler manifold. It is known that any finite group is realizable as $\pi_1(X)$ for some Kahler manifold $X$.
 \begin{definition}
 If $\Gamma$ is a group and $P$ a property of groups, then we say that $\Gamma$ is \textit{virtually $P$} if there exist a finite subgroup $F \unlhd \Gamma$ and a subgroup $I \leq \Gamma$ of finite index so that if $q: \Gamma \to \faktor{\Gamma}{F}$ is the natural projection, then $q(I)$ has $P$. 
@@ -667,7 +698,7 @@ Show that $G$ from our last example is isomorphic to either $C_p \times C_p$ or 
 Let $G$ be a group with $|G|= p^km$ for $p$ prime, $k\geq 1$, $m\geq 1$, and $(p,m) =1$. Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $|H| = p^k$.
 \end{definition}
 
-\begin{theorem}{\textbf{(Weak Sylow-I)}}
+\begin{theorem}[Weak Sylow-I]
 Every finite group $G$ with $|G| = p^{\beta}m$ contains a $p$-Sylow subgroup.
 \end{theorem}
 \begin{proof}
@@ -682,13 +713,13 @@ We use induction on $|G|$. Write $G= Z(G) \coprod_{x\notin Z(G)} C(x)$ as the un
 We have another proof of Weak Sylow-I. Let $|G| = p^{\beta}m$ with $(p, m) =1$. Define $$ S = \{A\subset G : |A| = p^{\beta}\}.$$ We see that $G$ acts on $S$ by left translation and that $|S| = {p^{\beta}m \choose p^{\beta}}$, which is coprime to $p$. Therefore, there is some orbit $\Omega_x$ such that $p \nmid  |\Omega_x|$. Since $|\Omega_x||\stab_G(x)| = |G|$, we must have that $p^{\beta} \mid |\stab_G(x)|$. Note that $\stab_G(x)$ acts on $A$ by left translation. As this action is free, each orbit must have cardinality equal to $|\stab_G(x)|$ and thus be divisible by $p^{\beta} =|A|$. This implies that $A$ is the only orbit, and $|A| = \stab_G(x)$.
 \end{note}
 
-\begin{exercise}{\textbf{(Strong Sylow-I)}}
+\begin{exercise}[Strong Sylow-I]
 Use the fact that every $p$-group is nilpotent to prove that a finite group contains a $p$-subgroup of every possible order.
 \end{exercise}
 
 \subsection{Lecture 7}
 
-\begin{theorem}{\textbf{(Sylow-II)}} Let $G$ have $|G|= p^{\beta}m$ as before. Then the following hold.
+\begin{theorem}[Sylow-II] Let $G$ have $|G|= p^{\beta}m$ as before. Then the following hold.
 \begin{enumerate}
 \item Every $p$-subgroup of $G$ is contained in some $p$-Sylow subgroup.
 \item Any two $p$-Sylow subgroups of $G$ are conjugate.
@@ -724,7 +755,7 @@ Pick $H$ a $p$-Sylow subgroup of $N_G(N_G(S))$. If $h\in H$, then $|h| =p^K$ for
 \end{enumerate}
 \end{exercise}
 
-\begin{theorem}{\textbf{(Sylow-III)}}
+\begin{theorem}[Sylow-III]
 Suppose $|G|= p^{\beta}m$ as before. Let $\Syl_p(G)$ denote the set of $p$-Sylow subgroups of $G$. Let $n_p(G)$ and $\syl_p(G)$ denote $\# \Syl_p(G)$. Then
 \begin{enumerate}
 \item $n_p(G) \mid m$.
@@ -753,7 +784,7 @@ Every group of order $45$ is abelian.
 
 \subsection{Lecture 8}
 
-\begin{theorem}{\textbf{(Fundamental theorem of finite abelian groups)}}
+\begin{theorem}[Fundamental theorem of finite abelian groups]
 If $G$ is a finite abelian group, then $$ G \cong \Z/u_1 \times \cdots \times \Z/u_n$$ such that each $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$.
 \end{theorem}
 \begin{proof}
@@ -1011,7 +1042,7 @@ Once we answer the question of existence, we ask in how many ways can we break a
 \end{exercise}
 
 
-\begin{prop}
+\begin{prop}\label{lp}
 If $G$ has either ACC or DCC, then it can be written as the product of indecomposables.
 \end{prop}
 \begin{proof}
@@ -1019,7 +1050,7 @@ Let $D$ denote the class of groups that can be written as the product of indecom
 \\ \\ Next, assume that $G$ has ACC but $G \notin D$. By the same process as above, we can construct a normal series $K_1 < K_1 \times K_2 < K_1 \times K_2 \times K_3 < \cdots < \cdots < G$. But this must stabilize as well, a contradiction.
 \end{proof}
 
-\begin{theorem}{\textbf{(Krull-Schmidt)}}
+\begin{theorem}[Krull-Schmidt]
 Suppose $G$ has ACC and DCC, so that $G$ is a product of indecomposables $$G = A_1 \times \cdots \times A_s$$ $$G = B_1 \times \cdots \times B_t.$$ Then $s=t$, and $A_i = B_i$ up to reindexing the $B_j$.
 \end{theorem}
 \begin{proof}
@@ -1047,11 +1078,11 @@ Suppose first that $\ker \phi$ is trivial. Suppose there is some $g \in G \setmi
 An endomorphism $\phi$ is \textit{nilpotent} if $\phi^n = (g \mapsto e)$ for some $n\geq 1$.
 \end{definition}
 
-\begin{lemma}{\textbf{(Fitting)}}
+\begin{lemma}[Fitting]
 If $G$ has ACC and DCC and $\phi: G \to G$ is normal, then $G = K \times H$ where $$\phi(K) \subset K$$ $$\phi(H) \subset H$$ $$\phi \restriction_K \text{ is nilpotent}$$ $$\phi \restriction_H \text{ is an automorphism}.$$
 \end{lemma}
 \begin{proof}
-For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives the normal series $$G= H_0 \geq H_1 \geq \cdots$$ $$K_1 \leq K_2 \leq \cdots \leq G.$$ Find $a \in \N$ where both stabilize. Set $H = H_a$ and $K = K_a$. Then $\phi(H) = \phi(\phi^a(H)) = \phi^{a+1}(H) = H_{a+1} = H_a = H$. Further, $\phi(K) = \phi(K_a) = \{\phi(x) : x \in \ker \phi^a\}$. implying $\phi^a\phi(x) = \phi(\phi^a(x)) =e$. Hence both $H$ and $K$ are stable under $\phi$. Note that we've shown $\phi \restriction_H$ is surjective. By our last proposition, $\phi \restriction_H$ is an isomorphism provided that $H$ has ACC and DCC. But we can show $G = K \times H$ as follows.
+For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives the normal series $$G= H_0 \geq H_1 \geq \cdots$$ $$K_1 \leq K_2 \leq \cdots \leq G.$$ Find $a \in \N$ where both stabilize. Set $H = H_a$ and $K = K_a$. Then $\phi(H) = \phi(\phi^a(H)) = \phi^{a+1}(H) = H_{a+1} = H_a = H$. Further, $\phi(K) = \phi(K_a) = \{\phi(x) : x \in \ker \phi^a\}$. implying $\phi^a\phi(x) = \phi(\phi^a(x)) =e$. Hence both $H$ and $K$ are stable under $\phi$. Note that we've shown $\phi \restriction_H$ is surjective. By \cref{lp}, $\phi \restriction_H$ is an isomorphism provided that $H$ has ACC and DCC. But we can show $G = K \times H$ as follows.
 \begin{enumerate}[label=(\alph*)]
 \item Let $x \in K \cap H$. Then $x \in H = H_a = \phi^a(G) \implies \phi^a(G) = x$ for some $g \implies \phi^a(\phi^a(g)) = \phi^a(x) =  0 \implies g \in K_{2a} = K_a = K \implies \phi^a(g) = e \implies x =e$. 
 \item Let $g \in G$. Then $ \phi^a(g) \in H = H_a = H_{2a} \implies \phi^a(g) = \phi^{2a}(x)$ for some $x\in G \implies \phi^a(g \phi^a(x^{-1})) =e \implies g\phi^a(x) \implies g\phi^a(x^{-1}) \in K_a =K \implies g = kh$ for some $k\in K$ and $h\in H$.
@@ -1115,7 +1146,7 @@ Let $G$ be a group. A \textit{filtration $F^{\bullet}{G}$ on $G$} is a subnormal
 Suppose that $F^{\bullet}G$ and $T^{\bullet}G$ are two filtrations on $G$. Define the \textit{graded $i$-th piece} as $$\gr_F^i(G) = \faktor{F^iG}{F^{i+1}G}.$$ By our previous remark, there is an induced filtration $T^{\bullet}\gr_F^i(G)$. Similarly, there is an induced filtration $F^{\bullet}\gr_T^j(G)$. Then we get graded pieces $\gr_T^j\gr_F^iG$ and $\gr_F^i \gr_T^j G$. These produce two \textit{bigraded} groups $\gr_F\gr_TG$ and $\gr_T\gr_FG$.
 \end{remark}
 
-\begin{lemma}{\textbf{(Zassenhaus or butterfly)}}
+\begin{lemma}[Zassenhaus or butterfly]
 Suppose $G$ is a group with $A \unlhd \widetilde{A} \leq G \geq \widetilde{B} \unrhd B$. Then we have a group isomorphism $$\faktor{A\cdot (\widetilde{A} \cap \widetilde{B})}{A \cdot (\widetilde{A} \cap B)} \cong \faktor{B \cdot (\widetilde{A} \cap \widetilde{B})}{B\cdot (A \cap \widetilde{B})}.$$
 \end{lemma}
 \begin{proof}
@@ -1153,7 +1184,7 @@ A filtration $F^{\bullet}G$ is called \textit{non-repetitious} if $F^i \ne F^{i+
 We say $\{R^iG\}_{i=1}^t$ is a \textit{refinement} of $\{F^iG\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to [t]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
 \end{definition}
 
-\begin{theorem}{\textbf{(Schreier refinement theorem)}}
+\begin{theorem}[Schreier refinement theorem]
 Suppose $\{F^iG\}_{i=0}^s$ and $\{T^jG\}_{j=0}^t$ are filtrations on $G$. Then we can find respective refinements $\widetilde{F}^{\bullet}G$ and $\widetilde{T}^{\bullet}G$ which are equivalent to our original filtrations. Further, if the two original filtrations are non-repetitious, then we can choose the refinements to be non-repetitious as well. 
 \end{theorem}
 \begin{proof}
@@ -1167,7 +1198,7 @@ Suppose $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_
 \end{align*}
 \end{proof}
 
-\begin{corollary}{\textbf{(Jordan-Holder)}}
+\begin{corollary}[Jordan-Holder]
 Any two composition series of $G$ are equivalent.
 \end{corollary}
 \begin{proof}
@@ -1330,7 +1361,7 @@ Let $G_f$ be the group with underlying set $K \times A$ and group law given by $
 where $(s\times i)(x, a) = s(x)a$.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{lr}
 In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \to A$, then the formula $(x, a)(y, b) = (xy, a \alpha_x(b)f(x,y))$ defines a group law if and only if $f(x,y)f(xy, z) = \alpha_x(f(y,z))f(x, yz)$ for any $x, y, z \in K$. As $A$ is abelian, this happens if and only if  
 \[ 
 \tag{$\ast$}\alpha_x(f(y, z))f(xy, z)^{-1} f(x, yz)f(x, y)^{-1} = e.
@@ -1346,7 +1377,7 @@ In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \t
 \end{definition}
 
 \begin{remark}
-Our last remark implies that there is a one-to-one correspondence 
+\Cref{lr} implies that there is a one-to-one correspondence 
 \\ \\
 $\{(\xi, s) : \xi \in \ext(K, (A, \alpha)), \ s$ a normalized section$\} \longleftrightarrow Z^2(K, (A, \alpha))_0 = Z^2 \cap C^2_0$.
 \end{remark}
@@ -1548,7 +1579,7 @@ A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for s
 The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'), \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. Then the essential image of $h$ is precisely the representable presheaves of $\c$.
 \end{remark}
 
-\begin{lemma}{\textbf{(Yoneda)}} Let $\c$ be a category.
+\begin{lemma}[Yoneda] Let $\c$ be a category.
 \begin{enumerate}
 \item For any $x, y \in \ob \c$, the map $\Hom_{\c}(x, y) \to \Hom_{\widehat{\c}}(h_x, h_y)$ given by $\phi \mapsto h(\phi)$ is bijective.
 \item There is a natural isomorphism $$\Hom_{\c}(-, -) \cong \Hom_{\widehat{\c}}(h_{(-)}, h_{(-)})$$ of functors $ \c^{\op} \times \c \to \mathbf{Set}$, so that $h : \c \to \widehat{\c}$ is fully faithful. Thus, we can treat objects in $\c$ as set-valued presheaves of $\c$.
@@ -1602,7 +1633,7 @@ for any $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T
 
 \begin{remark}
  Instead of constructing the reals as equivalence classes of Cauchy sequences or as Dedekind cuts, we can pick out the interval $[0,1]$ among all topological spaces as follows. We see that $[0,1]\cong_M \big ( \faktor{[0,1] \coprod [0,1]}{\text{first 1 = second 0}} \big )$ by the mean function $M$. Let $\c$ denote the category of pairs $(X, \alpha)$ where $X$ is a topological space with two marked points $r_x, l_x$ and $\alpha :  \faktor{X \coprod X}{\sim} \cong X$ such that the first $r_x$ is $\sim$-equal to the second $l_x$.
-\begin{theorem}{\textbf{(Freyd)}}
+\begin{theorem}[Freyd]
 $([0,1], M)$ is the terminal object in $\c$.
 \end{theorem}
 \end{remark}
@@ -1648,11 +1679,11 @@ Now, let $\{A_{\alpha}\}$ be a collection of $R$-modules. If we endow the Cartes
 \end{enumerate}
 \end{definition}
 
-\begin{exmp} $ $
+\begin{exmp}\label{ex32} $ $
 \begin{enumerate}
 \item We have arbitrary fibered products and coproducts in $\c\coloneqq  \mathbf{Set}$. Indeed, let $a$ be a set and $\{(A_{\alpha}, \pi_{\alpha})\}_{\alpha}$ be a collection of objects in $\c_a$. Then define $$\underset{a}{\prod_{\alpha}} A_{\alpha} = \{x \in \prod_{\alpha} A_{\alpha} :  (\exists y \in a)(\forall \alpha \in I)(\pi_{\alpha}(x_{\alpha}) = y)\}.$$ Next, let $\{(A_{\alpha}, i_{\alpha})\}_{\alpha}$ be a collection of objects in $\c^a$. Then define $$ 
 \overset{a}{\coprod}_{\alpha}A_{\alpha} = \faktor{\coprod_{\alpha} A_{\alpha}}{\sim_a}$$ where $\eta \sim_a \xi$ if there is some $y \in a$ such that $\eta = i_{\alpha}(y) = i_{\beta}(y) = \xi$ for some $\alpha, \beta \in I$.
-\item Arbitrary fibered products and fibered coproducts exists in $\mathbf{Mod}_R$ and $\mathbf{Mod}_G$ by the same constructions in Example 32.
+\item Arbitrary fibered products and fibered coproducts exist in $\mathbf{Mod}_R$ and $\mathbf{Mod}_G$ by the same constructions in \cref{ex32}.
 \item $\mathbf{Grp}$ inherits arbitrary products and fibered products from $\mathbf{Set}$. We will also construct arbitrary coproducts and fibered coproducts in $\mathbf{Grp}$. 
 \end{enumerate}
 \end{exmp}
@@ -1721,7 +1752,7 @@ Conversely, if $(L, R, \xi, \eta)$ satisfies $\eta \circ \xi \cong \id_L$ and $\
 
 \subsection{Lecture 23}
 
-\begin{exmp}
+\begin{exmp} $ $
 \begin{enumerate}
 \item Let $|\cdot| : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it has as left adjoint the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, |G|)$ for any set $S$ and group $G$. That is, for any function $f: S \to |G|$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
 \begin{proof}
@@ -1786,7 +1817,7 @@ For each $s\in S$, define $\delta_s : S \to \bigoplus_{s\in S} G_s$ by $\delta_s
 Notice that $\phi$ must be surjective. Hence $\phi^{\ab}$ is also surjective. It remains to show that it is injective. Let $[x] \in \ker \phi^{\ab}$.
 Then we may write $[x] = n_1n_2\cdots n_r+\Fr(S)'$ where each $n_i \in G_i$. Hence $$0= \phi^{\ab}([x]) = \sum_{i=1}^r n_i \delta_{s_i}.$$ Thus, each $n_i=0$, so that $[x]=0$, and $\ker \phi^{\ab}$ is trivial. 
 
-\begin{lemma}
+\begin{lemma}\label{l14}
 $\Fr(S) \cong \Fr(T) \iff S\cong T.$ 
 \end{lemma}
 \begin{proof} $ $
@@ -1826,7 +1857,7 @@ Suppose that the set $S$ generates $G$ and that the set $T$ generates $\ker(\Fr(
 \end{enumerate}  
 \end{remark}
 
-\begin{theorem}{\textbf{(Nielsen-Schreier)}}
+\begin{theorem}[Nielsen-Schreier]
 Any subgroup of a free group is free.
 \end{theorem}
 
@@ -1918,7 +1949,7 @@ Let $B$ be a commutative $A$-algebra. We say that $B$ is \textit{finitely genera
 If $S$ and $T$ are sets, then $S\cong T \iff \Z[S]\cong \Z[T]$.
 \end{prop}
 \begin{proof}
-See Lemma 14.
+See \cref{l14}.
 \end{proof}
 
 \section{Noetherian and Artinian modules}
@@ -1994,7 +2025,7 @@ Any ring is a bimodule over itself via left and right multiplication.
 \begin{proof} $ $ \\
 (a) $\implies$ (b) is easy to show by an iteration argument.
 \\ \\ (b) $\implies$ (c). If $M$ has the maximal property, then so does every submodule. Hence it suffices to the prove the following lemma.
-\begin{lemma}
+\begin{lemma}\label{l19}
 If the $R$-module $M$ has the maximal property, then $M$ is finitely generated.
 \end{lemma}
 \begin{proof}
@@ -2112,12 +2143,12 @@ Then we may construct the commutative diagram
 \end{enumerate}
 \end{exmp}
 
-\begin{theorem}{\textbf{(Hilbert's basis theorem)}} 
+\begin{theorem}[Hilbert's basis theorem] 
 If $A\in \mathbf{CommRing}$ is Noetherian, then $A[x]$ is also Noetherian. 
 \end{theorem}
 \begin{proof}
 Note that $A[x]$ is an $A$-module since $A$ is a subring. We see that $$A[x] = \bigcup_{n\geq 0} A[x]_n$$ where $$A[x]_n =  \{f \in A[x] : \deg f \leq n\}  .$$
-Note that each $A[x]_n$ is finitely generated by $1, x, \ldots, x^n$, giving a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A[x]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by Lemma 19, so is $A[x]_n$.
+Note that each $A[x]_n$ is finitely generated by $1, x, \ldots, x^n$, giving a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A[x]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by \cref{l19}, so is $A[x]_n$.
 \\ \\ Let $\Omega \unlhd A[x]$ be an ideal. Then $\Omega \cap A[x]_n$ is an $A$-submodule in $A[x]_n$ and thus a finitely generated $A$-module by, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \{a\in A : a = 0 \text{ or } \exists f\in \Omega. \deg f >0 \land f(x) = ax^r+ O(x^{r-1})\}.$$
 \begin{lemma}
 $\widetilde{\Omega}$ is an ideal in $A$.
@@ -2172,7 +2203,7 @@ Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be 
 .\end{align*}
 \end{definition}
 
-\begin{theorem}{\textbf{(Hilbert's theorem on invariants)}}
+\begin{theorem}[Hilbert's theorem on invariants]
 Let $k$ be a field, $G$ a finite group, and $A$ a finitely generated $k$-algebra equipped with a $G$-action. If $(|G|, \Char(k))=1$, then $A^G\coloneqq  \{ a \in A: \forall g \in G.g\cdot a =a\}$ if a finitely generated $k$-subalgebra. 
 \end{theorem}
 \begin{proof}

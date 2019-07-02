@@ -16,15 +16,46 @@
 \usepackage{bm}
 \usepackage{ dsfont }
 \usepackage{mathrsfs}
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{nonexmp}{non-Example}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -149,7 +180,7 @@ GA \arrow[r, "Gf"]
 In symbols, this may be written as $f_Bf_{\ast} = f_{\ast}f_A$, where $f_A$ and $f_B$ are called the \textit{components} of $\phi$.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rmk}
 If every $f_A$ is an isomorphism, then the $(f_A)^{-1}$ define a natural transformation between the same two functors.
 \end{remark}
 
@@ -170,7 +201,7 @@ If $\d$ is a groupoid, then $\phi$ must be a natural isomorphism.
 A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse $\phi^{-1} : G \Rightarrow F$.
 \end{lemma}
 \begin{proof}
-This follows from Remark 1 and the definition of composite natural transformation.
+This follows from \cref{rmk} and the definition of composite natural transformation.
 \end{proof}
 
 \begin{exmp}
@@ -198,7 +229,7 @@ Set $\c = \d = \mathbf{Grp}$, $F= \id_{\c}$, and $G$ equal to the abelianization
 Consider the preorders $(P, \leq)$ and $(Q, \leq)$ as small categories where functors $F, G: P \to Q$ are order-preserving functions. Then there is a unique natural transformation $\phi: F \Rightarrow G$ iff $F(x) \leq G(x)$ for every $x\in P$.
 \end{exmp}
 
-\begin{exmp}
+\begin{exmp}\label{grp}
 The inversion isomorphism from a group $G$ to $G^{\op}$ defines a natural transformation $\phi: \id_{\mathbf{Grp}} \Rightarrow (^{\op}: \mathbf{Grp} \to \mathbf{Grp})$. In other words, $G$ is naturally isomorphic to $G^{\op}$.
 \end{exmp}
 
@@ -243,7 +274,7 @@ Let $k$ be a field. Let the category $\mathbf{Mat}_k$  have natural numbers as o
 A functor $F : \c \to \d$ is \textit{essentially surjective} if for each object $Z$ of  $\d$, there is some object $Y$ of $\c$ such that $F(Y) \cong Z$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{equiv}
 A functor is an equivalence iff it is full, faithful, and essentially surjective. 
 \end{theorem}
 \begin{proof}
@@ -258,7 +289,7 @@ A \textit{skeleton} of $\c$ is a full subcategory $\c' \subset \c$ such that eac
 With notation as before, $\c'$ and $\c$ are equivalent categories via the inclusion functor.
 \end{lemma}
 \begin{proof}
-Apply Theorem 1.
+Apply \cref{equiv}.
 \end{proof}
 
 \begin{lemma}
@@ -339,7 +370,7 @@ A subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor is
 \end{definition}
 
 \begin{exmp}
-$\mathbf{Ab}\subset \mathbf{CMond}$ is reflective by Example 11. 
+$\mathbf{Ab}\subset \mathbf{CMond}$ is reflective by \cref{grp}. 
 \end{exmp}
 
 \begin{exmp}

@@ -28,19 +28,47 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem{exmp}{Example}
-\newtheorem{note}{Note}
-\newtheorem{claim}{Claim}
-\newtheorem{remark}{Remark}
-\newtheorem{prop}{Proposition}
-\newtheorem*{prob}{Problem}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{exercise}{Exercise}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+\newtheorem*{prob}{Problem}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -436,7 +464,7 @@ There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\
 
 \subsection{Lecture 4}
 
-\begin{lemma}{\textbf{(Pumping)}} Let $L$ be a regular language. Then there exists $n_0 \in \N$ such that for any $x\in L$ with $|x|\geq n_0$, we may write $x=wyz$ such that
+\begin{lemma}[Pumping] Let $L$ be a regular language. Then there exists $n_0 \in \N$ such that for any $x\in L$ with $|x|\geq n_0$, we may write $x=wyz$ such that
 \begin{enumerate}[label=(\alph*)]
 \item $|y| >0$,
 \item $|wy|\leq n_0$, and
@@ -571,7 +599,7 @@ The \textit{Church-Turing thesis} states that our pre-theoretic notion of algori
 A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine except that the former's transition function is of the form $$ \delta : Q \times \Gamma^k \to Q \times \Gamma^k \times \{L, R\}^k  $$ where $k\in \N$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{equiv}
 For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k(T^2)$ steps of a single-tape $\TM$.
 \end{theorem}
 \begin{proof}
@@ -590,7 +618,7 @@ A \textit{nondeterministic Turing machine} $M$ is exactly like an ordinary Turin
 Let $M$ be a $\NDTM$ and let $L = L(M)$. Then there exists a $\TM$ $M'$ such that $L= L(M')$. 
 \end{theorem}
 \begin{proof}
-By our last theorem, it suffices to construct a multi-tape $\TM$ that simulates $M$. Construct a tree with branches corresponding to threads of computation given by $M$ and nodes corresponding to configurations of $M$. We construct a $3$-tape $\TM$ $D$ as follows. 
+By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$. Construct a tree with branches corresponding to threads of computation given by $M$ and nodes corresponding to configurations of $M$. We construct a $3$-tape $\TM$ $D$ as follows. 
 \\ \\ Tape 1 always contains the input string $w$ and nothing else. Tape 2 contains just the string on the tape of the current node. Setting $m = \max\{ |A| : A \in \im{\delta} \}$, tape 3 contains a string over $\{1, \ldots, m\}$ that corresponds to the ``address" of the current node. 
 \\ \\ We make $D$ simulate a breadth-first search of the tree as follows. 
 \begin{enumerate}
@@ -607,7 +635,7 @@ By our last theorem, it suffices to construct a multi-tape $\TM$ that simulates 
 \begin{note} $ $
 \begin{enumerate}
 \item This simulation has time complexity $O(m^T)$ where $T$ denotes the steps taken by $M$.
-\item We can modify the proof our last theorem to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
+\item We can modify the proof of our last theorem to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
 \end{enumerate}
 \end{note}
 
@@ -702,7 +730,7 @@ Find some $M$ that decides (resp. recognizes) $L'$ and some reduction $f$ from $
 
 \subsection{Lecture 8}
 
-\begin{exmp}{\textbf{(Halting problem)}}
+\begin{exmp}[Halting problem]
 Let $A_{\text{HALT}} \coloneqq \{\langle M, w \rangle \mid M$ halts on $w\}$. Then $A_{\text{HALT}}$ is undecidable.
 \end{exmp}
 \begin{proof}
@@ -721,7 +749,7 @@ Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \l
 Then we get a suitable function given by $(\langle M \rangle , w) \mapsto (\langle M' \rangle, w)$.
 \end{proof}
 
-\begin{theorem}{\textbf{(Rice)}}
+\begin{theorem}[Rice]
 Every nontrivial semantic property of Turing machines is undecidable. Formally, let $C$ be any subset of the universe of all languages over a fixed alphabet. Define $L_C = \{ \langle M \rangle : L(M) \in C\}$. Suppose that both $L_C$ and $\overline{L_C}$ are nonempty. Then $L_C$ is undecidable. 
 \end{theorem}
 \begin{proof}
@@ -815,7 +843,7 @@ For any $k\geq 0$, $\mathsf{DTIME}(n^k) \subset \mathsf{DTIME}(n^{k+1})$. Consid
 Steps 2 and 3 together take $O(n^2 \log{n})$ steps. It follows that $L \in \mathsf{DTIME}(n^2\log{n})\subset \mathsf{DTIME}(n^3)$. But $L \notin \mathsf{DTIME}(n^2)$.
 \end{exmp}
 
-\begin{theorem}{\textbf{(Time hierarchy)}}
+\begin{theorem}[Time hierarchy]
 Let $f: \N \to \N$ be any function. Suppose that $g(n) = \omega(f(n) \log{f(n)})$. Then $\mathsf{DTIME}(f(n)) \subsetneq \mathsf{DTIME}(g(n))$.
 \end{theorem}
 
@@ -913,7 +941,7 @@ Let $M= (Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R)$ be a $\TM$. Suppose that on 
 We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{|\Gamma|}$ bits, $1$ bit, and $\log{|Q|}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{|\Gamma|} +\log{|Q|}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \{0,1\}^{3B}\to \{0,1\}$ that computes the next configuration. Our previous lemma implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O((|\Gamma|\cdot |Q|)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  (|\Gamma| \cdot |Q|)^3 )$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
-\begin{exmp}{\textbf{(Cook-Levin theorem)}}
+\begin{exmp}[Cook-Levin theorem]
 Define $\mathsf{CIRCUIT{-}SAT} = \{ \langle C \rangle : \exists x. C(x) = 1\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
@@ -1121,7 +1149,7 @@ Omer Reingold has shown that $\mathsf{REACH} \coloneqq  \{\langle G, s, t \rangl
 \end{enumerate}
 \end{prop}
 
-\begin{theorem}{\textbf{(Savitch)}}
+\begin{theorem}[Savitch]
 Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. But $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n))$.
 \end{theorem}
 
@@ -1131,7 +1159,7 @@ $\mathsf{PSPACE} = \mathsf{NPSPACE}$.
 
 \subsection{Lecture 15}
 
-\begin{theorem}{\textbf{(Savitch)}}
+\begin{theorem}[Savitch]
 Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. But we have that $$\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n)).$$
 \end{theorem}
 \begin{proof}
@@ -1225,7 +1253,7 @@ $\mathsf{DIR{-}REACH}$ is $\mathbf{NL}$-complete.
 See Arora and Barak, Theorem 4.16.
 \end{proof}
 
-\begin{theorem}{\textbf{(Immerman-Szelepcs\'enyi)}}
+\begin{theorem}[Immerman-Szelepcs\'enyi]
 $$\mathbf{NL} = \mathbf{co}{-}{\mathbf{NL}}.$$
 \end{theorem}
 \begin{proof}
@@ -1299,25 +1327,25 @@ $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 \end{enumerate}
 \end{remark}
 
-\begin{prop} $ $
+\begin{prop}\label{poly} $ $
 \begin{enumerate}[label=(\alph*)]
 \item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $[{-}2^n, 2^n]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
 \item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $\mathbb{P}[p(x) =0] \leq \frac{d}{|S|}$ for any $x\in_R S$.
 \end{enumerate}
 \end{prop}
 
-\begin{lemma}{\textbf{(DeMillo-Lipton-Schwartz-Zippel)}}
+\begin{lemma}[DeMillo-Lipton-Schwartz-Zippel]
 Let $p(x_1, \ldots, x_n)$ be a multivariate polynomial of degree at most $d\geq 0$. Let $S \subset \Z$ be finite. Then for any $a_1, \ldots, a_n$ randomly chosen with replacement from $S$, $$\mathbb{P}[p(a_1, \ldots, a_n) =0] \leq \frac{d}{|S|}.$$
 \end{lemma}
 \begin{proof}
-We use induction on $n$. If $n=1$, then this is exactly Proposition 9(b). Now, we can write $$p(x_1, \ldots, x_n) = \sum_{i=0}^d = x_1^i q_i(x_2, \ldots, x_n)$$ where $\deg{q_i} \leq d-i$ for each $i$. Let $k$ be maximal such that $q_k(x_2, \ldots, x_n) \ne 0$. Let $E$ denote the event that $q_k(x_2, \ldots, x_n) =0$. 
-By induction together with Proposition 9(b), it follows that  
+We use induction on $n$. If $n=1$, then this is exactly \cref{poly}(b). Now, we can write $$p(x_1, \ldots, x_n) = \sum_{i=0}^d = x_1^i q_i(x_2, \ldots, x_n)$$ where $\deg{q_i} \leq d-i$ for each $i$. Let $k$ be maximal such that $q_k(x_2, \ldots, x_n) \ne 0$. Let $E$ denote the event that $q_k(x_2, \ldots, x_n) =0$. 
+By induction together with \cref{poly}(b), it follows that  
 \begin{align*} \mathbb{P}[p(a_1, \ldots, a_n) =0] & \leq \mathbb{P}[E] + \mathbb{P}[p(a_1, \ldots, a_n) =0 \mid \neg{E}]
 \\ & \leq \frac{d-k}{|S|} + \frac{k}{|S|} = \frac{d}{|S|}.
 \end{align*}
 \end{proof}
 
-\begin{exmp}
+\begin{exmp}\label{matrix}
 Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $[{-}2^n, 2^n]$. Define the probabilistic $\TM$ $A$ on input $\langle L \rangle$ as follows. 
 \begin{enumerate}
 \item Set $S = \{1, \ldots, 100n\}$.
@@ -1333,10 +1361,10 @@ Then $A$ accepts $\langle L \rangle$ with probability $1$ when $\det{L} = 0$. Al
 Let $G=(V_1, V_2, E)$ be a bipartite graph with $|V_1=|V_2|=n$. 
 A \textit{perfect matching} is a permutation $\sigma$ of $\{1,2, \ldots, n\}$ such that $(i, \sigma(i)) \in E$ for each $i=1, \ldots, n$.
 
-Let $M= (m_{i,j})$ be the $n\times n$ matrix with $$m_{i,j} = \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-}1)^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has some perfect matching. By our last example, it follows that deciding whether or not a finite graph has a perfect matching is in $\mathbf{BPP}$.
+Let $M= (m_{i,j})$ be the $n\times n$ matrix with $$m_{i,j} = \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-}1)^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has some perfect matching. By \cref{matrix}, it follows that deciding whether or not a finite graph has a perfect matching is in $\mathbf{BPP}$.
 \end{exmp}
 
-\begin{lemma}{\textbf{(Chernoff bound)}}
+\begin{lemma}[Chernoff bound]
 Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. Then $$\mathbb{P}[|Z - \mu| \geq t] \leq e^{\frac{{-}t^2n \mu}{4}}$$ for any $t\in (0,1)$.
 \end{lemma}
 
@@ -1368,7 +1396,7 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 \end{align*} 
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{good}
 Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is bad for $x] \leq 2^{{-}n^c}$. Thus, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is bad for some $x$ of length $n] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$ when $c$ is large, and $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is good for every $x$ of length $n] \geq 1 - 2^{{-}n}$. 
 \end{remark}
 
@@ -1402,18 +1430,18 @@ If there exist $L \in \mathsf{DTIME}(2^{O(n)})$ and $\gamma >0$ such that $L$ re
 Recall that any algorithm running in time $t(n)$ can be simulated by circuits of size $t(n)^2$. Let $L \coloneqq \{ 1^n \mid n \in \N,$ the $\TM$ represented by the number $n$ in binary halts when its input equals $n\}$. Then $L$ is undecidable \hl{but has polynomial size circuits}. 
 \end{note}
 
-\begin{theorem}{\textbf{(Adleman)}}
+\begin{theorem}[Adleman]
 Every $L\in \mathbf{BPP}$ has polynomial size circuits. In other words, $\mathbf{BPP} \subset \mathbf{P}/\mathrm{poly}$.
 \end{theorem}
 \begin{proof}
-Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. Let $n\in \N$. Our last remark implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this, we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
+Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. Let $n\in \N$. \Cref{good} implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this, we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
 \end{proof}
 
 \begin{corollary}
 $\mathbf{BPP} \subset \mathbf{EXP}$.
 \end{corollary}
 
-\begin{definition}{\textbf{(Polynomial hierarchy)}}
+\begin{definition}[Polynomial hierarchy]
 \begin{enumerate}
 \item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \{0,1\}^{p_1(|x|)} \forall \overline{x_2} \in  \{0,1\}^{p_2(|x|)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(|x|)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
 \item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \{0,1\}^{p_1(|x|)} \exists \overline{x_2} \in  \{0,1\}^{p_2(|x|)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(|x|)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
@@ -1450,7 +1478,7 @@ If $k>0$ and $\Sigma_p^k = \Pi^k_p$, then $\Sigma^{k+1}_p = \Sigma^k_p$.
 For convenience, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some formula $$\varphi(x)\coloneqq \exists{\overline{y_1}}\forall{\overline{y_2}}(P(x, \overline{y_1}, \overline{y_2}))$$ defines $L$. But, by assumption, $\varphi(x)$ is equivalent to some formula  $ \exists{\overline{y_1}}\exists{\overline{y_2}}(P'(x, \overline{y_1}, \overline{y_2}))$.
 \end{proof}
 
-\begin{theorem}{\textbf{(Sipser-G\'acs)}}
+\begin{theorem}[Sipser-G\'acs]
 $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \end{theorem}
 \begin{proof}
@@ -1536,7 +1564,7 @@ Let $G$ and $H$ be graphs.
 \end{enumerate}
 \end{prop}
 
-\begin{exmp}{\textbf{(Goldwasser{-}Sipser set bound protocol)}}
+\begin{exmp}[Goldwasser{-}Sipser set bound protocol]
 Let $S \subset \{0,1\}^m$ and $K\in \N$. We want to construct a verifier $V$ and prover $P$ such that
 \begin{itemize}
 \item $V$ can efficiently check whether any given $x$ belongs to $S$, and
@@ -1564,7 +1592,7 @@ Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ 
 
 \subsection{Lecture 25}
 
-\begin{lemma}{\textbf{(Sum-check protocol)}}
+\begin{lemma}[Sum-check protocol]
 Let $n\in \N$ and choose a prime $2^{10n}\leq p\leq 2^{20n}$. Let  $\varphi(x_1, \ldots, x_n)$ be a 3cnf formula with $m$ clauses and let $\tilde{\varphi}(x_1, \ldots, x_n)$ be the polynomial obtained from $\varphi$ by the following translation rules.
 \begin{itemize}
 \item $\bar{x} \longleftrightarrow (1-x)$.
@@ -1612,7 +1640,7 @@ $\mathbf{IP} = \mathsf{PSPACE}$.
 
 \subsection{Final exam review session}
 
-\begin{theorem}{\textbf{(Space hierarchy)}}
+\begin{theorem}[Space hierarchy]
 If $f: \N \to \N$ satisfies $f(n) \geq \log{n}$, then $\mathsf{DSPACE}(f(n)) \subsetneq \mathsf{DSPACE}(f^2(n))$.
 \end{theorem}
 

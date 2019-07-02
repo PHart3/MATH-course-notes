@@ -30,20 +30,47 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem*{notation}{Notation}
-\newtheorem*{aside}{Aside}
-\newtheorem{exmp}{Example}
-\newtheorem{note}{Note}
-\newtheorem{claim}{Claim}
-\newtheorem{remark}{Remark}
-\newtheorem{prop}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
 \newtheorem*{question}{Question}
-\newtheorem{exercise}{Exercise}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -313,7 +340,7 @@ We need to show that if $a\in A$ is nonzero, then we can find some homomorphism 
 \begin{note}
 The duality functor $(-)^D$ extends to a functor $ (-)^D: R^{\op}{-}\mathbf{Mod} \to R {-}\mathbf{Mod}^{\op}$ that is compatible with forgetting the module structure. Indeed, if $M$ is a left module over $R^{\op}$, then its module structure is given by a collection of maps $\{\text{mult}_a : M \to M \mid a\in R\}$. Note that $ \text{mult}_a \circ \text{mult}_b = \text{mult}_{a \cdot_{R^{\op}} b} =  \text{mult}_{b \cdot_{R} a}   $ For each $a\in R$, define $\underline{\text{mult}}_a(\varphi) = \varphi \circ {\text{mult}}_a$. Then the abelian group $M^D$ has an $R$-module structure given by $ \underline{\text{mult}}_a: M^D \to M^D$, which clearly satisfies $\underline{\text{mult}}_{ab} = \underline{\text{mult}}_a \circ\underline{\text{mult}}_b$.
 \end{note}
-\begin{lemma}
+\begin{lemma}\label{l1}
 If $M$ is a projective $R^{\op}$-module, then $M^D$ is an injective $R$-module.
 \end{lemma}
 \begin{proof}
@@ -349,14 +376,14 @@ By assumption, we may fill this diagram with some map $\psi : M \to X^D$. This i
 \end{tikzcd}
 \] commutes.
 \end{proof}
-There is some surjection $\bigoplus_{j\in J} R \to M^D$. Therefore, we have a sequence of embeddings $$M \hookrightarrow M^{DD} =\Hom_{\Z}\big (M^D, \faktor{\Q}{\Z} \big ) \hookrightarrow \Hom_{\Z}\big (\bigoplus_{j\in J} R, \faktor{\Q}{\Z}\big ) = \underbrace{\big (\bigoplus_{j\in J} R \big )^D}_{\text{injective by Lemma 1}}.$$
+There is some surjection $\bigoplus_{j\in J} R \to M^D$. Therefore, we have a sequence of embeddings $$M \hookrightarrow M^{DD} =\Hom_{\Z}\big (M^D, \faktor{\Q}{\Z} \big ) \hookrightarrow \Hom_{\Z}\big (\bigoplus_{j\in J} R, \faktor{\Q}{\Z}\big ) = \underbrace{\big (\bigoplus_{j\in J} R \big )^D}_{\text{injective by \cref{l1}}}.$$
 \end{proof}
 
 \begin{definition}
 Given two $R$-modules $M$ and $N$, the \textit{additive invariants of $M$ and $N$} are the abelian groups $$\ext^i_R (M, N): = H^i(\Hom_R(P^{\bullet}, N))$$ indexed by $\N$  where $P^{\bullet}$ is a projective resolution of $M$. 
 \end{definition}
 
-\begin{prop} $ $
+\begin{prop}\label{prop2} $ $
 \begin{enumerate}
 \item $\ext^i_R(M, N)$ is independent of the choice of projective resolution. This follows from the fact that any two projective resolutions are chain homotopic.
 \item $\ext^i_R(M, N) = H^i(\Hom_R(M, I_{\bullet}))$ for any injective resolution $I_{\bullet}$ of $N$.
@@ -394,7 +421,7 @@ We can extend this sequence to a long exact sequence of abelian groups $$0 \to \
 Show that if $(\xi)$ is split, then $\delta_{\xi}(\id_M) =0$.
 \end{exercise} 
 This implies that  $e$ is injective. {[[How?]]} We need to show that it is surjective as well. Suppose that $\gamma \in \ext_R^1(M, N)$ and let $I_{\bullet}$ be an injective resolution of $N$. Apply $\Hom_R(M, -)$ to $I_{\bullet}$ to get $$0 \to \Hom_R(M, N) \overset{\nu}{\longrightarrow} \Hom_R(M, I_0) \overset{d_0}{\longrightarrow} \Hom_R(M, I_1) \overset{d_1}{\longrightarrow} \cdots   $$ (where we have abused the notation $d_i$). 
-By Proposition 2(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note that $f: M \to \ker{\partial_1} = \im{\partial_0}$, giving 
+By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note that $f: M \to \ker{\partial_1} = \im{\partial_0}$, giving 
 \[ \begin{tikzcd}
 0 \arrow[r] & N \arrow[r] & I_0 \arrow[r, "\partial_0"] & \im{\partial_0} \arrow[r] & 0 \\
  &  &  & M \arrow[u, "f"] & 
@@ -807,14 +834,14 @@ Localizing $0 \to K \to X \otimes_A M \to Y \otimes_A M$ along $\frak{a}$ gives 
 If $A$ is commutative ring, then the \textit{Jacobson radical of $A$} is the ideal $$\Jac(A) \equiv \bigcap_{\frak{a} \in \Max(A)} \frak{a} .$$
 \end{definition}
 
-\begin{lemma}{\textbf{(Nakayama)}}
+\begin{lemma}[Nakayama]
 If $A$ is a commutative ring and $M$ is a finitely generated $A$-module with $\Jac(A) \cdot M = M$, then $M= (0)$.
 \end{lemma}
 \begin{proof}
 Let $M$ be finitely generated over $A$. Choose some finite set of generators $m_1, \ldots, m_t$ of $M$ of minimal cardinality. If $M\ne (0)$, then $t>0$. Then $m_t \in M = \Jac(A)\cdot M$. Thus there are $a_1, \ldots, a_t \in \Jac(A)$ such that $m_t = \sum_{i=1}^t a_im_i$. Then $(1-a_t)m_t = \sum_{i=1}^{t-1} a_im_i$. But $a_t \in \Jac(A)$, meaning that $m_t$ belongs to every maximal ideal. Then $1-a_t$ cannot be in any maximal ideal. Hence $1-a_t$ is a unit in $A$. Let $u\in A$ such that $u(1-a_t) = 1$. Then $m_t = \sum_{i=1}^{t-1} a_iu m_i$. This contradicts that $t$ is minimal.
 \end{proof}
 
-\begin{corollary}{\textbf{(Classical Nakayama)}}
+\begin{corollary}[Classical Nakayama]
 Suppose $A$ is a local ring with maximal ideal $\frak{a}_A$. Let $M$ be a finitely generated $A$-module such that $\frak{a}_AM = M$. Then $M= (0)$. 
 \end{corollary}
 
@@ -963,7 +990,7 @@ A finite field extension of $\Q$ is called a \textit{number field}.
 
 \begin{exmp} 
  Fix a prime $p>0$. Let $\epsilon_p = e^{\frac{2\pi i}{p}} \in \C$. Then $\Q(\epsilon_p) \supset \Q$ is a finite extension because $\epsilon_p$ is annihilated by the polynomial $x^p-1$. It is called the \textit{$p$-th cyclotomic field}. Note that $x^p-1$ is not minimal since we can factor out $(x-1)$. We claim that $\frac{x^p-1}{x-1}$ is the minimal polynomial, so that $[\Q(\epsilon_p) : \Q] =p-1$. This will hold if we can prove that $\frac{x^p-1}{x-1}$ is irreducible in $\Q[x]$. 
-\begin{lemma}{\textbf{(Gauss)}}
+\begin{lemma}[Gauss]
 If $f(x) \in \Z[x]$ is irreducible, then it is irreducible in $\Q[x]$.
 \end{lemma}
 \begin{proof}
@@ -972,7 +999,7 @@ Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(
 Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x) (x-1) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = [(x-1)^p]_p$, so that $[f]_p[(x-1)]_p = ([x-1]_p)^p$ and $[f]_p = [(x-1)]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = ([(x-1)]_p)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
 \end{exmp}
 
-\begin{theorem}
+\begin{theorem}\label{lt}
 Suppose that $M \supset L \supset K$ is a chain of finite field extensions. Then $M \supset K$ is also finite with $[M:K] = [M:L][L:K]$.
 \end{theorem}
 \begin{proof}
@@ -983,11 +1010,11 @@ Let $e_1, \ldots, e_n$ be a basis of $L$ over $K$ and $f_1, \ldots, f_m$ be a ba
 Suppose $L \supset K$ is a field extension with $u_1, \ldots, u_n \in L$. We get a ring $K[u_1, \ldots, u_n]= \im{\mathsf{ev}_u}$, which is a domain since it's contained in $L$. Let $K(u_1, \ldots, u_n) \coloneqq  \text{Frac}(K[u_1, \ldots, u_n])$. Then we fave that $K \subset K[u_1, \ldots, u_n] \subset K(u_1, \ldots, u_n) \subset L$. Note that if $u\in L$ is algebraic over $K$, then $K \subset K[u] = K(u) \subset L$. 
 \end{note}
 
-\begin{theorem}
+\begin{theorem}\label{ext}
 Suppose that $L \supset K$ is a field extension and let $u_1, \ldots, u_n \in L$ be algebraic over $K$. Then $\dim_K{K(u_1, \ldots, u_n)} < \infty$. In particular, $K(u_1, \ldots, u_n) \supset K$ is an algebraic extension. 
 \end{theorem}
 \begin{proof}
-Note that $K \subset K(u_1) \subset K(u_1, u_2) \subset \cdots \subset K(u_1, \ldots, u_n)$ and that $K(u_1, \ldots, u_k) = K(u_1, \ldots, u_{k-1})(u_k)$.  Since each $u_k$ is algebraic over $K$, we see that $u_k$ is algebraic over any field containing $K$. Thus, $u_k$ is algebraic over $K(u_1, \ldots, u_{k-1})$. Hence $\dim_{K(u_1, \ldots, u_{k-1})}{K(u_1, \ldots, u_k)} < \infty$. By our last theorem, $\dim_K{K(u_1, \ldots, u_n)} <\infty$.
+Note that $K \subset K(u_1) \subset K(u_1, u_2) \subset \cdots \subset K(u_1, \ldots, u_n)$ and that $K(u_1, \ldots, u_k) = K(u_1, \ldots, u_{k-1})(u_k)$.  Since each $u_k$ is algebraic over $K$, we see that $u_k$ is algebraic over any field containing $K$. Thus, $u_k$ is algebraic over $K(u_1, \ldots, u_{k-1})$. Hence $\dim_{K(u_1, \ldots, u_{k-1})}{K(u_1, \ldots, u_k)} < \infty$. By \cref{lt}, $\dim_K{K(u_1, \ldots, u_n)} <\infty$.
 \end{proof}
 
 \begin{definition} $ $
@@ -1001,7 +1028,7 @@ Note that $K \subset K(u_1) \subset K(u_1, u_2) \subset \cdots \subset K(u_1, \l
 If $L \supset K$ is a field extension, then $\overline{K}\coloneqq  \{u\in L \mid u$ is algebraic over $K\}$ is a field that is algebraically closed in $L$.
 \end{theorem}
 \begin{proof}
-Let $u,v \in \overline{K}$. Then both are algebraic over $K$. If $K \subset K(u,v) \subset L$, then our previous theorem shows that $K(u,v) \supset K$ is an algebraic extension. Since $K(u,v) \subset \overline{K}$, it follows that $\overline{K}$ is a field. 
+Let $u,v \in \overline{K}$. Then both are algebraic over $K$. If $K \subset K(u,v) \subset L$, then \cref{ext} shows that $K(u,v) \supset K$ is an algebraic extension. Since $K(u,v) \subset \overline{K}$, it follows that $\overline{K}$ is a field. 
 \end{proof}
 
 \begin{note}
@@ -1010,7 +1037,7 @@ Suppose $u\in L$ is algebraic over $\overline{K}$. Then we can find $f(x) = \sum
 Let $h$ is an irreducible polynomial over $K$. Write $\widetilde{K} = \faktor{K[x]}{(h)}$ and let $\alpha$ denote the marked root $x+(h)$ of $h$ viewed as a polynomial in $\widetilde{K}[t]$.
 \end{note}
 
-\begin{lemma}{\textbf{(Main lemma of Galois theory)}}
+\begin{lemma}[Main lemma of Galois theory]
 For any $\varphi : K \to F$ field homomorphism, the natural map $$\{\psi : \widetilde{K} \to F \mid \psi \restriction_K = \varphi \} \to (\text{distinct roots of } h^{\varphi} \in F[x])$$ given by $ \psi \mapsto \psi(\alpha)$ is a bijection, where $h^{\varphi}$ denotes the polynomial obtained by applying $\varphi$ to the coefficients of $h$. 
 \end{lemma}
 \begin{proof}
@@ -1309,7 +1336,7 @@ This proves our result for simple field extensions. Since every finite extension
 A finite field extension $L \supset K$ is a \textit{Galois extension} if $\lvert{\gal(L/K)}\rvert = [L:K]$.
 \end{definition}
 
-\begin{corollary}
+\begin{corollary}\label{cor16}
 If $L\supset K$ is a Galois extension, then $K \subset P \subset L \implies L\supset P$ is Galois as well.
 \end{corollary}
 \begin{proof}
@@ -1346,7 +1373,7 @@ If $f(x) \in K[x]$ is irreducible and $\Char{K} \nmid \deg{f}$, then $f$ is sepa
 Every irreducible polynomial $f$ over a finite field $F$ is separable. 
 \end{corollary}
 \begin{proof}
-If $f$ is irreducible and $f' \ne 0$, then apply a similar argument to the proof of Corollary 16. Suppose $f'=0$. Then $f(x) = a_0 + a_1x^p + \cdots + a_sx^{sp}$ with $p= \Char{F}$. But as $F$ is finite, we know that the Frobenius $\varphi$ is an automorphism. Thus, any element in $F$ has a $p$-th root in $F$. Hence there exists $b_i \in F$ such that $b_i^p = a_i$. This shows that $f(x) = (b_0 + b_1x + \cdots + b_sx^s)^p$, which contradicts that $f$ is irreducible over $F$.
+If $f$ is irreducible and $f' \ne 0$, then apply a similar argument to the proof of \cref{cor16}. Suppose $f'=0$. Then $f(x) = a_0 + a_1x^p + \cdots + a_sx^{sp}$ with $p= \Char{F}$. But as $F$ is finite, we know that the Frobenius $\varphi$ is an automorphism. Thus, any element in $F$ has a $p$-th root in $F$. Hence there exists $b_i \in F$ such that $b_i^p = a_i$. This shows that $f(x) = (b_0 + b_1x + \cdots + b_sx^s)^p$, which contradicts that $f$ is irreducible over $F$.
 \end{proof}
 
 \begin{exmp}
@@ -1418,7 +1445,7 @@ Let $x_1, x_2, \ldots, x_n \in L$ denote the roots of $f$. Then $a_i = ({-}1)^i\
 Since $\text{trdeg}(L/k) = \text{trdeg}(K/k) = n$ and $L = K(x_1, \ldots, x_n)$, we see that $x_1, \ldots, x_n$ are algebraically independent over $k$.  Therefore, there are pairwise distinct. This shows that $f(x) \in K[x]$ has distinct roots, so that $L\supset K$ is separable and thus a Galois extension. It follows that $\gal(L/K) = S_n$ and $$L^{S_n}= (k(x_1, \ldots, x_n))^{S_n}= K =k(\sigma_1, \ldots, \sigma_n).$$
 \end{proof}
 
-\begin{theorem}{\textbf{(Main theorem of Galois theory)}}
+\begin{theorem}[Main theorem of Galois theory]
 Let $L \supset K$ be a Galois extension. Then the function given by $(K \subset P \subset L : P \text{ field}) \mapsto (G \leq \gal(L/K))$ and the function given by $L^G \mapsfrom G$ are inverse to each other. Furthermore, if $L \supset P \supset K$, then $P \supset K$ is a Galois extension of $K$ if and only if $\gal(L/P) \unlhd \gal(L/K)$. 
 \end{theorem}
 \begin{proof}
@@ -1453,7 +1480,7 @@ Let $\langle \varphi \rangle = \gal(\Gamma_p /\Q)$. Then $\varphi \restriction_{
 Given $k \in \Z_{>0}$ and prime $p>2$, define the \textit{Legendre symbol} $$\big (\frac{k}{p} \big) = \begin{cases}    1 & [k]_p \in ((\Z/p)^{\times})^2 \\ {-}1 & [k]_p \notin  ((\Z/p)^{\times})^2  \end{cases}.$$
 \end{definition}
 Consider $\alpha \in \Gamma_p$ given by $$  \alpha = \sum_{k=1}^{p-1} \big (\frac{k}{p} \big) \zeta^{r^{k-1}} = \zeta - \zeta^r + \zeta^{r^2} - \cdots \zeta^{r^{p-2}}   .$$ If $g\in \gal(\Gamma_p /\Q)$, then $$ g(\alpha) = \begin{cases}  \alpha & g \in H \\ {-}\alpha & g \notin H   \end{cases} . $$ Then $\alpha \in \Gamma_p^H$. Also, $\alpha^2$ is fixed by every element of $\gal(\Gamma_p/\Q)$ and thus is rational. This implies that $\Gamma_p^H = \Q[\alpha]$.
-\begin{lemma}
+\begin{lemma}\label{l16}
 $\alpha^2 = ({-}1)^{\frac{p-1}{2}}p$, so that $$\Gamma_p^H = \begin{cases} \Q[\sqrt{p}] & p \equiv 1 \mod 4 \\ \Q[\sqrt{{-}p}] & p \not \equiv 1 \mod 4   \end{cases}.$$
 \end{lemma}
 \begin{proof}
@@ -1546,7 +1573,7 @@ If $G$ is a group and $k$ a field, then a \textit{$k$-character of $G$} is a gro
 Each $k$-character $\chi$ of $G$ can be viewed as a function with values in $k$.
 \end{note}
 
-\begin{lemma}{\textbf{(Dedekind)}}
+\begin{lemma}[Dedekind]
 If $\chi_1, \ldots, \chi_s$ are pairwise distinct $k$-characters of $G$, then they are linearly independent in $\Fun(G, k)$.
 \end{lemma}
 \begin{proof}
@@ -1621,7 +1648,7 @@ Without loss of generality, we may assume that $K_{\alpha}$ satisfies the follow
 Since $K_{\alpha}\supset K$ is a finite extension, we can find a $K$-basis $e_1, \ldots, e_n$ of $K_{\alpha}$. Let $f_i \in K[x]$ denote the minimal polynomial of $e_i$. Let $S_i$ denote the splitting field of $f_i$. Then $S_i \supset K$ is a Galois extension and contains $e_i$. Note that the composite of the $S_i$ contains each $e_i$ . Let $L_{\alpha} = S_1S_2 \cdots S_n$. Then $K \subset K_{\alpha} \subset L_{\alpha}$. (We call $L_{\alpha}$ the \textit{Galois closure of $K_{\alpha}$}.) Consider the tower $K = K_0 \subset K_1 \subset \cdots \subset K_s = K_{\alpha}$ where $K_{i+1} \supset K_i$ is a radical extension of degree $n_i$. If $\sigma \in \gal(L_{\alpha}/K)$, then $K = \sigma{K} \subset \sigma{K_1} \subset \cdots \subset \sigma{K_{\alpha}}$ is still a tower of radical extensions. 
 \\ \\By taking the composites $K_1\sigma K_1 \subset \cdots \subset K_1\sigma K_s$ and $K_2K_1\sigma{K_1} \cdots$, we get  a composite of all $\{\sigma{K}{\alpha}\}_{\sigma \in \gal(L_{\alpha}/K)}$, which will be a tower of radical extensions. But $K \subset \prod_{\sigma} \sigma{K_{\alpha}} \subset L_{\alpha}$, and $L_{\alpha}$ is generated by all $\sigma{K_{\alpha}}$. Hence $L_{\alpha} = \prod_{\sigma} \sigma{K_{\alpha}} =L$.
 \\ \\
-We still must prove that each step in our radical tower is Galois and cyclic. Let $n=n_1n_2 \cdots n_k$.  Let $F = K[\mu_n]$. If the tower $K = K_0 \subset K_1 \subset \cdots \subset K_t = L_{\alpha}$ has $K_i = K_{i-1}[\sqrt[n_i]{a_i}]$, then we can pass to composites $$  K \subset K_0F \subset K_1F \subset \cdots \subset K_tF = L_{\alpha}F  .$$ We see that $LF \supset K$ is radical and Galois as the splitting field for $x^n-1$ and that $K_iF \supset K_{i+1}F$ is radical of degree $n_i$ and contains $\mu_{n_i}$. Thus, $K_iF \supset K_{i+1}F$ is Galois and cyclic of degree dividing $n_i$ by Lemma 16(a). 
+We still must prove that each step in our radical tower is Galois and cyclic. Let $n=n_1n_2 \cdots n_k$.  Let $F = K[\mu_n]$. If the tower $K = K_0 \subset K_1 \subset \cdots \subset K_t = L_{\alpha}$ has $K_i = K_{i-1}[\sqrt[n_i]{a_i}]$, then we can pass to composites $$  K \subset K_0F \subset K_1F \subset \cdots \subset K_tF = L_{\alpha}F  .$$ We see that $LF \supset K$ is radical and Galois as the splitting field for $x^n-1$ and that $K_iF \supset K_{i+1}F$ is radical of degree $n_i$ and contains $\mu_{n_i}$. Thus, $K_iF \supset K_{i+1}F$ is Galois and cyclic of degree dividing $n_i$ by \cref{l16}(a). 
 \\ \\ We have constructed an extension $LF \supset K$ such that
 \begin{itemize}
 \item $\alpha \in LF$,
@@ -1638,7 +1665,7 @@ It follows that $\gal(LF/K)$ is solvable. But $LF \supset L \supset K$ where $L 
 Let $K$ be a field and $f(x) \in K[x]$. We say that $f$ is \textit{solvable in quadratic radicals} if the splitting field $L$ for $f$ is a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s =L   $$ such that $K_i =K_{i-1}[\sqrt{a_i}]$ for some $a_i \in K_{i-1}$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{solv}
 Let $K$ be a field with $\Char{K} \ne 2$ and $f(x) \in K[x]$ be irreducible. Then $f$ is solvable in quadratic radicals if and only if $[L:K] =2^n$ for some $n$ where $L$ denotes the splitting field for $f$.
 \end{theorem}
 \begin{proof} $ $
@@ -1648,7 +1675,7 @@ Let $K$ be a field with $\Char{K} \ne 2$ and $f(x) \in K[x]$ be irreducible. The
 ($\Longleftarrow$)  We have that $[L:K] = 2^n$ for some $n\geq 0$ and $\deg{f} = [K(\alpha): K] \mid [L: K]$ where $\alpha$ is a root of $f(x)$. Thus, $[K(\alpha): K]$ equals a power of $2$, so that $f$ is separable. This shows that $L \supset K$ is Galois and thus that $G\coloneqq  \gal(L/K)$ has order $2^n$. It follows that there is some normal series $$ G =G^0 \unrhd G^1  \unrhd \cdots \unrhd G^s = \{e\}  $$ such that $\faktor{G^{i}}{G^{i+1}} \cong \Z/2$. This induces a tower of field  extensions $$ K= L^{G^0} \subset L^{G_1} \subset \cdots \subset L^{G_s} = L   $$ such that $[L^{G^{i+1}}: L^{G_i}] =2$.
 \end{proof}
 
-\begin{remark}{\textbf{(The construction problem)}}
+\begin{remark}[The construction problem]
 Given a unit measure and segments of lengths $a_1, \ldots, a_k$, we want to construct a segment of length $\alpha$ using ruler and compass. Elementary geometry shows that such a construction is possible if and only if $\alpha$ can be expressed in quadratic radicals over $\Q(a_1, \ldots, a_k)$. 
 
 If $\alpha$ is transcendental over $\Q(a_1, \ldots, a_k)$, then our construction is impossible. 
@@ -1670,7 +1697,7 @@ Moreover, if $\alpha$ is algebraic over $\Q(a_1, \ldots, a_k)$, then $\alpha$ ca
 \subsection{Lecture 22}
 
 
-\begin{remark}{\textbf{(Fundamental theorem of algebra)}}
+\begin{remark}[Fundamental theorem of algebra]
 The following statements are true.
 \begin{itemize}
 \item If $f(x) \in \R[x]$ has odd degree, then it has a real root.
@@ -1680,10 +1707,10 @@ Now, suppose that $K \supsetneq \R$ is a finite field extension. If $[K : \R]$ i
 
 We want to show that any $f(x) \in \C[x]$ has a root in $\C$. Note that if $c$ is a complex root of $f(x)\overline{f(x)} \in \R[x]$, then either $c$ or $\bar{c}$ is a root of $f(x)$.  Thus, it suffices to show that any polynomial over $\R$ has a root in $\C$.
 
-Let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = |\gal(L/\R)|$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$[L: \R] = [L: L^H] = |\gal(L/L^H)| = |H| = 2^n$$ for some $n$. By Theorem 16, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
+Let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = |\gal(L/\R)|$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$[L: \R] = [L: L^H] = |\gal(L/L^H)| = |H| = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
 \end{remark}
 
-\begin{theorem}{\textbf{(Primitive element theorem)}}
+\begin{theorem}[Primitive element theorem]
 Suppose that $L \supset K$ is a finite field extension. This has a \textit{primitive element}, i.e.,  $L= K(\theta)$ for some $\theta \in L_j$, if and only if there are at most finitely many intermediate fields $K \subset F \subset L$.
 \end{theorem}
 \begin{proof}
@@ -1732,7 +1759,7 @@ Suppose that $p$ is prime and that $f(x) \in \Q[x]$ is monic and irreducible wit
 Let $L$ be the splitting field for $f(x)$. Write $f(x) = \prod_{i=1}^p(x- x_i)$ with each $\lambda_i \in \C$. THen $\Q(\lambda_1, \ldots, \lambda_p) \subset \C$. We see that $$ \Q \subset \Q(\lambda_i)  \subset \Q(\lambda_1, \ldots, \lambda_p) \subset \C,$$ so that $[\Q(\lambda_i) : \Q] \mid [L : \Q]$.  Since $p \mid [L: \Q] = |G_f| \subset S_p$, it follows from Sylow that $G_p$ contains an element of order $p$, i.e., that $G_f$ contains a $p$-cycle. Also, the element in $G_f$ that switches the roots is the complex conjugate pair of a transposition.
 \end{proof}
 
-\begin{theorem}{\textbf{(Brouwer)}}
+\begin{theorem}[Brouwer]
 For any prime $p \geq 5$, there are infinitely many polynomials in $\Q[x]$ of degree $p$ with Galois group $S_p$.
 \end{theorem}
 \begin{proof}
@@ -1753,7 +1780,7 @@ Choose $m \gg \sum n_i^2$, so that $\sum_{i=1}^k \lambda_i^2  < 0$. This implies
 
 \section{Chain complexes and chain maps}
 
-\begin{remark}{\textbf{(Homological algebra)}}
+\begin{remark}[Homological algebra]
 The originators of homological algebra include Betti, Poincar\'e, and Riemann. The main goal of this subject is to extract invariants from topological spaces. Decompose $X$ into contractible pieces (such as cells or simplices) to reduce $X$ to combinatorial data. Specifically, reduce $X$ to a collection of pieces of various dimensions where the boundary of a piece of dimension $n$ is glued to a sub-collection of pieces of dimension $n-1$. 
 
 Emmy Noether introduced groups of chains $C_i(X)$, a free abelian group generated by the collection of $i$-dimensional pieces, equipped with boundary relations $\partial_i : C_i(X) \to C_{i-1}(X)$. From this, we obtain abelian groups $H_i(X)\equiv \faktor{\ker{\partial_i}}{\im{\partial_{i+1}}}$, which are algebraic invariants of $X$. 
@@ -1765,7 +1792,7 @@ Hilbert wanted to extract numerical invariants from a module. Specifically, if $
 A typical graded module over $R$ will be a module of the form $M R/I$ where $I \unlhd R$ is a homogeneous ideal. By the Hilbert basis theorem, $I \unlhd R$ is generated by finitely many homogenous polynomials $f_1, f_2, \ldots, f_{r_0}$. Thus, we have surjective map $\psi: R^{\oplus r_o} \to I $ given by $(a_1, \ldots, a_{r_0}) \mapsto \sum a_if_i$. But, there generators are not, in general, independent. Therefore, we consider the module of relations $Z_0(I) \equiv \ker{\psi}$ among the $f_i$. Note that $Z_0(I)$ is finitely generated. We can choose generators and get a map $\psi': R^{\oplus r_1} \twoheadrightarrow Z_0(I)$. Then $$R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0$$ is an exact sequence of graded $R$-modules. If $Z_1(I) \equiv \ker{\psi'}$ is not zero, then choose generators again to get a map $\psi'': R^{\oplus r_2} \twoheadrightarrow Z_1(I)$. Continuing in this way, we get an exact sequence $$\cdots \to R^{\oplus r_2} \to R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0.$$ The \textit{length} of this sequence is defined to be $\max\{i \mid r_i \ne 0\}$. This is an invariant of $I$ and of $R/I$.
 \end{note}
 
-\begin{theorem}{\textbf{(Hilbert's syzygy theorem)}}
+\begin{theorem}[Hilbert's syzygy theorem]
 Hilbert's syzygy theorem states that $Z_{n-1}(I)$ is free, i.e., that there is an exact sequence of graded $R$-modules $$0 \to R^{\oplus r_n} \to R^{\oplus r_{n-1}} \to \cdots \to R^{\oplus r_0} \to I \to 0.$$
 \end{theorem}
 
@@ -1919,7 +1946,7 @@ Let $$0 \to A \overset{f}{\longrightarrow} B \overset{g}{\longrightarrow} C \to 
 Check that $\delta^n$ is a homomorphism and that it is independent both of our choice of $c$ and of our choice of $b$. 
 \end{exercise}
 
-\begin{lemma}{\textbf{(Snake)}}
+\begin{lemma}[Snake]
 Any short exact sequence $$0 \to A \overset{f}{\longrightarrow} B \overset{g}{\longrightarrow} C \to 0$$  complexes induces a \textit{long exact sequence in cohomology}
 \[
 \begin{tikzcd}
@@ -2030,7 +2057,7 @@ If $\a$ is a abelian, then a sequence $x \overset{f}{\longrightarrow} y \overset
 Our notion of and results for cohomology for complexes of abelian groups hold for complexes of objects in an abelian category.
 \end{note}
 
-\begin{theorem}{\textbf{(Freyd-Mitchell)}}
+\begin{theorem}[Freyd-Mitchell]
 Every abelian  category admits a fully faithful embedding in $R{-}\mathbf{Mod}$ for some ring $R$.
 \end{theorem}
 
@@ -2038,7 +2065,7 @@ Every abelian  category admits a fully faithful embedding in $R{-}\mathbf{Mod}$ 
 It is not, in general, possible to complete an additive category $\c$ to an abelian one. Still, we can always add enough images to $\c$ to get cones of maps of complexes.
 \end{remark}
 
-\begin{exmp}{\textbf{(Idempotent completion)}}
+\begin{exmp}[Idempotent completion]
 Let $\c$ be additive. A map $e: x\to x$ in $\c$ is an \textit{idempotent} if $e^2=e$. Let $\c= \mathbf{Vect}_k$. Then an idempotent $e : x \to x$ is a projection map, i.e., $x = x_1 \oplus x_2$ such that $e = i_1 \circ p_1$.
 \end{exmp}
 

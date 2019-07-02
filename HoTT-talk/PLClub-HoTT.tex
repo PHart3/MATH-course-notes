@@ -21,21 +21,47 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
 \newtheorem*{background}{Background}
 \newtheorem*{further}{Further reading}
 \newtheorem*{sources}{Sources}
-\newtheorem{exmp}{Example}
-\newtheorem{note}{Note}
-\newtheorem{claim}{Claim}
-\newtheorem{nonexmp}{non-Example}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{exercise}{Exercise}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -202,7 +228,7 @@ The type $x \leadsto_A y$ can be thought of as the path space of $A$, which cons
 Under Curry-Howard, each path from $x$ to $y$ corresponds to a proof of the proposition  $x=y : A$.  Thus, HoTT is an intensional type theory in that it both distinguishes between definitional and propositional equality and allows an identity type to be inhabited by more than one term.
 \end{remark}
 
-\begin{remark}{\textbf{(Path induction)}}
+\begin{remark}[Path induction]
 Given a dependent type $D: \prod {\{x,y:A\}}, \id_A(x,y) \to \mathbf{Type}$, suppose that there is some $d: \prod_{a:A} D(a,a, \refl_a)$. Then the induction principle for identity types states that there exists a \textit{section}  $$J(D, d)  :  \prod_{\substack{\{x,y:A\} \\ p: \id_A(x,y)}} D(x,y,p) $$  \textit{of $D$} such that $J(D, d, \refl_a) = d(a)$ for each $a: A$.
 \end{remark}
 
@@ -231,7 +257,7 @@ It is straightforward but tedious to verify that $\Pi_1$ satisfies the definitio
 
 Our next result shows that if two terms of type $A$ are propositionally equal and $P$ is a property of inhabitants of $A$, then $P$ is true of one if and only if it is true of the other.
 
-\begin{lemma}{\textbf{(Transportion)}}
+\begin{lemma}[Transportion]
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$. Then there exists a function $\mathsf{transport}(p) : P(x) \to P(y)$ such that $\mathsf{transport}(\refl_x)(u) \equiv u$ for any $u: P(x)$. Let $p \cdot u \coloneqq \mathsf{transport}(p)(u)$.
 \end{lemma}
 \begin{proof}
@@ -254,7 +280,7 @@ Simply recall that any non-dependent function is a special case of a dependent o
 
 
 
-\begin{lemma}{\textbf{(Path lifting)}}
+\begin{lemma}[Path lifting]
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$ and that $u: P(x)$. Then there is some path $$p_{\Sigma}(u) : (x, u) \leadsto_{\sum_{x:A}P(x)} (y, p\cdot u).$$
 \end{lemma}
 \begin{proof}
@@ -284,7 +310,7 @@ x \arrow[u, "p", squiggly] \arrow[r, "r"', squiggly] & u \arrow[u, "s"', squiggl
 \] \textit{commutes} if there is some term  $h: p \ast q \leadsto r \ast s$, called a \textit{witness of the commutativity}.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{commutes}
 Let $f,g: A \to B$. Suppose that $H: f \simeq g$. The for each path $p: x \leadsto_A y$, the square
 \[
 \begin{tikzcd}
@@ -393,7 +419,7 @@ If $(f, g, \eta, \epsilon, \alpha)$ is an adjoint equivalence from $A$ to $B$, t
 \end{prop}
 Now, suppose that $(f,g,H, K): \iso(A,B)$. We want to construct an adjoint equivalence $(f, g, \eta,  \epsilon, \alpha)$. Define $\eta$ by $$\eta(x) \equiv H(x) \ast g(K(f(x)))^{-1} \ast g(f(H(x)))^{-1}.$$ Let $\epsilon \equiv K$. 
 It remains to check that $f(\eta(x)) \ast \epsilon(f(x)) \leadsto \refl_{f(x)}$.
-To do this, we apply Lemma 7 after doing a bit of diagram chasing.
+To do this, we apply \cref{commutes} after doing a bit of diagram chasing.
 \end{proof}
 
 \begin{note}
@@ -413,7 +439,7 @@ Any two contractible types are equivalent.
 
 Note that any product of contractible spaces is contractible in traditional topology. 
 
-\begin{prop}{\textbf{(Axiom of choice)}}
+\begin{prop}[Axiom of choice]
 Let $P$ be a dependent type over $A$ and $R : \prod(x:A), P(x) \to \type$. Then there is some term of type $$\prod_{x:A}\sum_{u:P(x)} R(x, u) \to \sum(s:  \prod_{x:A} P(x)) \prod (x:A), R(x, s(x)) .$$
 \end{prop}
 
@@ -449,7 +475,7 @@ Note that the identity map on $A$ is an equivalence. Hence we may apply path ind
 The \textit{univalence axiom} is that $v(A, B) : (A \leadsto B) \to (A \simeq B)$ is an equivalence. In particular, there is some function $v(A, B) ^{-1}: (A \simeq B) \to (A \leadsto B)$.
 \end{definition}
 
-\begin{lemma}{\textbf{(Induction on equivalences)}} 
+\begin{lemma}[Induction on equivalences] 
 Suppose that $$D: \prod(A, B : \type), (A \simeq B) \to \type$$ and that there is some $$d: \prod_{A: \type}D(A, A, \text{idmap}_A).$$ Then there is some section  $$J(D, d)  :  \prod_{\substack{\{A,B:\type\} \\ e:A\simeq B}} D(A,B,e) $$ of $D$. 
 \end{lemma}
 \begin{proof}
@@ -471,12 +497,12 @@ The univalence axiom entails WFE (hence SFE).
 \end{corollary}
 \begin{proof}
 Suppose that $P: A \to \type$ and that there is some $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A}, P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. By univalence, it follows that $P(x) \leadsto  \mathsf{unit}$.  Our previous proposition implies that $P\leadsto_{A \to \type} U$.
-\\ \\ Therefore, there is some term of type $$  \big (\prod_{x:A} P(x) \big ) \leadsto \big (\prod_{x:A}, U(x) \big )  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last lemma proves that $A \to \mathsf{unit}$ is contractible. 
+\\ \\ Therefore, there is some term of type $$  \big (\prod_{x:A} P(x) \big ) \leadsto \big (\prod_{x:A}, U(x) \big )  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last proposition proves that $A \to \mathsf{unit}$ is contractible. 
 \end{proof}
 
 Finally, by assuming the univalence axiom, we prove a fundamental result of category theory in our type theory.
 
-\begin{lemma}{\textbf{(Yoneda)}}
+\begin{lemma}[Yoneda]
 Let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod(x:A), P(x) \to Q(x)$.
 \\ \\
 Assume that WFE holds. Then for any dependent type $P$ over $A$ and any $a: A$, there exists a natural equivalence $$ \alpha_{P,a} :\Hom(\mathsf{Y}(a), P)\simeq P(a) . $$ The term $ \alpha_{P,a} $ is natural in the sense that for any $p: a\leadsto a'$ and $\sigma : \Hom(P, P')$, the square
