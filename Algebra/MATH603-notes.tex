@@ -488,17 +488,18 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 
 \subsection{Lecture 4}
 
-\begin{remark}
 Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B)$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some map $\underline{\varphi} : R_x \to B$.
 
 In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make $\underbrace{\cl(S)}_{\text{multiplicative closure}}$ invertible.
+
 \begin{definition}
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
 \end{definition}
+
 Given a multiplicatively closed subset $S \subset R$, find a universal way of inverting every element of $S$. Equivalently, find a ring representing $\Phi_S$. Equivalently, find a pair $(S^{-1}R, h)$ where  $h: R\to S^{-1}R$ such that $h(S) \subset (S^{-1}R)^{\times}$ and any $\varphi : R \to B$ with $\varphi(S) \subset B^{\times}$ has $\varphi = \underline{\varphi} \circ h$ for some map $ \underline{\varphi} : R \to B$.  We call the pair $(S^{-1}R, h)$ the \textit{localization of $R$ along $S$}.
 
 Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. Consider the set $(R \times S, \sim)$ where $(a, s) \sim (b,t)$ if $u(at-bs) =0$ for some $u\in S$. Set $S^{-1}R \coloneqq  \faktor{R\times S}{\sim}$. Let $\frac{a}{s} \coloneqq  [(a,s)]$. Define $$\frac{a}{s} + \frac{b}{t} = \frac{at+bs}{st}$$ and $$\frac{a}{s}\cdot \frac{b}{t} = \frac{ab}{st}.$$ Then $S^{-1}R$ becomes a ring with unity $\frac{1}{1}$. Also, we see that $h: R \to S^{-1}R$ given by $a\mapsto \frac{a}{1}$ is a ring homomorphism. Given $\varphi: R \to B$ such that $\im{\varphi} \subset B^{\times}$, we have a well-defined map of rings $\underline{\varphi} : S^{-1}R \to B$ given by $\frac{a}{s} \mapsto \varphi(a) \varphi(s)^{-1}$, which satisfies $\underline{\varphi} \circ h = \varphi$. 
-\end{remark}
+
 
 \begin{exmp}
 Here are some natural choices for $S$.
@@ -574,8 +575,8 @@ $\ker{\alpha} = (fx-1)$.
 Note that $xf-1\in \ker{\alpha}$. Also, note that  $ \exists n\geq 0. f^ng(\frac{1}{f})=0 \iff  \alpha(g) = 0 \iff  g(\frac{1}{f}) = 0$ in $A_f$. Without loss of generality, we may assume that $n\geq \deg{g}$. Thus, $f^ng(x)$ is a polynomial of $fx$ with coefficients in $A$, so that there is some $G(y) \in A[y]$ such that $G(fx) = f^ng(x)$. Then $g\in \ker{\alpha} \iff \exists G(y) \in A[y]. G(fx) = f^ng(x) \land G(1) =0$. But then $G(y) = (y-1)h(y)$ where $h(y) \in A[y]$. This implies that $g(x) \in \ker{\alpha} \iff \exists n\geq 0 . f^ng(x) \in (xf -1)$. But $f, fx-1 \in A[x]$ are relatively prime since $1= fx + (fx-1)(-1)$.  Hence $1^n = (fx + (fx-1)(-1))^n = f^n x^n + (fx-1)s(x)$ for some $s(x) \in A[x]$. Multiply by $g(x)$ to get $$  g(x) = \underbrace{f^ng(x)}_{\in (xf-1)} + \underbrace{(fx -1)s(x)g(x)}_{\in (xf-1)}  .$$ Therefore, $g(x) \in (xf-1)$, and $(xf-1)=  \ker{\alpha}$. 
 \end{proof}
 
-\begin{remark}
 Suppose that $\varphi : A \to B$ is a map of commutative rings. Then we can transport the ideals along $\varphi$ as follows. 
+
 \begin{definition} $ $
 \begin{enumerate}
 \item
@@ -583,8 +584,8 @@ Given an ideal $\frak{a} \unlhd A$, the \textit{extension of $\frak{a}$ along $\
 \item Given an ideal $\frak{b} \unlhd B$, the \textit{contraction of $\frak{b}$ along $\varphi$} is defined as the ideal $\frak{b}^c = \varphi^{-1}(\frak{b})$. 
 \end{enumerate}
 \end{definition}
+
 Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively closed. Recall the map $h: A \to S^{-1}A$. We want to study $(-)^e$ and $(-)^c$ along $h$. 
-\end{remark}
 
 \begin{prop} $ $
 \begin{enumerate}
@@ -1677,7 +1678,6 @@ Let $K$ be a field with $\Char{K} \ne 2$ and $f(x) \in K[x]$ be irreducible. The
 
 \begin{remark}[The construction problem]
 Given a unit measure and segments of lengths $a_1, \ldots, a_k$, we want to construct a segment of length $\alpha$ using ruler and compass. Elementary geometry shows that such a construction is possible if and only if $\alpha$ can be expressed in quadratic radicals over $\Q(a_1, \ldots, a_k)$. 
-
 If $\alpha$ is transcendental over $\Q(a_1, \ldots, a_k)$, then our construction is impossible. 
 \begin{exmp}
 We see that $\pi$ cannot be constructed over $\Q$, i.e., we cannot square the circle. 

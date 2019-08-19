@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {6.1}Lecture 17}{27}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Lecture 18}{28}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Lectures 19 and 20}{29}{subsection.6.3}
-\contentsline {section}{\numberline {7}Yoneda lemma}{29}{section.7}
+\contentsline {section}{\numberline {7}Yoneda}{29}{section.7}
 \contentsline {subsection}{\numberline {7.1}Lecture 21}{31}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Lecture 22}{33}{subsection.7.2}
 \contentsline {section}{\numberline {8}Adjoint functors}{34}{section.8}

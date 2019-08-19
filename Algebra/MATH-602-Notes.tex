@@ -524,13 +524,14 @@ We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
-Every quotient and subgroup of a nilpotent group is nilpotent. 
+\begin{remark} $ $
+\begin{enumerate}
+\item Every quotient and subgroup of a nilpotent group is nilpotent. 
+\item Every $p$-group $G$ is nilpotent. 
+\end{enumerate}
 \end{remark}
 
-\begin{remark}
-Every $p$-group $G$ is nilpotent. 
-\end{remark}
+
 \begin{proof}
 Set $G_0 = \{e\}$, $G_1 = Z(G)$, and, for $i>1$, $G_{i}$ such that $G \geq G_i \geq G_{i-1}$ and $\faktor{G_i}{G_{i-1}} = Z(\faktor{G}{G_{i-1}})$. Since any quotient of $G$ is a $p$-group, it has nontrivial center unless it equals $G$.  Thus, the $G_i$ form a strictly increasing sequence bounded above by $G$. Since $G$ is finite, $G = G_k$ for some $k$. Note that each $G_i$ is the pullback of a normal subgroup under the natural projection and thus itself normal in $G$, completing the proof.
 \end{proof}
@@ -1558,6 +1559,7 @@ If $\c$ is a category, then we call $\a$ a subcategory of $\c$ if
 \begin{enumerate}
 \item We say that $F$ is \textit{faithful} if $F({-})$ is injective.
 \item We say that $F$ is \textit{full} if $F({-})$ is surjective. 
+\item We say that $F$ is \textit{fully faithful} if it is both full and faithful.
 \end{enumerate}
 \end{definition}
 
@@ -1565,10 +1567,10 @@ If $\c$ is a category, then we call $\a$ a subcategory of $\c$ if
 The inclusion functor $i : \a \to \c$ is faithful.
 \end{exmp}
 
-\section{Yoneda lemma}
+\section{Yoneda}
 
-\begin{remark}
 Notice that $\Hom_{\mathbf{Set}}(\ast, x) \overset{\sim}{\longrightarrow} x$ for any set $x$. In general, we make the following definition.
+
 \begin{definition}
 Given $x \in \ob \c$, a \textit{$y$-point/probe} is the set $\Hom_{\c}(y, x)$ for any $y \in \ob \c$.
 \end{definition}
@@ -1576,8 +1578,8 @@ The class $\{\Hom_{\c}(y, x)\}_{y\in \ob \c}$ of $y$-points reconstructs $x$ as 
 \begin{definition}
 A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x$. We say that \textit{$x$ represents $F$} in this case.
 \end{definition}
-The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'), \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. Then the essential image of $h$ is precisely the representable presheaves of $\c$.
-\end{remark}
+The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'), \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. Then the essential image of $h$ consists of the representable presheaves of $\c$.
+
 
 \begin{lemma}[Yoneda] Let $\c$ be a category.
 \begin{enumerate}
@@ -1631,12 +1633,11 @@ for any $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T
 \end{enumerate}
 \end{exmp}
 
-\begin{remark}
  Instead of constructing the reals as equivalence classes of Cauchy sequences or as Dedekind cuts, we can pick out the interval $[0,1]$ among all topological spaces as follows. We see that $[0,1]\cong_M \big ( \faktor{[0,1] \coprod [0,1]}{\text{first 1 = second 0}} \big )$ by the mean function $M$. Let $\c$ denote the category of pairs $(X, \alpha)$ where $X$ is a topological space with two marked points $r_x, l_x$ and $\alpha :  \faktor{X \coprod X}{\sim} \cong X$ such that the first $r_x$ is $\sim$-equal to the second $l_x$.
+ 
 \begin{theorem}[Freyd]
 $([0,1], M)$ is the terminal object in $\c$.
 \end{theorem}
-\end{remark}
 
 \subsection{Lecture 21}
 

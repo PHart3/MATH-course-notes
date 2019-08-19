@@ -353,13 +353,13 @@ If every $f_A$ is an isomorphism, then the $(f_A)^{-1}$ define a natural transfo
 If each $f_A$ is an isomorphism, then we call $\phi: F \cong G$ a \textit{natural isomorphism}.
 \end{definition}
 
-\begin{remark}
  Let $\c$ be a category.  The class $\{\Hom_{\c}(y, x)\}_{y\in \ob \c}$ reconstructs $x$ as an object in $\c$. To see this, let $\widehat{\c}$ denote the functor category $\Fun(\c^{\op}, \mathbf{Set})$ (whose objects are called \textit{set-valued presheaves on $\c$})  and let $x \in \ob \c$. Define the functor $h_x : \c^{\op} \to \mathbf{Set}$ by $$y \mapsto \Hom_{\c}(y, x) \quad \quad h_x(f) : u \mapsto u \circ f.$$ 
+ 
 \begin{definition}
 A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x$. We say that \textit{$x$ represents $F$} in this case.
 \end{definition}
+
 The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'), \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. Then the essential image of $h$ is precisely the representable presheaves of $\c$.
-\end{remark}
 
 \begin{lemma}{(Yoneda)} Let $\c$ be a category.
 \begin{enumerate}
