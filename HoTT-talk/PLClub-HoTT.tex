@@ -290,7 +290,7 @@ Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $$D(x,y,p) \equiv \prod(u
 As fiber bundles from topology possess the homotopy lifting property,  our last lemma encourages us to interpret the dependent sum $\sum_{x:A}P(x)$ as a fiber bundle over $A$.
 
 \begin{lemma}
-Let $f,g: \prod_{x:A} P(x)$ where $P$ is a dependent type over $A$. Any $\alpha : f \leadsto g$ induces paths $\alpha(x) :f(x) \leadsto_{P(x)} g(x)$ for each $x:A$. Therefore, we get a function $$\happly : \prod \{A :\type\}\{P: A \to \type\}(f,g: \prod(x:A), P(x)), (f\leadsto g) \to \big (\prod(x:A) f(x)\leadsto g(x) \big ).$$
+Let $f,g: \prod_{x:A} P(x)$ where $P$ is a dependent type over $A$. Any $\alpha : f \leadsto g$ induces paths $\alpha(x) :f(x) \leadsto_{P(x)} g(x)$ for each $x:A$. Therefore, we get a function $$\happly : \prod \{A :\type\}\{P: A \to \type\}(f,g: \prod(x:A), P(x)), (f\leadsto g) \to \left(\prod(x:A) f(x)\leadsto g(x) \right).$$
 \end{lemma}
 \begin{proof}
 An easy use of path induction.
@@ -497,7 +497,7 @@ The univalence axiom entails WFE (hence SFE).
 \end{corollary}
 \begin{proof}
 Suppose that $P: A \to \type$ and that there is some $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A}, P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. By univalence, it follows that $P(x) \leadsto  \mathsf{unit}$.  Our previous proposition implies that $P\leadsto_{A \to \type} U$.
-\\ \\ Therefore, there is some term of type $$  \big (\prod_{x:A} P(x) \big ) \leadsto \big (\prod_{x:A}, U(x) \big )  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last proposition proves that $A \to \mathsf{unit}$ is contractible. 
+\\ \\ Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A}, U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last proposition proves that $A \to \mathsf{unit}$ is contractible. 
 \end{proof}
 
 Finally, by assuming the univalence axiom, we prove a fundamental result of category theory in our type theory.

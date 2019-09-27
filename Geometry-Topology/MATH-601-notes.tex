@@ -638,9 +638,9 @@ If $p: Y \to X$ is a covering projection, then $Y$ is a manifold if and only if 
 \begin{definition}
 A \textit{group action on a space $X$} is an injective group homomorphism $G \to \homeo(X)$.
 \end{definition}
-Let $\Gamma$ act on the space $Y$ such that for every $y\in Y$, there is some open set $U\ni y$ such that $g\cdot U \cap U =\emptyset$ when $g\ne e$. We call such a group action \textit{a covering space action} or \textit{properly discontinuous}. In particular, this action is free.  Hatcher, Proposition 1.40(a) states that $Y \twoheadrightarrow \faktor{Y}{\Gamma}$ is a covering projection.
+Let $\Gamma$ act on the space $Y$ such that for every $y\in Y$, there is some open set $U\ni y$ such that $g\cdot U \cap U =\emptyset$ when $g\ne e$. We call such a group action \textit{a covering space action} or \textit{properly discontinuous}. In particular, this action is free.  Proposition 1.40(a) of \textit{Hatcher} states that $Y \twoheadrightarrow \faktor{Y}{\Gamma}$ is a covering projection.
 \begin{remark}
-If $Y$ is simply connected, then $\pi_1 \big (\faktor{Y}{\Gamma} , y_0 \big) \cong \Gamma$.
+If $Y$ is simply connected, then $\pi_1 \left(\faktor{Y}{\Gamma} , y_0 \right) \cong \Gamma$.
 \end{remark}
 \begin{note}
 Let $\alpha \in \R\setminus \Q$. We have that $S^1 \cong \faktor{\R}{x\sim x+1} \cong \faktor{\R}{\Z}$. Let $\Z$ act on $S^1$ by $n\cdot [x] = [x + n \alpha]$. But note that for any $x\in S^1$, the orbit of $x$ is dense in $S^1$ since $\alpha$ is irrational. Thus, $\faktor{S^1}{\Z}$ has the indiscrete topology, and $S^1 \twoheadrightarrow \faktor{S^1}{\Z}$ is not a covering projection.
@@ -653,7 +653,7 @@ Let $\alpha \in \R\setminus \Q$. We have that $S^1 \cong \faktor{\R}{x\sim x+1} 
 \item $\R^2 \twoheadrightarrow \faktor{\R^2}{\Z^2} \cong S^1 \times S^1$.
 \item $\SL_2(\R) \twoheadrightarrow \faktor{\SL_2(\R)}{\SL_2(\Z)}$.
 \item Set $G = \big \{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}  \mid x,y,z \in \R \big \}$ and $\Gamma = \big \{ \begin{bmatrix} 1 & a & c \\  & 1 & b \\  &  & 1 \end{bmatrix} \mid a,b,c \in \R \big \}$. Then $\Gamma$ is a discrete subgroup of $G$, and $G \twoheadrightarrow \faktor{G}{\Gamma}$ is a covering projection. We call $\faktor{G}{\Gamma}$ an \textit{Iwasawa manifold}.
-Since $G$ is simply connected, we also have that $\pi_1 \big (\faktor{G}{\Gamma} \big) \cong \Gamma$.
+Since $G$ is simply connected, we also have that $\pi_1 \left(\faktor{G}{\Gamma} \right) \cong \Gamma$.
 \end{enumerate}
 \end{exmp}
 
@@ -913,7 +913,7 @@ Let $S_g$ denote the (closed) orientable surface of genus $g$. Note that $S_g \c
 \begin{figure}[H]
 \centering
 \includegraphics[width=30mm]{polygon-Sg.png}
-\caption{copied from the Manifold Atlas} \label{overflow}
+\caption{copied from \textit{Manifold Atlas}} \label{overflow}
 \end{figure} For example, $a_1 \sim \bar{a}_1$. 
 Then we can decompose $S_g$ into a small disk $A$ around the origin and an annulus-like space $B$ so that $A \cap B$ is a smaller annulus bounded above by the boundary of $A$ and below by the inner boundary of $B$. Then $\pi_1(A \cap B) \cong \langle \gamma \rangle$ where $|\gamma| =\infty$. Further, $\pi_1(A) = 0$, and $\pi_1(B) \cong \underset{\{1,2, \ldots, 2g\}}{\ast} \Z$ since $B$ deformation retracts onto a bouquet of $2g$ circles. Observe that $i_{BA}(\gamma) = \prod_{i=1}^{g}[a_i, b_i]$, which implies that $$ \pi_1(S_g) \cong \big \langle a_1, \ldots, a_g, b_1, \ldots, b_g \mid    \prod_{i=1}^{g}[a_i, b_i] =1 \big  \rangle .$$
 \end{exmp}
@@ -1903,7 +1903,7 @@ Let $X$ be a CW-complex with skeleta $X^n$.
 \end{lemma}
 \begin{proof} $ $
 \begin{enumerate}
-\item Since $(X^n, X^{n-1})$ is a good pair, we see that $$H_k(X^n, X^{n-1}) \cong \widetilde{H}_k(X^n/X^{n-1}) \cong \widetilde{H}_k \big (\bigvee_{n\text{-cells of X}} S^n \big ).$$
+\item Since $(X^n, X^{n-1})$ is a good pair, we see that $$H_k(X^n, X^{n-1}) \cong \widetilde{H}_k(X^n/X^{n-1}) \cong \widetilde{H}_k \left(\bigvee_{n\text{-cells of X}} S^n \right).$$
 \item Assume that $k>n$. We have a LES 
 \[
 \begin{tikzcd}
@@ -1956,7 +1956,7 @@ Recall that $\CP^n = e^0 \cup e^2 \cup e^4 \cup \cdots \cup e^{2n}$. Hence each 
 \end{exmp}
 
 \begin{prop}[Cellular boundary formula]
-Let $X$ be a CW-complex and $n>1$. Let $d_{\alpha \beta}$ denote the degree of the composition $$S_{\alpha}^{n-1} \overset{\varphi_{\alpha}}{\longrightarrow} X^{n-1} \overset{q_{\beta}q}{\longrightarrow} S_{\beta}^{n-1}$$ where $\varphi_{\alpha}$ denotes the attaching map of $e_{\alpha}^n$, $q: X^{n-1} \to \faktor{X^{n-1}}{X^{n-2}}$ denotes the quotient map, and $q_{\beta} : \faktor{X^{n-1}}{X^{n-2}} \to S_{\beta}^{n-1}$ denote the map collapsing $X^{n-1} \setminus e_{\beta}^{n-1}$ to a point. Then $$  d_n(e_{\alpha}^n) = \sum_{\beta} d_{\alpha{\beta}}e_{\beta}^{n-1} .$$ Note that his summation contains only finitely many terms since $\varphi_{\alpha}$ has compact image and thus intersects only finitely cells $e_{\beta}^{n-1}$.
+Let $X$ be a CW-complex and $n>1$. Let $d_{\alpha \beta}$ denote the degree of the composition $$S_{\alpha}^{n-1} \overset{\varphi_{\alpha}}{\longrightarrow} X^{n-1} \overset{q_{\beta}q}{\longrightarrow} S_{\beta}^{n-1}$$ where $\varphi_{\alpha}$ denotes the attaching map of $e_{\alpha}^n$, $q: X^{n-1} \to \faktor{X^{n-1}}{X^{n-2}}$ denotes the quotient map, and $q_{\beta} : \faktor{X^{n-1}}{X^{n-2}} \to S_{\beta}^{n-1}$ denotes the map collapsing $X^{n-1} \setminus e_{\beta}^{n-1}$ to a point. Then $$  d_n(e_{\alpha}^n) = \sum_{\beta} d_{\alpha{\beta}}e_{\beta}^{n-1} .$$ Note that this summation contains only finitely many terms since $\varphi_{\alpha}$ has compact image and thus intersects only finitely cells $e_{\beta}^{n-1}$.
 \end{prop}
 \begin{proof}
 Let $\Delta_{\alpha{\beta}}\coloneqq  q_{\beta}q \varphi_{\alpha}$. Then we have a commutative diagram
@@ -1977,7 +1977,7 @@ Let $\Delta_{\alpha{\beta}}\coloneqq  q_{\beta}q \varphi_{\alpha}$. Then we have
 0 \arrow[r] & \Z \arrow[r, "d_2"] & \Z^{2g} \arrow[r, "d_1"] & \Z \arrow[r] & 0
 \end{tikzcd}
 .\] We know that $d_1=0$ because $S_g$ is connected and has exactly one $0$-cell. Moreover, the maps $\Delta_{\alpha{\beta}}$ are homotopic to constant maps, which implies that $d_2 =0$. It follows that $$  H_n(S_g) \cong \begin{cases}  \Z & n\in \{0,2\} \\ \Z^{2g} & n =1 \\ 0 & \text{otherwise} \end{cases}  .$$
-\item Recall that $\RP^n = e^0 \cup e^1 \cup \cdots \cup e^n$ with attaching maps the two-sheeted covering projections $\varphi : S^{k-1} \to \RP^{k-1}$. If $q : \RP^{k-1} \to \RP^{k-1}/\RP^{k-2} = S^{k-1}$ denotes the quotient map, then the composition $\varphi q$ is a homeomorphism when restricted to each of the two components of $S^{k-2} \setminus S^{k-1}$. Note that these two homeomorphisms are obtained from each other by precomposing with the antipodal map $S^{k-1} \to S^{k-1}$, which has degree $({-}1)^k$. Therefore, $\deg{q\varphi} = \deg(\1)+\deg({-}\1) = 1+({-}1)^k$ by our local-degree formula. It follows that
+\item Recall that $\RP^n = e^0 \cup e^1 \cup \cdots \cup e^n$ with attaching maps the two-sheeted covering projections $\varphi : S^{k-1} \to \RP^{k-1}$. If $q : \RP^{k-1} \to \RP^{k-1}/\RP^{k-2} = S^{k-1}$ denotes the quotient map, then the composition $q{\varphi}$ is a homeomorphism when restricted to each of the two components of $S^{k-1} \setminus S^{k-2}$, one being the identity and the other being the antipodal map. In particular, these two homeomorphisms are obtained from each other by precomposing with the antipodal map $S^{k-1} \to S^{k-1}$, which has degree $({-}1)^k$. Therefore, $\deg{q\varphi} = \deg(\1)+\deg({-}\1) = 1+({-}1)^k$ by our local-degree formula. It follows that
 \[
 \begin{tikzcd}
 0 \arrow[r] & \Z \arrow[r, "2"] & \Z \arrow[r, "0"] & \cdots \arrow[r, "2"] & \Z \arrow[r, "0"] & \Z \arrow[r, "2"] & \Z \arrow[r, "0"] & \Z \arrow[r] & 0 & n \text{ even} \\
@@ -2567,7 +2567,7 @@ Any polynomial ring is graded since $R[x] = \bigoplus_{n \in \N} Rx^n$.
 Let $X = \CP^n$ (resp. $\RP^n$) and $R = \Z$ (resp. $\Z/2$), then $H^{\ast}(X; R) \cong \faktor{R[\tilde{x}]}{(\tilde{x}^{n+1})}$ where $|\tilde{x}| =2$ (resp. $1$).
 \end{theorem}
 \begin{proof}
-See Hatcher, Theorem 3.19 for a proof of the case where $X= \RP^n$. We will assume that $X = \CP^n$.
+See \textit{Hatcher}, Theorem 3.19 for a proof of the case where $X= \RP^n$. We will assume that $X = \CP^n$.
 \\ \\ The inclusion $\CP^{n-1} \hookrightarrow \CP^n$ induces an isomorphism $H^k(\CP^{n-1}) \to H^k(\CP^n)$ when $k < 2n-1$. Thus, it suffices to show that if $\omega \in H^{2i}(\CP^n)$ is a generator and $\omega ' \in H^{2n -2i}(\CP^n)$ is a generator where $0\leq i \leq n$ is even, then $\omega \smile \omega '$ generates $H^{2n}(\CP^n)$. Set $j = n-i$. Then $\CP^j = \{[z_0, \ldots, z_n] \mid z_0 = z_1 = \cdots = z_{i-1}= 0\}$, and $\CP^ \cap \CP^j = p\coloneqq  [0, \ldots, 0, \underbrace{1}_{i\text{-th spot}}, 0 \ldots, 0]$. Note that $\CP^i \cap U \cong \C^i$ and $\CP^j \cap U \cong \C^j$ where $U = \{[x_0, \ldots, z_n] \mid z_i \ne 0\}$. Consider the commutative diagram
 \[
 \begin{tikzcd}
@@ -3122,7 +3122,7 @@ Let $F$ be a presheaf on $X$ and $x\in X$. Define \textit{the stalk $F_x$ of $F$
 \end{exmp}
 
 \begin{definition}
-Let $F$ be a presheaf on $X$. Let $U \subset X$ be open and $s \in F(U)$. Define $\bar{s} : U \to  \coprod_{x\in X} F_x$ by $x \mapsto (x, (U, s))$. Define the \textit{\'etal\'e space of $F$} as $$\Et(F)   =  \big (\coprod_{x\in X} F_x, \tau \big )$$ where $$\tau =\{S \subset \Et(F) \mid \bar{s}^{-1}(S) \text{ is open}, \ s \in F(U), \ U\subset X \}.    $$ Equivalently, $\tau$ is generated by sets of the form $\Et(U, s) \coloneqq  \{(U, s_x) \mid x \in U\}$.
+Let $F$ be a presheaf on $X$. Let $U \subset X$ be open and $s \in F(U)$. Define $\bar{s} : U \to  \coprod_{x\in X} F_x$ by $x \mapsto (x, (U, s))$. Define the \textit{\'etal\'e space of $F$} as $$\Et(F)   =  \left(\coprod_{x\in X} F_x, \tau \right)$$ where $$\tau =\{S \subset \Et(F) \mid \bar{s}^{-1}(S) \text{ is open}, \ s \in F(U), \ U\subset X \}.    $$ Equivalently, $\tau$ is generated by sets of the form $\Et(U, s) \coloneqq  \{(U, s_x) \mid x \in U\}$.
 \end{definition}
 
 \begin{prop}

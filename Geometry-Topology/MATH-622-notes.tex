@@ -1,0 +1,557 @@
+  %  \nonstopmode
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{upgreek}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{knots,calc}
+\usepackage{xcolor}
+\usepackage{soul}
+\usetikzlibrary{decorations.markings}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{ mathrsfs }
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\usepackage{adjustbox}
+\usepackage{media9}
+
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[subsection]
+\newtheorem{exmp}[defn]{Example}
+\newtheorem{non-exmp}[defn]{Non-example}
+\newtheorem{note}[defn]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[defn]{Theorem}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{fact}[defn]{Fact}
+\newtheorem{corollary}[defn]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[defn]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[defn]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{question}{Question}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\newcommand{\J}{\mathcal J}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathcal O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\U}{\mathcal U}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RP}{\mathbb{RP}}
+\renewcommand{\S}{\mathbb S}
+\newcommand{\T}{\mathcal T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\renewcommand{\a}{\vec{a}}
+\renewcommand{\b}{\vec b}
+\renewcommand{\c}{\vec c}
+\renewcommand{\d}{\vec d}
+\newcommand{\e}{\vec e}
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\j}{\vec j}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\y}{\vec y}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\newcommand{\pt}{\mathsf{pt}}
+\newcommand{\from}{\longleftarrow}
+\newcommand{\intprodl}{%
+    \mathbin{\scalebox{1.5}{$\lrcorner$}}%
+}
+\newcommand{\intprodr}{%
+    \mathbin{\scalebox{1.5}{$\llcorner$}}%
+}
+
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\homeo}{Homeo}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\dr}{dR}
+\DeclareMathOperator{\ed}{End}
+\DeclareMathOperator{\BM}{BM}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\clength}{cup{-}length}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\cyl}{Cyl}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\cat}{cat}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\Gd}{Gd}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\map}{Map}
+\DeclareMathOperator{\sing}{Sing}
+\DeclareMathOperator{\Op}{\mathbf{Op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\ev}{eval}
+\DeclareMathOperator{\BL}{\mathcal{BL}}
+\DeclareMathOperator{\Et}{\acute{E}t}
+\DeclareMathOperator{\ch}{\mathbf{Ch}}
+\DeclareMathOperator{\vf}{\mathscr{X}}
+
+\newcommand{\vertneq}{\rotatebox{90}{$\,\neq$}}
+\newcommand{\net}[2]{\underset{\scriptstyle\overset{\mkern4mu\vertneq}{#2}}{#1}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\newcommand{\bmp}{\begin{mathpar}}
+\newcommand{\emp}{\end{mathpar}}
+
+\setlength{\parindent}{0pt}
+
+
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps, 1]{label = Step \arabic*:}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{MATH 622}
+\assignment{Fall 2019}
+
+\begin{document}
+
+\begin{abstract}
+These notes are based on Ron Donagi's lectures for the course ``Complex Algebraic Geometry'' given at UPenn along with Daniel Huybrechts's \textit{Complex Geometry}. Any mistake in what follows is my own.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{A quick overview of algebraic geometry} 
+
+\subsection{Lectures 1-4}
+
+These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously.
+
+\section{Complex analysis}
+
+\subsection{Lecture 5}
+
+First, let's review some basic concepts about functions of a single complex variable.
+
+\begin{defn}
+Let $z_0\in \C$. A function $f = u+iv : U\subset \C \to \C$ is \textit{holomorphic} or \textit{analytic} if at least one of  the following equivalent conditions holds.
+\bi
+\item Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations, i.e., 
+\begin{align*}
+u_x & = v_y
+\\ u_y & = {-}v_x.
+\end{align*}
+\item $\frac{\partial{f}}{\partial{\bar{z}}} =0$, where $\frac{\partial}{\partial{\bar{z}}} \coloneqq \frac{1}{2}\left(\frac{\partial}{\partial{x}} + i\frac{\partial}{\partial{y}}\right ) .$
+\item The Cauchy integral formula holds, i.e., 
+\[f(w) = \frac{1}{2\pi i}\int_{\gamma}\frac{f(w)}{\eta -w}d{\eta}
+\] for any closed circular path $\gamma$ centered at $w$ in $U$. 
+\item $f$ has a power series representation on $U$.
+\ei
+\end{defn}
+
+\smallskip
+
+\begin{defn}
+A bijective function $f: U \subset \C \to V \subset \C$ is \textit{biholomorphic} if it is holomorphic and its inverse is holomorphic. In this case, we say that $U$ is \textit{biholomorphic to} $V$, written as $U \approx V$.
+\end{defn}
+
+\begin{fact}\label{singfacts} $ $
+\be[label = (\alph*)]
+\item (The maximum modulus principle) If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\lvert{f}\rvert$ has a local maximum, then $f$ is constant. 
+\item (Liouville's theorem) Any bounded entire function is constant. 
+\item (The Riemann extension theorem) If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \{z\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
+\item (The Riemann mapping theorem) If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
+\item (The residue theorem) If $f: B_{\epsilon}(0)\setminus \{0\}$ is holomorphic, then $f$ can be expanded in a Laurent series
+$\sum_{n={-}\infty}^{\infty}a_nz^n$ such that $a_{{-}1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
+\ee
+\end{fact}
+
+\medskip
+
+Next, let's look at some basic concepts about functions of several complex variables.
+
+\begin{defn}
+A function $f = u +iv: U\subset \C^n \to \C$ is \textit{holomorphic} if at least one of  the following equivalent conditions holds.
+\bi
+\item $f$ is holomorphic in each variable individually.
+\item  Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations,
+\begin{align*}
+u_{x_i} & = v_{y_i}
+\\ u_{y_i} & = {-}v_{x_i}
+\end{align*}
+for each $i=1, \ldots, n$.
+\item $\sum_{i=1}^n\frac{\partial{f}}{\partial{\bar{z}_i}} =0$.
+\item $f$ has a power series representation on $U$,
+\[
+\sum_{k_1=0}^{\infty}\cdots \sum_{k_n=0}^{\infty} a_{k_1, \ldots, k_n}z_1^{k_1}\cdots z_n^{k_n}.
+\]
+\ei
+\end{defn}
+
+\begin{note}
+Statements (a), (b), and (c) from \cref{singfacts} generalize to functions of several variables, as does the Cauchy integral formula:
+\[
+f(z) = \frac{1}{(2\pi i)^n} \int_{\lvert{\eta_i - z_i}\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{(\eta_1 - z_1)\cdots (\eta_n - z_n)}d{\eta_1}\cdots d{\eta_n}
+\] where $\eta_i >0$ for each $i=1, \ldots, n$.
+\end{note}
+
+\begin{theorem}[Hartog]
+If $n>1$, then any holomorphic function $f: B_{\epsilon}(0)\setminus \{0\} \subset \C^n \to \C$ extends to a holomorphic function on $B_{\epsilon}(0)$.
+\end{theorem}
+
+\begin{defn} Let $X$ be a (topological) space. A \text{sheaf $F$ on $X$} is a presheaf on $X$ such that for any open $U\subset X$ and any open cover $\{U_i\}_{i\in J}$ of $U$, there is an exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & F(U) \arrow[r] & F(U_i) \arrow[r] & F(U_{ij})
+\end{tikzcd}
+\] where $U_{ij} \coloneqq U_i \cap U_j$.
+\end{defn}
+
+\begin{defn}
+A \textit{ringed space} is a pair $(X, \J)$ where $X$ is a space and $\J$ is a sheaf of rings on $X$.
+\end{defn}
+
+\begin{remark} Given any standard object $(X, \J)$, we can define a \textit{geometric object} as a ringed space locally isomorphic to $(X, \J)$.
+\end{remark}
+
+\begin{defn}[Vector bundle]
+Let $X$ and $V$ be complex manifolds. Let $\pi : V \to X$ be holomorphic. We say that $\pi$ is a \textit{(holomorphic) vector bundle of rank $n$} if for any $x\in X$, there exist an open set $U\ni x$ in $X$ and an isomorphism $\pi^{-1}(U) \overset{\cong}{\longrightarrow} U \times \C^n$ such that the \textit{transition maps} $U_{ij} \times \C^n \to U_{ij} \times \C^n$ are holomorphic and fiber linear.
+\end{defn}
+
+\smallskip
+
+Any vector bundle $\pi : V \to X$ induces a sheaf on $X$ given by
+\[
+F(U) = \Gamma\left(U, \pi^{-1}(U)\right).
+\]
+
+\begin{exmp} $ $
+\be
+\item The sheaf induced by the trivial bundle $\mathbf{1} \coloneqq X \times \C$ is denoted by $\O_X$.
+\item The tangent bundle $T{X}$ of a smooth manifold $X$ induces the sheaf of vector fields on $X$.
+\item The cotangent bundle $T^{\ast}{X}$ induces the sheaf $\Omega^1(X)$ of one-forms on $X$.
+\item The alternating bundle $\bigwedge^p{X}$ of rank $p$ induces the sheaf $\Omega^p(X)$ of $p$-forms on $X$.
+\ee
+\end{exmp}
+
+\section{Line bundles}
+
+\subsection{Lecture 6}
+
+\begin{defn}
+A \textit{line bundle} is a vector bundle of rank $1$.
+\end{defn}
+
+\begin{defn}
+Let $X$ be a complex manifold.  A \textit{sheaf $F$ of $\O_X$-modules} is a sheaf on $X$ such that for any open set $U$ in $X$,
+\bi
+\item $F(U)$ is a module over $\O_X(U)$ and
+\item if $U \subset V \subset X$, then $\left(f\cdot a\right)\restriction_U = f\restriction_U\cdot a\restriction_U$.
+\ei
+\end{defn}
+
+\begin{exmp}[Sheaf of sections]
+Let $X$ be a complex manifold and $J$ be a vector bundle over $X$. For any open $U\subset X$, let $$\L_J(U) = \Gamma\left(U, L\right).$$ This inherits a vector space structure from the family of fibers of $V$. Also, any relation of the form $U_1 \subset U_2 \subset U$ induces a linear map $\Gamma\left(U_2, L\right) \to \Gamma\left(U_1, L\right)$ given by $\sigma \mapsto \sigma\restriction_{U_1}$. Thus, $\L_J\left({-}\right)$ is a sheaf of vector spaces. Moreover, it is easily seen to be a sheaf of $\O_X$-modules. 
+\end{exmp}
+
+Since any vector bundle is locally trivial, we see that $\L_J$ is \textit{locally free}, i.e., for any $x\in X$, there exist an (open) neighborhood $U$ of $x$ in $X$ and an isomorphism $\varphi : \L_J(U) \to \bigoplus_{i=1}^{\rnk(J)}\O_X(U)$ such that for any open set $V\subset U$, the square
+\[
+\begin{tikzcd}
+\L_J(U) \arrow[r, "\cong"] \arrow[d] &  \bigoplus_{i=1}^{\rnk(J)}{\O_X(U)} \arrow[d] \\
+\L_J(V) \arrow[r, "\cong"']          &  \bigoplus_{i=1}^{\rnk(J)}{\O_X(V)}          
+\end{tikzcd}
+\]
+commutes. In other words, $\L_J$ is locally isomorphic to $\left(\O_X\right)^{\oplus{\rnk(J)}}$.
+
+\begin{defn} 
+A sheaf $F$ on a complex manifold $X$ is \textit{invertible} if there exist an open cover $\{U_i\}$ of $X$ and a family of holomorphic isomorphisms $\varphi_i : \O_{U_i} \to \L_J\restriction_{U_i}$.
+\end{defn}
+
+\begin{exmp} 
+If $J$ is a line bundle, then $\L_J$ is invertible.
+\end{exmp}
+
+Consider the composition
+\[
+\begin{tikzcd}
+\O_{U_i \cap U_j} \arrow[r, "\varphi_i"] & \L_J\restriction_{U_i \cap U_j} \arrow[r, "\varphi_j^{{-}1}"] & \O_{U_i \cap U_j}
+\end{tikzcd}
+, \ \quad \quad 1 \longmapsto g_{ij}.
+\] From this, we can construct a line bundle $L$ over $X$ by defining the total space as 
+\[
+\faktor{\coprod_i\left(U_i \times \C\right)}{\sim}
+\] where $\left(x, \lambda \right)_i \sim \left(y, \mu\right)$ if $x=y$ and $\mu = g_{ij}\lambda$. 
+
+\medskip
+
+\begin{defn}[Divisor]
+A \textit{divisor on a complex manifold $X$} is a locally finite $\Z$-combination of irreducible holomorphic hypersurfaces of $X$. Equivalently, it is a subset of $X$ locally defined  by the vanishing of a holomorphic function.
+\end{defn}
+
+\begin{exmp}
+If $X = \A^1$, then any divisor $D$ on $X$ is of the form $$D = \sum m_ip_i, \ \quad p_i \in \A^1, \ m_i \in \Z.$$ 
+\end{exmp}
+
+\begin{term}
+Each $m_i$ is known as the \textit{multiplicity of $p_i$}.
+\end{term}
+
+Any divisor $D$ defines a line bundle $\O_X(D)$ on $X$ and a holomorphic map $X \dashrightarrow \P\left(V^{\vee}\right)$ where $V\equiv \Gamma\left(X, \O_X(D)\right)$. It is also true that any line bundle defines a divisor. It follows that
+\[
+\begin{tikzcd} 
+\label{eqn:corr}
+\left(\text{line bundles}\right) \arrow[r] & \left(\text{invertible sheaves}\right) \arrow[l, "\sim"'] \arrow[r] & \left(\text{divisors module linear equiv.}\right) \arrow[l, "\sim"'] \tag{$\dagger$}
+\end{tikzcd}.
+\]
+
+\medskip
+
+Consider the case where $D = \pt$. Let $f \in \Gamma\left(U, \O_U\right)$ and let $U_i = X \setminus D$, which is a tubular neighborhood of $D$. Note that $U_i = f^{{-}1}\left (\C\setminus\text{hyperplane}\right)$. Define $\O_X(D)$ as the line bundle with transition functions of the form $f \restriction_{U_i \cap U_j}$.
+
+\medskip
+
+Alternatively, let $$\left(\O_X\left(D\right)\right)\left(U\right) = \{g : U \to \C  \mid g \text{ is meromorphic}, \ \overbrace{fg}^{\text{\tiny product}} \text{ is holomorphic}\}.$$
+For example,
+let $X = \P^1$ and $D$ be a point $p$. Let $(x_0, x_1)$ denote local coordinates on $X$ near $p$. Let $g$ be meromorphic in these coordinates and let $f\left(x_0, x_1\right) = \frac{x_1}{x_0}$. Then $f{g}$ is holomorphic, i.e., $g$ has a pole of order at most one at $p$. 
+\begin{question} $ $
+\be
+\item What is $\Gamma\left(\P^1, \O_X\right)$?
+\item What is $\Gamma\left(\P^1, \O_X\left(D\right)\right)$?
+\ee
+\end{question}
+
+In fact, it can be shown that
+\[
+\Gamma\left(\P^1, \O_X\left(m,p\right)\right) = \begin{cases}
+\C\langle 1, x, \ldots, x^m\rangle & m \geq 0 
+\\ 0 & \text{otherwise}
+\end{cases}
+\]
+
+\bigskip
+
+In general, $D$ is defined locally, and thus so is $\O_U(D)$. Specifically,
+$\Gamma\left(U, \O_U\left(D\right)\right)$ consists of all holomorphic functions $f : U \setminus \supp\left(D\right) \to \C$ such that if $D = \sum m_iY_i$ and $Y_i \cap U = \{f_i =0\}$, then $g\prod_if_i^{m_i}$ is holomorphic in $U$.
+
+\begin{exmp}[Veronese embedding]
+Let $X = \P^1$ and $p$ be as before. 
+\be
+\item Let $D = \O(2p)$. Consider the space $V \coloneqq \Gamma\left(\P^1, \O\left(2p\right)\right) = \C\langle 1, x, x^2\rangle.$ Define the map $\varphi_{\O(2p)} : \P^1 \to \P^2$ by $$\varphi_{\O(2p)}(x) = \underbrace{\left(1, x, x^2\right)}_{\left(x,y,z\right)}.$$ This is an embedding. Its image is precisely the smooth curve given by $y^2 = xz$.
+\item Let $D = \O(3p)$. Then the image of the map $\varphi_{\O(3p)} : \P^1 \hookrightarrow \P^3$ given by $x \mapsto \left(1, x, x^2, x^3\right)$ is a so-called twisted cubic.
+\ee
+\end{exmp}
+
+
+The line bundle $L$ on $X$ determines the map $X \dashrightarrow \P\left(\Gamma\left(X, L\right)^{\vee}\right)$ directly, as follows.
+\[
+x\mapsto \ker\left(\Gamma\left(X, L\right) \overset{\ev_x}{\longrightarrow} L_p\right)
+\]
+
+\begin{defn}
+The \textit{base locus of $L$} is $\BL\left(L\right) \equiv \{x  \in X \mid s(x) =0 \text{ for each } s\in \Gamma\left(X, L\right)\}$.
+\end{defn} 
+
+Note that we get a map $X \setminus \BL\left(L\right) \to \P\left(\Gamma\left(X, L\right)^{\vee}\right)$.
+
+\bigskip
+
+Now, let's consider a slight generalization of our preceding discussion. Let $V \subset \Gamma\left(X, L\right)$. This induces a map 
+\[
+\begin{tikzcd}
+X \arrow[r, dashed]                                    & \P\left(V^{\vee}\right) \\
+X\setminus\BL\left(V\right) \arrow[u, hook] \arrow[ru] &                        
+\end{tikzcd}.
+\]
+
+Let $X = \P^1$ and $p = \{x=0\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right) = \C\langle 1, x, x^2\rangle$, and
+\[
+\begin{tikzcd}
+\P^1 \arrow[rd, "\varphi_V"', dashed] \arrow[r, "\varphi_{\O(2)}"] & \P^2 \arrow[d, "\rho", dashed] \\
+                                                                   & \P^1                       
+\end{tikzcd}
+\] commutes where $\rho$ denotes the linear projection. Note that $\varphi_V$ is a morphism so long as the center of $\rho$ is not in the image of $\varphi_{\O(2)}$. In this case, we have that
+\begin{align*}
+\varphi_{\O(2)}(x) & = \frac{a +by + cx^2}{d + ex +fx^2}
+\\  \rho(x) & = \frac{a+bx}{c+dx}.
+\end{align*}
+
+\subsection{Lecture 7}
+
+Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\}$ and $\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\}$. Further, define $\left(L^1\right)^{{-}1}$ as the line bundle with transition functions $\{\left(g_1^{k{l}}\right)^{{-}1} : U_{k{l}} \to \C^{\ast}\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{{-}1} \cong \O_X$.
+
+\begin{defn}
+We say that a divisor $D = \sum_im_iY_i$ is \text{effective} if $m_i\geq 0$ for each $i$.
+\end{defn}
+
+Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\langle D \rangle \subset V$. We have that $\supp(D) = \varphi^{{-}1}\left(\text{hyperplane}\right)$ where $\left(\C \langle 0\rangle \right)^{\perp}$ is precisely the hyperplane in $\P\left(V^{\vee}\right)$.
+
+\begin{exmp} Let $X = \P^1$.
+\be
+\item Let $x= \frac{x_1}{x_0}$ and $D =p \coloneqq \{x=0\}$. Then $V = \C\langle 1, x \rangle$, and the map $\varphi_V : \P^1 \to \P\left(V^{\vee}\right)$ is given by $c\mapsto y\coloneqq \frac{x}{1}$.
+\item Let $D = m\left(\infty\right)$ with $m>0$. Then $V= \C\langle x_1, \ldots, x_m^m\rangle$, and the map $\varphi_{m{\infty}} : \P^1 \to \P^m$ is given by
+\begin{align*}
+\left(x_0, x_1\right) & \mapsto \left(x_0^m, x_0^{m-1}x_1, \ldots, x_0x_1^{m-1}, x_1^m\right)
+\\ x \ & \mapsto \  \left(1, x, \ldots, x^m\right).
+\end{align*}
+\item Let $D = p_1 + \cdots + p_m$ where $p_i = \left[1:t_i\right]$. Let $x = \frac{x_1}{x_0}$, so that $\infty$ is given by $x_0 =0$. Then $V = \C\langle \underbrace{1, \frac{1}{x-t_1}, \ldots, \frac{1}{x-t_m}}_{a_0, \frac{a_1}{x-t_1}, \ldots, \frac{a_m}{x-t_m}}\rangle$. This can be viewed as the space of all regular meromorphic functions on open subsets of $\P^1$ having poles of order at most $m$. The image of $\varphi : \P^1 \to \P^m$ is precisely the hyperplane $\{a_0 =0\}$.
+\ee
+\end{exmp}
+
+\begin{exmp}
+Let $X$ be an elliptic curve, i.e., a space of the form $\C/\Lambda$. Let $p$ be the image of $0$ and let $D = mp$. 
+\be
+\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{{-}1}\left(\infty\right) = \{0\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
+\[
+\begin{tikzcd}
+X \arrow[r, dashed]                     & \P^0 \\
+X\setminus p \arrow[u, hook] \arrow[ru] &     
+\end{tikzcd}
+\]
+It follows that  $\BL\left(\O_X(D)\right) =p$.
+\item Let $m=2$. Then $V= \C\langle 1, p\rangle$, and $\varphi_{2p} : X \to \P^1$ is precisely the $D$-th Weierstrass function. Moreover, we have an exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & \O_X(p) \arrow[r] & \O_X(2p) \arrow[r] & \O_p \arrow[r] & \cdots
+\end{tikzcd}.
+\]
+\item Let $m=3$. Then $V = \langle 1, p, p'\rangle$, and the image of $\varphi_{3p} :X \to \P^2$ is given by $y^2 = x^3+ax+b$. 
+\ee
+\end{exmp}
+
+\begin{exmp} Let $X = \P^2$. Let $D= m\underbrace{\left(\text{line at }\infty\right)}_{\{z=0\}}$.
+\be
+\item Let $m=0$. Then $V = \C\langle 1\rangle$, and $\BL= \emptyset$.
+\item Let $m=1$. Then $C = \C\langle \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\rangle \cong \C\langle 1, X, Y\rangle$, and $\BL = \emptyset$. The map $\varphi_D : \P^2 \to \P^2$ is precisely the identity. 
+\item Let $m=2$. Then $V = \langle \frac{x^2}{z^2}, \frac{x^4}{z^2}, \frac{y^2}{z^2}. \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\rangle$, and the map $\varphi_D : \P^2 \to \P^5$ is an embedding given by $(x,y,z) \mapsto \langle x^2, xy, y^2, xz, yz, z^2\rangle$.
+\ee
+\end{exmp}
+
+In general, if $H\subset \P^n$ is a hyperplane, then $\varphi_{\O\left(d{H}\right)} : \P^n \to \P^{{{d+n}\choose n} -1}$ is given by $$\left(x_0, \ldots, x_n\right) \mapsto \left(d\text{-th order homogenous polynomials}\right),$$  known as the $d$-th order Veronese embedding on $\P^n$.
+
+\begin{exmp}
+Let $X = \P^2$ with coordinates $\left(x,y,z\right)$. Let $H$ denote the hyperplane given by $z=0$ and let $D = 2{H}$. Then $ V= \{s\in \Gamma  \left(\O\left(2{H}\right)\right) \mid s\left(0,0,1\right) =0\}$, and
+\[
+\begin{tikzcd}
+V \arrow[r, hook]                                                         & \Gamma\left(\O\left(2{H}\right)\right)                           \\
+{\C\langle x^2, xy, y^2, xz,yz\rangle} \arrow[r, hook] \arrow[u, "\cong"] & {\C\langle x^2, xy, y^2, xz, yz, z^2\rangle} \arrow[u, "\cong"']
+\end{tikzcd}
+\] commutes. Further, $\BL(V) = \{0\} = \left[0,0,1\right]$, and $\varphi_V$ is a map $\P^2 \setminus \{0\} \to \P^4$ but does not extend to $\P^2$. Indeed, we have that
+\begin{align*}
+\lim_{\substack{\left(0, y, 1\right) \\ y\to 0}} \varphi_V  & = \lim_{y\to0}\left(0,0,y^2,0, y\right)= \net{\left(0,0,0,0,1\right)}{}
+\\ \lim_{\substack{\left(x, 0, 1\right) \\ x\to 0}} \varphi_V  & = \lim_{x\to0}\left(x^2,0,0,x, 0\right)= \left(0,0,0,1,0\right).
+\end{align*} Note that for any $p\in X$, there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{{-}1}\left(X\setminus p\right)$ is an isomorphism and $\pi^{{-}1}(p)$ is a divisor on $\widetilde{X}$ that is isomorphic to $\P^1$.
+\end{exmp}
+
+\begin{prop}
+Let $Y \subset X$ be a submanifold of codimension $k\geq 2$. Let $\varphi : X \setminus Y \to Z$. Then there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{{-}1}\left(X\setminus Y\right)$ is an isomorphism and restricted to $\underbrace{\pi^{{-}1}(Y)}_{\text{divisor on }X}$ is a bundle with each fiber isomorphic to $\P^{k-1}$.
+\end{prop}
+
+\subsection{Lecture 8}
+
+
+
+\subsection{Lecture 9}
+
+\end{document}

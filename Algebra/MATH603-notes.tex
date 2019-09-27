@@ -264,7 +264,7 @@ The categorical dual $\Rho^{\op}$ of this recognition principle for injectivity 
 M \arrow[rd, "\varphi"] \arrow[d, dashed] &  &  \\
 R \arrow[r, two heads] & \faktor{R}{I} \arrow[r] & 0
 \end{tikzcd}
-\] if and only if $M$ is projective. This is equivalent to saying that $M$ is projective if and only if the obvious group map $\Hom_R(M, R) \to \Hom_R \big (M, \faktor{R}{I} \big)$ is surjective. 
+\] if and only if $M$ is projective. This is equivalent to saying that $M$ is projective if and only if the obvious group map $\Hom_R(M, R) \to \Hom_R \left(M, \faktor{R}{I} \right)$ is surjective. 
 But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``Faith's problem on $R$-projectivity,'' which Trlifaj (2017) proved to be undecidable in ZFC + GCH. Therefore, both $\Rho^{\op}$ and $\neg (\Rho^{\op})$ are consistent with ZFC + GCH.
 \end{aside}
 
@@ -276,7 +276,7 @@ But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``F
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}
-\item Given any $a\in R$, we want to show that the homomorphism $\text{mult}_a : M \to M$ given by $x\mapsto ax$ is surjective. The assumption that $R$ is an integral domain entails that $\text{mult}_a : R\to R$ is injective. Note that $\frak{a}\coloneqq  \text{mult}_a(R)$ is an ideal in $R$, giving the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}}\to 0.  $$ By assumption, $\Hom_R(-, M)$ is exact, so that the sequence $$0 \to \Hom\big (\faktor{R}{\frak{a}}, M \big ) \to \Hom_R(R, M) \to \Hom_R(\frak{a}, M) \to 0   $$ is exact. Since $R$ and $\frak{a}$ are free $R$-modules of rank $1$, it follows that $\Hom_R(R, M) \cong M \cong  \Hom_R(\frak{a}, M)$. This makes the seqeunce  $$0 \to \Hom\big (\faktor{R}{\frak{a}}, M \big ) \to M \overset{\text{mult}_a}{\longrightarrow} M \to 0 $$ exact. In particular $\text{mult}_a$ is surjective.
+\item Given any $a\in R$, we want to show that the homomorphism $\text{mult}_a : M \to M$ given by $x\mapsto ax$ is surjective. The assumption that $R$ is an integral domain entails that $\text{mult}_a : R\to R$ is injective. Note that $\frak{a}\coloneqq  \text{mult}_a(R)$ is an ideal in $R$, giving the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}}\to 0.  $$ By assumption, $\Hom_R(-, M)$ is exact, so that the sequence $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to \Hom_R(R, M) \to \Hom_R(\frak{a}, M) \to 0   $$ is exact. Since $R$ and $\frak{a}$ are free $R$-modules of rank $1$, it follows that $\Hom_R(R, M) \cong M \cong  \Hom_R(\frak{a}, M)$. This makes the seqeunce  $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to M \overset{\text{mult}_a}{\longrightarrow} M \to 0 $$ exact. In particular $\text{mult}_a$ is surjective.
 
 \item $(\Longleftarrow)$ Suppose that $M$ is divisible and $R$ is a PID. We want to fill the injectivity diagram
 \[
@@ -376,7 +376,7 @@ By assumption, we may fill this diagram with some map $\psi : M \to X^D$. This i
 \end{tikzcd}
 \] commutes.
 \end{proof}
-There is some surjection $\bigoplus_{j\in J} R \to M^D$. Therefore, we have a sequence of embeddings $$M \hookrightarrow M^{DD} =\Hom_{\Z}\big (M^D, \faktor{\Q}{\Z} \big ) \hookrightarrow \Hom_{\Z}\big (\bigoplus_{j\in J} R, \faktor{\Q}{\Z}\big ) = \underbrace{\big (\bigoplus_{j\in J} R \big )^D}_{\text{injective by \cref{l1}}}.$$
+There is some surjection $\bigoplus_{j\in J} R \to M^D$. Therefore, we have a sequence of embeddings $$M \hookrightarrow M^{DD} =\Hom_{\Z}\left(M^D, \faktor{\Q}{\Z} \right) \hookrightarrow \Hom_{\Z}\left(\bigoplus_{j\in J} R, \faktor{\Q}{\Z}\right) = \underbrace{\left(\bigoplus_{j\in J} R \right)^D}_{\text{injective by \cref{l1}}}.$$
 \end{proof}
 
 \begin{definition}
@@ -393,7 +393,7 @@ Given two $R$-modules $M$ and $N$, the \textit{additive invariants of $M$ and $N
 \begin{lemma} $ $
 \begin{enumerate}
 \item $\ext^0_R(M, N) = \Hom_R(M, N)$
-\item $\ext^1_R(M, N) = \big ( \text{the group of isomorphism classes of extensions of } N \text{ by } $M$\text{ in } R{-}\mathbf{Mod}    \big )$.
+\item $\ext^1_R(M, N) = \left( \text{the group of isomorphism classes of extensions of } N \text{ by } M\text{ in } R{-}\mathbf{Mod}    \right)$.
 \end{enumerate}                                                                                                \end{lemma}
 \begin{proof}
 Let $$\cdots \overset{\partial_1}{\longrightarrow} P^1 \overset{\partial_0}{\longrightarrow} P^0  \overset{\epsilon}{\longrightarrow} M \to 0$$ be a projective resolution and
@@ -472,7 +472,7 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 \begin{proof} $ $
 \\
 ($\Longrightarrow$) We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)\mapsto \sum_{i=1}^na_ix_i$. Then $K\coloneqq  \ker{\varphi}= \{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n)$ is a relation of the $x_i$'s in $R.\}$. We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R (-)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = (N\text{-relations}) = N\otimes_R K$.
-\\ ($\Longleftarrow$) Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0$. Hence $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $0 = \sum_{i=1}^n a_i^j f(z_i) = f\big (\sum_{i=1}^n a_i^j z_i \big )$. As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. We compute $$\sum_{i=1}^n y_i \otimes z_i = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i = \sum_{j=1}^n v_j \otimes \big (\sum_{i=1}^n a_i^j z_i \big ) = \sum_{j=1}^n (v_j \otimes 0) = 0.$$
+\\ ($\Longleftarrow$) Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0$. Hence $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right)$. As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. We compute $$\sum_{i=1}^n y_i \otimes z_i = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) = \sum_{j=1}^n (v_j \otimes 0) = 0.$$
 \end{proof}
 
 \begin{corollary} $ $
@@ -490,7 +490,7 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 
 Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B)$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some map $\underline{\varphi} : R_x \to B$.
 
-In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make $\underbrace{\cl(S)}_{\text{multiplicative closure}}$ invertible.
+In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make $\underbrace{\cl(S)}_{\textit{multiplicative closure}}$ invertible.
 
 \begin{definition}
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
@@ -1210,18 +1210,18 @@ Thus, $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
 \end{prop}
 
 \begin{corollary}
-For any $m\in \Z_{>0}$ and $d\mid m$, we have that $$\sum_{d\mid n \mid m}\mu \big (\frac{m}{n} \big ) = \begin{cases}  1 & d = m \\ 0 & d\ne m\end{cases}.$$
+For any $m\in \Z_{>0}$ and $d\mid m$, we have that $$\sum_{d\mid n \mid m}\mu \left(\frac{m}{n} \right) = \begin{cases}  1 & d = m \\ 0 & d\ne m\end{cases}.$$
 \end{corollary}
 
 \begin{lemma}
-Let $A$ be an abelian group and $f,g: \Z_{>0}\to A$ be functions such that $f(n) = \sum_{d\mid n}g(d)$ for every $n$. Then we obtain the so-called \textit{M\"{o}bius inversion formula} $$g(n) = \sum_{d\mid n}\mu \big (\frac{n}{d} \big )f(d).$$ If $A$ is written multiplicatively, then this becomes  $$g(n) = \prod_{d\mid n}f(d)^{\mu (\frac{n}{d} )}.$$
+Let $A$ be an abelian group and $f,g: \Z_{>0}\to A$ be functions such that $f(n) = \sum_{d\mid n}g(d)$ for every $n$. Then we obtain the so-called \textit{M\"{o}bius inversion formula} $$g(n) = \sum_{d\mid n}\mu \left(\frac{n}{d} \right)f(d).$$ If $A$ is written multiplicatively, then this becomes  $$g(n) = \prod_{d\mid n}f(d)^{\mu (\frac{n}{d} )}.$$
 \end{lemma}
 \begin{proof}
 We compute
 \begin{align*}
- \sum_{d\mid n}\mu \big (\frac{n}{d} \big )f(d) & = \sum_{d\mid n}\mu \big (\frac{n}{d} \big )\sum_{k\mid d}g(k)
- \\ & = \sum_{d\mid n}\sum_{k\mid d}\mu \big (\frac{n}{d} \big ) g(k)
- \\ & = \sum_{k\mid n}g(k) \sum_{d:\ k\mid d \mid n}\mu \big (\frac{n}{d} \big )
+ \sum_{d\mid n}\mu \left(\frac{n}{d} \right)f(d) & = \sum_{d\mid n}\mu \left(\frac{n}{d} \right)\sum_{k\mid d}g(k)
+ \\ & = \sum_{d\mid n}\sum_{k\mid d}\mu \left(\frac{n}{d} \right) g(k)
+ \\ & = \sum_{k\mid n}g(k) \sum_{d:\ k\mid d \mid n}\mu \left(\frac{n}{d} \right)
  \\ & = \sum_{k\mid n}g(k) \delta(k,n)
  \\ & = g(n).
 \end{align*}
@@ -1234,14 +1234,14 @@ Define the \textit{Euler (totient) function $\varphi : \Z_{>0}\to \Z$} by $\varp
 \begin{note}
 If $n\in \Z_{>0}$. then $n=\sum_{d\mid n}\varphi(d)$. Therefore, if $f: \Z_{>0} \to \Z$ is given by $f(n) =n$ and $g\coloneqq \varphi$, then we can apply the M\"{o}bius inversion formula to get 
 \begin{align*}
- \varphi(n)  = g(n) & = \sum_{d\mid n} \mu \big (\frac{n}{d} \big )f(d)
- \\ & =  \sum_{d\mid n} \mu \big (\frac{n}{d} \big )d
- \\ & = \sum_{m \mid n} \mu(m)\frac{n}{m} =  \big ( \sum_{m \mid n} \frac{\mu(m)}{m}\big ) n
+ \varphi(n)  = g(n) & = \sum_{d\mid n} \mu \left(\frac{n}{d} \right)f(d)
+ \\ & =  \sum_{d\mid n} \mu \left(\frac{n}{d} \right)d
+ \\ & = \sum_{m \mid n} \mu(m)\frac{n}{m} =  \left( \sum_{m \mid n} \frac{\mu(m)}{m}\right) n
 . \end{align*}
 \end{note}
 
 \begin{lemma}
-If $n= p_1^{r_1} \cdots p_k^{r_k}$, then $\varphi(n) =n\prod_{i=1}^k \big (1- \frac{1}{p_i} \big )$.
+If $n= p_1^{r_1} \cdots p_k^{r_k}$, then $\varphi(n) =n\prod_{i=1}^k \left(1- \frac{1}{p_i} \right)$.
 \end{lemma}
 \begin{proof}
 Let $n_0 = p_1 \cdots p_k$. Then
@@ -1250,7 +1250,7 @@ Let $n_0 = p_1 \cdots p_k$. Then
 \\ & = \underbrace{1}_{m=1} -\sum_{i=1}^k \frac{1}{p_i}
 \\ & + \sum_{i<j}\frac{1}{p_ip_j} +\cdots + ({-}1)^s \sum_{i_1 < \cdots < i_s}\frac{1}{p_{i_1}\cdots p_{i_s}}
 \\ & + \cdots  +({-}1)^k\frac{1}{p_1\cdots p_k}
-\\ & = \prod_{i=1}^k \big (1- \frac{1}{p_i}\big ).
+\\ & = \prod_{i=1}^k \left(1- \frac{1}{p_i}\right).
 \end{align*}
 \end{proof}
 
@@ -1478,15 +1478,15 @@ Thus, $P \supset K$ is a Galois extension if and only if any element of $\gal(L/
 
 Let $\langle \varphi \rangle = \gal(\Gamma_p /\Q)$. Then $\varphi \restriction_{\mu_p} : \mu_p \to \mu_p$ is a group automorphism and  uniquely determines $\varphi$, which in turn is uniquely determined by the image of $\zeta$ the positive $p$-th root of $1$. Write $\varphi(\zeta) = 1\zeta^r$ for some $r \in \Z_{>0}$ such that $[r]_p \in \Z/p$ is a generator of $(\Z/p)^{\times}$. 
 \begin{definition}
-Given $k \in \Z_{>0}$ and prime $p>2$, define the \textit{Legendre symbol} $$\big (\frac{k}{p} \big) = \begin{cases}    1 & [k]_p \in ((\Z/p)^{\times})^2 \\ {-}1 & [k]_p \notin  ((\Z/p)^{\times})^2  \end{cases}.$$
+Given $k \in \Z_{>0}$ and prime $p>2$, define the \textit{Legendre symbol} $$\left(\frac{k}{p} \right) = \begin{cases}    1 & [k]_p \in ((\Z/p)^{\times})^2 \\ {-}1 & [k]_p \notin  ((\Z/p)^{\times})^2  \end{cases}.$$
 \end{definition}
-Consider $\alpha \in \Gamma_p$ given by $$  \alpha = \sum_{k=1}^{p-1} \big (\frac{k}{p} \big) \zeta^{r^{k-1}} = \zeta - \zeta^r + \zeta^{r^2} - \cdots \zeta^{r^{p-2}}   .$$ If $g\in \gal(\Gamma_p /\Q)$, then $$ g(\alpha) = \begin{cases}  \alpha & g \in H \\ {-}\alpha & g \notin H   \end{cases} . $$ Then $\alpha \in \Gamma_p^H$. Also, $\alpha^2$ is fixed by every element of $\gal(\Gamma_p/\Q)$ and thus is rational. This implies that $\Gamma_p^H = \Q[\alpha]$.
+Consider $\alpha \in \Gamma_p$ given by $$  \alpha = \sum_{k=1}^{p-1} \left(\frac{k}{p} \right) \zeta^{r^{k-1}} = \zeta - \zeta^r + \zeta^{r^2} - \cdots \zeta^{r^{p-2}}   .$$ If $g\in \gal(\Gamma_p /\Q)$, then $$ g(\alpha) = \begin{cases}  \alpha & g \in H \\ {-}\alpha & g \notin H   \end{cases} . $$ Then $\alpha \in \Gamma_p^H$. Also, $\alpha^2$ is fixed by every element of $\gal(\Gamma_p/\Q)$ and thus is rational. This implies that $\Gamma_p^H = \Q[\alpha]$.
 \begin{lemma}\label{l16}
 $\alpha^2 = ({-}1)^{\frac{p-1}{2}}p$, so that $$\Gamma_p^H = \begin{cases} \Q[\sqrt{p}] & p \equiv 1 \mod 4 \\ \Q[\sqrt{{-}p}] & p \not \equiv 1 \mod 4   \end{cases}.$$
 \end{lemma}
 \begin{proof}
-Let $L \supset K$ be a finite extension of fields. Then for any $u\in L$, we get a map $\text{mult}_u : L \to L$, which is linear over $K$. Applying trace determines a $K$-linear map $L \to K$ given by $u \mapsto \tr(\text{mult}_u)$. This induces a symmetric bilinear map $\langle \cdot, \cdot \rangle : L \otimes_K L \to K$ given by $u \otimes v \mapsto \tr(\text{mult}_u \circ \text{mult}_v)$. Note that if $u \ne 0$, then $\langle u, u^{-1} \rangle = \tr(\text{mult}_{uu^{-1}}) = \tr(\id_L) =[L:K] $ since $(\Char{K}, [L:K])=1$. Now, the vector space $\Gamma_p$ has a $\Q$-basis $\{1, \zeta, \zeta^2, \ldots, \zeta^{p-2}\}$. Hence $\text{mult}_{\zeta^2}$ is a cyclic operator, and $\tr(\text{mult}_1) = p-1$ and $\tr(\text{mult}_{\zeta^k}) = {-1}$ for each $k=1, \ldots, p-2$. It follows that $$ \langle \zeta^k, \zeta^l \rangle = \begin{cases}  p-1 & k+l \equiv 0 \mod p \\ 1 & \text{otherwise}   \end{cases}.$$ If $x = \sum_{i=0}^{p-1} x_i \zeta^i$ and $y = \sum_{i=0}^{p-1} y_i \zeta^i$ are two elements of $\Gamma_p$, then we can choose $x_i$ and $y_i$ such that $\sum x_i = 0$ and $\sum y_i= 0$. Thus, $$\langle x, y \rangle = p(x_0y_0 + \sum{k=1}^{p-1} x_k y_{p-k}).$$ But $\alpha = \sum_{k=1}^{p-1} \big (\frac{k}{p} \big) \zeta^{r^{k-1}}$, so that \begin{align*}
- \alpha^2 = \frac{1}{p-1} \langle \alpha, \alpha \rangle & = \frac{1}{p-1} \sum_{k=1}^{p-1} p \big (\frac{k}{p} \big) \big (\frac{{-}k}{p} \big) \\ &= \frac{p}{p-1} \sum_{k=1}^{p} \big (\frac{k}{p} \big) \big (\frac{{-}k}{p} \big) \\ & = p \big (\frac{{-}1}{p} \big ) = ({-}1)^{\frac{p-1}{2}}p
+Let $L \supset K$ be a finite extension of fields. Then for any $u\in L$, we get a map $\text{mult}_u : L \to L$, which is linear over $K$. Applying trace determines a $K$-linear map $L \to K$ given by $u \mapsto \tr(\text{mult}_u)$. This induces a symmetric bilinear map $\langle \cdot, \cdot \rangle : L \otimes_K L \to K$ given by $u \otimes v \mapsto \tr(\text{mult}_u \circ \text{mult}_v)$. Note that if $u \ne 0$, then $\langle u, u^{-1} \rangle = \tr(\text{mult}_{uu^{-1}}) = \tr(\id_L) =[L:K] $ since $(\Char{K}, [L:K])=1$. Now, the vector space $\Gamma_p$ has a $\Q$-basis $\{1, \zeta, \zeta^2, \ldots, \zeta^{p-2}\}$. Hence $\text{mult}_{\zeta^2}$ is a cyclic operator, and $\tr(\text{mult}_1) = p-1$ and $\tr(\text{mult}_{\zeta^k}) = {-1}$ for each $k=1, \ldots, p-2$. It follows that $$ \langle \zeta^k, \zeta^l \rangle = \begin{cases}  p-1 & k+l \equiv 0 \mod p \\ 1 & \text{otherwise}   \end{cases}.$$ If $x = \sum_{i=0}^{p-1} x_i \zeta^i$ and $y = \sum_{i=0}^{p-1} y_i \zeta^i$ are two elements of $\Gamma_p$, then we can choose $x_i$ and $y_i$ such that $\sum x_i = 0$ and $\sum y_i= 0$. Thus, $$\langle x, y \rangle = p(x_0y_0 + \sum{k=1}^{p-1} x_k y_{p-k}).$$ But $\alpha = \sum_{k=1}^{p-1} \left(\frac{k}{p} \right) \zeta^{r^{k-1}}$, so that \begin{align*}
+ \alpha^2 = \frac{1}{p-1} \langle \alpha, \alpha \rangle & = \frac{1}{p-1} \sum_{k=1}^{p-1} p \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ &= \frac{p}{p-1} \sum_{k=1}^{p} \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ & = p \left(\frac{{-}1}{p} \right) = ({-}1)^{\frac{p-1}{2}}p
 . \end{align*}
 \end{proof}
 \end{enumerate}
@@ -1771,8 +1771,8 @@ Let $k$ be an odd integer and let $0\leq m, n_1 \leq n_2 < \cdots < n_{k-2}$ be 
 It follows that $f(x)$ has $k$-3 real roots in $[n_1, n_{k-2}]$ with $f(n_{k-2}) = {-}2$ and $\lim_{x\to \infty} f(x) >0$. Therefore, we have another real roots $> n_{k-2}$. Hence $f(x)$ has at least $k-2$ real roots. Let $\lambda, \ldots, \lambda_n \in \C$ denote the distinct roots of $f$. Then $$\prod_{i=1}^k(x-\lambda_i) = f(x) = (x^2 +m)(x-n_1)(x-n_2) \cdots (x-n_{k-2}) -2$$, and ${-}\sum_{i=1}^k \lambda_i = {-} \sum_{i=1}^{k-2} n_i$. From this, we compute
 \begin{align*}
 \sum_{i <j} \lambda_i \lambda_j & = m + \sum_{a < b} n_an_b 
-\\ \sum_{i=1}^k \lambda_i^2 & = \big (\sum_{i=1}^k \lambda_i \big )^2 = \sum \sum_{i<j} \lambda _i \lambda_j
-\\ & = \big ( \sum_{i=1}^{k-2} n_i \big )^2 -2m - 2 \big ( \sum_{a<b} n_an_b \big )
+\\ \sum_{i=1}^k \lambda_i^2 & = \left(\sum_{i=1}^k \lambda_i \right)^2 = \sum \sum_{i<j} \lambda _i \lambda_j
+\\ & = \left( \sum_{i=1}^{k-2} n_i \right)^2 -2m - 2 \left( \sum_{a<b} n_an_b \right)
 \\ & = \sum_{i=1}^{k-2} n_i^2 - 2m.
 \end{align*}
 Choose $m \gg \sum n_i^2$, so that $\sum_{i=1}^k \lambda_i^2  < 0$. This implies that there exists a non-real root. Hence we must have exactly two real roots. Further,  we can write $f(x) = x^k + a_1x^{k-1} + \cdots +a_{k-1} x +a_k$ with each $a_i \in 2\Z$. Since $a_k = f(0) = g(0) -2$, we see that $2 \mid a_{k-1}$ but $4 \nmid a_{k-1}$. By Eisenstein's criterion, $f$ must be irreducible. We thus get infinitely many $f$'s such that $G_f = S_p$. 

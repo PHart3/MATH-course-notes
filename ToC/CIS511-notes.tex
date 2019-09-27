@@ -347,7 +347,7 @@ Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) = \{\de
 For any $\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Write $N = (Q, \Sigma, q_0, \delta_N, Q_F)$. Define the $\DFA$ $$M = \big (\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \big)$$ where $q_0^{(1)} = \{q_0\}$, $\delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \coloneqq \{R \subset Q : R\cap Q_F \ne \emptyset\}$. For any string $x$, one can use induction on $|x|$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \widehat{\delta_N}(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \{q_0\}$, we are done.
+Write $N = (Q, \Sigma, q_0, \delta_N, Q_F)$. Define the $\DFA$ $$M = \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} = \{q_0\}$, $\delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \coloneqq \{R \subset Q : R\cap Q_F \ne \emptyset\}$. For any string $x$, one can use induction on $|x|$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \widehat{\delta_N}(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \{q_0\}$, we are done.
 \end{proof}
 
 \begin{exmp}
@@ -1582,9 +1582,9 @@ Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ 
 \begin{align*}
 \mathbb{P}_{h \in \H}[\exists x \in S, \ h(x) =y] & \geq \sum_{x \in S} \mathbb{P}[h(x) = y] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \mathbb{P}[h(x) = y \land h(x') = y]  
 \\ & \geq \frac{|S|}{2^l} - \underbrace{\frac{|S|(|S|-1)}{2}}_{|S| \choose 2}\cdot \frac{1}{2^{2l}}
-\\ & = \frac{|S|}{2^l} \big (  1- \frac{|S| -1}{2} \cdot \frac{1}{2^l}    \big )
-\\ & \geq \frac{|S|}{2^l} \big (  1 - \frac{|S|}{2 \cdot 2^l}    \big )
-\\ & \geq \frac{K}{2^l} \big (  1 - \frac{|S|}{2 \cdot 2^l}    \big )
+\\ & = \frac{|S|}{2^l} \left(  1- \frac{|S| -1}{2} \cdot \frac{1}{2^l}    \right)
+\\ & \geq \frac{|S|}{2^l} \left(  1 - \frac{|S|}{2 \cdot 2^l}    \right)
+\\ & \geq \frac{K}{2^l} \left(  1 - \frac{|S|}{2 \cdot 2^l}    \right)
 \\ & \geq \frac{3}{4}\cdot p
 .  \end{align*}}
 \end{caseof}
@@ -1620,7 +1620,7 @@ If $n>1$, then let $h_1(x_1) = \sum_{x_2, \ldots, x_n \in \{0,1\}} \tilde{\varph
 Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
 \end{enumerate}
 Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
-\\ \\ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \big (1-\frac{d}{p}\big )^{n-1} \cdot \big (1-\frac{d}{p}\big ) = \big (1-\frac{d}{p}\big )^{n},$$ as desired.
+\\ \\ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
 \end{proof}
 
 \begin{prop}

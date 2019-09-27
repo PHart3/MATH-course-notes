@@ -1,0 +1,861 @@
+  %  \nonstopmode
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{upgreek}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{knots,calc}
+\usepackage{xcolor}
+\usepackage{soul}
+\usetikzlibrary{decorations.markings}
+\usepackage{faktor}
+\usepackage{xfrac}
+\usepackage{ mathrsfs }
+\usepackage{hyperref}
+\usepackage{scrextend}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\usepackage{adjustbox}
+\usepackage{media9}
+
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[subsection]
+\newtheorem{exmp}[defn]{Example}
+\newtheorem{non-exmp}[defn]{Non-example}
+\newtheorem{note}[defn]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[defn]{Theorem}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{corollary}[defn]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[defn]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[defn]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{question}{Question}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathscr L}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\U}{\mathcal U}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RP}{\mathbb{RP}}
+\renewcommand{\S}{\mathbb S}
+\newcommand{\T}{\mathcal T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\renewcommand{\a}{\vec{a}}
+\renewcommand{\b}{\vec b}
+\renewcommand{\c}{\vec c}
+\renewcommand{\d}{\vec d}
+\newcommand{\e}{\vec e}
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\j}{\vec j}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\y}{\vec y}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec 0}
+\newcommand{\pt}{\mathsf{pt}}
+\newcommand{\from}{\longleftarrow}
+\newcommand{\intprodl}{%
+    \mathbin{\scalebox{1.5}{$\lrcorner$}}%
+}
+\newcommand{\intprodr}{%
+    \mathbin{\scalebox{1.5}{$\llcorner$}}%
+}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\homeo}{Homeo}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\dr}{dR}
+\DeclareMathOperator{\ed}{End}
+\DeclareMathOperator{\BM}{BM}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\clength}{cup{-}length}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\cyl}{Cyl}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\cat}{cat}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\Gd}{Gd}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\map}{Map}
+\DeclareMathOperator{\sing}{Sing}
+\DeclareMathOperator{\Op}{\mathbf{Op}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\Et}{\acute{E}t}
+\DeclareMathOperator{\ch}{\mathbf{Ch}}
+\DeclareMathOperator{\vf}{\mathscr{X}}
+
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\newcommand{\bmp}{\begin{mathpar}}
+\newcommand{\emp}{\end{mathpar}}
+
+\setlength{\parindent}{0pt}
+
+
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps, 1]{label = Step \arabic*:}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{MATH 618}
+\assignment{Fall 2019}
+
+\begin{document}
+
+\begin{abstract}
+These notes are based on Julius Shaneson's lectures for the course ``Algebraic Topology, Part I'' given at UPenn. Any mistake in what follows is my own.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Background material} 
+
+\subsection{Lecture 1}
+
+Here are the topics for the course:
+\bi
+\item fiber bundles over cell complexes,
+\item spectral sequences,
+\item characteristic classes, and
+\item cobordism theory.
+\ei
+
+To start, let's review some basic concepts from homology theory.
+
+\begin{defn}
+A \textit{(finite) cell complex} is a (topological) space $X$ that can be written as $\bigcup_{n=0}^K{X^n}$ for some $K\in \N$ (called the \textit{dimension of $X$}) 
+where 
+\bi
+\item$X^0$ is chosen to be finite, 
+\item $X^n = \frac{X^{n-1}  \coprod D_1^n \coprod \cdots \coprod D_{k_n}^n}{x\sim \varphi_i(x)}$,
+\item $D_i^n \cong D^n \coloneqq \{x \in \R^n : |x| \leq 1\}$ for each $i\in \{1, \ldots, k_n\}$, and 
+\item $\varphi_i : \partial{D_i^n} = S^{n-1} \to X^{n-1}$, called an \textit{attaching map}.
+\ei
+\end{defn}
+
+\begin{term}
+Each $D_i^n$ is called an \textit{$n$-cell of $X$}.
+\end{term}
+
+Every attaching map $\varphi_i : \partial{D_i^n} \to X^{n-1}$ can be extended to a \textit{characteristic map} given by the composition  $$ D^n_i \hookrightarrow  X^{n-1}  \coprod D_1^n \coprod \cdots \coprod D_{k_n}^n \twoheadrightarrow X^n \hookrightarrow X     .$$
+
+\begin{exmp} There are at least two ways of endowing $S^2$ with a cell structure.
+\be
+\item $X^0 \equiv \{N, S\}$, $X^1 \equiv X^0 \cup_{\varphi_1} D_1^1 \cup_{\varphi_2} D_2^1$ where each $\varphi_i$ is an embedding, and $X^2 \equiv X^1  \cup_{\varphi'_1} D_1^2 \cup_{\varphi'_2} D_2^2$ where each $\varphi'_i$ is an embedding. 
+\item $\{\pt\} \cup_{\varphi} D^2$ where $\varphi$ identifies the equator of the upper half-sphere with $\pt$.
+\ee
+\end{exmp}
+
+\begin{defn}
+A cell complex $X$ is \textit{regular} if every characteristic map $D_i^n \to X$ is an embedding. 
+\end{defn}
+
+\begin{defn}
+Given a family of functors $\{H_n : \mathbf{Top}^2 \to \mathbf{Ab}\}_{n\in \N}$ where $\mathbf{Top}^2$ denotes the category of (topological) pairs, we say that $H_i$ is a \textit{homology functor} if  each of the following properties holds.
+\be
+\item (LES) For any pair $(X, A)$ of space, there is a natural long exact sequence
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & H_i(A)  \arrow[r] & H_i(X) \arrow[r] & {H_i(X, A)} \arrow[r, "\partial"] & H_{i-1}(A) \arrow[r] & \cdots
+\end{tikzcd},
+\] where $H_i(Z) \coloneqq H_i(Z, \emptyset)$ for any space $Z$.
+\item (Excision) If $\cl(A) \subset \underset{open}{U} \subset X$, then $H_i(X\setminus A, U \setminus A) \cong H_i(X, U)$.
+\item (Dimension) $H_i(\pt) = \begin{cases} 0 & i \ne 0 \\ \Z & i =0 \end{cases}$.
+\item (Homotopy) If $f$ and $g$ are homotopic, then $f_{\ast} = g_{\ast}$, where $h_{\ast} \coloneqq H_i(h)$ for any map $h: (X,A) \to (Y, B)$. 
+\ee
+\end{defn}
+
+\begin{theorem}
+There exists a family of homology functors.
+\end{theorem}
+
+\begin{exmp}
+In singular homology theory, we have that $H_i(S^n) = \begin{cases} \Z & i = 0, n \\ 0 & \text{otherwise} \end{cases}.$ 
+\end{exmp}
+
+Let $X$ be a cell complex. Let $C_n(X)$ denote the free abelian group on the set of all $n$-cells of $X$. Define $\partial : C_n(X) \to C_{n-1}(X)$ by $\partial[D_i^n] = \sum_{j=1}^{k_{n-1}} \lambda_{ij}[D_j^{n-1}]$ where $\lambda_{ij}$ is defined, up to sign, as follows. Consider the map
+\[
+\begin{tikzcd}
+S^{n-1} \arrow[r, equals] \arrow[rrrrr, "\omega"', bend right] & \partial{D_i^n} \arrow[r, "\varphi_i"] & X^{n-1} \arrow[r, two heads] & \frac{X^{n-1}}{X^{n-2} \cup (\text{all cells of dim. } n-1 \text{ except } D_j^{n-1})} \arrow[r, equals] & \faktor{D^{n-1}}{\partial{D_j^{n-1}}} \arrow[r, equals] & S^{n-1}
+\end{tikzcd}
+.\]
+ Then let $\lambda_{ij}$ satsify $\omega_{\ast}(x) = \lambda_{ij}x$ with $x$ a chosen generator (i.e., orientation) of $H_{n-1}(S^{n-1}) \cong \Z$. 
+
+\begin{term}
+The integer $\lambda_{ij}$ is called the \textit{degree of $\omega$}, denoted by $\deg(\omega)$.
+\end{term}
+
+\begin{theorem}
+$\partial_n{\partial_{n+1}} = 0$, and $H_n(X) \cong \faktor{\ker{\partial_n}}{\im{\partial_{n+1}}}$, which is independent of our choice of generator $x$.
+\end{theorem}
+
+\begin{exmp}
+Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regular value $x \in S^n$. There is some neighborhood $U$ of $x$ such that $f^{-1}(U) = U_1 \cup \cdots \cup U_n$ for some $n$. Using the inverse function theorem and the compactness of $S^n$, it follows that $f^{-1}$ is of the form $\{x_1, \ldots, x_n\}$. Note that the differential $(d{f})_{x_i} : S^n_{x_i} \to S^n_x$ satisfies $\det{(d{f})_{x_i}} - \pm 1$. In fact, $$\deg(f) = \sum_{i=1}^n \det{(d{f})_{x_i}}.$$
+\end{exmp}
+
+\begin{exercise}
+Prove that any cell complex $X= \bigcup_{n=0}^KX^n$ is homotopy equivalent to a regular cell complex.\footnote{Hint: Consider the map $S^{n-1} \to X^{n-1} \times D^n$ given by $x \mapsto (\varphi(x), x)$.}
+\end{exercise}
+\begin{proof}
+??
+\end{proof}
+
+\subsection{Lecture 2}
+
+\begin{exmp}[Real projective space]
+Recall that $\RP^n = \faktor{S^n}{x \sim {-}x}$. Then $\RP^n = \RP^{n-1} \cup_{\pi_{n-1}} D^n$ where $\pi_{n-1} : S^{n-1} \to \RP^{n-1}$ denotes the canonical projection. Thus, $\RP^n$ is an $n$-dimension cell complex with $(\RP^n)^m = \RP^m$ for each integer $0\leq m\leq n$.
+
+\medskip
+
+Now, for each $0\leq m \leq n$, we have that $C_m(\RP^n) \cong \Z$ with generator $[D^m]$. To determine $\partial[D^m]\in C_{m-1}(\RP^m)$, we must find the degree of the map
+\[
+\begin{tikzcd}
+S^{m-1} \arrow[rrrr, "\varphi"', bend right] \arrow[r] & \RP^{m-1} \arrow[r, two heads] & \faktor{\RP^{m-1}}{\RP^{m-1}} \arrow[r, equals] & \faktor{D^{m-1}}{\partial{D^{m-1}}} \arrow[r, equals] & S^{m-1}
+\end{tikzcd}
+\]
+Assume, for convenience, that $m=2$. Choose a regular value $p\in S^{1}$ so that $\varphi^{-1}(p) = \{N, S\}$. Let $\varphi_T$ and $\varphi_B$ denote the restrictions of $\varphi$ to the top and bottom components of $S^1 \setminus \{({-}1, 0), (1,0)\}$, respectively. Note that both of these are homeomorphisms and thus have degrees equal to $\pm 1$. If $a: S^{m-1} \to S^{m-1}$ denotes the antipodal map, we have that $\varphi_B \circ a= \varphi_T$. Hence $(d{\varphi})_S \circ (d{a})_N = (d{\varphi})_N$.  Since $\deg(a) = \det(d{a}) = ({-}1)^m$, it follows that $$\deg(\varphi) = \begin{cases} \pm 2 & m  \text{ even} \\ 0 & m \text{ odd} \end{cases}.$$
+Thus, we get a chain complex
+\[
+\begin{tikzcd}
+0 \arrow[r] & C_n(\RP^n) \arrow[r, "\kappa_1"] & C_{n-1}(\RP^n) \arrow[r, "\kappa_2"] & \cdots \arrow[r, "0"] & C_2(\RP^n) \arrow[r, "\pm 2"] & C_1(\RP^n) \arrow[r, "0"] & C_0(\RP^n) \arrow[r] & 0
+\end{tikzcd}
+\] where $\kappa_1 = \begin{cases} 0 & n \text{ odd} \\ \pm 2 & n \text{ even} \end{cases}$ and $\kappa_2 = \begin{cases} \pm 2 & n \text{ odd} \\ 0 & n \text{ even} \end{cases}$.
+
+This proves that $$ H_i( \RP^n) = \begin{cases} \Z & i =0 \\ \Z/2 & i =1 \\ 0 & i =2 \\ \Z/2 & \underset{odd}{i} <n \\ 0 & \underset{even}{i} <n \\ 0 & i >n \\ \Z & i =n \text{ odd} \\ 0 & i= n \text{ even}    \end{cases}  .$$
+\end{exmp}
+
+\bigskip
+
+Next, let's introduce some fundamental concepts from homotopy theory. 
+
+\begin{defn} Let $M(X, Y)$ denote the set of maps $X \to Y$. 
+\be
+\item For any compact $C \subset X$ and open $U \subset Y$, let $$N(C, U) = \{f : X \to Y \mid f(C) \subset U \}  .$$ The \textit{compact-open topology on $M(X, Y)$} consists of all unions of finite intersections of subsets of the form $N(C, U)$. 
+\item The \textit{$n$-th loop space} of a pointed space $(X, x)$ is $$\Omega^{n-1}(X, x) \coloneqq M((D^{n-1}, \partial{D^{n-1}}), (X, x)),$$  which is a subset of $M(D^{n-1}, X)$.
+\ee 
+\end{defn}
+
+
+\begin{defn}[Higher homotopy groups]
+If $n \geq 2$, then the \textit{$n$-th homotopy group} of $(X, x)$ is $$\pi_n(X,x) \coloneqq \pi_1(\Omega^{n-1}{X}, e_x).$$
+\end{defn}
+
+Recall that $\pi_1({-})$ is a functor $\mathbf{Top}_{\ast} \to \mathbf{Grp}$. Also, $\Omega^{n-1}({-})$ is a functor $\mathbf{Top}_{\ast}  \to \mathbf{Top} $ defined on morphisms $f: (X, x) \to (Y, y)$ by post-composition with $f$.
+ Therefore, it's easy to see that $\pi_n({-})$ is a functor $\mathbf{Top}_{\ast} \to \mathbf{Grp}$ as well.
+
+\begin{notation} 
+Let $f_{\ast} =  \pi_n(f)$ for any $f: (X, x) \to (Y, y)$.
+\end{notation}
+
+\begin{prop}
+There is a homeomorphism $M(X \times Y, Z) \cong M(X, M(Y, Z))$ so long as $Y$ is locally compact and Hausdorff. 
+\end{prop}
+
+In particular, we have a composite 
+
+\[
+M(([0,1], \{0,1\}), (M((D^{n-1}, \partial), (X,x)), e_x)) \hookrightarrow M([0,1], M(D^{n-1}, X)) \overset{\cong}{\longrightarrow} M([0,1] \times D^{n-1}, X),
+\] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $(I^n, \partial) \to (X,x)$ under the operation $[f] \ast [g] = [f \ast g]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
+      f(2t_1, t_2, \ldots, t_n) & 0\leq t_1 \leq \frac{1}{2}
+      \\ f(2t_1-1, t_2, \ldots, t_n) & \frac{1}{2} \leq t\leq 1
+\end{cases}    .$$
+
+\begin{prop}
+If $n\geq 2$, then $\pi_n(X, x)$ is abelian.
+\end{prop}
+
+
+\begin{remark}
+A map $f: S^{n-1} \to X$ is homotopic to the constant map if and only if there is some $g$ such that 
+\[
+\begin{tikzcd}
+D^n \arrow[rd, "g"]                     &   \\
+S^{n-1} \arrow[r, "f"'] \arrow[u, hook] & X
+\end{tikzcd}
+\] commutes.
+\end{remark}
+
+\begin{theorem}[Whitehead]
+If $f: X \to Y$ is a map of connected cell complexes, then $f$ is a homotopy equivalence if and only if $f_{\ast} : \pi_n(X,x) \to \pi_n(Y, y)$ is an isomorphism for each $n \in \N$.
+\end{theorem}
+
+\subsection{Lecture 3}
+
+\begin{defn}
+If $x\in A \subset X$, then the \textit{$n$-th relative homotopy group $\pi_n(X, A, x)$} consists of all homotopy classes of maps $(D^n, S^{n-1}, x_0) \to (X, A, x)$. 
+\end{defn}
+
+We see that  $$M((D^n, S^{n-1}, x), (X, A, x_0)) \cong M((I^n, I^{n-1} \times \{1\}, \underbrace{\partial{I^n} \setminus \Int(I^{n-1} \times \{1\})}_{\partial_0{I^n}}), (X, A, x_0))$$ by considering the homeomorphism $(I^n/\partial_0{I^n}, \partial{I^n}/\partial_0{I^n}) \cong (D^n, S^{n-1})$. Therefore, $\pi_n(X, A, x)$ can be viewed as consisting of all homotopy classes of maps $(I^n, \partial{I^n}, \partial_0{I^n}) \to (X, A, x)$.
+
+\begin{prop} $ $
+\be
+\item If $n\geq 2$, then $\pi_n(X, A, x)$ is, in fact, a group.
+\item If $n\geq 3$, then $\pi_n(X, A, x)$ is abelian.
+\item The sequence 
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & {\pi_n(A,x)} \arrow[r]     & {\pi_n(X, x)} \arrow[r] & {\pi_n(X, A, x)} \arrow[r, "\partial"] & {\pi_{n-1}(A,x)} \arrow[llld] \\
+                 & {\pi_{n-1}(X,x)} \arrow[r] & \cdots \arrow[r]        & {\pi_2(X, A, x)}                       &                              
+\end{tikzcd}
+\] with $\partial[f] = [f\restriction_{I^{n-1}}]$ is exact.
+\ee 
+\end{prop}
+
+\begin{theorem}[Hurewicz] 
+Let $n\in \N_{\geq 2}$. If $\pi_i(X) =0$ for each $i < n$, then $\pi_n(X) \cong H_n(X)$. 
+\end{theorem}
+
+\begin{note}
+This result can't be improved in general. For example, $\pi_3(S^2) \cong \Z$, whereas $H_3(S^2) =0$.
+\end{note}
+
+Let $A \subset X$ be a subcomplex. Recall that $H_i(X, A) \cong H_i(X/A. \ast)$ for each $i\geq 1$. But it is \emph{not} the case that $\pi_i(X, A) \cong \pi_i(X/A. \ast)$, for otherwise  $\pi_i(S^n) \cong \pi_i(D^n, S^{n-1}) \cong \pi_i(S^{n-1})$, which is known to be false exactly when $i > 2n-2$. 
+
+\begin{exmp}
+$\pi_4(S^3) \cong \Z/2 \not \cong  \pi_4(S^4)$.
+\end{exmp}
+
+\bigskip
+
+Finally, let's review the notion of a fibration of spaces.
+
+\medskip
+
+Recall that if $p: E \to B$ is a covering projection, then TFAE.
+\be
+\item For any $f: Z \to B$, there exists a unique $\hat{f} :Z \to E$ such that $p \circ \hat{f} = f$.
+\item $f_{\ast}(\pi_1(Z)) \subset p_{\ast}(\pi_1(E))$.
+\ee
+
+The existence of $\hat{f}$ follows from the fact that any covering space satisfies the homotopy lifting property.
+
+\begin{defn}[Fibration]
+Suppose that $p: E \to B$ is any map. We say that $p$ is a \textit{fibration} if it satisfies the homotopy lifting property, i.e., given a commutative square
+\[
+\begin{tikzcd}
+X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
+{X\times [0,1]} \arrow[r, "f"']                      & B               
+\end{tikzcd}
+,\]  where $X$ is a cell complex, there is some $G$ such that
+\[
+\begin{tikzcd}
+X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
+{X\times [0,1]} \arrow[r, "f"'] \arrow[ru, "G"]      & B               
+\end{tikzcd}
+\] commutes. 
+\end{defn}
+
+\begin{theorem}
+If $p: E \to B$ is a fibration with $e \in F \coloneqq p^{-1}(b)$, then $$p_{\ast} : \pi_i(E, F, e) \overset{\cong}{\longrightarrow} \pi_i(B, b, b) = \pi_i(B, b).$$
+\end{theorem}
+\begin{proof}
+Let $f: (I^n, \partial{I^n}) \to (B, b)$. To prove that $p_{\ast}$ is surjective, it suffices to find some $G : (I^n, \partial{I^n}) \to (E, F)$ such that 
+\[
+\begin{tikzcd}
+\partial_0{I^n} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
+{I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G"] &                       &                   & B               
+\end{tikzcd}
+\] commutes, for in this case $[p \circ G'] = [f]$. Since $p$ is a fibration, there is some $G$ such that
+\[
+\begin{tikzcd}
+I^{n-1} \times \{0\} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
+{I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G'"] &                       &                   & B               
+\end{tikzcd}
+\] 
+commutes. But $(I^n, \partial_0{I^n}) \cong (I^n, I^{n-1} \times \{0\})$, and thus such a $G'$ is enough. 
+\end{proof}
+
+\begin{corollary}\label{exhtpy}
+The sequence 
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & {\pi_i(F, e)} \arrow[r] & {\pi_i(E, e)} \arrow[r] & {\pi_i(B, b)} \arrow[r, "\partial"] & {\pi_{i-1}(F, e)} \arrow[r] & \cdots
+\end{tikzcd}
+\] is exact. 
+\end{corollary}
+
+\begin{exmp} $ $
+\be
+\item Suppose that
+\[
+\begin{tikzcd}
+X\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & B \times F \arrow[d, "\pi_B"] \\
+{X\times [0,1]} \arrow[r, "f"]                           & B                            
+\end{tikzcd}
+\] commutes. Then $\hat{f}(x,0) = (\hat{f}_1(x,0), \hat{f}_2(x,0))$ where $\hat{f}_1(x,0) = f(x,0)$. Let $G(X,t) =  (f(x,t), \hat{f}_2(x,0))$. Then \[
+\begin{tikzcd}
+X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & B \times F \arrow[d, "\pi_B"] \\
+{X\times [0,1]} \arrow[r, "f"] \arrow[ru, "G"]           & B                            
+\end{tikzcd}
+\] commutes, so that $\pi_B$ is a fibration. (Moreover, $\pi_n(B \times F) \cong \pi_n(B) \times \pi_n(F)$.)
+\item Let $A \subset X$ be a subcomplex. The map $\varphi : M(X, Y) \to M(A, Y)$ defined by $f \mapsto f\restriction_A$ is a fibration. 
+\item Define the \textit{Hopf fibration} as the quotient map
+\[
+S^3 = \{(z_1, z_2) \in \C^2 \mid z_1\overline{z_1} + z_2\overline{z_2} =1\} \twoheadrightarrow \faktor{S^3}{x \sim {-}x} = \CP^1 =S^2.
+\]
+\ee
+\end{exmp}
+
+\begin{corollary}
+$\pi_3(S^3) \cong \pi_3(S^2)$.
+\end{corollary}
+\begin{proof}
+Since we have an exact sequence 
+\[
+\begin{tikzcd}
+\pi_3(S^1) \arrow[r] & \pi_3(S^3) \arrow[r] & \pi_3(S^2) \arrow[r] & \pi_2(S^1)
+\end{tikzcd},
+\] it suffices to show that both $\pi_3(S^1)$ and $\pi_2(S^1)$ are trivial. To this end, note that since $\pi_1(S^k) =0$ for every $k>1$, we can always find,  for any $f: S^k \to S^1$,  a map $\hat{f}$ such that
+\[
+\begin{tikzcd}
+                                                  & \R \arrow[d, "e^{2\pi i x}"] \\
+S^k \arrow[r, "f"'] \arrow[ru, "\hat{f}"] & S^1                         
+\end{tikzcd}
+\] commutes. Thus, $f$ is homotopic to the constant map. Since $f$ was arbitrary, our proof is complete.
+\end{proof}
+
+\begin{defn}\label{ltriv}
+A map $p : E \to B$ is \textit{locally trivial} if for any $b\in B$, there exist a neighborhood $U\ni b$ in $B$, a space $F$, and a homeomorphism $\varphi: p^{-1}(U) \overset{\cong}{\longrightarrow} U \times F$ such that $\pi_U \circ \varphi = p \restriction_{p^{-1}(U)}$.
+\end{defn}
+
+\begin{theorem}
+Any locally trivial map $p: E \to B$ is a fibration whenever $B$ is a cell complex. 
+\end{theorem}
+
+\begin{exercise}
+Prove that the Hopf fibration is locally trivial.
+\end{exercise}
+\begin{proof}
+For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\{(z_0, z_1) \in S^3 \mid z_k \ne 0\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left([z_0, z_1], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \vert{(z_0, z_1)}\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
+\end{proof}
+
+\subsection{Lecture 4}
+
+\begin{theorem}
+Let $A\subset X$ be a subcomplex. Define $r: M(X, Y) \to M(A, Y)$ by $r(f) = f\restriction_A$. Then $r$ is a fibration. 
+\end{theorem}
+\begin{proof}
+We must fill any diagram of the form
+\[
+\begin{tikzcd}
+Z\times \{0\} \arrow[r, "\hat{f}"] \arrow[d, hook]                 & {M(X,Y)} \arrow[d, "r"] \\
+{Z\times [0,1]} \arrow[ru, "F", dashed] \arrow[r, "f"'] & {M(A,Y)}               
+\end{tikzcd}
+.\] It suffices to find a map $\overline{F}$ such that
+\[
+\begin{tikzcd}
+Z\times \{0\}\times X \arrow[r, "\hat{\bar{f}}"] \arrow[d, hook] & Y \arrow[d, equals] \\
+{Z\times [0,1]\times X} \arrow[ru, "\overline{F}"]               & Y           \\
+{Z\times [0,1]\times A} \arrow[u, hook] \arrow[ru, "\bar{f}"']   &            
+\end{tikzcd}
+\] commutes for, in this case, we can set $F(z,t)(x) = \overline{F}(z, t, x)$.
+
+\begin{note}
+Suppose that such an $\overline{F}$ exists. Define $g: Z \times X \to Y$ by $g(z,x) = \hat{\bar{f}}(z,0, x)$. Define $h: Z \times X \times [0,1] \to Y$ by $H(z,x,t) = \overline{F}(z,t,x)$. Then
+\[
+\begin{tikzcd}
+Z\times X\times \{0\} \arrow[rd, "g"] \arrow[d, hook]     &   \\
+{Z\times X \times [0,1]} \arrow[r, "H"]                   & Y \\
+{Z\times A \times [0,1]} \arrow[u, hook] \arrow[ru, "K"'] &  
+\end{tikzcd}
+\]
+commutes where $K(z,a,t) = \bar{f}(z,t,a)$. In the case where $Z = \{\pt\}$, this means that if $K: A \times [0,1] \to Y$ is a homotopy from a map $f: A \to Y$ and $g$ extends $f$ to $X$, then there exists a homotopy $H : X \times [0,1]\to Y$ such that $H\restriction_{A \times [0,1]} = K$. In other words, the extension problem for cell complexes is a homotopy problem. 
+\end{note}
+Let's return to proving our theorem. By induction, it suffices to consider just the case where $X = A \cup_{\varphi} D^n$, with characteristic map $\chi: D^n \to X$.   Thus, it suffices to find a map $w$ such that
+\[
+\begin{tikzcd}[column sep = huge]
+Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                    &                                          &   \\
+{Z\times D^n \times [0,1]} \arrow[rr, "w"]                                                                  &                                          & Y \\
+{Z\times S^{n-1} \times [0,1]} \arrow[u, hook] \arrow[r, "{\id_Z \times \varphi \times \id_{[0,1]}}"'] & {Z\times A\times [0,1]} \arrow[ru, "K"'] &  
+\end{tikzcd}
+\] commutes for, in this case, we can set $H(z, x, t) = g \cup_{\varphi} w$, thereby making
+\[
+\begin{tikzcd}[column sep = huge]
+Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                          &                                           &   \\
+{Z\times D^n \times [0,1]} \arrow[r, "{\id_Z \times \chi \times \id_{[0,1]}}"'] \arrow[rr, "w"', bend right] & {Z\times X\times [0,1]} \arrow[r, "H"']   & Y \\
+{Z\times S^{n-1} \times [0,1]} \arrow[u, hook] \arrow[rd, "{\id_Z \times \varphi \times \id_{[0,1]}}"']      &                                           &   \\
+                                                                                                             & {Z\times A\times [0,1]} \arrow[ruu, "K"'] &  
+\end{tikzcd}
+\] commute. To this end, define the retraction $u : D^n \times [0,1] \to D^n \times \{0\} \cup S^{n-1} \times [0,1]$ by  picking a point $\ast$ directly above the cylinder $D^n \times [0,1]$ and then sending any point $x$ in the cylinder to the unique point where $D^n \times \{0\} \cup S^{n-1} \times [0,1]$ intersects the line containing $\ast$ and $x$. Now, define $w$ so that
+\[
+\begin{tikzcd}[column sep = huge]
+{Z \times (D^n \times [0,1])} \arrow[d, "\id_Z \times u"'] \arrow[r, "w"]                                                                     & Y \\
+{Z \times (D^n \times \{0\} \cup S^{n-1} \times [0,1])} \arrow[ru, "{\id_Z \times \left(g \circ \chi \cup K \circ (\varphi \times \id_{[0,1]})\right)}"'] &  
+\end{tikzcd}
+\] commutes. 
+\end{proof}
+
+\begin{exercise}
+Let $x\in X$. Consider the  loop space $\Omega(X, x) \equiv M((S^1, \pt), (X, x))$. Prove that $\pi_n(\Omega{X})\cong \pi_{n+1}(X)$.
+\end{exercise}
+\begin{proof}
+Consider the \textit{path space $P{X} \equiv \{\gamma : [0,1] \to X \mid \gamma(0) =x\}$ of $(X,x)$}, equipped with the compact-open topology. We claim that $P{X}$ is contractible. Indeed, define $K: P{X} \times [0,1] \to P{X}$ by $$(\gamma, t) \mapsto \left(s \mapsto \gamma(s(1-t))\right).$$ Then $K$ is a homotopy from $\id_{P{X}}$ to the constant map at the constant path at $x$.
+
+\medskip
+
+Define the map $p : P{X} \to X$ by $\gamma \mapsto \gamma(1)$. Then $p^{-1}(x) = \Omega(X)$. By \cref{exhtpy}, it suffices to show that $p$ is a fibration. To this end, suppose that the square
+\[
+\begin{tikzcd}
+Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
+{Y\times [0,1]} \arrow[r, "f"']                    & X                  
+\end{tikzcd}
+\] commutes. Define $H: Y \times [0,1] \to P{X}$ by $(y, t) \mapsto  H(y,t)$ where 
+\[
+H(y, t)(s) = \begin{cases} 
+\hat{f}(y)\left((1+t)s\right) & 0\leq s\leq \frac{1}{1+t}
+\\ f(y, (1+t)s -1) & \frac{1}{1+t}\leq s \leq 1
+\end{cases}.
+\] We see that $H$ is continuous when viewed as a function of $(y,t,s)$ and thus is continuous. It is easy to check that 
+\[
+\begin{tikzcd}
+Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
+{Y\times [0,1]} \arrow[r, "f"'] \arrow[ru, "H"]    & X                  
+\end{tikzcd}
+\] commutes, as desired.
+\end{proof}
+
+Let $p : E \to B$ be a map. Recall that the pullback of $p$ along $f : X \to B$ is given explicitly as   $$f^{\ast}{E} \equiv \{(x, e) \in X \times E \mid f(x) = p(e)\}.$$  Let  $f^{\ast}{p}$ denote the map $\pi_X\restriction_{f^{\ast}{E}}$.
+
+\begin{prop}
+If $p$ is a fibration, then so is $f^{\ast}{p}$.
+\end{prop}
+
+\begin{lemma}\label{pbtriv}
+If $p$ is locally trivial, then so is $f^{\ast}{p}$. 
+\end{lemma}
+\begin{proof}
+Let $a \in X$. Since $p$ is locally trivial by assumption, we can find a neighborhood $U$ of $f(a)$ in $B$ and a homeomorphism $\varphi : p^{-1}(U) \to U \times F$. Observe that 
+\[
+(f^{\ast}{p})^{-1}(f^{-1}(U)) = \{(x,e) \mid f(x) = p(e), \ f(x) \in U\} \subset f^{-1}(U) \times p^{-1}(U).
+\] Further, we have a map $\psi : f^{-1}(U) \to p^{-1}(U) \to f^{-1}(U) \times F$ given by $(x,e) \mapsto (x, \pi_F(\varphi(e)))$. Define $\lambda : f^{-1}(U) \times F \to (f^{\ast}{p})^{-1}(f^{-1}(U))$ by $(x,y) \mapsto (x, \varphi^{-1}(f(x), y))$. Using the fact that 
+\[
+\begin{tikzcd}
+p^{-1}(U) \arrow[r, "\varphi"] \arrow[rd, "p"'] & U\times F \arrow[d, "\pi_U"] \\
+                                                    & U                           
+\end{tikzcd}
+\] commutes, it is easy to check that $\psi$ and $\lambda$ are inverses of each other. 
+\end{proof}
+
+
+
+\subsection{Lecture 5}
+
+\begin{theorem}
+Let $B$ be a cell complex and let $p : E \to B$ be locally trivial. Then $p$ is a fibration. 
+\end{theorem}
+\begin{proof}
+It suffices to prove the following claim: 
+\begin{addmargin}[1em]{2em}
+
+\smallskip
+
+If $h : Z \to X \times [0,1]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a cell complex, and $\sigma_0 : X \times \{0\} \to Z$ satisfies $h \circ \sigma_0 = \id_{X \times \{0\}}$, then there is some map $\sigma : X \times [0,1] \to Z$ such that $\sigma_{X \times \{0\}} = \sigma_0$ and $h \circ \sigma = \id_{X \times [0,1]}$. 
+\end{addmargin}
+
+\smallskip
+
+For, in this case, \cref{pbtriv} implies that given any commutative square
+\[
+\begin{tikzcd}
+X \times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & E \arrow[d, "p"] \\
+{X \times [0,1]} \arrow[r, "f"']                    & B               
+\end{tikzcd}
+,\] we can find some $\sigma$ such that
+\[
+\begin{tikzcd}
+                                                      & f^{\ast}{E} \arrow[r] \arrow[d]                                   & E \arrow[d, "p"] \\
+X \times \{0\} \arrow[ru, "\sigma_0"] \arrow[r, hook] & {X \times [0,1]} \arrow[r, "f"'] \arrow[u, "\sigma"', bend right] & B               
+\end{tikzcd}
+\] commutes where $\sigma_0(x,0) = (x,0, \hat{f}(x,0))$.
+
+\medskip
+
+For induction, we will assume that our claim is true for each $X^0, X^1, \ldots, X^{n-1}$. We may assume, wlog, that $X = D^n$. It suffices to find a map $\tau : S^{n-1} \times [0,1] \to Z$ such that $h \circ \tau = \id_{S^{n-1}\times [0,1]}$ and
+\[
+\begin{tikzcd}
+                                                        & Z \arrow[d, "h"]                                       &                                                           \\
+D^n \times \{0\} \arrow[r, hook] \arrow[ru, "\sigma_0"] & {D^n \times [0,1]}                                     & {S^{n-1}\times [0,1]} \arrow[l, hook] \arrow[lu, "\tau"'] \\
+                                                        & S^{n-1} \times \{0\} \arrow[lu, hook] \arrow[ru, hook] &                                                          
+\end{tikzcd}
+\] commutes since there is a retraction $D^n \times [0,1] \to D^{n} \times \{0\} \cup S^{n-1}\times [0,1]$. Fix a positive integer $m$. For any $i\in \N$, let $a_i = \frac{i}{m}$ and let $I_j = [a_j, a_{j+1}]$. By making $m$ large enough, we can ensure that $p\restriction_{p^{-1}(I_{j_1} \times \cdots I_{j_{n+1}})}$ is trivial. 
+\begin{claim}
+$p\restriction_{p^{-1}(I_{j_1} \times I_{j_n} \times \cdots [0,1])}$ is also trivial. 
+\end{claim}
+\begin{proof}
+??
+\end{proof}
+?? 
+\end{proof}
+
+
+\section{Fiber bundles}
+
+\begin{defn}
+A \textit{topological group} $G$ is a group such that both multiplication $G \times G \overset{\mu}{\longrightarrow} G$ and inversion $G \overset{({-})^{-1}}{\longrightarrow} G$ are continuous.
+\end{defn}
+
+\begin{defn}[Fiber bundle] Let $G$ be a topological group.
+\be 
+\item A \textit{fiber $F$ of $G$} is a space equipped with a faithful (i.e., injective) group action $\rho : G \to \homeo(F) \subset M(F, F)$. 
+\item An \textit{atlas for the structure of a (fiber) bundle with group $G$ and fiber $F$ on a map $p: E \to B$} consists of 
+\be
+\item a family $(U_{\alpha}, h_{\alpha})_{\alpha \in A}$ where each $U_{\alpha}$ is open and each $h_{\alpha}$ is a homeomorphism $p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ and
+\item  a family of continuous \textit{transition functions} $\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to G\}_{\alpha, \beta \in A}$ 
+\ee such that
+\be[label= \roman*]
+\item $B = \bigcup_{\alpha \in A} U_{\alpha}$,
+\item $\pi_{U_{\alpha}} \circ h_{\alpha} = p\restriction_{p^{-1}(U_{\alpha})}$, and
+\item  $x\in U_{\alpha} \cap U_{\beta} \implies h_{\beta} \circ h_{\alpha}^{-1}(x,f) = (x, h_{\beta{\alpha}}(x)\cdot f)$
+\ee
+\item Two atlases are \textit{compatible} if their union is an atlas. 
+\item A \textit{bundle structure on $B$} is a maximal atlas on $p$. 
+\ee
+\end{defn}
+
+\begin{term}
+If $B$ is equipped with a bundle structure, then we say that $p$ is a (fiber) bundle.
+\end{term}
+
+\begin{exmp} $ $
+\be
+\item The tangent bundle $\pi : TM \to M$ of a smooth $n$-manifold $M$ is a bundle with group $\GL(n, \R)$.
+\begin{proof}
+Let $(U, \varphi)$ be any coordinate chart for $M$ with coordinate functions $(x^i)$. Define $h: \pi^{{-}1}(U) \to U \times \R^n$ by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(p, \left(v^1, \ldots, v^n\right)\right).$$ It is clear that $\pi_{U}(h(p)) = \pi(c)$ for any $c\in \pi^{-1}(U)$. To see that $h$ is a homeomorphism, note that the composite $\left(\varphi \times \id_{\R^n}\right) \circ h : \pi^{-1}(U) \to \varphi(U) \times \R^n$ is given by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(x^1(p), \ldots, x^n(p), v^1, \ldots, v^n\right),$$ the inverse of which is given by $\left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto v^i\frac{\partial}{\partial{x^i}}\left(\varphi^{{-}1}(x)\right)$. Therefore,  $\left(\varphi \times \id_{\R^n}\right) \circ h$ is given locally by 
+\[
+\left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto \left(\tilde{x}^1(x), \ldots, \tilde{x}^n(x), \frac{\partial{\tilde{x}^1}}{\partial{x^j}}(x)v^j, \ldots, \frac{\partial{\tilde{x}^n}}{\partial{x^j}}(x)v^j\right),
+\] which is smooth. Thus, $h$ is a diffeomorphism as the composition of two diffeomorphisms. In particular, $h$ is a homeomorphism. 
+
+\smallskip
+
+It remains to describe the transition functions $\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to \GL(n, \R)\}$ for $T{M}$. Note that 
+\[
+\begin{tikzcd}
+U_{\alpha{\beta}}\times \R^n \arrow[rd, "\pi_1"'] & \pi^{{-}1}(U_{\alpha{\beta}}) \arrow[l, "h_{\alpha}"'] \arrow[r, "h_{\beta}"] \arrow[d, "\pi"] & U_{\beta{\alpha}}\times \R^n \arrow[ld, "\pi_1"] \\
+                                                  & U_{\alpha{\beta}}                                                                              &                                                 
+\end{tikzcd}
+\] 
+commutes. In particular, $\pi_1 \circ h_{\beta} \circ h_{\alpha}^{{-}1} = \pi_1$, which implies that $ h_{\beta} \circ h_{\alpha}^{{-}1}(u,v) =\left(u, f(u,v)\right) $ for some smooth map $f: U_{\alpha{\beta}} \times \R^n \to \R^n$. This must be a linear isomorphism when restricted to $\{u\}\times \R^n$ for any $u\in U_{\alpha{\beta}}$, which is uniquely determined by an element $h_{\beta{\alpha}}(u)$ of $\GL(n, \R)$ (provided that we have fixed a basis of $\R^n$). Hence $$ h_{\beta} \circ h_{\alpha}^{{-}1}(u,v) =\left(u, h_{\beta{\alpha}}(u) v\right) .$$ Since the map $h_{\beta{\alpha}} :U_{\alpha{\beta}} \to \GL(n, \R)$ is continuous, our proof is complete.
+\end{proof}
+
+\item Let $p: E \to B$ be a bundle with group $\{e\}$. Then $p$ is the trivial bundle, i.e., is isomorphic to the projection map. \begin{proof}
+We have that $h_{\beta} = h_{\alpha}$ on $U_{\alpha} \cap U_{\beta}$, so that $h \equiv \bigcup_{\alpha \in A}h_{\alpha}$ is a well-defined homeomorphism $E \cong B \times F$.
+\end{proof}
+\ee 
+\end{exmp}
+
+\subsection{Lecture 6}
+
+Let $\{\left(U_{\alpha}, h_{\alpha}\right)\}$ be a bundle structure with group $G$ and fiber $F$ on $p: E \to B$. Let $U = U_{\alpha} \cap U_{\beta} \cap U_{\gamma}$. 
+Consider the commutative diagram
+\[
+\begin{tikzcd}
+                                                                           &                                     & p^{{-}1}(U) \arrow[rrd, "h_{\gamma}"]    &                                      &           \\
+U\times F \arrow[r, "h_{\alpha}^{{-}1}"'] \arrow[rru, "h_{\alpha}^{{-}1}"] & p^{{-}1}(U) \arrow[r, "h_{\beta}"'] & U\times F \arrow[r, "h_{\beta}^{{-}1}"'] & p^{{-}1}(U) \arrow[r, "h_{\gamma}"'] & U\times F
+\end{tikzcd}.
+\]
+The bottom row is given by $\left(u, f\right) \mapsto \left(u, h_{\beta{\alpha}}(u) \cdot f\right) \mapsto \left(u, h_{\gamma{\beta}}(u) \cdot  \left( h_{\beta{\alpha}}(u) \cdot f\right)\right) =   \left(u, \left( h_{\gamma{\beta}}(u)  h_{\beta{\alpha}}(u)\right) \cdot f\right)$, and the top composite is given by $\left(u, f\right) \mapsto \left(u, h_{\gamma{\alpha}}(u)\cdot f\right)$.
+ It follows that $$h_{\gamma{\beta}}(u)  h_{\beta{\alpha}}(u) = h_{\gamma{\alpha}}(u)$$ for each $u\in U$. This property is known as the \textit{cocycle condition}.
+
+\begin{theorem}
+Let $G$ be a topological group acting on a space $F$. Suppose that $\{U_{\alpha}\}$ is an open cover of $B$ and $\{h_{\beta{\alpha}} : U_{\alpha}\cap U_{\beta} \to G\}$ is a family of continuous functions satisfying the cocycle condition. Then there exists a bundle $p: E \to B$ with group $G$, fiber $F$, and transition functions  $h_{\beta{\alpha}}$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+Let $E = \faktor{\coprod_{\alpha}{U_{\alpha} \times F}}{\sim}$ where $\left(u, f\right)_{\alpha} \sim \left(u, h_{\beta{\alpha}}
+(u) \cdot f\right)_{\beta}$. Define $p: E \to B$ by $\left(u, f\right) \mapsto  u$.
+\end{proof}
+
+\begin{defn}[Bundle map]
+A \textit{morphism of bundles $p_1$ and $p_2$ with group $G$ and fiber $F$} is a commutative square of the form
+\[
+\begin{tikzcd}
+E_1 \arrow[r, "\hat{g}"] \arrow[d, "p_1"'] & E_2 \arrow[d, "p_2"] \\
+B_1 \arrow[r, "g"']                        & B_2                 
+\end{tikzcd}
+\] such that 
+\end{defn}
+
+Suppose that $\left(\hat{g}, g\right)$ is a bundle map $p_1 \to p_2$.  Let $\{\left(U_{\alpha}, h_{\alpha}\right)\}$ and $\{\left(V_{\beta}, k_{\beta}\right)\}$ be bundle structures on $B_2$ and $B_1$, respectively.  We have a commutative diagram
+\[
+\begin{tikzcd}
+\left(g^{{-}1}(U_{\alpha}) \cap V_{\beta}\right) \times F \arrow[rd, "\pi_1"'] \arrow[rrr, "d_{\alpha{\beta}}", bend left] \arrow[r, "k_{\beta}^{{-}1}"] & p^{{-}1}_1\left(g^{{-}1}(U_{\alpha}) \cap V_{\beta}\right) \arrow[d] \arrow[r, "\hat{g}"] & p^{{-}1}_2(U_{\alpha}) \arrow[d] \arrow[r, "h_{\alpha}"] & U_{\alpha}\times F \arrow[ld, "\pi_1"] \\
+                                                                                                                                                         & g^{{-}1}(U_{\alpha})\cap V_{\beta} \arrow[r, "g"']                                        & U_{\alpha}                                               &                                       
+\end{tikzcd}
+,\] so that $d_{\alpha{\beta}}(x,f)  = \left(g(x), \lambda_{\alpha{\beta}}(x) \cdot f\right)$ for some continuous map $\lambda_{\alpha{\beta}} : g^{{-}1}(U_{\alpha})\cap V_{\beta} \to G$. Letting $W = g^{{-}1}(U_{\alpha} \cap U_{\alpha'}) \cap (V_{\beta} \cap V_{\beta'})$, we have that 
+\[
+h_{\alpha'{\alpha}}(w)\lambda_{\alpha{\beta}}(w)k_{\beta{\beta'}}(w) = \lambda_{\alpha'{\beta'}}(w) \label{eq:mapcycle} \tag{$\dagger$}
+\] for every $w\in W$.
+
+\begin{exercise}[Pullback bundle]
+Let  $\{\left(U_{\alpha}, h_{\alpha}\right)\}$ be a bundle structure on $p: E \to B$ with group $G$ and consider the pullback diagram \[
+\begin{tikzcd}
+g^{\ast}{E} \arrow[d, "g^{\ast}{p}"'] \arrow[r] & E \arrow[d, "p"] \\
+X \arrow[r, "g"']                               & B               
+\end{tikzcd}
+.\] Define $h'_{\beta{\alpha}}: g^{{-}1}(U_{\alpha}) \cap g^{{-}1}(U_{\beta}) \to G$ as the composite $h_{\beta{\alpha}} \circ g$ restricted to  $g^{{-}1}(U_{\alpha} \cap U_{\beta})$. Show that the family $\{h'_{\beta{\alpha}}\}$ induces a bundle structure on $g^{\ast}{p}$.
+\end{exercise}
+
+\begin{theorem}
+Any bundle map
+\[
+\begin{tikzcd}
+E_1 \arrow[d, "p_1"'] \arrow[r, "\hat{g}"] & E_2 \arrow[d, "p_2"] \\
+B_1 \arrow[r, "g"']                        & B_2                 
+\end{tikzcd}
+\]
+factors as
+\[
+\begin{tikzcd}
+E_1 \arrow[r, "\tau"] \arrow[d, "p_2"] & g^{\ast}{E_2} \arrow[r, "\bar{g}"] \arrow[d, "g^{\ast}{p_2}"] & E_2 \arrow[d, "p_2"] \\
+B_1 \arrow[r, "\id_{B_1}"']            & B_1 \arrow[r, "g"']                                           & B_2                 
+\end{tikzcd}
+\]
+where $\tau(e) = \left(p_1(e), \hat{g}(e)\right)$ for any $e\in E_1$.
+\end{theorem}
+
+\subsection{Lecture 7}
+
+\begin{note}\label{trnote}
+If $\{h_{\beta{\alpha}}:U_{\alpha}\cap U_{\beta}\to G\}$ is a family of transition functions, then
+\[
+h_{\alpha{\beta}}(x) = \left(h_{\beta{\alpha}}(x)\right)^{{-}1}
+\] for any $x\in U_{\alpha}\cap U_{\beta}$.
+\end{note}
+
+\begin{theorem}
+Any bundle map of the form
+\[
+\begin{tikzcd}
+E_1 \arrow[rd, "p_1"'] \arrow[r, "\hat{g}"] & E_2 \arrow[d, "p_2"] \\
+                                            & B                   
+\end{tikzcd}
+\]
+is an isomorphism.
+\end{theorem}
+\begin{proof}
+Note that
+\[
+\begin{tikzcd}
+                                                         & p_2^{{-}1}(U_{\alpha}\cap U_{\beta}) \arrow[ld, "h_{\beta}"'] \arrow[rd, "h_{\alpha}"]      &                                                                                          \\
+\left(U_{\alpha}\cap U_{\beta}\right)\times F \arrow[rd] & p_1^{{-}1}(U_{\alpha}\cap U_{\beta}) \arrow[u, "\hat{g}"] \arrow[d] \arrow[l, "k_{\beta}"'] & \left(U_{\alpha}\cap U_{\beta}\right)\times F \arrow[l, "k_{\alpha}^{{-}1}"'] \arrow[ld] \\
+                                                         & U_{\alpha}\cap U_{\beta}                                                                    &                                                                                         
+\end{tikzcd}
+\] commutes.  We have that $h_{\beta} \circ \hat{g} \circ k_{\alpha}^{{-}1}(x,f) = (x, \lambda_{\beta{\alpha}}(x)\cdot f)$. Thus, if  $h_{\alpha}(e) = (x,f)$, then $h_{\alpha}(\hat{g}(e)) = (x, \lambda_{\alpha{\alpha}}(x) \cdot d).$ Let $$\left(\hat{g}\right)^{{-}1}(e) = k_{\alpha}^{{-}1}\left(x, \lambda_{\alpha{\alpha}}(x)^{{-}1}\cdot f\right)$$ where $(x,f) = h_{\alpha}(e)$. If this is well-defined, then it equals the inverse of $g$.  Moreover, it is a bundle map because of \eqref{eq:mapcycle}. ??
+
+\end{proof}
+
+\begin{corollary}
+Every bundle over a space $E$ is isomorphic to the pullback bundle over $E$.
+\end{corollary}
+
+
+
+\end{document}

@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}A quick overview of algebraic geometry}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Lectures 1-4}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Complex analysis}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Lecture 5}{2}{subsection.2.1}
+\contentsline {section}{\numberline {3}Line bundles}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Lecture 6}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Lecture 7}{6}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Lecture 8}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Lecture 9}{7}{subsection.3.4}

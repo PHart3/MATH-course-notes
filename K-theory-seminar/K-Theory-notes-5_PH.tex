@@ -187,9 +187,9 @@ We begin higher Waldhausen $K$-theory. The main sources for this talk are the fo
 For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985), 318-419. 
 \end{abstract}
 
-\begin{remark}
+
 Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : |w \c| \to K(\c)$ where $w \c$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to |w \c| \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, eventually rendering $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the algebraic $K$-theory spectrum of $\c$.
-\end{remark}
+
 
 \begin{definition}
 Let $\c$ be a category equipped with a subcategory $co(\c)$ of morphisms called \textit{cofibrations}. The pair $(\c, co\c)$ is a \textit{category with cofibrations} if the following conditions hold.
@@ -206,9 +206,9 @@ C \arrow[r, dotted, tail] & B \cup_A C
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
+
 We see that $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A \ast$ along $A \to \ast$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofiber sequence}.
-\end{remark}
+
 
 \begin{definition}
 A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w\c$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Gluing axiom'' holds.
@@ -243,9 +243,9 @@ commutes. This is pointed at $\ast \rightarrowtail \ast \twoheadrightarrow \ast$
 Suppose an arbitrary triple $(f', f, f'')$ as above has the property that whenever $f'$ and $f''$ are w.e., then so is $f$. Then we say $\c$ is \textit{extensional} or \textit{closed under extensions}.
 \end{definition}
 
-\begin{remark}
+
 Say that the morphism $(f', f, f'')$ is a cofibration if $f'$, $f''$, and $Y' \cup_{X'} X \to Y$ are cofibrations in $\c$. Say that  the same triple is a weak equivalence if $f'$, $f$, and $f''$ are w.e. in $\c$. This makes $S_2 \c$ into a Waldhausen category.
-\end{remark}
+
 
 \begin{definition}
 Let $q\geq 0$. Let the \textit{arrow category $\Ar[q]$ on $[q]$} have as objects ordered pairs $(i, j)$ with $i\leq j \leq q$ and as morphisms commutative diagrams of the form
@@ -291,7 +291,7 @@ is a pushout.
 This is pointed at the constant diagram at $\ast$.
 \end{definition}
 
-\begin{remark}
+\begin{note}\label{note}
 A generic object in $S_q\c$ looks like
 \[ \tag{$\ast$}
 \begin{tikzcd}
@@ -302,7 +302,7 @@ A generic object in $S_q\c$ looks like
  &  &  &  & \ast
 \end{tikzcd}.
 \] where $X_q$ corresponds to $X_{0, q}$ and $\faktor{X_j}{X_i}$ to $X_{i, j}$ for any $1 \leq i \leq j \leq q$. 
-\end{remark}
+\end{note}
 
 \begin{definition}
 Let $(\c, co\c)$ be a category with cofibrations. Let $coS_q\c \subset S_q \c$ consist of the morphisms $f: X \rightarrowtail Y$ of $\Ar[q]$-shaped diagrams such that for each $1\leq j \leq q$ we have
@@ -384,14 +384,14 @@ $(S_q \c, wS_q \c)$ is a Waldhausen category.
 Let $\c$ be a category with cofibrations. If $\alpha : [p] \to [q]$, then define $\alpha^{\ast} : S_q \c \to S_p \c$ by
 $$\alpha^{\ast}(X: \Ar[q] \to \c) = X \circ \Ar(\alpha) : \Ar[p] \to \Ar[q] \to \c.$$
 It's easy to check that this satisfies the two conditions of a diagram in $S_p \c$.
-Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of Remark 5 and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure the $s_i$ work.]]} 
+Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure the $s_i$ work.]]} 
 \end{definition}
 
 \begin{prop}
 Let $(\c, w \c)$ be a Waldhausen category. Each functor $\alpha^{\ast}: S_q \c \to S_p \c$ is exact, so that $(S_{\bullet}\c, wS_{\bullet} \c)$ is a simplicial Waldhausen category.
 \end{prop}	
 
-\begin{remark}
+
 The nerve $N_{\bullet}w S_{\bullet}\c$ is a bisimplicial set with $(p,q)$-bisimplices the diagrams of the form
 \[
 \begin{tikzcd}
@@ -402,7 +402,7 @@ The nerve $N_{\bullet}w S_{\bullet}\c$ is a bisimplicial set with $(p,q)$-bisimp
 \end{tikzcd}
 \]
 such that $X^k_{i,j} \cong \faktor{X_j^k}{X_i^k}$ for every $i\leq j\leq q$ and $k\in [p]$. 
-\end{remark}
+
 
 \begin{lemma}
 There is a natural map $N_{\bullet} w \c \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma |w \c|\to |w S_{\bullet} \c|$ of classifying spaces.
@@ -425,9 +425,9 @@ Let $(\c, w\c)$ be a Waldhausen category. Define the \textit{algebraic $K$-theor
 let $F : (\c, w \c) \to (\d, w\d)$ be an exact functor. Then set $K(F) = \Omega | wS_{\bullet}F| : K(\c, w) \to K(\d, w)$. We have thus defined the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 \end{definition}
 
-\begin{remark}
+
 Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $|iS_{\bullet}\a|$ (where $i$ denotes the iso category) and $BQ\a$ are homotopy equivalent. Hence our current definition of higher algebraic $K$-theory agrees with Quillen's.
-\end{remark}
+
 
 \begin{exmp}
 Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(R) = K(\P(R), i)$$ where the w.e. $i$ are precisely the injective $R$-linear maps with projective cokernel and the cofibrations are precisely the $R$-linear maps.
@@ -437,9 +437,7 @@ Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(
 Assume that $\c$is a small Waldhausen category where $w\c$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $|s_{\bullet} \c| \hookrightarrow |iS_{\bullet} \c|$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
 \end{exmp}
 
-\begin{remark}
 Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $|w S_{\bullet} \c|$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
-\end{remark}
 
 \begin{definition}
 Define the \textit{$i$-th algebraic $K$-group} as $K_i(\c, w) = \pi_iK(\c, w)$ for each $i\geq 0$. 

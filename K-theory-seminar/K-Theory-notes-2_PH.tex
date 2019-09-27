@@ -188,7 +188,7 @@ Any two initial objects of $\c$ are canonically isomorphic. The same holds for a
 Compose the two unique morphisms to get an isomorphism between the two initial objects. Apply duality to get the second claim.
 \end{proof}
 
-\begin{remark}
+
 Think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F(\hat{f}) \circ f = f'$.
 \[ \begin{tikzcd}
 X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F(\hat{f})"] \\% 
@@ -201,11 +201,10 @@ F(X') \arrow[r, dashed, "F(\hat{f})"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d,
  & X
 \end{tikzcd}
 \]
-\end{remark}
 
-\begin{remark}
+
+
 To see why this notion of universality agrees with the original one, we first generalize the notion of an arrow category.
-\end{remark}
 
 \begin{definition}
 Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. The \textit{slice} or \textit{left fiber category}, denoted by $(F/Y)$ or $(F \downarrow Y)$, has as objects pairs $(X, f)$ where $f: F(X) \to Y$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ such that $f = f' \circ F(g).$ 
@@ -213,7 +212,6 @@ Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. The \textit{slice} or \texti
 
 \begin{definition}
 The \textit{coslice} or \textit{right fiber category}, denoted by $(Y/F)$ or $(Y \downarrow F)$, has as objects pairs $(X, f)$ where $f: Y\to F(X)$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ such that $f' = F(g) \circ f.$
-
 \end{definition}
 
 \begin{remark}
@@ -326,11 +324,10 @@ Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta
 \end{definition}
 \end{definition}
 
-\begin{remark}
 If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in the right fiber category $F/\Delta_{\c}$, which has as objects pairs $(Z, j: F \to \Delta Z)$ and as morphisms from $(Y, i)$ to $(Z, j)$ the morphisms $g : Y \to Z$ in $\d$ such that $\Delta g \circ i = j$.
+
 \begin{remark}
-Notice that there is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta Z)$ iff $Y = \colim_{\c}F$.
-\end{remark}
+There is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta Z)$ iff $Y = \colim_{\c}F$.
 \end{remark}
 
 \begin{prop}
@@ -444,24 +441,24 @@ Let $F : \c \to \d$ be a functor. The \textit{fiber category} $F^{-1}(Y)$ is the
 Suppose $\c$ has terminal object $1$. A \textit{cofiber} of a morphism $f: X \to Y$ is a pushout of the diagram $1 \leftarrow X \rightarrow Y$. We write $Y/X$. Further, given a morphism $p: 1 \to Y$, the \textit{fiber} of $f$ at $p$ is a pullback of $1 \rightarrow Y \leftarrow X$. We write $f^{-1}(p)$.
 \end{definition}
 
-\begin{definition}
+\begin{definition} $ $
 Let $F : \c \to \d$ be a functor. For each $Y \in \ob \d$, there is a full and faithful functor $F^{-1}(Y)  \rightarrowtail F/Y$ given by $X \mapsto (X, \id_Y)$. We say that $\c$ is a \textit{precofibered category} over $\d$ if this functor admits a left adjoint given by $(Z, g: F(Z) \to Y) \mapsto g_{\ast}(Z)$.
-\\ \\
-Moreover, there is a full and faithful functor $F^{-1}(Y) \rightarrowtail Y/F$ defined in the same way. We say that $\c$ is a \textit{prefibered category} over $\d$ if this functor admits a right adjoint given by $(Z, g: Y \to F(Z)) \mapsto g_{\ast}(Z)$.
 \end{definition}
 
-\begin{definition}
-Let $F ; \c \to \d$ be a functor and $f: c' \to c$ be a morphism in $\c$. We say $f$ is \textit{cartesian} if for any morphism $f' : c'' \to c$ in $\c$ and $g : F(c'') \to F(c')$ in $\d$ such that $Ff \circ g = Ff'$, there exists a unique $\phi : c'' \to c$ such that $f' = f \circ \phi$ and $F\phi = g$. In other words, any filling of the following diagram can be lifted to a filling in $\d$.
+Moreover, there is a full and faithful functor $F^{-1}(Y) \rightarrowtail Y/F$ defined in the same way. We say that $\c$ is a \textit{prefibered category} over $\d$ if this functor admits a right adjoint given by $(Z, g: Y \to F(Z)) \mapsto g_{\ast}(Z)$.
+
+\begin{definition}  Let $F ; \c \to \d$ be a functor.
+\begin{enumerate}
+\item Let $f: c' \to c$ be a morphism in $\c$. We say $f$ is \textit{cartesian} if for any morphism $f' : c'' \to c$ in $\c$ and $g : F(c'') \to F(c')$ in $\d$ such that $Ff \circ g = Ff'$, there exists a unique $\phi : c'' \to c$ such that $f' = f \circ \phi$ and $F\phi = g$. In other words, any filling of the following diagram can be lifted to a filling in $\d$.
 \[ \begin{tikzcd}
 c'' \arrow[r, dashed, "\exists!"] \arrow[swap, dr,  " f' "] & c' \arrow[d, "f"] \\% 
  & c
 \end{tikzcd}
 \]
+\item We say that $F$ is a \textit{fibration} if for any $c \in \c$ and morphism $f: d \to Fc$, there is a cartesian $\phi : c' \to c$ such that $F\phi =f$. Such $\phi$ is called a \textit{cartesian lifting} of $f$ to $c$.
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
-We say that $F$ is a \textit{fibration} if for any $c \in \c$ and morphism $f: d \to Fc$, there is a cartesian $\phi : c' \to c$ such that $F\phi =f$. Such $\phi$ is called a \textit{cartesian lifting} of $f$ to $c$.
-\end{definition}
 
 \begin{exmp}
 Let $\mathbf{Mod}$ denote the category of left $R$-modules where $R$ is a ring. Then the forgetful functor $U: \mathbf{Mod} \to \mathbf{Ring}$ is a fibration.
