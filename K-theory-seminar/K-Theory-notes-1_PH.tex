@@ -160,8 +160,8 @@
 \begin{abstract}
 More basic category theory. The main sources for this talk are the following.
 \begin{itemize}
-\item \textit{nLab}.
-\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 3.
+\item $n$Lab.
+\item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 3.
 \item Peter Johnstone's lecture notes for ``Category Theory" (Mathematical Tripos Part III, Michaelmas 2015), Ch. 1.
 \end{itemize}
 \end{abstract}
@@ -171,9 +171,9 @@ Let $\c$ and $\d$ be categories and $F,G: \c \to \d$ be functors.  A \textit{nat
 
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep = large]
-FA \arrow[r, "Ff"] \arrow[d, "f_A", swap]
+FA \arrow[r, "F{f}"] \arrow[d, "f_A", swap]
 & FB \arrow[d, "f_B"] \\
-GA \arrow[r, "Gf"]
+GA \arrow[r, "G{f}"]
 & GB
 \end{tikzcd}
 \end{center}
@@ -181,7 +181,7 @@ In symbols, this may be written as $f_Bf_{\ast} = f_{\ast}f_A$, where $f_A$ and 
 \end{definition}
 
 \begin{remark}\label{rmk}
-If every $f_A$ is an isomorphism, then the $(f_A)^{-1}$ define a natural transformation between the same two functors.
+If every $f_A$ is an isomorphism, then the $(f_A)^{{-}1}$ define a natural transformation between the same two functors.
 \end{remark}
 
 \begin{definition}
@@ -198,7 +198,7 @@ If $\d$ is a groupoid, then $\phi$ must be a natural isomorphism.
 \end{remark}
 
 \begin{lemma}
-A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse $\phi^{-1} : G \Rightarrow F$.
+A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse $\phi^{{-}1} : G \Rightarrow F$.
 \end{lemma}
 \begin{proof}
 This follows from \cref{rmk} and the definition of composite natural transformation.
@@ -243,20 +243,19 @@ A $G$-Universe models $\ZFC$, in particular $\mathsf{Replacement}$.
 \end{remark}
 
 \begin{definition}
-Given a category $\c$, the \textit{arrow category} $\ar(\c)$ of $\c$ has as objects morphisms $f: X_0 \to X_1$ in $\c$ and as morphisms $M: (f: X_0 \to X_1) \to (g: Y_0 \to Y_1)$ the pairs $M=(M_0, M_1)$ of morphisms $M_0 : X_0 \to Y_0$ and $M_1 : X_1 \to Y_1$ such that the following commutes. 
-
-\begin{center}
+Given a category $\c$, the \textit{arrow category} $\ar(\c)$ of $\c$ has as objects morphisms $f: X_0 \to X_1$ in $\c$ and as morphisms $M: \left(f: X_0 \to X_1\right) \to \left(g: Y_0 \to Y_1\right)$ the pairs $\left(M_0, M_1\right)$ of morphisms $M_0 : X_0 \to Y_0$ and $M_1 : X_1 \to Y_1$ such that
+\[
 \begin{tikzcd}[row sep=large, column sep = large]
 X_0 \arrow[r, "f"] \arrow[d, "M_0", swap]
 & X_1 \arrow[d, "M_1"] \\
 Y_0 \arrow[r, "g"]
 & Y_1
 \end{tikzcd}
-\end{center}
-
-\begin{remark}$\ar(\c) \cong \mathbf{Fun}([1], \c)$.
-\end{remark}
+\]
+commutes. 
 \end{definition}
+
+Note that $\ar(\c) \cong \mathbf{Fun}([1], \c)$.
 
 \begin{lemma}
 $\mathbf{Fun}(\c \times \d, \e) \cong \mathbf{Fun}(\c, \mathbf{Fun}( \d, \e))$ via currying. 
@@ -296,8 +295,8 @@ Apply \cref{equiv}.
 Any two skeleta $\c', \c'' \subset \c$ are isomorphic.
 \end{lemma}
 \begin{proof}
-Define $F: \c' \to \c''$ by $F(X) =Y$ where $h_X: X \cong Y$ and $F(f) = h_Y \circ f \circ (h_X)^{-1}$ for $f\in \c(X, Y)$. 
-To get $F^{-1}$, similarly define $G: \c'' \to \c'$ by choosing $(h_X)^{-1}$.
+Define $F: \c' \to \c''$ by $F(X) =Y$ where $h_X: X \cong Y$ and $F(f) = h_Y \circ f \circ (h_X)^{{-}1}$ for $f\in \c(X, Y)$. 
+To get $F^{{-}1}$, similarly define $G: \c'' \to \c'$ by choosing $(h_X)^{{-}1}$.
 \end{proof}
 
 \begin{remark}
@@ -356,8 +355,11 @@ The forgetful functor $U: \mathbf{Top} \to \mathbf{Set}$ has left adjoint that s
 \end{exmp}
 
 \begin{exmp}
-Let $\mathbf{CMon}$ be the category of commutative monoids. Given $M\in \ob \mathbf{CMon}$, we can construct the completion, or Grothendieck group, $G(M)$ on $M\times M$ as follows. Define addition on $M \times M$ component-wise and say that $(m_1, m_2) \sim (n_1, n_2)$ if $m_1 + m_2 + k = m_2 +n_1 +k$ for some $k\in M$. Set $G(M)$ as $(\faktor{M\times M}{\sim}, +)$.
-\\ \\
+Let $\mathbf{CMon}$ be the category of commutative monoids. Given $M\in \ob \mathbf{CMon}$, we can construct the completion, or Grothendieck group, $G(M)$ on $M\times M$ as follows. Define addition on $M \times M$ component-wise and say that $(m_1, m_2) \sim (n_1, n_2)$ if $m_1 + m_2 + k = m_2 +n_1 +k$ for some $k\in M$. Set $G(M)$ as $\left(\faktor{M\times M}{\sim}, +\right)$.
+
+\medskip
+
+
 Then $G: \mathbf{CMon} \to \mathbf{Ab}$ is a functor. This is left adjoint to the forgetful functor $U: \mathbf{Ab} \to \mathbf{CMon}$.
 \end{exmp}
 
@@ -379,11 +381,11 @@ Let $\mathbf{Ab}_T\subset \mathbf{Ab}$ denote the category of torsion groups. Th
 \end{exmp}
 
 \begin{definition}
-Given an adjunction $\phi: \d(F(-), -) \Rightarrow \c(-, G(-))$, define the \textit{unit morphism} $$\eta_X =\phi_{X, F(X)}(\id_{F(X)})$$ and the \textit{counit morphism} $$\epsilon_Y =\phi_{G(Y), Y}^{-1}(\id_{G(Y)}).$$
+Given an adjunction $\phi: \d(F(-), -) \Rightarrow \c(-, G(-))$, define the \textit{unit morphism} $$\eta_X =\phi_{X, F(X)}(\id_{F(X)})$$ and the \textit{counit morphism} $$\epsilon_Y =\phi_{G(Y), Y}^{{-}1}(\id_{G(Y)}).$$
 \end{definition}
 
 \begin{lemma}
-Given an adjunction $\phi$, the unit morphisms $\eta_X$ define a natural transformation $\eta: \id_{\c} \Rightarrow GF$ and the counit morphisms $\eta_Y$ define a natural transformation $\epsilon: FG \Rightarrow \id_{\d}$.
+The unit morphisms $\eta_X$ define a natural transformation $\eta: \id_{\c} \Rightarrow GF$, and the counit morphisms $\eta_Y$ define a natural transformation $\epsilon: FG \Rightarrow \id_{\d}$.
 \end{lemma}
 
 \end{document}

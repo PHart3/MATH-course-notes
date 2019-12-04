@@ -233,7 +233,7 @@ Given a dependent type $D: \prod {\{x,y:A\}}, \id_A(x,y) \to \mathbf{Type}$, sup
 \end{remark}
 
 \begin{lemma}
-Let $A: \mathbf{Type}$ and $x,y: A$. Then there is some function $\mathsf{sym}:(x\leadsto y) \to (y \leadsto x)$ such that $\mathsf{sym} (\refl_x) \equiv \refl_x$ for each $x:A$. Let $p^{-1} \coloneqq \mathsf{sym}(p)$.
+Let $A: \mathbf{Type}$ and $x,y: A$. Then there is some function $\mathsf{sym}:(x\leadsto y) \to (y \leadsto x)$ such that $\mathsf{sym} (\refl_x) \equiv \refl_x$ for each $x:A$. Let $p^{{-}1} \coloneqq \mathsf{sym}(p)$.
 \end{lemma}
 \begin{proof}
 Define $D: \prod (x,y:A), (x\leadsto y) \to \mathbf{Type}$ by the judgment $$D(x,y,p) \equiv y \leadsto x .$$ By our construction of $\id$, we have the function term $$d\coloneqq \lambda x. \refl_x : \prod_{x:A}D(x,x,\refl_x).$$ By induction, we obtain an extension $J$ of $d$ such that $J(D, d, x, y, p) : y \leadsto x$ for every $p: x \leadsto y$. Letting $\mathsf{inv}(p) \coloneqq J(D, d,x,y,p)$ completes the proof.
@@ -252,7 +252,7 @@ Define the dependent type $D$ over $\id_A$ by $$D(x, y, q) \equiv (y \leadsto z)
 \item Let $\phi, \psi: I \to X$ be paths in the topological space $X$ such that $\phi(1) = \psi(0)$. Then $\phi \ast \psi : I \to X$ defined by  $t\mapsto  \begin{cases} \phi(2t) & 0\leq t \leq \frac{1}{2} \\ \psi(2t-1) & \frac{1}{2} \leq t \leq 1 \end{cases}$ is a path from $\phi(0)$ to $\psi(1)$. This fact corresponds to the function $\mathsf{trans}$.
 \item Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ with $\ob(\Pi_1(X)) = X$ and $\Hom_{\Pi_1(X)}(x,y) = \{[\gamma]_{\simeq_p} \mid \gamma$ is a path from $x$ to $y\}$. The composition of morphisms is given by the operation $\ast$. 
 \end{enumerate}
-It is straightforward but tedious to verify that $\Pi_1$ satisfies the definition of a groupoid with $[\bar{\gamma}] = [\gamma]^{-1}$.
+It is straightforward but tedious to verify that $\Pi_1$ satisfies the definition of a groupoid with $[\bar{\gamma}] = [\gamma]^{{-}1}$.
 \end{remark}
 
 Our next result shows that if two terms of type $A$ are propositionally equal and $P$ is a property of inhabitants of $A$, then $P$ is true of one if and only if it is true of the other.
@@ -417,7 +417,7 @@ We just prove the ($\Longleftarrow$) direction, which is harder. We derive it fr
 \begin{prop}
 If $(f, g, \eta, \epsilon, \alpha)$ is an adjoint equivalence from $A$ to $B$, then $f$ is an equivalence.
 \end{prop}
-Now, suppose that $(f,g,H, K): \iso(A,B)$. We want to construct an adjoint equivalence $(f, g, \eta,  \epsilon, \alpha)$. Define $\eta$ by $$\eta(x) \equiv H(x) \ast g(K(f(x)))^{-1} \ast g(f(H(x)))^{-1}.$$ Let $\epsilon \equiv K$. 
+Now, suppose that $(f,g,H, K): \iso(A,B)$. We want to construct an adjoint equivalence $(f, g, \eta,  \epsilon, \alpha)$. Define $\eta$ by $$\eta(x) \equiv H(x) \ast g(K(f(x)))^{{-}1} \ast g(f(H(x)))^{{-}1}.$$ Let $\epsilon \equiv K$. 
 It remains to check that $f(\eta(x)) \ast \epsilon(f(x)) \leadsto \refl_{f(x)}$.
 To do this, we apply \cref{commutes} after doing a bit of diagram chasing.
 \end{proof}
@@ -472,14 +472,14 @@ Note that the identity map on $A$ is an equivalence. Hence we may apply path ind
 \end{proof}
 
 \begin{definition}
-The \textit{univalence axiom} is that $v(A, B) : (A \leadsto B) \to (A \simeq B)$ is an equivalence. In particular, there is some function $v(A, B) ^{-1}: (A \simeq B) \to (A \leadsto B)$.
+The \textit{univalence axiom} is that $v(A, B) : (A \leadsto B) \to (A \simeq B)$ is an equivalence. In particular, there is some function $v(A, B) ^{{-}1}: (A \simeq B) \to (A \leadsto B)$.
 \end{definition}
 
 \begin{lemma}[Induction on equivalences] 
 Suppose that $$D: \prod(A, B : \type), (A \simeq B) \to \type$$ and that there is some $$d: \prod_{A: \type}D(A, A, \text{idmap}_A).$$ Then there is some section  $$J(D, d)  :  \prod_{\substack{\{A,B:\type\} \\ e:A\simeq B}} D(A,B,e) $$ of $D$. 
 \end{lemma}
 \begin{proof}
-Let $A,B: \type$ and $e: A \simeq B$. There is some path $v(A,B)(v(A,B)^{-1}(e))\leadsto_{A\simeq B} e$. Thus, it suffices to show that $D(A, B, v(A,B)(v(A,B)^{-1}(e)))$ is inhabited. It follows that it is enough to find a section of the dependent type $D'$ over $A\leadsto_{\type} B$ where $D'(A, B, p) \equiv D(A, B, v(A, B, p))$. But note that $D'(A, A, \refl_A) = D(A, A, \text{idmap}_A)$, which is inhabited by assumption. By path induction, we are done.
+Let $A,B: \type$ and $e: A \simeq B$. There is some path $v(A,B)(v(A,B)^{{-}1}(e))\leadsto_{A\simeq B} e$. Thus, it suffices to show that $D(A, B, v(A,B)(v(A,B)^{{-}1}(e)))$ is inhabited. It follows that it is enough to find a section of the dependent type $D'$ over $A\leadsto_{\type} B$ where $D'(A, B, p) \equiv D(A, B, v(A, B, p))$. But note that $D'(A, A, \refl_A) = D(A, A, \text{idmap}_A)$, which is inhabited by assumption. By path induction, we are done.
 \end{proof}
 
 We now have a powerful tool for proving things about function spaces.
@@ -497,14 +497,20 @@ The univalence axiom entails WFE (hence SFE).
 \end{corollary}
 \begin{proof}
 Suppose that $P: A \to \type$ and that there is some $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A}, P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. By univalence, it follows that $P(x) \leadsto  \mathsf{unit}$.  Our previous proposition implies that $P\leadsto_{A \to \type} U$.
-\\ \\ Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A}, U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last proposition proves that $A \to \mathsf{unit}$ is contractible. 
+
+\medskip
+
+ Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A}, U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of our last proposition proves that $A \to \mathsf{unit}$ is contractible. 
 \end{proof}
 
 Finally, by assuming the univalence axiom, we prove a fundamental result of category theory in our type theory.
 
 \begin{lemma}[Yoneda]
 Let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod(x:A), P(x) \to Q(x)$.
-\\ \\
+
+\medskip
+
+
 Assume that WFE holds. Then for any dependent type $P$ over $A$ and any $a: A$, there exists a natural equivalence $$ \alpha_{P,a} :\Hom(\mathsf{Y}(a), P)\simeq P(a) . $$ The term $ \alpha_{P,a} $ is natural in the sense that for any $p: a\leadsto a'$ and $\sigma : \Hom(P, P')$, the square
 \[
 \begin{tikzcd}
@@ -553,7 +559,7 @@ Anders M\"ortberg has designed an experimental implementation of cubical type th
 \addcontentsline{toc}{section}{Further reading}
 \section*{Further reading}
 
-A key feature of HoTT that we have neglected is having higher inductive types (HIT's). The circle $S^1$ can be modeled as a HIT, from which we can prove that $\pi_1(S^1) \cong \Z$. Dan Licata has a formalized proof of this in Agda.
+A key feature of HoTT that we have neglected is the ability to define so-called higher inductive types (HIT's). For example, the circle $S^1$ can be modeled as a HIT, from which we can prove that $\pi_1(S^1) \cong \Z$. Dan Licata has a formalized proof of this in Agda.
 
 \addcontentsline{toc}{section}{Sources}
 \section*{Sources}

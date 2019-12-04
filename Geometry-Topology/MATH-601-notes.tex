@@ -199,7 +199,7 @@
 \begin{document}
 
 \begin{abstract}
-These notes are based on Jonathan Block's lectures for the course ``Geometric Analysis and Topology II'' given at UPenn along with Allen Hatcher's \textit{Algebraic Topology}. Any mistake in what follows is my own.
+These notes are based on Jonathan Block's lectures for the course ``Geometric Analysis and Topology II'' at UPenn along with Allen Hatcher's \textit{Algebraic Topology}. Any mistake in what follows is my own.
 \end{abstract}
 
 \tableofcontents
@@ -251,19 +251,16 @@ Start with a discrete set $X^0$, called a \textit{$0$-skeleton}.
 
 By induction, define the \textit{$n$-skeleton} as $$X^n = \faktor{X^{n-1} \coprod_{\alpha} D^n_{\alpha}}{\sim}$$ where $\varphi_{\alpha}: S^{n-1} \to X^{n-1}$ is an \textit{attaching map} and $x\sim \varphi_{\alpha}(x)$ for each $x\in \partial{D^n_{\alpha}}$. Then $$X^n = X^{n-1} \coprod_{\alpha} e^n_{\alpha}$$ where each $e^n_{\alpha}$ is an $n$-cell.
 
-Set $X= \bigcup_{n} X^n$ and endow it with the weak topology: $A$ is open in $X$ if and only if $A\cap X^n$ is open in $X^n$ for each $n$.
+Set $X= \bigcup_{n} X^n$ and endow it with the \textit{weak topology}: $A$ is open in $X$ if and only if $A\cap X^n$ is open in $X^n$ for each $n$.
 \begin{definition} $ $
 \begin{itemize}
 \item If $X$ is a CW-complex, then the \textit{dimension of $X$} is the maximum dimension of cells of $X$.
 \item If $X$ is a CW-complex consisting of only finitely many cells, then it is called a \textit{finite CW-complex}.
 \end{itemize}
 \end{definition}
+Each cell $e_{\alpha}^n$ has a \textit{characteristic map $\Phi_{\alpha} : D_{\alpha}^n \to X$} given by the composition $$D_{\alpha}^n \hookrightarrow X^{n-1} \coprod_{\alpha} D_{\alpha}^n \twoheadrightarrow X^n \hookrightarrow X.$$ This extends the attaching map $\varphi_{\alpha}$ and is a homeomorphism $\Int{D_{\alpha}^n} \to e_{\alpha}^n$.
 \end{enumerate}
 \end{note}
-
-\begin{remark}
-Each cell $e_{\alpha}^n$ has a \textit{characteristic map $\Phi_{\alpha} : D_{\alpha}^n \to X$} given by the composition $$D_{\alpha}^n \hookrightarrow X^{n-1} \coprod_{\alpha} D_{\alpha}^n \twoheadrightarrow X^n \hookrightarrow X.$$ This extends the attaching map $\varphi_{\alpha}$ and is a homeomorphism $\Int{D_{\alpha}^n} \to e_{\alpha}^n$.
-\end{remark}
 
 \begin{remark}
 If $X$ is a CW-complex, then any function $f: X \to Y$ is continuous if and only if $f\restriction_{X^n}$ is continuous for each $n\geq 0$.
@@ -308,7 +305,7 @@ Every manifold has a CW-structure.
   \foreach \n in {1,...,140} 
    \draw (1/\n,0) circle (1/\n);
  \end{tikzpicture}
-\] If this had a CW-structure, then the sequence $(\frac{2}{n}, 0)_{n\in \N}$ would not converge to $(0, 0)$, which is absurd.
+\] If this had a CW-structure, then the sequence $\left(\frac{2}{n}, 0\right)_{n\in \N}$ would not converge to $(0, 0)$, which is absurd.
 \end{enumerate}
 \end{exmp}
 
@@ -501,7 +498,7 @@ We see that $S^{n-1} \times I \cup D^n \times \{0\}$ is a retract of $D^n \times
 \end{proof}
 \item If $A\coloneqq  \{0, 1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \ldots\}$, then $A \hookrightarrow I$ is not a cofibration.
 \begin{proof}
-Suppose, for contradiction, that there is some retraction $r: I \times I \to A \times I \cup I \times \{0\}$. For each $n\geq 1$, the set $c_n \coloneqq  [(\frac{1}{n+1}, 1), (\frac{1}{n}, 1)]$ is connected, so that $r(c_n)$ is connected as well. Thus, there exists $(x_n, 1) \in c_n$ such that $r(x_n, 1) = (x_n ,0)$. But then $(x_n, 1) \to (0, 1)$ whereas $r(x_n, 1) \to (0, 0)$. As $r(0,1) = (0,1)$, this contradicts the continuity of $r$. 
+Suppose, for contradiction, that there is some retraction $r: I \times I \to A \times I \cup I \times \{0\}$. For each $n\geq 1$, the set $c_n \coloneqq  \left[\left(\frac{1}{n+1}, 1), (\frac{1}{n}, 1\right)\right]$ is connected, so that $r(c_n)$ is connected as well. Thus, there exists $(x_n, 1) \in c_n$ such that $r(x_n, 1) = (x_n ,0)$. But then $(x_n, 1) \to (0, 1)$ whereas $r(x_n, 1) \to (0, 0)$. As $r(0,1) = (0,1)$, this contradicts the continuity of $r$. 
 \end{proof}
 \item Let $f: B \to A$ be a map. Then $(\cyl(f), B \times \{0\})$ satisfies HEP.
 \end{enumerate}
@@ -652,7 +649,7 @@ Let $\alpha \in \R\setminus \Q$. We have that $S^1 \cong \faktor{\R}{x\sim x+1} 
 \begin{enumerate}
 \item $\R^2 \twoheadrightarrow \faktor{\R^2}{\Z^2} \cong S^1 \times S^1$.
 \item $\SL_2(\R) \twoheadrightarrow \faktor{\SL_2(\R)}{\SL_2(\Z)}$.
-\item Set $G = \big \{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}  \mid x,y,z \in \R \big \}$ and $\Gamma = \big \{ \begin{bmatrix} 1 & a & c \\  & 1 & b \\  &  & 1 \end{bmatrix} \mid a,b,c \in \R \big \}$. Then $\Gamma$ is a discrete subgroup of $G$, and $G \twoheadrightarrow \faktor{G}{\Gamma}$ is a covering projection. We call $\faktor{G}{\Gamma}$ an \textit{Iwasawa manifold}.
+\item Set $G = \left \{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}  \mid x,y,z \in \R \right \}$ and $\Gamma = \left \{ \begin{bmatrix} 1 & a & c \\  & 1 & b \\  &  & 1 \end{bmatrix} \mid a,b,c \in \R \right \}$. Then $\Gamma$ is a discrete subgroup of $G$, and $G \twoheadrightarrow \faktor{G}{\Gamma}$ is a covering projection. We call $\faktor{G}{\Gamma}$ an \textit{Iwasawa manifold}.
 Since $G$ is simply connected, we also have that $\pi_1 \left(\faktor{G}{\Gamma} \right) \cong \Gamma$.
 \end{enumerate}
 \end{exmp}
@@ -665,7 +662,7 @@ $\pi_1(X \times Y, (x_0, y_0)) \cong \pi_1(X, x_0) \times \pi_1(Y, y_0)$.
 Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection. Suppose that there is some $\widetilde{F}_0 : Z \times \{0\} \to Y$ such that $p \circ \widetilde{F}_0 = F_0$. Then there exists a unique map $\widetilde{F} : Z \times I \to Y$ such that $p \circ \widetilde{F} = F$ and $\widetilde{F} \restriction_{Z\times \{0\}} = \widetilde{F}_0$.
 \end{lemma}
 
-\begin{corollary}[Path lifting property]
+\begin{corollary}[Path lifting property]\label{cor1}
 \begin{enumerate}
 \item If $\gamma : I \to X$ is a path and $y_0 \in Y$ with $p(y_0) = \gamma(0)$, then there exists a unique $\tilde{\gamma} : I \to Y$ such that $\tilde{\gamma}(0) = y_0$ and $p \circ \tilde{\gamma} = \gamma$.
 \item Let $\gamma_0, \gamma_1$ be two paths in $X$ and let $H : \gamma_0 \simeq_p \gamma_1$. Let $\tilde{\gamma}_0$ and $\tilde{\gamma}_1$ be respective lifts such that $\tilde{\gamma}_0 (0) = \tilde{\gamma}_1(0)$. Then there exists a unique $\widetilde{H} : \tilde{\gamma}_0 \simeq_p \tilde{\gamma}_1$ such that $p \circ \widetilde{H} = H$.
@@ -682,7 +679,7 @@ Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection.
 $\pi_1(S^1, 1) \cong \Z$.
 \end{theorem}
 \begin{proof}
-Let $\gamma$ be a path in $S^1$ based at $1$. We have a covering map $p: \R \to S^1$ given by $t\mapsto e^{2\pi i t}$. By our last corollary, there is some unique lift $\tilde{\gamma}$ of $\gamma$ such that $\tilde{\gamma}(0) = 0$ and $p \circ \tilde{\gamma} = \gamma$. Since $p^{-1}(1) = \Z$, our last corollary gives a function $\psi: \pi_1(S^1, 1) \to \Z$ given by $[\gamma ] \mapsto \tilde{\gamma}(1)$. Since $\R$ is simply connected, we have that $\psi$ is bijective. It remains to verify that it's a homomorphism. Let $[f], [g] \in \pi_1(S^1, 1)$ and take their respective unique lifting $\tilde{f}$ and $\tilde{g}$. Write $n = \tilde{f}(1)$ and $m= \tilde{g}(1)$. Define the path $\tilde{\tilde{g}}(s) = n+ \tilde{g}(s)$ in $\R$, which begins at $n$. Since $p(n+x) = p(x)$ for every $x\in \R$, we see that $\tilde{\tilde{g}}$ lifts $g$. Then $\tilde{f} \ast \tilde{\tilde{g}}$ lifts $f \ast g$ and ends at the point $n+m$. Hence $\psi([f] \ast [g]) = n+m = \psi([f])  + \psi([g])$, as required. 
+Let $\gamma$ be a path in $S^1$ based at $1$. We have a covering map $p: \R \to S^1$ given by $t\mapsto e^{2\pi i t}$. By \cref{cor1}, there is some unique lift $\tilde{\gamma}$ of $\gamma$ such that $\tilde{\gamma}(0) = 0$ and $p \circ \tilde{\gamma} = \gamma$. Since $p^{-1}(1) = \Z$, \cref{cor1} gives a function $\psi: \pi_1(S^1, 1) \to \Z$ given by $[\gamma ] \mapsto \tilde{\gamma}(1)$. Since $\R$ is simply connected, we have that $\psi$ is bijective. It remains to verify that it's a homomorphism. Let $[f], [g] \in \pi_1(S^1, 1)$ and take their respective unique lifting $\tilde{f}$ and $\tilde{g}$. Write $n = \tilde{f}(1)$ and $m= \tilde{g}(1)$. Define the path $\tilde{\tilde{g}}(s) = n+ \tilde{g}(s)$ in $\R$, which begins at $n$. Since $p(n+x) = p(x)$ for every $x\in \R$, we see that $\tilde{\tilde{g}}$ lifts $g$. Then $\tilde{f} \ast \tilde{\tilde{g}}$ lifts $f \ast g$ and ends at the point $n+m$. Hence $\psi([f] \ast [g]) = n+m = \psi([f])  + \psi([g])$, as required. 
 \end{proof}
 
 
@@ -719,9 +716,18 @@ Let $z_0\in Z$.
 \begin{proof}
 For any $(z_0, t) \in Z \times I$, note that $F(z_0, t)$ has some neighborhood $V_{z_0,t}$ such that $$p^{-1}(V_{z_0, t}) = \coprod_{\alpha} V_{z_0,t, \alpha}$$ with $p: V_{z_0, t, \alpha} \to V_{z_0, t}$ a homeomorphism. Thus, $F^{-1}(V_{z_0, t})$ contains some set of the form $\underbrace{U_{z_0, t}}_{\text{nbhd of } z_0} \times (a_t, b_t)$, so that $F(U_{z_0, t}  \times (a_t, b_t)) \subset V_{z_0, t} $. This makes $\{(a_t, b_t)\}_{t\in I}$ an open cover of $I$. As $I$ is compact, there is some $k\in \N$ such that $\{(a_{t_i}, b_{t_i})\}_{i=1, \ldots, k}$  cover $I$. Set $U_{z_0} = \bigcap_{1\leq i \leq k} U_{z_0, t_i}$, which must be  open and contain $z_0$. We obtain a sequence $ 0= t_0 < t_1 < \cdots < t_n =1 $ such that $F(U_{z_0} \times [t_i, t_{i+1}])$ is contained in an evenly covered set of $X$. 
 Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0}) =\coprod_j \widetilde{U}_{z_0, 0, j} \subset Y$, say, $j_0$. Define $\widetilde{F} : U_{z_0} \times [0, t_1] \to \widetilde{U}_{z_0, 0, j_0}$ as the composite $p^{-1}_{j_0} \circ F \restriction_{U_{z_0} \times [0, t_1]}$ where $p_{j_0} : \widetilde{U}_{z_0, 0, j_0} \to U_{z_0, 0}$ is some homeomorphism.
-\\ \\ Suppose that we have extended $\widetilde{F}$ to $U_{z_0} \times [0,t_i]$. We can use a similar argument to define an extension $\widetilde{F}$ on $U_{z_0} \times [t_i, t_{i+1}]$.  By induction, it follows that we can construct a lift $\tilde{F} : U_{z_0} \times I \to Y$ of $F$.
-\\ \\ It remains to verify that such a lift is unique. For now, assume that $Z= \ast$. Suppose that $\widetilde{F}$ and $\widetilde{F}'$ are two lifts of $F: I \to X$ such that $\widetilde{F}(0) = \widetilde{F}'(0)$. Assume inductively that $\widetilde{F} = \widetilde{F}'$ on $[0,t_i]$. Since both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are connected and $\widetilde{F}(t_i) = \widetilde{F}'(t_i)$, there is a single sheet over $U_{i-1}$ in which both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are contained. Since $p$ is injective on this sheet and $p\circ \widetilde{F} = p \circ \widetilde{F}'$, it follows that $\widetilde{F} = \widetilde{F}'$ on $[t_i, t_{i+1}]$. We are done with our induction.
-\\ \\ As a result, the  lifts  $\{F \restriction_{U_{z} \times [0, t_1]}\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\{z\} \times I$.
+
+\medskip
+
+ Suppose that we have extended $\widetilde{F}$ to $U_{z_0} \times [0,t_i]$. We can use a similar argument to define an extension $\widetilde{F}$ on $U_{z_0} \times [t_i, t_{i+1}]$.  By induction, it follows that we can construct a lift $\tilde{F} : U_{z_0} \times I \to Y$ of $F$.
+
+\medskip
+
+ It remains to verify that such a lift is unique. For now, assume that $Z= \ast$. Suppose that $\widetilde{F}$ and $\widetilde{F}'$ are two lifts of $F: I \to X$ such that $\widetilde{F}(0) = \widetilde{F}'(0)$. Assume inductively that $\widetilde{F} = \widetilde{F}'$ on $[0,t_i]$. Since both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are connected and $\widetilde{F}(t_i) = \widetilde{F}'(t_i)$, there is a single sheet over $U_{i-1}$ in which both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are contained. Since $p$ is injective on this sheet and $p\circ \widetilde{F} = p \circ \widetilde{F}'$, it follows that $\widetilde{F} = \widetilde{F}'$ on $[t_i, t_{i+1}]$. We are done with our induction.
+
+\medskip
+
+ As a result, the  lifts  $\{F \restriction_{U_{z} \times [0, t_1]}\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\{z\} \times I$.
 \end{proof}
 \end{proof}
 
@@ -782,7 +788,10 @@ This induces an isomorphism of diagrams (in particular, spans).
 \pi_1(A \cup V) & \pi_1(U \cup V) \arrow[l] \arrow[r] & \pi_1(B \cup U) 
 \end{tikzcd}
 \] As a result, their pushouts (i.e., colimits) must be isomorphic. 
-\\ \\ Now, note that $(A \cup V)^c = B \setminus V$, which  is closed in $X$. Likewise, $(B \cup U)^c$ is closed in $X$. We can apply van Kampen to get
+
+\medskip
+
+ Now, note that $(A \cup V)^c = B \setminus V$, which  is closed in $X$. Likewise, $(B \cup U)^c$ is closed in $X$. We can apply van Kampen to get
 $$  \pi_1(X) \cong \pi_1(A\cup V) \underset{\pi_1(U \cup V)}{\ast} \pi_1(B \cup U) .$$ By our argument above, this implies that $$  \pi_1(X)  \cong \pi_1(A) \underset{\pi_1(A \cap B)}{\ast} \pi_1(B) .$$
 \end{proof}
 
@@ -939,9 +948,15 @@ Z \arrow[r, "f"'] \arrow[ru, "\tilde{f}", dashed] & X
 \end{lemma}
 \begin{proof} $ $ \\
 ($\Longrightarrow$) Note that $f_{\ast} = (p\tilde{f})_{\ast}= p_{\ast}\tilde{f}_{\ast}$.
-\\ \\ 
+
+\medskip
+
+ 
 ($\Longleftarrow$) Let $z\in Z$. Find some path $\gamma : z_0 \leadsto z$.  Then $f \gamma$ is a path in $X$ starting at $x_0$. There exists a unique lift $\widetilde{f \gamma}$ starting at $y_0$. Set $\tilde{f}(z) = \widetilde{f \gamma}(1)$. We must check that $\tilde{f}$ is well-defined. Let $\gamma' : z_0 \leadsto z$. Then $h_0\coloneqq (f \gamma ')\ast (f\gamma)^{-1}$ is a loop at $x_0$. Note that $[h_0] \in f_{\ast}\pi_1(Z, z_0) \subset p_{\ast} \pi_1(Y, y_0)$. Hence there is some homotopy $H: h_0 \simeq_p p \circ \tilde{h}_1$ for some loop $\tilde{h}_1$ at $y_0$. Apply the homotopy lifting property to get a homotopy $\widetilde{H} : \tilde{h}_0 \simeq_p \tilde{h}_1$, so that $\tilde{h}_0$ is a loop. By uniqueness of lifts, $\tilde{h}_0 =\widetilde{f \gamma '}\ast \widetilde{f\gamma}^{-1}$, which implies that $\widetilde{f \gamma '}(1) = \widetilde{f\gamma}(1-0) = \widetilde{f\gamma}(1)$, as required.
-\\ \\ It remains to verify that $\tilde{f}$ is continuous. Find some path $\lambda : z_0 \leadsto z$. We know that there is some neighborhood $U \ni f(z)$ that is is evenly covered by $p$. Let $\widetilde{U}$ denote the sheet containing $\tilde{f}(z)$ and find some homeomorphism $p : \widetilde{U} \to U $. Find some path connected neighborhood $V\ni z$ such that $f(Z) \subset U$. Let $z' \in V$. Find some path $\eta : z \leadsto z'$. Then the path $(f \lambda )\ast (f \eta)$ lifts to $(\widetilde{f \lambda}) \ast (\widetilde{f \eta})$ where $\widetilde{f\eta} = p^{-1}f\eta$. As $z'$ was arbitrary in $V$, this implies that $\tilde{f}\restriction_V =p^{-1}f\restriction_V$, which is continuous. Hence $\tilde{f}$ is continuous as well. 
+
+\medskip
+
+ It remains to verify that $\tilde{f}$ is continuous. Find some path $\lambda : z_0 \leadsto z$. We know that there is some neighborhood $U \ni f(z)$ that is is evenly covered by $p$. Let $\widetilde{U}$ denote the sheet containing $\tilde{f}(z)$ and find some homeomorphism $p : \widetilde{U} \to U $. Find some path connected neighborhood $V\ni z$ such that $f(Z) \subset U$. Let $z' \in V$. Find some path $\eta : z \leadsto z'$. Then the path $(f \lambda )\ast (f \eta)$ lifts to $\left(\widetilde{f \lambda}\right) \ast \left(\widetilde{f \eta}\right)$ where $\widetilde{f\eta} = p^{-1}f\eta$. As $z'$ was arbitrary in $V$, this implies that $\tilde{f}\restriction_V =p^{-1}f\restriction_V$, which is continuous. Hence $\tilde{f}$ is continuous as well. 
 \end{proof}
 
 \begin{prop}[Unique lifting property]
@@ -949,7 +964,7 @@ Let $p: Y \to X$ be a covering map and $f: Z \to X$ a map with $\tilde{f}_1, \ti
 \end{prop}
 
 \begin{remark}
-Let $X$ be a space with  $\pi_0(X) =0$. When is there a locally path connected covering space $p: \widetilde{X} \to X$ such that $\pi_1(\widetilde{X}) =0$. Suppose that such a space exists. Let $x \in X$. Suppose that the open set $U \subset X$ with $x\in U$ is evenly covered. Ley $\widetilde{U} \subset \widetilde{X}$ be one sheet.  If $\gamma$ is a loop in $U$, then it lifts to a loop $\tilde{\gamma}$ at, say, $y \in \widetilde{U}$, which must be nullhomotopic. Find some homotopy $H: \tilde{\gamma} \simeq_p c_y$. Then $pH : \gamma \simeq_p c_x$. Therefore, for any $x\in X$, there is some neighborhood $U\ni x$ such that $\pi_1(U) =0$.
+Let $X$ be a space with  $\pi_0(X) =0$. When is there a locally path connected covering space $p: \widetilde{X} \to X$ such that $\pi_1\left(\widetilde{X}\right) =0$. Suppose that such a space exists. Let $x \in X$. Suppose that the open set $U \subset X$ with $x\in U$ is evenly covered. Ley $\widetilde{U} \subset \widetilde{X}$ be one sheet.  If $\gamma$ is a loop in $U$, then it lifts to a loop $\tilde{\gamma}$ at, say, $y \in \widetilde{U}$, which must be nullhomotopic. Find some homotopy $H: \tilde{\gamma} \simeq_p c_y$. Then $pH : \gamma \simeq_p c_x$. Therefore, for any $x\in X$, there is some neighborhood $U\ni x$ such that $\pi_1(U) =0$.
 \begin{definition}
 Such a property of $X$ is called being \textit{semilocally simply connected}. 
 \end{definition}
@@ -986,7 +1001,7 @@ Y_2 \arrow[r, "p_2"'] \arrow[ru, "\tilde{p}_2", dashed] & X
 \subsection{Lecture 8}
 
 \begin{definition}
-If $X$ is a swell space, then we call such a cover $p: (\widetilde{X}, \tilde{x}_0) \to (X, x_0)$ the \textit{universal cover of $X$}. It is universal in that for any path connected covering space $p': (Y, y_0) \to (X, x_0)$, there exists a unique covering map $p'': (\widetilde{X}, \tilde{x}_0) \to (Y, y_0)$ such that $p'' p' = p$. 
+If $X$ is a swell space, then we call such a cover $p: \left(\widetilde{X}, \tilde{x}_0\right) \to (X, x_0)$ the \textit{universal cover of $X$}. It is universal in that for any path connected covering space $p': (Y, y_0) \to (X, x_0)$, there exists a unique covering map $p'': \left(\widetilde{X}, \tilde{x}_0\right) \to (Y, y_0)$ such that $p'' p' = p$. 
 \end{definition}
 
 \begin{lemma}
@@ -1001,7 +1016,10 @@ Let $X$ be path connected and locally path connected. Suppose that $p_1:(Y_1, y_
 \end{lemma}
 \begin{proof}
 The ($\Longrightarrow$) direction follows from the fact that $p_1 = p_2f$ and $p_2 = p_1f^{-1}$. 
-\\ \\ ($\Longleftarrow$) Apply the lifting criterion twice to lifts $\tilde{p}_1$ and $\tilde{p}_2$ such that $p_2\tilde{p_1} = p_1$ and $p_1\tilde{p_2}=p_2$. By the unique lifting property, $\tilde{p}_1\tilde{p}_2=\1$ and $\tilde{p}_2\tilde{p}_1 = \1$. Hence $\tilde{p}_1$ and $\tilde{p}_2$ are inverse isomorphisms. 
+
+\medskip
+
+ ($\Longleftarrow$) Apply the lifting criterion twice to lifts $\tilde{p}_1$ and $\tilde{p}_2$ such that $p_2\tilde{p_1} = p_1$ and $p_1\tilde{p_2}=p_2$. By the unique lifting property, $\tilde{p}_1\tilde{p}_2=\1$ and $\tilde{p}_2\tilde{p}_1 = \1$. Hence $\tilde{p}_1$ and $\tilde{p}_2$ are inverse isomorphisms. 
 \end{proof}
 
 \begin{corollary}
@@ -1009,7 +1027,7 @@ Let $X$ be swell. There is a bijection between the set of isomorphism classes of
 \end{corollary}
 
 \begin{definition}
-Let $p: \widetilde{X} \to X$ be a covering space. The set of isomorphisms $\widetilde{X}  \to \widetilde{X} $, called \textit{deck transformations}, forms a group $G(\widetilde{X})$ under composition. 
+Let $p: \widetilde{X} \to X$ be a covering space. The set of isomorphisms $\widetilde{X}  \to \widetilde{X} $, called \textit{deck transformations}, forms a group $G\left(\widetilde{X}\right)$ under composition. 
 \end{definition}
 
 \begin{remark}
@@ -1017,7 +1035,7 @@ This corresponds to the Galois group.
 \end{remark}
 
 \begin{note}
-By the unique lifting property, if $\widetilde{X}$ is path connected, then any $f\in G(\widetilde{X} )$ is entirely determined by its value at a single point.
+By the unique lifting property, if $\widetilde{X}$ is path connected, then any $f\in G\left(\widetilde{X} \right)$ is entirely determined by its value at a single point.
 \end{note}
 
 \begin{definition}
@@ -1077,7 +1095,7 @@ We have that $\Gamma \cong \pi_1(X)$ where $X\coloneqq  \bigvee_{\alpha} S_{\alp
 \end{definition}
 
 \begin{definition}
-Let $(K, \Sigma)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Define $$C_k(K, \Sigma) =\faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim (-1)^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
+Let $(K, \Sigma)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Define $$C_k(K, \Sigma) =\faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim ({-}1)^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
 \end{definition}
 
 \begin{note}
@@ -1085,7 +1103,7 @@ $C_k(K, \Sigma)$ is a free abelian group.
 \end{note}
 
 \begin{definition}
-Define the \textit{differential} $\partial_{k} : C_k(K, \Sigma) \to C_{k-1}(K, \Sigma)$ by  $$\partial_{k}(v_0\cdots v_k) = \sum_{i=0}^k (-1)^i v_0 \cdots \widehat{v_i} \cdots v_k, $$ which we extend linearly.  
+Define the \textit{differential} $\partial_{k} : C_k(K, \Sigma) \to C_{k-1}(K, \Sigma)$ by  $$\partial_{k}(v_0\cdots v_k) = \sum_{i=0}^k ({-}1)^i v_0 \cdots \widehat{v_i} \cdots v_k, $$ which we extend linearly.  
 \end{definition}
 
 \begin{exercise}
@@ -1178,7 +1196,7 @@ We get a functor $C_{\bullet}: \Delta \to \ch$ given by $(K, \Sigma) \mapsto (C_
 The $\textit{Hauptvermutung}$ is the conjecture that if $X$ is a nice topological space such as a manifold, then for any two triangulations of $X$, you  can get from one to the other in a combinatorial way. It turns out that this is false. Hence we cannot fill our above diagram with a functor $\mathbf{Top} \to \Delta$.
 
 Eilenberg and Steenrod, however, created the following approach to obtain certain reverse arrows in our diagram. Let $X$ be a space. A \textit{singular $q$-simplex on $X$}  is a continuous map $\Delta^q \to X$. Let $\text{Sing}_q(X)$ denote the set of all singular $q$-simplices on $X$. Let $C_q(X)$ be the free abelian group on $\text{Sing}_q(X)$. Define $\partial_{q} : C_q(X) \to C_{q-1}(X)$ by 
-$$\sigma \mapsto \sum_{i=0}^q(-1)^i \sigma \restriction_{[v_0, \ldots, \widehat{v_i}, \ldots, v_q]}$$ 
+$$\sigma \mapsto \sum_{i=0}^q({-}1)^i \sigma \restriction_{[v_0, \ldots, \widehat{v_i}, \ldots, v_q]}$$ 
 where $\Delta^q \cong [v_0, \ldots, v_q]$. Then $\partial_{q-1}\partial_q =0$. We now have a functor $\mathbf{Top} \to \ch$ that maps each map $f: X \to Y$ of spaces to the chain map $(f_n)$ where $f_n(g: \Delta^n \to X) = f \circ g_n$. Note that the induced homology functor $\mathbf{Top} \to \mathbf{Ab}$ is a topological invariant. 
 \end{remark}
 
@@ -1208,10 +1226,10 @@ Let $H$ be a chain homotopy between $f$ and $g$. If $x\in A_q$ and $\partial{x} 
 
 \subsection{Lecture 10}
 
-\begin{lemma}
+\begin{lemma}\label{l1}
 Let $F: X \times I \to Y$ be a homotopy between $f$ and $g$. 
 Decompose $\Delta^k \times I$ into $k+1$ simplices. Label the vertices of $\Delta^k \times \{0\}$ and $\Delta^k \times \{1\}$ by $v_0, \ldots, v_k$ and $w_0, \ldots, w_k$, respectively. Then $\bigcup_{i=0}^k \underbrace{[v_0, v_1, \ldots, v_i, w_i, \ldots, w_k]}_{\text{convex span}}$.
-For each $k$, define the map $p: C_k(X) \to C_{k+1}(Y)$ by $$ p\sigma = \sum_i (-1)^i F \circ (\sigma \times \1_I \restriction_{[v_0, \ldots, v_i, w_i, \ldots, w_k]}).$$ Then $p$ is a chain homotopy between $f_{\ast}$ and $g_{\ast}$. 
+For each $k$, define the map $p: C_k(X) \to C_{k+1}(Y)$ by $$ p\sigma = \sum_i ({-}1)^i F \circ (\sigma \times \1_I \restriction_{[v_0, \ldots, v_i, w_i, \ldots, w_k]}).$$ Then $p$ is a chain homotopy between $f_{\ast}$ and $g_{\ast}$. 
 \end{lemma}
 \begin{proof}
 We just verify some low-dimensional cases. First, consider a simplex $\sigma : \Delta^1 \to X$.  Then 
@@ -1244,7 +1262,7 @@ p \partial \sigma = \sigma \restriction_{[v_1, w_1, w_2]} - \sigma \restriction_
 If $X \simeq Y$, then $H_{\ast}(X) \cong H_{\ast}(Y)$.
 \end{corollary}
 \begin{proof}
-Our previous lemma shows that $H_{\ast}(-)$ is actually a functor $\mathbf{Htpy} \to  \mathbf{Ab}$. Hence our result follows from the fact that functors preserve the identity morphism. 
+\Cref{l1} shows that $H_{\ast}(-)$ is actually a functor $\mathbf{Htpy} \to  \mathbf{Ab}$. Hence our result follows from the fact that functors preserve the identity morphism. 
 \end{proof}
 
 
@@ -1254,7 +1272,7 @@ Let $X =\{x_0\}$, so that $\sing_k(X) = \{c_{x_0} : \Delta^k \to \{x_0\}\}$. The
 \begin{tikzcd}
 C_{\ast}(X) =  \Z & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \cdots \arrow[l, "\partial"']
 \end{tikzcd}.
-\]  Note that $\partial{c_{x_0}} = c_{x_0}([v_1]) - c_{x_0}([v_0]) =0$ when $c_{x_0} : \Delta^1 \to X$. If $c_{x_0} : \Delta^k \to X$, then $$\partial{c_{x_0}} = \sum_{i=0}^k (-1)^i \underbrace{c_{x_0}\restriction_{[v_0, \ldots, \hat{v_i}, \ldots, v_k]}}_{c_{x_0} : \Delta^{k-1} \to X}.$$ Hence $\partial_k : C_k(X) \to C_{k-1}(X)$ equals $0$ if $k$ is odd and $\1$ if $k$ is even. As a result, we get a sequence in homology 
+\]  Note that $\partial{c_{x_0}} = c_{x_0}([v_1]) - c_{x_0}([v_0]) =0$ when $c_{x_0} : \Delta^1 \to X$. If $c_{x_0} : \Delta^k \to X$, then $$\partial{c_{x_0}} = \sum_{i=0}^k ({-}1)^i \underbrace{c_{x_0}\restriction_{[v_0, \ldots, \hat{v_i}, \ldots, v_k]}}_{c_{x_0} : \Delta^{k-1} \to X}.$$ Hence $\partial_k : C_k(X) \to C_{k-1}(X)$ equals $0$ if $k$ is odd and $\1$ if $k$ is even. As a result, we get a sequence in homology 
 \[
 \begin{tikzcd}
 \Z & 0 & 0 & 0 & \cdots
@@ -1294,7 +1312,7 @@ $H_{\ast}(S^0) = \begin{cases} \Z \times \Z & \ast = 0 \\ 0 & \ast \ne 0 \end{ca
 \end{exmp}
 
 \begin{definition}[Reduced homology]
-Define $\epsilon :C_0(X) \to \Z$ by $\sum a_x \cdot x \mapsto \sum a_x$. Note that $$(\epsilon \circ \partial)(\sigma : \Delta^1 \to X) = \epsilon(1 \cdot \sigma(v_1) - 1 \cdot \sigma(v_0)) = 1-1 =0.$$ This induces a map $\epsilon : H_0(X) \to \Z$. Let $$\widetilde{C}_k(X) = \begin{cases} C_k(X) & k >0 \\ \ker{\epsilon} & k =0 \end{cases}.$$ Define $$\widetilde{H}_k(X) = H_k(\widetilde{C}_k(X)).$$ Note that $\widetilde{H}_k(X) = H_k(X)$ for any $k>0$.
+Define $\epsilon :C_0(X) \to \Z$ by $\sum a_x \cdot x \mapsto \sum a_x$. Note that $$(\epsilon \circ \partial)(\sigma : \Delta^1 \to X) = \epsilon(1 \cdot \sigma(v_1) - 1 \cdot \sigma(v_0)) = 1-1 =0.$$ This induces a map $\epsilon : H_0(X) \to \Z$. Let $$\widetilde{C}_k(X) = \begin{cases} C_k(X) & k >0 \\ \ker{\epsilon} & k =0 \end{cases}.$$ Define $$\widetilde{H}_k(X) = H_k\left(\widetilde{C}_k(X)\right).$$ Note that $\widetilde{H}_k(X) = H_k(X)$ for any $k>0$.
 \end{definition}
 
 \begin{note} $ $
@@ -1523,7 +1541,7 @@ As a result, $\varphi : H_{\ast}(K^{i+1}) \cong H_{\ast}(|K^{i+1}|)$. By inducti
 If $i\geq j+1$, then $C_j(K) = C_j(K^i)$, so that $H_j(K) \cong H_j(K^i)$.
 \end{note}
 
-\begin{prop}
+\begin{prop}\label{p1}
 A map $\psi : C \to |K|$ with $C$ a compact space has $\im{\psi} \subset |K^i|$ for some $i$.
 \end{prop}
 
@@ -1531,7 +1549,7 @@ A map $\psi : C \to |K|$ with $C$ a compact space has $\im{\psi} \subset |K^i|$ 
 $H_{\ast}(|K|) = \underbrace{\varinjlim H_{\ast}(|K^i|)}_{\text{direct limit}}$.
 \end{corollary}
 \begin{proof}
-Any cycle $c\in C_i(|K|)$ is finite linear combination of singular simplices. Our previous proposition implies that there exists $j\geq 0$ small enough so that $c \in  C_i(K^j|)$ and $[c]\ne 0 \in H_i(|K^j|)$.
+Any cycle $c\in C_i(|K|)$ is finite linear combination of singular simplices. \Cref{p1} implies that there exists $j\geq 0$ small enough so that $c \in  C_i(K^j|)$ and $[c]\ne 0 \in H_i(|K^j|)$.
 \end{proof}
 
 
@@ -1589,8 +1607,8 @@ If $d$ denotes the diameter of $\sigma\coloneqq  [v_0, \ldots, v_n]$, then the d
 \end{lemma}
 \begin{proof}
 For each $i$, we have that
-\begin{align*} |b - v_i | & = \big |\frac{v_0 + \cdots + v_n}{n+1} - v_i \big |
-\\ & = \big  |\frac{v_0 + \cdots + v_n}{n+1} - \frac{(n+1)v_i}{n+1}  \big | .
+\begin{align*} |b - v_i | & = \lvert{\frac{v_0 + \cdots + v_n}{n+1} - v_i}\rvert
+\\ & = \lvert{\frac{v_0 + \cdots + v_n}{n+1} - \frac{(n+1)v_i}{n+1}}\rvert
 \end{align*}
 But $|v_i - v_i|=0$, and $|v_k - v_i| \leq d$ for each $k$. Hence $ |b - v_i | \leq \frac{nd}{n+1}$. We are done by induction on $n$.
 \end{proof}
@@ -1606,7 +1624,7 @@ Let $\sigma : \Delta^n \to X$, which induces a map $\sigma_{\ast}: C_{\ast}(\Del
 \begin{note}
 Any linear chain $\lambda: \Delta^k \to Y$ is determined by the values $w_i \coloneqq  \lambda(v_i)$ where $v_i$ denotes the $i$-th vertex of $\Delta^k$. For each $b\in Y$, we have a group homomorphism $b: LC_k(Y) \to LC_{k+1}(Y)$ given by $[w_0, \ldots, w_k] \mapsto [b, w_0, \ldots, w_k]$. Note that 
 \begin{align*} \partial{b[w_0, \ldots, w_k]} & =  \partial{[b, w_0, \ldots, w_k]}
-\\ & = [w_0, \ldots, w_k] - \sum_{i=0}^k (-1)^i[b, w_0, \ldots, \hat{w}_j, \ldots, w_k]
+\\ & = [w_0, \ldots, w_k] - \sum_{i=0}^k ({-}1)^i[b, w_0, \ldots, \hat{w}_j, \ldots, w_k]
 \\ & = [w_0, \ldots, w_k] - b{\partial{[w_0, \ldots, w_k]}}.
 \end{align*}
 This shows that $\partial{b} + b{\partial} =\1$, so that $b$ is a chain homotopy between $\1$ and and $0$.
@@ -1692,7 +1710,7 @@ Let $Z$ be a compact metric space. Let $\U =\{U_{\alpha}\}$ be an open cover of 
 \end{lemma}
 
 \begin{note}
-Let $X$ be any space.  Let $\U =\{\mathring{U}_{\alpha}\}$ be a cover of $X$. If $\sigma : \Delta^n \to X$, then consider the open cover $\{ \sigma^{-1}(U_{\alpha})\} $ of $\Delta^n$. Any $n$-simplex in the $m$-th iteration of the barycentric subdivision of $\Delta^n$ has diameter $d'\leq (\frac{n}{n+1})^md$ where $d$ denotes the diameter of $\Delta^n$. Then $d'$ is less than a Lebesgue number for $\{ \sigma^{-1}(U_{\alpha})\}$ when $m$ is large enough, in which case $S^m(\sigma) \in C_n^{\U}(X)$.
+Let $X$ be any space.  Let $\U =\{\mathring{U}_{\alpha}\}$ be a cover of $X$. If $\sigma : \Delta^n \to X$, then consider the open cover $\{ \sigma^{-1}(U_{\alpha})\} $ of $\Delta^n$. Any $n$-simplex in the $m$-th iteration of the barycentric subdivision of $\Delta^n$ has diameter $d' \leq \left(\frac{n}{n+1}\right)^md$ where $d$ denotes the diameter of $\Delta^n$. Then $d'$ is less than a Lebesgue number for $\{ \sigma^{-1}(U_{\alpha})\}$ when $m$ is large enough, in which case $S^m(\sigma) \in C_n^{\U}(X)$.
 
 Define $m(\sigma)$ as the smallest $m\in \N$ such that $S^m(\sigma) =C_n^{\U}(X)$. Define the map $D: C_n(X) \to  C_{n+1}(X)$ by $D{\sigma} =T_{m(\sigma)}{\sigma}$.
 \end{note}
@@ -1751,7 +1769,10 @@ Consider the sequence
 0 \arrow[r] & C_{\ast}(A\cap B) \arrow[r, "\varphi"] & C_{\ast}(A)\oplus C_{\ast}(B) \arrow[r, "\psi"] & C_{\ast}(X) \arrow[r] & 0
 \end{tikzcd}
 \] where $\varphi : c \mapsto (c, -c)$ and $\psi : (c_1, c_2) \mapsto c_1 + c_2$. It's easy to check that this is exact, inducing our desired LES.
-\\ \\ We can describe the boundary map $\partial : H_k(X) \to H_{k-1}(A\cap B)$. Let $[c] \in H_k(X)$. Then $[c] = [x+y]$ where $x : \Delta^k \to A\subset X$ and $y: \Delta^k \to B\subset X$. Since $\partial(x+y)  =0$, we have that $\partial{x}=-\partial{y}$. Then $\partial{[c]} =[\partial{x}] = {-}[\partial{y}]$.
+
+\medskip
+
+ We can describe the boundary map $\partial : H_k(X) \to H_{k-1}(A\cap B)$. Let $[c] \in H_k(X)$. Then $[c] = [x+y]$ where $x : \Delta^k \to A\subset X$ and $y: \Delta^k \to B\subset X$. Since $\partial(x+y)  =0$, we have that $\partial{x}=-\partial{y}$. Then $\partial{[c]} =[\partial{x}] = {-}[\partial{y}]$.
 \end{proof}
 
 \begin{exmp}
@@ -2143,7 +2164,7 @@ Let $X$ be an $n$-manifold.
 
 The projection map $p: X^{or} \to X$ is two-to-one and thus a two-fold covering of $X$, called the \textit{orientation cover}. A (continuous) section $o: X \to X^{or}$ of $p$ is an orientation of $X$.
 
-Note that $X^{or}$ has a canonical orientation $(x, \alpha_x) \mapsto \alpha_x$ since $\alpha_x$ generates $$H_n(X^{or}, X^{or} \setminus (x, \alpha_x)) \cong H_n(\widetilde{U}, \widetilde{U} \setminus (x, \alpha_x)) \cong H_n(X, X \setminus x).$$
+Note that $X^{or}$ has a canonical orientation $(x, \alpha_x) \mapsto \alpha_x$ since $\alpha_x$ generates $$H_n(X^{or}, X^{or} \setminus (x, \alpha_x)) \cong H_n\left(\widetilde{U}, \widetilde{U} \setminus (x, \alpha_x)\right) \cong H_n(X, X \setminus x).$$
 \begin{prop}
 If $X$ is connected, then $X$ is orientable if and only if $X^{or}$ has precisely two components. 
 \end{prop}
@@ -2201,7 +2222,7 @@ For each $x\in A$, find some parallelepiped $P_x \subset U$ with $x\in \Int{P_x}
 \end{tikzcd}
 .\] Note that the right arrow is surjective. By Step 2, we have that $j_{A'}$ is an isomorphism. It follows that $j_A$ is surjective.
 
-Let $c\in H_q(X. X\setminus A)$ with $q\geq n$. If $q=n$, suppose that $j_A(c) =0$. \hl{We must show that $c=0$.} Let $z$ denote a relative cycle representing $c$, so that $\partial{z} \subset X\setminus A$. Then $V\coloneqq  X\ \cl(\partial{z})$ is an open set containing $A$. Let $c' \coloneqq  [z]$ in $H_q(X, X \setminus V)$.  If $q=n$, then $j_x^V(c') = j_x^A(c) =0$ for each $x\in A$.. Hence there exists an open set $A\subset V'\subset V$ such that $j_x^V(c') =0$ for each $x\in V'$.  Now, construct $A'$ as before, so that $j_{A'}(c') =0$ by Step 2. It follows that $c = j_A^{A'}(j_{A'}^V(c'))=0$.
+Let $c\in H_q(X. X\setminus A)$ with $q\geq n$. If $q=n$, suppose that $j_A(c) =0$. \hl{We must show that $c=0$.} Let $z$ denote a relative cycle representing $c$, so that $\partial{z} \subset X\setminus A$. Then $V\coloneqq  X\ \cl\left(\partial{z}\right)$ is an open set containing $A$. Let $c' \coloneqq  [z]$ in $H_q(X, X \setminus V)$.  If $q=n$, then $j_x^V(c') = j_x^A(c) =0$ for each $x\in A$.. Hence there exists an open set $A\subset V'\subset V$ such that $j_x^V(c') =0$ for each $x\in V'$.  Now, construct $A'$ as before, so that $j_{A'}(c') =0$ by Step 2. It follows that $c = j_A^{A'}(j_{A'}^V(c'))=0$.
 \end{proof}
 \item Suppose that $A$ is compact. Then our theorem holds for $A$. 
 \begin{proof} Note that $A$ can be written as a union of coordinate charts $U_1, U_2, \ldots, U_m$ that are evenly covered by $p$. Thus, we can apply induction on $m$. Our base case follows directly from Step 3, and our inductive step follows by a similar argument to Step 2.
@@ -2494,7 +2515,10 @@ Let $\mu : h^{\ast}_1 \to h^{\ast}_2$ be a natural transformation of cohomology 
 \end{lemma}
 \begin{proof}
 Due to the five lemma, it's enough to prove that for any CW-complex $X$, $\mu_X : h_1^{\ast}(X) \to h_2^{\ast}(X)$. Assuming that $X$ is finite-dimensional, we do this by induction on the dimension of $X$. Since $X^0$ is a discrete set of points, our base case holds almost by assumption.  
-\\ \\ Suppose, inductively, that $\mu_{X^{n-1}}$ is an isomorphism. Since $\mu$ is a natural transformation, we get a commutative diagram with exact rows
+
+\medskip
+
+ Suppose, inductively, that $\mu_{X^{n-1}}$ is an isomorphism. Since $\mu$ is a natural transformation, we get a commutative diagram with exact rows
 \[
 \begin{tikzcd}
 {h_1^k(X^n, X^{n-1})} \arrow[r] \arrow[d, "\mu"] & h_1^k(X^n) \arrow[r] \arrow[d, "\mu"] & h_1^k(X^{n-1}) \arrow[r] \arrow[d, "\mu(\cong)"] & {h_1^{k+1}(X^n, X^{n-1})} \arrow[r] \arrow[d, "\mu"] & \cdots \\
@@ -2509,7 +2533,10 @@ h_1^k(\bigvee_{\alpha} S^n) \arrow[d, "\cong" description] \arrow[r, "\mu"] & h_
 \prod_{\alpha}h_1^k(S^n) \arrow[r, "\mu"]                                   & \prod_{\alpha}h_2^k(S^n)                                  
 \end{tikzcd}
 .\] Thus, we want to show that bottommost $\mu$ is an isomorphism. Since $S^{n-1}$ is an $(n-1)$-dimensional CW-complex and $D^n \simeq \pt$, applying the five lemma together with out IH to the LES for $(D^n, S^{n-1})$ proves that $h_1^k(S^n) \cong h_2^k(S^n)$.
-\\ \\ The case where $X$ is infinite-dimensional reduces to the case where it's finite-dimensional. We omit the details. 
+
+\medskip
+
+ The case where $X$ is infinite-dimensional reduces to the case where it's finite-dimensional. We omit the details. 
 \end{proof}
 
 \begin{prop}
@@ -2568,7 +2595,10 @@ Let $X = \CP^n$ (resp. $\RP^n$) and $R = \Z$ (resp. $\Z/2$), then $H^{\ast}(X; R
 \end{theorem}
 \begin{proof}
 See \textit{Hatcher}, Theorem 3.19 for a proof of the case where $X= \RP^n$. We will assume that $X = \CP^n$.
-\\ \\ The inclusion $\CP^{n-1} \hookrightarrow \CP^n$ induces an isomorphism $H^k(\CP^{n-1}) \to H^k(\CP^n)$ when $k < 2n-1$. Thus, it suffices to show that if $\omega \in H^{2i}(\CP^n)$ is a generator and $\omega ' \in H^{2n -2i}(\CP^n)$ is a generator where $0\leq i \leq n$ is even, then $\omega \smile \omega '$ generates $H^{2n}(\CP^n)$. Set $j = n-i$. Then $\CP^j = \{[z_0, \ldots, z_n] \mid z_0 = z_1 = \cdots = z_{i-1}= 0\}$, and $\CP^ \cap \CP^j = p\coloneqq  [0, \ldots, 0, \underbrace{1}_{i\text{-th spot}}, 0 \ldots, 0]$. Note that $\CP^i \cap U \cong \C^i$ and $\CP^j \cap U \cong \C^j$ where $U = \{[x_0, \ldots, z_n] \mid z_i \ne 0\}$. Consider the commutative diagram
+
+\medskip
+
+ The inclusion $\CP^{n-1} \hookrightarrow \CP^n$ induces an isomorphism $H^k(\CP^{n-1}) \to H^k(\CP^n)$ when $k < 2n-1$. Thus, it suffices to show that if $\omega \in H^{2i}(\CP^n)$ is a generator and $\omega ' \in H^{2n -2i}(\CP^n)$ is a generator where $0\leq i \leq n$ is even, then $\omega \smile \omega '$ generates $H^{2n}(\CP^n)$. Set $j = n-i$. Then $\CP^j = \{[z_0, \ldots, z_n] \mid z_0 = z_1 = \cdots = z_{i-1}= 0\}$, and $\CP^ \cap \CP^j = p\coloneqq  [0, \ldots, 0, \underbrace{1}_{i\text{-th spot}}, 0 \ldots, 0]$. Note that $\CP^i \cap U \cong \C^i$ and $\CP^j \cap U \cong \C^j$ where $U = \{[x_0, \ldots, z_n] \mid z_i \ne 0\}$. Consider the commutative diagram
 \[
 \begin{tikzcd}
 H^{2i}(\CP^n)\times H^{2j}(\CP^n) \arrow[r, "\smile"]                                                                                              & H^{2n}(\CP^n)                                                                 \\
@@ -2769,7 +2799,7 @@ But we also have a \textit{wrong way functor} or an \textit{umkehr map} in that 
 Let $U \subset V$ be an inclusion of open sets in $X$. By applying excision twice, we see that $\varinjlim_{K_U} H^k(X, X \setminus K) = \varinjlim_{K_V} H^k(X, X \setminus K).$
 \end{note}
 
-\begin{prop}
+\begin{prop}\label{p3}
 Let $X$ be an $R$-oriented $n$-manifold.  Let $U$ and $V$ be open in $X$ with $X = U \cup V$. Then there exists a commutative diagram up to sign
 \[
 \begin{tikzcd}
@@ -2786,7 +2816,7 @@ Let $X$ be an $R$-oriented $n$-manifold.  Then $D_X : H_c^k(X) \to H_{n-k}(X)$ i
 \begin{steps}
 \item If $X= U \cup V$ with $U$ and $V$ open and $D_U$, $D_V$, and $D_{U \cap V}$ are isomorphisms, then $D_X$ is an isomorphism.
 \begin{proof}
-Apply the five lemma to the diagram of our last proposition. 
+Apply the five lemma to the diagram of \cref{p3}. 
 \end{proof}
 \item Suppose that $X$ equals the union of a sequence of open sets $U_1 \subset U_2 \subset \cdots$. If each $D_{U_i} : H^k_c(U_i) \to H_{n-k}(U_i)$ is an isomorphism, then so is $D_X$.
 \begin{proof}
@@ -2955,9 +2985,15 @@ are augmented double complexes with exact rows  and exact columns, respectively.
 \end{lemma}
 \begin{proof}
 We just consider the case where the rows of $A^{\bullet, \bullet}$ are augmented. Note that $d_{\tot}{\epsilon} = (\delta + d){\epsilon} = d{\epsilon} = \epsilon{d}$. Hence $\epsilon^{\bullet}$ is a cochain map, thereby inducing a map $\epsilon^{\ast} : H^{\ast}(A^{\bullet}, d) \to H^{\ast}(A^{\bullet, \bullet}, d, \delta)$. We want to prove that $\epsilon^{\ast}$ is bijective. 
-\\ \\
+
+\medskip
+
+
 Let $[c] \in H^{\ast}(A^{\bullet, \bullet}, d, \delta)$, so that $D(c) =0$. Write $c= (c_0, \ldots, c_n)$. Since each row is exact by hypothesis, there is some $s$ such that $\delta(s) = c_0$. We have that $c- d_{\tot}(s) = (0, c_1', \ldots, c'_n)$ for some $c_i'$. By repeating this procedure enough times, we get $[c] = [(0, \ldots, 0, v_n)]$ for some $v_n$. Note that $\delta(v_n) =0 = d(v_n)$. Hence there is some $z$ such that $\epsilon(z) = v_n$.   But $\epsilon(d(z)) = d(v_n) =0$, and $\epsilon$ is injective. Thus, $d(z) =0$. This proves that $$\epsilon([z]) = [(0, \ldots, 0, \epsilon(z))]  = [(0, \ldots, 0, v_n)] = [c],$$ so that $\epsilon^{\ast}$ is surjective.
-\\ \\ Suppose that $\epsilon^{\ast}([v]) =0$, so that  $\epsilon(v) = d_{\tot}(p) = \delta \pm d(p)$ for some $p$. Note that $\delta(p) =0$. Thus, as before, we get $[p] = [(0, \ldots, 0, p_n)]$ for some $p_n$, so that $\epsilon(v) = D(0, \ldots, 0, p_n)$. This implies that $\delta(p_n) =0$. Since each row is exact, there is some $y$ such that $\epsilon(y) = p_n$. Then 
+
+\medskip
+
+ Suppose that $\epsilon^{\ast}([v]) =0$, so that  $\epsilon(v) = d_{\tot}(p) = \delta \pm d(p)$ for some $p$. Note that $\delta(p) =0$. Thus, as before, we get $[p] = [(0, \ldots, 0, p_n)]$ for some $p_n$, so that $\epsilon(v) = D(0, \ldots, 0, p_n)$. This implies that $\delta(p_n) =0$. Since each row is exact, there is some $y$ such that $\epsilon(y) = p_n$. Then 
 \begin{align*}
 \epsilon(v) & = \delta(p_n) +d(p_n) 
 \\ &= 0 + d(\epsilon(y))
@@ -3020,11 +3056,14 @@ Now, choose a partition of unity $\{\lambda_{\alpha}\}$ subordinate to $\U$. Def
 \\ & =  \sum_{\alpha} \lambda_{\alpha}\omega_{\alpha_0 \ldots \alpha_p} 
 \\ & = \omega_{\alpha_0 \ldots \alpha_p}
 . \end{align*}
-This shows that $\delta{s{\omega}} =\omega$, so that $\omega \in \im{\delta}$, as desired. \\ \\
+This shows that $\delta{s{\omega}} =\omega$, so that $\omega \in \im{\delta}$, as desired. 
+\medskip
+
+
  The fact that $\ker{\delta} \subset \im{\epsilon}$ is seen by gluing differential forms on $U_{\alpha}$ together to get a form on $M$.
 \end{proof}
 
-\begin{prop} Let $V$ be a smooth vector field and $\omega, \eta$ be differential forms. Let $\mathcal{L}$ denote the Lie derivative.
+\begin{prop}\label{p4} Let $V$ be a smooth vector field and $\omega, \eta$ be differential forms. Let $\mathcal{L}$ denote the Lie derivative.
 \begin{enumerate} 
 \item  $i_V(\omega \wedge \eta) = i_V (\omega) + \eta  +({-}1)^{|\omega|}\omega \wedge i_V{\eta}.$
 \item {\textbf{(Cartan's magic formula)}}
@@ -3038,7 +3077,7 @@ $\mathcal{L}_V{\omega} = i_V{d(\omega)} + d(i_V{\omega}).$
  For any $q\in \N$, define $\sigma  : \Omega^q(N) \to \Omega^{q-1}(M)$ by $$(\sigma{\omega})_p = (x \mapsto \int_0^1 j_t^{\ast}i_{\frac{\partial}{\partial{t}}}(F^{\ast}{\omega})(x) dt)$$ where $x\in \bigwedge^{q-1}(T_p^{\ast}{M})$. Then $(d\sigma + \sigma d)\omega = F_1^{\ast} \omega - F_0^{\ast}\omega$. That is, $\sigma$ is a cochain homotopy $F^{\ast}_0 \Rightarrow F^{\ast}_1$.
 \end{lemma}
 \begin{proof}
-Using our last proposition, we compute
+Using \cref{p4}, we compute
 \begin{align*}
 d\sigma \omega(x) + \sigma d \omega(x) & =  \int_0^1 dj_t^{\ast}i_{\frac{\partial}{\partial{t}}}(F^{\ast}{\omega})(x) dt + \int_0^1j_t^{\ast} i_{\frac{\partial}{\partial{t}}}(F^{\ast}{d\omega})(x) dt
 \\ & =   \int_0^1 j_t^{\ast}di_{\frac{\partial}{\partial{t}}}(F^{\ast}{\omega})(x) dt + \int_0^1 j_t^{\ast}i_{\frac{\partial}{\partial{t}}}(dF^{\ast}{\omega})(x) dt
@@ -3116,7 +3155,7 @@ Let $F$ be a presheaf on $X$ and $x\in X$. Define \textit{the stalk $F_x$ of $F$
 \begin{enumerate}
 \item For any $x \in X$, $\underline{A}_x =A$.
 \item The \textit{germs of continuous functions at $x$} are precisely the elements of $$C_x = \faktor{  \{(U, f) \mid x\in U, \ f \in C(U)\}    }{\sim}$$ where $(U, f) \sim(V, g)$ if $f =g$ on $U \cap V$.
-\item Let $X = \R$. Let $C^{\infty}({-})$ denote the sheaf of smooth functions on $X$. Then we have an exact sequence $$ 0 \to \text{(flat functions)} \to C_0^{\infty} \to \R[[x]] \to 0   .$$
+\item Let $X = \R$. Let $C^{\infty}({-})$ denote the sheaf of smooth functions on $X$. Then we have an exact sequence $$ 0 \to \text{(flat functions)} \to C_0^{\infty} \to \R[\![x]\!] \to 0   .$$
 \item Let $\mathcal{A}$ denote the sheaf of real analytic functions. Then $\mathcal{A}_0 \cong \R\{x\}$, the ring of real analytic functions.
 \end{enumerate}
 \end{exmp}
@@ -3277,7 +3316,10 @@ If $F$ is flabby, then $H^n(X, F) =0$ for each $n\geq 1$.
 \end{lemma}
 \begin{proof}
  Let $0 \to F \to I \to G \to 0$ be exact where $I$ is injective (hence flabby). Then $G$ is flabby. We have a LES $$ H^0(X, F) \to H^0(X, I) \to H^0(X, G) \to H^1(X, F) \to H^1(X, I)  , $$ where the map $H^0(X, I) \to H^0(X, G)$ is surjective since $F$ is flabby and  $H^1(X, I) =0$ since $I$ is injective. Therefore, $H^1(X, F) =0$.
- \\ \\ Assume, inductively, that we have shown that $H^k(X, F) =0$ where $0 < k <n$ for any flabby sheaf $F$. Then $H^{n-1}(X, G) =0$. since $G$ is flabby. Also, $H^n(X, I) =0$ since $I$ is injective. In light of the exact sequence $H^{n-1}(X, G) \to H^n(X, F) \to H^n(X, I)$, it follows that $H^n(X, F) =0$.
+ 
+\medskip
+
+ Assume, inductively, that we have shown that $H^k(X, F) =0$ where $0 < k <n$ for any flabby sheaf $F$. Then $H^{n-1}(X, G) =0$. since $G$ is flabby. Also, $H^n(X, I) =0$ since $I$ is injective. In light of the exact sequence $H^{n-1}(X, G) \to H^n(X, F) \to H^n(X, I)$, it follows that $H^n(X, F) =0$.
 \end{proof}
 
 \begin{lemma}
@@ -3317,9 +3359,15 @@ Note that the direct sum of two injective abelian groups is injective.\footnote{
 0 \arrow[r] & E(X) \arrow[r, "g\circ f"] & {I^{0,0}} \arrow[r, "\delta + d"] & {I^{1,0} \oplus I^{0,1} } \arrow[r] & {I^{2,0}\oplus I^{1,1} \oplus I^{0,2}} \arrow[r] & \cdots
 \end{tikzcd}
 \] where $f: E(X) \to F^0(X)$ and $g: F^0 \to I^{0,0}$. Clearly $g\circ f$ is injective. Moreover, since $\tot(I^{\bullet, \bullet})$ is bounded and has exact columns, it follows that each term of our sequence after $I^{0,0}$ is exact. Thus, it remains to verify that out sequence is exact at $I^{0,0}$.
-\\ \\
+
+\medskip
+
+
 Suppose that $x\in \ker \delta +d$. Then $(\delta(x), d(x)) = (0,0)$, so that $g(y) = x$ for some $y \in F^0(X)$. Since $g$ is injective and $$g(\delta(y)) = \delta(g(y)) = \delta(x) =0 $$, we see that $\delta(y) =0$. Hence there is some $y' \in E(X)$ such that $f(y') = y$. This implies that $g(f(y')) = x$, which thus belongs to $\im{g\circ f}$.
-\\ \\
+
+\medskip
+
+
 Conversely, suppose that $x= g(f(y))$ for some $y\in E(X)$. Then 
 \begin{align*}
 \delta + d(g(f(y))) & = (\delta(g(f(y))), d(g(f(y)))) 
@@ -3429,7 +3477,7 @@ Let $R$ be a sheaf of rings on $X$. A \textit{sheaf  $F$ of $R$-modules} is a sh
 \end{definition}
 
 
-\begin{prop}
+\begin{prop}\label{p2}
 Let $Z$ and $W$ be closed in the space $X$. Let $F$ be sheaf on $X$. If $s\in F(Z)$ and $t \in F(W)$ satisfy $s \restriction_{Z \cap W} = t \restriction_{Z \cap W}$, then there exists a unique $w \in F(Z \cup W)$ extending $s$ and $t$.
 \end{prop}
 
@@ -3438,9 +3486,15 @@ If $R$ is a soft sheaf of rings on $X$, then any sheaf $F$ of $R$-modules is sof
 \end{lemma}
 \begin{proof}
 Let $C \subset X$ be closed and let $s \in F(C)$. There exist a neighborhood $U$ of $C$ and a section $s' \in F(U)$ that represents $s$. 
-\\ \\
-Let $L\subset U$ be a compact set in $X$ such that $\Int(L) \supset C$. Let $t$ be the section equal to $1$ on $C$ and $t'$ be the section equal to $0$ on $\partial{L}$. By our previous proposition, we can glue these to get a section $w$ over $C \cup \partial{L}$. By softness, we can extend $w$ to a section $w' \in R(L)$. Again, we can glue $w$ and the section equal to $0$ on $\cl(U \setminus L)$ to get a section $m\in R(U)$. 
-\\ \\ Note that $$(m \cdot s') \restriction_C = m \restriction_C \cdot s' \restriction_C = s .$$ Now, glue $(m \cdot s') \restriction_L$ and the section $y$ which is equal to $0$ on $\cl(C \setminus L)$ to get a section $y'\in F(X)$ such that $y'\restriction_C = s$. This proves that the homomorphism $F(X) \to F(C)$ is surjective. 
+
+\medskip
+
+
+Let $L\subset U$ be a compact set in $X$ such that $\Int(L) \supset C$. Let $t$ be the section equal to $1$ on $C$ and $t'$ be the section equal to $0$ on $\partial{L}$. By \cref{p2}, we can glue these to get a section $w$ over $C \cup \partial{L}$. By softness, we can extend $w$ to a section $w' \in R(L)$. Again, we can glue $w$ and the section equal to $0$ on $\cl(U \setminus L)$ to get a section $m\in R(U)$. 
+
+\medskip
+
+ Note that $$(m \cdot s') \restriction_C = m \restriction_C \cdot s' \restriction_C = s .$$ Now, glue $(m \cdot s') \restriction_L$ and the section $y$ which is equal to $0$ on $\cl(C \setminus L)$ to get a section $y'\in F(X)$ such that $y'\restriction_C = s$. This proves that the homomorphism $F(X) \to F(C)$ is surjective. 
 \end{proof}
 
 \begin{corollary}
@@ -3642,8 +3696,8 @@ There exists a trivializing cover of $\widetilde{X}$ with $\varphi_{\alpha} : \w
 \underline{(2) $\implies$ (3)} Given $(E, \nabla)$ with $\nabla$ flat and $\gamma$ a path based at $x_0 \in X$, let $h(\gamma) : E_{x_0} \to E_{x_0}$. This is an isomorphism that depends only on the homotopy class of $\gamma$.
 \end{proof}
 
-\begin{prop}[De Rham theorem for local systems]
+\begin{theorem}[De Rham theorem for local systems]
 Let $(E, \nabla)$ be flat and $\nabla^2 =0$. Then $(\Omega^{\bullet}(X; E), \nabla)$ is a complex, and $$H^{\ast}(\Omega^{\bullet}(X; E), \nabla) \cong H^{\ast}(X; \underline{E})$$ where $\underline{E}$ denotes the locally constant sheaf that is defined by the flat structure that $E$ obtains  from $\nabla$, i.e., $\underline{E}(U) = \{s_{\alpha} : U \cap U_{\alpha} \to \GL_k(\R) \mid s_{\alpha}$ is locally constant and $s_{\alpha} = g_{\alpha{\beta}}s_{\beta}\}$.
-\end{prop}
+\end{theorem}
 
 \end{document}

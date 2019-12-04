@@ -31,7 +31,7 @@
 \contentsline {section}{\numberline {10}Further applications of Galois theory}{39}{section.10}
 \contentsline {subsection}{\numberline {10.1}Lecture 22}{39}{subsection.10.1}
 \contentsline {subsection}{\numberline {10.2}Lecture 23}{40}{subsection.10.2}
-\contentsline {section}{\numberline {11}Chain complexes and chain maps}{42}{section.11}
+\contentsline {section}{\numberline {11}Chain complexes and chain maps}{41}{section.11}
 \contentsline {subsection}{\numberline {11.1}Lecture 24}{42}{subsection.11.1}
 \contentsline {subsection}{\numberline {11.2}Lecture 25}{44}{subsection.11.2}
 \contentsline {section}{\numberline {12}Additive categories}{46}{section.12}

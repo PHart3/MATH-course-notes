@@ -219,8 +219,8 @@ Note that the ordinary function type $A \to B$ is a special case of the dependen
 \item Now, add the term $\ind_{\sum_{x:A}B(x)}(t_1, t_2, t_3)$ to $\mathcal{L}$ where $t_1$, $t_2$, and $t_3$ are any given terms of $\mathcal{L}$. We form the \textit{dependent sum type $\sum_{x:A} B(x)$} according to the following three rules.
 \begin{enumerate}
 \item \underline{${\sum}$-Introduction:} If $a: A$ and $b: B(a)$, then $(a, b) : \sum_{x: A} B(x)$.
-\item \underline{${\sum}$-Elimination:} Given any family of types $C: (\sum_{x:A} B(x)) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
-\item \underline{${\sum}$-Computation:}  Given any family of types $C: (\sum_{x:A} B(x)) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
+\item \underline{${\sum}$-Elimination:} Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
+\item \underline{${\sum}$-Computation:}  Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
 \end{enumerate}
 Note that the ordinary product type $A  \times B$ is a special case of the dependent sum type. Naively, a dependent sum type is comparable to a set-theoretic disjoint union (or, more generally, as a coproduct).
 \end{enumerate}
@@ -324,7 +324,10 @@ If $\tilde{f} \simeq f$ and $f: X \to Y$ is a homotopy equivalence, then $\tilde
 \end{lemma}
 \begin{proof}
 Suppose that $f: X \to Y$ is a homotopy equivalence with $g: Y \to X$ a homotopy inverse. Also, suppose that $H: \tilde{f} \simeq f$ is a homotopy. We want to show that $\tilde{f}$ is a homotopy equivalence with $g$ a homotopy inverse. 
-\\ \\ Define $H' : Y \times I \to Y$ by $(x,t) \mapsto H(g(x), (1-t))$. This is a homotopy $\tilde{f} g \simeq f g$. By transitivity of $\simeq$, we see that $\tilde{f} g  \simeq \id_Y$. Moreover, the map $H'' : X \times I \to X$ given by $(x,t) \mapsto g(H(x,t))$ defines a homotopy $g \tilde{f} \simeq gf$. Hence $g\tilde{f} \simeq gf \simeq \id_X$. This completes the proof.
+
+\medskip
+
+ Define $H' : Y \times I \to Y$ by $(x,t) \mapsto H(g(x), (1-t))$. This is a homotopy $\tilde{f} g \simeq f g$. By transitivity of $\simeq$, we see that $\tilde{f} g  \simeq \id_Y$. Moreover, the map $H'' : X \times I \to X$ given by $(x,t) \mapsto g(H(x,t))$ defines a homotopy $g \tilde{f} \simeq gf$. Hence $g\tilde{f} \simeq gf \simeq \id_X$. This completes the proof.
 \end{proof}
 
 \section{Elements of category theory}
@@ -370,8 +373,14 @@ The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor wh
 \begin{proof}
 We prove just the first statement as the second follows formally from the first.
 Specifically, we define an inverse to the given map. If $\alpha : h_x \to h_y$ is a morphism in $\widehat{\c}$, then define $$i : \alpha \mapsto \alpha_x(\id_x).$$ Note that $\alpha_x(\id_x) \in h_y(x) = \Hom_{\c}(x,y)$. We must verify that $h \circ i = \id = i \circ h$.
-\\ \\ If $f: x \to y$ in $\c$, then $h(f) : h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $(-) \mapsto f \circ (-)$ for any $z\in \ob \c$. But then $h(f)_x(\id_x) = f\circ \id_x = f$.
-\\ \\ It remains to show that $h \circ i = \id$. Let $\alpha : h_x \to h_y$.  We have that $
+
+\medskip
+
+ If $f: x \to y$ in $\c$, then $h(f) : h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $(-) \mapsto f \circ (-)$ for any $z\in \ob \c$. But then $h(f)_x(\id_x) = f\circ \id_x = f$.
+
+\medskip
+
+ It remains to show that $h \circ i = \id$. Let $\alpha : h_x \to h_y$.  We have that $
 i(\alpha) = \alpha_x(\id_x) \in h_y(x)$, so that $i(\alpha) : x \to y$ in $\c$. Note that the component map $h(i(\alpha))_z : \Hom_{\c}(z, x) \to \Hom_{\c}(z, y)$ is given by $\phi \mapsto i(\alpha) \circ \phi.$ We must check that this agrees with $\alpha_z$. For any $x, y, z \in \ob \c$ and $\phi : z \to x$, we have
 \[
 \begin{tikzcd}
@@ -384,7 +393,10 @@ because $\alpha$ is a natural transformation. By evaluating this at the morphism
 
 \begin{corollary}
 Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi\coloneqq h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map $$h_x(y) \to F(y)$$ $$ f \mapsto F(f)(\xi).$$ This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
-\\ \\ By Yoneda, $F$ is representable by $x$ if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
+
+\medskip
+
+ By Yoneda, $F$ is representable by $x$ if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
 \end{corollary}
 
 \begin{definition} Let $\c$ be a category and $I$ be any set. Let $A_{\alpha} \in \ob \c$ for each $\alpha \in I$.

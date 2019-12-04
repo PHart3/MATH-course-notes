@@ -18,14 +18,14 @@
 \contentsline {section}{\numberline {5}Group cohomology}{22}{section.5}
 \contentsline {subsection}{\numberline {5.1}Lectures 14 and 15}{22}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Lecture 16}{25}{subsection.5.2}
-\contentsline {section}{\numberline {6}Categories and functors}{27}{section.6}
-\contentsline {subsection}{\numberline {6.1}Lecture 17}{27}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Lecture 18}{28}{subsection.6.2}
+\contentsline {section}{\numberline {6}Categories and functors}{26}{section.6}
+\contentsline {subsection}{\numberline {6.1}Lecture 17}{26}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lecture 18}{27}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Lectures 19 and 20}{29}{subsection.6.3}
-\contentsline {section}{\numberline {7}Yoneda}{29}{section.7}
+\contentsline {section}{\numberline {7}The Yoneda lemma}{29}{section.7}
 \contentsline {subsection}{\numberline {7.1}Lecture 21}{31}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Lecture 22}{33}{subsection.7.2}
-\contentsline {section}{\numberline {8}Adjoint functors}{34}{section.8}
+\contentsline {section}{\numberline {8}Adjoint functors}{33}{section.8}
 \contentsline {subsection}{\numberline {8.1}Lecture 23}{34}{subsection.8.1}
 \contentsline {subsection}{\numberline {8.2}Lecture 24}{36}{subsection.8.2}
 \contentsline {section}{\numberline {9}Polynomial rings}{37}{section.9}

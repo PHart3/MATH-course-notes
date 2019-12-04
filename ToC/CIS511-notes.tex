@@ -208,7 +208,7 @@
 \begin{document}
 
 \begin{abstract}
-These notes are based on Anindya De's ``Theory of Computation'' lectures given at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation, 3rd ed.} and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
+These notes are based on Anindya De's ``Theory of Computation'' lectures at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation, 3rd ed.} and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
 \end{abstract}
 
 \tableofcontents
@@ -239,7 +239,10 @@ Finite automata are characterized by $O(1)$ memory and passing over their inputs
 \end{note}
 \begin{definition}
 Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is an ordered $5$-tuple $$M\coloneqq (Q, \Sigma, q_0, \delta, Q_F)  $$ where  $|Q| = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
-\\ \\
+
+\medskip
+
+
 Intuitively, an automaton $M$ is a $\DFA$ if
 \begin{enumerate}[label=(\alph*)]
 \item $M$ has a finite number of states $Q$,
@@ -340,7 +343,7 @@ A string $x$ is \textit{accepted by $N$} if $\hat{\delta}(q_0, x) \cap Q_F \ne \
 \end{definition}
 
 \begin{remark}
-Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) = \{\delta(\hat{\delta}(q,y), \sigma)\}$. It's not the case, however, that any $\NFA$ is a $\DFA$.
+Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\{\delta\left(\hat{\delta}(q,y), \sigma\right)\right\}$. It's not the case, however, that any $\NFA$ is a $\DFA$.
 \end{remark}
 
 \begin{theorem}
@@ -455,7 +458,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
     (q_2) edge  node [swap] {} (q_3)
     (q_3) edge [bend left] node [swap] {$\epsilon$} (q_0);
 \end{tikzpicture}.
-.\] Then $L(\widetilde{M}) = L^{\ast}$.
+.\] Then $L\left(\widetilde{M}\right) = L^{\ast}$.
 \end{proof}
 
 \begin{remark}
@@ -619,8 +622,14 @@ Let $M$ be a $\NDTM$ and let $L = L(M)$. Then there exists a $\TM$ $M'$ such tha
 \end{theorem}
 \begin{proof}
 By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$. Construct a tree with branches corresponding to threads of computation given by $M$ and nodes corresponding to configurations of $M$. We construct a $3$-tape $\TM$ $D$ as follows. 
-\\ \\ Tape 1 always contains the input string $w$ and nothing else. Tape 2 contains just the string on the tape of the current node. Setting $m = \max\{ |A| : A \in \im{\delta} \}$, tape 3 contains a string over $\{1, \ldots, m\}$ that corresponds to the ``address" of the current node. 
-\\ \\ We make $D$ simulate a breadth-first search of the tree as follows. 
+
+\medskip
+
+ Tape 1 always contains the input string $w$ and nothing else. Tape 2 contains just the string on the tape of the current node. Setting $m = \max\{ |A| : A \in \im{\delta} \}$, tape 3 contains a string over $\{1, \ldots, m\}$ that corresponds to the ``address" of the current node. 
+
+\medskip
+
+ We make $D$ simulate a breadth-first search of the tree as follows. 
 \begin{enumerate}
 \item Initialize  tape 1 with $w$ and tape $3$ with $\epsilon$. 
 \item Copy tape 1 to tape 2.
@@ -870,7 +879,10 @@ A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\T
 \\
 ($\Longrightarrow$) There is some $\NDTM$ $M$ running in polynomial time such that $L(M) = L$. Say that $M$ runs in time $n^c$. The sequence of choices along any branch of $M$ can be represented by a binary string of length $n^c$.
 Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \{0,1\}^{n^c}$ and executing $M$ on $x$ with choice of branch given by $y$. Then $V$ runs in polynomial time, and $x\in L \iff V(x,y) =1$ for some $y$.
-\\ \\
+
+\medskip
+
+
 ($\Longleftarrow$)  Given an input $x$, define a $\NDTM$ $M$ that first guesses a witness $y$ in a separate tape and then runs $V$ on $(x,y)$ in polynomial time. 
 \end{proof}
 
@@ -1035,7 +1047,10 @@ Let $\mathsf{Steiner{-}tree} \coloneqq \{\langle G, C, W \rangle \mid C$ has a S
 \end{exmp}
 \begin{proof}
 It's clear that $\mathsf{Steiner{-}tree} $ is in $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = (V, E)$ be a graph with a vertex cover $S$ of size $k$. 
-\\ \\ Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
+
+\medskip
+
+ Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
 \begin{enumerate}[label=(\alph*)]
 \item Let $([u], [v])\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
 \item If $(u,v) \in E$, then let $([u], [u,v]), ([u, v], [v]) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
@@ -1072,7 +1087,10 @@ Let $\mathsf{SUBSET{-}SUM}\coloneqq \{\langle a_1, \ldots, a_k, t\rangle \mid a_
 \end{exmp}
 \begin{proof}
 It's clear that this is in $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=(V,E)$ such that $|V| = n$ and $|E|= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq |E|-1$ and  $(u,v) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
-\\ \\ Let $S = \{a_v \mid v\in C\} \cup \{b_{(u,v)} \mid $ exactly one of $u$ and $v$ belongs to $C\}$. Note that we can construct $S$ in polynomial time. It's straightforward to check that the terms of $S$ sum to $t$. 
+
+\medskip
+
+ Let $S = \{a_v \mid v\in C\} \cup \{b_{(u,v)} \mid $ exactly one of $u$ and $v$ belongs to $C\}$. Note that we can construct $S$ in polynomial time. It's straightforward to check that the terms of $S$ sum to $t$. 
 \begin{claim}
 Suppose that there are $U\subset V$ and $T\subset E$ such that $t= \sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}$. Then $U$ is a vertex cover for $G$ of size at most $k$.
 \end{claim}
@@ -1108,7 +1126,10 @@ $\mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$.
 \end{lemma}
 \begin{proof}
 Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$.  Given any input $x$ of length $n$, we can use $O(S(n))$ bits to describe the current contents of the tape, $O(\log{S(n)})$ bits to describe the current state, and $O(1)$ bits to describe the current location of the head. Thus, we need $O(S(n)) + O(1) + O(\log{S(n)})= O(S(n))$ bits to describe any vertex of $G_{M,x}$. 
-\\ \\
+
+\medskip
+
+
 Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided that any configuration of a $\NDTM$ yields at most two distinct configurations).  Therefore, we can construct $G_{M,x}$ in $2^{O(S(n))}$ steps. Now apply the standard linear-time BFS for connectivity to $G_{M,x}$ to decide if there is a path from $C_{\text{start}}$ to $C_{\text{accept}}$. 
 \end{proof}
 
@@ -1219,7 +1240,10 @@ $\mathsf{TQBF{-}SAT} $ is $\mathsf{PSPACE}$-complete.
 \end{exmp}
 \begin{proof}
 Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $|x| =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O(S(n)^2)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\text{start}}, C_{\text{accept}}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
-\\ \\ We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
+
+\medskip
+
+ We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
 \begin{align*}
 \varphi_{c_1, c_2, i} & \equiv \exists c(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1})
 \\ & \equiv \exists c \forall D^1 \forall D^2((D^1 = c_1 \land D^2 = c) \vee (D^1 = c) \land (D^2 = c_2)) \implies \varphi_{D^1, D^2, i-1}.
@@ -1259,7 +1283,10 @@ $$\mathbf{NL} = \mathbf{co}{-}{\mathbf{NL}}.$$
 \begin{proof}
 Since $\mathsf{DIR{-}REACH}$ is $\mathbf{NL}$-complete, it suffices to show that $\mathsf{DIR{-}REACH}^c\in \mathbf{NL}.$  
 Let $G= (V,E)$ be a graph of size $n$ and $s, t\in V$. Let $C_i$ denote the set of vertices $v\in V$ reachable from $s$ in at most $i$ steps. We can assume that $V$ is ordered $(v_1, \ldots, v_n)$ since each index can be described in $\log{n}$ bits.
-\\ \\ First, let $v\in V$. Given that $|C_i| = k$, we can verify that $v \notin C_i$ as follows. 
+
+\medskip
+
+ First, let $v\in V$. Given that $|C_i| = k$, we can verify that $v \notin C_i$ as follows. 
 \begin{enumerate}
 \item Propose a list $v_{s_1}, \ldots, v_{s_m}$ of vertices and a path $s\leadsto v_{s_i}$ for each $1\leq i \leq m$. 
 \item Write the next $v_{s_i}$ on the work tape and write the proposed path $s \leadsto v_{s_i}$ on the proof tape. 
@@ -1365,7 +1392,7 @@ Let $M= (m_{i,j})$ be the $n\times n$ matrix with $$m_{i,j} = \begin{cases} X_{i
 \end{exmp}
 
 \begin{lemma}[Chernoff bound]
-Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. Then $$\mathbb{P}[|Z - \mu| \geq t] \leq e^{\frac{{-}t^2n \mu}{4}}$$ for any $t\in (0,1)$.
+Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. Then $$\mathbb{P}[\lvert{Z - \mu}\rvert \geq t] \leq e^{\frac{{-t^2n} \mu}{4}}$$ for any $t\in (0,1)$.
 \end{lemma}
 
 \begin{corollary}
@@ -1382,9 +1409,12 @@ Then for any $c' >0$, there exist a randomized polynomial-time $\TM$ $M'$ such t
 \end{corollary}
 \begin{proof}
 Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x)$ $m$ times, with outputs $y_1, \ldots, y_m$. Accept if $M$ accepts $x$ more than $\frac{m}{2}$ times and reject otherwise.
-\\ \\  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\mathbb{E}[X_i] = \mathbb{P}[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can apply the Chernoff bound to get   
+
+\medskip
+
+  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\mathbb{E}[X_i] = \mathbb{P}[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can apply the Chernoff bound to get   
 \begin{align*}
- \mathbb{P}[\sum_{i=1}^m X_i \leq \frac{m}{2}] & \leq \mathbb{P}[ \big | \frac{\sum_{i=1}^m X_i}{m} -\mu \big | \geq n^{-c}] 
+ \mathbb{P}\left[\sum_{i=1}^m X_i \leq \frac{m}{2}\right] & \leq \mathbb{P}\left[ \lvert{\frac{\sum_{i=1}^m X_i}{m} -\mu}\rvert \geq n^{-c}\right] 
 \\ & \leq
  e^{ \frac{ {-}n^{{-}2c}(n^{2c + 2c' + 100})(\frac{1}{2}+ n^{-c})}{4}
  }
@@ -1488,7 +1518,10 @@ $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \{0,1\}^m \fora
 \end{claim}
 \begin{proof} $ $
 \\ ($\Longrightarrow$) Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \big [\exists \overline{z} \in \{0,1\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \big ] <1   .$$ Note that $\mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \big [\bigwedge_{j=1}^m  A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \big  ] \leq \frac{1}{(100m^2)^m}$ for any $\overline{z} \in \{0,1\}^m$. Therefore, $$      \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \big [\exists \overline{z} \in \{0,1\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \big ]   \leq \frac{2^m}{(100m^2)^m} <1.$$
-\\ \\
+
+\medskip
+
+
 ($\Longleftarrow$)  Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_R \{0,1\}^{\ast}}[A(x, y_j \oplus z) =1] \leq \frac{1}{100m^2}$ for each $j=1, \ldots, m$. This implies that $$\mathbb{P}_{z \in_R \{0,1\}^{\ast}}[\bigvee_{j=1}^m A(x, y_j \oplus z) =1] \leq \frac{1}{100m^2} \leq \frac{m}{100m^2} = \frac{1}{100m} <1.$$
 \end{proof}
 \end{proof}
@@ -1571,7 +1604,10 @@ Let $S \subset \{0,1\}^m$ and $K\in \N$. We want to construct a verifier $V$ and
 \item it is guaranteed that either $|S| \leq \frac{K}{2}$ or $|S| \geq K$.
 \end{itemize}
 To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $|S| \leq 2^{l-1}$. Let $\H$ denote a pairwise independent set of mappings $\{0,1\}^m \to \{0,1\}^l$. 
-\\ \\
+
+\medskip
+
+
 \fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
 Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ to $P$. Next, have $P$ send $x \in_R \{0,1\}^m$ to $V$.  Finally, have $V$ accept if and only if $x\in S$ and $h(x) =y$. 
 }}
@@ -1620,7 +1656,10 @@ If $n>1$, then let $h_1(x_1) = \sum_{x_2, \ldots, x_n \in \{0,1\}} \tilde{\varph
 Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
 \end{enumerate}
 Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
-\\ \\ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
+
+\medskip
+
+ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
 \end{proof}
 
 \begin{prop}

@@ -180,11 +180,11 @@
 \begin{abstract}
 We begin higher Waldhausen $K$-theory. The main sources for this talk are the following.
 \begin{itemize}
-\item \textit{nLab}.
-\item Charles Weibel's \textit{The} K\textit{-book: an introduction to algebraic} K\textit{-theory}.  Chapter IV.8.
-\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 8.
+\item $n$Lab.
+\item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory},  Ch. IV.8.
+\item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 8.
 \end{itemize}
-For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985), 318-419. 
+For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985). 
 \end{abstract}
 
 
@@ -229,7 +229,10 @@ A Waldhausen category $(\c, w)$ is \textit{saturated} if whenever $fg$ makes sen
 
 \begin{definition}
 We now introduce the main concept to be generalized.
-\\ \\ Let $\c$ be a category with cofibrations. Let the \textit{extension category} $S_2\c$ have as objects the cofiber sequences in $(\c, co\c)$ and as morphisms the triples $(f', f, f'')$ such that
+
+\medskip
+
+ Let $\c$ be a category with cofibrations. Let the \textit{extension category} $S_2\c$ have as objects the cofiber sequences in $(\c, co\c)$ and as morphisms the triples $(f', f, f'')$ such that
 \[
 \begin{tikzcd}
 X' \arrow[r, tail] \arrow[d, "f'"] & X \arrow[r, two heads] \arrow[d, "f"] & X'' \arrow[d, "f''"] \\
@@ -341,7 +344,10 @@ First notice that the composite of two cofibrations $g \circ f : X \to Y \to Z$ 
 \end{tikzcd}.
 \]
 It's clear that any isomorphism or initial morphism in $S_q \c$ is a cofibration.
-\\ \\
+
+\medskip
+
+
 To see that (W2) is satisfied, let $f: X \to Y$ and $g : X \to Z$ be morphisms in $S_q \c$. It's easy to verify that each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a cofibration. Thus, each pushout $W_{i, j} \coloneqq Y_{i,j} \cup_{X_{i,j}} Z_{i, j}$ exists.
 These form a functor $W: \Ar[q] \to \c$. If $i < j < k$, then we have $W_{i,j} \rightarrowtail W_{i, k} \twoheadrightarrow W_{j,k}$ because the left morphism factors as the composite of two cofibrations
 \[
@@ -384,7 +390,7 @@ $(S_q \c, wS_q \c)$ is a Waldhausen category.
 Let $\c$ be a category with cofibrations. If $\alpha : [p] \to [q]$, then define $\alpha^{\ast} : S_q \c \to S_p \c$ by
 $$\alpha^{\ast}(X: \Ar[q] \to \c) = X \circ \Ar(\alpha) : \Ar[p] \to \Ar[q] \to \c.$$
 It's easy to check that this satisfies the two conditions of a diagram in $S_p \c$.
-Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure the $s_i$ work.]]} 
+Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure that the $s_i$ work.]]} 
 \end{definition}
 
 \begin{prop}
@@ -409,10 +415,13 @@ There is a natural map $N_{\bullet} w \c \land \Delta_{\bullet}^1 \to N_{\bullet
 \end{lemma}
 \begin{proof}
 We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N_{\bullet} w S_q \c$. This defines a right skeletal structure on $N_{\bullet} w S_{\bullet} \c$. 
-\\ \\ If $q = 0$, then $w S_0 \c = S_0 \c = \ast$, so that $N_{\bullet} w S_0\c = \ast$ as well. If $q= 1$, then
+
+\medskip
+
+ If $q = 0$, then $w S_0 \c = S_0 \c = \ast$, so that $N_{\bullet} w S_0\c = \ast$ as well. If $q= 1$, then
 $w S_1 \c \cong w \c$. Thus, the right $1$-skeleton is equal to $N_{\bullet} w \c  \land \Delta_{\bullet}^1$, which in turn must be equal to the image $I$ of the canonical map $$\coprod_{q\leq 1} N_{\bullet} w S_q \c \times \Delta_{\bullet}^q \to N_{\bullet} w S_{\bullet} \c.$$ Now, the degeneracy map $s_0$ collapses $\{\ast\} \times \Delta_{\bullet}^1$, and the face maps $d_0$ and $d_1$ collapse $ N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}$. 
 Therefore, $I$ must equal $$N_{\bullet} w \c  \land \Delta_{\bullet}^1  = \frac{N_{\bullet} w \c \times \Delta_{\bullet}^1}{\{\ast\} \times \Delta_{\bullet}^1 \cup N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}}.$$  We have defined a natural inclusion map $\lambda : N_{\bullet} w \c \land \Delta_{\bullet}^1 \to  N_{\bullet} w S_{\bullet} \c$.
-\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$. {[[This is a tentative explanation offered by Thomas Brazelton.]]}
+\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$. {[[This is a tentative explanation due to Thomas Brazelton.]]}
 \end{proof}
 
 \begin{remark}
@@ -421,7 +430,10 @@ The axiom (W3) implies that $w\c$ is closed under coproducts, making $|wS_{\bull
 
 \begin{definition}
 Let $(\c, w\c)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega | N_{\bullet} wS_{\bullet} \c|.$$ Then we have a right adjoint $\iota: |w \c | \to K(\c, w)$ to the based map $\sigma$.
-\\ \\ Moreover,
+
+\medskip
+
+ Moreover,
 let $F : (\c, w \c) \to (\d, w\d)$ be an exact functor. Then set $K(F) = \Omega | wS_{\bullet}F| : K(\c, w) \to K(\d, w)$. We have thus defined the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 \end{definition}
 
@@ -451,7 +463,7 @@ $\pi_1|w S_{\bullet} \c| \cong K_0(\c, w)$.
 The group $K_0(\c, w)$ is generated by $[X]$ for every $X \in \ob \c$ such that $[X'] + [X''] = [X]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and $[X] = [Y]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
 \end{lemma}
 \begin{proof}
-We compute $\pi_1|N_{\bullet}w S_{\bullet} \c|$ based at the $(0,0)$-bisimplex $\ast$. Notice that $|N_{\bullet}w S_{\bullet} \c|$ has a CW structure {[[this is reasonable visually]]} with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
+We compute $\pi_1|N_{\bullet}w S_{\bullet} \c|$ based at the $(0,0)$-bisimplex $\ast$. Notice that $|N_{\bullet}w S_{\bullet} \c|$ has a CW structure  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
 \end{proof}
 
 \begin{corollary}
@@ -463,13 +475,11 @@ By \cref{P4}, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which is 
 
 \begin{exmp}
 Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained from $X$ by attaching at least one cell such that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. If $\mathcal{R}_f(X)$ denotes the subcategory of those $Y$ obtained by attaching finitely many cells, then we write $A(X)\coloneqq K(\mathcal{R}_f(X))$.
-\begin{lemma}
-$A_0(X)\cong \Z$.
-\end{lemma}
-\begin{proof}
-Weibel leaves this proof an an exercise.
-\end{proof}
 \end{exmp}
+
+\begin{prop}
+$A_0(X)\cong \Z$.
+\end{prop}
 
 \begin{definition}
 If $\b$ is a Waldhausen subcategory of $\c$, then it is \textit{cofinal in $\c$} is for any $X \in \ob \c$, there is some $X' \in \ob \c$ such that $X \coprod X' \in \ob \b$.

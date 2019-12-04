@@ -163,8 +163,8 @@
 \begin{abstract}
 Even more basic category theory. The main sources for this talk are the following.
 \begin{itemize}
-\item \textit{nLab}.
-\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 4.
+\item $n$Lab.
+\item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 4.
 \item Peter Johnstone's lecture notes for ``Category Theory" (Mathematical Tripos Part III, Michaelmas 2015), Ch. 4.
 \end{itemize}
 \end{abstract}
@@ -189,15 +189,15 @@ Compose the two unique morphisms to get an isomorphism between the two initial o
 \end{proof}
 
 
-Think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F(\hat{f}) \circ f = f'$.
+Think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F\left(\hat{f}\right) \circ f = f'$.
 \[ \begin{tikzcd}
-X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F(\hat{f})"] \\% 
+X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F\left(\hat{f}\right)"] \\% 
  & F(X')
 \end{tikzcd}
 \]
-Dually, a \textit{universal arrow from $F$ to $X$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f: F(Y) \to X$ of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : F(X') \to X$, there exists a unique morphism $\hat{f}: X' \to Y$ such that $f' = f \circ F(\hat{f})$.
+Dually, a \textit{universal arrow from $F$ to $X$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f: F(Y) \to X$ of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : F(X') \to X$, there exists a unique morphism $\hat{f}: X' \to Y$ such that $f' = f \circ F\left(\hat{f}\right)$.
 \[ \begin{tikzcd}
-F(X') \arrow[r, dashed, "F(\hat{f})"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, "f"] \\% 
+F(X') \arrow[r, dashed, "F\left(\hat{f}\right)"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, "f"] \\% 
  & X
 \end{tikzcd}
 \]
@@ -222,8 +222,11 @@ If $F^{op}:C^{op} \to D^{op}$ is opposite to the functor $F: \c \to \d$ and $Y \
 Let $F : \d \to \c$ be a functor and $x \in \ob C$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is initial object of the coslice $(x \downarrow F)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of the same category.
 \end{prop}
 \begin{proof}{[[I messed this up during my talk. It should be correct as written now.]]}
-Suppose that $u$ is universal and $f: x \to Fy$ is another object of $(x \downarrow F)$. Then there is some unique $\hat{f}: r \to y$ such that $F(\hat{f}) \circ u = f$. Thus $F(\hat{f})$ is a unique morphism of the coslice.
-\\ \\Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $(x \downarrow F)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ make $u$ a universal arrow.
+Suppose that $u$ is universal and $f: x \to Fy$ is another object of $(x \downarrow F)$. Then there is some unique $\hat{f}: r \to y$ such that $F\left(\hat{f}\right) \circ u = f$. Thus $F\left(\hat{f}\right)$ is a unique morphism of the coslice.
+
+\medskip
+
+Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $(x \downarrow F)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ make $u$ a universal arrow.
 \end{proof}
 
 \begin{corollary}
@@ -246,7 +249,10 @@ X \arrow[r, "i"] \arrow[swap, dr,  " i' "] & Y \arrow[d, "f"] \\%
 \end{tikzcd}
 \]
 commutes. We call $i$ the \textit{structure morphism}.
-\\ \\ Composition and identity carry over exactly from $\c$.
+
+\medskip
+
+ Composition and identity carry over exactly from $\c$.
 \end{definition}
 
 \begin{definition}
@@ -257,7 +263,10 @@ Y \arrow[r, "f"] \arrow[swap, dr,  " i "] & Y' \arrow[d, "i '"] \\%
 \end{tikzcd}
 \]
 commutes. We again call $i$ the \textit{structure morphism}.
-\\ \\ Composition and identity carry over exactly from $\c$.
+
+\medskip
+
+ Composition and identity carry over exactly from $\c$.
 \end{definition}
 
 \begin{remark}
@@ -362,7 +371,10 @@ If $\c$ is the empty category, then the empty functor $F: \c \to \d$ has $F/\Del
 
 \begin{definition}
 Let $\j$ be a discrete small category. A diagram of shape $\j$ is a family $\{A_i\}_{i\in J}$. A limit for this diagram is the \textit{product} $\prod_i A_i$ equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique $f: U \to \prod_i A_i$ with $\pi_i \circ f = f_i$. 
-\\ \\ Dually, a colimit for the diagram is the \textit{coproduct} $\sum_i A_i$ equipped with inclusions $u_i : A_i \to \sum_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique $f : \sum_i A_i \to Y$ with $f_i = f \circ u_i$.
+
+\medskip
+
+ Dually, a colimit for the diagram is the \textit{coproduct} $\sum_i A_i$ equipped with inclusions $u_i : A_i \to \sum_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique $f : \sum_i A_i \to Y$ with $f_i = f \circ u_i$.
 \end{definition}
 
 \begin{exmp}
@@ -430,22 +442,25 @@ Dually, if $Y: \e \to \d$ is a functor with $\lim_{\e}Y$, then $$ \lim_{\e}(G \c
 \end{prop}
 \begin{proof}
 We have the following chain of natural bijections for each $Y \in \d$: $$ \d(F(\colim_{\e}), Y) \cong \c(\colim_{\e} X, G(Y)) \cong \lim_{\e} \c(X(-), G(Y)) \cong \lim_{\e} \d(F(X(-)), Y) \cong \mathbf{Fun}(\e, \d)(F \circ X, \Delta Y).$$ The second bijection follows from the fact that both sets can be identified with the components of the natural transformations from $X$ to $\Delta G(Y)$.
-\\ \\ The second claim follows by duality.
+
+\medskip
+
+ The second claim follows by duality.
 \end{proof}
 
 \begin{definition}
-Let $F : \c \to \d$ be a functor. The \textit{fiber category} $F^{-1}(Y)$ is the full subcategory of $\c$ generated by the objects $X$ with $F(X) =Y$.
+Let $F : \c \to \d$ be a functor. The \textit{fiber category} $F^{{-}1}(Y)$ is the full subcategory of $\c$ generated by the objects $X$ with $F(X) =Y$.
 \end{definition}
 
 \begin{definition}
-Suppose $\c$ has terminal object $1$. A \textit{cofiber} of a morphism $f: X \to Y$ is a pushout of the diagram $1 \leftarrow X \rightarrow Y$. We write $Y/X$. Further, given a morphism $p: 1 \to Y$, the \textit{fiber} of $f$ at $p$ is a pullback of $1 \rightarrow Y \leftarrow X$. We write $f^{-1}(p)$.
+Suppose $\c$ has terminal object $1$. A \textit{cofiber} of a morphism $f: X \to Y$ is a pushout of the diagram $1 \leftarrow X \rightarrow Y$. We write $Y/X$. Further, given a morphism $p: 1 \to Y$, the \textit{fiber} of $f$ at $p$ is a pullback of $1 \rightarrow Y \leftarrow X$. We write $f^{{-}1}(p)$.
 \end{definition}
 
 \begin{definition} $ $
-Let $F : \c \to \d$ be a functor. For each $Y \in \ob \d$, there is a full and faithful functor $F^{-1}(Y)  \rightarrowtail F/Y$ given by $X \mapsto (X, \id_Y)$. We say that $\c$ is a \textit{precofibered category} over $\d$ if this functor admits a left adjoint given by $(Z, g: F(Z) \to Y) \mapsto g_{\ast}(Z)$.
+Let $F : \c \to \d$ be a functor. For each $Y \in \ob \d$, there is a full and faithful functor $F^{{-}1}(Y)  \rightarrowtail F/Y$ given by $X \mapsto (X, \id_Y)$. We say that $\c$ is a \textit{precofibered category} over $\d$ if this functor admits a left adjoint given by $(Z, g: F(Z) \to Y) \mapsto g_{\ast}(Z)$.
 \end{definition}
 
-Moreover, there is a full and faithful functor $F^{-1}(Y) \rightarrowtail Y/F$ defined in the same way. We say that $\c$ is a \textit{prefibered category} over $\d$ if this functor admits a right adjoint given by $(Z, g: Y \to F(Z)) \mapsto g_{\ast}(Z)$.
+Moreover, there is a full and faithful functor $F^{{-}1}(Y) \rightarrowtail Y/F$ defined in the same way. We say that $\c$ is a \textit{prefibered category} over $\d$ if this functor admits a right adjoint given by $(Z, g: Y \to F(Z)) \mapsto g_{\ast}(Z)$.
 
 \begin{definition}  Let $F ; \c \to \d$ be a functor.
 \begin{enumerate}

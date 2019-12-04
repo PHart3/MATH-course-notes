@@ -140,7 +140,7 @@
 \DeclareMathOperator{\rng}{range}
 \DeclareMathOperator{\gemu}{gemu}
 \DeclareMathOperator{\almu}{almu}
-\newcommand{\Char}{\mathsf{char}}
+\DeclareMathOperator{\Char}{\mathsf{char}}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\graph}{Graph}
 \DeclareMathOperator{\gal}{Gal}
@@ -183,7 +183,7 @@
 \begin{document}
 
 \begin{abstract}
-These notes are based on Tony Pantev's ``Algebra I'' lectures given at UPenn. Any mistake in what follows is my own.
+These notes are based on Tony Pantev's ``Algebra I'' lectures at UPenn. Any mistake in what follows is my own.
 \end{abstract}
 
 \tableofcontents
@@ -211,16 +211,17 @@ A \textit{right group action} is a function $b: S \times G \to S$ such that
 for any $x\in S$ and $g,g' \in G$ . 
 \end{definition}
 
-\theoremstyle{exercise}
-\begin{exercise} Find a homomorphism representing a right group action $a: S \times G \to S$.
+
+\begin{exercise} 
+Find a homomorphism representing a right group action $a: S \times G \to S$.
 \end{exercise}
 \begin{proof}
 Given $a$, define $f: G^{\op} \to \aut(S)$ by $g \mapsto (x \mapsto a(x, g))$. This is a homomorphism. Conversely, given a homomorphism $f: G^{\op} \to \aut(S)$, define $a(x, g) = f(g)(x)$. This is a right action.
 \end{proof}
 
-\theoremstyle{remark}
-\begin{remark}{Every group action $\theta: G \to \aut(S)$ factors through a \textit{tautological action} $H \leq \aut(S)$. }
 
+\begin{remark}
+Every group action $\theta: G \to \aut(S)$ factors through a \textit{tautological action} $H \leq \aut(S)$. 
 \[ \begin{tikzcd}
 G \arrow{r}{q} \arrow[swap]{dr} {\theta} & \faktor{G}{\ker(\theta)} \arrow{d}{\cong} \\% 
  & \theta(G)
@@ -229,7 +230,11 @@ G \arrow{r}{q} \arrow[swap]{dr} {\theta} & \faktor{G}{\ker(\theta)} \arrow{d}{\c
 \end{remark}
 
 \begin{definition}
-Given a group action $\theta: G \to \aut(S)$, we say that $\theta$ is \textit{faithful} or \textit{effective} if it is injective. 
+Consider a group action $\theta: G \to \aut(S)$.
+\begin{enumerate}
+\item We say that $\theta$ is \textit{faithful} or \textit{effective} if it is injective. 
+\item We say that $\theta$ is \textit{free} if for any $g\in G$ and $s\in S$, $\theta(g)(s) =s \implies g =e$.
+\end{enumerate}
 \end{definition}
 
 \begin{definition} Let $\theta: G \to \aut(S)$ be a group action and $x\in S$.
@@ -239,9 +244,9 @@ Given a group action $\theta: G \to \aut(S)$, we say that $\theta$ is \textit{fa
 \end{enumerate}
 \end{definition}
 
-\begin{note}
+
 Note that the orbits of an action behave as equivalence classes. 
-\end{note}
+
 
 \begin{exercise} $ $
 \begin{enumerate}
@@ -276,7 +281,7 @@ Notice that $R_a = \{(s, gs): s \in S$, $g\in G\}$.
 
 \begin{exmp}
 Let $R\subset S \times S$ be an equivalence relation such that $\theta^{\times 2}(g)(R) = R$ for each $g 
-\in G$. Then $\faktor{G}{R}: G \to \aut(\faktor{S}{R})$ given by $g \mapsto ([s] \mapsto [gs])$ is an action.
+\in G$. Then $\faktor{G}{R}: G \to \aut\left(\faktor{S}{R}\right)$ given by $g \mapsto ([s] \mapsto [gs])$ is an action.
 \end{exmp}
 
 \begin{exmp}
@@ -308,8 +313,8 @@ G \arrow{r}{\theta} \arrow[swap]{dr} & \aut(S) \arrow{d} \\%
 
 \begin{definition}  $ $
 \begin{enumerate}
-\item If $(S, +)$ is an abelian group and $\theta : G \to \aut_+(S)$ an action, then we call $S$ a \textit{left $G$-module}.
-\item If $S$ is also a vector space over $k$ and $G$ is $k$-linear, then the action is called a \textit{$k$-linear representation of $G$}.
+\item If $\left(S, +\right)$ is an abelian group and $\theta : G \to \aut_+(S)$ is an action, then we call $S$ a \textit{left $G$-module}.
+\item If $S$ is also a vector space over $k$ and $\theta$ is $k$-linear, then $\theta$ is called a \textit{$k$-linear representation of $G$}.
 \end{enumerate}
 \end{definition}
 
@@ -334,7 +339,10 @@ Given an action $\theta: G \to \aut(S)$, we get an action $\P(\theta): G \to \au
 
 \begin{exmp}[Galois theory]
 Let $f(x) = a_nx^n + \cdots + a_0$ over $\Q$ where $a_n \ne 0$. We know $f(x) = a_n(x-\beta_1)\cdots (x-\beta_n)$ for some $(\beta_1, \ldots, \beta_n) \in \C^n$. It's true that each $\beta_i = f(a_0, \ldots, a_n)$ for some algebraic function $f$  if and only if a certain symmetry group of $\{B_i\}$ has a special property (to be covered next semester).
-\\ \\ Let $\Q[\tilde{\beta}]\coloneqq  \Q[\beta_1, \ldots, \beta_n] = \{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\}$. Let the Galois group of $f$ $$\gal(f)\coloneqq  \{\sigma \in S_n : \exists g(\sigma) : \Q[\tilde{\beta}] \to \Q[\tilde{\beta}] \text{ bijection with } g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)}) \text{ for } F \in \Q[x_1, \ldots, x_n]\}.$$
+
+\medskip
+
+ Let $\Q[\tilde{\beta}]\coloneqq  \Q[\beta_1, \ldots, \beta_n] = \{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\}$. Let the Galois group of $f$ $$\gal(f)\coloneqq  \{\sigma \in S_n : \exists g(\sigma) : \Q[\tilde{\beta}] \to \Q[\tilde{\beta}] \text{ bijection with } g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)}) \text{ for } F \in \Q[x_1, \ldots, x_n]\}.$$
 
 \begin{exercise}
 Show that $g: G \to \aut(\Q[\tilde{\beta]})$ is a homomorphism where $G \coloneqq  \{g(\sigma): \sigma \in \gal(f)\}$.
@@ -395,16 +403,16 @@ S \arrow[r, "f"]
 We say that $\theta$ and $\psi$ are \textit{isomorphic}, written as$\theta \cong \psi$,  if there is an equivariant bijection for $\theta$ and $\psi$.
 \end{definition}
 
-\begin{note}
-We have that $\theta \cong \psi$ if and only if there exist intertwiners $f_1 : S \to T$ and $f_2 : T \to S$ such that $f_1 \circ f_2 = \id_T$ and $f_2 \circ f_1 = \id_S$. 
-\end{note}
 
-\begin{remark} $ $
+We have that $\theta \cong \psi$ if and only if there exist intertwiners $f_1 : S \to T$ and $f_2 : T \to S$ such that $f_1 \circ f_2 = \id_T$ and $f_2 \circ f_1 = \id_S$. 
+
+
+\begin{note} $ $
 \begin{enumerate}
 \item If $\theta: G \to \aut(S)$ is simply transitive and $x \in S$, then $f_x: G \to S$ with $g \mapsto \theta(g)(x)$ intertwines $\theta$ and left-translation on $G$. Therefore, every $G$-torsor action is non-canonically isomorphic to left-translation on $G$.
 \item Moreover, if $H \leq G$, then left-translation by $G$ on the coset space $\{gH\}$ is well-defined and is transitive. We can extend this to prove that left-translations by $G$ on a coset space characterize transitive actions up to isomorphism.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{theorem}
 Let $ \theta: G \to \aut(S)$ be an action and $K \subset S$ be an orbit. Then $\theta \restriction_K$ is a transitive action. If $x \in K$, then $f_x: \faktor{G}{\stab_\theta(x)} \to K$ given by $[g] \mapsto \theta(g)(x)$ is well-defined and an equivariant bijection for $\theta \restriction_K$ and left-translation by $G$ on $\faktor{G}{\stab_\theta(x)}$.
@@ -414,7 +422,10 @@ Let $ \theta: G \to \aut(S)$ be an action and $K \subset S$ be an orbit. Then $\
 Let $[g] = [h]$. Then $g = hs$ for some $s \in \stab(x)$. Hence $\theta(g)(x) = \theta(hs)(x) = \theta(h)(\theta(s)(x)) = \theta(h)(x)$, proving that $f_x$ is well-defined. \\  \\
 Define the map $F: K \to \stab_\theta(x)$ by $F(y) = S_y \coloneqq  \{g \in G : \theta(g)(x) = y\} = [s_0]$ for fixed $s_0 \in S_y$.
 It's easy to check that this is the inverse of $f_x$. 
-\\ \\
+
+\medskip
+
+
 Finally, let $g, g'\in G$. Then 
 \begin{align*} f_x \circ l(g)(g') & = f_x(l(g)) \\ & = f_x(g[g'])  \\ & = \theta(gg')(x) 
  \\ & = \theta(g)(\theta(g')(x))\\ &  = \theta(g) \circ f_x(g').
@@ -452,7 +463,7 @@ If $G$ is finite, then $$|G| = |Z(G)| + \sum_{{\substack{C \text{ conj. class} \
 Consider the left translation action $l : G \to \aut(G/H)$. Let $O$ be any orbit of the restricted action $l\restriction_H$, so that $|O| = \frac{|H|}{\lvert{\stab}\rvert}$. Since $|O| \mid |H|$, it follows that $|O|=1$ or $|O| \geq p$. But $[G:H] = p$, and there is already an orbit of size $1$. This implies that there are exactly $p$ orbits of size $1$. Thus, $l\restriction_H$ is trivial, and $H \unlhd G$.
 \end{proof}
 
-\begin{exercise}[Burnside's lemma] If $G$ and $S$ are finite and $\theta : G \to \aut(S)$ is an action, then for each $g\in G$, consider $\fix(g) \subset S$. Check that $$|G \diagdown S| = \frac{1}{|G|} \sum_g |\fix(g)|.$$ \underline{Hint:} Consider $\{(g,x): g \cdot x=x\} \subset G \times S$.
+\begin{exercise}[Burnside's lemma] If $G$ and $S$ are finite and $\theta : G \to \aut(S)$ is an action, then for each $g\in G$, consider $\fix(g) \subset S$. Check that $$|G \diagdown S| = \frac{1}{|G|} \sum_g |\fix(g)|.$$ As a hint, consider $\{(g,x): g \cdot x=x\} \subset G \times S$.
 \end{exercise}
  
 \begin{definition}
@@ -481,15 +492,15 @@ Let $p$ be a prime. A finite group $G$ is called a \textit{$p$-group} if $|G| = 
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
+
 $\Delta G$ is the smallest subgroup $H$ such that $\faktor{G}{H}$ is abelian, so that $$G = \Delta^{(0)}G \unrhd \Delta^{(1)}G \unrhd \Delta^{(2)}G \unrhd \cdots $$ is a normal abelian series, called the \textit{derived series of $G$}.
-\end{remark}
+
 
 \begin{definition}
 We call $G^{\ab}\coloneqq  \faktor{G}{\Delta G}$ the \textit{abelianization of $G$}.
 \end{definition}
 
-\begin{remark}
+
 If $f: G \to \underset{\text{abelian}} A$, then $f$ factors uniquely as follows.
 
 \[ \begin{tikzcd}
@@ -499,7 +510,7 @@ G \arrow[r, "f"] \arrow[dr, "g", swap] & A \\%
 \]
 where $\tilde{f}: G^{\ab} \to A$ has $x\mapsto f(x)$.
 In other words, the map $g$ is universal for maps from $G$ to abelian groups. 
-\end{remark}
+
 
 \begin{definition}
 We say that the derived series of $G$ \textit{terminates} if $\Delta^{(t+1)}G = \Delta^{(t)}G$ for some $t$. If this $\Delta^{(t)}G=\{e\}$, then we say that the series terminates at $\{e\}$.
@@ -520,20 +531,20 @@ We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$
 \begin{definition}{Let $G$ be a group.}
 \begin{enumerate}
 \item $G$ is called \textit{polycyclic} if it has a finite subnormal series with cyclic factors.
-\item $G$ is called \textit{nilpotent} if it has a finite normal series  $G =G_0 \unrhd G_1 \unrhd \cdots \unrhd G_n = \{e\}$ where $\faktor{G_{i-1}}{G_i}\subset Z(\faktor{G}{G_i})$ for each $1\leq i\leq n$.
+\item $G$ is called \textit{nilpotent} if it has a finite normal series  $G =G_0 \unrhd G_1 \unrhd \cdots \unrhd G_n = \{e\}$ where $\faktor{G_{i-1}}{G_i}\subset Z\left(\faktor{G}{G_i}\right)$ for each $1\leq i\leq n$.
 \end{enumerate}
 \end{definition}
 
-\begin{remark} $ $
+\begin{note} $ $
 \begin{enumerate}
 \item Every quotient and subgroup of a nilpotent group is nilpotent. 
 \item Every $p$-group $G$ is nilpotent. 
 \end{enumerate}
-\end{remark}
+\end{note}
 
 
 \begin{proof}
-Set $G_0 = \{e\}$, $G_1 = Z(G)$, and, for $i>1$, $G_{i}$ such that $G \geq G_i \geq G_{i-1}$ and $\faktor{G_i}{G_{i-1}} = Z(\faktor{G}{G_{i-1}})$. Since any quotient of $G$ is a $p$-group, it has nontrivial center unless it equals $G$.  Thus, the $G_i$ form a strictly increasing sequence bounded above by $G$. Since $G$ is finite, $G = G_k$ for some $k$. Note that each $G_i$ is the pullback of a normal subgroup under the natural projection and thus itself normal in $G$, completing the proof.
+Set $G_0 = \{e\}$, $G_1 = Z(G)$, and, for $i>1$, $G_{i}$ such that $G \geq G_i \geq G_{i-1}$ and $\faktor{G_i}{G_{i-1}} = Z\left(\faktor{G}{G_{i-1}}\right)$. Since any quotient of $G$ is a $p$-group, it has nontrivial center unless it equals $G$.  Thus, the $G_i$ form a strictly increasing sequence bounded above by $G$. Since $G$ is finite, $G = G_k$ for some $k$. Note that each $G_i$ is the pullback of a normal subgroup under the natural projection and thus itself normal in $G$, completing the proof.
 \end{proof}
 
 \subsection{Lecture 5}
@@ -554,15 +565,17 @@ Determine the nilpotent dihedral groups.
 We claim that $D_n$ is nilpotent  if and only if $n$ equals a power of $2$. We know that any $p$-group is nilpotent. Conversely, if $n$ is odd, then $D_n$ has trivial center, hence is not nilpotent. Further, if $n= 2^km$ for $m$ odd and $k\geq 1$, then $Z(D_n) = \{e, m2^{k-1}\}$, so that $\faktor{D_n}{Z(D_n)} \cong D_{m2^{k-1}}$, which by induction we can assume is not nilpotent. Since every quotient of a nilpotent group is nilpotent, $D_n$ cannot be nilpotent when $n = 2^km$ for any $k\geq 0$. This proves the claim.
 \end{proof}
 
-\begin{remark}\label{r10}
+\begin{note}\label{r10}
  We have the following two chains of strict implications for certain classes of groups.
 \begin{enumerate}
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ Polycyclic $\subsetneq$  Solvable.
 \end{enumerate}
+\end{note}
+
+
 To complete the proof that each implication is strict, it suffices to produce a nilpotent group which is not abelian.
 
-\end{remark}
 
 \begin{exmp}
 Let $V$ be a finite-dimensional vector space over $\R$. Let $\omega: V\times V\to \R$ be a bilinear map on $V$ such that
@@ -590,7 +603,10 @@ Let $k$ be a field and  $B_n(k)$ denote all $n\times n$ matrices of the form
     \end{matrix}
   \right]
 \] with entries in $k$ such that each $a_i \ne 0$. Then $B_n(k)$ is called the standard Borel subgroup of $\GL_n(k)$. Note that it is not abelian for $n>1$. 
-\\ \\ We prove by induction that it is solvable.  For $n=1$, it is abelian, hence solvable. Now suppose it's solvable for $n-1$ where $n>1$ is fixed. Define a surjective homomorphism $f: B_n(k) \to B_{n-1}(k)$ by mapping each matrix $M$ to the upper left $n-1 \times n-1$ included in $M$. Then $\ker f$ consists of matrices of the form
+
+\medskip
+
+ We prove by induction that it is solvable.  For $n=1$, it is abelian, hence solvable. Now suppose it's solvable for $n-1$ where $n>1$ is fixed. Define a surjective homomorphism $f: B_n(k) \to B_{n-1}(k)$ by mapping each matrix $M$ to the upper left $n-1 \times n-1$ included in $M$. Then $\ker f$ consists of matrices of the form
 \[
   \left[
     \begin{matrix}
@@ -620,7 +636,7 @@ $S_n$ is solvable  if and only if $n\leq 4$.
 \end{exmp}
 
 \begin{proof}
-Recall the surjective homomorphism $\sgn: S_n \to \{\pm 1\}$ given by $\sigma \mapsto \det(P_\sigma)$ where $P_\sigma$ is the permutation matrix. Note that if $\sigma = (i_1, \ldots, i_k)$, then $\sgn(\sigma) = (-1)^{k-1}$. Then $\ker(\sgn) = A_n$, and we see that $S_n$ is solvable  if and only if $A_n$ is solvable. 
+Recall the surjective homomorphism $\sgn: S_n \to \{\pm 1\}$ given by $\sigma \mapsto \det(P_\sigma)$ where $P_\sigma$ is the permutation matrix. Note that if $\sigma = (i_1, \ldots, i_k)$, then $\sgn(\sigma) = ({-}1)^{k-1}$. Then $\ker(\sgn) = A_n$, and we see that $S_n$ is solvable  if and only if $A_n$ is solvable. 
 \end{proof}
 
 \begin{lemma}
@@ -649,7 +665,10 @@ We have $\Delta^{(2)}S_4 = \Delta A_4 \cong C_2 \times C_2$. Also, $\Delta^{(2)}
 
 \begin{proof}
 Recall that $A_4 \unrhd \{(1), (1\;2), (3\; 4), (1\;2)(3\;4)\}\cong C_2 \times C_2$. Since $\faktor{A_4}{C_2 \times C_2}$ is abelian, we see $C_2 \times C_2 \supset \Delta A_4\ne \{e\}$. Since $\Delta A_4$ is normal, it must equal $C_2 \times C_2$.
-\\ \\
+
+\medskip
+
+
 Next, note that $\Delta A_4 \subset \Delta A_n$ for $n\geq 5$. Thus $(1\; 2)(3\; 4)\in \Delta A_n=\Delta^{(2)}S_n\subset S_n$ for $n\geq 4$. This implies that $\Delta A_n \unlhd S_n$ so that $\Delta A_n$ contains all conjugates of $(1\; 2)(3\; 4)$. But since two permutations are conjugate exactly when they have the same cycle type, it follows for $n\geq 5$ that  $\Delta A_n = A_n$. (Hence $A_n$ is not solvable when $n\geq 5$.)
 \end{proof}
 
@@ -659,22 +678,24 @@ Next, note that $\Delta A_4 \subset \Delta A_n$ for $n\geq 5$. Thus $(1\; 2)(3\;
 In Galois theory, one finds that a polynomial $f(x)$ over $\Q$ is solvable in radicals if and only if the group $\gal(f)$ is solvable. 
 \end{remark}
 
-\begin{remark}
+\begin{note}
 For finite groups, we can add information to our chain of implications in \cref{r10} as follows.
 \begin{enumerate}
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ \textbf{Abelian} $\subsetneq$ Polycyclic $\bm =$  Solvable.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{remark}
 Symmetry groups of polynomials are similar to freely acting symmetry groups of homeomorphisms on topological spaces, giving a correspondence $\gal(f) \longleftrightarrow \pi_1(X)$. 
 
 Moreover, if the space $X$ has interesting underlying geometry, then the possibilities of $\pi_1(X)$ belonging to one of the classes of groups listed in \cref{r10} are constrained. For example,
 a compact complex submanifold of $\CP^n$ is known as a Kahler manifold. It is known that any finite group is realizable as $\pi_1(X)$ for some Kahler manifold $X$.
+
 \begin{definition}
 If $\Gamma$ is a group and $P$ a property of groups, then we say that $\Gamma$ is \textit{virtually $P$} if there exist a finite subgroup $F \unlhd \Gamma$ and a subgroup $I \leq \Gamma$ of finite index so that if $q: \Gamma \to \faktor{\Gamma}{F}$ is the natural projection, then $q(I)$ has $P$. 
 \end{definition}
+
 For $\pi_1(X)$ with $X$ a Kahler manifold, we have the following chains of implications due to Arapura-Nuri (2005).
 \begin{enumerate}
 \item v. Cyclic $\subsetneq$ v. Abelian $\subsetneq$ v. Nilpotent = v. Solvable.
@@ -683,7 +704,7 @@ For $\pi_1(X)$ with $X$ a Kahler manifold, we have the following chains of impli
 \end{remark}
 
 \begin{exmp}
-If $|G| =p^2$ for $p$ prime, then $G$ is abelian.
+If $|G| =p^2$ with $p$ prime, then $G$ is abelian.
 \end{exmp}
 \begin{proof}
 This follows from the fact that $G$ has nontrivial center as a result of the class equation.
@@ -696,22 +717,31 @@ Show that $G$ from our last example is isomorphic to either $C_p \times C_p$ or 
 \section{Sylow theorems}
 
 \begin{definition}
-Let $G$ be a group with $|G|= p^km$ for $p$ prime, $k\geq 1$, $m\geq 1$, and $(p,m) =1$. Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $|H| = p^k$.
+Let $G$ be a group with $|G|= p^km$, $p$ prime, $k\geq 1$, $m\geq 1$, and $\left(p,m\right) =1$. Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $|H| = p^k$.
 \end{definition}
 
-\begin{theorem}[Weak Sylow-I]
+\begin{theorem}[Weak Sylow-I]\label{ws1}
 Every finite group $G$ with $|G| = p^{\beta}m$ contains a $p$-Sylow subgroup.
 \end{theorem}
 \begin{proof}
-We use induction on $|G|$. Write $G= Z(G) \coprod_{x\notin Z(G)} C(x)$ as the union of conjugacy classes. \\ \\ \underline{Case 1:} Let $x\in G$ such that $|C(x)|>1$ and $p\nmid |C(x)|$. But since $|C(x)||Z_G(x)| =|G|$, we see that $|C(x)| \mid m$ and $p^{\beta}\mid |Z_G(x)|< |G|$. By induction $Z_G(x)$ and thus $G$ contain a $p$-Sylow subgroup.
-\\ \\ \underline{Case 2:}
+We use induction on $|G|$. Write $G= Z(G) \coprod_{x\notin Z(G)} C(x)$ as the union of conjugacy classes. 
+\medskip
+
+ \underline{Case 1:} Let $x\in G$ such that $|C(x)|>1$ and $p\nmid |C(x)|$. But since $|C(x)||Z_G(x)| =|G|$, we see that $|C(x)| \mid m$ and $p^{\beta}\mid |Z_G(x)|< |G|$. By induction $Z_G(x)$ and thus $G$ contain a $p$-Sylow subgroup.
+
+\medskip
+
+ \underline{Case 2:}
  Suppose that for any $x\in G$, if $|C(x)| >1$, then $p\mid |C(x)|$. Then $p\mid Z(G)$. Write $|Z(G)| = p^{\alpha}n$ with $1\leq \alpha\leq \beta$ and $(n, p)=1$. If $\alpha = \beta$, then we're done by induction, so assume that $\alpha <
  \beta$. Since $|Z(G)| < G$, by induction we have some $H\leq Z(G)$ with $|H| = p^{\alpha}$. This is normal in $G$, and $|\faktor{G}{H}| = p^{\beta - \alpha}\frac{m}{n} < |G|$. Thus there is some $p$-Sylow subgroup $S\leq \faktor{G}{H}$.  Let $S'\coloneqq q^{-1}(S)$ be the pullback of $S$.  Then $\faktor{S'}{H} =S$, implying that $p^{\beta}= |S'|$. 
-\\ \\ \underline{Case 3:} Assume that $Z(G) = G$. Then we can apply the FTFAG (see below) and induction to get a direct product of $p$-Sylow subgroups of $G$'s invariant factors, which will be a $p$-Sylow subgroup of $G$. 
+
+\medskip
+
+ \underline{Case 3:} Assume that $Z(G) = G$. Then we can apply the FTFAG (see below) and induction to get a direct product of $p$-Sylow subgroups of $G$'s invariant factors, which will be a $p$-Sylow subgroup of $G$. 
 \end{proof}
 
 \begin{note}
-We have another proof of Weak Sylow-I. Let $|G| = p^{\beta}m$ with $(p, m) =1$. Define $$ S = \{A\subset G : |A| = p^{\beta}\}.$$ We see that $G$ acts on $S$ by left translation and that $|S| = {p^{\beta}m \choose p^{\beta}}$, which is coprime to $p$. Therefore, there is some orbit $\Omega_x$ such that $p \nmid  |\Omega_x|$. Since $|\Omega_x||\stab_G(x)| = |G|$, we must have that $p^{\beta} \mid |\stab_G(x)|$. Note that $\stab_G(x)$ acts on $A$ by left translation. As this action is free, each orbit must have cardinality equal to $|\stab_G(x)|$ and thus be divisible by $p^{\beta} =|A|$. This implies that $A$ is the only orbit, and $|A| = \stab_G(x)$.
+We have another proof of \cref{ws1}. Let $|G| = p^{\beta}m$ with $(p, m) =1$. Define $$ S = \{A\subset G : |A| = p^{\beta}\}.$$ We see that $G$ acts on $S$ by left translation and that $|S| = {p^{\beta}m \choose p^{\beta}}$, which is coprime to $p$. Therefore, there is some orbit $\Omega_x$ such that $p \nmid  |\Omega_x|$. Since $|\Omega_x||\stab_G(x)| = |G|$, we must have that $p^{\beta} \mid |\stab_G(x)|$. Note that $\stab_G(x)$ acts on $A$ by left translation. As this action is free, each orbit must have cardinality equal to $|\stab_G(x)|$ and thus be divisible by $p^{\beta} =|A|$. This implies that $A$ is the only orbit, and $|A| = \stab_G(x)$.
 \end{note}
 
 \begin{exercise}[Strong Sylow-I]
@@ -744,7 +774,10 @@ Let $S\in \Syl_p(G)$. Then $N_G(N_G(S)) = N_G(S)$.
 
 \begin{proof}
 We know $N_G(S) \subset N_G(N_G(S))$. Since $N_G(S)$ is the maximal subgroup $H$ of $G$ such that $S\unlhd H$, it suffices to show that $S\unlhd N_G(N_G(S))$.
-\\ \\
+
+\medskip
+
+
 Pick $H$ a $p$-Sylow subgroup of $N_G(N_G(S))$. If $h\in H$, then $|h| =p^K$ for some $K\geq 0$. Consider $\bar{h} \in \faktor{N_G(N_G(S))}{N_G(S)}$. The $|\bar{h}|$ is also a $p$-power. Observe that $$[N_G(N_G(S)): N_G(S)]\mid [G: N_G(S)] \mid [G:S]=m.$$ Therefore, $|\bar{h}| =1$, so that $h \in N_G(S)$. It follows that $H \subset N_G(S)$. Since $H$ and $S$ are both $p$-Sylow subgroups of $N_G(S)$, we know that $H = nSn^{-1} = S$ for some $n\in N_G(S)$. Thus, $S$ is the unique $p$-Sylow subgroup of $N_G(N_G(S))$, hence is normal in $N_G(N_G(S))$.
 \end{proof}
 
@@ -801,9 +834,9 @@ Let $i : N \to \Z^n$ denote inclusion. As this is $\Z$-linear, it may be represe
 One can show that by elementary row and column operations, $C$ is equivalent to a diagonal matrix $(u_1, \ldots, u_n)$ such that each $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$. In particular, we can find bases $(\tilde{f}_i)$ and $(\tilde{e}_i)$ of $N$ and $\Z^n$, respectively, such that $ \tilde{f}_i = u_i \tilde{e}_i$ for each $i$. Therefore, we may write $G\cong \faktor{\Z^n}{N} \cong \Z/u_1 \times \cdots \times \Z/u_n$.
 \end{proof}
 
-\begin{remark}
+
 We may adapt this proof to show that if $A$ is a finitely generated abelian group, then $$A \cong \Z^r \times \Z/u_1 \times \cdots \times \Z/u_n$$ for some integer $r\geq 0$. 
-\end{remark}
+
 
 \section{Composition series}
 
@@ -868,14 +901,13 @@ A sequence of groups with homomorphisms $S \overset{\phi}{\to} G \overset{\pi}{\
 In general, a sequence $G_1 \overset{\phi_1}{\to} G_2 \overset{\phi_2}{\to} \cdots \overset{\phi_k}{\to} G_k$ is called \textit{exact at the term $G_i$} if $\ker \phi_i = \im(\phi_{i-1})$ and is called \textit{exact} if it is exact at all terms where this makes sense.
 \end{definition}
 
-\begin{remark}
-If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$, then for each $0 \leq i \leq k-1$, we get an extension $\eta_i : 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1$. Thus $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
-\\ \\ This reduces the classification problem for groups admitting decomposition series to two smaller classification problems.
+If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$, then for each $0 \leq i \leq k-1$, we get an extension $$\eta_i : 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1.$$ Thus, $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
+
+This reduces the classification problem for groups admitting decomposition series to two smaller classification problems.
 \begin{enumerate}
 \item Understand all possible simple groups
 \item Understand ways of extending simple groups by a subgroup.
 \end{enumerate}
-\end{remark}
 
 \begin{definition}
 A group extension $1 \to H  \overset{i}{\to} G \overset{q}{\to} K \to 1$ is called \textit{split} if we can find a homomorphism $s : K \to G$ such that $q \circ s = \id_K$. In symbols, \[
@@ -889,24 +921,24 @@ A group extension $1 \to H  \overset{i}{\to} G \overset{q}{\to} K \to 1$ is call
 Suppose $|G|= pq$. Then $1 \to \faktor{Z}{q} \to G \to \faktor{Z}{p}$ is split.
 \end{exmp}
 
-\begin{remark}
+
 If  \[
 	\begin{tikzcd}
 	1\rar & H\rar["i" above] & G\rar["q" above] & K\rar\lar[bend left=30,"s" below] & 1. \\
 	\end{tikzcd}
 \]
 is a split exact sequence, then we say $G$ is essentially a product of $H$ and $K$ by way of the inclusions $H \overset{i}{\hookrightarrow} G$ and $K \overset{s}{\hookrightarrow} G$. Further, we have $HS \cong G$ and $H \unlhd G$ where $S\coloneqq s(K) \cong K$. To see that $G = HS$, note if $g \in G$, then $q(g) \in K$ and $x\coloneqq  s(q(g)) = g \in S$ with $q(gx^{-1}) = q(g)q(x)^{-1} = e$, implying that $gx^{-1} \in \ker q = H$.
-\end{remark}
+
 
 \subsection{Lecture 10}
 
-\begin{remark}
+\begin{note}
 Recall that $G$ decomposes as the (direct) product of $G_1, \ldots, G_k$, i.e., the map $$\phi : G_1 \times \cdots \times G_k \to G, \quad  (g_1, \cdots, g_k) \mapsto g_1\cdots g_k$$ is an isomorphism, if and only if
 \begin{enumerate}
 \item Each $g\in G$ can be written uniquely as $g_1 g_2\cdots g_k$, i..e, $\phi$ is bijective.
 \item We have $xy = yx$ for any $x \in G_i$ and $y\in G_j$, i.e., $\phi$ is a morphism.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{exercise}
 Check that condition (1) is equivalent to saying $G_1 \cdots G_k = G$ and $G_i \cap (G_1 \cdots \widehat{G}_i \cdots G_k) = \{e\}$ and that condition (2) is equivalent to saying $G_i \unlhd G$ for each $i$.
@@ -919,15 +951,18 @@ Check that condition (1) is equivalent to saying $G_1 \cdots G_k = G$ and $G_i \
 	1\rar & S^1\rar["i" above] & \C^{\ast}\rar["|\cdot|" above] & \R_{>0}\rar & 1. \\
 	\end{tikzcd}
 \]
-\item $\GL_n^{+}(\R) \cong \SL_n(\R) \times \R_{>0}$ via $A\mapsto (\frac{A}{\sqrt[n]{\det A}}, \det A)$.
+\item $\GL_n^{+}(\R) \cong \SL_n(\R) \times \R_{>0}$ via $A\mapsto \left(\frac{A}{\sqrt[n]{\det A}}, \det A\right)$.
 We have a short exact sequence  \[
 	\begin{tikzcd}
 	1\rar & \SL_n\rar["i" above] & \GL_n^{+}(\R)\rar["\det" above] & \R_{>0}\rar\lar[bend left=30,"s" below] & 1, \\
 	\end{tikzcd}
 \] where $s(x) = \frac{1}{\sqrt[n]{a}}I_n$. Note that $s(\R_{>0}) = Z(\GL_n^+(\R))$, which of course commutes with $\SL_n(\R)$.
 \item Let $\mathsf{Diag}_n$ be the group of diagonal matrices over $k$. Then $\mathsf{Diag}_n \cong \underbrace{k^{\ast}\times \cdots \times k^{\ast}}_{n}.$
-\item If $p$ is prime, then $\faktor{\Z}{p^2}$ is not a product of any nontrivial subgroups. For if $\faktor{\Z}{p^2} \cong H \times K$, then $H \unlhd \faktor{\Z}{p^2}$ is nontrivial, so that $H = \langle x^p \rangle$ where $\langle x \rangle = \faktor{\Z}{p}$. Similarly, $K \cong C_p$. But $K \ne H$, while there is a unique subgroup of order $p$. \\ \\ In fact, this shows that $1 \to H \to \faktor{\Z}{p} \to K \to 1$ cannot be split.
-\item If $a, b >0$ are coprime, then $\faktor{\Z}{ab} \cong \faktor{\Z}{a} \times \faktor{\Z}{b}$. However, $S_3 \not \cong \faktor{\Z}{2} \times \faktor{\Z}{3}$, as $s(\faktor{\Z}{2})$ below is not normal. 
+\item If $p$ is prime, then $\faktor{\Z}{p^2}$ is not a product of any nontrivial subgroups. For if $\faktor{\Z}{p^2} \cong H \times K$, then $H \unlhd \faktor{\Z}{p^2}$ is nontrivial, so that $H = \langle x^p \rangle$ where $\langle x \rangle = \faktor{\Z}{p}$. Similarly, $K \cong C_p$. But $K \ne H$, while there is a unique subgroup of order $p$. 
+\medskip
+
+ In fact, this shows that $1 \to H \to \faktor{\Z}{p} \to K \to 1$ cannot be split.
+\item If $a, b >0$ are coprime, then $\faktor{\Z}{ab} \cong \faktor{\Z}{a} \times \faktor{\Z}{b}$. However, $S_3 \not \cong \faktor{\Z}{2} \times \faktor{\Z}{3}$, as $s\left(\faktor{\Z}{2}\right)$ below is not normal. 
 \[
 	\begin{tikzcd}
 	1\rar & \faktor{\Z}{3}\rar["i" above] & S_3(\R)\rar["\sgn" above] & \faktor{\Z}{2}\rar\lar[bend left=30,"s" below] & 1, \\
@@ -940,9 +975,9 @@ We have a short exact sequence  \[
 Suppose $H, K\leq G$ with $H$ normal and $G = HK$. Then if $H \cap K$ is trivial, we call $G$ the \textit{semidirect product of $H$ and $K$}, denoted by $H \rtimes K$.
 \end{definition}
 
-\begin{remark}
+
 Recall that if $H \unlhd G$ and $K \leq G$, then $HK = KH$ is a subgroup.
-\end{remark}
+
 
 \begin{prop}
 Suppose $G = HK$ with $H\unlhd G$ and $H \cap K = \{e\}$. Let $\alpha : K \to \aut_{\mathsf{grp}}(H)$ be the inner automorphism of $H$, which depends on the group law $*_G$. Then $*_G$ can be recovered from $*_H$, $*_K$, and $\alpha$.
@@ -955,20 +990,23 @@ Let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely. 
 Let $K$ and $H$ be groups and $\alpha : K \to \aut(H)$ be a structure-preserving action. Then the \textit{semidirect product of $K$ with $H$ along $\alpha$}, denoted by $H \rtimes_{\alpha} K$, is the group with underlying set $H \times K$ and group law $(h_1, k_1)(h_2, k_2) \coloneqq  (h_1 \alpha_{k_1}(h_2), k_1k_2)$.
 \end{definition}
 
-\begin{remark}
+
 Every semidirect product is naturally a split extension of $K$ by $H$. Indeed, if $K \ltimes_{\alpha} H$, then $i_H : H \to K \ltimes_{\alpha} H$ is normal and $p_K : K\ltimes_{\alpha} H \to K$ is a surjective homomorphism with kernel $H$. Thus \[
 	\begin{tikzcd}
 	1\rar &H\rar["i_H" above] & K\ltimes_{\alpha} H \rar["p_K" above] & K\rar\lar[bend left=30,"i_K" below] & 1 \\
 	\end{tikzcd}
 \] is split, and $i_K(K)$ is normal  if and only if $\alpha$ is trivial if and only if $K \ltimes_{\alpha} H \cong H \times K$.
-\\ \\ Conversely, if 
+
+\medskip
+
+ Conversely, if 
 \[
 	\begin{tikzcd}
 	1\rar &H\rar["i" above] & G \rar["q" above] & K\rar\lar[bend left=30,"s" below] & 1 \\
 	\end{tikzcd}
 \]
 is a split extension, then we get an inner automorphism $\alpha : s(K) \to \aut(H)$. Note that $s(K)$ is normal if and only if $\alpha$ is trivial. The map $\phi : \ltimes_{\alpha} H \to G$ given by $(h,x) \mapsto hx$ is an isomorphism.
-\end{remark}
+
 
 \begin{definition}
 Let \[
@@ -1009,9 +1047,9 @@ Let $H(V, W)$ denote the Heisenberg group. Show that $0 \to \R \to H(V, W) \to V
 A group $G$ is \textit{indecomposable} if it cannot be written as the direct product of two nontrivial subgroups. By convention, the trivial group is not indecomposable. 
 \end{definition}
 
-\begin{remark}
+
 Once we answer the question of existence, we ask in how many ways can we break a group into (a) simple groups or (b) indecomposable groups. We've shown that the existence of a composition series ensures that a group can be broken into simple groups. We now turn to the existence question for (b).
-\end{remark}
+
 
 \begin{definition} We say that $G$ has
 \begin{enumerate}
@@ -1047,8 +1085,14 @@ Once we answer the question of existence, we ask in how many ways can we break a
 If $G$ has either ACC or DCC, then it can be written as the product of indecomposables.
 \end{prop}
 \begin{proof}
-Let $D$ denote the class of groups that can be written as the product of indecomposables. Note that $D$ is closed under direct products and that it contains any indecomposable group. \\ \\ Assume, for contradiction, that $G$ has DCC but $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \{e\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
-\\ \\ Next, assume that $G$ has ACC but $G \notin D$. By the same process as above, we can construct a normal series $K_1 < K_1 \times K_2 < K_1 \times K_2 \times K_3 < \cdots < \cdots < G$. But this must stabilize as well, a contradiction.
+Let $D$ denote the class of groups that can be written as the product of indecomposables. Note that $D$ is closed under direct products and that it contains any indecomposable group. 
+\medskip
+
+ Assume, for contradiction, that $G$ has DCC but $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \{e\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
+
+\medskip
+
+ Next, assume that $G$ has ACC but $G \notin D$. By the same process as above, we can construct a normal series $K_1 < K_1 \times K_2 < K_1 \times K_2 \times K_3 < \cdots < \cdots < G$. But this must stabilize as well, a contradiction.
 \end{proof}
 
 \begin{theorem}[Krull-Schmidt]
@@ -1072,7 +1116,10 @@ An endomorphism $\phi$ of $G$ is \textit{normal} if $\phi \circ \conj_x = \conj_
 If $G$ has ACC and DCC and $\phi$ is normal, then $\phi$ is injective if and only if it's surjective.
 \end{prop}
 \begin{proof}
-Suppose first that $\ker \phi$ is trivial. Suppose there is some $g \in G \setminus \phi(G)$.  Then $\phi^n(g) \notin \phi^{n+1}(G)$ for any $n \geq 1$. Hence $G > \phi(G) > \phi^2(G) > \cdots$ is a normal series that fails to terminate, a contradiction. \\ \\ Now suppose that $\phi$ is not injective. Find nontrivial $g_1 \in \ker \phi$. Suppose, for contradiction, that $\phi(g_2) = g_1$ for some $g_2$. Then $g_2 \notin \ker \phi$ but $g_2 \in \ker \phi^2$. Continue to get the chain $\ker \phi < \ker \phi^2 < \cdots$, which fails to stabilize, a contradiction. 
+Suppose first that $\ker \phi$ is trivial. Suppose there is some $g \in G \setminus \phi(G)$.  Then $\phi^n(g) \notin \phi^{n+1}(G)$ for any $n \geq 1$. Hence $G > \phi(G) > \phi^2(G) > \cdots$ is a normal series that fails to terminate, a contradiction. 
+\medskip
+
+ Now suppose that $\phi$ is not injective. Find nontrivial $g_1 \in \ker \phi$. Suppose, for contradiction, that $\phi(g_2) = g_1$ for some $g_2$. Then $g_2 \notin \ker \phi$ but $g_2 \in \ker \phi^2$. Continue to get the chain $\ker \phi < \ker \phi^2 < \cdots$, which fails to stabilize, a contradiction. 
 \end{proof}
 
 \begin{definition}
@@ -1106,13 +1153,25 @@ By our previous corollary, assuming that $\phi + \psi$ is not nilpotent, it must
 Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker U\geq \gamma^{-1}(\ker \phi) \cup \{e\} > \{e\}$. Likewise, $\ker V > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$, implying that $G$ is trivial. This contradicts that $G$ is indecomposable.
 \end{proof}
 
-We finally return to the proof of Krull-Schmidt. Suppose $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ (\sum_{j=1}^t g_j \circ g_j) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$. Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then our previous lemma implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$'s so that $B_j = B_1$. 
-\\ \\ Thus, $G= A_1 \times \cdots \times A_r$ and $G= B_j \times \cdots \times B_t$. Further, $\phi\coloneqq p_1\circ g_1\circ q_1\circ f_1$ is an automorphism. Let $\gamma\coloneqq  \phi^{-1}$. This implies $(\gamma \circ p_1 \circ g_1)\circ (q_1\circ f_1)=\id_{A_1}$, so that $q_1f_1$ has a left inverse. We check that this is also a right inverse of $q_1f_1$, giving $B_1 \cong A_1$.
-\\ \\ Let $\theta \coloneqq  (q_1f_1)(\gamma p_1g_1) : B_1 \to B_1$, which is normal. We want to check that this is the identity map. It's easy to compute $ \theta^2 =  \theta.$
+We finally return to the proof of Krull-Schmidt. Suppose $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$. Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then our previous lemma implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$'s so that $B_j = B_1$. 
+
+\medskip
+
+ Thus, $G= A_1 \times \cdots \times A_r$ and $G= B_j \times \cdots \times B_t$. Further, $\phi\coloneqq p_1\circ g_1\circ q_1\circ f_1$ is an automorphism. Let $\gamma\coloneqq  \phi^{-1}$. This implies $(\gamma \circ p_1 \circ g_1)\circ (q_1\circ f_1)=\id_{A_1}$, so that $q_1f_1$ has a left inverse. We check that this is also a right inverse of $q_1f_1$, giving $B_1 \cong A_1$.
+
+\medskip
+
+ Let $\theta \coloneqq  (q_1f_1)(\gamma p_1g_1) : B_1 \to B_1$, which is normal. We want to check that this is the identity map. It's easy to compute $ \theta^2 =  \theta.$
 By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an automorphism, then $\theta^2 = \theta \implies \theta = \id_{B_1}$, and we're done. Suppose that it is nilpotent with $n$ minimal such that $\theta^n =0$. Then $0 = \theta^n = \theta^2 \circ \theta^{n-2} = \theta \circ \theta^{n-2}= \theta^{n-1}$. Hence $n=1$, so that $\theta =0$. This implies that $\id_{A_1}^2 = (\gamma p_1 g_1)(q_1 f_1)(\gamma p_1 g_1)(q_1 f_1) = (\gamma p_1 g_1)\theta(q_1 f_1) = 0$, forcing $A_1= \{e\}$, a contradiction.
-\\ \\
+
+\medskip
+
+
 Now, $\ker q_1 = B_2 \times \cdots \times B_t$ {[[even after reindexing?]]}, while $\ker q_1 \circ f_1 = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t = (q_1f_1)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t ,$$ which is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker \psi =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which forces $H=G$.
-\\ \\ In summary, $A_2 \times \cdots \times A_s \cong \faktor{G}{A_1} \cong B_2\times \cdots \times B_t$. We can repeat our above argument to see that $s=t$ and that $A_i \cong B_i$ up to reindexing.
+
+\medskip
+
+ In summary, $A_2 \times \cdots \times A_s \cong \faktor{G}{A_1} \cong B_2\times \cdots \times B_t$. We can repeat our above argument to see that $s=t$ and that $A_i \cong B_i$ up to reindexing.
 \end{proof}
 
 \begin{corollary}
@@ -1136,33 +1195,42 @@ Let $G$ be a group. A \textit{filtration $F^{\bullet}{G}$ on $G$} is a subnormal
 .\]
 \end{definition}
 
-\begin{remark} Suppose that $F^{\bullet}G$ is a filtration on $G$.
+\begin{note}\label{filt} Suppose that $F^{\bullet}G$ is a filtration on $G$.
 \begin{enumerate}
 \item If $i : H \hookrightarrow G$, then we get an induced filtration on $H$ given by $$F^a{H}\coloneqq  i^{-1}(F^aG) = H \cap F^a{G}.$$
 \item Similarly, if $q: G \to K$ is a quotient map, then we get an induced filtration on $K$ given by $$F^aK\coloneqq  q(F^aG) = \faktor{F^aG}{F^aG \cap \ker q}.$$ {[[How does this define a series of subgroups?]]}
 \end{enumerate}
-\end{remark}
+\end{note}
 
-\begin{remark}
-Suppose that $F^{\bullet}G$ and $T^{\bullet}G$ are two filtrations on $G$. Define the \textit{graded $i$-th piece} as $$\gr_F^i(G) = \faktor{F^iG}{F^{i+1}G}.$$ By our previous remark, there is an induced filtration $T^{\bullet}\gr_F^i(G)$. Similarly, there is an induced filtration $F^{\bullet}\gr_T^j(G)$. Then we get graded pieces $\gr_T^j\gr_F^iG$ and $\gr_F^i \gr_T^j G$. These produce two \textit{bigraded} groups $\gr_F\gr_TG$ and $\gr_T\gr_FG$.
-\end{remark}
+
+Suppose that $F^{\bullet}G$ and $T^{\bullet}G$ are two filtrations on $G$. Define the \textit{graded $i$-th piece} as $$\gr_F^i(G) = \faktor{F^iG}{F^{i+1}G}.$$ By our \cref{filt}, there is an induced filtration $T^{\bullet}\gr_F^i(G)$. Similarly, there is an induced filtration $F^{\bullet}\gr_T^j(G)$. Then we get graded pieces $\gr_T^j\gr_F^iG$ and $\gr_F^i \gr_T^j G$. These produce two \textit{bigraded} groups $\gr_F\gr_TG$ and $\gr_T\gr_FG$.
+
 
 \begin{lemma}[Zassenhaus or butterfly]
-Suppose $G$ is a group with $A \unlhd \widetilde{A} \leq G \geq \widetilde{B} \unrhd B$. Then we have a group isomorphism $$\faktor{A\cdot (\widetilde{A} \cap \widetilde{B})}{A \cdot (\widetilde{A} \cap B)} \cong \faktor{B \cdot (\widetilde{A} \cap \widetilde{B})}{B\cdot (A \cap \widetilde{B})}.$$
+Suppose $G$ is a group with $A \unlhd \widetilde{A} \leq G \geq \widetilde{B} \unrhd B$. Then we have a group isomorphism $$\faktor{A\cdot \left(\widetilde{A} \cap \widetilde{B}\right)}{A \cdot \left(\widetilde{A} \cap B\right)} \cong \faktor{B \cdot \left(\widetilde{A} \cap \widetilde{B}\right)}{B\cdot (A \cap \widetilde{B})}.$$
 \end{lemma}
 \begin{proof}
 We know that $$A \unlhd \widetilde{A} \implies A \cap \widetilde{B} \unlhd \widetilde{A} \cap \widetilde{B} \quad \quad B \unlhd \widetilde{B} \implies \widetilde{A} \cap B \unlhd \widetilde{A} \cap \widetilde{B}.$$ 
-Then $D\coloneqq  ({A} \cap \widetilde{B}) \cdot (\widetilde{A} \cap {B}) \cong  (\widetilde{A} \cap {B}) \cdot ({A} \cap \widetilde{B})$ is normal in $\widetilde{A} \cap \widetilde{B}$. Let $x \in B \cdot ( \widetilde{A} \cap \widetilde{B})$ and write $x = bc$. Take $cD \in \faktor{\widetilde{A} \cap \widetilde{B}}{D}$. The map $f: x \mapsto cD$ is well-defined. Indeed, if $x = b_1c_2 = b_2c_2$, then $b_2^{-1}b_1 = c_2c_1^{-1}$, so that $c_2c_1^{-1} \in B \cap \widetilde{A} \cap \widetilde{B} = \widetilde{A}\cap B \leq D$, i.e., $c_2D = c_1D$.
-\\ \\It's clear that $f$ is surjective. We show that $f$ is a homomorphism. Let $x_1= b_1c_1$ and $x_2 = b_2c_2$. Then $x_1x_2 = b_1(c_1b_2c_1^{-1})c_1c_2$. Thus, $f(x_1x_2) = c_1c_2D = (c_1D)(c_2D)$.
-\\ \\
+Then $D\coloneqq  ({A} \cap \widetilde{B}) \cdot \left(\widetilde{A} \cap {B}\right) \cong  \left(\widetilde{A} \cap {B}\right) \cdot ({A} \cap \widetilde{B})$ is normal in $\widetilde{A} \cap \widetilde{B}$. Let $x \in B \cdot \left(\widetilde{A} \cap \widetilde{B}\right)$ and write $x = bc$. Take $cD \in \faktor{\widetilde{A} \cap \widetilde{B}}{D}$. The map $f: x \mapsto cD$ is well-defined. Indeed, if $x = b_1c_2 = b_2c_2$, then $b_2^{-1}b_1 = c_2c_1^{-1}$, so that $c_2c_1^{-1} \in B \cap \widetilde{A} \cap \widetilde{B} = \widetilde{A}\cap B \leq D$, i.e., $c_2D = c_1D$.
+
+\medskip
+
+It's clear that $f$ is surjective. We show that $f$ is a homomorphism. Let $x_1= b_1c_1$ and $x_2 = b_2c_2$. Then $x_1x_2 = b_1(c_1b_2c_1^{-1})c_1c_2$. Thus, $f(x_1x_2) = c_1c_2D = (c_1D)(c_2D)$.
+
+\medskip
+
+
 Moreover, we compute 
 \begin{align*} 
 \ker f &= \{x = bc : c \in D\}  
 \\ & = \{ x= bc_1c_2 : c_1\in {A} \cap \widetilde{B}, \  c_2 \in \widetilde{A} \cap {B}\}
 \\ & = \{ x= bc_1c_2 : c_2\in {A} \cap \widetilde{B}, \  c_1 \in \widetilde{A} \cap {B}\} 
 \\ & = \{x = bc : c \in A \cap \widetilde{B}\} = B \cdot (A \cap \widetilde{B}).
-\end{align*} Therefore, $\faktor{B \cdot ( \widetilde{A} \cap \widetilde{B})}{ B \cdot (A \cap \widetilde{B})} \cong \faktor{\widetilde{A} \cap \widetilde{B}}{D}$. 
-\\ \\ The other isomorphism with $\faktor{\widetilde{A} \cap \widetilde{B}}{D}$ is obtained by swapping $A \longleftrightarrow B$ and $\widetilde{A} \longleftrightarrow \widetilde{B}$.
+\end{align*} Therefore, $\faktor{B \cdot \left(\widetilde{A} \cap \widetilde{B}\right)}{ B \cdot (A \cap \widetilde{B})} \cong \faktor{\widetilde{A} \cap \widetilde{B}}{D}$. 
+
+\medskip
+
+ The other isomorphism with $\faktor{\widetilde{A} \cap \widetilde{B}}{D}$ is obtained by swapping $A \longleftrightarrow B$ and $\widetilde{A} \longleftrightarrow \widetilde{B}$.
 \end{proof}
 
 \begin{corollary}
@@ -1185,13 +1253,19 @@ A filtration $F^{\bullet}G$ is called \textit{non-repetitious} if $F^i \ne F^{i+
 We say $\{R^iG\}_{i=1}^t$ is a \textit{refinement} of $\{F^iG\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to [t]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
 \end{definition}
 
-\begin{theorem}[Schreier refinement theorem]
+\begin{theorem}[Schreier refinement theorem]\label{schr}
 Suppose $\{F^iG\}_{i=0}^s$ and $\{T^jG\}_{j=0}^t$ are filtrations on $G$. Then we can find respective refinements $\widetilde{F}^{\bullet}G$ and $\widetilde{T}^{\bullet}G$ which are equivalent to our original filtrations. Further, if the two original filtrations are non-repetitious, then we can choose the refinements to be non-repetitious as well. 
 \end{theorem}
 \begin{proof}
 Suppose $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_{i-1}^{(j)} =  (F^{i-1}\cap T^j) \cdot F^i$. Then for any $q\leq i \leq s$, we get a filtration $$F^{i-1} = F^{i-1}\cdot F^i =\widetilde{F}_{i-1}^{(0)}\geq \widetilde{F}_{i-1}^{(1)}\geq \cdots \geq \widetilde{F}_{i-1}^{(t)} = F^i.$$ Thus, the $\widetilde{F}_{i-1}^{(j)}$ define a refinement of $F^{\bullet}G$. 
-\\ \\ Likewise, $\widetilde{T}_{j-1}^{(i)} \coloneqq  (T^{j-1}\cap F^i) \cdot T^j$ defines a refinement of $T^{\bullet}G$.
-\\ \\ Finally, apply Zassenhaus to the system $F^i \unlhd F^{i-1} \leq G \geq T^{j-1} \unrhd T^j$ to get
+
+\medskip
+
+ Likewise, $\widetilde{T}_{j-1}^{(i)} \coloneqq  (T^{j-1}\cap F^i) \cdot T^j$ defines a refinement of $T^{\bullet}G$.
+
+\medskip
+
+ Finally, apply Zassenhaus to the system $F^i \unlhd F^{i-1} \leq G \geq T^{j-1} \unrhd T^j$ to get
 \begin{align*}
 \faktor{\widetilde{F}_{i-1}^{(j-1)}}{\widetilde{F}_{i-1}^{(j)}} & \cong \faktor{F^i\cdot (F^{i-1} \cap T^{j-1})}{F^i \cdot (F^{i-1} \cap T^j)}
 \\ &  \cong \faktor{T^j \cdot (F^{i-1} \cap T^{j-1})}{T^j\cdot (F^i \cap T^{j-1})}
@@ -1203,21 +1277,21 @@ Suppose $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_
 Any two composition series of $G$ are equivalent.
 \end{corollary}
 \begin{proof}
-Since each intermediate term in a composition series is a maximal normal subgroup, neither series admits a proper refinement. Hence any refinement must be identical to the original series. Hence Schreier completes the proof.
+Since each intermediate term in a composition series is a maximal normal subgroup, neither series admits a proper refinement. Hence any refinement must be identical to the original series, and we are done by \cref{schr}.
 \end{proof}
 
 \section{Group cohomology}
 
 \subsection{Lectures 14 and 15}
 
-\begin{remark} 
+
 Suppose that 
 \[ 
 \begin{tikzcd}
 (\xi): 1 \arrow[r] & H \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1
 \end{tikzcd}
 \]
-is an extension. If $x \in G$, then lift it via $q^{-1}$ to $\tilde{x}$. Now $\conj_{\tilde{x}} : G \to G$ is a (group) automorphism. Since $H\unlhd G$, we thus have an automorphism $\conj_{\tilde{x}}\restriction_H$. Hence we get a map $K \ni x \mapsto \conj_{\tilde{x}}\restriction_H \in \aut(H)$. It turns out that distinct lifts of $x$ give distinct automorphisms whose difference is an inner automorphism.
+is an extension. Since $q$ is surjective, we can lift any $x \in K$ to some $\tilde{x}\in G$ via $q^{-1}$. Now $\conj_{\tilde{x}} : G \to G$ is a (group) automorphism. Since $H\unlhd G$, we thus have an automorphism $\conj_{\tilde{x}}\restriction_H$. Hence we get a map $K \ni x \mapsto \conj_{\tilde{x}}\restriction_H \in \aut(H)$. It turns out that distinct lifts of $x$ give distinct automorphisms whose difference is an inner automorphism.
 
 Indeed, consider the map $\alpha^{\xi} : K \to \out(H)$ defined by $x \mapsto \conj_{\tilde{x}}\cdot \inn(H)$. This is well-defined. If $\tilde{x}$ and $\tilde{\tilde{x}}$ are distinct lifts of $x$, then $q(\tilde{x}) = x = q(\tilde{\tilde{x}}) \implies q(\tilde{x}^{-1}\tilde{\tilde{x}}) = e \implies \tilde{\tilde{x}} = \tilde{x}h$ for some $h \in H \implies \conj_{\tilde{\tilde{x}}}\restriction_H= \conj_{\tilde{x}}\restriction_H \circ \conj_h \implies \conj_{\tilde{\tilde{x}}}\restriction_H\sim \conj_{\tilde{x}}\restriction_H$.
 
@@ -1234,7 +1308,7 @@ commutes.
 
 Given $\alpha: K \to \out(H)$ homomorphism, we can now reduce the problem of classifying all extensions of $K$ by $H$ to the problem of classifying all extensions $\xi$ such that $\alpha^{\xi} = \alpha$. 
 Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensions of $K$ by $H$ with invariant $\alpha$.
-\end{remark}
+
 
 \begin{exmp} $ $
 \begin{enumerate}
@@ -1269,7 +1343,7 @@ We assume for the remainder of the classification problem that the subgroup of $
 \end{remark}
 
 \begin{definition}
-A \textit{$K$-module} is a pair $(A, \alpha)$ such that $A$ is an abelian group and $\alpha : K \to \aut(A)$ is a group map.
+A \textit{$K$-module} is a pair $\left(A, \alpha\right)$ where $A$ is an abelian group and $\alpha : K \to \aut(A)$ is a group map.
 \end{definition}
 
 \begin{definition} We work to define an operation on $\ext(K, (A, \alpha))$.
@@ -1362,12 +1436,12 @@ Let $G_f$ be the group with underlying set $K \times A$ and group law given by $
 where $(s\times i)(x, a) = s(x)a$.
 \end{proof}
 
-\begin{remark}\label{lr}
+\begin{note}\label{lr}
 In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \to A$, then the formula $(x, a)(y, b) = (xy, a \alpha_x(b)f(x,y))$ defines a group law if and only if $f(x,y)f(xy, z) = \alpha_x(f(y,z))f(x, yz)$ for any $x, y, z \in K$. As $A$ is abelian, this happens if and only if  
 \[ 
 \tag{$\ast$}\alpha_x(f(y, z))f(xy, z)^{-1} f(x, yz)f(x, y)^{-1} = e.
 \]
-\end{remark}
+\end{note}
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1377,18 +1451,18 @@ In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \t
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
-\Cref{lr} implies that there is a one-to-one correspondence 
-\\ \\
-$\{(\xi, s) : \xi \in \ext(K, (A, \alpha)), \ s$ a normalized section$\} \longleftrightarrow Z^2(K, (A, \alpha))_0 = Z^2 \cap C^2_0$.
-\end{remark}
 
-\begin{remark}
+\Cref{lr} implies that there is a one-to-one correspondence 
+\[
+\{(\xi, s) : \xi \in \ext(K, (A, \alpha)), \ s \text{ a normalized section}\} \longleftrightarrow Z^2(K, (A, \alpha))_0 = Z^2 \cap C^2_0
+.\]
+
+
 If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ is a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}.$ Thus, 
 $$\tilde{f}(x, y)f(x,y)^{-1} = c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}s(xy)s(y)^{-1}s(x)^{-1}$$ $$ = c(x)(s(x)c(y)s(x)^{-1})(s(x)s(y)s(xy)^{-1})c(xy)^{-1}s(xy)s(y)^{-1}s(x)^{-1}$$ $$ = c(x)\alpha_x(c(y))c(xy)^{-1}f(x,y)f(x,y)^{-1} =c(x)\alpha_x(c(y))c(xy)^{-1}. $$
 This gives a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto (\delta_c : (x, y) \mapsto   c(x)\alpha_x(c(y))c(xy)^{-1})$, which we call the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}. {[[How do we know any first normalized cochain can be written in that form?]]}
 We in turn obtain a natural map $\delta': \ext(K, (A, \alpha)) \to HH^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im \delta}$ given by $(\xi, f) \mapsto [f]$. We call $HH^2(K, (A, \alpha))$ the \textit{second cohomology group of $K$ with coefficients in $(A, \alpha)$}.
-\end{remark}
+
 
 \begin{exercise}
 Show that $\delta '$ is an isomorphism of abelian groups.
@@ -1402,8 +1476,14 @@ Find all extensions of $\faktor{\Z}{2}\cong \M_2 \coloneqq  \{\pm1\}$ by $\Z$. T
 \end{tikzcd}
 \]
 \underline{Case 1:} $\M_2$ acts trivially on $\Z$. Then $C^2_0 = \{f : \M_2 \times \M_2 \to \Z \mid f(1, y) = f(x, 1) = 0$ for any $x,y \in \M_2 \}$. Each $f \in C^2_0$ is thus determined by $f(-1, -1)$, giving $C^2_0 \cong \Z$ via $f\mapsto f(-1, 1)$.
-\\ \\ Note that $f\in Z^2_0 \iff f(y, z)-f(xy, z)+f(x, yz)-f(x, y) =0$ for any $x, y, z\in \M_2$. It's easy to check this is always satisfied. Hence $Z^2_0 \cong \Z$ as well. 
-\\ \\ Moreover, $C^1_0 = \{c : \M_2 \to \Z : c(1) =0\} \cong \Z$, giving the correspondence $\Z \ni b \longleftrightarrow (c: -1 \mapsto b)$. Then the differential $\delta : C^1_0 \to Z^2_0\cong \Z$ is given by $\delta_c(x, y) = c(x)+c(y) -c(xy)\implies \delta_c(-1, -1) = c(-1) + c(-1) = 2b$. That is, $\delta : \Z \to \Z$ is given by $b \mapsto 2b$. This implies that $HH^2 = \faktor{\Z}{2}$, so that the only nontrivial extension is
+
+\medskip
+
+ Note that $f\in Z^2_0 \iff f(y, z)-f(xy, z)+f(x, yz)-f(x, y) =0$ for any $x, y, z\in \M_2$. It's easy to check this is always satisfied. Hence $Z^2_0 \cong \Z$ as well. 
+
+\medskip
+
+ Moreover, $C^1_0 = \{c : \M_2 \to \Z : c(1) =0\} \cong \Z$, giving the correspondence $\Z \ni b \longleftrightarrow (c: -1 \mapsto b)$. Then the differential $\delta : C^1_0 \to Z^2_0\cong \Z$ is given by $\delta_c(x, y) = c(x)+c(y) -c(xy)\implies \delta_c(-1, -1) = c({-}1) + c({-}1) = 2b$. That is, $\delta : \Z \to \Z$ is given by $b \mapsto 2b$. This implies that $HH^2 = \faktor{\Z}{2}$, so that the only nontrivial extension is
 \[
 \begin{tikzcd}
 1 \arrow[r] & \Z \arrow[r, "\text{mult}_2"] & \Z \arrow[r] & \faktor{Z}{2} \arrow[r] & 1
@@ -1427,7 +1507,7 @@ Hence $a = 0$, and $f = 0$. This implies that $HH^2 = 0$ with $\Z \rtimes_{\alph
 A \textit{category $\c$} consists of
 \begin{itemize}
 \item a class of \textit{objects $\ob{\c}$},
-\item a class of\textit{morphisms $\mor{\c}$},
+\item a class of \textit{morphisms $\mor{\c}$},
 \item a set $\Hom_{\c}(x,y)$ of morphisms with \textit{source} $x$ and \textit{target} $y$ for each $x,y \in \ob{\c}$, and
 \item a \textit{composition} partial function $\circ : \Hom_{\c}(x,y) \times \Hom_{\c}(y,z) \to \Hom_{\c}(x,z)$ where $(f,g) \mapsto g \circ f$.
 \end{itemize}
@@ -1452,7 +1532,10 @@ if $\c$ is small, then $(\mor \c, \circ)$ is a partially-defined monoid.
 \item Recall the category $\mathbf{sSet} = \Fun(\Delta^{\op}, \mathbf{Set})$ of simplicial sets. Also recall the standard $n$-simplex $$\Delta^n = \{(t_0, \ldots, t_n) \in \R^{n+1} : t_i \geq 0, \ \sum_i t_i =1\}.$$ In this case, we send a morphism $f : [m] \to [n]$ to $$\Delta_f : \R^{m+1} \to \R^{n+1} \quad \quad e_i \mapsto e_{f(i)},$$ which is linear over $\R$. Note that $\Delta$ is a covariant functor, hence not a simplicial set in the strict sense.
 Given a simplicial set $X_{\bullet}$, define its \textit{geometric realization} $$|X_{\bullet}| = \coprod_{m\geq 0} \faktor{(X_m \times \Delta^m)}{\sim}$$ where $X_n \times \Delta^n \ni (x, y)\sim (x', y') \in X_m \times \Delta^m$ if $X(f)(y') = y$ and $\Delta_f(x) = x'$ for some $f: [n] \to [m]$.  
 \item Let $\mathbf{Corr}$ denote the \textit{category of correspondences} with objects sets and morphisms binary relations. Given relations $u\subset X\times Y$ and $v \subset Y \times Z$, we define 
-\\ \\ $v \circ u = \{(x, y) \in X \times Z : (\exists b \in Y)((x, b) \in u$ and $(b, y) \in v)\}.$ Then the identity morphisms are precisely the diagonals.
+
+\medskip
+
+ $v \circ u = \{(x, y) \in X \times Z : (\exists b \in Y)((x, b) \in u$ and $(b, y) \in v)\}.$ Then the identity morphisms are precisely the diagonals.
 \item Let $\mathbf{Ouv_X}$ denote the category of open sets of the topological space $X$ with inclusion maps as morphisms. 
 \begin{aside} This is an order category associated to the poset $\subseteq$. \end{aside}
 \item Let $G$ be a group. Then the \textit{classifying space $BG$ of $G$} is a category with a single object $\ast$ and $BG(\ast, \ast) = G$. Composition is given by the group law.
@@ -1492,7 +1575,7 @@ $$\Gamma_f(\mho \subset V) : (s: V \to X) \to (s\restriction_{\mho} : \mho \to X
 Alternatively, say that an element  $x\in X_n$ is \textit{nondegenerate} if it is not of the form $x =s_i(y)$ for any $1\leq i \leq n-1$ and $y\in X_{n-1}$ and define $(S)_{\bullet}$ as the unique simplicial set such that $S_n^{\text{nd}} = \begin{cases}
 S & n =0 \\ \emptyset & n > 0 \end{cases}.$
 \begin{remark}
-Note that $|(S)_{\bullet}|$ is homotopy equivalent to $S$ equipped with the discrete topology. 
+ $|(S)_{\bullet}|$ is homotopy equivalent to $S$ equipped with the discrete topology. 
 \end{remark}
 \item The geometric realization functor $|\cdot | : \mathbf{sSet} \to \mathbf{Top}$.
 \item Define $\Sing_{\bullet} : \mathbf{Top} \to \mathbf{sSet}$ by
@@ -1541,9 +1624,9 @@ Show that $\c$ is essentially small  if and only if it is equivalent to a small 
 Let $\c \coloneqq  \mathbf{Vector}_k^n$ and $\d \coloneqq  B\Mat_n(k)$. There is a functor $F : \d \to \c$ given by $\ast \mapsto k^n$ and $A \mapsto (v \mapsto Av)$. Construct an inverse $G: \c \to \d$ via the axiom of choice by choosing a basis for each $V \in \c$ and mapping each linear map $f$ to the matrix of $f$ in the chosen bases. Then $\c$ and $\d$ are equivalent via $F$ and $G$.
 \end{exmp}
 
-\begin{remark}
+\begin{note}
 Any functor $F: \c \to \d$ induces a map $\pi_0(F) : \pi_0(\c) \to \pi_0(\d)$. If $F$ is an equivalence with quasi-inverse $G$, then this is a bijection with $\pi_0(G)$ as inverse. Therefore, two equivalent categories have the same collection of isomorphism classes of objects.
-\end{remark}
+\end{note}
 
 
 \begin{definition}
@@ -1567,14 +1650,14 @@ If $\c$ is a category, then we call $\a$ a subcategory of $\c$ if
 The inclusion functor $i : \a \to \c$ is faithful.
 \end{exmp}
 
-\section{Yoneda}
+\section{The Yoneda lemma}
 
 Notice that $\Hom_{\mathbf{Set}}(\ast, x) \overset{\sim}{\longrightarrow} x$ for any set $x$. In general, we make the following definition.
 
 \begin{definition}
 Given $x \in \ob \c$, a \textit{$y$-point/probe} is the set $\Hom_{\c}(y, x)$ for any $y \in \ob \c$.
 \end{definition}
-The class $\{\Hom_{\c}(y, x)\}_{y\in \ob \c}$ of $y$-points reconstructs $x$ as an object in $\c$. To see this, let $\widehat{\c}\coloneqq  \Fun(\c^{\op}, \mathbf{Set})$ and $x \in \ob \c$. Define the functor $h_x : \c^{\op} \to \mathbf{Set}$ by $$y \mapsto \Hom_{\c}(y, x) \quad \quad h_x(f) : u \mapsto u \circ f.$$ 
+The class $\{\Hom_{\c}(y, x)\}_{y\in \ob \c}$ of $y$-points reconstructs $x$ as an object in $\c$. To see this, let $\widehat{\c}\coloneqq  \Fun(\c^{\op}, \mathbf{Set})$ and $x \in \ob \c$. Define the functor $h_x : \c^{\op} \to \mathbf{Set}$ on objects and morphisms, respectively, by $$y \mapsto \Hom_{\c}(y, x) \quad \quad h_x(f) : u \mapsto u \circ f.$$ 
 \begin{definition}
 A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x$. We say that \textit{$x$ represents $F$} in this case.
 \end{definition}
@@ -1584,14 +1667,20 @@ The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor wh
 \begin{lemma}[Yoneda] Let $\c$ be a category.
 \begin{enumerate}
 \item For any $x, y \in \ob \c$, the map $\Hom_{\c}(x, y) \to \Hom_{\widehat{\c}}(h_x, h_y)$ given by $\phi \mapsto h(\phi)$ is bijective.
-\item There is a natural isomorphism $$\Hom_{\c}(-, -) \cong \Hom_{\widehat{\c}}(h_{(-)}, h_{(-)})$$ of functors $ \c^{\op} \times \c \to \mathbf{Set}$, so that $h : \c \to \widehat{\c}$ is fully faithful. Thus, we can treat objects in $\c$ as set-valued presheaves of $\c$.
+\item There is a natural isomorphism $$\Hom_{\c}(-, -) \cong \Hom_{\widehat{\c}}\left(h_{(-)}, h_{(-)}\right)$$ of functors $ \c^{\op} \times \c \to \mathbf{Set}$, so that $h : \c \to \widehat{\c}$ is fully faithful. Thus, we can treat objects in $\c$ as set-valued presheaves of $\c$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-We prove just the first statement as the second follows formally from the first.
+We prove just the first statement, from which the second follows formally.
 Specifically, we define an inverse to the given map. If $\alpha : h_x \to h_y$ is a morphism in $\widehat{\c}$, then define $$i : \alpha \mapsto \alpha_x(\id_x).$$ Note that $\alpha_x(\id_x) \in h_y(x) = \Hom_{\c}(x,y)$. We must verify that $h \circ i = \id = i \circ h$.
-\\ \\ If $f: x \to y$ in $\c$, then $h(f) : h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $(-) \mapsto f \circ (-)$ for any $z\in \ob \c$. But then $h(f)_x(\id_x) = f\circ \id_x = f$.
-\\ \\ It remains to show that $h \circ i = \id$. Let $\alpha : h_x \to h_y$.  We have that $
+
+\medskip
+
+ If $f: x \to y$ in $\c$, then $h(f) : h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $(-) \mapsto f \circ (-)$ for any $z\in \ob \c$. But then $h(f)_x(\id_x) = f\circ \id_x = f$.
+
+\medskip
+
+ It remains to show that $h \circ i = \id$. Let $\alpha : h_x \to h_y$.  We have that $
 i(\alpha) = \alpha_x(\id_x) \in h_y(x)$, so that $i(\alpha) : x \to y$ in $\c$. Note that the component map $h(i(\alpha))_z : \Hom_{\c}(z, x) \to \Hom_{\c}(z, y)$ is given by $\phi \mapsto i(\alpha) \circ \phi.$ We must check that this agrees with $\alpha_z$. For any $x, y, z \in \ob \c$ and $\phi : z \to x$, we have
 \[
 \begin{tikzcd}
@@ -1602,10 +1691,14 @@ h_x(z) \arrow[r, "\alpha_z"'] & h_y(z)
 because $\alpha$ is a natural transformation. By evaluating this at the morphism $\id_x$, we see that $\alpha_z(\phi) = i(\alpha) \circ \phi$.
 \end{proof}
 
-\begin{corollary}
-Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi\coloneqq  h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map $$h_x(y) \to F(y)$$ $$ f \mapsto F(f)(\xi).$$ This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
-\\ \\ By the Yoneda lemma, $F$ is representable by $x$  if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
-\end{corollary}
+Let $F \in \widehat{\c}$. Recall that $F$ is representable by $x$ if there is some isomorphism of functors $h_x \cong F$. By the proof of Yoneda, this is completely determined by $\xi\coloneqq  h_x(\id_x) \in F(x)$. Given $\xi \in F(x)$, we get a natural map \begin{align*}
+h_x(y) &  \to F(y)
+\\  f &  \mapsto F(f)(\xi).
+\end{align*} This defines a map of functors $\eta^{\xi} : h_x \to F$ where $\eta^{\xi}_y(f) = F(f)(\xi)$ for any $y \in \ob \c$. 
+
+\medskip
+
+ By the Yoneda lemma, $F$ is representable by $x$  if and only if there is some $\xi \in F(x)$ such that $\eta^{\xi}$ is an isomorphism. 
 
 \begin{exmp} $ $
 \begin{enumerate}
@@ -1633,7 +1726,7 @@ for any $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T
 \end{enumerate}
 \end{exmp}
 
- Instead of constructing the reals as equivalence classes of Cauchy sequences or as Dedekind cuts, we can pick out the interval $[0,1]$ among all topological spaces as follows. We see that $[0,1]\cong_M \left( \faktor{[0,1] \coprod [0,1]}{\text{first 1 = second 0}} \right)$ by the mean function $M$. Let $\c$ denote the category of pairs $(X, \alpha)$ where $X$ is a topological space with two marked points $r_x, l_x$ and $\alpha :  \faktor{X \coprod X}{\sim} \cong X$ such that the first $r_x$ is $\sim$-equal to the second $l_x$.
+ Instead of constructing the reals as equivalence classes of Cauchy sequences or as Dedekind cuts, we can pick out the interval $[0,1]$ among all topological spaces as follows. We see that $$[0,1]\cong_M \left( \faktor{[0,1] \coprod [0,1]}{\text{first 1 = second 0}} \right)$$ by the mean function $M$. Let $\c$ denote the category of pairs $(X, \alpha)$ where $X$ is a topological space with two marked points $r_x, l_x$ and $\alpha :  \faktor{X \coprod X}{\sim} \cong X$ such that the first $r_x$ is $\sim$-equal to the second $l_x$.
  
 \begin{theorem}[Freyd]
 $([0,1], M)$ is the terminal object in $\c$.
@@ -1648,12 +1741,12 @@ $([0,1], M)$ is the terminal object in $\c$.
 \end{enumerate}
 \end{definition}
 
-\begin{remark} $ $
+\begin{note} $ $
 \begin{enumerate}
 \item By the Yoneda lemma, if $P$ is the product of $\{A_{\alpha}\}$, then there is some $\xi \coloneqq \{\pr_{\alpha} : P \to A_{\alpha}\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(P, A_{\alpha})$ such that $$\eta^{\xi}_B : h_P = \Hom_{\c}(B, P) \to \prod_{\alpha}\Hom_{\c} (B, A_{\alpha}) \quad \quad f \mapsto \{\pr_{\alpha} \circ f\}_{\alpha}$$ is a natural bijection in $B \in \ob \c$. This gives an isomorphism of set-valued presheaves $h_P \cong \Hom_{\c}(-, A_{\alpha})$. Let $$\prod_{\alpha} A_{\alpha} \coloneqq  P.$$ Then we have a natural bijection $\Hom_{\c}(B, \prod_{\alpha} A_{\alpha}) \cong \prod_{\alpha} \Hom_{\c}(B, A_{\alpha})$ in $B$.
 \item Likewise, if $Q$ is the coproduct of $\{A_{\alpha}\}$, then by viewing the coproduct functor as a presheaf on $\c^{\op}$ we get some $\xi\coloneqq  \{i_{\alpha} : A_{\alpha} \to Q\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(A_{\alpha}, Q)$ such that $$\Hom_{\c} (Q, B) \overset{\cong}{\longrightarrow} \prod_{\alpha}\Hom_{\c} (A_{\alpha}, B) \quad \quad f \mapsto \{f \circ i_{\alpha}\}_{\alpha}$$ for each $B\in \ob \c$. Let $$\coprod_{\alpha} A_{\alpha} \coloneqq  Q.$$ Then $\Hom_{\c}(\coprod_{\alpha} A_{\alpha}, B) \cong \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B)$ for each $B$.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{exmp} 
 Let $R$ be a unital ring and $\c \coloneqq  \mathbf{Mod}_R$, whose objects are precisely the pairs $(M, \rho)$ where $M$ is an abelian group and $\rho : R \to \ed(M)$ satisfying 
@@ -1696,7 +1789,10 @@ The category $\mathbf{Grp}$ has arbitrary coproducts and fibered coproducts.
 \end{theorem}
 \begin{proof}
 The coproduct $\coprod_{\alpha} G_{\alpha}$ is precisely the free product of $\{G_{\alpha}\}$, i.e., the group of admissible words in the $G_{\alpha}$. (Sometimes this is denoted by $\ast_{\alpha} G_{\alpha}$.)
-\\ \\ For fibered coproducts, let $\{G_{\alpha}, s_{\alpha} : G \to G_{\alpha}\}_{\alpha}$ be collection of objects in $\mathbf{Grp}^G$. Let $N \unlhd \coprod_{\alpha} G_{\alpha}$ be generated by all elements of the form $s_{\alpha}(x)s_{\beta}(x)^{-1}$ for any $\alpha, \beta \in I$ and $x\in G$. Note that we have a map $G \to \coprod_{\alpha} G_{\alpha}$ given by the composite
+
+\medskip
+
+ For fibered coproducts, let $\{G_{\alpha}, s_{\alpha} : G \to G_{\alpha}\}_{\alpha}$ be collection of objects in $\mathbf{Grp}^G$. Let $N \unlhd \coprod_{\alpha} G_{\alpha}$ be generated by all elements of the form $s_{\alpha}(x)s_{\beta}(x)^{-1}$ for any $\alpha, \beta \in I$ and $x\in G$. Note that we have a map $G \to \coprod_{\alpha} G_{\alpha}$ given by the composite
 \[
 \begin{tikzcd}
 G \arrow[d, "s_{\alpha}"'] \arrow[r, dashed] & \coprod_{\alpha}G_{\alpha} \\
@@ -1714,9 +1810,9 @@ G_{\alpha} \arrow[ru, hook] &
 
 \section{Adjoint functors}
 
-\begin{definition}
 The bifunctor $\Hom_{\c}({-}, {-}) : \c^{\op} \times \c \to \mathbf{Set}$ maps any morphism $(f, g)$ in $\c^{\op} \times \c$ to the set map $\varphi \mapsto g \circ \varphi \circ f$.
 
+\begin{definition}
 Suppose that $L: \c \to \d$ and $R: \d \to \c$ are functors. We say that $(L, R)$ is an \textit{adjoint pair of functors} if the bifunctors
 \begin{align*}
 & \Hom_{\d}(L(-), -) : \c^{\op} \times \d \to \mathbf{Set}
@@ -1725,31 +1821,31 @@ Suppose that $L: \c \to \d$ and $R: \d \to \c$ are functors. We say that $(L, R)
 are isomorphic.
 \end{definition}
 
-\begin{remark} $ $
-\begin{enumerate}
-\item Suppose $L : \c \to \d$ is a functor. Then $L$ induces a functor $L_{\ast} : \widehat{\d} \to \widehat{\c}$ given by $F \mapsto F \circ L$. We can compose $L_{\ast}$ with the Yoneda functor $h^{\d} : \d \to \widehat{\d}$ to get $L_{\ast} \circ h^{\d} : \d \to \widehat{\c}$. 
+
+Suppose that $L : \c \to \d$ is a functor. Then $L$ induces a functor $L_{\ast} : \widehat{\d} \to \widehat{\c}$ given by $F \mapsto F \circ L$. We can compose $L_{\ast}$ with the Yoneda functor $h^{\d} : \d \to \widehat{\d}$ to get $L_{\ast} \circ h^{\d} : \d \to \widehat{\c}$. 
 \begin{exercise} Then $L$ has a right adjoint $R$  if and only if for each $y \in \ob \d$, the presheaf $L_{\ast} \circ h^{\d}(y) : \c^{\op} \to \mathbf{Set}$ is representable in $\c$. In this case, $L_{\ast} \circ h^{\d} \cong h^{\c} \circ R$.
 \end{exercise}
 \begin{prop}
 The right adjoint is unique up to a unique isomorphism.
 \end{prop}
-\item Let $\overset{L}{\underset{R}{\c \rightleftarrows \d}}$ be an adjoint pair of functors. Then there is a natrual bijection $$\Hom_{\d}(L(x), L(x)) \cong \Hom_{\c}(x, R \circ L(x))$$ for every $x\in \ob \c$. This gives a map of functors $\xi : \id_{\c} \to R \circ L$. Likewise, we get a map $\eta : L \circ R \to \id_{\d}$.
-
-This induces the functors 
+\begin{note}[(Co)unit of an adjunction]
+ Let $\overset{L}{\underset{R}{\c \rightleftarrows \d}}$ be an adjoint pair of functors. Then there is a natural bijection $$\Hom_{\d}(L(x), L(x)) \cong \Hom_{\c}(x, R \circ L(x))$$ for every $x\in \ob \c$. This yields a map of functors $\epsilon : \id_{\c} \to R \circ L$, called the \textit{unit of the adjunction}. Likewise, we get a map $\eta : L \circ R \to \id_{\d}$, called the \textit{counit of the adjunction}.
+In turn, these induce the functors 
 \[
 \begin{tikzcd}
-L \arrow[r, "\xi"] & L \circ R \circ L \arrow[r, "\eta"] & L \\
-R \arrow[r, "\xi"] & R\circ L \circ R \arrow[r, "\eta"] & R
+L \arrow[r, "\epsilon"] & L \circ R \circ L \arrow[r, "\eta"] & L \\
+R \arrow[r, "\epsilon"] & R\circ L \circ R \arrow[r, "\eta"] & R
 \end{tikzcd}
 .\]
+\end{note}
+
 \begin{exercise}
-$\id \cong \eta \circ \xi$.
+$\id_L \cong \eta \circ \epsilon$.
 \end{exercise}
+
 \begin{prop}
-Conversely, if $(L, R, \xi, \eta)$ satisfies $\eta \circ \xi \cong \id_L$ and $\eta \circ \xi \cong \id_R$, then $(L, R)$ is an adjoint pair.
+Conversely, if $(L, R, \epsilon, \eta)$ satisfies $\eta \circ \epsilon \cong \id_L$ and $\eta \circ \epsilon \cong \id_R$, then $(L, R)$ is an adjoint pair.
 \end{prop}
-\end{enumerate}
-\end{remark}
 
 \subsection{Lecture 23}
 
@@ -1757,7 +1853,13 @@ Conversely, if $(L, R, \xi, \eta)$ satisfies $\eta \circ \xi \cong \id_L$ and $\
 \begin{enumerate}
 \item Let $|\cdot| : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it has as left adjoint the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, |G|)$ for any set $S$ and group $G$. That is, for any function $f: S \to |G|$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
 \begin{proof}
-$$ \Hom(\Fr(S), G) = \Hom(\coprod_S \Z, G) \cong  \prod_{s\in S} \Hom(\Z, G) \cong \prod_s \Hom(\{1\}, |G|) \cong \Hom(\coprod_s \{1\}, |G|) \cong  \Hom(S, |G|).$$
+\begin{align*}
+ \Hom(\Fr(S), G) & = \Hom\left(\coprod_S \Z, G\right) 
+ \\ & \cong  \prod_{s\in S} \Hom(\Z, G) 
+ \\ & \cong \prod_s \Hom(\{1\}, |G|)
+ \\ &  \cong \Hom\left(\coprod_s \{1\}, |G|\right) 
+ \\ & \cong  \Hom(S, |G|).
+ \end{align*}
 \end{proof}
 \item Let $\mathbf{Ab} \overset{i}{\longrightarrow} \mathbf{Grp}$ denote the full subcategory of abelian groups. It has as left adjoint the abelianization functor $(-)^{\ab}$.
 \begin{proof}
@@ -1766,10 +1868,10 @@ Let $G$ be a group and $A$ and abelian group. The universal property of $G^{\ab}
 \end{enumerate}
 \end{exmp}
 
-\begin{remark}
+
 The notion of adjunction is strictly weaker than that of inverse. For example, $\mathbf{Grp}$ and $\mathbf{Set}$ cannot be equivalent, for $\emptyset \in \mathbf{Set}$. Also, $\mathbf{Ab}$ and $\mathbf{Grp}$ cannot be equivalent, for the former is an preadditive category whereas the latter is not.
 Any inverse pair of functors $(F, G)$, however, is automatically an adjunction.
-\end{remark}
+
 
 \begin{prop}
 $(-)^{\ab}$ admits no left adjoint.
@@ -1823,20 +1925,22 @@ $\Fr(S) \cong \Fr(T) \iff S\cong T.$
 \end{lemma}
 \begin{proof} $ $
 \\ $(\Longleftarrow)$ If $u: S \to T$ and $v: T\to S$ are inverses of each other, then so are $F(u)$ and $F(v)$.
-\\ \\
+
+\medskip
+
+
 $(\Longrightarrow)$ Assume that $\Fr(S) \cong \Fr(T)$. Then $$\bigoplus_{s\in S} G_s \cong \Fr(S)^{\ab} \cong \Fr(T)^{\ab} \cong \bigoplus_{t\in T} G_t.$$ Hence $\Fun^{\fs}(S, C_2)\cong \faktor{\bigoplus_{s\in S} G_s}{2\bigoplus_{s\in S} G_s} \cong \faktor{\bigoplus_{t\in T} G_t}{2\bigoplus_{t\in T} G_t}\cong \Fun^{\fs}(T, C_2)$. But then $\Fun^{\fs}(S, C_2)$ and  $\Fun^{\fs}(T, C_2)$ are isomorphic as $C_2$-vector spaces, so that $S \cong T$ as bases. 
-\begin{remark} There is another proof if we restrict our set-theoretic universe.
-\\
-The adjunction $(\Fr, \lvert - \rvert)$ gives $$P(T) \cong \Hom_{\mathbf{Set}}(T, C_2) \cong \Hom_{\mathbf{Grp}}(\Fr(T), C_2)\cong \Hom_{\mathbf{Grp}}(\Fr(S), C_2)\cong \Hom_{\mathbf{Set}}(S, C_2)\cong P(S).$$
+\begin{remark} There is another proof if we restrict our set-theoretic universe. Specifically,
+the adjunction $(\Fr, \lvert - \rvert)$ gives $$P(T) \cong \Hom_{\mathbf{Set}}(T, C_2) \cong \Hom_{\mathbf{Grp}}(\Fr(T), C_2)\cong \Hom_{\mathbf{Grp}}(\Fr(S), C_2)\cong \Hom_{\mathbf{Set}}(S, C_2)\cong P(S).$$
 If we assume the continuum hypothesis, then this implies that $S \cong T$.
 \end{remark}
 \end{proof}
 
 \subsection{Lecture 24}
 
-\begin{remark}
+
 For any group $G$, we have $$\Hom_{\mathbf{Grp}}(\Fr(|G|), G) \cong \Hom_{\mathbf{Set}}(|G|, |G|)\ni \id_{|G|}.$$ Thus, there is a unique group map $\phi : \Fr(|G|) \to G$ such that $\phi \restriction_{|G|} = \id_{|G|}$. This implies that $\phi$ is surjective, so that $G$ is the quotient of a free group.
-\end{remark}
+
 
 \begin{definition}
 We say that a group $G$ is generated by a subset $S\subset G$ if the homomorphism $$\phi \circ \Fr(i):\Fr(S) \to \Fr(|G|) \to G$$ is surjective, where $i: S \to |G|$ denotes inclusion.
@@ -1847,16 +1951,16 @@ $\im(\phi \circ \Fr(i)) = \bigcap \{H : H \leq G, \ H \supset S\}$.
 \end{note}
 
 \begin{definition}
-Suppose that the set $S$ generates $G$ and that the set $T$ generates $\ker(\Fr(S) \twoheadrightarrow G)$. Then there is an exact sequence $$\eta :  \Fr(T) \to \Fr(S) \to G \to 1.$$ In this scenario, we call $\eta$ a \textit{presentation of $G$}. We also cal $S$ the \textit{set of generators of $G$} and $T$ the \textit{set of relations of $G$}.
+Suppose that the set $S$ generates $G$ and that the set $T$ generates $\ker(\Fr(S) \twoheadrightarrow G)$. Then there is an exact sequence $$\eta :  \Fr(T) \to \Fr(S) \to G \to 1.$$ In this case, we call $\eta$ a \textit{presentation of $G$}. We also cal $S$ the \textit{set of generators of $G$} and $T$ the \textit{set of relations of $G$}.
 \end{definition}
 
-\begin{remark} $ $
+\begin{note} $ $
 \begin{enumerate}
 \item Any quotient of a finitely generated group is finitely generated.
-\item A subgroup of a finitely generated group need not be finitely generated. For example, $F_2\coloneqq \Fr(\{x,y\})$ is finitely generated, but the subgroup $\{y^kxy^{-k} : k \geq 0\}$ is not.
+\item A subgroup of a finitely generated group need not be finitely generated. For example, $F_2\coloneqq \Fr(\{x,y\})$ is finitely generated, but the subgroup $\left\{y^kxy^{-k} : k \geq 0\right\}$ is not.
 \item If $G$ is finitely presentable, then any subgroup of $G$ is finitely presentable.
 \end{enumerate}  
-\end{remark}
+\end{note}
 
 \begin{theorem}[Nielsen-Schreier]
 Any subgroup of a free group is free.
@@ -1864,17 +1968,17 @@ Any subgroup of a free group is free.
 
 \section{Polynomial rings}
 
-\begin{note}
+
 Our main setting for ring theory will be $\mathbf{CommRing}$, the category of unital, associative, commutative rings.
-\end{note}
+
 
 \begin{definition}
-Let $A \in \mathbf{CommRing}$. Then we have the $A$-module $\bigoplus_{\N} A$ For each $k\geq 0$, define $$m_k = (0, \ldots, 0, \underbrace{1}_{k-\text{th place}}, 0 , \ldots).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\N} A$. Define $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\N} A$ by linearity. Then $(\bigoplus_{\N} A, + , \cdot) \in  \mathbf{CommRing}$. Moreover, $((\bigoplus_{\N} A, + , \cdot), i) \in  \mathbf{CommRing}^A$ where $i : A \to \bigoplus_{\N}A$ denotes inclusion by $a \mapsto (a, 0, \ldots, 0, \ldots)$. We call this the \textit{one-variable ring over $A$}.
+Let $A \in \mathbf{CommRing}$. Then we have the $A$-module $\bigoplus_{\N} A$ For each $k\geq 0$, define $$m_k = \left(0, \ldots, 0, \underbrace{1}_{k-\text{th place}}, 0 , \ldots \right).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\N} A$. Define $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\N} A$ by linearity. Then $(\bigoplus_{\N} A, + , \cdot) \in  \mathbf{CommRing}$. Moreover, $((\bigoplus_{\N} A, + , \cdot), i) \in  \mathbf{CommRing}^A$ where $i : A \to \bigoplus_{\N}A$ denotes inclusion by $a \mapsto (a, 0, \ldots, 0, \ldots)$. We call this the \textit{one-variable ring over $A$}.
 \end{definition}
 
-\begin{note}
-By convention, we let $\deg(0)= {-}\infty$.
-\end{note}
+
+By convention, we let $\deg(0)= {-\infty}$.
+
 
 \begin{lemma}
 $\deg(p_1 + p_2) \leq \max(\deg p_1, \deg p_2)$.
@@ -1891,7 +1995,7 @@ Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial r
 \end{align*}
 \end{definition}
 
-\begin{remark} $ $
+\begin{note} $ $
 \begin{enumerate}
 \item Note that $A[S] \in  \ob \mathbf{CommRing}$ with $0_{A[S]}(\xi) =0$ and and $1_{A[S]}(\xi) = \begin{cases} 0_A & \xi \ne 0 \\ 1_A & \xi =0   \end{cases}$ for each monomial $\xi$. 
 \item There is  a natural ring monomorphism $i : A \hookrightarrow A[S]$ given by $a \mapsto a1_{A[S]}$.
@@ -1911,10 +2015,10 @@ A \arrow[u, hook] \arrow[ru, "i"'] &
 Apply Yoneda to the adjoint pair $(A[-], \lvert - \rvert)$ to prove that $A[S]\cong A[T][S\setminus T]$.
 \end{exercise}
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{definition}
-Given a monomial $\xi$ in elements of $S$, define $\deg(\xi) = \sum_{s\in S} \xi(s).$ If $f\in A[S]$, then define $$ \deg(f)  = \max \{ \deg (\xi) : f(\xi) \ne 0\}  .$$ By convention, we set $\deg(0) = {-}\infty$.
+Given a monomial $\xi$ in elements of $S$, define $\deg(\xi) = \sum_{s\in S} \xi(s).$ If $f\in A[S]$, then define $$ \deg(f)  = \max \{ \deg (\xi) : f(\xi) \ne 0\}  .$$ By convention, we set $\deg(0) = {-\infty}$.
 \end{definition}
 
 \begin{lemma} $ $
@@ -1930,7 +2034,10 @@ If $A$ is an integral domain, then $(A[S])^{\times} =A^{\times}$ and $A[S]$ is a
 \begin{proof}
 Suppose that $A$ has no zero divisors. Given $f,g \in A[S]$,  write 
 $$ f= \sum_{\xi} f(\xi)t^{\xi}   \quad \quad  g= \sum_{\xi} g(\xi)t^{\xi}.$$ Say that $\deg(f) = \deg(\eta)$ and $\deg(g) = \deg(\eta')$ where $f(\eta) \ne 0$ and $g(\eta') \ne 0$. Then the coefficient before the term $t^{\eta}t^{\eta'}$ in $fg$ is equal to $f(\eta)g(\eta') \ne 0$. Hence $\deg(fg) = \deg(f) + \deg(g)$. Also, if $g=0$ or $f=0$, then clearly $\deg(fg) = \deg(f) + \deg(g)$.
-\\ \\ 
+
+\medskip
+
+ 
 Both the fact that $(A[S])^{\times} \subset A^{\times}$ and the fact that $A[S]$ has no zero divisors follow immediately from this.
 \end{proof}
 
@@ -1957,9 +2064,9 @@ See \cref{l14}.
 
 \subsection{Lecture 26}
 
-\begin{remark}
+
 Suppose that $A$ is an abelian group. Then $(\ed(A), +, \circ)$ is a ring. 
-\end{remark}
+
 
 \begin{definition}
 Let $R$ be a unital ring. Then a \textit{(left) $R$-module} is a pair $(A, \rho)$ where $A$ is an abelian group and $\rho : R \to \ed(A)$ is a ring homomorphism.
@@ -1980,10 +2087,9 @@ A_1 \arrow[r, "\phi"'] & A_2
 
 \begin{definition}
 Let $R^{\op}$ denote the ring obtained from revering the multiplication on $R$. Then a\textit{right $R$-module} is a pair $(A, \rho)$ where $A$ is an abelian group and $\rho : R^{\op} \to \ed(A)$ is a ring homomorphism. The category of right $R$-modules is denoted by $R^{\op}$-$\mathbf{Mod}$.
-\begin{note}
-This is equivalent to defining an action map $\alpha : A \times R \to A$ where we set $\alpha(a, r) = \rho(r)(a)$.
-\end{note}
 \end{definition}
+
+This is equivalent to defining an action map $\alpha : A \times R \to A$ where we set $\alpha(a, r) = \rho(r)(a)$.
 
 \begin{note}
 The category of bimodules is denoted by $R$-$\mathbf{Mod}$-$R$ or $R \otimes_{\Z}R^{\op}$-$\mathbf{Mod}$.
@@ -1993,14 +2099,14 @@ The category of bimodules is denoted by $R$-$\mathbf{Mod}$-$R$ or $R \otimes_{\Z
 Any ring is a bimodule over itself via left and right multiplication.
 \end{exmp}
 
-\begin{remark} Let $M$ be an $R$-module. Let $\{M_{\alpha}\}_{\alpha \in A}$ be a collection of submodules of $M$ and $i_{\alpha}$ denote inclusion.
+\begin{note} Let $M$ be an $R$-module. Let $\{M_{\alpha}\}_{\alpha \in A}$ be a collection of submodules of $M$ and $i_{\alpha}$ denote inclusion.
 \begin{enumerate}
 \item The intersection $\bigcap_{\alpha} M_{\alpha}$ is a submodule of $M$. 
 \item We have $$(i_{\alpha}) \in \prod_{\alpha}\Hom_{R\text{-}\mathbf{Mod}}(M_{\alpha}, M) = \Hom_{R\text{-}\mathbf{Mod}}\left(\coprod_{\alpha} M_{\alpha}, M\right).$$ Define $\sum_{\alpha} M_{\alpha} = \im (i_{\alpha})$. Then $$\sum_{\alpha} M_{\alpha}  = \{\sum_{\alpha} m_{\alpha} : m_{\alpha} \in M_{\alpha}, \ m_{\alpha} \ne 0 \text{ for at most finitely many } \alpha\}.$$
 \item Let $S\subset M$ be any subset. We call $\coprod_{s\in S} R$ \textit{the free $R$-module generated by $S$}. We have a natural map $g : \coprod_{s\in S} R \to M$ given by $(r_s) \mapsto \sum_s r_ss$. We say that $R \cdot S: = \im g$ is the \textit{submodule of $M$ generated by $S$}.
 \item The free $R$-module functor is left adjoint to the forgetful functor.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \begin{definition} Let $M$ be an $R$-module. Then $M$ is
 \begin{enumerate}
@@ -2023,9 +2129,15 @@ Any ring is a bimodule over itself via left and right multiplication.
 \item Every submodule of $M$ is finitely generated. 
 \end{enumerate}
 \end{lemma}
-\begin{proof} $ $ \\
+\begin{proof} $ $
+
+\smallskip
+
 (a) $\implies$ (b) is easy to show by an iteration argument.
-\\ \\ (b) $\implies$ (c). If $M$ has the maximal property, then so does every submodule. Hence it suffices to the prove the following lemma.
+
+\medskip
+
+ (b) $\implies$ (c). If $M$ has the maximal property, then so does every submodule. Hence it suffices to the prove the following lemma.
 \begin{lemma}\label{l19}
 If the $R$-module $M$ has the maximal property, then $M$ is finitely generated.
 \end{lemma}
@@ -2150,14 +2262,20 @@ If $A\in \mathbf{CommRing}$ is Noetherian, then $A[x]$ is also Noetherian.
 \begin{proof}
 Note that $A[x]$ is an $A$-module since $A$ is a subring. We see that $$A[x] = \bigcup_{n\geq 0} A[x]_n$$ where $$A[x]_n =  \{f \in A[x] : \deg f \leq n\}  .$$
 Note that each $A[x]_n$ is finitely generated by $1, x, \ldots, x^n$, giving a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A[x]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by \cref{l19}, so is $A[x]_n$.
-\\ \\ Let $\Omega \unlhd A[x]$ be an ideal. Then $\Omega \cap A[x]_n$ is an $A$-submodule in $A[x]_n$ and thus a finitely generated $A$-module by, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \{a\in A : a = 0 \text{ or } \exists f\in \Omega. \deg f >0 \land f(x) = ax^r+ O(x^{r-1})\}.$$
+
+\medskip
+
+ Let $\Omega \unlhd A[x]$ be an ideal. Then $\Omega \cap A[x]_n$ is an $A$-submodule in $A[x]_n$ and thus a finitely generated $A$-module by, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \{a\in A : a = 0 \text{ or } \exists f\in \Omega. \deg f >0 \land f(x) = ax^r+ O(x^{r-1})\}.$$
 \begin{lemma}
 $\widetilde{\Omega}$ is an ideal in $A$.
 \end{lemma}
 \begin{proof}
 Let $a,b \in \widetilde{\Omega}$. If $a=0$ or $b=0$, then $a+b\in \widetilde{\Omega}$. Suppose $a,b\ne 0$. Then there are $f, g \in 
 \Omega$ such that $f= ax^r + O(x^{r-1})$ and $g= bx^s + O(x^{s-1})$. Set $t=\max\{r, s\}$. Then ${\Omega} \ni x^{t-r}f \pm x^{t-s}g = (a\pm b)x^t +O(x^{t-1}),$ implying that $a\pm b \in \widetilde{\Omega}$.
-\\ \\
+
+\medskip
+
+
 Further, it's clear that if $a\in \widetilde{\Omega}$ and $b\in A$, then $ba\in \widetilde{\Omega}$. 
 \end{proof}
 It follows that $\widetilde{\Omega}$ is a finitely generated $A$-module by, say, the elements $b_1, \ldots, b_s$. For each $i=1, \ldots, s$, find some $f_i \in \Omega$ such that $f_i = b_ix^{m_i} + O(x^{m_i-1})$. Set $n= \max\{m_i\}$.
@@ -2198,9 +2316,9 @@ We have a ring embedding $i: A \to B$. As $B$ is finitely generated as an $A$-al
 \begin{definition}
 Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be a group. We say that $G$ \textit{acts on $B$ as an $A$-algebra} if there is an action $\rho : G \to \aut_{\mathbf{Set}}(B)$ such that each  $\rho_g  : B \to B$ is an \textit{algebra isomorphism}, i.e., 
 \begin{align*}
-&  \rho_g(b_1 +b_2) = \rho_g(b_1) + \rho_g(b_2)
-\\ & \rho_g(b_1b_2) = \rho_g(b_1)\rho_g(b_2)
-\\ & \rho_g(a) = a
+  \rho_g(b_1 +b_2) & = \rho_g(b_1) + \rho_g(b_2)
+\\  \rho_g(b_1b_2) & = \rho_g(b_1)\rho_g(b_2)
+\\  \rho_g(a) & = a
 .\end{align*}
 \end{definition}
 
@@ -2214,16 +2332,16 @@ Let $P(x)$ be a polynomial of degree $k$ with roots $x_1, \ldots, x_k$. If $n\in
 \end{definition}
 It is known that any elementary symmetric polynomial can be expressed in terms of Newton sums. In our case, we can express each coefficient of $\chi_a(x)$ in terms of $S(a), S(a^2) , \ldots, S(a^{|G|})$.
 
-Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $\{S(u_i^k)\}_{i=1, \ldots, m,\ k=1, \ldots, |G|}$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{|G|}$ can be written as a $B$-combination of $1, u_i, \ldots, u_i^{|G|-1}$. {[[Why?]]} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where each $0\leq \alpha_i <|G|$. We may thus write $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha}, \quad \alpha_i < |G|, \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha})$. As each $\alpha_i<|G|$,  the set $\{S(u^{\alpha})\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
+Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S(u_i^k)\right\}_{i=1, \ldots, m,\ k=1, \ldots, |G|}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{|G|}$ can be written as a $B$-combination of $1, u_i, \ldots, u_i^{|G|-1}$. {[[Why?]]} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where each $0\leq \alpha_i <|G|$. We may thus write $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha}, \quad \alpha_i < |G|, \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha})$. As each $\alpha_i<|G|$,  the set $\{S(u^{\alpha})\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
 \end{proof}
 
 \section{Projective and injective modules}
 
 \subsection{Lecture 29}
 
-\begin{note}
+
 We now turn to the homology of modules, which offers a quantitative measure of the complexity of objects in $R{-}\mathbf{Mod}$.
-\end{note}
+
 
 \begin{definition}
 An \textit{additive invariant of modules} is a class function $\phi : \ob(R{-} \mathbf{Mod}) \to \Z$ such that for every $R$-module $M$ and submodule $N\subset M$ we have $\phi(M) = \phi(N) + \phi \left(\faktor{M}{N} \right)$. 
@@ -2303,11 +2421,11 @@ If $ m \otimes x'' \in M \otimes_R X''$, then there is some $x \in X$ such that 
 \end{enumerate}
 \end{definition}
 
-\begin{note}
-Projective and injective are dual notions.
-\end{note}
 
-\begin{remark} $ $
+Note that \textit{projective} and \textit{injective} are dual notions.
+
+
+\begin{note} $ $
 \begin{enumerate}
 \item $M$ is projective  if and only if $\Hom_R(M, -)$ preserves epimorphisms $X \overset{q}{\longrightarrow}  X'' \to 0$. That is, for any map $\phi : M \to X''$, there is some map $\psi$ such that
 \[
@@ -2324,7 +2442,7 @@ X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
 \end{tikzcd}
 \] commutes.
 \end{enumerate}
-\end{remark}
+\end{note}
 
 \subsection{Lecture 30}
 
@@ -2339,7 +2457,10 @@ M \arrow[rd, "\phi"] \arrow[d, "\psi"'] &  &  \\
 X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
 \end{tikzcd}
 \] commutes.
-\\ \\ Now, drop the assumption that $M$ is free but assume that $M \coprod N$ is free for some $R$-module $N$. Let 
+
+\medskip
+
+ Now, drop the assumption that $M$ is free but assume that $M \coprod N$ is free for some $R$-module $N$. Let 
 \[ \tag{$\eta$}
 \begin{tikzcd}
 M \arrow[rd, "\phi"] &  &  \\
@@ -2351,7 +2472,10 @@ M\coprod N \arrow[rd, "\phi \coprod 0"] \arrow[d, "f"'] &  &  \\
 X \arrow[r, "q"'] & X'' \arrow[r] & 0
 \end{tikzcd}
 \] commutes. Define $\psi : M \to X$ by the composition $M \hookrightarrow M\coprod N \overset{f}{\longrightarrow} X$. Then $\psi$ fills $(\eta)$.
-\\ \\ $(\Longrightarrow)$ Suppose that $M$ is projective. We have the exact sequence $\coprod_{m\in M}R \overset{q}{\longrightarrow}  M \to 0$. Hence there is some map $s$ such that 
+
+\medskip
+
+ $(\Longrightarrow)$ Suppose that $M$ is projective. We have the exact sequence $\coprod_{m\in M}R \overset{q}{\longrightarrow}  M \to 0$. Hence there is some map $s$ such that 
 \[\begin{tikzcd}
 M \arrow[rd, "\id_M"] \arrow[d, "s"'] &  &  \\
 \coprod_m R \arrow[r, "q"'] & M \arrow[r] & 0
@@ -2363,9 +2487,9 @@ M \arrow[rd, "\id_M"] \arrow[d, "s"'] &  &  \\
 Let $M$ be an $R$-module. A \textit{projective resolution of $M$} is an exact sequence of $R$-modules $$\cdots \to P^3 \to P^2 \to P^1 \to M \to 0$$ such that each $P^i$ is projective.  
 \end{definition}
 
-\begin{remark}
+
 Every module has a free, hence projective, resolution. 
-\end{remark}
+
 
 \begin{corollary}
 Any short exact sequence of $R$-modules $0 \to X' \to X \to M \to 0$ with $M$ projective splits. 
@@ -2388,7 +2512,10 @@ If $\{M_{\lambda}\}$ is a collection of $R$-modules, then $\coprod_{\lambda} M_{
 \end{corollary}
 \begin{proof}
 $(\Longleftarrow)$ As each $M_{\lambda}$ is projective, we know that $\Hom_R(M_{\lambda}, -)$ is an exact functor. This implies that $\Hom_R(\coprod_{\lambda} M_{\lambda}, -) \cong \prod_{\lambda} \Hom_R(M_{\lambda}, -)$ is exact as well.
-\\ \\ 
+
+\medskip
+
+ 
 $(\Longrightarrow)$ As $\coprod_{\lambda} M_{\lambda}$ is projective, there is some $R$-module $N$ such that $(\coprod_{\lambda} M_{\lambda}) \coprod N \cong M_{\lambda} \coprod  (\coprod_{\alpha \ne \lambda} M_{\alpha})\coprod N$ is free.
 \end{proof}
 
@@ -2442,7 +2569,7 @@ Any divisible abelian group is injective.
 \end{corollary}
 \item The circle group $S^1$ is injective.
 \item Any field of characteristic zero is injective as a $\Z$-module. 
-\item $\faktor{\Q_{(p)}}{\Z}$ is injective as a $\Z$-module where $\Q_{(p)} \coloneqq  \{\frac{n}{p^k} : n \in \Z, \ k\geq 0,  \ p \text{ prime}  \}$.
+\item $\faktor{\Q_{(p)}}{\Z}$ is injective as a $\Z$-module where $\Q_{(p)} \coloneqq  \left\{\frac{n}{p^k} : n \in \Z, \ k\geq 0,  \ p \text{ prime}  \right\}$.
 \end{enumerate}
 \end{exmp}
 

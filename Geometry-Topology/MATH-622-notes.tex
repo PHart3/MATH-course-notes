@@ -14,12 +14,14 @@
 \pgfplotsset{compat=1.13}
 \usepackage{amsmath,amsthm}
 \usepackage{tikz-cd}
+\usetikzlibrary{backgrounds,calc,positioning}
 \usetikzlibrary{knots,calc}
 \usepackage{xcolor}
 \usepackage{soul}
 \usetikzlibrary{decorations.markings}
 \usepackage{faktor}
 \usepackage{xfrac}
+\usepackage{textcomp}
 \usepackage{ mathrsfs }
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
@@ -47,6 +49,7 @@
 \newtheorem{corollary}[defn]{Corollary}
 \newtheorem*{claim}{Claim}
 \newtheorem{exercise}[defn]{Exercise}
+\newtheorem{conj}[defn]{Conjecture}
 
 \theoremstyle{remark}
 \newtheorem{remark}[defn]{Remark}
@@ -80,12 +83,12 @@
 \makeatother
 \pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
 \DeclareMathOperator{\Ima}{Im}
-\newcommand{\A}{\mathbb A}
+\newcommand{\A}{\mathcal A}
 \newcommand{\C}{\mathbb C}
 \newcommand{\E}{\vec E}
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\F}{\mathbb F}
-\newcommand{\G}{\vec G}
+\newcommand{\G}{\frak{G}}
 \newcommand{\J}{\mathcal J}
 \renewcommand{\H}{\mathbb H}
 \newcommand{\HP}{\mathbb HP}
@@ -96,15 +99,15 @@
 \newcommand{\OP}{\mathbb OP}
 \renewcommand{\P}{\mathbb P}
 \newcommand{\Q}{\mathbb Q}
-\newcommand{\U}{\mathcal U}
 \newcommand{\I}{\mathbb I}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\RP}{\mathbb{RP}}
 \renewcommand{\S}{\mathbb S}
 \newcommand{\T}{\mathcal T}
-\newcommand{\X}{\mathbf X}
+\newcommand{\X}{\mathscr X}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\B}{\mathbb{B}}
+\newcommand{\imp}{\mathsf{Imp}}
 \newcommand{\1}{\mathbb{1}}
 \newcommand{\ds}{\displaystyle}
 \newcommand{\ran}{\right>}
@@ -146,19 +149,25 @@
 \DeclareMathOperator{\rng}{range}
 \DeclareMathOperator{\gemu}{gemu}
 \DeclareMathOperator{\almu}{almu}
-\newcommand{\Char}{\mathsf{char}}
 \DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\vd}{vd}
 \DeclareMathOperator{\tor}{Tor}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\homeo}{Homeo}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Or}{O}
+\DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\norm}{N}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\U}{U}
 \DeclareMathOperator{\ext}{Ext}
 \DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\pic}{Pic}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\dom}{dom}
@@ -184,7 +193,9 @@
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\tot}{Tot}
 \DeclareMathOperator{\ev}{eval}
+\DeclareMathOperator{\sym}{Sym}
 \DeclareMathOperator{\BL}{\mathcal{BL}}
+\DeclareMathOperator{\bl}{\mathrm{Bl}}
 \DeclareMathOperator{\Et}{\acute{E}t}
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
 \DeclareMathOperator{\vf}{\mathscr{X}}
@@ -204,6 +215,8 @@
 \setlength{\parindent}{0pt}
 
 
+\newcommand{\bigne}{\text{\scalebox{2}{\ensuremath{\nearrow}}}}
+
 \newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
 
 \newlist{steps}{enumerate}{1}
@@ -217,13 +230,13 @@
 \begin{document}
 
 \begin{abstract}
-These notes are based on Ron Donagi's lectures for the course ``Complex Algebraic Geometry'' given at UPenn along with Daniel Huybrechts's \textit{Complex Geometry}. Any mistake in what follows is my own.
+These notes are based on Ron Donagi's lectures for the course ``Complex Algebraic Geometry'' at UPenn along with Daniel Huybrechts's \textit{Complex Geometry}. Any mistake in what follows is my own.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
-\section{A quick overview of algebraic geometry} 
+\section{A cursory overview of algebraic geometry} 
 
 \subsection{Lectures 1-4}
 
@@ -241,7 +254,7 @@ Let $z_0\in \C$. A function $f = u+iv : U\subset \C \to \C$ is \textit{holomorph
 \item Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations, i.e., 
 \begin{align*}
 u_x & = v_y
-\\ u_y & = {-}v_x.
+\\ u_y & = {-v_x}.
 \end{align*}
 \item $\frac{\partial{f}}{\partial{\bar{z}}} =0$, where $\frac{\partial}{\partial{\bar{z}}} \coloneqq \frac{1}{2}\left(\frac{\partial}{\partial{x}} + i\frac{\partial}{\partial{y}}\right ) .$
 \item The Cauchy integral formula holds, i.e., 
@@ -264,7 +277,7 @@ A bijective function $f: U \subset \C \to V \subset \C$ is \textit{biholomorphic
 \item (The Riemann extension theorem) If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \{z\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
 \item (The Riemann mapping theorem) If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
 \item (The residue theorem) If $f: B_{\epsilon}(0)\setminus \{0\}$ is holomorphic, then $f$ can be expanded in a Laurent series
-$\sum_{n={-}\infty}^{\infty}a_nz^n$ such that $a_{{-}1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
+$\sum_{n={-\infty}}^{\infty}a_nz^n$ such that $a_{-1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
 \ee
 \end{fact}
 
@@ -279,7 +292,7 @@ A function $f = u +iv: U\subset \C^n \to \C$ is \textit{holomorphic} if at least
 \item  Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations,
 \begin{align*}
 u_{x_i} & = v_{y_i}
-\\ u_{y_i} & = {-}v_{x_i}
+\\ u_{y_i} & = {-v_{x_i}}
 \end{align*}
 for each $i=1, \ldots, n$.
 \item $\sum_{i=1}^n\frac{\partial{f}}{\partial{\bar{z}_i}} =0$.
@@ -376,7 +389,7 @@ If $J$ is a line bundle, then $\L_J$ is invertible.
 Consider the composition
 \[
 \begin{tikzcd}
-\O_{U_i \cap U_j} \arrow[r, "\varphi_i"] & \L_J\restriction_{U_i \cap U_j} \arrow[r, "\varphi_j^{{-}1}"] & \O_{U_i \cap U_j}
+\O_{U_i \cap U_j} \arrow[r, "\varphi_i"] & \L_J\restriction_{U_i \cap U_j} \arrow[r, "\varphi_j^{-1}"] & \O_{U_i \cap U_j}
 \end{tikzcd}
 , \ \quad \quad 1 \longmapsto g_{ij}.
 \] From this, we can construct a line bundle $L$ over $X$ by defining the total space as 
@@ -408,7 +421,7 @@ Any divisor $D$ defines a line bundle $\O_X(D)$ on $X$ and a holomorphic map $X 
 
 \medskip
 
-Consider the case where $D = \pt$. Let $f \in \Gamma\left(U, \O_U\right)$ and let $U_i = X \setminus D$, which is a tubular neighborhood of $D$. Note that $U_i = f^{{-}1}\left (\C\setminus\text{hyperplane}\right)$. Define $\O_X(D)$ as the line bundle with transition functions of the form $f \restriction_{U_i \cap U_j}$.
+Consider the case where $D = \pt$. Let $f \in \Gamma\left(U, \O_U\right)$ and let $U_i = X \setminus D$, which is a tubular neighborhood of $D$. Note that $U_i = f^{-1}\left (\C\setminus\text{hyperplane}\right)$. Define $\O_X(D)$ as the line bundle with transition functions of the form $f \restriction_{U_i \cap U_j}$.
 
 \medskip
 
@@ -479,13 +492,13 @@ Let $X = \P^1$ and $p = \{x=0\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right)
 
 \subsection{Lecture 7}
 
-Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\}$ and $\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\}$. Further, define $\left(L^1\right)^{{-}1}$ as the line bundle with transition functions $\{\left(g_1^{k{l}}\right)^{{-}1} : U_{k{l}} \to \C^{\ast}\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{{-}1} \cong \O_X$.
+Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\}$ and $\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\}$. Further, define $\left(L^1\right)^{-1}$ as the line bundle with transition functions $\{\left(g_1^{k{l}}\right)^{-1} : U_{k{l}} \to \C^{\ast}\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{-1} \cong \O_X$.
 
 \begin{defn}
 We say that a divisor $D = \sum_im_iY_i$ is \text{effective} if $m_i\geq 0$ for each $i$.
 \end{defn}
 
-Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\langle D \rangle \subset V$. We have that $\supp(D) = \varphi^{{-}1}\left(\text{hyperplane}\right)$ where $\left(\C \langle 0\rangle \right)^{\perp}$ is precisely the hyperplane in $\P\left(V^{\vee}\right)$.
+Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\langle D \rangle \subset V$. We have that $\supp(D) = \varphi^{-1}\left(\text{hyperplane}\right)$ where $\left(\C \langle 0\rangle \right)^{\perp}$ is precisely the hyperplane in $\P\left(V^{\vee}\right)$.
 
 \begin{exmp} Let $X = \P^1$.
 \be
@@ -502,7 +515,7 @@ Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\
 \begin{exmp}
 Let $X$ be an elliptic curve, i.e., a space of the form $\C/\Lambda$. Let $p$ be the image of $0$ and let $D = mp$. 
 \be
-\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{{-}1}\left(\infty\right) = \{0\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
+\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{-1}\left(\infty\right) = \{0\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
 \[
 \begin{tikzcd}
 X \arrow[r, dashed]                     & \P^0 \\
@@ -541,17 +554,840 @@ V \arrow[r, hook]                                                         & \Gam
 \begin{align*}
 \lim_{\substack{\left(0, y, 1\right) \\ y\to 0}} \varphi_V  & = \lim_{y\to0}\left(0,0,y^2,0, y\right)= \net{\left(0,0,0,0,1\right)}{}
 \\ \lim_{\substack{\left(x, 0, 1\right) \\ x\to 0}} \varphi_V  & = \lim_{x\to0}\left(x^2,0,0,x, 0\right)= \left(0,0,0,1,0\right).
-\end{align*} Note that for any $p\in X$, there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{{-}1}\left(X\setminus p\right)$ is an isomorphism and $\pi^{{-}1}(p)$ is a divisor on $\widetilde{X}$ that is isomorphic to $\P^1$.
+\end{align*} Note that for any $p\in X$, there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{-1}\left(X\setminus p\right)$ is an isomorphism and $\pi^{-1}(p)$ is a divisor on $\widetilde{X}$ that is isomorphic to $\P^1$.
 \end{exmp}
 
 \begin{prop}
-Let $Y \subset X$ be a submanifold of codimension $k\geq 2$. Let $\varphi : X \setminus Y \to Z$. Then there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{{-}1}\left(X\setminus Y\right)$ is an isomorphism and restricted to $\underbrace{\pi^{{-}1}(Y)}_{\text{divisor on }X}$ is a bundle with each fiber isomorphic to $\P^{k-1}$.
+Let $Y \subset X$ be a submanifold of codimension $k\geq 2$. Let $\varphi : X \setminus Y \to Z$. Then there exist $\widetilde{X}$ and $\pi : \widetilde{X}\to X$ such that $\pi$ restricted to $\pi^{-1}\left(X\setminus Y\right)$ is an isomorphism and restricted to $\underbrace{\pi^{-1}(Y)}_{\text{divisor on }X}$ is a bundle with each fiber isomorphic to $\P^{k-1}$.
 \end{prop}
+
+\begin{notation}
+In this case, the space $\widetilde{X}$ is denoted by $\bl_Y(X)$.
+\end{notation}
 
 \subsection{Lecture 8}
 
+Recall our correspondence \eqref{eqn:corr}. We can add to it the class of all maps $$X \setminus \BL(L) \to \P\left(\Gamma \left(X, L\right)^{\vee}\right).$$
+Let's turn now to some higher-dimensional examples.
 
+\begin{exmp}
+Let $X = \P^2$, $L = \O(2)$, and $V = \{s\in \Gamma\left(X, \O(2)\right) \mid \text{linearity condition}\}$. Then $\varphi_V : \P^2 \hookrightarrow \P^5$. Consider any homogenous polynomial $\sum a_{ijk}x^iy^jz^k$. Then our linearity condition may take any of the following forms. 
+\bi
+\item $\sum a_{ijk}x^iy^jz^k =0$ where $a_{ijk}$ ranges over
+\[
+\{a_{000}, a_{120}, a_{020}, a_{101}, a_{011}, a_{002}\}.
+\] 
+\item $a_{002}=0$ 
+\item $a_{002} +a_{001} =0$.
+\ei
+In the case of either of these last two, we get a map 
+\[ \begin{tikzcd}
+\P^2 \arrow[r, "\varphi_V"] & \P^5 \arrow[r, "\psi", dashed] & \P^4
+\end{tikzcd}
+\] for any $p\in \P^5$. There are two scenarios to consider.
+\be[label = (\alph*)]
+\item Suppose that $p \notin \im{\varphi_V}$. Then $\psi \circ \varphi_V$ is a morphism.
+\item Suppose that $p = \varphi_V\left(001\right)$. Then $\psi$ blows up at $p$. Consider the map $\varphi_V : \P^2\setminus p \hookrightarrow \P^4$ given by $\left(x,y,z\right) \mapsto \underbrace{\left(x^2, xy, y^2, xz, y^2\right)}_{\left(x,y,z,u,v\right)}$. The image of this map is precisely $\im{\varphi_V} \coprod \underbrace{\P^1}_{\mathclap{\{x=y=z=0\}}} \subset \P^4$.
+\begin{term}
+In this setting, $\P^1$ is called an \textit{exceptional divisor}.
+\end{term}
+Note that the equations
+\begin{align*}
+xz & = y^2
+\\ zu & = yv
+\\ xv & = yu
+\end{align*} together generate the relevant ideal.
+\begin{remark}
+If we took $L$ to be $\O(n)$ with $n\ne 2$, then our generators would still be quadratic.
+\end{remark}
+Now, fix $a$ and $b$ and let $x=\epsilon{a}$, $y=\epsilon{b}$, and $z=1$ where $\epsilon \to 0$. Then 
+\begin{align*}
+\varphi_V(x,y,z) & = \left(\epsilon^2a^2, \epsilon^2ab, \epsilon^2 b^2, \epsilon{a}, \epsilon{b}\right) 
+\\ & \sim \left(\epsilon a^2, \epsilon{ab}, \epsilon{b^2}, a, b\right) 
+\\ & \to \left(0,0,0,a,b\right).
+\end{align*}
+\begin{question}
+Is $\im{\varphi_V}$ a manifold at $00010 = \varphi_V(1,b,a)$?
+\end{question}
+We have that
+\begin{align*}
+zu - yv & \to \frac{z}{u} = \frac{y}{u}\frac{v}{u}
+\\ xv = yu & \to \frac{x}{u}\frac{v}{u} = \frac{y}{u}.
+\end{align*}
+\ee
+\end{exmp}
+
+\medskip
+
+More generally, let $X$ be a complex $n$-manifold and let $p\in X$. Then $\bl_p{X} = \left(X \setminus p\right) \coprod \underbrace{\P^{n-1}}_{\P\left(T_p{X}\right)}$. There at least two ways of extending the map
+\[ \begin{tikzcd}
+X\setminus p \arrow[r, "\varphi_V"] & \P^n \arrow[r, "\psi", dashed] & \P^{n-1}
+\end{tikzcd}
+\] 
+so  that its image is a manifold at every point.
+\be[label =(\alph*)]
+\item Provided that $\psi \circ \varphi_V$ is an embedding, then we can take $\bl_p(X)$ to be the closure of $X\setminus p$ in $\P^{n-1}$. 
+\item Let $U$ is any polydisk containing the origin. We can replace $\left(X \setminus p\right) \cup U$ with $\left(X\setminus p\right ) \cup \widetilde{U}$ where    $ \widetilde{U}$ denotes the blow-up of $U$ at $0$.
+\ee
+
+\medskip
+
+More generally still, let $Y^m \subset X^n$ be a closed submanifold.  Then $\widetilde{X} \coloneqq \bl_Y(X) = \left(X \setminus Y\right) \coprod \P\underbrace{\left(N_Y{X}\right)}_{\mathclap{\text{normal bundle}}}$.
+\[
+\begin{tikzcd}
+\P^{n-m-1} \arrow[r] & \P\left(N_Y{X}\right) \arrow[d] \\
+                     & Y                              
+\end{tikzcd}
+\] We wish to find a line bundle $L$ over $Y$ and a subspace $V\subset \Gamma\left(X, L\right)$ such that $\BL_V = Y$. In this case, the closure of the image of $\varphi_V : X\setminus Y \to \P\left(V^{\vee}\right)$ determines $\left(X\setminus Y\right) \cup \widetilde{U}$ on $U$ where $U$ denotes any tubular neighborhood of $Y$ in $X$. 
+
+\smallskip
+
+Alternatively, if we are given an embedding 
+\[
+\begin{tikzcd}
+Y \arrow[d, hook] \arrow[r, hook] & X \arrow[d, hook] \\
+\P^{n-c} \arrow[r, hook]          & \P^n             
+\end{tikzcd}
+\] where $c$ denotes the codimension of $Y$, then we can take $\bl_Y(X)$ to be the closure of $\bl_{\P^{n-c}}\left(\P^n \cap \left(X \setminus Y\right)\right)$.
+
+\begin{exmp}
+Consider $\P^3$ with coordinates $\left(x,y,z,w\right)$. We wish to resolve the cone $\{x^2 = y^2\} \subset \P^3$. Let $p = \{x=z=0\}$.
+We have a commutative diagram
+\[
+\begin{tikzcd}
+                    & Y \arrow[d, hook] \arrow[r, hook] & \text{cone} \arrow[d, hook]                                           &                               \\
+\{x=z=0\} \arrow[r] & \P^0 \arrow[r, hook]              & \P^3 \arrow[r, hook]                                                  & \P^{{5\choose 2}-1} \arrow[d] \\
+                    & X \arrow[ru, hook]                & \bl_{\P^0}\left(\P^3\right) \arrow[r, hook] \arrow[d, hook] \arrow[u] & \P^8                          \\
+                    &                                   & X\setminus p                                                          &                              
+\end{tikzcd}
+.\] Then the exceptional divisor in $\bl_p\left(\P^2\right)$ is isomorphic to $\P^2 \cong \P\left(T_p{\P^2}\right)$, and the exceptional divisor in $\bl_p(X)$ is isomorphic to the cone.
+\end{exmp}
+
+\begin{exmp}
+Consider the quadratic map $\varphi : \P^2 \to \P^2$ given by $\left(x,y,z\right) \mapsto \left(\frac{1}{x}, \frac{1}{y}, \frac{1}{z}\right) = \underbrace{\left(yz, xz, xy\right)}_{\left(u,v,w\right)}$. Let $$V = \{s\in \Gamma\left(\P^2, \O_{\P^2}(2)\right) \mid s(001) =0, \ s(010) = 0, \ s(100) =0\}, $$ which is isomorphic to $\Gamma\bigl({\underbrace{\J_{3 \text{ points}}}_{\mathclap{\text{ideal sheaf on 3 points}}}} \otimes \O(2)\bigr)$. The fact that $\varphi^{-1} = \varphi$ yields the following properties.
+\bi
+\item The line $z=0$ collapses to the point $u=v=0$.
+\item The line $y=0$ collapses to the point $u=v=0$.
+\item The point $y=z=0$ blows up to the line $u=0$.
+\ei
+\begin{center}
+\begin{tikzpicture}[
+    tlabel/.style={pos=0.4,right=-1pt},
+    baseline=(current bounding box.center)
+    ]
+\draw (0,0) -- (2,0) node[midway, above] {$x=0$}
+   -- (1,-2) node[midway,right] {$z=0$}
+   -- (0,0) node[midway,left] {$y=0$}; 
+\end{tikzpicture}
+$\begin{tikzcd}
+ \arrow[rrr, bend left] &  &  &  \arrow[lll, bend left]
+\end{tikzcd}$
+\begin{tikzpicture}[
+    tlabel/.style={pos=0.4,right=-1pt},
+    baseline=(current bounding box.center)
+    ]
+\draw (0,0) -- (2,0) node[midway, below] {$u=0$}
+   -- (1,2) node[midway,right] {$w=0$}
+   -- (0,0) node[midway,left] {$v=0$}; 
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzcd}
+ \arrow[rd, bend left] &                        \\
+                       &  \arrow[lu, bend left]
+\end{tikzcd}
+\begin{tikzpicture}[
+    tlabel/.style={pos=0.4,right=-1pt},
+    baseline=(current bounding box.north)
+    ]
+\draw (0,0) -- (1.2,0) node[midway, below] {$u=0$}
+   -- (2.052,.852) node[midway,right] {$z=0$}
+   -- (1.2,1.704) node[midway,right] {$w=0$}
+   -- (0,1.704) node[midway,above] {$x=0$}
+   -- (-.852,.852) node[midway,left] {$v=0$}
+   -- (0,0) node[midway,left] {$r=0$}; 
+\end{tikzpicture}
+$\bigne$
+\end{center}
+This  hexagon is called the \textit{del Pazzo surface of degree three}, denoted by $\mathrm{dP}_3$. Each of its lines is isomorphic to $\P^1$. 
+\end{exmp}
+
+
+\begin{note}
+Suppose that $C$ is a smooth curve and that $\dim{X} < 2$. Then $\varphi : C \setminus \pt \to X$ automatically extends.  But if $C$ were singular or $\dim{X} \geq 2$, then this would be false.
+\end{note}
 
 \subsection{Lecture 9}
+
+\begin{defn}[Picard group]
+Let $X$ be a complex manifold. The \textit{Picard group $\pic(X)$ of $X$} is the group of all isomorphism classes of line bundles over $X$ under $\otimes$.
+\end{defn}
+
+Let $n\in \N$ and consider the family of line bundles $\{\O(k) \mid k \in \Z\}$ over $\P^n$.
+
+\begin{prop}
+$\pic\left(\P^n\right) \cong \Z$ with generator $\O(1)$. 
+\end{prop}
+
+Let $\P^n = \P(V)$. We have an exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & L \arrow[r] & \O_{\P^n}\otimes_{\C} V \arrow[r] & \cdots
+\end{tikzcd}
+\]
+We have that
+\be
+\item $\Gamma\left(\P^n , \O(1)\right) = \C\langle z_0, \ldots, z_n\rangle = V^{\vee}$,
+\item $\Gamma \left(\P^n, \O({-1})\right) =0$, and
+\item $\Gamma \left(\P^n, \O(k)\right) = \begin{cases} \sym^k\left(V^{\vee}\right) & k\geq0 \\ 0 & k<0\end{cases}$.
+\ee
+
+Let $U_i = \{z \in \P^n \mid z_i \ne 0\}$ for each $i\in \{0, 1, \ldots, n\}$, so that $\P^n = \bigcup_{i=0}^n$. Let $Z_{ij} = \frac{z_j}{z_i}$, thereby endowing each $U_i$ with local coordinates. Let $s$ be a section of $\O$, so that $$s = \left(s_i \in \Gamma\left(U_i, \O\right)\right)_{i=0}^n.$$ Note that $Z_i$ defines a section on $U_j$ with $s_j = \frac{z_i}{z_j} = Z_{ji}$ for each $j=0, \ldots, n$. 
+\[
+\begin{tikzcd}
+s_j \arrow[r, equals] \arrow[d, equals]   & Z_{jk}\cdot s_k \arrow[d, equals]  \\
+\frac{z_i}{z_j} \arrow[r, equals] & Z_{jk}\cdot\frac{z_i}{z_k}
+\end{tikzcd}
+\]
+We can establish the following properties.
+\be
+\item If $\O= \O(1)$, then $s_i = Z_{ij}s_j$.
+\item If $\O = \O({-1})$, then $s_i = Z_{ji}s_j$.
+\item If $\O = \O(k)$, then $s_i = \left(Z_{ij}\right)^ks_j$.
+\ee
+
+In summary,
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c|c|c}
+ & $\O$ (trivial) & $\O({-1})$ & $\O(1)$ & $\O(k)$ \\ \hline
+LB & $\P^n \times \C$ & tautological & dual &  \\ \hline
+Sheaf & $1$ & $Z_{ji}$ & $Z_{ij}$ & $\left(Z_{ij}\right)^k$ \\ \hline
+Divisor & $0$ & ${-}\underset{\text{h.p.}}{H}$ & $+H$ & $k{H}$ \\ \hline
+Map & $\pt$ & undefined & $\id$ & \begin{tabular}[c]{@{}c@{}}$\begin{cases} \text{Veronese} & k>0\\ \\ \text{undefined} & k <0\\ \\ \pt & k=0\\ \end{cases}$\end{tabular}
+\end{tabular}
+\end{table}
+
+Let $X$ be a complex $n$-manifold. Then $T_X$ consists of all local sections on an open set $U$ with coordinates, say, $z_1, \ldots, z_n$. The set $\{\frac{\partial}{\partial{z_i}}\}$ is a basis for this, with each section of the form $\sum_{i=1}^n f_i\frac{\partial}{\partial{z_i}}$ where each $f_i$ belongs to $\Gamma\left(U, \O\right)$. For any other basis $\{\frac{\partial}{\partial{w_i}}\}$, we have that 
+\[
+\frac{\partial}{\partial{w_i}} = \sum\frac{\partial{z_j}}{\partial{w_i}}\frac{\partial}{\partial{z_j}}.
+\] Note that  $T_V \cong \O_V \otimes_{\C} V$. In general,  $\Omega_V^i \cong \O_V \otimes \bigwedge^i V^{\vee}$.
+\begin{question}
+What is $T_{\P(V)}$?
+\end{question}
+
+
+\begin{note}[Bundle associated to an $n$-manifold] $ $
+\be
+\item $T_X^{\vee} = \Omega \equiv \Omega^1$, whose transition functions are precisely the inverses of the transposes of those for $T_X$. 
+\item Let $\Omega^i = \bigwedge^i{\Omega^1}$.  If $i=n$, then we call this space the \textit{canonical sheaf $K_X$} or the \textit{dualized sheaf $\omega_X$}.
+\item Recall the map $\bigwedge^i : \GL(n) \to \GL{n\choose i}$. If $i=n$, then this is precisely the determinant map.
+\ee
+\end{note}
+
+Consider the exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & \O \arrow[r]         & \O(1)^{\oplus{n+1}} \arrow[r]       & T_{\P^n} \arrow[r]                     & 0 \\
+            & 1 \arrow[r, maps to] & \left(z_i\right)                    &                                        &   \\
+            &                      & \left(a_i\right) \arrow[r, maps to] & \sum a_i\frac{\partial}{\partial{z_i}} &  
+\end{tikzcd}
+.\]
+
+\begin{term}
+The vector field given by $\sum z_i\frac{\partial}{\partial{z_i}}$ is known as the \textit{Euler vector field}.
+\end{term}
+
+Moreover, we have a commutative diagram
+\[
+\begin{tikzcd}
+0 \arrow[r] & \underbrace{\O_{\P(V)}}_{\C} \arrow[r] & \underbrace{\O_{\P(V)}(1)}_{V^{\vee}}\otimes V \arrow[r] \arrow[d, hook] & T_{\P(V)} \arrow[r] \arrow[d, hook] & {,} \\
+            &                                        & \O_V(1)\otimes V \arrow[r, "\cong"]                                      & T_V \arrow[r]                       & 0  
+\end{tikzcd}
+.\]
+\begin{term} 
+The top row of this diagram is known as the \textit{Euler sequence}.
+\end{term}
+Therefore, the \textit{weight} of $V$ equals ${-1}$, whereas the weight of $V^{\vee}$ equals ${+}1$.
+
+\medskip
+
+Informally, any holomorphic function $f$ on $V$ is the same as a direct sum of homogenous functions of degree $k$, i.e., has the form
+\[
+\bigoplus_{k-0}^{\infty} \Gamma\left(\P(V), \O(k)\right),
+\]
+called the \textit{Taylor expansion of $f$}.
+
+\begin{note}
+In general, we have an exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & \O(n) \arrow[r] & \O^{\left(n+1\right)} \arrow[r] & T_{\P}\left({-1}\right) \arrow[r] & 0
+\end{tikzcd}
+,\] which becomes the Euler sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & \O \arrow[r] & \O(1)\oplus \O(1) \arrow[r] & T_{\P^1} \arrow[r] & 0
+\end{tikzcd}
+\] in the case where $n=1$. It follows that 
+\[
+K_{\P^n} = \O_{\P^n}\left({-n}-1\right).
+\]
+\end{note}
+
+\begin{lemma}
+If $0 \to A \to B \to C \to 0$ is an exact sequence of vector spaces, then $$\det(B) = \det(A) \otimes \det(C).$$
+\end{lemma}
+
+\begin{corollary}
+$\O(2) \cong \det \left(\O(1) \oplus \O(1)\right) =\det(\O) \otimes \det(T) = \det(T)$.
+\end{corollary}
+
+\begin{remark}
+Similarly, we can show that $\det\left(T_{\P^n}\right) =\O_{\P^n}(n+1)$.
+\end{remark}
+
+\medskip
+
+Suppose that $X\subset Y$ is a submanifold of codimension $1$. Then we have a short exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & T_X \arrow[r] & \left(T_Y\right)\bigr\rvert_X \arrow[r] & N_{X\mathbin{/}Y} \arrow[r] & 0
+\end{tikzcd}.
+\]
+
+\begin{lemma}\label{norm}
+$N_{X\mathbin{/}Y} \cong \O_Y\left(X\right)\bigr\rvert_X$.
+\end{lemma}
+
+In other words, if $L\in \pic(Y)$, $s\in \Gamma\left(Y, L\right)$, and $X = \{s=0\}$, then $N_{X\mathbin{/}Y} \cong L\bigr\rvert_X$.
+
+\begin{theorem}[Adjunction formula]
+$K_X \cong \left(K_Y \otimes_{\O_Y} \O_Y(X)\right)\bigr\rvert_X$.
+\end{theorem}
+\begin{proof}
+Note that $\left(K_Y^{-1}\right)\bigr\rvert_X = K_X^{-1} \otimes N_{X\mathbin{/}Y}$. Thus,
+\begin{align*}
+K_X & \cong K_Y\bigr\rvert_X \otimes N_{X\mathbin{/}Y}  
+\\ & \cong K_Y\bigr\rvert_X \otimes  \O_Y(X)\bigr\rvert_X
+\\ & \cong \left(K_Y \otimes \O_Y(X)\right)\bigr\rvert_X
+.\end{align*}
+\end{proof}
+
+
+\subsection{Lecture 10}
+
+\begin{proof}[Proof of \cref{norm}]
+Let $s\in \Gamma\left(Y, L\right)$. We can write $s = f{s_0}$, so that $d{s} = s_0d{f} + fd{s_0}$. Consider the short exact sequence
+\[
+\begin{tikzcd}
+0 \arrow[r] & T_X \arrow[r] & T_Y\bigr\rvert_X \arrow[r, "ds"] & L \arrow[r] & 0
+\end{tikzcd}.
+\] Thus, $ds$ transforms just as $s_0$ does.
+\end{proof}
+
+
+\begin{exmp} $ $
+\be
+\item Let $Y = \P^3$. Suppose that $\widetilde{X}$ is a smooth curve of degree $d$. Then $K_Y = \O\left({-3}\right)$, and  $K_X = \O\left(d-3\right)\bigr\rvert_X$. Further, if $g$ denotes the genus of a surface, then B\'ezout's theorem implies that
+\begin{align*}
+2g-2  = \deg & \left( K_X\right) =d\left(d-3\right)
+\\ &  \Downarrow
+\\ g  = 1+ \frac{d\left(d-3\right)}{2}&= \frac{\left(d-1\right)\left(d-2\right)}{2}.
+\end{align*}
+In particular,
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l}
+$d$ & $g$ \\ \hline
+1 & 0 \\
+2 & 0 \\
+3 & 1 \\
+4 & 3 \\
+5 & 6
+\end{tabular}
+.\end{table}
+\item Let $Y = \P^n$ and let $X\subset Y$ be of dimension $d$. Note that $K_X = \O_X$ precisely when $d= n+1$. In particular,
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l}
+$n$ & $X$ \\ \hline
+2 & cubic / elliptic curve \\
+3 & quartic (\textit{a $K_3$ surface}) \\
+4 & quintic
+\end{tabular}
+.\end{table}
+\ee
+\end{exmp}
+
+\smallskip
+
+Let $p_1, \ldots, p_n \in \P^N$,  let $m_1, \ldots, m_n \in \Z_{\geq 1}$, and let $d\in \Z$. We wish to describe $$\Gamma \left(\J_{\Sigma_{m_ip_i}}\left(d\right)\right) \coloneqq \left(\J_{\Sigma_{m_ip_i}} \otimes \O(d) \right).$$ For simplicity, let $N=2$.
+
+\begin{defn}
+If $n=1$, then \textit{imposition} is $\imp_m \equiv \codim\left(\Gamma\left(\J_{mp}(d), \Gamma\left(\O(d)\right)\right)\right)$.
+\end{defn}
+
+\begin{prop}
+$\imp_m = {{m+1} \choose 2}$. 
+\end{prop}
+
+\begin{defn} Consider the space $\Gamma$.
+\be
+\item The \textit{actual dimension of $\Gamma$} is the dimension of $\Gamma$ as a vector space.
+\item The \textit{virtual dimension $\vd\left(\Gamma\right)$ of $\Gamma$} is the quantity ${{d+2}\choose 2}-1 - \sum_i{{m_i+1}\choose 2}$.
+\item The \textit{expected dimension of $\Gamma$} is the quantity $\max\left(\vd\left(\Gamma\right), 0\right)$.
+\ee
+\end{defn}
+
+\begin{conj}\label{c1}
+The actual dimension always equals the expected dimension.
+\end{conj}
+\begin{proof}[Answer]
+This is \textbf{false}. For example, let $N=2$, $d = 1$, $m_i =1$, and $n=3$. Then $\Gamma =0$, so that $\P\left(\Gamma\right) =\emptyset$. Hence the expected dimension is zero, but the actual dimension is positive whenever the $p_i$ are co-linear.
+\end{proof}
+
+This leads us to the following modification of \cref{c1}.
+
+\begin{conj}\label{c2}
+If the $p_i$ are in \textit{general position}, then the actual dimension equals the expected dimension.
+\end{conj}
+\begin{proof}[Answer]
+This is \textbf{false}. To see this, let $d=2$ and $N= n = m_i=2$. Consider a conic $C$ through five points. Here, our conjecture holds. But if instead $N=2$, $d=4$, $n=5$, and $m_i=2$, then the virtual dimension is precisely ${{4+2}\choose 2}-5\cdot 3 =0$. Since the square of $C$ exists, it follows that our conjecture fails.
+\end{proof}
+
+We can improve \cref{c2} as follows.
+
+\begin{conj}
+If the actual dimension is different from the expected dimension, then $\Gamma\left(\J_{\sum_{m_ip_i}}(d)\right)$ has a base curve.
+\end{conj}
+\begin{proof}[Answer]
+This is \textbf{unknown}. See the article \href{https://pdfs.semanticscholar.org/3db0/6dd64b62f15f04c9caa13dba2db7ca4d9fdd.pdf}{``Linear Systems of Plane Curves"} by Rick Miranda.
+\end{proof}
+
+Consider the map $\lvert{\O(d)}\rvert : \P^2 \hookrightarrow \P^{{{d+2}\choose 2} -1}$. We also have a map
+\[
+\begin{tikzcd}[column sep = large]
+                                                    & \P^2 \arrow[r, "\lvert{\J_{\sum_{p_i}(d)}}\rvert", dashed] & \P^{\dim -1} \\
+{\bl_{p_1, \ldots, p_n}\left(\P^2\right)} \arrow[r, equals] & \widetilde{\P^2} \arrow[u] \arrow[ru]                      &             
+\end{tikzcd}
+\]
+
+\begin{prop}
+Consider the blow-up $\pi : \underbrace{\widetilde{\P^2}}_{X} \to \P^2$. We have that $$\pic(X) \cong \Z\langle \pi^{\ast}\left(\O(1)\right), E_1, \ldots, E_n\rangle$$ where $E_i$ denotes the divisor collapsing to $p_i$.
+\end{prop}
+
+\begin{remark} $ $
+\be
+\item[Good:] $\pi^{\ast}{\O(d)} - \sum{m_iE_i} \longleftrightarrow \J_{\sum{m_ip_i}}(d)$.
+\item[Better:] $\Gamma\left(X, \text{\textquotesingle\textquotesingle}\right) = \Gamma\left(\P^2, \text{\textquotesingle\textquotesingle}\right) $.
+\item[Best:] $\pi_{\ast}\left( \text{\textquotesingle\textquotesingle}\right) =  \text{\textquotesingle\textquotesingle}$.
+\ee
+\end{remark}
+
+\begin{conj}
+Any line bundle $L \coloneqq \left(\pi^{\ast}{\O(d)} -\sum{m_iE_i}\right)$ has the expected dimension of the space of sections unless $\BL\left(L\right)$ contains a $\left({-1}\right)$-curve, i.e., a smooth curve $C$ of genus zero  such that $C^2 = {-1}$.
+\end{conj}
+
+\begin{exmp}[$\left({-1}\right)$-curve]
+Let $d=1$, $n=2$, and $m_1=m_2 =1$. If $C\in \O(1)({-p}-q)$, then $C^2 =1^2 -1-1 = {-1}$. In general, 
+\[
+\O(d)\left (\left({-\sum m_IE_i}\right)\left(\O(d) -\sum m_ip_i\right)\right) = dd' -\sum{m_im_i'}.
+\] In $\P^2$, this means the number of intersections other than the $p_i$.
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+Space & $C^2$ \\ \hline
+$\O(1)$ & $1$ \\
+$\O(1)({-p})$ & $0$ \\
+$\O(1)({-p}-q)$ & ${-1}$ \\
+\vdots &  \\
+$\O(2)$ & $4$ \\
+$\O(2)\left({-p}_1\right)$ & $3$ \\
+$\O(2)\left({-p_1} -p_2\right)$ & $2$ \\
+\vdots &  \\
+$\O(2)\left({-p_1} -\cdots - p_4\right)$ & $0$ \\
+$\O(2)\left({-\sum_{i=1}^5 p_i}\right)$ & ${-1}$
+\end{tabular}
+\end{table}
+\end{exmp}
+
+\section{K\"ahler manifolds}
+
+\subsection{Lecture 11}
+
+Consider the following Hasse diagram of subgroups:
+
+\begin{center}
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (0,2) {$\GL\left(2n, \R\right)$};
+  \node (a) at (-6,0) {$\GL\left(n, \C\right)$};
+  \node (b) at (0,0) {$\SO\left(2n, \R\right)$};
+  \node (d) at (6,0) {$\Sp\left(2n, \R\right)$};
+  \node (zero) at (0,-2) {$\U(n)$};
+  \draw (zero) -- (a) -- (one) -- (b) -- (zero) -- (d) -- (one);
+\end{tikzpicture}
+\end{center}
+
+where $\Sp\left(2n, \R\right)$ denotes the group of real $2n\times 2n$ \textit{symplectic matrices}, i.e., matrices $M$ satisfying $$M^t{\begin{bmatrix} 0 & I_n \\ {-I_n} & 0 \end{bmatrix}}{M} = \begin{bmatrix} 0 & I_n \\ {-I_n} & 0 \end{bmatrix}.$$
+
+Similarly, we can view various areas of geometry as refinements of certain others. Specifically,
+
+\begin{center}
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (0,2) {Diff. geom.};
+  \node (a) at (-6,0) {Complex geom.};
+  \node (b) at (0,0) {Riemannian geom.};
+  \node (d) at (6,0) {Symplectic geom.};
+  \node (zero) at (0,-2) {\textbf{K\"ahler geom.}};
+  \draw (zero) -- (a) -- (one) -- (b) -- (zero) -- (d) -- (one);
+\end{tikzpicture}
+\end{center}
+
+Before investigating K\"ahler geometry, we establish some basic geometric concepts.
+
+\begin{defn}
+Let  $X$ be a real manifold. An \textit{almost complex structure on $X$} is a bundle map $I : T{X} \to T{X}$ such that $I^2 = {-1}$.
+\end{defn}
+
+Note that the eigenvalues of $I$ are precisely $i$ and ${-i}$.
+
+\begin{notation} $ $
+\be
+\item Let $T^{1,0}$ denote the eigenspace of $i$.
+\item  Let $T^{0,1}$ denote the eigenspace of ${-i}$.
+\ee
+\end{notation}
+
+Any complex manifold $X$ has a natural almost complex structure. Indeed, given local coordinates $x_i, y_i$ on $X$, define $I$ by $\frac{\partial}{\partial{x_i}} \mapsto \frac{\partial}{\partial{y_i}}$ and $\frac{\partial}{\partial{y_i}} \mapsto {-\frac{\partial}{\partial{x_i}}}$. It follows that any manifold with an almost complex structure has even dimension.
+
+\medskip
+
+Now, consider the  complexification of our tangent bundle, $T^{\C}{X} \equiv T{X} \otimes_{\R}\C$.  
+
+\begin{prop} $ $
+\be
+\item $T^{\C}{X} \cong T^{1,0} \oplus T^{0,1}$.
+\item $T^{\ast{\C}}{X} \cong T^{\ast{1,0}}\oplus T^{\ast{0,1}}$
+\ee
+\end{prop}
+
+Define, formally, the complex coordinates $z_j = x_j + iy_j$. Note that $T^{\C}{X}$ has as basis $\{\frac{\partial}{\partial{z_j}}, \frac{\partial}{\partial{\bar{z}_j}}\}$ and that $T^{\ast{\C}}{X}$ has as basis $\{d{z_j}, d{\bar{z}_j}\}$ where $d{z_j} \equiv d{x_j} + id{y_j}$.
+
+\begin{notation} $ $
+\be
+\item $\bigwedge^k{X} \coloneqq \bigwedge^k{T^{\ast}{X}}$.
+\item $\bigwedge^{p,q}{X} \coloneqq \bigwedge^p{T^{\ast{1,0}}}{X} \otimes_{\C} \bigwedge^q{T^{\ast{0,1}}}{X}$.
+\ee
+\end{notation}
+
+\begin{note}\label{decomp} Let $X$ be an $n$-dimensional complex manifold.
+\be
+\item $\left(\bigwedge^k{T^{\ast}{X}}\right) \otimes \C = \bigwedge^k_{\C}\left(T^{\ast}{X} \otimes \C\right)$.
+\item $\left(\bigwedge^k{X}\right) \otimes \C = \bigoplus_{p+q = k} \bigwedge^{p,q}{X}$.
+\ee
+\end{note}
+
+Therefore,  $\left(\bigwedge^k{X}\right) \otimes \C$ can be decomposed according to the counting equation ${2n \choose k} = \sum{{n\choose p}{n\choose q}}$.
+
+\medskip
+
+Let $U$ and $V$ be open  in $\C^n$. Let $f: U \to V$ be holomorphic. Then the map $d{f} : T{U} \to T{V}$ extends to a map $d{f}^{\C} : \T^{\C}{U} \to T^{\C}{V}$ that preserves both $T^{1,0}$ and $T^{0,1}$. 
+
+\medskip
+
+Let $\A^{p,q}  = \Gamma\left(\bigwedge^{p,q}\right)$, i.e., $\A^{p,q}\left(U\right) = \Gamma\left(U, \bigwedge^{p,q}\right)$. Consider the exterior derivative $d: \A^k \to \A^{k+1}$. With $\pi$ denoting the projection map, define the operators
+\begin{align*}
+\partial & = \pi^{p+1, q} \circ d
+\\ \bar{\partial}  & = \pi^{p, q+1} \circ d
+\end{align*}
+
+on $A^{p,q}$. Locally, we have that $$df = \frac{\partial{f}}{\partial{x_i}}d{x_i} + \frac{\partial{f}}{\partial{y_i}}d{y_i} = \frac{\partial{f}}{\partial{z_i}}d{z_i} + \frac{\partial{f}}{\partial{\bar{z}_i}}d{\bar{z}_i} $$ for any $f\in \A^{0,0}$.  By the Cauchy-Riemann equations, it follows that $f$ is holomorphic if and only if $\bar{\partial}{f} = 0$.
+
+\begin{remark}
+Any $\left(p,q\right)$-form locally looks like $f_{IJ}d{z_I}\wedge \bar{z}_J$.
+\end{remark}
+
+\begin{prop} $ $
+\be
+\item $d = \partial + \bar{\partial}$.
+\item $\partial^2 =0 = \bar{\partial}^2$. 
+\item $\partial{\bar{\partial}} = {-\bar{\partial}{\partial}}$.
+\item $\partial\left(\alpha \wedge \beta\right) = \partial{\alpha} \wedge \beta + \left({-1}\right)^{p+q} \alpha \wedge \partial{\beta}$ for any $\alpha \in \A^{p,q}$ and $\beta \in \A^{r,s}$.
+\ee
+\end{prop}
+
+\begin{lemma}[Single-variable Poincar\'e]
+Consider the disk $B_{\epsilon} \subset \overline{B_{\epsilon}} \subset U \subset \C$ where $U$ is open.  Let $\alpha = f{d{\bar{z}}} \in \A^{0,1}\left(U\right)$ and $$ g(z) = \frac{1}{2\pi i}\int_{\overline{B_{\epsilon}}}\frac{f(w)}{w-z}{d{w} \wedge d{\bar{w}}}.$$ Then $\bar{\partial}{g} = \alpha$. 
+\end{lemma}
+
+\begin{lemma}[Multi-variable Poincar\'e]
+Consider the polydisk $B_{\epsilon} \subset \overline{B_{\epsilon}} \subset U \subset \C^n$  where $U$ is open. Let $\alpha \in \A^{p,q}$ with $q>0$ and $\bar{\partial}{\alpha} =0$. Then there is some $\beta \in \A^{p, q-1}\left(B_{\epsilon}\right)$ such that $\bar{\partial}{\beta} = \alpha$.
+\end{lemma}
+
+\begin{remark}
+If $U$ is contractible, then any differential form on $U$ is closed if and only if it is exact.
+\end{remark}
+
+Let $U \subset \C^n$ be open and let $I$ denote the natural almost complex structure on $U$. Let $g$ be a Riemannian metric on $U$.
+
+\begin{defn}[Hermitian metric] $ $
+\be
+\item  We say that $g$ is \textit{compatible with $I$} or \textit{(almost) Hermitian} if $g\left(u,v\right) = g\left(I{u}, I{v}\right)$.
+\item If $g$ is Hermitian, then the real $\left(1,1\right)$-form $\omega \in \A^{1,1}\left(U\right) \cap \A^2\left(U\right)$ defined by $$\omega\left(u,v\right) = g \left(I{u}, v\right)$$ is called the \textit{fundamental form of $g$}.
+\ee
+\end{defn}
+
+\begin{notation}
+$h \coloneqq g -i{\omega}$.
+\end{notation}
+
+\begin{defn}
+A Hermitian matrix $M$ is \textit{positive-definite} if $z^{\ast}Mz >0$ for every nonzero complex column vector $z$.
+\end{defn}
+
+Note that $h$ is a positive-definite form in the sense that, locally, its component functions define a positive-definite matrix at any given point. 
+
+\begin{exmp}
+Let $g = \underbrace{d{x^2}}_{d{x}\otimes d{x}} + d{y^2} = \sum_{i=1}^nd{x_i^2} + d{y_i^2} \in T^{\ast}\otimes T^{\ast} \subset \left(T^{\ast}\otimes T^{\ast}\right)\otimes_{\R}\C$. Since
+\[
+d{z} \wedge d{\bar{z}} = \left(d{x} + id{y}\right) \wedge \left(d{x}- id{y}\right) = {-2id{x}}\wedge d{y}
+,\]
+it follows that
+\[
+\omega = d{x}\otimes d{y} -d{y}\otimes d{x} = \frac{i}{2}d{z} \wedge d{\bar{z}}
+.\] Moreover, we see that
+\begin{align*}
+h & = z-i{\omega}
+\\ & = d{x^2} -id{x}d{y} +id{y}d{x} +d{y}^2
+\\ & = d{x}\left(d{x}-id{y}\right) + id{y}\left(d_x+-id{y}\right)
+\\ & = \left(d{x} + id{y}\right)\left(d{x}-id{y}\right) 
+\\ & = d{z}\otimes d{\bar{z}}.
+\end{align*}
+\end{exmp}
+
+For each $z\in \C^n$, define the matrix $\left(h_{ij}\right)\left(z\right)$ by $$h_{ij}\left(z_1, \ldots, z_n\right) = h\left(\frac{\partial}{\partial{x_i}}, \frac{\partial}{\partial{x_j}}\right).$$ 
+
+\begin{prop}
+Let $I$ be an almost complex structure on $U\subset X$ and let $g$ be compatible with $I$. Then $d{\omega} =0$ if and only if for each $x\in X$, there exist a neighborhood  $U'$ of $x$ and a holomorphic map $f: U' \to U$ such that $f^{\ast}{g}$ \textit{oscialates the standard metric to the second order}, i.e., $\left(h_{ij}\right) = \id + O\left(\lvert{z}\rvert^2\right)$.
+\end{prop}
+
+\begin{notation}
+In this case, we write $h \approx \id$.
+\end{notation}
+
+\begin{defn}[K\"ahler manifold]
+Consider the four-tuple $\left(X, I, g, \omega\right)$.  We say that $X$ is a \textit{K\"ahler manifold} if $d{\omega}=0$. In this case, we call $g$ a \textit{K\"ahler metric on $X$} and $\omega$ a \textit{K\"ahler form}.
+\end{defn}
+
+\begin{defn}
+Let $\left(X, I, g, \omega\right)$ be a K\"ahler structure with $\dim{X} =n$.
+\be
+\item The \textit{Lefschetz operator} $L: \bigwedge^k{X} \to \bigwedge^{k+2}{X}$ is defined by $\alpha \mapsto \alpha \wedge \omega$.
+\item The \textit{Hodge $\ast$-operator} $\ast : \bigwedge^k{X} \to \bigwedge^{2n-k}{X}$  is defined by the property
+\[
+\alpha \wedge \ast{\beta} = \hat{g}\left(\alpha, \beta\right){\omega^n}
+\] where $\hat{g}$ is induced by $g$ and $\omega^n$ denotes the (positively oriented) volume form on $X$.
+\item  The \textit{dual Lefschetz operator} $\Lambda : \bigwedge^k{X} \to \bigwedge^{k-2}{X}$ is defined as the composite $\ast^{-1} \circ L\circ \ast$.
+\ee
+\end{defn}
+
+\begin{note} $ $
+\be
+\item In coordinates in which $h\approx \id$, we have that $\ast{d{x^I}} = d{x^{\partial}}$ where $\partial \coloneqq I^{\C}$ ??.
+\item $\Lambda$ is $\O$-linear.
+\ee
+\end{note}
+
+\subsection{Lecture 12}
+
+\begin{prop}
+Let $X$ be a complex manifold. Let $\omega$ be a closed real positive-definite form of type $\left(1,1\right)$, i.e., locally, $\omega = \frac{i}{2}\sum h_{ij}d_{z_i}\wedge d{\bar{z}_j}$ such that the matrix $\left(h_{ij}(p)\right)$ is positive-definite for each $p$. Then there exists a K\"ahler metric $g$ on $X$ such that $\omega$ equals the fundamental form of $g$. 
+\end{prop}
+
+Since every K\"ahler form is positive-definite, it follows that the set $\K_X$ of all K\"ahler forms on $X$ is precisely the set of all closed real positive-definite forms of type $\left(1,1\right)$.
+
+\begin{defn}
+Let $V$ be a vector space over $\R$. A subset $C\subset V$ is a \textit{convex cone} if $av_1 + bv_2 \in C$ for any $v_1, v_2\in C$ and any $a,b\in \R_{>0}$.
+\end{defn}
+
+\begin{corollary}
+Suppose that $X$ is compact. Then $\K_X$ is an open convex cone in the infinite-dimensional real vector space $S\coloneqq \{\omega \in \A^{(1,1)}\left(X\right) \cap \A^2\left(X\right) \mid d{\omega} =0\}$.
+\end{corollary}
+\begin{proof}[Idea]
+The fact that $\K_X$ is a convex cone follows from the fact that the set of all positive-definite matrices is a convex cone. It remains to show that $\K_X$ is open. Since $X$ is compact, it has a finite open cover $\{U_i\}$. The set $P_{U_i}\subset S$ of all  forms that are positive-definite on $U_i$ is open. Thus, $\bigcap_i P_{U_i} = \K_X$  is also open.
+\end{proof}
+
+\begin{remark}
+It turns out that $S \cong H^2\left(X, \R\right)$.
+\end{remark}
+
+\begin{exmp}\label{km1} $ $
+\be
+\item The form $\omega \equiv \frac{i}{2}d{z} \wedge d{\bar{z}}$ is K\"ahler on $\C$ and is exact.
+\item The same form descends to a K\"ahler form on the torus $\C/\Lambda$, which is not exact. 
+\item Consider the inclusion $i : X \to Y$ of a closed submanifold. If $\omega$ is K\"ahler on $Y$, then $i^{\ast}{\omega}$ is K\"ahler on $X$.
+\ee
+\end{exmp}
+
+\begin{note}
+Let $f: X \to Y$ be holomorphic and let $\omega$ be a K\"ahler form on $Y$. It is \emph{not} necessarily true that $f^{\ast}{\omega}$ is K\"ahler on $X$. For example, if $f(x) = \pt$ for all $x\in X$, then $f^{\ast}{\omega}$ is the zero form and thus not positive. 
+In general,  $f$ must be injective. For example, if $f: C \to \C$ is a double cover where $C$ is a Riemann surface, then $C$ inherits a K\"ahler form only outside the  \textit{ramification of $f$}, i.e., the set $$\{c\in C \mid \text{there is no neighborhood } U \text{ of  } c \text{ such that } f\restriction_U \text{ is injective}\}.$$ This is precisely the set of points at which $d{f}$ is nonzero.
+\end{note}
+
+\begin{exmp}\label{km2} $ $
+\be
+\item  Consider the open cover $\left\{U_i\right\}_{1\leq i \leq n}$ of $\P^n$ where $U_i \equiv \{z \in \P^n \mid z_i \ne 0\}$. Define $\varphi_i : U_i \overset{\cong}{\longrightarrow} \C^n$ by $$\left(z_0, \ldots, z_n\right) \mapsto \underbrace{\left(\frac{z_0}{z_i}, \ldots, \frac{z_{i-1}}{z_i}, \frac{z_{i+1}}{z_i}, \ldots, \frac{z_n}{z_i}\right)}_{\left(w_1, \ldots, w_n\right)}. $$ Then $\left\{\left(U_i, \varphi_i\right)\right\}$ is a holomorphic atlas on $\P^n$. For each $i$, let 
+\[
+\omega_i =  \frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(\sum_{l=0}^n \lvert{\frac{z_l}{z_i}}\rvert^2\right)}
+.\] By way of $\varphi_i$, this becomes
+\[
+\frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(1+ \sum_{k=1}^n \lvert{w_k}\rvert^2\right)}
+.\]
+\begin{exercise}
+ Show that $\omega_i\restriction_{U_i \cap U_j} = \omega_j\restriction_{U_i \cap U_j}$.
+\end{exercise}
+Therefore, the $\omega_i$ patch together to form a metric $\omega$ on $\P^n$, known as the \textit{Fubini-Study metric}. 
+\begin{exercise}
+Show that $\omega$ is closed, real, positive, and of type $\left(1,1\right)$.
+\end{exercise}
+It follows that $\omega$ is a K\"ahler metric.
+
+\item  Any branched cover of $\P^n$ admits a K\"ahler metric (which must be different from the pullback of a K\"ahler metric on $\P^n$). For example, consider an elliptic curve $E \to \P^1$, which fits into a commutative sqaure
+\[
+\begin{tikzcd}
+E \arrow[d, equals] \arrow[r] & \P^1                   \\
+E \arrow[r, hook]     & \P^2 \arrow[u, dashed]
+\end{tikzcd}
+.\]
+\ee
+\end{exmp}
+
+\begin{defn}
+A complex manifold is \textit{projective} if it is isomorphic to a closed submanifold of projective space.
+\end{defn}
+
+\begin{prop}
+Any projective complex manifold is K\"ahler.
+\end{prop}
+\begin{proof}
+This follows from \cref{km1}(3) together with \cref{km2}(1).
+\end{proof}
+
+
+\begin{defn} $ $
+Let $X$ be  a complex manifold. Let $D$ be a first-order operator on $\A^{\ast}\left(X\right)$.  
+\be 
+\item The \textit{adjoint of $D$} is
+\[ 
+D^{\ast} \equiv {-\ast} \circ D \circ \ast 
+\]
+\item The \textit{Laplacian associated to $D$} is 
+\[
+\Delta_D \equiv D{D^{\ast}} + D^{\ast}{D}.
+\]
+\ee
+\end{defn}
+
+\begin{defn}
+The \textit{Laplace operator} is $\Delta \equiv d{d^{\ast}} + d^{\ast}{d}$.
+\end{defn}
+
+\begin{exmp} $ $
+\be
+\item Let $D = \partial$. Then $\partial^{\ast}\left(f_{IJ}d{z}^I \wedge d{z}^J\right) = \sum_{i\in I}f_{IJ}d{z}^{I-i}\wedge d{\bar{z}}^J$.
+\item Let $D = d$. Let $\left(x_1, \ldots, x_n\right)$ be local coordinates on $X$. Then
+\begin{align*}
+d\left(fdx^I\right) & = \sum_{i\notin I} \frac{\partial{f}}{\partial{x_i}}d{x^n}\wedge d{x}^I
+\\  d^{\ast}\left(fdx^I\right) & =  \sum_{i\in I}\frac{\partial{f}}{\partial{x_i}}d{x}^{I-i}.
+\end{align*}
+Therefore,
+\begin{align*}
+d\circ d^{\ast}\left(fdx^I\right)  & = \frac{\partial^2}{\partial{x_i}\partial{x_j}}d{x}^{I-i \cup j}
+\\ & = \sum_{\substack{i\in I \\ j \notin I}}\cdots +\sum_{i=j \in I}\cdots.
+\\ d^{\ast}\circ d\left(fd{x}^I\right) &=0 + \sum_{i=j\notin I}\cdots ,
+\end{align*}
+so that $\Delta_D =\sum \frac{\partial^{2}{f}}{\partial{x_i^2}}$.
+\ee
+\end{exmp}
+
+\begin{theorem}[K\"ahler identities]\label{Kid} Let $\left(X, I, g, \omega\right)$ be a K\"ahler manifold.
+\be
+\item $\left[\bar{\partial}, L\right] =0 = \left[\partial, L\right]$.
+\item $\left[\partial^{\ast}, \Lambda \right] =0 = \left[\bar{\partial}^{\ast}, \Lambda\right]$.
+\item $\left[\bar{\partial}^{\ast}, L\right] =i\partial$ and $\left[\partial^{\ast}, L\right] = {-i\bar{\partial}}$.
+\item $\Delta_{\partial} = \Delta_{\bar{\partial}} =\frac{1}{2}\Delta$, and $\Delta$ commutes with $\ast$, $\partial$, $\bar{\partial}$, $\partial^{\ast}$, $\bar{\partial}^{\ast}$, $L$, and $\Lambda$.
+\ee
+\end{theorem}
+
+\section{Lie algebras}
+
+Let $G$ be any Lie group. For any $g\in G$, $\ell_g : G \to G$ is an isomorphism of $\C$-manifolds. Thus, if $V$ is a vector field on $G$, then so is $\left(\ell_g\right)_{\ast}{V}$.
+
+\begin{defn}
+We say that $V$ is \textit{left-invariant} if $\left(\ell_g\right)_{\ast}{V} = V$ for every $g\in G$.
+\end{defn}
+
+\begin{defn}[Lie algebra]
+The \textit{Lie algebra $\G_G$ of $G$} is the space of left-invariant vector fields on $G$ under the Lie bracket.
+\end{defn}
+
+Consider the commutative diagram
+\[
+\begin{tikzcd}
+\G_G \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), [{-},{-}]\right)} \arrow[d, "\ev_1"] \\
+                                         & T_1(G)                                   
+\end{tikzcd}.
+\]
+
+\begin{prop}
+$\alpha$ is an isomorphism of vector spaces. 
+\end{prop}
+
+
+\begin{exmp}
+Let $G = \GL(n, \C)$, which is a complex Lie group. We have that $\GL(n, \C)$ is an open submanifold of the vector space $M_n(\C)$. Hence $\G_G$ is  isomorphic to $M_n(\C)$ under the \textit{commutator bracket}, which is given by $\left[A,B\right]= AB -BA$ .
+\end{exmp}
+
+\begin{defn}[Matrix exponential]
+Define the map $e^{\left(\cdot\right)} : M_n(\C) \to \GL_n(\C)$ by 
+\[
+e^A  = \sum_{n=0}^{\infty} \frac{A^n }{n!}.
+\]
+\end{defn}
+
+This is well-defined. Indeed, letting $\|\cdot\|$ denote the operator norm, we see that $\frac{\|A^n\|}{n!}\leq \frac{\|A\|^n}{n!}$ on any bounded subset $S\subset \C^n$. But $\sum_{n=0}^{\infty}\frac{\|A\|^n}{n!} = e^{\|A\|}$ on $S$, and thus $e^A$ converges uniformly on $S$. Moreover, one can show that its limit must be invertible.
+
+\begin{exercise}
+Let $G= \SL_2\left(\C\right)$, which is complex Lie group. Show that $$\G_{G} = \left\{\begin{bmatrix} a & b \\ c & d \end{bmatrix} \in M_2\left(\C\right) \mid a+d =0\right\}.$$
+\end{exercise}
+\begin{proof}
+Any element $X$ of $\G_{G}$ generates a local flow $\theta : D \subset \R \times G \to G$. Since $X$ is left-invariant, it is complete. In particular, the maximal integral curve $\theta^1$ is defined on $\R$.  Left-invariance also implies that for any $s\in \R$, $L_{\theta^1(s)} \circ \theta^1$ is an integral curve starting at $\theta^1(s)$. But the curve given by $t\mapsto \theta^1(s+t)$ is also an integral curve starting at $\theta^1(s)$. Hence $ \theta^1(s+t) = \theta^1(s)\theta^1(s)$. By the uniqueness of maximal integral curves, this proves that $\theta^1(s)$ is a smooth group homomorphism $\R \to G$, known as a \textit{one-parameter subgroup of $G$}. 
+
+\smallskip
+
+Moreover, any one-parameter subgroup $\gamma$ of $G$ has the form  $\gamma(t) = e^{tA}$ where $A = \gamma'(0) \in T_1(G) \subset T_1\left(\GL_2(\C)\right) \cong M_2(\C)$. It follows that 
+
+\begin{align*}
+X \in T_1(G)&  \iff \forall{t} \in \R, \  e^{tX} \in G 
+\\ & \iff  \forall{t} \in \R, \  \det\left(e^{tX}\right) =1
+\\ & \iff  \forall{t} \in \R, \ e^{t\tr(X)} =1
+\\ & \iff \forall{t} \in \R, \ t\tr(X) = 0
+\\ & \iff \tr(X) =0
+. \end{align*}
+\end{proof}
+
+Intuitively, \cref{Kid} means that the space $\A^{p,q}\left(X\right)$ has a symmetry encoded in the $\SL_2\left(\C\right)$-action.  
+
+\subsection{Lecture 13}
+
+\begin{defn}
+Let $V$ be a vector space endowed with a non-degenerate symmetric bilinear form $\langle \cdot , \cdot \rangle$. The \textit{orthogonal group $\Or\left(V, \langle \cdot , \cdot \rangle\right)$} is the group of all linear maps $f : V \to V$ such that $\langle f{x}, f{y}\rangle = \langle x,y\rangle$ for any $x,y\in V$.
+\end{defn}
+
+\begin{exmp}
+Consider the Lie group $G \coloneqq \Or(\R^n)$. Define the smooth map $\varphi : \GL_n(\R) \to \GL_n(\R)$ by $A\mapsto AA^t$, which as constant rank.  Then $G = \varphi^{-1}(I_n)$, so that $T_{I_n}{G} = \ker{d{\varphi}_{I_n}}$. Since $d{\varphi}_{I_n}(A) = A^t + A$ for any $A \in M_n(\R)$, it follows that $\G_G$ consists of all $n\times n$ skew-symmetric matrices. 
+\end{exmp}
 
 \end{document}

@@ -184,14 +184,14 @@
 \begin{abstract}
 We continue doing higher Waldhausen $K$-theory. The main sources for this talk are the following.
 \begin{itemize}
-\item \textit{nLab}.
-\item Charles Weibel's \textit{The} K\textit{-book: an introduction to algebraic} K\textit{-theory}.  Chapter V.2.
-\item John Rognes's \textit{Lecture Notes on Algebraic K-Theory}, Ch. 8.
+\item $n$Lab.
+\item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory},  Ch. V.2.
+\item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 8.
 \end{itemize}
 \end{abstract}
 
 
-Recall that $|wS_{\bullet} \c|$ is an $H$-space via the map $$\coprod: |wS_{\bullet} \c| \times |wS_{\bullet} \c| \cong |wS_{\bullet} \c \times  wS_{\bullet} \c|\to |wS_{\bullet} \c|.$$ This produces an $H$-space structure $(K(\c), +)$.
+Recall that $|wS_{\bullet} \c|$ is an $H$-space via the map $$\coprod: |wS_{\bullet} \c| \times |wS_{\bullet} \c| \cong |wS_{\bullet} \c \times  wS_{\bullet} \c|\to |wS_{\bullet} \c|.$$ This produces an $H$-space structure $\left(K(\c), +\right)$.
 
 
 \begin{definition}
@@ -200,7 +200,7 @@ Let $\b$ and $\c$ be Waldhausen categories. We say that $F' \rightarrowtail F \t
 
 Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving things about a given cofiber sequence of exact functors $\b \to \c$. We say that $S_2\c$ is universal in this sense.
 
-\begin{theorem}{(Extension theorem)}
+\begin{theorem}[Extension theorem]
 Let $\c$ be Waldhausen. The exact functor $(s, q) : S_2 \c \to \c \times \c$ induces  a homotopy $K(S_2\c) \simeq K(\c) \times K(\c)$. The functor $\coprod : (A, B) \to (A \rightarrowtail A \coprod B \twoheadrightarrow  B)$ is a homotopy inverse.
 \end{theorem}
 \begin{proof}
@@ -216,7 +216,7 @@ X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim
 This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2 \c \to \c$ give a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, completing the proof.
 \end{proof}
 
-\begin{theorem}{(The additivity theorem)}
+\begin{theorem}[The additivity theorem]
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $F_{\ast} = F_{\ast}' + F_{\ast}''$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
@@ -228,7 +228,7 @@ Let $\c$ be Waldhausen. We say that a sequence $\ast \to A_n \to \cdots \to A_0 
 \end{definition}
 
 \begin{corollary}
-Suppose that $\ast \to F^0 \to F^1 \to \cdots \to F^n \to \ast$ is an admissibly exact sequence of exact functors $\b \to \c$. Then $\sum_i (-1)^iF_{\ast}^i = 0$ as maps $K_i(\b) \to K_i(\c)$.
+Suppose that $\ast \to F^0 \to F^1 \to \cdots \to F^n \to \ast$ is an admissibly exact sequence of exact functors $\b \to \c$. Then $\sum_i ({-}1)^iF_{\ast}^i = 0$ as maps $K_i(\b) \to K_i(\c)$.
 \end{corollary}
 \begin{proof}
 Induct on $n$.
@@ -270,8 +270,13 @@ Note that axiom 3 gives us a cofiber sequence $A \rightarrowtail \cone(A) \twohe
 \end{proof}
 \end{definition}
 
-\begin{theorem}{(Waldhausen localization theorem)}
-Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of any $A$ where $\ast \to A$ is in $w(\c)$ {[[Are the initial morphisms the only w.e.?]]}. Then $$ K(A^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
+Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
+\begin{notation}
+Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of any $A$ where $\ast \to A$ is in $w(\c)$.
+\end{notation} {[[Are the initial morphisms the only w.e.?]]}
+
+\begin{theorem}[Waldhausen localization theorem]
+The sequence $$ K(A^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
 \end{theorem}
 \begin{proof}
 Recall that a small bicategory is a bisimplicial set such that each row/column is the nerve of a category. Note that $v_{(-)}w_{(-)}\c$ is a bicategory whose bimorphisms are commutative squares of the form
@@ -282,21 +287,27 @@ Recall that a small bicategory is a bisimplicial set such that each row/column i
 \end{tikzcd}.
 \]
 It turns out that treating $w \c$ as a bicategory with a single vertical morphism proves that $w \c \simeq v_{(-)}w_{(-)}\c$. This gives $wS_n \c \simeq v_{(-)}w_{(-)}S_n\c$ for each $n$.
-\\ \\ Now, let $v_{(-)}\text{co}w_{(-)}\c$ denote the subcategory of the above squares where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\text{co}w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we simplicial bi-subcategory $v_{(-)}\text{co}w_{(-)}S_{\bullet}\c$ such that the inclusion intro $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. We have now obtained the following diagram.
+
+\medskip
+
+ Now, let $v_{(-)}\text{co}w_{(-)}\c$ denote the subcategory of the above squares where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\text{co}w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we simplicial bi-subcategory $v_{(-)}\text{co}w_{(-)}S_{\bullet}\c$ such that the inclusion intro $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. We have now obtained the following diagram.
 \[
 \begin{tikzcd}
 vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\text{co}w_{(-)}S_{\bullet}C \arrow[d, "\simeq"] \\
  & wS_{\bullet}C \arrow[r, "\simeq"] & v_{(-)}w_{(-)}S_{\bullet}C
 \end{tikzcd}
 \]
-\\ \\ It therefore suffices to show that the top row is a fibration. {[[What about the left vertical morphism?]]} You do this by using the relative $K$-theory space construction. See Weibel IV.8.5.3 and V.2.1 for the details.
+
+\medskip
+
+ It therefore suffices to show that the top row is a fibration. {[[What about the left vertical morphism?]]} You can do this by using the relative $K$-theory space construction. See Weibel, IV.8.5.3 and V.2.1.
 \end{proof}
 
 \begin{definition}
 Let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^b(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^b(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those giving a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
 \end{definition}
 
-\begin{theorem}{(Gillet-Waldhausen)}
+\begin{theorem}[Gillet-Waldhausen]
 Let $\a$ be an exact category closed under kernels of surjections. Then the exact inclusion $\a \to \ch^b(\a)$ induces a homotopy equivalence $K(\a) \simeq K\ch^b(\a)$. Hence $$K_i(\a) = K_i \ch^b(\a)$$ for every $i$.
 \end{theorem}
 \begin{proof}
@@ -311,7 +322,7 @@ F(A') \arrow[r, "\sim", dashed] & B \\
 F(A) \arrow[u, "F(a)", dashed] \arrow[ru, "b"] & 
 \end{tikzcd}.
 \]
-commutes. In this way, we can lift to w.e.
+commutes. In this way, we can lift to  a w.e.
 \end{definition}
 
 \begin{prop}
@@ -324,7 +335,7 @@ Let $F: \a \to \b$ be an exact functor between Waldhausen categories such that t
 Then $wF : w \a \to w\b$ is a homotopy equivalence.
 \end{prop}
 
-\begin{corollary}{(Waldhausen approximation theorem)}
+\begin{corollary}[Waldhausen approximation theorem]
 With the same conditions as before, we have $$K(\a) \simeq K(\b).$$
 \end{corollary}
 \begin{proof}
@@ -340,7 +351,7 @@ Let $\a$ be an abelian category. By homology theory, we have that $\ch^b(\a) \su
 \end{exmp}
 
 \begin{definition}
-(The following notion is due to Hovey-Shipley-Smith.) A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $(\Sigma_{n}\times \Sigma_{k})$-equivariant for any $n,k\geq 0$, where $S^k \coloneqq \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $(f_n : X_n \to Y_n)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
+ A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $(\Sigma_{n}\times \Sigma_{k})$-equivariant for any $n,k\geq 0$, where $S^k \coloneqq \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $(f_n : X_n \to Y_n)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
 \[
 \begin{tikzcd}
 X_n \land S^1 \arrow[d, "\sigma"'] \arrow[r, "f_n \land \id"] & Y_n \land S^1 \arrow[d, "\sigma"] \\
@@ -364,7 +375,7 @@ Let $(\c, w\c)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bul
 \item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ if $i_k = j_k$ for some $1\leq k \leq n$.
 \item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q]$.
 \end{enumerate}
-Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by $(\pi \cdot X)(\ldots, (i_t, j_t), \ldots) = X(\ldots, (i_{\pi^{-1}(t)}, j_{\pi^{-1}(t)}), \ldots)$.
+Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by $(\pi \cdot X)(\ldots, (i_t, j_t), \ldots) = X(\ldots, (i_{\pi^{{-}1}(t)}, j_{\pi^{{-}1}(t)}), \ldots)$.
 \end{definition}
 
 \begin{definition}
