@@ -209,7 +209,7 @@ is $C^k$.
 \end{definition}
 
 \begin{exmp}
-Consider $(\R, x \mapsto x)$ and $(\R, x \mapsto x^3)$. Since $x \mapsto x^{\frac{1}{3}}$ is not differentiable at $0$, these charts do not form a $C^1$-atlas on $\R$.
+Consider $\left(\R, x \mapsto x\right)$ and $\left(\R, x \mapsto x^3\right)$. Since $x \mapsto x^{\frac{1}{3}}$ is not differentiable at $0$, these charts do not form a $C^1$-atlas on $\R$.
 \end{exmp}
 
 
@@ -371,7 +371,7 @@ A smooth map with a smooth inverse is a \textit{diffeomorphism}.
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item $(\R, \id) \approx (\R, x\mapsto x^{\frac{1}{3}})$ via $F: x \mapsto x^3$.
+\item $\left(\R, \id\right) \approx \left(\R, x\mapsto x^{\frac{1}{3}}\right)$ via $F: x \mapsto x^3$.
 \item $F: \B^n \to \R^n$ given by $F(x) = \frac{x}{\sqrt{1-|x|^2}}$ is a diffeomorphism with inverse $G(y) = \frac{y}{\sqrt{1+|y|^2}}$.
 \item  $\faktor{\S^n}{\sim} \approx \RP^n$.
 \item If $M$ is a smooth manifold and $(U, \phi)$ is a chart, then $\phi: U \to \phi(U)$ is a diffeomorphism.
@@ -642,7 +642,7 @@ Given a chart $(U, \phi)$, define $\tilde{\phi}: \pi^{-1}(U) \to \R^n$ by $v_i\f
 \begin{term}
 We call the $\tilde{\phi}\left((f, p)\right)$ the \textit{natural coordinates} on $TM$.
 \end{term}
-This is continuous with $\Ima \tilde{\phi} = \phi(U) \times \R^n$, which is open. Further, $\tilde{\phi}^{-1}$ on $\phi(U) \times \R^n$ is given by $(x_1, \ldots, x_n, v_1, \ldots, v_n)\mapsto v_i \frac{\partial}{\partial{x_i}}\bigr\rvert_{\phi^{-1}(x)}$. Define $\left\{(\pi^{-1}(U), \tilde{\phi})\right\}$ as charts on $TM$. Given charts $(\pi^{-1}(U), \tilde{\phi}), (\pi^{-1}(V), \tilde{\psi})$, it's straightforward to check that $\tilde{\psi} \circ \tilde{\phi}^{-1}: \phi(U \cap V)\times \R^n \to \psi(U \cap V)\times \R^n$ is smooth.
+This is continuous with $\Ima \tilde{\phi} = \phi(U) \times \R^n$, which is open. Further, $\tilde{\phi}^{-1}$ on $\phi(U) \times \R^n$ is given by $(x_1, \ldots, x_n, v_1, \ldots, v_n)\mapsto v_i \frac{\partial}{\partial{x_i}}\bigr\rvert_{\phi^{-1}(x)}$. Define $\left\{(\pi^{-1}(U), \tilde{\phi})\right\}$ as charts on $TM$. Given charts $\left(\pi^{-1}(U), \tilde{\phi}\right)$ and $\left(\pi^{-1}(V), \tilde{\psi}\right)$, it's straightforward to check that $\tilde{\psi} \circ \tilde{\phi}^{-1}: \phi(U \cap V)\times \R^n \to \psi(U \cap V)\times \R^n$ is smooth.
 
 \medskip
 
@@ -1038,14 +1038,14 @@ $X(f \circ F) = (Yf) \circ F$ if and only if $X$ and $Y$ are $F$-related.
 Suppose $F: M \to N$ is a diffeomorphism and $X, Y \in \vf(M)$. Then $F_{\ast}[X, Y] = [F_{\ast}X, F_{\ast}Y]$.
 \end{theorem}
 \begin{proof}
-Let $ f\in C^{\infty}(M)$. By \cref{relat}, we see that $XY(f \circ F) = X(F_{\ast}Yf \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F$, and likewise $YX(f \circ F) = F_{\ast}Y(F_{\ast}X f) \circ F$. Thus, $$[X, Y](f \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F - F_{\ast}Y(F_{\ast}X f) \circ F = ([F_{\ast}X, F_{\ast}Y] f) \circ F.$$ We conclude by again applying \cref{relat}.
+Let $ f\in C^{\infty}(M)$. By \cref{relat}, we see that $XY(f \circ F) = X(F_{\ast}Yf \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F$, and likewise $YX(f \circ F) = F_{\ast}Y(F_{\ast}X f) \circ F$. Thus, $$[X, Y](f \circ F) = F_{\ast}X(F_{\ast}Yf) \circ F - F_{\ast}Y(F_{\ast}X f) \circ F = \left([F_{\ast}X, F_{\ast}Y] f\right) \circ F.$$ We conclude by again applying \cref{relat}.
 \end{proof}
 
 \begin{corollary}
 Let $S \subset M$ be a submanifold. If $X, Y \in \vf(M)$ have $X_p, Y_p \in T_p(S)$ for each $p\in S$, then $[X, Y]_p \in T_p(S)$ as well.
 \end{corollary}
 \begin{proof}
-Let $i : S \to M$ denote inclusion. Then  there are $X', Y' \in \vf(S)$ with $X'$ $i$-related to $X\restriction_S$ and $Y'$ to $Y\restriction_S$. This implies $[X', Y']$ is $i$-related to $[X, Y]\restriction_S$, which in turn implies that $[X, Y]_p \in T_p(S)$ for any $p\in S$.  
+Let $i : S \to M$ denote inclusion. Then  there are $X', Y' \in \vf(S)$ with $X'$ $i$-related to $X\restriction_S$ and $Y'$ to $Y\restriction_S$. This implies $[X', Y']$ is $i$-related to $\left[X, Y\right]\restriction_S$, which in turn implies that $\left[X, Y\right]_p \in T_p(S)$ for any $p\in S$.  
 \end{proof}
 
 \section{Vector bundles}
@@ -1498,8 +1498,8 @@ dy^i\left(F_{\ast}{X}\right) & = dy^i\left(X^j\frac{\partial{F^r}}{\partial{x^j}
 
 
 \begin{exmp}
-Consider the transformation to polar coordinates $\R^2 \to \R^2$ given by $\left(r, \theta\right) \mapsto \left(r\cos \theta, r\sin \theta\right)$. This is the identity map with respect to different atlases on $\R^2$. \Cref{natpull} together with computational properties of $\wedge$ yields
-\begin{align*} & dx \wedge dy \\ & = d(r\cos \theta) \wedge d(r\sin \theta) \\ &=   (\cos \theta dr - r\sin \theta d\theta) \wedge (\sin \theta dr +r \cos \theta d\theta) \\ &= (\cos \theta dr - r\sin \theta d\theta) \wedge \sin \theta dr + (\cos \theta dr - r\sin \theta d\theta) \wedge r \cos \theta d\theta \\ & = (\cos \theta dr \wedge \sin \theta dr) - (r \sin \theta d \theta \wedge \sin \theta dr) +  (\cos \theta dr \wedge r \cos \theta d\theta) - (r\sin \theta d \theta \wedge r \cos \theta d \theta)\\ & =  {-(r \sin \theta d \theta \wedge \sin \theta dr)} +  (\cos \theta dr \wedge r \cos \theta d\theta) \\ & = r\sin^2\theta(dr \wedge d\theta) + r\cos^2 \theta(dr \wedge d\theta)\\ & = rdr \wedge d\theta.
+Consider the transformation to polar coordinates $\R^2 \to \R^2$ given by $\left(r, \theta\right) \mapsto \left(r\cos \theta, r\sin \theta\right)$. This is precisely the identity map with respect to different atlases on $\R^2$. \Cref{natpull} together with certain computational properties of $\wedge$ yields
+\begin{align*}  dx \wedge dy & = d(r\cos \theta) \wedge d(r\sin \theta) \\ &=   (\cos \theta dr - r\sin \theta d\theta) \wedge (\sin \theta dr +r \cos \theta d\theta) \\ &= (\cos \theta dr - r\sin \theta d\theta) \wedge \sin \theta dr + (\cos \theta dr - r\sin \theta d\theta) \wedge r \cos \theta d\theta \\ & = (\cos \theta dr \wedge \sin \theta dr) - (r \sin \theta d \theta \wedge \sin \theta dr) +  (\cos \theta dr \wedge r \cos \theta d\theta) - (r\sin \theta d \theta \wedge r \cos \theta d \theta)\\ & =  {-(r \sin \theta d \theta \wedge \sin \theta dr)} +  (\cos \theta dr \wedge r \cos \theta d\theta) \\ & = r\sin^2\theta(dr \wedge d\theta) + r\cos^2 \theta(dr \wedge d\theta)\\ & = rdr \wedge d\theta.
 \end{align*}
 \end{exmp}
 
@@ -1653,6 +1653,8 @@ $\RP^n$ is not orientable when $n$ is even.
 Suppose, for contradiction, that $\RP^n$ admits some orientation. Apply \cref{natural} to obtain a nowhere vanishing $n$-form $\omega$ on $\RP^n$. If $\pi : \S^n \to \RP^n$ denotes the natural projection, then we also obtain the nowhere vanishing $n$-form $\pi^{\ast}\omega$ on $\S^n$. Applying the same proposition shows that this determines the usual orientation on $\S^n$. Note that $\pi \circ \alpha = \pi$, so that $\alpha^{\ast} \pi^{\ast} \S^n = \pi^{\ast}\S^n$. But this implies that $\alpha$ preserves the orientation of $\S^n$, contrary to \cref{antip}.
 \end{proof}
 
+The converse is also true, although we omit a proof of it.
+
 \begin{prop}
 $\RP^n$ is orientable only if $n$ is even. 
 \end{prop}
@@ -1710,20 +1712,20 @@ Let $\omega \in A^k(M)$ and $\sigma$ be a singular $k$-cell on $M$. Define $$ \i
 Let $p: [0,1]^k \to [0,1]^k$ be a diffeomorphism. If $p$ is orientation-preserving, then $\int_{\sigma} \omega = \int_{\sigma \circ p} \omega$. If $p$ is orientation-reversing, then $\int_{\sigma} \omega = -\int_{\sigma \circ p} \omega.$
 \end{prop}
 
-\begin{definition}
-A \textit{singular $k$-chain on $M$} is a formal finite  $\R$-combination $\sigma = \sum_{i=1}^Na_i\sigma_i$ of singular $k$-cells on $M$. Define $$ \int_{\sigma} \omega= \sum_{i=1}^N a_i\int_{\sigma_i}\omega .$$
+\begin{definition} $ $
+\begin{enumerate}
+\item A \textit{singular $k$-chain on $M$} is a formal finite  $\R$-combination $\sigma = \sum_{i=1}^Na_i\sigma_i$ of singular $k$-cells on $M$. Define $$ \int_{\sigma} \omega= \sum_{i=1}^N a_i\int_{\sigma_i}\omega .$$
+\item
+Let $\sigma$ be a singular $k$-cell on $M$. Let $i=1, \ldots, 2k$ and $\alpha =0,1$. Define the \textit{$(i, \alpha)$-face of $\sigma$} as the smooth map $\sigma_{(i, \alpha)}$ given by $$\sigma_{(i, \alpha)}(x^1, \ldots, x^k) = \sigma(x^1,\ldots, x^{i-1}, \alpha, x^{i}, \ldots, x^k).$$ Moreover, define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$  \partial{\sigma} \equiv \sum_{i=1}^k({-}1)^{i+1}(\sigma_{(i,1)}-\sigma_{(i,0)}) .$$
+\item
+If $\sigma\coloneqq  \sum_{i=1}^Na_i\sigma_i$ is a singular $k$-chain, then define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$\partial{\sigma} \equiv \sum_{i=1}^N a_i \partial{\sigma_i}   .$$ 
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
-Let $\sigma$ be a singular $k$-cell on $M$. Let $i=1, \ldots, 2k$ and $\alpha =0,1$. Define the \textit{$(i, \alpha)$-face of $\sigma$} as the smooth map $\sigma_{(i, \alpha)}$ given by $$\sigma_{(i, \alpha)}(x^1, \ldots, x^k) = \sigma(x^1,\ldots, x^{i-1}, \alpha, x^{i}, \ldots, x^k).$$ Moreover, define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$  \partial{\sigma} = \sum_{i=1}^k({-}1)^{i+1}(\sigma_{(i,1)}-\sigma_{(i,0)}) .$$
-\end{definition}
+Note that $\int_{\partial{\sigma}}\omega = \sum_{i=1}^N a_i \int_{\partial{\sigma_i}}\omega$.
 
 \begin{definition}
-If $\sigma\coloneqq  \sum_{i=1}^Na_i\sigma_i$ is a singular $k$-chain, then define the \textit{boundary of $\sigma$} as the $(k-1)$-chain $$\partial{\sigma} = \sum_{i=1}^N a_i \partial{\sigma_i}   .$$ Note that $\int_{\partial{\sigma}}\omega = \sum_{i=1}^N a_i \int_{\partial{\sigma_i}}\omega$.
-\end{definition}
-
-\begin{definition}
-A singular $k$-chain $\sigma$ is a \textit{closed chain} if $\partial{\sigma}=0$.
+A singular $k$-chain $\sigma$ is a \textit{closed} if $\partial{\sigma}=0$.
 \end{definition}
 
 \begin{exercise}
@@ -1731,7 +1733,7 @@ Show that if $\sigma$ is any singular $k$-chain, then ${\partial{\sigma}}$ is cl
 \end{exercise}
 
 \begin{theorem}[Stokes' theorem for chains]
-Let $\sigma$ be a $k$-chain and $\omega \in A^{k-1}(M)$. Then $\int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega$.
+Let $\sigma$ be a $k$-chain and $\omega \in A^{k-1}(M)$. Then $$\int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega.$$
 \end{theorem}
 \begin{proof}
 For now, assume that $M= \R^k$ and $\sigma = I^k$. As the smooth structure on $\R^k$ is global, we may write $\omega = fdx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k$ for some distinguished $1\leq i \leq k$ and some smooth $f: \R^k \to \R$. We compute 
@@ -1769,7 +1771,7 @@ Let $M$ be an oriented manifold. Let $\omega \in A^n(M)$. Let $\sigma_1$ and $\s
 Since $\supp \omega \subset  \sigma_1([0,1]^n) \cap \sigma_2([0,1]^n)$, \cref{preserve} implies that $$\int_{\sigma_1} \omega = \int_{\sigma_2 \circ (\sigma_2^{-1} \circ \sigma_1)} \omega  = \int_{\sigma_2} \omega     .$$
 \end{proof}
 
-\begin{definition}\label{d2} $ $
+\begin{definition}[Integral]\label{d2} $ $
 \begin{enumerate}
 \item Let $\omega \in A^n(M)$. Let $\sigma$ be an orientation-preserving singular $n$-cell on $M$. If $\supp \omega \subset \sigma([0,1]^n)$, then, by \cref{orient}, we may define $$\int_M \omega = \int_{\sigma} \omega.$$
 \item In general, there exists an open cover $(U_{\alpha})$ of $M$ such that each $U_{\alpha} \subset \sigma_{\alpha}([0,1]^n)$ where $\sigma_{\alpha}$ is some orientation-preserving singular $n$-cell on $M$. Find a partition of unity $(\phi_{\alpha})$ subordinate to this cover. Note that each $\phi_{\alpha} \omega$ belongs to  $A^n(M)$ and is supported in $U_{\alpha}$. If $\omega$ is compactly supported, then $\supp \omega$ intersects at most finitely many $\supp \phi_{\alpha}$. In this case, we define $$\int_M \omega = \sum_{\alpha}  \int_M \phi_{\alpha} \omega$$ as this sum if finite. 
@@ -1982,7 +1984,7 @@ In general, define the vector field $x^i\frac{\partial}{\partial{x^i}}$ on a cha
 \end{remark}
 
 \begin{theorem}[Fundamental theorem for autonomous ODEs]
-Let $U\subset \R^n$ be open and $X: U \to \R^n$ is a smooth vector field.  Consider the initial value problem.
+Let $U\subset \R^n$ be open and $X: U \to \R^n$ is a smooth vector field.  Consider the initial value problem
 \begin{equation}
  \begin{cases}  \label{eqn:ode} 
  & \gamma'^i(t)  = X^i\left(\gamma^1(t), \ldots, \gamma^n(t)\right) \\ \quad  & \gamma(t_0)  =(c^1, \ldots, c^n) 
@@ -1990,8 +1992,8 @@ Let $U\subset \R^n$ be open and $X: U \to \R^n$ is a smooth vector field.  Consi
 \end{equation}
 \begin{enumerate}
 \item (Existence)  Let $t_0 \in \R$ and $x_0\in U$. There exist some interval $J_0 \ni t_0$ and open subset $U_0 \subset U$ such that for each $c\in U_0$, there is some $C^1$ curve $\gamma : J_0 \to U_0$ that solves  \cref{eqn:ode}.
-\item (Uniqueness)  Any two differentiable solutions to $(\ast)$ agree on the common domain.
-\item (Smoothness) Let $J_0$ and $U_0$ be as before. Define $\theta : J_0 \times U_0 \to U$ by $(t, x) \mapsto \gamma_x(t)$ where $\gamma_x : J_0 \to U$ uniquely solves $(\ast)$ with initial condition $\gamma(t_0) = x$. Then $\theta$ is smooth.
+\item (Uniqueness)  Any two differentiable solutions to  \cref{eqn:ode} agree on the common domain.
+\item (Smoothness) Let $J_0$ and $U_0$ be as before. Define $\theta : J_0 \times U_0 \to U$ by $(t, x) \mapsto \gamma_x(t)$ where $\gamma_x : J_0 \to U$ uniquely solves  \cref{eqn:ode} with initial condition $\gamma(t_0) = x$. Then $\theta$ is smooth.
 \end{enumerate}
 \end{theorem}
 
@@ -2053,7 +2055,7 @@ If $M$ is a closed manifold, then $\mathcal{D} = \R \times M$.
 \subsection{Lecture 28}
 
 \begin{definition}[Lie derivative]
-Let $M$ be a manifold without boundary. Let $V\in \vf(M)$. Let $\theta$ denote the flow of $V$. For any $W\in \vf(M)$. Define the rough vector field $$ (\mathcal{L}_VW)_p  = \lim_{t\to 0}\frac{d(\theta_{-t})_{\theta_t(p)}\left(W_{\theta_{t}(p)}\right)-W_p }{t}.$$ This is called the \textit{Lie derivative of $W$ with respect to $V$.}
+Let $M$ be a manifold without boundary. Let $V\in \vf(M)$. Let $\theta$ denote the flow of $V$. For any $W\in \vf(M)$. Define the rough vector field $$ \left(\mathcal{L}_VW\right)_p  = \lim_{t\to 0}\frac{d(\theta_{-t})_{\theta_t(p)}\left(W_{\theta_{t}(p)}\right)-W_p }{t}.$$ This is called the \textit{Lie derivative of $W$ with respect to $V$.}
 \end{definition}
 
 \begin{note}
@@ -2104,7 +2106,7 @@ In particular, $1$-distributions are precisely vector fields.
 
 
 \begin{definition}
-Let $N\subset M$ be a nonempty submanifold and $D$ be a distribution on $M$. Write $D = \bigcup_{p\in M}D_p$ as a family of subspaces. Then $N$ is called an \textit{integral manifold of $D$} if $D_p = T_pN$ for each $p\in N$. Moreover, we say that $D$ is \textit{integrable} if each $p\in M$ is contained in an integrable manifold of $D$.  
+Let $N\subset M$ be a nonempty submanifold and $$D \coloneqq \coprod_{p\in M}D_p$$ be a distribution on $M$. Then $N$ is called an \textit{integral manifold of $D$} if $D_p = T_pN$ for each $p\in N$. Moreover, we say that $D$ is \textit{integrable} if each $p\in M$ is contained in an integrable manifold of $D$.  
 \end{definition}
 
 \begin{definition}

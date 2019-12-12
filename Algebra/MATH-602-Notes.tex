@@ -151,6 +151,7 @@
 \DeclareMathOperator{\ext}{Ext}
 \DeclareMathOperator{\stab}{Stab}
 \DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\mult}{mult}
 \DeclareMathOperator{\inn}{Inn}
 \DeclareMathOperator{\out}{Out}
 \DeclareMathOperator{\op}{op}
@@ -583,7 +584,7 @@ Let $V$ be a finite-dimensional vector space over $\R$. Let $\omega: V\times V\t
 \item $\omega$ is skew-symmetric, i.e., $\omega(x,y) = -\omega(y,x)$
 \item If $\omega(x,y) =0$ for every $y \in V$, then $x=0$.
 \end{enumerate}
-Here $\omega$ is called a \textit{symplectic form on $V$}, and $V$ is called a \textit{symplectic vector space}. Build a group $H(V, \omega)$ on the set $V \times \R$ by the operation $(x,a)\cdot(y,b) = (x+y, a+b + \omega(x,y))$. This is called the Heisenberg group of $H$. It is the group of symmetries of the observables in a simple quantum mechanical system. 
+Here $\omega$ is called a \textit{symplectic form on $V$}, and $V$ is called a \textit{symplectic vector space}. Build a group $H(V, \omega)$ on the set $V \times \R$ by the operation $(x,a)\cdot(y,b) = (x+y, a+b + \omega(x,y))$. This is called the \textit{Heisenberg group of $H$}. It is the group of symmetries of the observables in a simple quantum mechanical system. 
 
 \begin{exercise} 
 Check that $Z(H(V, \omega)) \cong \R$ and that $\faktor{H(V, \omega)}{Z(H(V, \omega))} \cong (V, +)$, which is abelian as a vector space, so that $H(V, \omega)$ is nilpotent yet not abelian. 
@@ -884,7 +885,11 @@ If $\sigma \in A_n \subset S_n$ and in the decomposition of $\sigma$ we have one
 then the conjugacy class of $\sigma$ in $A_n$ equals its conjugacy class in $S_n$.
 \end{lemma}
 \begin{proof}
-If the first condition holds so that $\sigma = (i_1 \cdots i_r)(j_1 \cdots j_r)\cdots$ with $r$ odd, then construct odd $\tau = (i_1 \; j_1)(i_2 \; j_2) \cdots (i_r \; j_r)$. Note that $$\tau(i_1 \cdots i_r)\tau^{-1} = (j_1 \cdots j_r) $$ and $$\tau (j_1 \cdots j_r) \tau^{-1} = (i_1 \cdots i_r).$$ This implies that $\tau \in Z_{S_n}(\sigma)$. It's easy to see as well that there is an odd permutation in the centralizer when the second condition holds. Now, let $\phi \in \conj_{S_n}(\sigma)$. Write $\phi = \alpha \phi \alpha^{-1}$. Assume $\alpha$ is odd. Then there is some odd $\tau \in Z_{S_n}(\sigma)$. Noe that $(\alpha \tau) \sigma (\alpha \tau)^{-1} = \alpha \tau \sigma \tau^{-1} \alpha^{-1} = \alpha \sigma \alpha^{-1} = \phi$. But $\alpha \tau$ is even, completing the lemma.
+If the first condition holds so that $\sigma = (i_1 \cdots i_r)(j_1 \cdots j_r)\cdots$ with $r$ odd, then construct odd $\tau = (i_1 \; j_1)(i_2 \; j_2) \cdots (i_r \; j_r)$. Note that 
+\begin{align*} 
+\tau(i_1 \cdots i_r)\tau^{-1} &  = (j_1 \cdots j_r)  
+\\ \tau (j_1 \cdots j_r) \tau^{-1} & = (i_1 \cdots i_r).
+\end{align*} This implies that $\tau \in Z_{S_n}(\sigma)$. It's easy to see as well that there is an odd permutation in the centralizer when the second condition holds. Now, let $\phi \in \conj_{S_n}(\sigma)$. Write $\phi = \alpha \phi \alpha^{-1}$. Assume $\alpha$ is odd. Then there is some odd $\tau \in Z_{S_n}(\sigma)$. Noe that $(\alpha \tau) \sigma (\alpha \tau)^{-1} = \alpha \tau \sigma \tau^{-1} \alpha^{-1} = \alpha \sigma \alpha^{-1} = \phi$. But $\alpha \tau$ is even, completing the lemma.
 \end{proof}
 We have three cases to consider. If $p=2$, then $\sigma$ is the product of two independent transpositions. By the lemma, it follows that $N = A_5$. If $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose $p=5$. Write $\sigma = (i_1 \cdots i_5)$ and $\tau = (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5)$. Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper. {[[Why did we need that whole lemma?]]}
 \end{proof}
@@ -1092,18 +1097,20 @@ Let $D$ denote the class of groups that can be written as the product of indecom
 
 \medskip
 
- Next, assume that $G$ has ACC but $G \notin D$. By the same process as above, we can construct a normal series $K_1 < K_1 \times K_2 < K_1 \times K_2 \times K_3 < \cdots < \cdots < G$. But this must stabilize as well, a contradiction.
+ Next, assume that $G$ has ACC but $G \notin D$. By the same process as above, we can construct a normal series $$K_1 < K_1 \times K_2 < K_1 \times K_2 \times K_3 < \cdots < \cdots < G.$$ But this must stabilize as well, a contradiction.
 \end{proof}
 
 \begin{theorem}[Krull-Schmidt]
-Suppose $G$ has ACC and DCC, so that $G$ is a product of indecomposables $$G = A_1 \times \cdots \times A_s$$ $$G = B_1 \times \cdots \times B_t.$$ Then $s=t$, and $A_i = B_i$ up to reindexing the $B_j$.
+Suppose $G$ has ACC and DCC, so that $G$ is a product of indecomposables \begin{align*}
+G &  = A_1 \times \cdots \times A_s \\ G & = B_1 \times \cdots \times B_t.
+\end{align*} Then $s=t$, and $A_i = B_i$ up to reindexing the $B_j$.
 \end{theorem}
 \begin{proof}
-Recall that $\ed(G) = \{\phi : G \to G \mid \phi$ is a homomorphism$\}$. This is a monoid under composition.
+Recall that $\ed(G) = \left\{\phi : G \to G \mid \phi \text{ is a homomorphism}\right\}$. This is a monoid under composition.
 \begin{definition}
 An endomorphism $\phi$ of $G$ is \textit{normal} if $\phi \circ \conj_x = \conj_x \circ \phi$ for any $x\in G$.
 \end{definition}
-\begin{lemma} Basic properties of normal endomorphisms.
+\begin{lemma} $ $
 \begin{enumerate}
 \item The set of normal endomorphisms is closed under composition.
 \item The inverse of a normal automorphism is also normal.
@@ -1127,10 +1134,20 @@ An endomorphism $\phi$ is \textit{nilpotent} if $\phi^n = (g \mapsto e)$ for som
 \end{definition}
 
 \begin{lemma}[Fitting]
-If $G$ has ACC and DCC and $\phi: G \to G$ is normal, then $G = K \times H$ where $$\phi(K) \subset K$$ $$\phi(H) \subset H$$ $$\phi \restriction_K \text{ is nilpotent}$$ $$\phi \restriction_H \text{ is an automorphism}.$$
+If $G$ has ACC and DCC and $\phi: G \to G$ is normal, then $G = K \times H$ where 
+\begin{align*}
+\phi(K) &  \subset K
+\\ \phi(H) &  \subset H
+\\  \phi \restriction_K & \text{ is nilpotent}
+\\  \phi \restriction_H & \text{ is an automorphism}.
+\end{align*}
 \end{lemma}
 \begin{proof}
-For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives the normal series $$G= H_0 \geq H_1 \geq \cdots$$ $$K_1 \leq K_2 \leq \cdots \leq G.$$ Find $a \in \N$ where both stabilize. Set $H = H_a$ and $K = K_a$. Then $\phi(H) = \phi(\phi^a(H)) = \phi^{a+1}(H) = H_{a+1} = H_a = H$. Further, $\phi(K) = \phi(K_a) = \{\phi(x) : x \in \ker \phi^a\}$. implying $\phi^a\phi(x) = \phi(\phi^a(x)) =e$. Hence both $H$ and $K$ are stable under $\phi$. Note that we've shown $\phi \restriction_H$ is surjective. By \cref{lp}, $\phi \restriction_H$ is an isomorphism provided that $H$ has ACC and DCC. But we can show $G = K \times H$ as follows.
+For each $n\in \N$, set $K_n = \ker \phi^n$ and $H_n = \im \phi^n$. This gives the normal series \begin{align*}
+G & = H_0 \geq H_1 \geq \cdots 
+\\ K_1 & \leq K_2 \leq \cdots \leq G.
+\end{align*}
+Find $a \in \N$ where both stabilize. Set $H = H_a$ and $K = K_a$. Then $\phi(H) = \phi(\phi^a(H)) = \phi^{a+1}(H) = H_{a+1} = H_a = H$. Further, $\phi(K) = \phi(K_a) = \{\phi(x) : x \in \ker \phi^a\}$. implying $\phi^a\phi(x) = \phi(\phi^a(x)) =e$. Hence both $H$ and $K$ are stable under $\phi$. Note that we've shown $\phi \restriction_H$ is surjective. By \cref{lp}, $\phi \restriction_H$ is an isomorphism provided that $H$ has ACC and DCC. But we can show $G = K \times H$ as follows.
 \begin{enumerate}[label=(\alph*)]
 \item Let $x \in K \cap H$. Then $x \in H = H_a = \phi^a(G) \implies \phi^a(G) = x$ for some $g \implies \phi^a(\phi^a(g)) = \phi^a(x) =  0 \implies g \in K_{2a} = K_a = K \implies \phi^a(g) = e \implies x =e$. 
 \item Let $g \in G$. Then $ \phi^a(g) \in H = H_a = H_{2a} \implies \phi^a(g) = \phi^{2a}(x)$ for some $x\in G \implies \phi^a(g \phi^a(x^{-1})) =e \implies g\phi^a(x) \implies g\phi^a(x^{-1}) \in K_a =K \implies g = kh$ for some $k\in K$ and $h\in H$.
@@ -1238,7 +1255,12 @@ $\gr_T^j\gr_F^i{G} \cong \gr_F^i \gr_T^j{G}$.
 \end{corollary}
 \begin{proof}
 Note that $\gr_F^i \gr_T^j{G} = \frac{F^i(\gr_T^j{G})}{F^{i+1}(\gr_T^j{G})}$. 
-Using the second isomorphism theorem, we see that $$F^i(\gr_T^j{G}) = \frac{F^i(T^j{G})}{F^i(T^j{G}) \cap T^{j+1}{G}} = \frac{T^j{G} \cap F^i{G}}{(T^j{G} \cap F^i{G}) \cap T^{j+1}{G}} \cong \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^i{G})}{T^{j+1}{G}} .$$ 
+Using the second isomorphism theorem, we see that 
+\begin{align*}
+F^i(\gr_T^j{G}) \\ & = \frac{F^i(T^j{G})}{F^i(T^j{G}) \cap T^{j+1}{G}} 
+\\ & = \frac{T^j{G} \cap F^i{G}}{(T^j{G} \cap F^i{G}) \cap T^{j+1}{G}} 
+\\ & \cong \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^i{G})}{T^{j+1}{G}} .
+\end{align*} 
 Similarly, $F^{i+1}(\gr_T^j{G}) \cong \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^{i+1}{G})}{T^{j+1}{G}}.$ 
 It follows that $$\gr_F^i \gr_T^j{G} = \frac{T^{j+1}{G} \cdot (T^j{G} \cap F^{i}{G})}{T^{j+1}{G} \cdot (T^j{G} \cap F^{i+1}{G})}.$$
 Likewise, we can show that
@@ -1366,23 +1388,32 @@ Consider the action $\beta \circ q : G \to \aut(B)$. This induces the group map 
 The map $i \times \psi$ is injective with $\im (i \times \psi)\coloneqq  A \unlhd G \ltimes_{\beta \circ q} B$. Moreover $A \leq \ker (G\ltimes_{\beta \circ q} B \twoheadrightarrow K)$.
 \end{lemma}
 \begin{proof}
-Injectivity follows from the fact that $i$ is injective. Recall the group law on $G \ltimes_{\beta \circ q} B$ is given by $(g_1, b_1)(g_2, b_2) = (g_1g_2, b_1(\beta \circ q(g_1)(b_2)))$. To see that $A$ is normal, we compute
-$$(g, b)(a, \psi(a)()g,b)^{-1} = (g, b)(a, \psi(a) )(g^{-1}, \beta \circ q(g^{-1})(b^{-1})) = (ga, b\beta \circ q(g)(\psi(a)))(g^{-1}, \beta \circ q(g^{-1})(b^{-1}))$$ $$ = (gag^{-1}, b\beta \circ q(g)(\psi(a))\beta \circ q(ga)\beta \circ q(g^{-1})(b^{-1})) = (gag^{-1}, b\beta \circ q(g)(\psi(a)) \beta (q(g)\underbrace{q(a)}_{=1}q(g^{-1}))(b^{-1}))$$
-$$=  (gag^{-1}, b\beta \circ q(g)(\psi(a))b^{-1}) = (gag^{-1}, \beta \circ q(g)(\psi(a))) = (gag^{-1}, \psi(\alpha \circ q(g)(a))) $$ $$ = (\alpha \circ q(g)(a),  \psi(\alpha \circ q(g)(a))) \in \im(i \times \psi).$$ {[[Why does $\alpha \circ q(g)(a) = gag^{-1}$ hold?]]}
+Injectivity follows from the fact that $i$ is injective. Recall the group law on $G \ltimes_{\beta \circ q} B$ is given by $$(g_1, b_1)(g_2, b_2) = \left(g_1g_2, b_1(\beta \circ q(g_1)(b_2))\right).$$ To see that $A$ is normal, we compute
+\begin{align*}
+(g, b)(a, \psi(a)()g,b)^{-1} & = (g, b)(a, \psi(a) )(g^{-1}, \beta \circ q(g^{-1})(b^{-1})) 
+\\ & = (ga, b\beta \circ q(g)(\psi(a)))(g^{-1}, \beta \circ q(g^{-1})(b^{-1}))
+\\ &  = (gag^{-1}, b\beta \circ q(g)(\psi(a))\beta \circ q(ga)\beta \circ q(g^{-1})(b^{-1}))
+\\ &  = (gag^{-1}, b\beta \circ q(g)(\psi(a)) \beta (q(g)\underbrace{q(a)}_{=1}q(g^{-1}))(b^{-1}))
+\\ & =  (gag^{-1}, b\beta \circ q(g)(\psi(a))b^{-1}) 
+\\ & = (gag^{-1}, \beta \circ q(g)(\psi(a)))
+\\ &  = (gag^{-1}, \psi(\alpha \circ q(g)(a)))
+\\ &  = (\alpha \circ q(g)(a),  \psi(\alpha \circ q(g)(a))),
+ \end{align*} 
+which belongs to $\im(i \times \psi)$. {[[Why does $\alpha \circ q(g)(a) = gag^{-1}$ hold?]]}
 
 Finally, observe that $\ker (G\ltimes_{\beta \circ q} B \twoheadrightarrow K) = \{(g, b) : q(g) =e\} = \{(g, b) : g \in A\} \geq A\times \{e\} \cong A$. 
 \end{proof}
-Now, we define $G_{\psi_{\ast}\xi} \coloneqq  G \cup_A B = \faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
+Now, let $G_{\psi_{\ast}\xi}$ denote $G \cup_A B$, which equals $\faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
 
 We have obtained the commutative diagram.
 \[
 \begin{tikzcd}
 1 \arrow[r] & A \arrow[d, hook] \arrow[r] & G \arrow[d, hook] \arrow[r] & K \arrow[d, equal] \arrow[r] & 1 \\
 1 \arrow[r] & A\times B \arrow[r, "i"] \arrow[d, two heads] & G \ltimes_{\beta \circ q} B \arrow[r, "q"] \arrow[d, two heads] & K \arrow[r] \arrow[d, equal] & 1 \\
-1 \arrow[r] & B \cong \faktor{A\times B}{(i\times \psi)(A)} \arrow[r] & G_{\psi_{\ast}\xi} \arrow[r] & K \arrow[r] & 1
+1 \arrow[r] & \underbrace{B}_{\faktor{A\times B}{(i\times \psi)(A)}} \arrow[r] & G_{\psi_{\ast}\xi} \arrow[r] & K \arrow[r] & 1
 \end{tikzcd},
 \]
-where $B \cong \faktor{A\times B}{(i\times \psi)(A)}$ is via  $b \mapsto [(e, b)]$. Let $\psi_{\ast}$ denote the induced map $G \to G_{\psi_{\ast} \xi}$. Define the extension $\psi_{\ast}\xi$ as the bottom row.
+where $B \cong \faktor{A\times B}{(i\times \psi)(A)}$ via  $b \mapsto [(e, b)]$. Let $\psi_{\ast}$ denote the induced map $G \to G_{\psi_{\ast} \xi}$. Define the extension $\psi_{\ast}\xi$ as the bottom row.
 
 \item Given $\xi, \eta \in \ext(K, (A, \alpha))$, we can take $\xi \times \eta \in \ext(K \times K, (A\times A, \alpha \times \alpha))$. The diagonal map $\Delta : K \to K \times K$ is a homomorphism. The function $\text{mult}: A \times A \to A$ is as well since $A$ abelian. It is also equivariant for $\alpha \times \alpha$ and $\alpha$.
 
@@ -1391,8 +1422,8 @@ Therefore, we can construct the following commutative diagram.
 \[
 \begin{tikzcd}
 1 \arrow[r] & A\times A \arrow[r] & G_{\xi}\times G_{\eta} \arrow[r] & K\times K \arrow[r] & 1 \\
-1 \arrow[r] & A\times A \arrow[r] \arrow[d, "\text{mult}"'] \arrow[u, equal] & (G_{\xi} \times G_{\eta}) \times_{K\times K} K \arrow[r] \arrow[u] \arrow[d] & K \arrow[r] \arrow[u, "\Delta"] \arrow[d, equal] & 1 \\
-1 \arrow[r] & A \arrow[r] & ((G_{\xi} \times G_{\eta}) \times_{K\times K} K) \cup_{A\times A} A \arrow[r] & K \arrow[r] & 1
+1 \arrow[r] & A\times A \arrow[r] \arrow[d, "\text{mult}"'] \arrow[u, equal] & \left(G_{\xi} \times G_{\eta}\right) \times_{K\times K} K \arrow[r] \arrow[u] \arrow[d] & K \arrow[r] \arrow[u, "\Delta"] \arrow[d, equal] & 1 \\
+1 \arrow[r] & A \arrow[r] & \left(\left(G_{\xi} \times G_{\eta}\right) \times_{K\times K} K\right) \cup_{A\times A} A \arrow[r] & K \arrow[r] & 1
 \end{tikzcd}
 \]
 Then define $\xi + \eta$ as the bottom row.
@@ -1405,7 +1436,7 @@ Show that $$\xi + \eta = \text{mult}_{\ast} \Delta^{\ast}(\xi \times \eta) = \te
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item Verify that $(\ext(K, (A, \alpha)), +)$ is an abelian group with identity $K \ltimes_{\alpha} A$. 
+\item Verify that $\left(\ext(K, (A, \alpha)), +\right)$ is an abelian group with identity $K \ltimes_{\alpha} A$. 
 \item Verify that $\phi^{\ast}$ and $\psi_{\ast}$ are homomorphisms.  
 \end{enumerate}
 \end{exercise}
@@ -1413,7 +1444,7 @@ Show that $$\xi + \eta = \text{mult}_{\ast} \Delta^{\ast}(\xi \times \eta) = \te
 \begin{remark}
 Suppose that $(\xi) : 1\to A \to G \to K \to 1$ is an extension. If it is not split, then by the axiom of choice there is some set-theoretic section $s: K \to G$ of $q$.
 
-Define $f : K \times K\to G$ by $(x, y) \mapsto s(x)s(y)s(xy)^{-1}$. This is a homomorphism if and only if it is constant at $e_G$. Notice that $q(f(x,y)) = e$ for any $x,y\in K$. Then $\im f \subset A$, giving $f: K\times K \to A$.
+Define $f : K \times K\to G$ by $$(x, y) \mapsto s(x)s(y)s(xy)^{-1}.$$ This is a homomorphism if and only if it is constant at $e_G$. Notice that $q(f(x,y)) = e$ for any $x,y\in K$. Then $\im f \subset A$, giving $f: K\times K \to A$.
 \end{remark}
 
 \begin{definition}
@@ -1438,8 +1469,8 @@ where $(s\times i)(x, a) = s(x)a$.
 
 \begin{note}\label{lr}
 In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \to A$, then the formula $(x, a)(y, b) = (xy, a \alpha_x(b)f(x,y))$ defines a group law if and only if $f(x,y)f(xy, z) = \alpha_x(f(y,z))f(x, yz)$ for any $x, y, z \in K$. As $A$ is abelian, this happens if and only if  
-\[ 
-\tag{$\ast$}\alpha_x(f(y, z))f(xy, z)^{-1} f(x, yz)f(x, y)^{-1} = e.
+\[ \label{eqn:star}
+\alpha_x(f(y, z))f(xy, z)^{-1} f(x, yz)f(x, y)^{-1} = e. \tag{$\ast$}
 \]
 \end{note}
 
@@ -1447,7 +1478,7 @@ In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \t
 \begin{enumerate}
 \item We call $C^2(K, (A, \alpha))\coloneqq  \{f \mid f: K \times K \to A\}$ the set of \textit{second Hochschild cochains of $K$ with coefficients in $(A, \alpha)$}. 
 \item We call $C^2(K, (A, \alpha))_0 \coloneqq  \{f \mid f(x, e) = f(e, y) =e\}$ the set of \textit{second normalized cochains}.
-\item We call $Z^2(K, (A, \alpha)) \coloneqq  \{f \in C^2 : (\ast)$ holds $\}$ the set of \textit{second cocycles of $K$ with coefficients in $(A, \alpha)$}.
+\item We call $Z^2(K, (A, \alpha)) \coloneqq  \{f \in C^2 : \eqref{eqn:star} \text{ holds}\}$ the set of \textit{second cocycles of $K$ with coefficients in $(A, \alpha)$}.
 \end{enumerate}
 \end{definition}
 
@@ -1459,9 +1490,13 @@ In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \t
 
 
 If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ is a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}.$ Thus, 
-$$\tilde{f}(x, y)f(x,y)^{-1} = c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}s(xy)s(y)^{-1}s(x)^{-1}$$ $$ = c(x)(s(x)c(y)s(x)^{-1})(s(x)s(y)s(xy)^{-1})c(xy)^{-1}s(xy)s(y)^{-1}s(x)^{-1}$$ $$ = c(x)\alpha_x(c(y))c(xy)^{-1}f(x,y)f(x,y)^{-1} =c(x)\alpha_x(c(y))c(xy)^{-1}. $$
-This gives a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto (\delta_c : (x, y) \mapsto   c(x)\alpha_x(c(y))c(xy)^{-1})$, which we call the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}. {[[How do we know any first normalized cochain can be written in that form?]]}
-We in turn obtain a natural map $\delta': \ext(K, (A, \alpha)) \to HH^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im \delta}$ given by $(\xi, f) \mapsto [f]$. We call $HH^2(K, (A, \alpha))$ the \textit{second cohomology group of $K$ with coefficients in $(A, \alpha)$}.
+\begin{align*} \tilde{f}(x, y)f(x,y)^{-1} & = c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}s(xy)s(y)^{-1}s(x)^{-1}
+\\ &  = c(x)(s(x)c(y)s(x)^{-1})(s(x)s(y)s(xy)^{-1})c(xy)^{-1}s(xy)s(y)^{-1}s(x)^{-1}
+\\ &  = c(x)\alpha_x(c(y))c(xy)^{-1}f(x,y)f(x,y)^{-1} 
+\\ & =c(x)\alpha_x(c(y))c(xy)^{-1}.
+\end{align*}
+This gives a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto \left(\delta_c : (x, y) \mapsto   c(x)\alpha_x(c(y))c(xy)^{-1}\right)$, which we call the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}. {[[How do we know any first normalized cochain can be written in that form?]]}
+We in turn obtain a natural map $$\delta': \ext(K, (A, \alpha)) \to HH^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im \delta}$$ given by $(\xi, f) \mapsto [f]$. We call $HH^2(K, (A, \alpha))$ the \textit{second cohomology group of $K$ with coefficients in $(A, \alpha)$}.
 
 
 \begin{exercise}
@@ -1475,7 +1510,7 @@ Find all extensions of $\faktor{\Z}{2}\cong \M_2 \coloneqq  \{\pm1\}$ by $\Z$. T
 1 \arrow[r] & \Z \arrow[r] & G \arrow[r] & \M_2 \arrow[r] & 1
 \end{tikzcd}
 \]
-\underline{Case 1:} $\M_2$ acts trivially on $\Z$. Then $C^2_0 = \{f : \M_2 \times \M_2 \to \Z \mid f(1, y) = f(x, 1) = 0$ for any $x,y \in \M_2 \}$. Each $f \in C^2_0$ is thus determined by $f(-1, -1)$, giving $C^2_0 \cong \Z$ via $f\mapsto f(-1, 1)$.
+\underline{Case 1:} $\M_2$ acts trivially on $\Z$. Then $C^2_0 = \left\{f : \M_2 \times \M_2 \to \Z \mid f(1, y) = f(x, 1) = 0 \text{ for any } x,y \in \M_2 \right\}$. Each $f \in C^2_0$ is thus determined by $f(-1, -1)$, giving $C^2_0 \cong \Z$ via $f\mapsto f(-1, 1)$.
 
 \medskip
 
@@ -1483,19 +1518,22 @@ Find all extensions of $\faktor{\Z}{2}\cong \M_2 \coloneqq  \{\pm1\}$ by $\Z$. T
 
 \medskip
 
- Moreover, $C^1_0 = \{c : \M_2 \to \Z : c(1) =0\} \cong \Z$, giving the correspondence $\Z \ni b \longleftrightarrow (c: -1 \mapsto b)$. Then the differential $\delta : C^1_0 \to Z^2_0\cong \Z$ is given by $\delta_c(x, y) = c(x)+c(y) -c(xy)\implies \delta_c(-1, -1) = c({-}1) + c({-}1) = 2b$. That is, $\delta : \Z \to \Z$ is given by $b \mapsto 2b$. This implies that $HH^2 = \faktor{\Z}{2}$, so that the only nontrivial extension is
+ Moreover, $C^1_0 = \{c : \M_2 \to \Z : c(1) =0\} \cong \Z$, giving the correspondence $\Z \ni b \longleftrightarrow (c: -1 \mapsto b)$. Then the differential $\delta : C^1_0 \to Z^2_0\cong \Z$ is given by $\delta_c(x, y) = c(x)+c(y) -c(xy)$, so that $\delta_c(-1, -1) = c({-}1) + c({-}1) = 2b$. That is, $\delta : \Z \to \Z$ is given by $b \mapsto 2b$. This implies that $HH^2 = \faktor{\Z}{2}$, so that the only nontrivial extension is
 \[
 \begin{tikzcd}
 1 \arrow[r] & \Z \arrow[r, "\text{mult}_2"] & \Z \arrow[r] & \faktor{Z}{2} \arrow[r] & 1
 \end{tikzcd}.
 \]
-\underline{Case 2:} The action is nontrivial with $-1 \mapsto (n \mapsto -n)$.  Again we get $C^2_0 \cong \Z$. Moreover, if $f\in Z_2^0$ and $y= z = -1$, then $$0 = \alpha_x(f(-1, -1)) - f(-x, -1)+ f(x, 1)- f(x, -1)$$ $$= \alpha_x(\underbrace{f(-1, -1)}_a) - f(-x, -1)- f(x, -1) = $$
-\[
+\underline{Case 2:} The action is nontrivial with $-1 \mapsto (n \mapsto -n)$.  Again we get $C^2_0 \cong \Z$. Moreover, if $f\in Z_2^0$ and $y= z = -1$, then 
+\begin{align*}
+0 & = \alpha_x(f(-1, -1)) - f(-x, -1)+ f(x, 1)- f(x, -1)
+\\ & = \alpha_x(\underbrace{f(-1, -1)}_a) - f(-x, -1)- f(x, -1) 
+\\ & =
 \begin{cases}
 0 & x =1 \\
 -2a & x = -1
 \end{cases}.
-\]
+\end{align*}
 Hence $a = 0$, and $f = 0$. This implies that $HH^2 = 0$ with $\Z \rtimes_{\alpha} \M_2$ being the unique extension. 
 \end{exmp}
 
@@ -2209,7 +2247,7 @@ Suppose that $\coprod_{\lambda} M_{\lambda}$ has $P$. But each projection $\pi_{
 \begin{enumerate}
 \item Suppose that $\coprod_{\lambda} M_{\lambda}$ is Noetherian. By the countable axiom of choice, find some countably infinite subset $\{\lambda_n\}\subset \Lambda.$ But this gives an infinite chain $$M_{\lambda_1} \subsetneq M_{\lambda_1} \coprod M_{\lambda_2} \subsetneq \cdots \subset \coprod_{\lambda} M_{\lambda},$$ a contradiction.
 \item For the Artinian case, apply a similar argument.
-\item Suppose that $\coprod_{\lambda} M_{\lambda}$ is finitely generated. We have a surjection $$\phi: \coprod_{i=1}^n R \twoheadrightarrow \coprod_{\lambda} M_{\lambda}$$ for some integer $n$. For each $1\leq i\leq n$, define $x_i = \phi(0, \ldots, \underbrace{1}_{i\text{-th spot}}, \ldots, 0).$ We can write $x_i = (x_{i_{\lambda}})_{\lambda \in \Lambda}$. Define $$\Lambda^0 = \{\lambda \in \Lambda : \exists i. x_{i_\lambda}\ne 0 \} .$$ Note that $\Lambda^0$ is finite, so that there is some $\mu \in \Lambda \setminus \Lambda^0$.  Then the composition map $$\pi_{\mu} \circ \phi$$ is the trivial morphism. But it is also a surjection as the composition of surjections, a contradiction. 
+\item Suppose that $\coprod_{\lambda} M_{\lambda}$ is finitely generated. We have a surjection $$\phi: \coprod_{i=1}^n R \twoheadrightarrow \coprod_{\lambda} M_{\lambda}$$ for some integer $n$. For each $1\leq i\leq n$, let $x_i = \phi(0, \ldots, \underbrace{1}_{i\text{-th spot}}, \ldots, 0).$ We can write $x_i = (x_{i_{\lambda}})_{\lambda \in \Lambda}$. Define $$\Lambda^0 = \{\lambda \in \Lambda : \exists i. x_{i_\lambda}\ne 0 \} .$$ Note that $\Lambda^0$ is finite, so that there is some $\mu \in \Lambda \setminus \Lambda^0$.  Then the composition map $$\pi_{\mu} \circ \phi$$ is the trivial morphism. But it is also a surjection as the composition of surjections, a contradiction. 
 \end{enumerate}
 The converse is clear.
 \end{proof}

@@ -162,6 +162,7 @@
 \DeclareMathOperator{\rng}{range}
 \DeclareMathOperator{\gemu}{gemu}
 \DeclareMathOperator{\almu}{almu}
+\DeclareMathOperator{\ann}{ann}
 \DeclareMathOperator{\Char}{\mathsf{char}}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\graph}{Graph}
@@ -764,9 +765,9 @@ Let $X = \bigcup_{\alpha} U_{\alpha}$. The principal opens generate the Zariski 
 \end{proof}
 
 \begin{exmp}
-Suppose that $X$ is a compact and Hausdorff space. Let $A = C(X)$, the ring of complex-valued continuous functions on $X$. Consider $\mathsf{Spec}(A)$ equipped with the Zariski topology and its subset $\Max(A) \coloneqq  \{\frak{a} \in C(X) \mid \frak{a}$ maximal$\}$ equipped with subspace topology.
+Suppose that $X$ is a compact and Hausdorff space. Let $A = C(X)$, the ring of complex-valued continuous functions on $X$. Consider $\mathsf{Spec}(A)$ equipped with the Zariski topology and its subset $\Max(A) \coloneqq  \{\frak{a} \in C(X) \mid \frak{a}$ maximal$\}$ equipped with the subspace topology.
 \begin{claim}
-The natural map $X \overset{\varphi}{\Max(A)}$ given by $x \mapsto \{f\in C(X) \mid f(x) = 0\}$ is a homomorphism.
+The natural map $X \overset{\varphi}{\longrightarrow} {\Max(A)}$ given by $x \mapsto \{f\in C(X) \mid f(x) = 0\}$ is a homomorphism.
 \end{claim}
 \begin{proof}
 Let $\frak{a}_x \coloneqq  \ker(\text{ev}_x : A \to \C)$.
@@ -783,13 +784,13 @@ Let $A$ be  a commutative ring and $M$ and $A$-module. Then $M$ defines a subset
 
 \begin{prop} $ $
 \begin{enumerate}
-\item $\supp(M) \subset V(\text{ann}(M))$, where $\text{ann}(M) = \{a\in A \mid a\cdot m = 0$ for each $m\in M\}$. 
+\item $\supp(M) \subset V(\ann(M))$, where $\ann(M) = \{a\in A \mid a\cdot m = 0$ for each $m\in M\}$. 
 \begin{proof}
-Let $\frak{b} \in \supp(M)$. Then $M_{\frak{b}} \ne (0)$. We need to show that $\text{ann}(M) \subset \frak{b}$.  Suppose that there is some $a\in \text{ann}(M)$ with $a\notin \frak{b}$. Let $x\in M_{\frak{b}}$. Then $x= \frac{m}{s}$ where $m\in M$ and $s\notin \frak{b}$. We compute $\frac{a}{1} \cdot \frac{m}{s} = \frac{am}{s} = 0$ in $M_{\frak{b}}$. Since $a\notin \frak{b}$, it follows that $\frac{a}{1}$ is invertible in $A_{\frak{b}}$, i.e, $\frac{1}{a} \in A_{\frak{b}}$. Hence $\frac{m}{s} = \frac{1}{a}\left(\frac{a}{1}\frac{m}{s}\right) = 0$ in $M_{\frak{b}}$, so that $M_{\frak{b}} = (0)$, a contradiction.  
+Let $\frak{b} \in \supp(M)$. Then $M_{\frak{b}} \ne (0)$. We need to show that $\ann(M) \subset \frak{b}$.  Suppose that there is some $a\in \ann(M)$ with $a\notin \frak{b}$. Let $x\in M_{\frak{b}}$. Then $x= \frac{m}{s}$ where $m\in M$ and $s\notin \frak{b}$. We compute $\frac{a}{1} \cdot \frac{m}{s} = \frac{am}{s} = 0$ in $M_{\frak{b}}$. Since $a\notin \frak{b}$, it follows that $\frac{a}{1}$ is invertible in $A_{\frak{b}}$, i.e, $\frac{1}{a} \in A_{\frak{b}}$. Hence $\frac{m}{s} = \frac{1}{a}\left(\frac{a}{1}\frac{m}{s}\right) = 0$ in $M_{\frak{b}}$, so that $M_{\frak{b}} = (0)$, a contradiction.  
 \end{proof}
-\item If $M$ is finitely generated, then  $\supp(M) \supset V(\text{ann}(M))$.
+\item If $M$ is finitely generated, then  $\supp(M) \supset V(\ann(M))$.
 \begin{proof}
-Let $\frak{b} \in V(\text{ann}(M))$ and $\frak{b} \supset \text{ann}(M)$. We want to show that $M_{\frak{b}} \ne (0)$. Suppose to the contrary. Then for any $m\in M$< we have that $\frac{m}{1} =0$ in $M_{\frak{b}}$. This shows that there exists $s\notin \frak{b}$ such that $s\cdot m = 0$ in $M$. But $M$ is finitely generated. Let $m_1, \ldots, m_k \in M$ be generators of $M \setminus A$. Then there are $s_1, \ldots, s_k \in A \setminus \frak{b}$ such that $s_im_i =0$ in $M$ for each $i$. Let $s = s_1 \cdots s_k \in A\setminus \frak{b}$. Then for any $m\in M$, we have that $s\cdot m = 0$. Hence $s\in A \setminus \frak{b}$, and $s\in \text{ann}(M)$, a contradiction. 
+Let $\frak{b} \in V(\ann(M))$ and $\frak{b} \supset \ann(M)$. We want to show that $M_{\frak{b}} \ne (0)$. Suppose to the contrary. Then for any $m\in M$< we have that $\frac{m}{1} =0$ in $M_{\frak{b}}$. This shows that there exists $s\notin \frak{b}$ such that $s\cdot m = 0$ in $M$. But $M$ is finitely generated. Let $m_1, \ldots, m_k \in M$ be generators of $M \setminus A$. Then there are $s_1, \ldots, s_k \in A \setminus \frak{b}$ such that $s_im_i =0$ in $M$ for each $i$. Let $s = s_1 \cdots s_k \in A\setminus \frak{b}$. Then for any $m\in M$, we have that $s\cdot m = 0$. Hence $s\in A \setminus \frak{b}$, and $s\in \ann(M)$, a contradiction. 
 \end{proof}
 \end{enumerate}
 \end{prop}
@@ -800,7 +801,7 @@ Let $\frak{b} \in V(\text{ann}(M))$ and $\frak{b} \supset \text{ann}(M)$. We wan
 $M= (0)$ $\iff$ $\supp(M) = \emptyset$ $\iff$ $\supp(M) \cap \Max(A) = \emptyset$.
 \end{prop}
 \begin{proof}
-It's clear that $M = \emptyset \implies \supp(M) = (0) \implies \supp(M) \cap \Max(A) = \emptyset$. Hence it suffices to show that  $\supp(M) \cap \Max(A) = \emptyset \implies M= (0)$. If $M$ is finitely generated, then $\supp(M) = V(\text{ann}(M))$, so that $\supp(M)$ must contain any maximal idea that contains $\text{ann}(M) \unlhd A$. Thus, the assumption that $\supp(M) \cap \Max(A) = \emptyset$ implies that $\text{ann}(A)$ is not contained in any maximal ideal, meaning that $\text{ann}(M) = A$. This makes $M= (0)$. 
+It's clear that $M = \emptyset \implies \supp(M) = (0) \implies \supp(M) \cap \Max(A) = \emptyset$. Hence it suffices to show that  $\supp(M) \cap \Max(A) = \emptyset \implies M= (0)$. If $M$ is finitely generated, then $\supp(M) = V(\ann(M))$, so that $\supp(M)$ must contain any maximal idea that contains $\ann(M) \unlhd A$. Thus, the assumption that $\supp(M) \cap \Max(A) = \emptyset$ implies that $\ann(A)$ is not contained in any maximal ideal, meaning that $\ann(M) = A$. This makes $M= (0)$. 
 
 \medskip
 
@@ -973,7 +974,7 @@ We say that field extension $L \supset K$ is \textit{simple} if it is isomorphic
 \end{exmp}
 
 \begin{definition}
-Let $L \supset K$ be any field extension and $u\in L$ be algebraic over $K$. Consider $$\text{ann}(u) \coloneqq  \{g(x) \in K[x] \mid g(u) =0\},$$ which is an ideal in $K[x]$. Since $K[x]$ is a PID, we see that this ideal is generated by a single element $s(x)$. If we require that $s(x)$ be monic, then it is uniquely determined. We call this the \textit{minimal polynomial of $u$}, denoted by $\min_u(x)$. 
+Let $L \supset K$ be any field extension and $u\in L$ be algebraic over $K$. Consider $$\ann(u) \coloneqq  \{g(x) \in K[x] \mid g(u) =0\},$$ which is an ideal in $K[x]$. Since $K[x]$ is a PID, we see that this ideal is generated by a single element $s(x)$. If we require that $s(x)$ be monic, then it is uniquely determined. We call this the \textit{minimal polynomial of $u$}, denoted by $\min_u(x)$. 
 \end{definition}
 
 \begin{lemma}
@@ -1242,11 +1243,12 @@ Define the \textit{M\"{o}bius function $\mu : \Z_{>0} \to \{{-}1, 0, 1\}$} by $$
 \item $\mu(k) \ne 0$ for some $k$.
 \item $\mu(nm) = \mu(n) \mu(m)$ when $(n,m) = 1$.
 \item $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$ (This completely characterizes the M\"{o}bius function.)
+\end{enumerate}
+\end{prop}
 \begin{proof} Let $n>0$ be an integer and write $p_1^{k_1}\cdots p_k^{r_k}$ where the prime $p_i$ are pairwise distinct. Let $n_0 = p_1\cdots p_k$. Then $\sum_{d\mid n}\mu(d) =\sum_{d\mid n_0} \mu(d)$. If $d\mid n_0$, then $d= p_{i_1}\cdots p_{i_s}$, so that $\mu(d) = ({-}1)^s$. By the binomial theorem, it follows that \begin{align*} \sum_{d\mid n_0}\mu(d) & = \sum_{s=0}^k {k\choose s}({-}1)^2\\ & = (1-1)^k=\begin{cases} 1 & k=0 \\ 0 & k>0 \end{cases}  . \end{align*}
 Thus, $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
 \end{proof}
-\end{enumerate}
-\end{prop}
+
 
 \begin{corollary}
 For any $m\in \Z_{>0}$ and $d\mid m$, we have that $$\sum_{d\mid n \mid m}\mu \left(\frac{m}{n} \right) = \begin{cases}  1 & d = m \\ 0 & d\ne m\end{cases}.$$

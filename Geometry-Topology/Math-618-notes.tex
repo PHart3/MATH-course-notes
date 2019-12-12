@@ -29,8 +29,7 @@
     urlcolor=cyan           }
 \usepackage{adjustbox}
 \usepackage{media9}
-
-
+\usepackage{spectralsequences}
 \usepackage{thmtools}
 \usepackage[capitalise]{cleveref} 
     
@@ -167,6 +166,7 @@
 \DeclareMathOperator{\ed}{End}
 \DeclareMathOperator{\BM}{BM}
 \DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\ab}{ab}
 \DeclareMathOperator{\clength}{cup{-}length}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\orb}{Orb}
@@ -201,6 +201,9 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 
 \newcommand{\bmp}{\begin{mathpar}}
 \newcommand{\emp}{\end{mathpar}}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
 
 \setlength{\parindent}{0pt}
 
@@ -310,10 +313,20 @@ Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regula
 \end{exmp}
 
 \begin{exercise}\label{reg}
-Prove that any cell complex $X= \bigcup_{n=0}^KX^n$ is homotopy equivalent to a regular cell complex.\footnote{Hint: Consider the map $S^{n-1} \to X^{n-1} \times D^n$ given by $x \mapsto (\varphi(x), x)$.}
+Prove that any finite cell complex $X= X^K$ is homotopy equivalent to a regular cell complex.
+
+\smallskip
+
+(Hint: Consider the map $S^{n-1} \to X^{n-1} \times D^n$ given by $x \mapsto \left(\varphi(x), x\right)$ where $\varphi$ denotes an attaching map of $X$.)
 \end{exercise}
 \begin{proof}
-??
+Let us construct recursively a finite sequence $A^0, A^1, \ldots, A^K$ of spaces such that each $A^i$ carries the stricture of a regular cell complex and is homotopy equivalent to $X^i$. For each $n \in \{1, \ldots, K\}$, let $k_n$ denote the necessarily finite number of attaching maps $\varphi_{\alpha_1}, \ldots, \varphi_{\alpha_{k_n}}: S^{n-1} \to X^{n-1}$ for the $n$-skeleton of $X$. Let $$A^0 = X^0 \times D^1_{\alpha_1} \times \cdots D^1_{\alpha_{k_1}},$$ viewed as a product of finite cell-complexes. Note that the topology of $A^0$ is precisely the product topology. Thus, $A^0$ is homotopy equivalent to $X^0$ as $D^1$ is contractible.  Now, suppose that $0 \leq n \leq K-1$ and that we have constructed our desired space $A^n$. This means that there is some homotopy equivalence $\gamma_n : X^n \to A^n$. Form $A^{n+1}$ by attaching finitely many $\left(n+1\right)$-cells $e^{n+1}_{\alpha_1}, \ldots, e^{n+1}_{\alpha_{k_{n+1}}}$ to $Z_n \equiv A^n \times D^{n+1}_{\alpha_1} \times \cdots \times D^{n+1}_{\alpha_{k_{n+1}}}$ via the maps 
+\begin{align*}
+\psi_{\alpha_i} & : S^{n} \to A^n \times D^{n+1}_{\alpha_1} \times \cdots \times D^{n+1}_{\alpha_{k_{n+1}}}
+\\  x & \mapsto   \left(\gamma_n \circ \varphi_i(x), 0, \ldots, 0, \underbrace{x}_{i\text{-th spot}}, 0, \ldots, 0\right)
+\end{align*} 
+where $Z_n$ is viewed as a product of finite cell complexes (whose topology is precisely the product topology).
+It is easy to see that $A^{n+1}$ is homotopy equivalent to $X^{n+1}$. Moreover, since each map $\psi_{\alpha_i}$ is an embedding and any $n$-disk has the structure of a regular cell complex,  we see from our construction of $\left(A^i\right)$ that $A^K$ has the structure of a regular cell complex. By design, this space is homotopy equivalent to $X^K$, thereby completing our proof. 
 \end{proof}
 
 \subsection{Lecture 2}
@@ -605,7 +618,7 @@ Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi
 \] commutes. 
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{loop}
 Let $x\in X$. Consider the  loop space $\Omega(X, x) \equiv M((S^1, \pt), (X, x))$. Prove that $\pi_n(\Omega{X})\cong \pi_{n+1}(X)$.
 \end{exercise}
 \begin{proof}
@@ -690,7 +703,7 @@ X \times \{0\} \arrow[ru, "\sigma_0"] \arrow[r, hook] & {X \times [0,1]} \arrow[
 
 \medskip
 
-For induction, we will assume that our claim is true for each $X^0, X^1, \ldots, X^{n-1}$. We may assume, wlog, that $X = D^n$. It suffices to find a map $\tau : S^{n-1} \times [0,1] \to Z$ such that $h \circ \tau = \id_{S^{n-1}\times [0,1]}$ and
+For induction, let us assume that our claim is true for each $X^0, X^1, \ldots, X^{n-1}$. We may assume, wlog, that $X = D^n$. It suffices to find a map $\tau : S^{n-1} \times [0,1] \to Z$ such that $h \circ \tau = \id_{S^{n-1}\times [0,1]}$ and
 \[
 \begin{tikzcd}
                                                         & Z \arrow[d, "h"]                                       &                                                           \\
@@ -758,7 +771,7 @@ commutes. In particular, $\pi_1 \circ h_{\beta} \circ h_{\alpha}^{-1} = \pi_1$, 
 \end{proof}
 
 \item Let $p: E \to B$ be any bundle with group $\{e\}$. Then $p$ is the trivial bundle, i.e., is isomorphic to the projection map. \begin{proof}
-We have that $h_{\beta} = h_{\alpha}$ on $U_{\alpha} \cap U_{\beta}$, so that $h \equiv \bigcup_{\alpha \in A}h_{\alpha}$ is a well-defined homeomorphism $E \cong B \times F$.
+We have that $h_{\beta} = h_{\alpha}$ on $p^{-1}(U_{\alpha} \cap U_{\beta}) = p^{-1}(U_{\alpha})\cap p^{-1}(U_{\beta})$, so that $h \equiv \bigcup_{\alpha \in A}h_{\alpha}$ is a well-defined homeomorphism $E \cong B \times F$.
 \end{proof}
 \ee 
 \end{exmp}
@@ -1307,9 +1320,524 @@ B_{\Or\left(n, \R\right)} \simeq B_{\GL\left(n, \R\right)}
 .\] An exactly similar argument proves that $B_{\Un\left(n, \C\right)} \simeq B_{\GL\left(n, \C\right)}$.
 \end{exmp}
 
-Our next goal is to describe $H^{\ast}\left(B_G\right)$. This leads us to the notion of a spectral sequence. 
+Eventually, we want to describe $H^{\ast}\left(B_G\right)$. This will lead us to the notion of a spectral sequence. 
+
+\subsection{Lecture 11}
+
+Before moving to spectral sequences, let us look at a couple more examples of fiber bundles.
+
+\begin{exmp}
+Let $\left\{e_i\right\}_{1\leq i \leq n}$ denote the standard basis of $\R^n$.  Consider the map $\rho : \GL(n, \R) \to \R^n\setminus \{0\}$ given by $A \mapsto A{e_n}$ and its restriction $\tau : \Or(n, \R) \to S^{n-1}$.
+Note that $\rho^{-1}(e_n)$ consists of all $n\times n$ matrices of the form 
+\[
+\begin{pmatrix}
+  \begin{matrix}
+ B
+  \end{matrix}
+  & \rvline & 0 \\
+\hline
+  \ast & \rvline &
+  \begin{matrix}
+ 1
+  \end{matrix}
+\end{pmatrix}
+\]
+where $B$ denotes an invertible $\left(n-1\right) \times \left(n-1\right)$ matrix. This means that $\rho^{-1}(e_n) \simeq \GL(n-1, \R)$. Similarly, we see that $\tau^{-1}(e_n)\simeq \Or(n-1, \R)$. Moreover, both $\rho$ and $\tau$ are locally trivial. In particular, this yields a LES
+\[
+\begin{tikzcd}
+                              & \cdots \arrow[r]        & \pi_{i+1}(S^{n=1}) \arrow[lld] \\
+\pi_i(\Or(n-1)) \arrow[r]     & \pi_i(\Or(n)) \arrow[r] & \pi_i(S^{n-1}) \arrow[lld]     \\
+\pi_{i-1}(\Or(n-1)) \arrow[r] & \cdots                  &                               
+\end{tikzcd}.
+\]
+Since $\pi_i(S^{n-1})$ is trivial for any $0 \leq i \leq n-2$, we see that the map $\pi_i(\Or(n-1)) \to \pi_i(\Or(n))$ is an isomorphism for any $i\leq n-3$ and an epimorphism when $i=n-2$. The same result holds with $\Or(n)$ replaced by $\GL(n,\R)$.
+\end{exmp}
+
+\begin{exmp}
+Consider the \textit{Stiefel manifold $V_{n+k,k}$} consisting of orthonormal $k$-frames (i.e., $k$-tuples) in $\R^{n+k}$. If we view the standard basis of $\R^k$ as the ``zero element" of $V_{n+k,k}$, then we have a ``short exact sequence"
+\[
+\begin{tikzcd}
+0 \arrow[r] & \Or(n) \arrow[r, "i", hook] & \Or(n+k) \arrow[r, "p_1", two heads] & {V_{n+k, k}} \arrow[r] & 0
+\end{tikzcd}
+\] where $i$ is given by $A \mapsto 
+\begin{pmatrix}
+  \begin{matrix}
+ A
+  \end{matrix}
+  & \rvline & 0 \\
+\hline
+  0 & \rvline &
+  \begin{matrix}
+ I
+  \end{matrix}
+\end{pmatrix}$
+and $p_1$ is given by $A \mapsto \left(A{e_{n+1}}, \ldots, A{e_{n+k}}\right)$. In this case, $$V_{n+k, k} \cong \frac{\Or(n +k)}{\Or(n)},$$ a coset space. Note that $i$ induces an isomorphism $\pi_i(\Or(n)) \overset{\cong}{\longrightarrow} \Or(n+k)$ for each $i\leq n-2$ and an epimorphism when $i = n-1$. 
+\begin{claim}
+The map $p_1$ is a fiber bundle.
+\end{claim}
+\begin{proof}
+Let $F \in V_{n+k, k}$ and choose any orthonormal basis $B$ of the $n$-plane orthogonal to $F$. For any $n$-plane near $B$, take the orthogonal projection of $B$ onto $B'$ and then apply the Gram-Schmidt process to the new basis to obtain an orthonormal basis $\underline{B'}$ of $B'$. The assignment $B \mapsto \underline{B'}$ is continuous, and the space of all $n$-planes orthogonal to any $\left(n+k\right)$-plane near $F$ is identifiable with $V_n(\R^n) \cong \Or(n)$. Therefore, we get a trivialization around $F$, which was arbitrary.
+\end{proof}
+Using the LES obtained from \cref{exhtpy}, we see that $\pi_i(V_{n+k, k}) =0$ for each $i\leq n-1$. Consider now the \textit{Grassmann manifold} $$G_{n+k, k}\equiv \frac{\Or(n+k)}{\Or(n)\times \Or(k)}$$ where each pair $\left(A, B\right) \in \Or(n)\times \Or(k)$ is identified with the orthogonal $\left(n+k\right)\times \left(n+k\right)$ matrix $\begin{pmatrix}
+  \begin{matrix}
+ A
+  \end{matrix}
+  & \rvline & 0 \\
+\hline
+  0 & \rvline &
+  \begin{matrix}
+B
+  \end{matrix}
+\end{pmatrix}$. Note that $G_{n_k, k}$  may be viewed as the space of all $k$-dimensional planes in $\R^{n+k}$. 
+
+\begin{remark} $ $
+\bi
+\item  The space $E_{\Or(k)}$ consists of all orthonormal $k$-frames in $\R^{\infty}$. 
+\item The \textit{Grassmannian}  $B_{\Or(k)} \equiv B_{\GL(k)} \equiv G_{\infty, k}$ consists of all $k$-planes in $\R^{\infty}$. 
+\item Similarly, the space $B_{U(k)}$ consists of all $k$-planes in $\C^{\infty}$.
+\ei
+\end{remark}
+
+\smallskip
+
+Define $p_2: V_{n+k, k} \to G_{n+k, k}$ by sending each $v \in V_{n+k, k}$ to the subspace of $\R^{n+k}$ spanned by $v$. 
+\begin{claim}
+The map $p_2$ is a principal $\Or(k)$-bundle.
+\end{claim}
+\begin{proof}
+This follows from the fact that $\Or(n + k) \to G_{n+k, l}$ is a principal $\Or(n) \times \Or(k)$-bundle.
+\end{proof}
+
+It follows that $\pi_i(G_{n+k, k}) =0$ for each $i\leq n-2$.
+\end{exmp}
 
 \section{Spectral sequences}
 
+We are given a  fibration:
+\[
+\begin{tikzcd}
+F \arrow[d]        \\
+E \arrow[d, "\pi"] \\
+X                 
+\end{tikzcd}
+\]
+where $X$ is a connected cell complex and $F= \pi^{-1}(x)$ for some distinguished point $x$. 
+
+\begin{question}
+What is $H_n(E)$ if we know $H_n(F)$ and $H_n(X)$?
+\end{question}
+
+Recall that $H_n(X) = \frac{\ker{\partial_n}}{\im{\partial_{n+1}}}$ where $\partial_n$ is defined as the composite
+\[
+\begin{tikzcd}
+{\overbrace{H_n(X^n, X^{n-1})}^{C_n(X)}} \arrow[r] \arrow[rr, "\partial_n"', bend right] & H_{n-1}(X^{n-1}) \arrow[r] & {\overbrace{H_{n-1}(X^{n-1}, X^{n-2})}^{C_{n-1}}(X)}
+\end{tikzcd},
+\]
+where $H_i(X^n, X^{n-1})=0$ for any $i\ne n$. Furthermore, letting $E_n = \pi^{-1}(X_n)$, we have that $H_{\ast}(E_n, E_{n-1}) = C_{\ast}(X) \otimes H_{\ast}(F)$.
+
+\medskip
+
+ At this point, it is useful to generalize our situation by developing the theory of spectral sequences. For each $r\in \Z_{\geq 0}$, let $\left\{E_{p,q}^r\right\}_{p,q\in \Z}$ be a family of abelian groups and let $\left\{d_r^{p,q} : E_{p,q}^r \to E_{p-r, q+r-1}^r\right\}_{p,q\in \Z}$ be a family of maps (called \textit{differentials}) such that 
+\be[label=(\alph*)]
+\item $d_r^{p,q} \circ d_r^{p+r, q-r+1} =0$ and
+\item $E^{r+1}_{p,q} = \frac{\ker{d_r^{p,q}}}{\im{d_r^{p+r, q-r+1}}}$.
+\ee 
+Such a sequence $\left(E^r, d_r\right)_{r\in \Z_{\geq 0}}$ of pairs is called a \textit{homological spectral sequence}, and each double complex $\left(E^r, d_r\right)$ is called the \textit{$r$-th page} of the sequence.
+
+\begin{note} 
+$E^{r+1} = H_{\ast}(E^r, d_r)$.
+\end{note}
+
+We shall consider only \textit{first-quadrant} spectral sequences, i.e., those for which $E_{p,q}^r =0$ unless $p,q\geq 0$.
+
+\begin{center}
+\begin{sseqdata}[name = gen, homological Serre grading]
+\begin{scope}[background]
+\node at (\xmax/2,\ymax+1.2) {\textup{Page \page}};
+\node at (\xmax/2,-1.7) {p};
+\node at (-1.5,\ymax/2) {q};
+\end{scope}
+\class(0,0)
+\class(0,1)
+\class(0,2)
+\class(1,2)
+\class(2,2)
+\class(1,0)
+\class(2,0)
+\class(1,1)
+\class(2,1)
+\class(3,0)
+\class(3,1)
+\class(3,2)
+\d[ "d_2" { pos = 0.5, yshift = -5pt } ] 2(2,0)
+\d[ "d_3" { pos = 0.6, yshift = -5pt } ] 3(3,0)
+\end{sseqdata}
+\printpage[ name = gen, page = 2 ] \quad
+\printpage[ name = gen, page = 3 ]
+\end{center}
+
+As a result, there is some $k\in \N$ such that $E^r = E^{r+1}$ for any $r\geq k$. 
+\begin{notation}
+$E^{\infty} \coloneqq E^k$.
+\end{notation}
+
+\begin{defn}[Convergence]
+ We say that a spectral sequence $E^{\ast} \coloneqq \left(E^r, d_r\right)$ \textit{converges} to a sequence of abelian groups $\left\{A_n\right\}_{n \in \Z_{\geq 0}}$, written as 
+ \[
+E^{\ast} \Rrightarrow \left\{A_n\right\},
+ \]
+ if for each $n$, there exists a filtration
+ \[
+ \cdots \subset A_{{-1}, n+1} = \left\{0\right\} \subset A_{0,n} \subset \cdots A_{n-1, 1} \subset A_{n,0} =A_n
+ \]
+ of $A_n$ such that $\frac{A_{p,q}}{A_{p-1, q+1}} \cong E^{\infty}_{p,q}$.
+\end{defn}
+
+\begin{theorem}\label{spfib}
+Let $B$ be a simply connected, path connected cell complex with $n$-skeleton $B^n$ and suppose that $\pi: E \to B$ is a fibration with fiber $F$. There exists a (first-quadrant) spectral sequence $\left(E^r, d_r\right)$ that
+\be[label=(\alph*)]
+\item converges to $\left\{H_n(E)\right\}_{n\in \Z_{\geq 0}}$ and
+\item satisfies $E_{p,q}^2 \cong H_p(B; H_q(F))$.
+\ee
+The filtration $D_{p,q} \coloneqq \left(H_n(E)\right)_{p+q=n}$ witnessing this convergence is given by $\im(H_n(\pi^{-1}(B^p)) \to H_n(E))$.
+\end{theorem}
+
+\begin{remark}
+This holds without the hypothesis that $B$ is a cell complex.
+\end{remark}
+
+\begin{exmp}\label{psfb}
+Consider the path space fibration 
+\[
+\begin{tikzcd}
+\Omega{X} \arrow[d] \\
+P{X} \arrow[d]      \\
+X                  
+\end{tikzcd}
+.\] Recall that $P{X}$ is contractible. Let $n\geq 2$ and $X= S^n$. Then 
+\[
+E_{p,q}^2 \cong H_p(S^n ; H_q(\Omega{S^n})) = \begin{cases}
+H_q(\Omega{S^n}) & p=0,n
+\\ 0 & \text{otherwise}
+\end{cases},
+\] and $\left(E^r, d_r\right) \Rrightarrow \left\{\Z, 0, 0, \ldots \right\}$. This means that $d_k =0$ for any $k\ne n$, so that 
+\begin{align*}
+  E^2  & = E^3 =  \cdots =E^n
+\\ E^{n+1}  & = E^{n+2}= \cdots = E^{\infty}.
+\end{align*}
+As a result, each differential $d_n^{p,q}$ is an isomorphism provided that $\left(p,q\right) \ne \left(n, 1-n\right)$ for, otherwise, $E_{p,q}^{n+1}$ is nontrivial, which is impossible.
+Hence the $n$-th page looks like
+\[\label{eqn:psf}
+\begin{sseqpage}[ homological Serre grading,  classes = {draw = none}, y tick gap = 2.0 em, scale = 1.6, x axis extend start = 2.0 cm, x axis extend end = 1.1cm, x range = {0}{2},
+x tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+{}
+\else	
+\ifnum#1 = 2\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}n
+\else
+#1n
+\fi
+\fi
+\fi
+},
+y tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}{n-1}
+\else
+#1(n-1)
+\fi
+\fi
+}]
+\class["\mathbb{Z}"](0,0)
+\class["H_{n-1}(\Omega{S^n})"](0,1)
+\class["H_{2n-2}(\Omega{S^n})"](0,2)
+\class["H_{3n-3}(\Omega{S^n})"](0,3)
+\class["\mathbb{Z}"](2,0)
+\class["H_{n-1}(\Omega{S^n})"](2,1)
+\class["H_{2n-2}(\Omega{S^n})"](2,2)
+\class["H_{3n-3}(\Omega{S^n})"](2,3)
+\d[ "iso." { pos = 0.5, yshift = -5pt } ]2(2,0)
+\d[ "iso." { pos = 0.5, yshift = -5pt } ]2(2,1)
+\d[ "iso." { pos = 0.5, yshift = -5pt } ]2(2,2)
+\end{sseqpage}
+\]
+This implies that $H_q(\Omega{S^n}) \cong H_{q+n-1}(\Omega{X})$ for any $q\in \Z_{\geq 0}$. But $\Omega{S^n}$ is path connected since $S^n$ is simply connected. By induction, it follows that
+\[
+H_q(\Omega{X}) \cong \begin{cases} 
+\Z & q \equiv 0 \mod \left(n-1\right)
+\\ 0 & \text{otherwise}
+\end{cases}.
+\]
+\end{exmp}
+
+\subsection{Lecture 12}
+Suppose that
+\[
+\begin{tikzcd}
+F \arrow[d]        \\
+E \arrow[d, "\pi"] \\
+B                 
+\end{tikzcd}
+\]
+is a fibration with $B$ simply connected and $F$ path connected. Thanks to \cref{spfib}, we have the inclusion $$E_{0,n}^{\infty} \cong \frac{D_{0,n}}{D_{{-1}, n+1}} =D_{0,n}  \subset H_n(E)$$ as well as a commutative (??) diagram
+\[
+\begin{tikzcd}
+\overbrace{H_p(B; H_0(F))}^{H_p(B)} \arrow[r, equals] & {E_{p,0}^2}                  & {E_{p,0}^3} \arrow[l, hook']        &                                                                      &           \\
+                                              & {E_{p,0}^4} \arrow[ru, hook] & \cdots \arrow[l, hook']             & {E_{p,0}^p} \arrow[l, hook']                                         &           \\
+                                              &                              & {E_{p,0}^{\infty}} \arrow[ru, hook] & H_p(E) \arrow[l] \arrow[r, equals] \arrow[llluu, "\pi_{\ast}", bend left=60] & {D_{p,0}}
+\end{tikzcd}
+\] of abelian groups.
+Let $i$ denote the inclusion map $i : F \cong p^{-1}(b) \to E$ where $b$ is any chosen element of $B$. This induces a map $i_{\ast}$ in homology 
+\[
+\begin{tikzcd}
+{\underbrace{H_q(F)}_{H_0(B, H_q(F))}} \arrow[r, two heads] \arrow[rrrr, "i_{\ast}", bend left] & {E^3_{0,q}} \arrow[r, two heads] & \cdots \arrow[r, two heads] & {E_{0,q}^{\infty}} \arrow[r, hook] & H_q(E)
+\end{tikzcd}.
+\]
+Now, consider the commutative diagram
+\[
+\begin{tikzcd}
+\pi_n(B) \arrow[d, "h_n"'] \arrow[r, "\partial"] & \pi_{n-1}(F) \arrow[d, "h_{n-1}"]  \\
+H_n(B) \arrow[r, "\partial"]                     & H_{n-1}(F) \arrow[d, two heads]    \\
+{E_{n,0}^2} \arrow[u, "\cong"]                   & {E_{0,n-1}^3} \arrow[d, two heads] \\
+\vdots \arrow[u, hook]                           & \vdots \arrow[d, two heads]        \\
+{E^n_{n,0}} \arrow[r, "d_n"'] \arrow[u, hook]    & {E_{0,n-1}^{n}}                   
+\end{tikzcd}
+\] where $h_n$ denotes the \textit{Hurewicz homomorphism}, defined for an arbitrary path connected space $X$ as follows. 
+
+\smallskip
+
+Let $\gamma \coloneqq \left[f\right]$ be any element of $\pi_n(X, x)$, so that $f$ is a map $\left(S^n, x_0\right) \to \left(X, x\right)$. Choose any generator $\tau \in H_n(S^n) \cong \Z$ and let 
+\[
+h(\gamma) = f_{\ast}(\tau) \in H_n(X).
+\]
+Likewise, we can define the \textit{relative Hurewicz homomorphism} $\tilde{h} : \pi_n(X, A) \to H_n(X,A)$ by $$\left[f: \left(D^n, S^{n-1}, x_0\right) \to \left(X, A, \pt\right)\right] \mapsto f_{\ast}(\sigma)$$ where $\sigma$ is any chosen generator of $H_n(D^n, S^{n-1}) \cong \Z$. 
+
+\begin{theorem}[Hurewicz]\label{Hur}
+Let $n\in \Z_{\geq 2}$. If $\pi_i(X) =0$ for each $1\leq i \leq n-1$, then $h_n$ is an isomorphism and $h_{n+1}$ is surjective.  
+\end{theorem}
+
+\begin{theorem}[Relative Hurewicz]
+Let $n\in \Z_{\geq 2}$. If both $X$ and $A$ are simply connected and $\pi_i(X, A) =0$ for each $i\leq n-1$, then $\tilde{h}_n$ is an isomorphism and $\tilde{h}_{n+1}$ is surjective.
+\end{theorem}
+
+\begin{proof}[Proof of Hurewicz theorem]
+Suppose that $\pi_i(X) =0$ for each $1\leq i \leq n-1$. For induction, assume that $h_{n-1}$ is an isomorphism for any path connected space. From \cref{psfb}, we gather that the $n$-th page of the spectral sequence induced by the path space fibration $\Omega{X} \to P{X} \to X$ looks like
+\[
+\begin{sseqpage}[ homological Serre grading,  classes = {draw = none}, y tick gap = 2.0 em, scale = 1.6, x axis extend start = 2.0 cm, x axis extend end = 1.1cm, x range = {0}{2}, y range = {0}{1},
+x tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+{}
+\else	
+\ifnum#1 = 2\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}n
+\else
+#1n
+\fi
+\fi
+\fi
+},
+y tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}{n-1}
+\else
+#1(n-1)
+\fi
+\fi
+}]
+\class["\mathbb{Z}"](0,0)
+\class["H_{n-1}(\Omega{X})"](0,1)
+\class["H_{2n-2}(\Omega{S^n})"](0,2)
+\class["H_{3n-3}(\Omega{S^n})"](0,3)
+\class["H_n(X)"](2,0)
+\class["H_{n-1}(\Omega{X})"](2,1)
+\class[circle, fill](1,1)
+\class["H_{2n-2}(\Omega{S^n})"](2,2)
+\class["H_{3n-3}(\Omega{S^n})"](2,3)
+\d[ "d_n" { pos = 0.5, yshift = -5pt } ]2(2,0)
+\end{sseqpage}
+\] where $d_n$ is an isomorphism. Thanks to our inductive hypothesis together with \cref{loop}, we have now a commutative square of the form
+\[ \label{eqn:gsq}
+\begin{tikzcd}
+\pi_n(X) \arrow[d, "h_n"'] \arrow[r, "\underset{\cong}{\partial}"] & \pi_{n-1}(\Omega{X}) \arrow[d, "\underset{\cong}{h_{n-1}}"] \\
+H_n(X) \arrow[r, "\underset{\cong}{d_n}"']                         & H_{n-1}(\Omega{X})                                         
+\end{tikzcd}. \tag{$\ast$}
+\] This implies that $h_n$ is an isomorphism. It remains to verify our base case. Note that $\pi_1(\Omega{X})$ is isomorphic to $\pi_2(X)$ and thus abelian. It can be shown directly that $h_1$ factors as a composite
+\[
+\begin{tikzcd}
+\pi_1(\Omega{X}) \arrow[r, "\cong", two heads] \arrow[rr, "h_1"', bend right] & \pi_1(\Omega{X})^{\ab} \arrow[r, "\cong"] & H_1(\Omega{X})
+\end{tikzcd}
+\] of isomorphisms. Hence $h_2$ must be an ismorphism by \eqref{eqn:gsq}.
+\end{proof}
+
+\begin{question}
+Does a similar argument work for the relative Hurewicz theorem?
+\end{question}
+
+\begin{corollary}\label{Hcor} Let $X$ be path connected.
+\be
+\item $H_1(X) \cong  \pi_1^{\ab}(X)$.
+\item If $X$ is simply connected and $H_i(X) =0$ for every $1\leq i \leq n-1$, then $\pi_i(X) =0$ for every $1\leq i\leq n-1$.
+\item If $\pi_i(X) =0$ for each $0\leq i \leq n-1$, then $\widetilde{H}_i(X) =0$ for each $0 \leq i \leq n-1$. 
+\ee
+\end{corollary}
+
+\smallskip
+
+Let $n\geq 2$ and pick any generator $\left[f\right]$ of $\pi_{n-1}(\Omega{S^n}) \cong \pi_n(S^n) \cong \Z$. By \cref{Hur}, the induced map $f_{\ast} : H_{n-1}(S^{n-1}) \to H_{n-1}(\Omega{S^n})$ is an isomorphism.
+
+\begin{remark}
+Let $g: X \to Y$ be any map of spaces. Recall the mapping cylinder 
+\[
+\cyl(g) \equiv \frac{\left(X \times I\right) \coprod Y}{\left(x,0\right)\sim g(x)}
+\]
+of $g$. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=30mm]{map-cyl.jpg}
+\end{figure}
+
+This is precisely the pushout of the span $X \times I \overset{\sigma_0}{\longleftarrow} X \overset{g}{\longrightarrow} Y$. As it turns out, $g$ factors as
+\[
+\begin{tikzcd}
+X \arrow[rr, "g", bend left] \arrow[r, "\iota"', hook] & \cyl(g) \arrow[r, "h"'] & Y
+\end{tikzcd}
+\] for some deformation retraction $h$. Further, $\iota$ is a so-called \textit{cofibration}, the dual notion to a fibration.
+\end{remark}
+
+\smallskip
+
+Consider the subspace of $\Omega{S^n}$ consisting of all great circles passing through, say, the north pole. This is clearly homeomorphic to $S^{n-1}$. Thus, we get a LES in homology
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & \overbrace{H_{2n-2}(S^{n-1})}^{0} \arrow[r]  & \overbrace{H_{2n-2}(\Omega{S^n})}^{\Z} \arrow[r, "\cong"] & {H_{2n-2}(\Omega{S^n}, S^{n-1})} \arrow[lld] &                                                 \\
+                 & \underbrace{H_{2n-3}(S^{n-1})}_{0} \arrow[r] & H_{2n-3}(\Omega{S^n}) \arrow[r, "\cong"]                  & {H_{2n-3}(\Omega{S^n}, S^{n-1})} \arrow[r]   & \cdots \arrow[lld]                              \\
+                 &                                              & \underbrace{H_{n+1}(S^{n-1})}_{0} \arrow[r]               & H_{n+1}(\Omega{S^n}) \arrow[r, "\cong"]      & {H_{n+1}(\Omega{S^n}, S^{n-1})} \arrow[lld]     \\
+                 &                                              & \underbrace{H_{n}(S^{n-1})}_{0} \arrow[r]                 & H_{n}(\Omega{S^n}) \arrow[r, "\cong"]        & {H_{n}(\Omega{S^n}, S^{n-1})} \arrow[lld, "0"'] \\
+                 &                                              & H_{n-1}(S^{n-1}) \arrow[r, "\overset{\cong}{f_{\ast}}"']  & H_{n-1}(\Omega{S^n}) \arrow[r, "0"']         & {H_{n-1}(\Omega{S^n}, S^{n-1})} \arrow[ld]      \\
+                 &                                              &                                                           & \underbrace{H_{n-2}(S^{n-1})}_{0} \arrow[r]  & \cdots                                         
+\end{tikzcd}.
+\]
+
+From this, we deduce that
+\[
+H_i(\Omega{S^n}, S^{n-1}) = \begin{cases} 0 & i \leq 2n-3
+\\ \Z & i = 2n-2
+\end{cases}.
+\] By \cref{Hcor}(2), this means that
+\[
+\pi_i(\Omega{S^n}, S^{n-1}) = \begin{cases} 0 & i \leq 2n-3
+\\ \Z & i = 2n-2
+\end{cases}.
+\]
+This yields a LES in homotopy
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & \pi_{2n-2}(\Omega{S^n}) \arrow[r] & {\pi_{2n-2}(\Omega{S^n}, S^{n-1})} \arrow[ld] &                                                                  &                                                               &        \\
+                 & \pi_{2n-3}(S^{n-1}) \arrow[r]     & \pi_{2n-3}(\Omega{S^n}) \arrow[r]             & {\overbrace{\pi_{2n-3}(\Omega{S^n}, S^{n-1})}^{0}} \arrow[ld]    &                                                               &        \\
+                 &                                   & \pi_{2n-4}(S^{n-1}) \arrow[r, "\cong"]        & \underbrace{\pi_{2n-4}(\Omega{S^n})}_{\pi_{2n-3}(S^n)} \arrow[r] & {\underbrace{\pi_{2n-4}(\Omega{S^n}, S^{n-1})}_{0}} \arrow[r] & \cdots
+\end{tikzcd},
+\] which proves the following statement.
+
+\begin{theorem}[Suspension theorem]
+If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
+\end{theorem}
+
+\subsection{Lecture 13}
+
+As expected, spectral sequences have exact analogues in cohomology. Specifically, a cohomological spectral sequence consists of the following data: 
+\bi
+\item for each $r\in \Z_{\geq 0}$, a family of abelian groups $\left\{E_r^{p,q}\right\}_{p,q\in \Z}$ and
+\item a family of maps  $\left\{d_r^{p,q} : E_r^{p,q} \to E_r^{p+r, q-r+1}\right\}_{p,q\in \Z}$ (called \textit{differentials})  such that
+\item $d_r^{p,q} \circ d_r^{p-r, q+r-1} =0$ and
+\item $E_{r+1}^{p,q} = \frac{\ker{d_r^{p,q}}}{\im{d_r^{p-r, q+r-1}}}$.
+\ei
+
+Again, we shall consider only \textit{first-quadrant} spectral sequences, i.e., those for which $E^{p,q}_r =0$ unless $p,q\geq 0$.
+As a result, there is some $k\in \N$ such that $E_r = E_{r+1}$ for any $r\geq k$. 
+
+\begin{notation}
+$E_{\infty} \coloneqq E_k$.
+\end{notation}
+
+\begin{defn}[Convergence]
+ We say that a spectral sequence $E_{\ast} \coloneqq \left(E_r, d_r\right)$ \textit{converges} to a sequence of abelian groups $\left\{D^n\right\}_{n \in \Z_{\geq 0}}$, written as 
+ \[
+E_{\ast} \Rrightarrow \left\{D^n\right\},
+ \]
+ if for each $n$, there exists a filtration
+ \[
+ \cdots \subset D^{n+1, {-1}} = \left\{0\right\} \subset D^{n,0} \subset \cdots D^{1,n-1} \subset D^{0,n} =D^n
+ \]
+ of $D^n$ such that $\frac{D^{p,q}}{D^{p+1, q-1}} \cong E_{\infty}^{p,q}$.
+\end{defn}
+
+\begin{theorem}\label{spfib}
+Let $B$ be simply connected and path connected and suppose that $\pi: E \to B$ is a fibration with fiber $F$. There exists a (first-quadrant) spectral sequence $\left(E^r, d_r\right)$ that
+\be[label=(\alph*)]
+\item converges to $\left\{H^n(E)\right\}_{n\in \Z_{\geq 0}}$ and
+\item satisfies $E^{p,q}_2 \cong H^p(B; H^q(F))$.
+\ee
+\end{theorem}
+
+In pictures, we have
+
+\begin{center}
+\begin{sseqdata}[name = gen', cohomological Serre grading, no ticks]
+\begin{scope}[background]
+\node at (\xmax/2,\ymax+1.2) {\textup{Page \page}};
+\node[font = \small] at (\xmax/2,-1.7) {H^p(B)\coloneqq H^p(B; H^o(F))};
+\node at (-1.5,\ymax/2) {H^q(F)};
+\end{scope}
+\class(0,0)
+\class(0,1)
+\class(0,2)
+\class(1,2)
+\class(2,2)
+\class(1,0)
+\class(2,0)
+\class(1,1)
+\class(2,1)
+\class(3,0)
+\class(3,1)
+\class(3,2)
+\d2(0,2)
+\end{sseqdata}
+\printpage[ name = gen', page = 2 ]
+\end{center}
+
+\[
+\begin{tikzcd}
+H^q(E) \arrow[r, equals] \arrow[rrrrr, "i^{\ast}", bend right]   & {D^{0,q}} \arrow[r, two heads]   & {E_{\infty}^{0,q}} \arrow[r, hook] & \cdots \arrow[r, hook]      & {E_2^{0,q}} \arrow[r, equals]              & H^q(F) \\
+                                                         &                                  &                                    &                             &                                    &        \\
+                                                                                                                  &                                  &                                    &                             &                                    &        \\
+H^p(B) \arrow[r, equals] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \arrow[r, two heads] & {E_3^{p,0}} \arrow[r, two heads]   & \cdots \arrow[r, two heads] & {E_{\infty}^{p,0}} \arrow[r, hook] & H^p(E)
+\end{tikzcd}.
+\]
+
+\section{Chern classes}
+
+\textit{To do.}
+
+\section{Cobordism theory}
+
+\textit{To do.}
 
 \end{document}
