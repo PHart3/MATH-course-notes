@@ -261,8 +261,8 @@ This shows that an atlas is maximal  if and only if it's maximal in the usual in
 \item By our previous two examples, $\GL(n, \F) \subset \M(n, \F)$ is a smooth manifold.
 \item Let $U\subset \R^n$ be open and $F: U \to \R^m$ be continuous. Let $\Gamma(F)$ be the graph of $F$ and $\pi_1\restriction_\Gamma(F)$ be the restriction of the projection $(x, y)\mapsto x$. This is a homeomorphism between $\Gamma(F)$ and $U$. Hence $(\pi_1 \restriction_\Gamma(F), \Gamma(F))$ is a smooth atlas.
 \item For each $i = 1, 2, \ldots, n+1$, let $U_i^+ \coloneqq  \{ \x \in \R^{n+1}: x_i >0\}$. Define $U_i^-$ similarly. The $U_i^{\pm}$ cover $\S^n$. Define the map $f: B_1(0)\subset \R^n \to \R$ by $f(\u) = \sqrt{1 - |\u|^2}$. Define $x_i: B_1(0) \to \R$ by $f(x_1, \ldots, \widehat{x_i}, \ldots x_n)$.  Then $\Gamma(x_i) = U_i^+ \cap \S^n$ and $\Gamma(-x_i) = U_i^- \cap \S^n$. By our previous example, these graphs with their corresponding projections form a smooth structure on $\S^n$.
-\item Let $f: \underset{\text{open}}U\subset \R^m \to \R$ be smooth. For $c \in \R$, let $M_c: = f^{-1}(c)$. Assume that the total derivative $\nabla f(a)$ is nonzero for each $a \in M_c$.  Then $f_{x_i}(a) \ne 0$ for some $1 \leq i \leq m$. Then, by the implicit function theorem, there is some smooth $F: \R^{m-1} \to \R$ given by $x_i = F(x_1, \ldots, \widehat{x_i}, \ldots, x_m)$ on some neighborhood $U_a\subset \R^m$ of $a$ such that $f^{-1}(c) \cap U_a$ is the graph of $F$.  Then the $f^{-1}(c) \cap U_a$ together with their graph coordinates define a smooth atlas on $M_c$.
-\item For each $i = 1, \ldots, n+1$, let $\tilde{U_i}\coloneqq  \{\x \in \R^{n+1} : x_i \ne 0\}$. Let $\pi: \R^{n+1} \setminus\{0\} \to \RP^n$ be the quotient map and $U_i \coloneqq  \pi\left(\tilde{U_i}\right)$. Since $\tilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\tilde{U_i}}$ is a quotient map.\footnote{Munkres, James. Theorem 22.1. \textit{Topology}.} Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto \left(\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i}\right)$, which has inverse $(x_1, \ldots, x_n) \mapsto \left[x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n\right]$. Since $f_i \circ \pi$ is continuous, so is $f_i$.\footnote{Munkres, James. Theorem 22.2. \textit{Topology}.} Hence $f_i$ is a homeomorphism. It's easy to check that each transition $f_i \circ f_j^{-1}$ is smooth. Thus, the $(U_i, f_i)$ define a smooth atlas on $\RP^n$.
+\item Let $f: \underset{\text{open}}U\subset \R^m \to \R$ be smooth. For $c \in \R$, let $M_c: = f^{-1}(c)$. Assume that the total derivative $\nabla f(a)$ is nonzero for each $a \in M_c$.  Then $f_{x_i}(a) \ne 0$ for some $1 \leq i \leq m$. By the implicit function theorem, there is some smooth $F: \R^{m-1} \to \R$ given by $x_i = F(x_1, \ldots, \widehat{x_i}, \ldots, x_m)$ on some neighborhood $U_a\subset \R^m$ of $a$ such that $f^{-1}(c) \cap U_a$ is the graph of $F$.  This means that the open sets $f^{-1}(c) \cap U_a$ together with their graph coordinates define a smooth atlas on $M_c$.
+\item For each $i = 1, \ldots, n+1$, let $\tilde{U_i}\coloneqq  \{\x \in \R^{n+1} : x_i \ne 0\}$. Let $\pi: \R^{n+1} \setminus\{0\} \to \RP^n$ be the quotient map and $U_i \coloneqq  \pi\left(\tilde{U_i}\right)$. Since $\tilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\tilde{U_i}}$ is a quotient map.\footnote{Munkres, James. Theorem 22.1. \textit{Topology}.} Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto \left(\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i}\right)$, which has inverse $(x_1, \ldots, x_n) \mapsto \left[x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n\right]$. Since $f_i \circ \pi$ is continuous, so is $f_i$.\footnote{Munkres, James. Theorem 22.2. \textit{Topology}.} Hence $f_i$ is a homeomorphism. It's easy to check that each transition $f_i \circ f_j^{-1}$ is smooth. Thus, $(U_i, f_i)$ defines a smooth atlas on $\RP^n$.
 \item Let $M_1 \times \cdots \times M_k$ be a product of $n_i$-dimensional smooth manifolds. Then this is a smooth manifold of dimension $n_1 + \cdots + n_k$.
 \end{enumerate}
 \end{exmp}
@@ -276,7 +276,7 @@ Recall that $\faktor{\S^n}{\sim} \cong \RP^n$ where $x \sim y$ if $y = -x$. Thus
 \medskip
 
 
-Let $B\coloneqq \{V_n\}$ denote the usual countable basis of $\S^n$ inherited from $\R^{n+1}$. If $p\in U\subset P^n$ is open, then $\pi^{-1}(U)$ is a neighborhood of $\pi^{-1}(p)$, which equals $\{a, -a\}$ for some point $a$ on the sphere.  There is some ball $B \ni B_q(r) \cap \S^n \ni a$ with $q\in \Q$ and $r \in \Q^{n+1}$. Then $B \in B_q(-r) \cap \S^n \ni -a$. Note that the union of these two balls is contained in $\pi^{-1}(U)$ and is saturated, hence is mapped to a neighborhood $N \subset U$ of $p$. Thus $\pi(V_n)$ for $n\in \N$ is a countable basis of $P^n$.
+Let $B\coloneqq \{V_n\}$ denote the usual countable basis of $\S^n$ inherited from $\R^{n+1}$. If $p\in U\subset P^n$ is open, then $\pi^{-1}(U)$ is a neighborhood of $\pi^{-1}(p)$, which equals $\{a, -a\}$ for some point $a$ on the sphere.  There exist $q\in \Q$ and $r \in \Q^{n+1}$ such that $B \ni B_q(r) \cap \S^n \ni a$. In this case, $B \ni B_q(-r) \cap \S^n \ni -a$. Note that the union of these two balls is contained in $\pi^{-1}(U)$ and is saturated, hence is mapped to a neighborhood $N \subset U$ of $p$. Thus $\left\{\pi(V_n)\right\}_{n\in \N}$  is a countable basis of $P^n$.
 
 \medskip
 
@@ -284,7 +284,7 @@ Let $B\coloneqq \{V_n\}$ denote the usual countable basis of $\S^n$ inherited fr
 \end{proof}
 
 \begin{lemma}[Smooth manifold construction]\label{smc}
-Let $M$ be a set and $\{U_\alpha\}$ a collection of subsets with injections $\phi_\alpha : U_\alpha \to \R^n$ such that
+Let $M$ be a set and let $\{U_\alpha\}$ be a collection of subsets with injections $\phi_\alpha : U_\alpha \to \R^n$ such that
 \begin{enumerate}
 \item each $\phi_\alpha(U_\alpha)$ is open,
 \item any $\phi_\alpha(U_\alpha \cap U_\beta)$, $\phi_\beta(U_\alpha \cap U_\beta)$ are open,
@@ -295,10 +295,6 @@ Let $M$ be a set and $\{U_\alpha\}$ a collection of subsets with injections $\ph
 
 Then $M$ has a unique smooth manifold structure with $\left(U_\alpha, \phi_\alpha\right)$ as charts. 
 \end{lemma}
-
-\begin{proof}
-We show that the $U_a$ give a topology on $M$.
-\end{proof}
 
 \begin{definition}\label{d1}
 If $M^n$ is an $n$-dimensional manifold and $f: M^n \to \R$ is a function, we say that $f$ is \textit{differentiable at $p$} if there is some chart $(U_\alpha, \phi_\alpha)$ such that the coordinate representation $f\circ \phi_\alpha^{-1}: \phi(U_\alpha) \to \R$ is differentiable at $p$.

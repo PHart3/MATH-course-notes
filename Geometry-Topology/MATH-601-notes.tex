@@ -496,11 +496,11 @@ We see that $S^{n-1} \times I \cup D^n \times \{0\}$ is a retract of $D^n \times
 \caption{copied from Hatcher (15) \label{overflow}}
 \end{figure} In fact, setting $r_t(x) = tr(x) +(1-t)x$ for each $t\in I$ defines a deformation retraction $r$ of $D^n \times I$ onto $S^{n-1} \times I \cup D^n \times \{0\}$.
 \end{proof}
-\item If $A\coloneqq  \{0, 1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \ldots\}$, then $A \hookrightarrow I$ is not a cofibration.
+\item Let $A= \left\{0, 1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \ldots\right\}$. Then $A \hookrightarrow I$ is \emph{not} a cofibration.
 \begin{proof}
 Suppose, for contradiction, that there is some retraction $r: I \times I \to A \times I \cup I \times \{0\}$. For each $n\geq 1$, the set $c_n \coloneqq  \left[\left(\frac{1}{n+1}, 1), (\frac{1}{n}, 1\right)\right]$ is connected, so that $r(c_n)$ is connected as well. Thus, there exists $(x_n, 1) \in c_n$ such that $r(x_n, 1) = (x_n ,0)$. But then $(x_n, 1) \to (0, 1)$ whereas $r(x_n, 1) \to (0, 0)$. As $r(0,1) = (0,1)$, this contradicts the continuity of $r$. 
 \end{proof}
-\item Let $f: B \to A$ be a map. Then $(\cyl(f), B \times \{0\})$ satisfies HEP.
+\item Let $f: B \to A$ be a map. Then $\left(\cyl(f), B \times \{0\}\right)$ satisfies HEP.
 \end{enumerate}
 \end{exmp}
 
@@ -514,8 +514,10 @@ Define $U_n = X\times \{0\} \cup (X^n \cup A) \times I$ for each $n\geq -1$ with
 \end{proof}
 
 \begin{definition}
-Let $X$ be a space. Define $\pi_0(X) = \faktor{X}{\sim} $ where $x\sim y$ iff $\exists \varphi: I \to X$ such that $\varphi(0)=x$ and $\varphi(1) = y$. Then $\pi_0(X)$ is precisely the set of path components of $X$.
+Let $X$ be a space. Define $\pi_0(X) = \faktor{X}{\sim} $ where $x\sim y$ iff $\exists \varphi: I \to X$ such that $\varphi(0)=x$ and $\varphi(1) = y$.
 \end{definition}
+
+This means that $\pi_0(X)$ is precisely the set of path components of $X$.
 
 \begin{definition}
 Let $\gamma, \hat{\gamma}: I \to X$ be paths in $X$ such that $\gamma(0) = \hat{\gamma}(0)$ and $\gamma(1) = \hat{\gamma}(1)$.  A \textit{path homotopy from $\gamma$ to $\hat{\gamma}$} is a homotopy $H: I \times I \to X$ such that $H(0,s) = \gamma(0)$ and $H(1,s) = \gamma(1)$ for each $s\in I$. In this case, we write $\gamma \simeq_p \hat{\gamma}$.
@@ -541,9 +543,7 @@ This is in fact a groupoid in the sense of category theory.
 Given $x_0 \in X$, define the \textit{fundamental group of the pointed space $(X, x_0)$} as $$\pi_1(X, x_0) = \Hom_{\Pi_1(X)}(x_0,x_0) .$$ 
 \end{definition}
 
-\begin{note}
-The elements of $\pi_1(X, x_0)$ are precisely $\faktor{\{\gamma : S^1 \to X \mid \gamma(1,0) =x_0\}}{\simeq (\rel \ (1,0))}$
-\end{note}
+This means that $\pi_1(X, x_0) =  \faktor{\left\{\gamma : S^1 \to X \mid \gamma(1,0) =x_0\right\}}{\simeq (\rel \ (1,0))}$.
 
 \begin{prop}
 If there is some path $p$ from $x$ to $y$ in $X$, then $\pi_1(X, x) \cong \pi_1(X, y)$.
@@ -3217,7 +3217,7 @@ There are no projectives in $\mathbf{Sh}_{X}$.
 Let $I$ be a right $R$-module. Then $I$ is injective if and only if for any right ideal $J \unlhd R$, any map $\alpha : J \to I$ extends to a map $\tilde{\alpha} : R \to I$.
 \end{prop}
 \begin{proof}
-This requires Zorn's lemma.
+This is an application of Zorn's lemma.
 \end{proof}
 
 \begin{corollary}
@@ -3683,6 +3683,7 @@ Let $X$ be a path connected smooth compact manifold. The following object are in
 \end{enumerate}
 \end{theorem}
 \begin{proof} $ $
+\smallskip
 
 \underline{(3) $\implies$ (1)} Let $\beta : \pi_1(X, x_0) \to \GL_k(\R)$ be a homomorphism. Let $p : \widetilde{X} \to X$ be a universal cover. We can form $E_p \coloneqq  \widetilde{X} \times_{\pi_1(X, x_0)} \R^k$, which equals $\faktor{\widetilde{X} \times \R^k}{\sim}$ where $(x{\gamma}, v) \sim (x, p(\gamma)v)$.  Consider the map $T: E_p \to X$ given by $(x,v) \mapsto p(x)$. Then each fiber is isomorphic to $V$.
 \begin{claim}
