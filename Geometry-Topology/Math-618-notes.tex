@@ -270,7 +270,7 @@ A cell complex $X$ is \textit{regular} if every characteristic map $D_i^n \to X$
 \end{defn}
 
 \begin{defn}
-Given a family of functors $\{H_n : \mathbf{Top}^2 \to \mathbf{Ab}\}_{n\in \N}$ where $\mathbf{Top}^2$ denotes the category of (topological) pairs, we say that $H_i$ is a \textit{homology functor} if  each of the following properties holds.
+Given a family of functors $\left\{H_n : \mathbf{Top}^2 \to \mathbf{Ab}\right\}_{n\in \N}$ where $\mathbf{Top}^2$ denotes the category of (topological) pairs, we say that $H_i$ is a \textit{homology functor} if  each of the following properties holds.
 \be
 \item (LES) For any pair $(X, A)$ of space, there is a natural long exact sequence
 \[
@@ -1762,7 +1762,21 @@ If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
 
 \subsection{Lecture 13}
 
-As expected, spectral sequences have exact analogues in cohomology. Specifically, a cohomological spectral sequence consists of the following data: 
+As expected, spectral sequences have exact analogues in cohomology.  Before introducing them, let us review a bit of singular cohomology theory.  Let $X$ be a cell complex and let $n\in \Z_{\geq0}$. Recall that $C_n(X)$ the free abelian group on the set of all $n$-cells of $X$ and the boundary map $\partial_n : C_n(X) \to C_{n-1}(X)$. Let $$C^{n}(X) = \Hom(C_{n}(X), \Z) $$ and define the homomorphism $\delta^n : C^n(X) \to C^{n+1}(X)$ by $$\delta^n(\varphi) = \varphi \circ \partial_n.$$
+
+\begin{theorem}\label{cohomiso}
+$H^n(X) \cong \frac{\ker{\delta^{n+1}}}{\im{\delta^n}}$.
+\end{theorem}
+
+\begin{exmp}
+$H_{2i}(\CP^n) \cong \Z$.
+\end{exmp}
+
+\begin{theorem}[Poincar\'e duality]
+If $M$ is a connected orientable $n$-manifold, then $H_i(M) \cong H^{n-i}(M)$.
+\end{theorem}
+
+Now, a cohomological spectral sequence consists of the following data: 
 \bi
 \item for each $r\in \Z_{\geq 0}$, a family of abelian groups $\left\{E_r^{p,q}\right\}_{p,q\in \Z}$ and
 \item a family of maps  $\left\{d_r^{p,q} : E_r^{p,q} \to E_r^{p+r, q-r+1}\right\}_{p,q\in \Z}$ (called \textit{differentials})  such that
@@ -1834,7 +1848,52 @@ H^p(B) \arrow[r, equals] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \
 
 \section{Chern classes}
 
-\textit{To do.}
+Let $X$ be a cell complex. Recall the \textit{cup product} operation $H^i(X) \times H^j(X) \overset{\smile }{\longrightarrow} H^{i+j}(X)$ on cohomology, which is both bilinear and anti-commutative in the sense that
+\[
+x \smile y = ({-1})^{i+j}y \smile x.
+\]
+
+Consider the constant map $C_0(X) \to \Z$ given by $D^0 \mapsto 1$, which corresponds to an element $\mathbf{1}$ of $H^0(X)$ via \cref{cohomiso}. We have that
+\[
+{-\mathbf{1}}\smile x = x \smile \mathbf{1} = \mathbf{1}.
+\]
+
+\smallskip
+
+Suppose that $Y$ is another cell complex. Let $x \in H^i(X)$ and $y\in H^j(X)$ and let $f$ denote a map $Y \to X$. Then 
+\[
+f^{\ast}(x\smile y) =f^{\ast}(x)\smile f^{\ast}(y),
+\] i.e., $f^{\ast}$ is a graded ring homomorphism. Now, $X \times Y$ carries a cell complex structure with $n$-cells of the form 
+\[
+D^i \times D^j, \  \quad i+j =n
+\] and $n$-skeleton
+\[
+\left(X\times Y\right)^n \equiv \bigcup_{i+j =n}X^i \times Y^j.
+\] We have that 
+\[
+C_n(X \times Y) \cong C_n(X) \otimes_{\Z} C_n(Y)
+\] and, in light of the equation $\partial(D^i \times D^j) = \left(\partial{D^i} \times D^j\right) \cup \left(D^i \times \partial{D^j}\right)$, that
+\[
+\partial[D^i \times D^j] = \partial[D^i] \otimes D^j + ({-1})^i[D^i]\otimes \partial[D^j].
+\]
+Consider any two maps $f: C_i(X) \to \Z$ and $g: C_j(X) \to \Z$, extending them both by $0$ to the entire graded abelian group $C_{\ast}(X)$. Define $f \otimes g : C_m(X \times Y)\cong C_m(X) \otimes C_m(Y) \to \Z$ by 
+\[
+\left(f \otimes g\right)\left(u \otimes v\right) = f(u) \cdot g(v).
+\]
+
+
+
+\begin{prop}
+$\delta(f \otimes g) = \delta{f} \otimes g + (-1)^i{f} \otimes \delta{g}$.
+\end{prop}
+
+As it turns out, this means that the map $\left(f,g\right) \mapsto \left(f \otimes g\right)$ induces an operation $H^i(X) \times H^j(Y) \overset{\times}{\longrightarrow} H^{i+j}(X\times Y)$ on cohomology known as the \textit{cross product}. The relation between the cup and cross product has the form $\Delta^{\ast}(x\times y) = x\smile y$, where $\Delta : X \to X \times X$ denotes the diagonal map.
+
+\subsection{Lecture 14}
+
+\subsection{Lecture 15}
+
+\subsection{Lecture 16}
 
 \section{Cobordism theory}
 

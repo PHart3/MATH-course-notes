@@ -1,5 +1,5 @@
 \documentclass[10pt,letterpaper,cm]{nupset}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumerate}
   \usepackage{enumitem}
@@ -343,7 +343,10 @@ Let $f(x) = a_nx^n + \cdots + a_0$ over $\Q$ where $a_n \ne 0$. We know $f(x) = 
 
 \medskip
 
- Let $\Q[\tilde{\beta}]\coloneqq  \Q[\beta_1, \ldots, \beta_n] = \{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\}$. Let the Galois group of $f$ $$\gal(f)\coloneqq  \{\sigma \in S_n : \exists g(\sigma) : \Q[\tilde{\beta}] \to \Q[\tilde{\beta}] \text{ bijection with } g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)}) \text{ for } F \in \Q[x_1, \ldots, x_n]\}.$$
+Consider 
+\begin{align*}
+\Q[\tilde{\beta}] & \coloneqq  \Q[\beta_1, \ldots, \beta_n] = \left\{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\right\} \\ \gal(f) & \coloneqq  \left\{\sigma \in S_n : \exists\text{ bijection } g : \Q[\tilde{\beta}] \to \Q[\tilde{\beta}] \text{ s.t. }  g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)}) \text{ for all } F \in \Q[x_1, \ldots, x_n]\right\}.
+\end{align*}
 
 \begin{exercise}
 Show that $g: G \to \aut(\Q[\tilde{\beta]})$ is a homomorphism where $G \coloneqq  \{g(\sigma): \sigma \in \gal(f)\}$.
@@ -597,7 +600,7 @@ Let $k$ be a field and  $B_n(k)$ denote all $n\times n$ matrices of the form
   \left[
     \begin{matrix}
        a_1 & & &  &\\
-       & a_2 & & \ast  \\
+       & a_2 & & \Large{*}  \\
        & & \ddots & & \\
        & \text{\huge0}  & & & a_{n} 
 \\
@@ -863,7 +866,7 @@ A \textit{composition series for $G$} is a subnormal series $G = G_0 > G_1 > \cd
 \begin{enumerate}
 \item Any finitely generated group $G$ has a composition series.
 \begin{proof}
-If $G$ is simple, then we're done. So assume otherwise. Let $n\in \N$ be maximal so that there is some proper $H \lhd G$ that contains $n$ generators of $G$. Let $S$ denote the set of such $H$. Note that $S$ satisfies the hypotheses of Zorn, giving a maximal element $H'$. Then $\faktor{G}{H'}$ is simple. {[[How do we proceed if $H'$ is not simple or finitely generated? If $G$ is abelian, then we're good, but not otherwise.]]}
+If $G$ is simple, then we're done. So assume otherwise. Let $n\in \N$ be maximal so that there is some proper $H \lhd G$ that contains $n$ generators of $G$. Let $S$ denote the set of such $H$. Note that $S$ satisfies the hypotheses of Zorn, giving a maximal element $H'$. Then $\faktor{G}{H'}$ is simple. \reversemarginpar{\marginpar{\small{How do we proceed if $H'$ is not simple or finitely generated? If $G$ is abelian, then we're good, but not otherwise.}}}
 \end{proof}
 \item $\Z$ has no composition series, since no nontrivial subgroup of $\Z$ is simple.
 \item Any $p$-group admits a composition series where each factor is $\faktor{\Z}{p}$.
@@ -891,7 +894,7 @@ If the first condition holds so that $\sigma = (i_1 \cdots i_r)(j_1 \cdots j_r)\
 \\ \tau (j_1 \cdots j_r) \tau^{-1} & = (i_1 \cdots i_r).
 \end{align*} This implies that $\tau \in Z_{S_n}(\sigma)$. It's easy to see as well that there is an odd permutation in the centralizer when the second condition holds. Now, let $\phi \in \conj_{S_n}(\sigma)$. Write $\phi = \alpha \phi \alpha^{-1}$. Assume $\alpha$ is odd. Then there is some odd $\tau \in Z_{S_n}(\sigma)$. Noe that $(\alpha \tau) \sigma (\alpha \tau)^{-1} = \alpha \tau \sigma \tau^{-1} \alpha^{-1} = \alpha \sigma \alpha^{-1} = \phi$. But $\alpha \tau$ is even, completing the lemma.
 \end{proof}
-We have three cases to consider. If $p=2$, then $\sigma$ is the product of two independent transpositions. By the lemma, it follows that $N = A_5$. If $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose $p=5$. Write $\sigma = (i_1 \cdots i_5)$ and $\tau = (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5)$. Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper. {[[Why did we need that whole lemma?]]}
+We have three cases to consider. If $p=2$, then $\sigma$ is the product of two independent transpositions. By the lemma, it follows that $N = A_5$. If $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose $p=5$. Write $\sigma = (i_1 \cdots i_5)$ and $\tau = (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5)$. Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper.  \reversemarginpar{\marginpar{\small{Why did we need that whole lemma?}}}
 \end{proof}
 
 \begin{exmp}
@@ -988,7 +991,7 @@ Recall that if $H \unlhd G$ and $K \leq G$, then $HK = KH$ is a subgroup.
 Suppose $G = HK$ with $H\unlhd G$ and $H \cap K = \{e\}$. Let $\alpha : K \to \aut_{\mathsf{grp}}(H)$ be the inner automorphism of $H$, which depends on the group law $*_G$. Then $*_G$ can be recovered from $*_H$, $*_K$, and $\alpha$.
 \end{prop}
 \begin{proof}
-Let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely. Thus $g_1g_1 = (h_1\alpha_{k_1}(h_2))k_1k_2$.
+Let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely, so that $$g_1g_1 = (h_1\alpha_{k_1}(h_2))k_1k_2.$$
 \end{proof}
 
 \begin{definition}
@@ -1067,7 +1070,7 @@ Once we answer the question of existence, we ask in how many ways can we break a
 \begin{enumerate}
 \item Finite $G$ has both ACC and DCC.
 \item $\Z$ has ACC but not DCC.
-\item Given $p$ prime, let $G_p \coloneqq  \{z\in \C^{\ast} : z^{p^k} =1$ for some $k \}$. This has DCC but not ACC. {[[Why?]]}
+\item Given $p$ prime, let $G_p \coloneqq  \left\{z\in \C^{\ast} : z^{p^k} =1 \text{ for some } k \right\}$. This has DCC but not ACC.  \reversemarginpar{\marginpar{\small{Why?}}}
 \item $\Q$ has neither property.
 \end{enumerate}
 \end{exmp}
@@ -1170,7 +1173,7 @@ By our previous corollary, assuming that $\phi + \psi$ is not nilpotent, it must
 Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker U\geq \gamma^{-1}(\ker \phi) \cup \{e\} > \{e\}$. Likewise, $\ker V > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$, implying that $G$ is trivial. This contradicts that $G$ is indecomposable.
 \end{proof}
 
-We finally return to the proof of Krull-Schmidt. Suppose $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$. Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then our previous lemma implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$'s so that $B_j = B_1$. 
+We finally return to the proof of Krull-Schmidt. Suppose $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $$\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1).$$ Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then our previous lemma implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$'s so that $B_j = B_1$. 
 
 \medskip
 
@@ -1178,13 +1181,13 @@ We finally return to the proof of Krull-Schmidt. Suppose $r=1$. Let $p_i : G \to
 
 \medskip
 
- Let $\theta \coloneqq  (q_1f_1)(\gamma p_1g_1) : B_1 \to B_1$, which is normal. We want to check that this is the identity map. It's easy to compute $ \theta^2 =  \theta.$
-By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an automorphism, then $\theta^2 = \theta \implies \theta = \id_{B_1}$, and we're done. Suppose that it is nilpotent with $n$ minimal such that $\theta^n =0$. Then $0 = \theta^n = \theta^2 \circ \theta^{n-2} = \theta \circ \theta^{n-2}= \theta^{n-1}$. Hence $n=1$, so that $\theta =0$. This implies that $\id_{A_1}^2 = (\gamma p_1 g_1)(q_1 f_1)(\gamma p_1 g_1)(q_1 f_1) = (\gamma p_1 g_1)\theta(q_1 f_1) = 0$, forcing $A_1= \{e\}$, a contradiction.
+Consider $\theta \coloneqq  (q_1f_1)(\gamma p_1g_1) : B_1 \to B_1$, which is normal. We want to check that this is the identity map. It's easy to compute $ \theta^2 =  \theta.$
+By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an automorphism, then $\theta^2 = \theta \implies \theta = \id_{B_1}$, and we're done. Suppose that it is nilpotent with $n$ minimal such that $\theta^n =0$. Then $0 = \theta^n = \theta^2 \circ \theta^{n-2} = \theta \circ \theta^{n-2}= \theta^{n-1}$. Hence $n=1$, so that $\theta =0$. This implies that $$\id_{A_1}^2 = (\gamma p_1 g_1)(q_1 f_1)(\gamma p_1 g_1)(q_1 f_1) = (\gamma p_1 g_1)\theta(q_1 f_1) = 0,$$ meaning $A_1= \{e\}$, a contradiction.
 
 \medskip
 
 
-Now, $\ker q_1 = B_2 \times \cdots \times B_t$ {[[even after reindexing?]]}, while $\ker q_1 \circ f_1 = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t = (q_1f_1)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t ,$$ which is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker \psi =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which forces $H=G$.
+Now, $\ker q_1 = B_2 \times \cdots \times B_t$ \reversemarginpar{\marginpar{\small{Even after reindexing?}}}, and $\ker(q_1 \circ f_1) = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t = (q_1f_1)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t ,$$ which is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker \psi =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which forces $H=G$.
 
 \medskip
 
@@ -1215,7 +1218,7 @@ Let $G$ be a group. A \textit{filtration $F^{\bullet}{G}$ on $G$} is a subnormal
 \begin{note}\label{filt} Suppose that $F^{\bullet}G$ is a filtration on $G$.
 \begin{enumerate}
 \item If $i : H \hookrightarrow G$, then we get an induced filtration on $H$ given by $$F^a{H}\coloneqq  i^{-1}(F^aG) = H \cap F^a{G}.$$
-\item Similarly, if $q: G \to K$ is a quotient map, then we get an induced filtration on $K$ given by $$F^aK\coloneqq  q(F^aG) = \faktor{F^aG}{F^aG \cap \ker q}.$$ {[[How does this define a series of subgroups?]]}
+\item Similarly, if $q: G \to K$ is a quotient map, then we get an induced filtration on $K$ given by $$F^aK\coloneqq  q(F^aG) = \faktor{F^aG}{F^aG \cap \ker q}.$$  \reversemarginpar{\marginpar{\small{How does this define a series of subgroups?}}}
 \end{enumerate}
 \end{note}
 
@@ -1336,7 +1339,7 @@ Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensio
 \begin{enumerate}
 \item Since $Z(S_3) =\{e\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $|\aut(S_3)|\leq 6$. But $S_3 \leq \aut(S_3)$, forcing $\aut(S_3) = S_3$.
 \item If $G$ is abelian, then $\aut(G)= \out(G)$.
-\item Let $f: G \to H$ be a surjective map and $\phi \in \aut(G)$ such that $\phi(\ker f) = \ker f$. This induces an automorphism $\phi^f : H \to H$ given by $h = f(g) \mapsto f(\phi(g))$. {[[Is this well-defined?]]} Note that if $x\in G$, then $\conj_x: G \to G$ preserves any normal subgroup. Hence we get $(\conj_x)^f : H \to H$ given by $h\mapsto \conj_{f(x)}(h)$. In general, we have a group map $\inn(G) \to \inn(H)$, which in turn induces a group map $(-)^f: \faktor{\{\phi \in \aut(G) : \phi(\ker f)= \ker f\}}{\inn(G)} \to \out(H)$. {[[Why?]]}
+\item Let $f: G \to H$ be a surjective map and $\phi \in \aut(G)$ such that $\phi(\ker f) = \ker f$. This induces an automorphism $\phi^f : H \to H$ given by $h = f(g) \mapsto f(\phi(g))$. \reversemarginpar{\marginpar{\small{Is $\phi^f$ well-defined?}}} Note that if $x\in G$, then $\conj_x: G \to G$ preserves any normal subgroup. Hence we get $(\conj_x)^f : H \to H$ given by $h\mapsto \conj_{f(x)}(h)$. In general, we have a group map $\inn(G) \to \inn(H)$, which in turn induces a group map $(-)^f: \faktor{\{\phi \in \aut(G) : \phi(\ker f)= \ker f\}}{\inn(G)} \to \out(H)$.  \reversemarginpar{\marginpar{\small{Why does this induce $(-)^f$?}}}
 
 For example, consider the quotient $q : G \to G^{\ab}$. Since $[G, G]$ is a characteristic subgroup, we get $(-)^{\ab} : \out(G) \to \out(G^{\ab})\cong \aut(G^{\ab})$.
 \end{enumerate}
@@ -1399,9 +1402,12 @@ Injectivity follows from the fact that $i$ is injective. Recall the group law on
 \\ &  = (gag^{-1}, \psi(\alpha \circ q(g)(a)))
 \\ &  = (\alpha \circ q(g)(a),  \psi(\alpha \circ q(g)(a))),
  \end{align*} 
-which belongs to $\im(i \times \psi)$. {[[Why does $\alpha \circ q(g)(a) = gag^{-1}$ hold?]]}
+which belongs to $\im(i \times \psi)$.\reversemarginpar{\marginpar{\small{Why does $\alpha \circ q(g)(a) = gag^{-1}$ hold?}}}
 
-Finally, observe that $\ker (G\ltimes_{\beta \circ q} B \twoheadrightarrow K) = \{(g, b) : q(g) =e\} = \{(g, b) : g \in A\} \geq A\times \{e\} \cong A$. 
+Finally, observe that 
+\begin{align*}
+\ker (G\ltimes_{\beta \circ q} B \twoheadrightarrow K) & = \{(g, b) : q(g) =e\} 
+\\ & = \{(g, b) : g \in A\} \geq A\times \{e\} \cong A.\end{align*}
 \end{proof}
 Now, let $G_{\psi_{\ast}\xi}$ denote $G \cup_A B$, which equals $\faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
 
@@ -1489,13 +1495,13 @@ In general, given $(K, (A, \alpha))$ and a normalized function $f: K \times K \t
 .\]
 
 
-If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ is a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}.$ Thus, 
+If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ is a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $$\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}, $$ and thus 
 \begin{align*} \tilde{f}(x, y)f(x,y)^{-1} & = c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}s(xy)s(y)^{-1}s(x)^{-1}
 \\ &  = c(x)(s(x)c(y)s(x)^{-1})(s(x)s(y)s(xy)^{-1})c(xy)^{-1}s(xy)s(y)^{-1}s(x)^{-1}
 \\ &  = c(x)\alpha_x(c(y))c(xy)^{-1}f(x,y)f(x,y)^{-1} 
 \\ & =c(x)\alpha_x(c(y))c(xy)^{-1}.
 \end{align*}
-This gives a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto \left(\delta_c : (x, y) \mapsto   c(x)\alpha_x(c(y))c(xy)^{-1}\right)$, which we call the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}. {[[How do we know any first normalized cochain can be written in that form?]]}
+This gives a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto \left(\delta_c : (x, y) \mapsto   c(x)\alpha_x(c(y))c(xy)^{-1}\right)$, which we call the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}.  \reversemarginpar{\marginpar{\small{How do we know any first normalized cochain can be written in that form?}}}
 We in turn obtain a natural map $$\delta': \ext(K, (A, \alpha)) \to HH^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im \delta}$$ given by $(\xi, f) \mapsto [f]$. We call $HH^2(K, (A, \alpha))$ the \textit{second cohomology group of $K$ with coefficients in $(A, \alpha)$}.
 
 
@@ -1782,7 +1788,7 @@ $([0,1], M)$ is the terminal object in $\c$.
 \begin{note} $ $
 \begin{enumerate}
 \item By the Yoneda lemma, if $P$ is the product of $\{A_{\alpha}\}$, then there is some $\xi \coloneqq \{\pr_{\alpha} : P \to A_{\alpha}\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(P, A_{\alpha})$ such that $$\eta^{\xi}_B : h_P = \Hom_{\c}(B, P) \to \prod_{\alpha}\Hom_{\c} (B, A_{\alpha}) \quad \quad f \mapsto \{\pr_{\alpha} \circ f\}_{\alpha}$$ is a natural bijection in $B \in \ob \c$. This gives an isomorphism of set-valued presheaves $h_P \cong \Hom_{\c}(-, A_{\alpha})$. Let $$\prod_{\alpha} A_{\alpha} \coloneqq  P.$$ Then we have a natural bijection $\Hom_{\c}(B, \prod_{\alpha} A_{\alpha}) \cong \prod_{\alpha} \Hom_{\c}(B, A_{\alpha})$ in $B$.
-\item Likewise, if $Q$ is the coproduct of $\{A_{\alpha}\}$, then by viewing the coproduct functor as a presheaf on $\c^{\op}$ we get some $\xi\coloneqq  \{i_{\alpha} : A_{\alpha} \to Q\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(A_{\alpha}, Q)$ such that $$\Hom_{\c} (Q, B) \overset{\cong}{\longrightarrow} \prod_{\alpha}\Hom_{\c} (A_{\alpha}, B) \quad \quad f \mapsto \{f \circ i_{\alpha}\}_{\alpha}$$ for each $B\in \ob \c$. Let $$\coprod_{\alpha} A_{\alpha} \coloneqq  Q.$$ Then $\Hom_{\c}(\coprod_{\alpha} A_{\alpha}, B) \cong \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B)$ for each $B$.
+\item Likewise, if $Q$ is the coproduct of $\{A_{\alpha}\}$, then by viewing the coproduct functor as a presheaf on $\c^{\op}$ we get some $\xi\coloneqq  \{i_{\alpha} : A_{\alpha} \to Q\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(A_{\alpha}, Q)$ such that $$\Hom_{\c} (Q, B) \overset{\cong}{\longrightarrow} \prod_{\alpha}\Hom_{\c} (A_{\alpha}, B) \quad \quad f \mapsto \{f \circ i_{\alpha}\}_{\alpha}$$ for each $B\in \ob \c$. Let $$\coprod_{\alpha} A_{\alpha} \coloneqq  Q.$$ Then $\Hom_{\c}\left(\coprod_{\alpha} A_{\alpha}, B\right) \cong \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B)$ for each $B$.
 \end{enumerate}
 \end{note}
 
@@ -1969,7 +1975,13 @@ $\Fr(S) \cong \Fr(T) \iff S\cong T.$
 
 $(\Longrightarrow)$ Assume that $\Fr(S) \cong \Fr(T)$. Then $$\bigoplus_{s\in S} G_s \cong \Fr(S)^{\ab} \cong \Fr(T)^{\ab} \cong \bigoplus_{t\in T} G_t.$$ Hence $\Fun^{\fs}(S, C_2)\cong \faktor{\bigoplus_{s\in S} G_s}{2\bigoplus_{s\in S} G_s} \cong \faktor{\bigoplus_{t\in T} G_t}{2\bigoplus_{t\in T} G_t}\cong \Fun^{\fs}(T, C_2)$. But then $\Fun^{\fs}(S, C_2)$ and  $\Fun^{\fs}(T, C_2)$ are isomorphic as $C_2$-vector spaces, so that $S \cong T$ as bases. 
 \begin{remark} There is another proof if we restrict our set-theoretic universe. Specifically,
-the adjunction $(\Fr, \lvert - \rvert)$ gives $$P(T) \cong \Hom_{\mathbf{Set}}(T, C_2) \cong \Hom_{\mathbf{Grp}}(\Fr(T), C_2)\cong \Hom_{\mathbf{Grp}}(\Fr(S), C_2)\cong \Hom_{\mathbf{Set}}(S, C_2)\cong P(S).$$
+the adjunction $(\Fr, \lvert - \rvert)$ yields  
+\begin{align*}
+P(T) & \cong \Hom_{\mathbf{Set}}(T, C_2)
+\\ &  \cong \Hom_{\mathbf{Grp}}(\Fr(T), C_2)
+\\ & \cong \Hom_{\mathbf{Grp}}(\Fr(S), C_2)
+\\ & \cong \Hom_{\mathbf{Set}}(S, C_2)
+\\ & \cong P(S).\end{align*}
 If we assume the continuum hypothesis, then this implies that $S \cong T$.
 \end{remark}
 \end{proof}
@@ -2206,7 +2218,7 @@ Let $\mathcal{F}$ denote the set of any finitely generated submodule $N\subset M
 \begin{tikzcd}
 0 \arrow[r] & N \arrow[r, "i", hook] & M \arrow[r, "q", two heads] & \faktor{M}{N} \arrow[r] & 0
 \end{tikzcd}.
-\] Let $M_1 \subset M_2 \subset \cdots \subset M$ be an ascending chain of submodules.  Then $q(M_1) \subset q(M_2) \subset \cdots \faktor{M}{N}$ is an ascending chain of submodules, which must stabilize at, say, the $k$-th position. Also, the ascending chain $N \cap M_1 \subset N \cap M_2 \subset \cdots N$ must stabilize at, say, the $l$-th position. Set $ r= \max\{k, l\}$.
+\] Let $M_1 \subset M_2 \subset \cdots \subset M$ be an ascending chain of submodules.  Then $$q(M_1) \subset q(M_2) \subset \cdots \faktor{M}{N}$$ is an ascending chain of submodules, which must stabilize at, say, the $k$-th position. Also, the ascending chain $N \cap M_1 \subset N \cap M_2 \subset \cdots N$ must stabilize at, say, the $l$-th position. Set $ r= \max\{k, l\}$.
 \[
 \begin{tikzcd}
 N \cap M_i \arrow[r, hook] & M_i \arrow[r, two heads] & q(M_i) \\
@@ -2226,11 +2238,11 @@ We have the short exact sequence.
  &  &  & \coprod_{t\in T}R \arrow[u, "\beta", two heads] & 
 \end{tikzcd}
 .\]
-Since the free module functor is left adjoint to the forgetful functor, it follows that $\beta$ lifts to a homomorphism $ \coprod_{t\in T}R \overset{\theta}{\longrightarrow} M$  if and only if the set map $T \to \faktor{M}{N}$ lifts to a set map $T \to M$. But there is some set-theoretic section $s: \faktor{M}{N} \to M$, making $T \overset{\beta}{\longrightarrow} \faktor{M}{N} \overset{s}{\longrightarrow} M$ such a lift in $\mathbf{Set}$. Thus we obtain such a lift $\theta$ in $R{-}\mathbf{Mod}$. Define the homomorphism $$\phi : (\coprod_{s\in S} R) \coprod (\coprod_{t\in T} R)\to M, \quad \quad (x,y) \mapsto \alpha(x) + \theta(y),$$ which satisfies
+Since the free module functor is left adjoint to the forgetful functor, it follows that $\beta$ lifts to a homomorphism $ \coprod_{t\in T}R \overset{\theta}{\longrightarrow} M$  if and only if the set map $T \to \faktor{M}{N}$ lifts to a set map $T \to M$. But there is some set-theoretic section $s: \faktor{M}{N} \to M$, making $T \overset{\beta}{\longrightarrow} \faktor{M}{N} \overset{s}{\longrightarrow} M$ such a lift in $\mathbf{Set}$. Thus we obtain such a lift $\theta$ in $R{-}\mathbf{Mod}$. Define the homomorphism $$\phi : \left(\coprod_{s\in S} R\right) \coprod \left(\coprod_{t\in T} R\right)\to M, \quad \quad (x,y) \mapsto \alpha(x) + \theta(y),$$ which satisfies
 \[
 \begin{tikzcd}
 0 \arrow[r] & N \arrow[r, "i", hook] & M \arrow[r, "q", two heads] & \faktor{M}{N} \arrow[r] & 0 \\
-0 \arrow[r] & \coprod_{s\in S}R \arrow[u, "\alpha"] \arrow[r, hook] & (\coprod_{s\in S} R) \coprod (\coprod_{t\in T} R) \arrow[u, "\phi"] \arrow[r, two heads] & \coprod_{t\in T}R \arrow[u, "\beta", two heads] \arrow[r] & 0
+0 \arrow[r] & \coprod_{s\in S}R \arrow[u, "\alpha"] \arrow[r, hook] & \left(\coprod_{s\in S} R\right) \coprod \left(\coprod_{t\in T} R\right) \arrow[u, "\phi"] \arrow[r, two heads] & \coprod_{t\in T}R \arrow[u, "\beta", two heads] \arrow[r] & 0
 \end{tikzcd}.
 \] 
 If $x\in M$, then we can find some $y\in \coprod_{t\in T}R$ such that $\beta(y) = q(x)$. Also, $q\circ \theta(y) = \beta(y)$, so that $q(x- \theta(y) ) = 0$, i.e., $x-\theta(y) \in N$. There is some $m\in \coprod_{s\in S}R$ such that $\alpha(m) = x-\theta(y)$. Hence $x= \phi(m,y)$, proving that $\phi$ is surjective. This is to say that $M$ is finitely generated.
@@ -2370,7 +2382,7 @@ Let $P(x)$ be a polynomial of degree $k$ with roots $x_1, \ldots, x_k$. If $n\in
 \end{definition}
 It is known that any elementary symmetric polynomial can be expressed in terms of Newton sums. In our case, we can express each coefficient of $\chi_a(x)$ in terms of $S(a), S(a^2) , \ldots, S(a^{|G|})$.
 
-Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S(u_i^k)\right\}_{i=1, \ldots, m,\ k=1, \ldots, |G|}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{|G|}$ can be written as a $B$-combination of $1, u_i, \ldots, u_i^{|G|-1}$. {[[Why?]]} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where each $0\leq \alpha_i <|G|$. We may thus write $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha}, \quad \alpha_i < |G|, \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha})$. As each $\alpha_i<|G|$,  the set $\{S(u^{\alpha})\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
+Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S(u_i^k)\right\}_{i=1, \ldots, m,\ k=1, \ldots, |G|}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{|G|}$ can be written as a $B$-combination of $1, u_i, \ldots, u_i^{|G|-1}$.\reversemarginpar{\marginpar{\small{Why can it be written like this?}}} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where each $0\leq \alpha_i <|G|$. We may thus write $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha}, \quad \alpha_i < |G|, \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha})$. As each $\alpha_i<|G|$,  the set $\{S(u^{\alpha})\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
 \end{proof}
 
 \section{Projective and injective modules}
@@ -2420,9 +2432,12 @@ the sequence
 \item  The forgetful functor $U : R{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ is both additive and exact.
 \item If $R$ is a ring, then the functors $\Hom_R(M, -) : R{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ and $\Hom_R(-, M) :R{-}\mathbf{Mod}^{\op} \to \Z{-} \mathbf{Mod}$ are both left exact.
 \begin{proof}
-We verify that $\Hom_R(M, -)$ is left exact. Let \begin{tikzcd}
+We verify that $\Hom_R(M, -)$ is left exact. Let 
+\[
+\begin{tikzcd}
 0 \arrow[r] & X' \arrow[r, "f"] & X \arrow[r, "g"] & X'' \arrow[r] & 0
-\end{tikzcd} be a short exact sequence of $R$-modules. Apply $\Hom_R(M, -)$ to get a sequence of abelian groups.
+\end{tikzcd} 
+\] be a short exact sequence of $R$-modules. Apply $\Hom_R(M, -)$ to get a sequence of abelian groups.
 \[
 \begin{tikzcd}
 0 \arrow[r] & {\Hom_R(M, X')} \arrow[r, "f\circ (-)"] & {\Hom_R(M,X)} \arrow[r, "g\circ (-)"] & {\Hom_R(M, X'')} \arrow[r] & 0
@@ -2548,13 +2563,16 @@ Any short exact sequence of $R$-modules $0 \to M \to X \to X'' \to 0$ with $M$ i
 \begin{corollary}
 If $\{M_{\lambda}\}$ is a collection of $R$-modules, then $\coprod_{\lambda} M_{\lambda}$ is projective  if and only if each $M_{\lambda}$ is projective. 
 \end{corollary}
-\begin{proof}
-$(\Longleftarrow)$ As each $M_{\lambda}$ is projective, we know that $\Hom_R(M_{\lambda}, -)$ is an exact functor. This implies that $\Hom_R(\coprod_{\lambda} M_{\lambda}, -) \cong \prod_{\lambda} \Hom_R(M_{\lambda}, -)$ is exact as well.
+\begin{proof} $ $
+
+\smallskip
+
+$(\Longleftarrow)$ As each $M_{\lambda}$ is projective, we know that $\Hom_R(M_{\lambda}, -)$ is an exact functor. This implies that $\Hom_R(\coprod_{\lambda} M_{\lambda}, {-}) \cong \prod_{\lambda} \Hom_R(M_{\lambda}, -)$ is exact as well.
 
 \medskip
 
  
-$(\Longrightarrow)$ As $\coprod_{\lambda} M_{\lambda}$ is projective, there is some $R$-module $N$ such that $(\coprod_{\lambda} M_{\lambda}) \coprod N \cong M_{\lambda} \coprod  (\coprod_{\alpha \ne \lambda} M_{\alpha})\coprod N$ is free.
+$(\Longrightarrow)$ As $\coprod_{\lambda} M_{\lambda}$ is projective, there is some $R$-module $N$ such that $$\left(\coprod_{\lambda} M_{\lambda}\right) \coprod N \cong M_{\lambda} \coprod  \left(\coprod_{\alpha \ne \lambda} M_{\alpha}\right)\coprod N$$ is free.
 \end{proof}
 
 \begin{corollary}
@@ -2586,7 +2604,7 @@ Let \[
  & \Q &  \\
 0 \arrow[r] & X' \arrow[r, "i"', hook] \arrow[u, "\phi"] & X
 \end{tikzcd}
-\] be an injectivity diagram. The set $$\{ (A, \xi) : X' \subset \underbrace{A}_{\text{abelian}} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \}$$ is nonempty and partially ordered  by $\leq$ where $(A_1, \xi_1) \leq (A_2, \xi_2)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn, there is some maximal element $(A, \xi)$. If $A = X$, then we are done. Suppose, for contradiction, that $A \subsetneq X$. There is some $x\in X \setminus A$. Let $\tilde{A} = \langle A, x\rangle \subset X$. 
+\] be an injectivity diagram. The set $$\left\{ (A, \xi) : X' \subset \underbrace{A}_{\text{abelian}} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \right\}$$ is nonempty and partially ordered  by $\leq$ where $(A_1, \xi_1) \leq (A_2, \xi_2)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn, there is some maximal element $(A, \xi)$. If $A = X$, then we are done. Suppose, for contradiction, that $A \subsetneq X$. There is some $x\in X \setminus A$. Let $\tilde{A} = \langle A, x\rangle \subset X$. 
 
 We can extend $\xi : A \to \Q$ to a homomorphism $\tilde{\xi} : \tilde{A} \to \Q$ by deciding where to send $x$. Indeed, if $nx \notin A$ for every nonzero integer $n$, then set $\tilde{\xi}(x) = 0$. If there is some $n\in \Z \setminus \{0\}$ such that $nx \in A$, then $\{n \in \Z : nx \in A\}$ is an ideal in $\Z$ and thus equals $(n_0)$ for some integer $n_0 >0$. Define $\tilde{\xi}(x) = \frac{\xi(n_0x)}{n_0} \in \Q$. 
 

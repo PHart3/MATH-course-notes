@@ -1,5 +1,5 @@
 \documentclass[10pt,letterpaper,cm]{nupset}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumitem}
  \usepackage{stmaryrd}
@@ -220,7 +220,7 @@ This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bulle
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $F_{\ast} = F_{\ast}' + F_{\ast}''$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
-As $S_2\c$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two compositions $\c \times \c \overset{\coprod}{\longrightarrow} S_2 \c  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$ are the same. The extension theorem implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2 \c)$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
+As $S_2\c$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2 \c  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. The extension theorem implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2 \c)$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
 \end{proof}
 
 \begin{definition}
@@ -273,7 +273,7 @@ Note that axiom 3 gives us a cofiber sequence $A \rightarrowtail \cone(A) \twohe
 Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
 \begin{notation}
 Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of any $A$ where $\ast \to A$ is in $w(\c)$.
-\end{notation} {[[Are the initial morphisms the only w.e.?]]}
+\end{notation}\reversemarginpar{\marginpar{\small{Are the initial morphisms the only w.e.?}}}
 
 \begin{theorem}[Waldhausen localization theorem]
 The sequence $$ K(A^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
@@ -300,7 +300,7 @@ vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\text{co}
 
 \medskip
 
- It therefore suffices to show that the top row is a fibration. {[[What about the left vertical morphism?]]} You can do this by using the relative $K$-theory space construction. See Weibel, IV.8.5.3 and V.2.1.
+ It therefore suffices to show that the top row is a fibration.\reversemarginpar{\marginpar{\small{What about the left vertical morphism?}}} You can do this by using the relative $K$-theory space construction. See Weibel, IV.8.5.3 and V.2.1.
 \end{proof}
 
 \begin{definition}

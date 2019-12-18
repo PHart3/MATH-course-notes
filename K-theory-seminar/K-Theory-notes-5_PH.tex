@@ -1,5 +1,5 @@
 \documentclass[10pt,letterpaper,cm]{nupset}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumitem}
  \usepackage{stmaryrd}
@@ -390,7 +390,7 @@ $(S_q \c, wS_q \c)$ is a Waldhausen category.
 Let $\c$ be a category with cofibrations. If $\alpha : [p] \to [q]$, then define $\alpha^{\ast} : S_q \c \to S_p \c$ by
 $$\alpha^{\ast}(X: \Ar[q] \to \c) = X \circ \Ar(\alpha) : \Ar[p] \to \Ar[q] \to \c.$$
 It's easy to check that this satisfies the two conditions of a diagram in $S_p \c$.
-Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$. {[[Not sure that the $s_i$ work.]]} 
+Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$.\reversemarginpar{\marginpar{\small{Not sure that the $s_i$ work.}}}
 \end{definition}
 
 \begin{prop}
@@ -421,7 +421,7 @@ We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N
  If $q = 0$, then $w S_0 \c = S_0 \c = \ast$, so that $N_{\bullet} w S_0\c = \ast$ as well. If $q= 1$, then
 $w S_1 \c \cong w \c$. Thus, the right $1$-skeleton is equal to $N_{\bullet} w \c  \land \Delta_{\bullet}^1$, which in turn must be equal to the image $I$ of the canonical map $$\coprod_{q\leq 1} N_{\bullet} w S_q \c \times \Delta_{\bullet}^q \to N_{\bullet} w S_{\bullet} \c.$$ Now, the degeneracy map $s_0$ collapses $\{\ast\} \times \Delta_{\bullet}^1$, and the face maps $d_0$ and $d_1$ collapse $ N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}$. 
 Therefore, $I$ must equal $$N_{\bullet} w \c  \land \Delta_{\bullet}^1  = \frac{N_{\bullet} w \c \times \Delta_{\bullet}^1}{\{\ast\} \times \Delta_{\bullet}^1 \cup N_{\bullet} w \c \times \partial{\Delta_{\bullet}^1}}.$$  We have defined a natural inclusion map $\lambda : N_{\bullet} w \c \land \Delta_{\bullet}^1 \to  N_{\bullet} w S_{\bullet} \c$.
-\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$. {[[This is a tentative explanation due to Thomas Brazelton.]]}
+\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$.\footnote{This is a tentative explanation due to Thomas Brazelton.}
 \end{proof}
 
 \begin{remark}

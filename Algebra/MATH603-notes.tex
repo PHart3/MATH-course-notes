@@ -1,5 +1,5 @@
 \documentclass[10pt,letterpaper,cm]{nupset}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumerate}
   \usepackage{enumitem}
@@ -424,7 +424,7 @@ We can extend this sequence to a long exact sequence of abelian groups $$0 \to \
 \begin{exercise}
 Show that if $(\xi)$ is split, then $\delta_{\xi}(\id_M) =0$.
 \end{exercise} 
-This implies that  $e$ is injective. {[[How?]]} We need to show that it is surjective as well. Suppose that $\gamma \in \ext_R^1(M, N)$ and let $I_{\bullet}$ be an injective resolution of $N$. Apply $\Hom_R(M, -)$ to $I_{\bullet}$ to get $$0 \to \Hom_R(M, N) \overset{\nu}{\longrightarrow} \Hom_R(M, I_0) \overset{d_0}{\longrightarrow} \Hom_R(M, I_1) \overset{d_1}{\longrightarrow} \cdots   $$ (where we have abused the notation $d_i$). 
+This implies that  $e$ is injective.\reversemarginpar\marginpar{\small{How is it that $e$ is injective?}} We need to show that it is surjective as well. Suppose that $\gamma \in \ext_R^1(M, N)$ and let $I_{\bullet}$ be an injective resolution of $N$. Apply $\Hom_R(M, -)$ to $I_{\bullet}$ to get $$0 \to \Hom_R(M, N) \overset{\nu}{\longrightarrow} \Hom_R(M, I_0) \overset{d_0}{\longrightarrow} \Hom_R(M, I_1) \overset{d_1}{\longrightarrow} \cdots   $$ (where we have abused the notation $d_i$). 
 By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note that $f: M \to \ker{\partial_1} = \im{\partial_0}$, giving 
 \[ \begin{tikzcd}
 0 \arrow[r] & N \arrow[r] & I_0 \arrow[r, "\partial_0"] & \im{\partial_0} \arrow[r] & 0 \\
@@ -476,7 +476,7 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 \begin{proof} $ $
 \\
 ($\Longrightarrow$) We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)\mapsto \sum_{i=1}^na_ix_i$. Then $K\coloneqq  \ker{\varphi}= \{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n)$ is a relation of the $x_i$'s in $R.\}$. We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R (-)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = (N\text{-relations}) = N\otimes_R K$.
-\\ ($\Longleftarrow$) Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0$. Hence $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right)$. As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. We compute $$\sum_{i=1}^n y_i \otimes z_i = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) = \sum_{j=1}^n (v_j \otimes 0) = 0.$$
+\\ ($\Longleftarrow$) Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0$. Hence $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right)$. As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. We compute $$\sum_{i=1}^n y_i \otimes z_i = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) = \sum_{j=1}^n (v_j \otimes 0) = 0.$$
 \end{proof}
 
 \begin{corollary} $ $
@@ -494,7 +494,7 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 
 Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B)$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some map $\underline{\varphi} : R_x \to B$.
 
-In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make $\underbrace{\cl(S)}_{\textit{multiplicative closure}}$ invertible.
+In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make the \textit{multiplicative closure $\cl(S)$ of $S$} invertible.
 
 \begin{definition}
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
@@ -699,7 +699,7 @@ Any information about $A$, any prime ideal in $A$, any localization in $A$, and 
 
 \medskip
 
- Let $X\coloneqq  \mathsf{Spec}(A)$, the set of all prime ideals in $A$.  For any $f\in A$, define the \textit{principal open subset associated with $f$} as $$X_f = \{ \p \in X \mid f\notin \p\}.$$  Such subsets satisfy 
+ Let $X= \mathsf{Spec}(A)$, the set of all prime ideals in $A$.  For any $f\in A$, define the \textit{principal open subset associated with $f$} as $$X_f = \{ \p \in X \mid f\notin \p\}.$$  Such subsets satisfy 
 \begin{enumerate}[label=(\alph*)]
 \item $X_f \cap X_g = X_{fg}$.
 \item $X_{f^n} = X_f$, $X_f = X \iff f\notin \p \ \forall \p \text{ prime} \iff f\in A^{\times}$.
@@ -761,7 +761,7 @@ This geometric way of packaging information about $A$ and all of its prime ideal
 $X$ is quasi-compact, meaning that any open cover $\{U_{\alpha}\}$ of $X$ admits some finite subcover. 
 \end{lemma}
 \begin{proof}
-Let $X = \bigcup_{\alpha} U_{\alpha}$. The principal opens generate the Zariski topology, so that for any $\alpha$, we can find a cover $U_{\alpha} = \bigcup_{\beta} X_{f_{\alpha}^{\beta}}$ where $f_{\alpha}^{\beta}\in A$. Then $X = \bigcup_{\alpha, \beta} X_{f_{\alpha}^{\beta}}$, so that $\emptyset = \bigcap_{\alpha, \beta}(\underbrace{X - X_{f_{\alpha}^{\beta}}}_{V({f_{\alpha}^{\beta}})})$. But $\emptyset \bigcap_{\alpha, \beta} V({f_{\alpha}^{\beta}})= V(\{ {f_{\alpha}^{\beta}} \}_{\alpha, \beta})$. Hence $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$ is not contained in a ny prime ideal, so that $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle =A$, hence $1\in \langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$. We can find a collection of elements $\{a_{\alpha}^{\beta} \}_{\alpha, \beta}$ where $a_{\alpha}^{\beta} \in A$ such that $1= \sum_{\alpha, \beta} a_{\alpha}^{\beta} f_{\alpha}^{\beta}$ and at most finitely many $a_{\alpha}^{\beta}$ are nonzero. Thus, there is sequence $(\alpha_1, \beta_1), \ldots, (\alpha,_k , \beta_k)$ with $\langle f_{\alpha_1}^{\beta_1}, \ldots, f_{\alpha_k}^{\beta_k} \rangle = \langle 1 \rangle = A$. Hence $V(f_{\alpha_1}^{\beta_1}) \cap \cdots \cap V(f_{\alpha_k}^{\beta_k}) = \emptyset$, and $X = X_{f_{\alpha_1}^{\beta_1}} \cup \cdots \cup X_{f_{\alpha_k}^{\beta_k}}$. But $X_{f_{\alpha_i}^{\beta_i}} \in U_{\alpha_i}$ for each $i=1, \ldots, k$. Therefore, $X= U_{\alpha_1} \cup \cdots \cup U_{\alpha_k}$.
+Let $X = \bigcup_{\alpha} U_{\alpha}$. The principal opens generate the Zariski topology, so that for any $\alpha$, we can find a cover $U_{\alpha} = \bigcup_{\beta} X_{f_{\alpha}^{\beta}}$ where $f_{\alpha}^{\beta}\in A$. Then $X = \bigcup_{\alpha, \beta} X_{f_{\alpha}^{\beta}}$, so that $$\emptyset = \bigcap_{\alpha, \beta}(\underbrace{X - X_{f_{\alpha}^{\beta}}}_{V({f_{\alpha}^{\beta}})}).$$ But $\emptyset = \bigcap_{\alpha, \beta} V({f_{\alpha}^{\beta}})= V(\{ {f_{\alpha}^{\beta}} \}_{\alpha, \beta})$. Hence $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$ is not contained in a ny prime ideal, so that $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle =A$, hence $1\in \langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$. We can find a collection of elements $\{a_{\alpha}^{\beta} \}_{\alpha, \beta}$ where $a_{\alpha}^{\beta} \in A$ such that $1= \sum_{\alpha, \beta} a_{\alpha}^{\beta} f_{\alpha}^{\beta}$ and at most finitely many $a_{\alpha}^{\beta}$ are nonzero. Thus, there is sequence $(\alpha_1, \beta_1), \ldots, (\alpha,_k , \beta_k)$ with $\langle f_{\alpha_1}^{\beta_1}, \ldots, f_{\alpha_k}^{\beta_k} \rangle = \langle 1 \rangle = A$. Hence $V(f_{\alpha_1}^{\beta_1}) \cap \cdots \cap V(f_{\alpha_k}^{\beta_k}) = \emptyset$, and $X = X_{f_{\alpha_1}^{\beta_1}} \cup \cdots \cup X_{f_{\alpha_k}^{\beta_k}}$. But $X_{f_{\alpha_i}^{\beta_i}} \in U_{\alpha_i}$ for each $i=1, \ldots, k$. Therefore, $X= U_{\alpha_1} \cup \cdots \cup U_{\alpha_k}$.
 \end{proof}
 
 \begin{exmp}
@@ -946,7 +946,7 @@ The fact that (b) and (c) are equivalent is obvious.
 
 \medskip
 
- Suppose that $u$ is not simple, so that $u= vw$ with $v,w \in A$ not units. Then in $\faktor{A}{(u)}$ we have two elements $[v]$ and $[w]$ such that $[v]\cdot [w] = [u] = [0]$. But both $[v]$ and $[w]$ are nonzero since $A$ has cancellations as a $PID$. Thus, $\faktor{A}{(u)}$ is not a field.
+ Suppose that $u$ is not simple, so that $u= vw$ with $v,w \in A$ not units. Then in $\faktor{A}{(u)}$ we have two elements $[v]$ and $[w]$ such that $[v]\cdot [w] = [u] = [0]$. But both $[v]$ and $[w]$ are nonzero since $A$ has cancellations as a PID. Thus, $\faktor{A}{(u)}$ is not a field.
 
 \medskip
 
@@ -1120,7 +1120,7 @@ We have that $f(x) = (x- \alpha_1)(x-\alpha_2)(x-\alpha_3)$ in $L[x]$. Look at $
 Suppose that $f$ has no roots in $K$. Then $[L:K] = 3 \iff \disc{f} \in K^2$.
 \end{prop}
 \begin{proof}
-We know that $f$ is irreducible over $K$. Hence $K_1 = \faktor{K[x]}{(f)}$ is an extension of degree $3$ in which $f$ has a root $\alpha_1$. Note that $\disc(f) \notin K^2 \iff \disc(f) \notin K_1^2$. The ($\Longleftarrow$) direction is obvious. For the reverse direction, suppose, towards a contradiction, that $\disc(f) \notin K^2$ but $\disc(f) \in K_1^2$. This means that $[K[\sqrt{\disc(f)}] :K] = 2$ and $K\subset K[\sqrt{\disc(f)}] \subset K_1$. Thus, $3 = [K_1 : K] = [K[\sqrt{\disc(f)}] : K] \cdot [K_1 : K[\sqrt{\disc(f)}]] = 2 \cdot 1$, a contradiction. 
+We know that $f$ is irreducible over $K$. Hence $K_1 = \faktor{K[x]}{(f)}$ is an extension of degree $3$ in which $f$ has a root $\alpha_1$. Note that $\disc(f) \notin K^2 \iff \disc(f) \notin K_1^2$. The ($\Longleftarrow$) direction is obvious. For the reverse direction, suppose, towards a contradiction, that $\disc(f) \notin K^2$ but $\disc(f) \in K_1^2$. This means that $\left[K[\sqrt{\disc(f)}] :K\right] = 2$ and $K\subset K[\sqrt{\disc(f)}] \subset K_1$. Thus, $3 = [K_1 : K] = \left[K[\sqrt{\disc(f)}] : K\right] \cdot \left[K_1 : K[\sqrt{\disc(f)}]\right] = 2 \cdot 1$, a contradiction. 
 
 \medskip
 
@@ -1168,7 +1168,11 @@ We write $\F_q$ for the splitting field for $x^q -x \in \F_p[x]$.
 \item The group $\F_q^{\times}$ is a cyclic group of order $q-1$
 \begin{proof}
 By the structure theorem for finite abelian groups, we get 
-$$\F_q^{\times} \cong  \Z/p_1^{m_{11}} \times \Z/p_1^{m_{12}} \times \cdots \times \Z/p_1^{m_{1k}} \times \Z/p_2^{m_{21}} \times \Z/p_2^{m_{22}} \times \cdots \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{s1}} \times \Z/p_s^{m_{s2}} \times \cdots \times \Z/p_s^{m_{sk}} .$$ 
+\begin{align*}
+\F_q^{\times} \cong  \Z/p_1^{m_{11}}  & \times \Z/p_1^{m_{12}} \times \cdots \times \Z/p_1^{m_{1k}}
+ \times \Z/p_2^{m_{21}} \times \Z/p_2^{m_{22}}  \times \cdots
+ \\ &  \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{s1}} \times \Z/p_s^{m_{s2}} \times \cdots \times \Z/p_s^{m_{sk}} .
+\end{align*}
 Let $\alpha_i = p_1^{m_{1i}}p_2^{m_{2i}}\cdots p_s^{m_{si}}$ for each $i=1, \ldots, k$. Hence $|\F_q^{\times}| \mid d_1d_2 \cdots d_k$ where $d_1 \mid d_2 \mid \cdots \mid d_k$. Hence every element in $\F_q^{\times}$ has order dividing $d_k$.  For any $a\in \F_q$, $a^{d_k +1} =a$, so that $|\F_q| = \deg{x^{d_k+1} -x} = d_k+1$. Then $q \leq d_k+1$, so that $q-1 \leq d_k$. Since $d_k \mid q-1$, we have that $d_k = q-1$. Thus, $d_1 = d_2 = \cdots = d_{k-1} = 1$. Hence $\F_q^{\times} \cong \Z/p_1^{m_{1k}} \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{sk}}$. Since the $p_i^{m_{ik}}$ are pairwise coprime, it follows that $\F_q^{\times} \cong  \Z/p_1^{m_{1k}} p_2^{m_{2k}} \cdots p_s^{m_{sk}}$. 
 \end{proof}
 \begin{corollary}
@@ -1176,7 +1180,7 @@ Since $\F_q^{\times}$ is cyclic , we know that $\F_q^{\times} = \langle \sigma \
 \end{corollary}
 \item $\aut(\F_q)$ is a cyclic group of order $n$. In fact, $\aut(\F_q) \cong \langle \varphi \rangle$ where $\varphi$ denotes Frobenius.
 \begin{proof}
-We have arranged it so that $\F_q$ is unique up to isomorphism over $\F_p$, so that each $\psi \in \aut(\F_q)$ restricts to the identity on $\F_p \subset \F_q$. This implies that $\aut(\F_q) \cong \aut(\F_q/\F_p)$, which is the subgroup of all $\psi : \F_q \overset{\cong}{\longrightarrow} \F_q$ such that $\psi \restriction_{\F_p} = \id_{\F_p}$. {[[Why?]]}
+We have arranged it so that $\F_q$ is unique up to isomorphism over $\F_p$, so that each $\psi \in \aut(\F_q)$ restricts to the identity on $\F_p \subset \F_q$. This implies that $\aut(\F_q) \cong \aut(\F_q/\F_p)$, which is the subgroup of all $\psi : \F_q \overset{\cong}{\longrightarrow} \F_q$ such that $\psi \restriction_{\F_p} = \id_{\F_p}$.
 \begin{lemma}
 Let $L \supset K$ be a finite field extension of degree $n$. Then we have that $|\aut(L/K)| \leq n$.
 \end{lemma}
@@ -2593,7 +2597,7 @@ Define the \textit{Verdier quotient of $\d$ by $\v$} is the category $\d/\v$ wit
 \end{definition}
 
 \begin{remark}
-There exists a canonical isomorphism $\colim_{a' \in (\q/a)^{\op}} \Hom_{\d}(a', b) \cong \colim_{b' \in (b/\q)}\Hom_{\d}(a, b')$.  For this, we must check that given a top triangle 
+There exists a canonical isomorphism $$\colim_{a' \in (\q/a)^{\op}} \Hom_{\d}(a', b) \cong \colim_{b' \in (b/\q)}\Hom_{\d}(a, b').$$  For this, we must check that given a top triangle 
 \[
 \begin{tikzcd}
 a' \arrow[r, "\text{q-iso}"] \arrow[rd] & a \arrow[d] \\
@@ -2638,7 +2642,10 @@ If $\d$ is triangulated and $\u, \v \subset \d$ are strict full triangulated sub
 \item The functor $\d \to \u$ given by $z \mapsto x(z)$ is triangulated and is right adjoint to $\u \hookrightarrow \d$. 
 
 Dually, the functor $\d \to \v$ given by $z \mapsto y(z)$ is triangulated and is left adjoint to $\v \hookrightarrow \d$.
-\item Each of $\u$ and $\v$ determines the other. Specifically, $\v = \u^{\perp} \underbrace{\equiv \{y \in \ob{\d} \mid \Hom_{\d}(x,y) = 0, \ x \in \ob{\u}\}}_{\text{full subcategory}}$, and $\u = {^{\perp}{\v}} \underbrace{\equiv \{x \in \ob{\d} \mid \Hom_{\d}(x,y) =0, \ y \in \ob{\v}\}}_{\text{full subcategory}}$. In particular, both $\u$ and $\v$ are thick subcategories. 
+\item Each of $\u$ and $\v$ determines the other. Specifically, 
+\begin{align*} \v & = \u^{\perp} \underbrace{\equiv \{y \in \ob{\d} \mid \Hom_{\d}(x,y) = 0, \ x \in \ob{\u}\}}_{\text{full subcategory}}
+\\ \u  & = {^{\perp}{\v}} \underbrace{\equiv \{x \in \ob{\d} \mid \Hom_{\d}(x,y) =0, \ y \in \ob{\v}\}}_{\text{full subcategory}}.
+\end{align*} In particular, both $\u$ and $\v$ are thick subcategories. 
 \item The natural compositions $\u \hookrightarrow \d \to \d/\v$ and $\v \hookrightarrow \d \to \d/\u$ are triangulated equivalences. 
 \end{enumerate}
 \end{exercise}
