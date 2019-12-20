@@ -353,6 +353,12 @@ Thus, we get a chain complex
 This proves that $$ H_i( \RP^n) = \begin{cases} \Z & i =0 \\ \Z/2 & i =1 \\ 0 & i =2 \\ \Z/2 & \underset{odd}{i} <n \\ 0 & \underset{even}{i} <n \\ 0 & i >n \\ \Z & i =n \text{ odd} \\ 0 & i= n \text{ even}    \end{cases}  .$$
 \end{exmp}
 
+\smallskip
+
+\begin{exmp}
+$H_{2i}(\CP^n) \cong \Z$.
+\end{exmp}
+
 \bigskip
 
 Next, let's introduce some fundamental concepts from homotopy theory. 
@@ -1286,7 +1292,7 @@ Therefore, $f \circ g \simeq \id_{B_2}$. Similarly, $g\circ f \simeq \id_{B_1}$.
 
 In particular, $B_G \simeq B'_G$.
 
-\begin{exmp}
+\begin{exmp}\label{classcirc}
 $B_{S^1} = \CP^{\infty}$.
 \end{exmp}
 
@@ -1765,16 +1771,18 @@ If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
 As expected, spectral sequences have exact analogues in cohomology.  Before introducing them, let us review a bit of singular cohomology theory.  Let $X$ be a cell complex and let $n\in \Z_{\geq0}$. Recall that $C_n(X)$ the free abelian group on the set of all $n$-cells of $X$ and the boundary map $\partial_n : C_n(X) \to C_{n-1}(X)$. Let $$C^{n}(X) = \Hom(C_{n}(X), \Z) $$ and define the homomorphism $\delta^n : C^n(X) \to C^{n+1}(X)$ by $$\delta^n(\varphi) = \varphi \circ \partial_n.$$
 
 \begin{theorem}\label{cohomiso}
-$H^n(X) \cong \frac{\ker{\delta^{n+1}}}{\im{\delta^n}}$.
+$H^n(X;\Z) \cong \frac{\ker{\delta^{n+1}}}{\im{\delta^n}}$.
 \end{theorem}
 
 \begin{exmp}
-$H_{2i}(\CP^n) \cong \Z$.
+$H^{\ast}(\CP^n; \Z) \cong \faktor{\Z[x]}{\left(x^{n+1}\right)}$ with $\underset{\text{dim.}}{\lvert{x}\rvert} =2$.
 \end{exmp}
 
 \begin{theorem}[Poincar\'e duality]
 If $M$ is a connected orientable $n$-manifold, then $H_i(M) \cong H^{n-i}(M)$.
 \end{theorem}
+
+\medskip
 
 Now, a cohomological spectral sequence consists of the following data: 
 \bi
@@ -1817,7 +1825,7 @@ In pictures, we have
 \begin{sseqdata}[name = gen', cohomological Serre grading, no ticks]
 \begin{scope}[background]
 \node at (\xmax/2,\ymax+1.2) {\textup{Page \page}};
-\node[font = \small] at (\xmax/2,-1.7) {H^p(B)\coloneqq H^p(B; H^o(F))};
+\node[font = \small] at (\xmax/2,-1.7) {H^p(B)\coloneqq H^p(B; H^0(F))};
 \node at (-1.5,\ymax/2) {H^q(F)};
 \end{scope}
 \class(0,0)
@@ -1846,11 +1854,11 @@ H^p(B) \arrow[r, equals] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \
 \end{tikzcd}.
 \]
 
-\section{Chern classes}
+\bigskip
 
-Let $X$ be a cell complex. Recall the \textit{cup product} operation $H^i(X) \times H^j(X) \overset{\smile }{\longrightarrow} H^{i+j}(X)$ on cohomology, which is both bilinear and anti-commutative in the sense that
+Let $X$ be a cell complex. Recall the \textit{cup product} operation $H^i(X) \times H^j(X) \overset{\smile }{\longrightarrow} H^{i+j}(X)$ on cohomology, which is both bilinear and \textit{anti-commutative} in the sense that
 \[
-x \smile y = ({-1})^{i+j}y \smile x.
+x \smile y = ({-1})^{ij}y \smile x.
 \]
 
 Consider the constant map $C_0(X) \to \Z$ given by $D^0 \mapsto 1$, which corresponds to an element $\mathbf{1}$ of $H^0(X)$ via \cref{cohomiso}. We have that
@@ -1872,7 +1880,7 @@ D^i \times D^j, \  \quad i+j =n
 \] We have that 
 \[
 C_n(X \times Y) \cong C_n(X) \otimes_{\Z} C_n(Y)
-\] and, in light of the equation $\partial(D^i \times D^j) = \left(\partial{D^i} \times D^j\right) \cup \left(D^i \times \partial{D^j}\right)$, that
+\] and, in light of the fact that $\partial(D^i \times D^j) = \left(\partial{D^i} \times D^j\right) \cup \left(D^i \times \partial{D^j}\right)$, that
 \[
 \partial[D^i \times D^j] = \partial[D^i] \otimes D^j + ({-1})^i[D^i]\otimes \partial[D^j].
 \]
@@ -1882,18 +1890,126 @@ Consider any two maps $f: C_i(X) \to \Z$ and $g: C_j(X) \to \Z$, extending them 
 \]
 
 
-
 \begin{prop}
 $\delta(f \otimes g) = \delta{f} \otimes g + (-1)^i{f} \otimes \delta{g}$.
 \end{prop}
 
 As it turns out, this means that the map $\left(f,g\right) \mapsto \left(f \otimes g\right)$ induces an operation $H^i(X) \times H^j(Y) \overset{\times}{\longrightarrow} H^{i+j}(X\times Y)$ on cohomology known as the \textit{cross product}. The relation between the cup and cross product has the form $\Delta^{\ast}(x\times y) = x\smile y$, where $\Delta : X \to X \times X$ denotes the diagonal map.
 
-\subsection{Lecture 14}
+\medskip
 
-\subsection{Lecture 15}
+In general, let $R_1$, $R_2$, and $R_3$ be commutative rings and let $\mu : R_1 \times R_2 \to R_3$ denote  ``multiplication." This induces the cup product on cohomology
+\begin{align*}
+H^i(X; R_1)&  \times H^j(X; R_2)  \overset{\smile}{\longrightarrow} H^{i+j}(X; R_3)
+\\ & \quad\quad\quad  \Downarrow
+\\ H^p(B, H^q(F))& \times H^{p'}(B, H^{q'}(F)) \overset{\smile}{\longrightarrow} H^{p+p'}(B, H^{q+q'}(F))
+\\ E_2^{p,q}& \times E_2^{p', q'}  \overset{\smile}{\longrightarrow} E_2^{p+p', q+q'}. 
+\end{align*}
 
-\subsection{Lecture 16}
+\begin{prop}
+For any $r\in \Z_{\geq 2}$, there is a certain operation $\smile_r : E_r^{p,q} \times E_r^{p',q'} \to E_r^{p+p', q+q'}$ such that
+\[
+d_r(x\smile y) = d_r(x) \smile y + ({-1})^{p+q}x \smile d_r(y).
+\] 
+\end{prop}
+\begin{proof}[Construction]
+Let $r\in \Z_{\geq 2}$ and  suppose, for induction, that we have already constructed $\smile_r$. Let $x \in E_r^{p,q}$ and $y\in E_r^{p',q'}$. Suppose that $d_r{x} =d_r{y} =0$, so that $d_r(x \smile y) =0$. If $y = d_r(z)$, then 
+\[
+x \smile y = x \smile d_r(z) = d(x\smile z) \pm \underbrace{d_r(x)}_{0} \smile z.
+\] by induction. This means that $\smile_r$ induces a pairing $\smile_{r+1}$ on $E_{r+1}$. To complete our induction on $r$, simply  take the ordinary cup product on cohomology to be $\smile_2$.
+\end{proof}
+
+Now, given the filtration
+\[
+\left\{0\right\} \subset D^{n,0} \subset \cdots \subset D^{0,n} \subset H^n(E),
+\] the operation $\smile_r$ on $E_r$ carries $D^{p,q} \times D^{p',q'}$ to $D^{p+p', q+q'}$ where $p+q = p'+q' =n$, thereby inducing a pairing $$\smile_{\infty}: E_{\infty}^{p,q} \times E_{\infty}^{p',q'} \to E_{\infty}^{p+p', q+q'}$$
+on $E_{\infty}$.
+
+\smallskip
+
+\begin{exmp}
+Consider the fiber bundle $S^1 \to S^{2n+1} \twoheadrightarrow \CP^n$, so that
+\[
+E_2^{p,q} \cong H^p(\CP^n; H^q(S^1)).
+\] Pick a generator $x$ of  the group $H^1(S^1) \cong \Z$. Then the cohomology ring $H^{\ast}(S^1)$ is isomorphic to $\faktor{\Z[x]}{\left(x^2\right)}$, and 
+\[
+H^i(S^1) \cong \begin{cases} \Z & i =0,1 \\ 0 & i>1 \end{cases}.
+\] Moreover, recall that
+\[
+H^i(\CP^n) \cong \begin{cases}  
+\Z & 0\leq i \leq 2n, \ i \equiv 0 \mod 2
+\\ 0 & \text{otherwise}
+\end{cases},
+\]
+which yields
+\[
+\begin{sseqpage}[ cohomological Serre grading,  classes = {draw = none}, y tick gap = 2.0 em, scale = 1.6, y axis gap = 40pt, x axis extend end = 1.1cm, x range = {0}{6}, y range = {0}{2},
+x tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+1
+\else	
+\ifnum#1 = 2\relax
+2
+\else	
+\ifnum#1 = 3\relax
+3
+\else	
+\ifnum#1 = 4\relax
+4
+\else	
+\ifnum#1 = 5\relax
+{\cdots}
+\else	
+\ifnum#1 = 6\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}2n
+\else
+#1n
+\fi
+\fi
+\fi
+\fi
+\fi
+\fi
+\fi
+}]
+\begin{scope}[background]
+\node at (\xmax/2,\ymax+0.6) {\textup{Page 2}};
+\node[font = \small] at (\xmax/2,-1.1) {H^p(\CP^n)};
+\node at (-2.0,\ymax/2) {H^q(S^1)};
+\end{scope}
+\class["\Z"](0,0)
+\class["\Z"](0,1)
+\class(0,2)
+\class(0,3)
+\class["\Z"](2,0)
+\class[circle, fill](2,1)
+\class(1,0)
+\class(1,1)
+\class(2,2)
+\class(2,3)
+\class(3,-1)
+\class["\Z"](4,0)
+\class["\Z"](6,0)
+\d["d_2"]2(0,1)
+\d["d_2"]2(2,1)
+\end{sseqpage}
+\]
+where each $d_2$ is an isomorphism. Suppose that $x$ is a generator of $H^1(S^1)$ and let $c = d_2(x)$. Then $$d_2(c \smile x) = c\smile d_2(x) = c^2,$$ which is a generator of $H^4(\CP^n)$. Similarly, $c^i$ is a generator of $H^{2i}(\CP^n)$ for each $i\in \Z_{\geq 0}$.
+\end{exmp}
+
+By letting $c^0 =1$ and making $n$ large enough, we have determined the ring structure of $H^{\ast}(\CP^{\infty})$.
+
+\begin{theorem}
+If $c_1$ is a generator of $H^2(\CP^{\infty})\cong \Z$, then $\underbrace{H^{\ast}(B_{S^1})  =H^{\ast}(\CP^{\infty})}_{\cref{classcirc}} \cong \Z[c_1]$.
+\end{theorem}
+
+\section{Characteristic classes}
+
+\textit{To do.}
 
 \section{Cobordism theory}
 
