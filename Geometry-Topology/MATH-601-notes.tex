@@ -2156,7 +2156,7 @@ The stalk of $\mathcal{O}_n$ at $x$ is isomorphic to $H_n(X, X \setminus x) \con
 \begin{note}
 Let $X$ be an $n$-manifold.
 \begin{enumerate}
-\item Let $X^{or} \coloneqq  \{(x, \alpha) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) =\langle \alpha \rangle \}$. Topologize this by letting a basic neighborhood of $(x, \alpha)$ look like $$\widetilde{U}\coloneqq  \{(y, j_y^U(\alpha_U)) \mid y \in U\}$$ where $U$ is a neighborhood of $x$ such that $j_y^U$ is an isomorphism for each $y\in U$.
+\item Let $X^{or} \coloneqq  \left\{(x, \alpha) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) =\langle \alpha \rangle \right\}$. Topologize this by letting a basic neighborhood of $(x, \alpha)$ look like $$\widetilde{U}\coloneqq  \left\{(y, j_y^U(\alpha_U)) \mid y \in U\right\}$$ where $U$ is a neighborhood of $x$ such that $j_y^U$ is an isomorphism for each $y\in U$.
 
 The projection map $p: X^{or} \to X$ is two-to-one and thus a two-fold covering of $X$, called the \textit{orientation cover}. A (continuous) section $o: X \to X^{or}$ of $p$ is an orientation of $X$.
 
@@ -2170,7 +2170,7 @@ If $X$ is simply connected, then $X$ is orientable.
 \begin{proof}
 If $X$ is simply connected, then it has no subgroup of index $2$. Since every nontrivial two-sheeted covering space of $X$ corresponds to an index-2 subgroup of $\pi_1(X)$, it follows that $p$ is trivial. Thus, $X^{or} \cong X \coprod X$. 
 \end{proof}
-\item Let $X^{Zor} \coloneqq  \{(x, \alpha) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) \}$. Topologize this by letting a basic neighborhood of $(x, \alpha)$ look like $$\widetilde{U}\coloneqq  \{(y, j_y^U(\alpha_U)) \mid y \in U\}$$ where $U$ is a basic neighborhood of $x$ but $j_y^U$ need not be an isomorphism. 
+\item Let $X^{Zor} \coloneqq  \left\{(x, \alpha) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) \right\}$. Topologize this by letting a basic neighborhood of $(x, \alpha)$ look like $$\widetilde{U}\coloneqq  \left\{(y, j_y^U(\alpha_U)) \mid y \in U\right\}$$ where $U$ is a basic neighborhood of $x$ but $j_y^U$ need not be an isomorphism. 
 
 The projection $p: X^{Zor} \to X$ is an $\aleph_0$-sheeted covering projection, with each sheet corresponding to an element of $\Z$. Let  $\Gamma(A)$ denote the space of sections $s: A \to X^{Zor}$ over an open subset $A\subset X$. Note that $\Gamma(A)$ inherits an abelian group operation from $\Z$. 
 \end{enumerate}
@@ -3602,14 +3602,14 @@ We call the dimension of $E_0$ the \textit{rank of the bundle}. If $\pi$ is smoo
 
 \begin{exercise} Let $\pi: E \to X$ be a smooth vector bundle.
 \begin{enumerate}
-\item  Let $\{U_{\alpha}\}$ be an open cover of $X$ and $\{g_{\alpha{\beta}}\}$  a collection of transition functions. Show that $C^{\infty}(X; E) \cong \{ s_{\alpha} : U_{\alpha} \to \R^k \mid g_{\alpha{\beta}} s_{\beta} = s_{\alpha}\}$.
+\item  Let $\{U_{\alpha}\}$ be an open cover of $X$ and $\{g_{\alpha{\beta}}\}$  a collection of transition functions. Show that $C^{\infty}(X; E) \cong \left\{ s_{\alpha} : U_{\alpha} \to \R^k \mid g_{\alpha{\beta}} s_{\beta} = s_{\alpha}\right\}$.
 \item Consider $\CP^n$. There exists a rank one \textit{tautological bundle $ \gamma \overset{\pi}{\longrightarrow} \CP^n$}, also known as the \textit{complex line bundle}. We have that $\CP^n \equiv \C^{n+1}\setminus \{0\} /\C^{\times} = \text{(lines through 0 in } \C^{n+1}\text{)}$. If $l \subset \C^{n+1}$ is such a line, then let $\alpha_l = l$. Compute $g_{01} : U_{01} \to \C^{\times} = \GL_1(\C)$. It should look like $z^{-1}$.
 \item Consider the bundle $\gamma^{\ast}$ on $\mathcal{O}(n)$, where the transition function is precisely $z^n$. Show that meromorphic functions on $\CP^1$ correspond to algebraic sections of $\mathcal{O}(n)$, which are precisely homogenous polynomial of degree $n$.
 \end{enumerate}
 \end{exercise}
 
 \begin{note}
-We want to differentiate sections of a vector bundle. Let $s : X \to E$ be a section. Let $$ d_v{s_x} = \lim_{h \to 0} \frac{s(x+hv) - s(x)}{h}   .$$ We need a way to compare points in different fibers. This leads to the notation of a \textit{connection}. Define $\nabla : C^{\infty}(X; E) \to \Omega^1(X; E)\cong C^{\infty}(X; T^{\ast}X \otimes E)$ by $f{s} \mapsto df \otimes s + f{\nabla{s}}$ where $s \in C^{\infty}(X; E)$ and $f \in C^{\infty}(X)$.  We have that $\nabla_v(s) = i_v\nabla{s} \in \Omega^1(X; E)$ and $\nabla_{fv}(s) = f \nabla_v(s)$. 
+We want to differentiate sections of a vector bundle. Let $s : X \to E$ be a section. Let $$ d_v{s_x} = \lim_{h \to 0} \frac{s(x+hv) - s(x)}{h}   .$$ We need a way to compare points in different fibers. This leads us to the notation of a \textit{connection}. Define $\nabla : C^{\infty}(X; E) \to \Omega^1(X; E)\cong C^{\infty}(X; T^{\ast}X \otimes E)$ by $f{s} \mapsto df \otimes s + f{\nabla{s}}$ where $s \in C^{\infty}(X; E)$ and $f \in C^{\infty}(X)$.  We have that $\nabla_v(s) = i_v\nabla{s} \in \Omega^1(X; E)$ and $\nabla_{fv}(s) = f \nabla_v(s)$. 
 
 On a trivial bundle, connections exist. Indeed, given $X \times V$ and $s : X \to V$, we see that $\nabla_0(s) = ds \in \Omega^1(X) \otimes V$. More generally, if $\omega \in \omega^1(X) \otimes \ed(V)$, then $\nabla_0 + w$ is also a connection.
 

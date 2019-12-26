@@ -1,0 +1,456 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+
+\usepackage{ dsfont }
+\usepackage{stackengine}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+    
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{cor}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{question}{Question}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\newcommand{\A}{\mathbf A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb {CP}}
+\newcommand{\RP}{\mathbb {RP}}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\newcommand{\OR}{\mathcal O}
+\renewcommand{\P}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\T}{\mathcal T}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\renewcommand{\a}{\vec{a}}
+\renewcommand{\b}{\vec b}
+\renewcommand{\c}{\vec c}
+\renewcommand{\d}{\vec d}
+\newcommand{\e}{\vec e}
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\y}{\vec y}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\vec {0}}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator{\Rng}{range}
+\DeclareMathOperator{\LFT}{LFT}
+\DeclareMathOperator{\ORT}{O}
+\DeclareMathOperator{\Gemu}{gemu}
+\DeclareMathOperator{\Almu}{almu}
+\DeclareMathOperator{\Char}{\mathsf{char}}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Norm}{N}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Rnk}{rank}
+\DeclareMathOperator*{\Area}{area}
+\DeclareMathOperator*{\Vol}{volume}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Symm}{Symm}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\U}{U}
+\newcommand{\ihat}{\bm{\hat{\imath}}}
+\newcommand{\jhat}{\bm{\hat{\jmath}}}
+\newcommand{\hhat}{\bm{\hat{k}}}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{August 10, 2017}
+
+\begin{document}
+
+\begin{abstract}
+We briefly describe the group of isometries of $\C^2\cong \R^4$. In particular, we give both algebraic and topological characterizations of five important subgroups. 
+\end{abstract}
+
+Let $\left(\C^2, \| \cdot \|\right)$ denote the normed vector space $\C^2$ over $\R$ where $\|\cdot\| : \C^2\to \left[0,\infty\right)$ is given by  $$\|(z,w) \|=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\|\cdot\|$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T$ given by 
+\[ \label{eqn:T}
+(a+bi, a'+b'i)\mapsto (a,a',b,b')
+\tag{$\ast$}.\] 
+
+\begin{notation}
+The symbol $\bullet$ denote the Euclidean inner product as well.
+\end{notation}
+
+	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $d(\v, \x)=\|\v-\x\|=\|T\v -T\x \|=d'(T\v, T\x)$ for any $\v, \x \in \C^2$. Likewise, we see that $d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$ for any $\y, \z \in \R^4$.
+Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Isom(\C^2)\cong \Isom(\R^4)$, provided that both $\Isom(\C^2)$ and $\Isom(\R^4)$ are groups under composition. Certainly they are closed under composition and contain the identity map. Also, every isometry $f$ of a given metric space $\left(X, \rho\right)$ must be injective. Indeed, if $x\ne y$ but $f(x)=f(y)$, then $\rho(x,y)\ne 0 = \rho(f(x),f(y))$, which is impossible. Since the inverse of $f$ must also be an isometry, it just remains to show that $f$ is surjective in order to prove that the two are in fact groups. We do this below. 
+
+\medskip
+
+Let $\ORT(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0\right\}$. For each $\v\in \R^4$, define $T_{\v}:\R^4\to \R^4$ by $\x \mapsto \x + \v$.
+
+\begin{lemma}\label{l1}
+Any $A\in \Isom(\R^4)$ can be  written uniquely as $T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. 
+\end{lemma}
+\begin{proof}
+Define $g:\R^4\to \R^4$ by $A(\v)-A(\0)$. Then $g\in \ORT(4)$, and $A(\v)=T_{A(\0)}\circ g(\v)$ for any $\v$. Further, if $A=T_{A(\0)}\circ k$ for some $k\in \ORT(4)$, then $g(\v)=A(\v)-A(\0)=k(\v)$, thereby proving uniqueness. 
+\end{proof}
+
+\begin{definition} 
+A matrix  $X\in \M^4(\R)$ is \textit{orthogonal} if its column vectors are orthonormal.
+\end{definition}
+
+\begin{prop} The following are equivalent.
+\begin{enumerate}[label=(\alph*)]  
+\item $X$ is orthogonal. 
+\item $X\in \GL(4, \R)$ with $X^T=X^{-1}$.
+\end{enumerate}
+\end{prop}
+
+
+\begin{cor}\label{preip} Any orthogonal matrix $X\in \M^4(\R)$ preserves the inner product, i.e., $\langle X\v, X\w\rangle=\langle \v, \w\rangle$ for any $\v, \w\in \R^4$.
+\end{cor}
+
+\begin{proof}
+We have that $X\v \bullet X\w=\v\bullet X^TX\w=\v \bullet I\w =\v \bullet \w$.
+\end{proof}
+
+\begin{cor}\label{c2}
+
+If $X\in \M^4(\R)$ is orthogonal, then $\lvert{\det(X)}\rvert=1$.
+\end{cor}
+
+\begin{proof}
+We have that $1=\det(I)=\det(XX^T)=\det(X)^2$.
+\end{proof}
+
+\begin{lemma}\label{l2}
+
+If $X\in \M^4(\R)$ is orthogonal, then $X\in \ORT(4)$.
+\end{lemma}
+
+\begin{proof}
+ By \cref{preip}, $X$ preserves the inner product, which implies that 
+ \begin{align*}
+ \|X\v -X\w \|^2&=\|X\v \|^2-2X\v\bullet X\w+\|X\w \|^2
+ \\ & = \|\v \|^2-2\v\bullet \w+\|\w \|^2
+ \\ & =\|\v-\w \|^2
+ \end{align*} for any $\v, \w\in \R^4$. Thus, $d'(X\v, X\w)=d'(\v, \w)$, and $X\in \ORT(4)$. 
+
+\end{proof}
+
+\begin{definition}
+An invertible linear operator $T$ on a finite-dimensional vector space is \textit{orientation-preserving} if $\det{M_T}>0$ and \textit{orientation-reversing} if $\det{M_T}<0$ where $M_T$ denotes the matrix of $T$.
+\end{definition}
+
+Soon we shall prove that $\ORT(4)\subset \GL(4,\R)$. Therefore, it makes sense to introduce the group $$\SO(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0 \text{ and is orientation-preserving}\right\}.$$
+
+Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We are now ready to establish a so-called \textit{TRF-decomposition} of $\Isom(\R^4)$. 
+
+\begin{theorem}\label{t1}
+Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we can write $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
+\end{theorem}
+\begin{proof}
+ By \cref{l1}, we can write $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $\|\x-\y \|^2=\|g(\x)-g(\y) \|^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $\|g(\v)\|=\v$ for any $\v\in \R^4$.
+We can apply the additivity of the inner product to get  
+\begin{align*}
+\| g(\v) \|^2+\|g(\w) \|^2-2\langle g(\v), g(\w)\rangle & =\langle g(\v)-g(\w), g(\v)-g(\w)\rangle 
+\\ & =\langle \v-\w, \v-\w\rangle
+\\ & =\|\v \|^2+\|\w \|^2-2\langle \v, \w\rangle.
+\end{align*}  We can cancel terms to find that $g$ preserves the inner product. Note that our proof of this fact actually applies to any element of $\ORT(4)$.
+
+Now, it follows that $\|g(\e_i)\|^2=\|\e_i \|^2=1$ for each $i=1,2,3,4$, so that $\|g(\e_i)\|=1$. Similarly,  we can deduce that  $\langle g(\e_i),g(\e_j)\rangle = 0$ if $i\ne j$. Thus, $\{g(\e_i)\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
+
+Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
+
+By \cref{c2}, $\det(g)=\pm 1$. If $\det(g)=1$, then $g\in \SO(4)$, and we're done. Assume that $\det(g)=-1$. 
+ Note that the reflection $$\phi(a,b,c,d)\equiv (a,b,c,-d)$$ is given by the matrix $$S\coloneqq\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0&1&0&0\\ 0 & 0 &1 & 0 \\ 0 & 0 &0 &-1 \end{bmatrix}.$$ Since it's clear that $\phi \in \ORT(4)$, we see that $g\circ \phi\in \ORT(4)$. Also, $\det(gS)=\det(g)\det(S)=(-1)(-1)=1$. Therefore, $g\circ \phi \in \SO(4)$. Since $\phi = \phi^{-1}$, it follows that $(g\circ \phi)\circ \phi= g\circ (\phi^2)=g$. Now, set $R'=g\circ \phi$ and $\F=\phi$, thereby completing out proof.
+
+
+\end{proof}
+
+By inspecting our last proof, we obtain several quick results.
+
+\begin{cor}\label{orth}
+If $X\in \M^4(\R)$ preserves the inner product, then $X$ is orthogonal. 
+\end{cor}
+
+\begin{cor}
+We have that
+\begin{align*}
+\ORT(4)&=\left\{X\in \GL(4, \R) : X \text{ is orthogonal}\right\}
+\\ \SO(4)&=\left\{X\in \GL(4, \R) : X \text{ is orthogonal and }\det(X)=1\right\}.
+\end{align*}
+\end{cor}
+
+\begin{cor}\label{af}
+A function $f$ is an element of $\Isom(\R^4)$ if and only if there exist $M\in \ORT(4)$ and $\b \in \R^4$ such that for any $\x\in \R^4$, $f(\x)=M\x+\b$. In this case, $M=R'\circ \F$ with notation as in \cref{t1}.
+\end{cor}
+
+\begin{cor}
+Every  $f\in \Isom(\R^4)$ and every $g\in \Isom(\C^2)$ are invertible, so that  both $\Isom(\C^2)$ and $\Isom(\R^4)$ are groups under composition. 
+\end{cor}
+
+\begin{proof}
+Thanks to \cref{af}, we can write $f(\x)=M\x+\b$. Then it's easy to verify that $f^{-1}(\x)=M^{-1}\x-M^{-1}\b$.
+
+Moreover, with $T$ given by \eqref{eqn:T}, we find that $g=T\circ h \circ T^{-1}$ for some $h\in \Isom(\R^4)$. Hence $g$ is the composition of three invertible functions and thus is invertible. 
+\end{proof}
+
+
+\begin{note}\label{unique}
+The  decomposition of $A$ given in \cref{t1} is unique. 
+\end{note}
+
+\begin{proof}
+Suppose $A(\x)=M\x +\b =M'\x+\b'$ for every $\x\in \R^4$. Then $\b =\b'$, so that $M=M'$.  Moreover, if $M=T\circ \F$ for some $T\in \SO(4)$, then $T=M\circ \F$. This shows that the decomposition $A=T_{A(\0)}\circ g\circ \F$ given in \cref{t1}  is, indeed,  unique.
+\end{proof}
+
+\medskip
+
+Recall that the Hermitian inner product $H:\C^2 \times \C^2 \to [0,\infty)$ is defined by $H(x,y)=x_1\bar{y}_1+x_2\bar{y}_2$.
+
+\begin{definition}
+For any $n\in \N$, a matrix $X\in \M^n(\C)$ is \textit{unitary} if its column vectors are orthonormal with respect to $H$.  
+\end{definition}
+
+\begin{notation}
+Let $\U(n)$ denote the set of such matrices. 
+\end{notation}
+
+\begin{prop}
+The following are equivalent.
+\begin{enumerate}[label=(\alph*)]  
+\item $X \in \U(2)$. 
+\item $X\in \GL(2, \C)$ with $X^\ast =X^{-1}$, where $X^\ast$ denotes the conjugate transpose of $X$.
+\end{enumerate}
+\end{prop}
+
+\begin{cor} $\U(n)$ is a group under composition for each $n=1,2$. 
+\end{cor}
+
+\begin{proof}
+First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group because the complex modulus is multiplicative and $|z|=1\implies \lvert{z^{-1}}\rvert=\frac{\lvert{\bar{z}}\rvert}{\lvert{z}\rvert^2}=1$. Next, consider $\U(2)$. It suffices to verify closure. If $A,B\in \U(2)$, then $(AB)^\ast(AB)=B^\ast A^\ast AB=B^\ast B=I$, and thus  $AB\in \U(2)$.
+\end{proof}
+
+\begin{remark}
+$\U(2)$ is nonabelian.
+\end{remark}
+\begin{proof}
+Let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\begin{bmatrix} 0 & 1 \\  1 & 0\end{bmatrix}$. These are unitary, but  $0\ne AB={-B}A$.
+\end{proof}
+
+\begin{cor}\label{unitnorm}
+Every $2\times 2$ unitary matrix $X$ has $\lvert{\det(X)}\rvert=1$, where $\lvert{\cdot}\rvert$ denote the complex modulus.   
+\end{cor}
+
+\begin{proof}
+We have that $1=\det(I)=\det(XX^\ast)= \det(X)\det(X^\ast)=\det(X)\overline{\det(X)}=\lvert{\det(X)}\rvert$.
+\end{proof}
+
+\smallskip
+
+From a linear-algebraic perspective, we see that $\U(2)$ is the complex analogue of $\ORT(4)$. Group-theoretically, however, we can construct an embedding $F: \U(2) \hookrightarrow \SO(4)$ as follows.\footnote{As a result, $\SO(4)$ is nonabelian and hence not isomorphic to $\SO(2).$} For each $M\in \U(2)$, write $$M=\begin{bmatrix} a_1+b_1i & a_2+b_2i \\ a_3+b_3i & a_4+b_4i \end{bmatrix}=\begin{bmatrix} a_1 & a_2 \\ a_3 & a_4 \end{bmatrix} +i \begin{bmatrix} b_1 & b_2 \\ b_3 & b_4\end{bmatrix}=A+iB$$ and set $F(M)=\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}$. It's easy to verify that $F(M)$ is orthogonal.
+Also, note that 
+\begin{align*}
+\det(F(M))& =1\cdot \det \big (\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix} \big )\cdot 1
+\\ & = \det \big (\begin{bmatrix} I & 0 \\ iI & I\end{bmatrix}\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}\begin{bmatrix} I & 0 \\ -iI & I\end{bmatrix} \big )
+\\ & =\det \big (\begin{bmatrix} A +iB& {-B} \\ 0 & A-iB \end{bmatrix} \big )
+\\ & =\det(A+iB)\det(A-iB)
+\\ &= \det(A)^2 + \det(B)^2
+\\ & =\lvert{\det(M)}\rvert^2=1
+.
+\end{align*} Therefore, $F$ is well-defined. 
+To verify that $F$ is a homomorphism, note that if $N=C+Di$, then $MN=(AC{-B}D)+(AD+BC)i$. In this case $$F(MN)= \begin{bmatrix} A C{-BD} & {-A}D{-BC} \\ AD+BC & AC{-B}D\end{bmatrix}=\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}\begin{bmatrix} C & -D \\ D & C\end{bmatrix}=F(M)F(N).$$
+Furthermore, if $F(M)\in \ker(F)$, then $A=I_2$ and $B=0_{2}$, i.e., $M=I_2$. Hence $\ker(F)$ is trivial, and thus $F$ is an injective homomorphism, as desired. 
+
+
+
+In fact, the  $2\times 2$ unitary matrices are precisely those elements of $\SO(4)$ which preserve the Hermitian inner product $H$. This provides us with a geometric distinction between $\U(2)$ and $\SO(4)$.
+
+\begin{lemma}
+The map $R\in \M^2(\C)$ satisfies $H(R(x), R(y))=H(x,y)$ for any $x,y\in \C^2$ if and only if  $R\in \U(2)$.
+\end{lemma}
+
+\begin{proof}
+Note that $H(x,y)=\bar{x}^Ty$. Then $H(Rx, Ry)=H(x,y)\iff \overline{Rx}^TRy=\bar{x}^Ty\iff \bar{x}^T(\overline{R}^TR)y=\bar{x}^Ty \iff \overline{R}^TR =I$.
+\end{proof}
+
+\smallskip
+
+Let us look now at the complex analogue of $\SO(4)$. The map $D:\U(2)\to \U(1)$ given by $D(X)=\det(X)$ is well-defined by \cref{unitnorm}. As $\det$ is multiplicative, it is also a homomorphism. For any $e^{i\theta}\in \C$, we see that $M\coloneqq\begin{bmatrix}e^{i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix}\in \U(2)$ and $D(M)=e^{i\theta}$, which means that $D$ is surjective. Now note that $$\ker D=K\coloneqq\left\{X\in \U(2) :\det(X)=1\right\}.$$ This yields an isomorphism $\U(2)/K\cong \U(1)$ in $\mathbf{Grp}$. 
+
+Let $\SU(2)\coloneqq \ker(D)$. Then $\SU(2)$ consists precisely of those $2\times 2$ unitary matrices which are orientation-preserving.
+Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Since $\det(W)=1$, we find that $W^{-1}=\begin{bmatrix} d & {-b} \\ {-c} & a \end{bmatrix}$. Since $W^\ast= W^{-1}$, it follows that $d=\bar{a}$ and ${-\bar{b}} ={c}$. Therefore, $\det(W)=\|(a,c)\|^2=a\bar{a}+c\bar{c}=1$, and $W=\begin{bmatrix} a & c\\ {-\bar{c}} & \bar{a} \end{bmatrix}$. Conversely, the column vectors of such a matrix are orthonormal. Hence $$\SU(2)= \left\{X\in \M^2(\C): X=  \begin{bmatrix} x & {y}\\ {-\bar{y}} & \bar{x} \end{bmatrix} \text{ with } x\bar{x}+y\bar{y}=1\right\}.$$
+
+\begin{theorem}\label{u2iso}
+ $\U(2)\cong \left(\SU(2)\times \U(1)\right)/\Z_2$ in $\mathbf{Grp}$.
+\end{theorem}
+
+\begin{proof}
+Define  $\psi : \SU(2)\times \U(1)\to \U(2)$ by $(A, k)\mapsto kA$. This map is certainly a well-defined homomorphism. Moreover, for any $X\in \U(2)$, note that $\sqrt{\det(X)}\in \U(1)$ and $\frac{1}{\sqrt{\det(X)}}X\in \SU(2)$, so that $\left(\frac{1}{\sqrt{\det(X)}}X, \sqrt{\det(X)}\right)\mapsto X$. Thus, $\psi$ is surjective. Finally, notice that $\ker \psi=\left\{\pm(I, 1)\right\}\cong \Z_2$. By the first isomorphism theorem, we get an isomorphism $\tilde{\psi}: \U(2)\overset{\cong}{\longrightarrow} (\SU(2)\times \U(1))/\Z_2$, as desired. 
+
+\end{proof}
+
+It turns out that $\SU(2)$ is the same as the group of rotations of $\R^3$.
+
+\begin{theorem}\label{iso1}
+$\SU(2) \cong S^3$ in $\mathbf{Grp}$. 
+\end{theorem}
+
+\begin{proof}
+For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, write $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}}=1$, which establishes a clear bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
+\begin{align*}
+f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}} & \overline{pz-q\bar{w}} \end{bmatrix}\\ & =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ {-\bar{p}\bar{w}-\bar{q}{z}} & {\bar{p}\bar{z}-\bar{q}{w}} \end{bmatrix}\\ & =\begin{bmatrix} p & q \\ -\bar{q} & \bar{p}\end{bmatrix}\begin{bmatrix} z & w \\ -\bar{w} & \bar{z}\end{bmatrix}
+\\ & =f(y)f(x).
+\end{align*}
+\end{proof}
+
+\medskip
+
+Next, we turn our attention to providing $\Isom(\R^4)$, $\ORT(4)$, $\SO(4)$, $\U(2)$, and $\SU(2)$ with topological characterizations.  This will enable us to determine each one's relative size.
+We begin by deepening the equivalence between $\SU(2)$ and $\SO(3)$.
+
+\begin{theorem}
+$\SU(2) \cong S^3$ in $\mathbf{Top}$. 
+\end{theorem}
+
+\begin{proof}
+We claim that the map $f$ from \cref{iso1} is a homeomorphism. Indeed, note that as $S^3$ is a closed and bounded subset of Euclidean space, it is compact. Also, $\SU(2)$ is Hausdorff as a topological group. Thus, it suffices to show that $f$ is continuous. By identifying each matrix in $f$'s codomain with a vector in $\C^4$, we find that continuity follows from the fact that complex conjugation is continuous along with the fact that continuity is preserved by addition and multiplication. 
+\end{proof}
+
+\begin{cor}
+$\SU(2)$ is simply connected.
+\end{cor}
+
+\smallskip
+
+\begin{theorem}
+ $\U(2)\cong \left(\SU(2)\times \U(1)\right)/\Z_2$ in $\mathbf{Top}$.
+\end{theorem}.
+
+\begin{proof}
+We claim that the map $\tilde{\psi}$ from \cref{u2iso} is a homeomorphism. Indeed, it is clearly continuous due to the universal property of quotient spaces. Moreover, its inverse is given by 
+\[
+X\mapsto \left[\left(X\frac{1}{\sqrt{\det{X}}}, \sqrt{\det{X}}\right)\right]
+,\] which is continuous because both $\sqrt{\cdot}$ and $\det(\cdot)$ are continuous.
+\end{proof}
+
+\smallskip
+
+\begin{prop}
+For any quaternions $x,y$, we have $\overline{xy}=\bar{y}\bar{x}$.
+\end{prop}
+
+Recall that by definition $\lvert{x}\rvert=\sqrt{x\bar{x}}$.
+
+\begin{cor}\label{mult}
+$\lvert{xy}\rvert=\lvert{x}\rvert \lvert{y}\rvert$.
+\end{cor}
+ 
+
+\begin{theorem}
+$\SO(4) \cong S^3\times \SO(3)$ in $\mathbf{Top}$.
+\end{theorem}
+
+\begin{proof}
+Identity $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $|aq|=|a||q|=|a|$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we get $|a-b|=|\alpha_q(a-b)|=|aq-bq|$, so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
+
+We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and write $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Then set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, (1,x, y, z)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $(v, u, r, s)\mapsto \left(v, (1, uv^{-1}, rv^{-1}, sv^{-1})\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $(1,0,0,0)$, as required.  
+
+Finally, the restriction of $f$ to $S^3 \times \SO(3)$ yields the desired homeomorphism.  
+\end{proof}
+
+\begin{cor}
+$\SO(4) \cong S^3\times \RP^3$.
+\end{cor}
+
+\begin{cor}
+$\ORT(4) \cong S^3\times \ORT(3)$.
+\end{cor}
+
+\smallskip
+
+Our final result  characterizes the entire space $\Isom(\R^4)$.
+
+\begin{theorem}
+$\Isom(\R^4) \cong \ORT(4)\times \R^4$ in $\mathbf{Top}$. 
+\end{theorem}
+
+\begin{proof}
+With notation as in \cref{af}, define  $F:\Isom(\R^4)\to \ORT(4)\times \R^4$ by $f\mapsto \left(M, \b\right)$. \Cref{unique} implies that $F$ is well-defined, and \cref{orth} implies that it is a bijection. Note that $F_1(f)=M=T_{-\b}\circ f$, which is a composition of continuous functions. Further, $F_2(f)=\b=f(\0)$. Hence each component map of $F$ is continuous. It's clear that the inverse $\left(M,\b\right)\to \left(\x \mapsto M\x +\b\right)$ is also continuous. Thus, $F$ is a homeomorphism.
+\end{proof}
+\end{document}
