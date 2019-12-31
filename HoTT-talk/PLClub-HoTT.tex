@@ -192,7 +192,7 @@
 \begin{document}
 
 \begin{abstract}
-We give an introductory overview of homotopy type theory (HoTT). After covering some preliminary concepts from type theory, topology, and category theory, we work to state the \textit{univalence axiom}, a strong feature of HoTT as formulated by Voevodsky. In doing this, we develop the notion both of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of type theory that have been particularly significant to HoTT. Finally, we discuss, briefly, how the constructive type theory known as cubical type theory reveals, in certain respects, the computational content of HoTT.
+This is a brief, introductory overview of homotopy type theory (HoTT). After covering some preliminary concepts from type theory, we work to state the \textit{univalence axiom}, a strong feature of HoTT as formulated by Voevodsky. In doing this, we develop the notion both of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of type theory that have been particularly significant to HoTT.
 \end{abstract}
 
 
@@ -204,7 +204,7 @@ We give an introductory overview of homotopy type theory (HoTT). After covering 
 \addcontentsline{toc}{section}{Background}
 \section*{Background}
 
-In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields Medalist who passed away in 2017. He wanted a logical system that could both handle certain higher-dimensional algebraic objects and facilitate formalization better than set theory could. In 2005 and 2006, the first homotopical models of intensional (dependent) type theory were constructed by Steve Awodey, Michael Warren, and Voevodsky. In 2012-13,  the IAS at Princeton held \textit{A Special Year on Univalent Foundations of Mathematics}, from which the standard reference \textit{Homotopy Type Theory: Univalent Foundations of Mathematics} was produced. This includes in its formulation of type theory Voevodsky's univalence axiom.
+In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields Medalist who passed away in 2017. He wanted a logical system that could both handle certain higher-dimensional algebraic objects and facilitate formalization better than set theory could. In 2005 and 2006, the first homotopical models of intensional (dependent) type theory were constructed by Steve Awodey, Michael Warren, and Voevodsky. In 2012-13,  the IAS at Princeton held \textit{A Special Year on Univalent Foundations of Mathematics}, from which the standard reference \textit{Homotopy Type Theory: Univalent Foundations of Mathematics} was produced. This includes Voevodsky's univalence axiom in its formulation of type theory.
 
 One may think of HoTT as a topological (or, more generally, homotopical) version of what Robert Harper calls ``computational trinitarianism'':
 \[
@@ -213,6 +213,64 @@ One may think of HoTT as a topological (or, more generally, homotopical) version
 \text{Type Theory (Language)} \arrow[ru] \arrow[rr] &  & \text{Category Theory (Algebra)} \arrow[lu] \arrow[ll]
 \end{tikzcd}
 .\]
+
+\section{Elements of type theory}
+
+We are given a formal language $\mathcal{L}$ consisting of certain terms, say, a variant of the untyped lambda calculus. We can enrich $\mathcal{L}$ with additional primitive objects called \textit{types}. If $a$ is a term and $A$ a type, then we write $a: A$ to express the \textit{judgment} (distinct from a proposition) that $a$ \textit{inhabits} or \textit{has type} $A$. We declare that types themselves inhabit types known as \textit{universes}, which are arranged in a cumulative hierarchy. $$\mathbf{Type}_0 :\mathbf{Type}_1 : \mathbf{Type}_2 : \cdots . $$ If instead we declared a single universe $\mathbf{Type}$ that every type inhabits, then we could encode Russel's paradox into our type theory. Our hierarchy avoids such a problem by tracking which level a newly formed type inhabits. For convenience, however, we usually avoid writing the level explicitly and use the term $\mathbf{Type}$ instead.
+\begin{exmp} The following (among others) will be base types of our language.
+\begin{enumerate}
+\item The \textit{empty type} $\bot$.
+\item The \textit{one point type} $\ast$.
+\end{enumerate}
+\end{exmp}
+We write $a\equiv b :A$ to express that the terms $a$ and $b$ are \textit{definitionally equal with respect to the type $A$}. We declare that $\equiv$ is an equivalence relation with respect to a fixed type $A$. We also declare that if $A\equiv B : \mathbf{Type}$ and $a: A$, then $a:B$.
+
+\begin{definition} Let $A$ be any type and $B : A \to \mathbf{Type}$ be any family of types (e.g., $\lambda n.T^n : \N \to \mathbf{Type}$ when $A \equiv \N : \mathbf{Type}$).  
+\begin{enumerate}
+\item We form the \textit{dependent product type $\prod_{x:A} B(x)$} according to the following four rules.
+\begin{enumerate}
+\item \underline{${\prod}$-Introduction:} If $ b: B(x)$ for any $x: A$, then $\lambda x. b : \prod_{x : A} B(x)$.
+\item \underline{${\prod}$-Elimination:} If $f:  \prod_{x : A} B(x)$ and $a: A$, then $f(a) : B(a)$.
+\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $(\lambda x.b)(a) \equiv b[x\coloneqq a]: B(a)$.
+\item \underline{${\prod}$-Uniqueness:} If $f: \prod_{x:A} B(x)$, then $f \equiv \lambda x. f(x) : \prod_{x:A} B(x)$.
+\end{enumerate}
+Note that the ordinary function type $A \to B$ is a special case of the dependent product type. Naively, a dependent product type is comparable to a set-theoretic choice function. 
+\item Now, add the term $\ind_{\sum_{x:A}B(x)}(t_1, t_2, t_3)$ to $\mathcal{L}$ where $t_1$, $t_2$, and $t_3$ are any given terms of $\mathcal{L}$. We form the \textit{dependent sum type $\sum_{x:A} B(x)$} according to the following three rules.
+\begin{enumerate}
+\item \underline{${\sum}$-Introduction:} If $a: A$ and $b: B(a)$, then $(a, b) : \sum_{x: A} B(x)$.
+\item \underline{${\sum}$-Elimination:} Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
+\item \underline{${\sum}$-Computation:}  Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
+\end{enumerate}
+Note that the ordinary product type $A  \times B$ is a special case of the dependent sum type. Naively, a dependent sum type is comparable to a set-theoretic disjoint union (or, more generally, as a coproduct).
+\end{enumerate}
+\end{definition}
+
+\begin{definition} $ $
+\begin{enumerate}
+\item Define the \textit{left projection function $\pr_1$} by the judgments $$\pr_1 : \left (\sum_{x:A}B(x) \right) \to A  \quad \quad \pr_1(a,b) \equiv a: A.$$
+\item Define the \textit{right projection function $\pr_2$} by the judgements  $$ \pr_2 : \prod_{p: \sum_{x:A}B(x)} B(\pr_1(p)) \quad \quad \pr_2(a,b) \equiv b :B(a). $$
+\end{enumerate}
+\end{definition}
+
+
+Given $p: \sum_{x:A} B(x)$, we have that $p\equiv (\pr_1(p), \pr_2(p)) : \sum_{x:A}B(x)$. This is known as the uniqueness principle for dependent sum types.
+
+\smallskip
+
+\begin{remark}
+Under the Curry-Howard isomorphism, we get the following propositional interpretation of dependent type theory.
+\[
+\begin{tikzcd}
+\text{False} \arrow[r] & \bot \arrow[l] \\
+\text{True} \arrow[r] & \ast \arrow[l] \\
+P \land Q \arrow[r] & P\times Q \arrow[l] \\
+P\vee Q \arrow[r] & P + Q \arrow[l] \\
+P \implies Q \arrow[r] & P \to Q \arrow[l] \\
+\forall x.P(x) \arrow[r] & \prod_{x:A}P(x) \arrow[l] \\
+\exists x. P(x) \arrow[r] & \sum_{x:A}P(x) \arrow[l]
+\end{tikzcd}
+.\]
+\end{remark}
 
 \section{Identity types}
 
@@ -380,7 +438,7 @@ Let $A$ be a type with $a:A$. Define the dependent type $\mathsf{Y}(a)$ over $A$
 \end{definition}
 
 \begin{lemma}
-If $p: x \leadsto_A y$, then $\underbrace{p \cdot p}_{\text{with respect to } \mathsf{Y}(y)} \leadsto_{y \leadsto y} \refl_y$ is inhabited.
+If $p: x \leadsto_A y$, then $\underbrace{p \cdot p}_{\text{w.r.t. } \mathsf{Y}(y)} \leadsto_{y \leadsto y} \refl_y$ is inhabited.
 \end{lemma}
 \begin{proof}
 Use path induction.
@@ -447,7 +505,7 @@ Let $P$ be a dependent type over $A$ and $R : \prod(x:A), P(x) \to \type$. Then 
 Let $P$ and $Q$ be dependent spaces over $A$. Suppose that $\tau : \prod(x:A), P(x) \to Q(x)$. Define $\Sigma_A\tau : \sum_{x:A}P(x) \to \sum_{x:A} Q(x)$ by $\lambda w. (\pr_1 w, \tau(\pr_1w)(\pr_2w))$.
 \end{definition}
 
-\begin{theorem}{(Voevodsky)}
+\begin{theorem}[Voevodsky]
 Let $P$ and $Q$ be dependent spaces over $A$. If a term $\tau : \prod(x:A), P(x) \to Q(x)$ is such that $\Sigma_A \tau$ is an equivalence, then $\tau$ is a fiberwise equivalence, i.e., $\tau(x)$ is an equivalence for each $x:A$. 
 \end{theorem}
 
@@ -492,7 +550,7 @@ If $A \simeq B$, then $(X \to A) \simeq (X \to B)$ for each space $X$.
 The univalence axiom entails naive non-dependent functional extensionality. 
 \end{prop}
 
-\begin{corollary}{(Voevodsky)}
+\begin{corollary}[Voevodsky]
 The univalence axiom entails WFE (hence SFE).
 \end{corollary}
 \begin{proof}
@@ -528,10 +586,11 @@ By setting $\mathsf{Y}(b) = P$, we have that $\Hom(\mathsf{Y}(a), \mathsf{Y}(b))
 
 \section{Models of type theory}
 
-This section is a brief and informal summary of certain research in HoTT.
+This section is a very brief and informal summary of certain research in the semantics of HoTT.
 
-\begin{definition}
-A model of intensional type theory will have the following properties.
+\medskip
+
+A category modeling intensional type theory will have the following features.
 \[
 \begin{tikzcd}
 \text{initial object} \arrow[r] & \bot \arrow[l] \\
@@ -543,18 +602,15 @@ A model of intensional type theory will have the following properties.
 \text{weak factorization system} \arrow[r] & a=b \arrow[l]
 \end{tikzcd}
 .\]
-\end{definition}
 
-\begin{remark} Any proof in our type theory produces a theorem in any model of it. It is known that the structure of Martin-L\"of identity types is that of $\infty$-groupoids (i.e., $\infty$-categories in which any $k$-morphism is an equivalence).
+
+Any proof in our type theory produces a theorem in any model of it. It is known that the structure of Martin-L\"of identity types is that of $\infty$-groupoids (i.e., $\infty$-categories in which any $k$-morphism is an equivalence).
 
 HoTT without univalence may be modeled in a certain extension of $\mathsf{ZFC}$. In 2006, Voevodsky showed that the category of Kan complexes (i.e., simplicial sets with Kan fillers) is a model of HoTT.  In it, a type family corresponds to a Kan fibration.  His construction, however, is non-constructive to some degree. Thus, it fails as a genuinely computational interpretation of HoTT.
-\end{remark}
 
-\begin{remark}
-But Coquand has designed a so-called cubical model of HoTT, in which the univalence axiom is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model is a constructive account of the univalence axiom.  
+Coquand, however, has designed a so-called cubical model of HoTT, in which the univalence axiom is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model is a constructive account of the univalence axiom.  
 
 Anders M\"ortberg has designed an experimental implementation of cubical type theory, called Cubicaltt, which is on his GitHub page.
-\end{remark}
 
 \addcontentsline{toc}{section}{Further reading}
 \section*{Further reading}

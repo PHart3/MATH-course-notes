@@ -1,7 +1,8 @@
 \contentsline {section}{Background}{2}{section*.1}
-\contentsline {section}{\numberline {1}Identity types}{2}{section.1}
-\contentsline {section}{\numberline {2}Type-theoretic equivalence}{5}{section.2}
-\contentsline {section}{\numberline {3}Univalence axiom}{7}{section.3}
-\contentsline {section}{\numberline {4}Models of type theory}{8}{section.4}
-\contentsline {section}{Further reading}{8}{remark.4.0.3}
-\contentsline {section}{Sources}{9}{section*.3}
+\contentsline {section}{\numberline {1}Elements of type theory}{2}{section.1}
+\contentsline {section}{\numberline {2}Identity types}{3}{section.2}
+\contentsline {section}{\numberline {3}Type-theoretic equivalence}{7}{section.3}
+\contentsline {section}{\numberline {4}Univalence axiom}{8}{section.4}
+\contentsline {section}{\numberline {5}Models of type theory}{9}{section.5}
+\contentsline {section}{Further reading}{10}{section.5}
+\contentsline {section}{Sources}{10}{section*.3}

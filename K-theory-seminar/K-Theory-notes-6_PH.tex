@@ -190,8 +190,9 @@ We continue doing higher Waldhausen $K$-theory. The main sources for this talk a
 \end{itemize}
 \end{abstract}
 
+\smallskip
 
-Recall that $|wS_{\bullet} \c|$ is an $H$-space via the map $$\coprod: |wS_{\bullet} \c| \times |wS_{\bullet} \c| \cong |wS_{\bullet} \c \times  wS_{\bullet} \c|\to |wS_{\bullet} \c|.$$ This produces an $H$-space structure $\left(K(\c), +\right)$.
+Recall that $\lvert{wS_{\bullet} \c}\rvert$ is an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$ This produces an $H$-space structure $\left(K(\c), +\right)$.
 
 
 \begin{definition}
@@ -216,7 +217,7 @@ X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim
 This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2 \c \to \c$ give a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, completing the proof.
 \end{proof}
 
-\begin{theorem}[The additivity theorem]
+\begin{theorem}[Additivity theorem]
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $F_{\ast} = F_{\ast}' + F_{\ast}''$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
@@ -300,7 +301,7 @@ vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\text{co}
 
 \medskip
 
- It therefore suffices to show that the top row is a fibration.\reversemarginpar{\marginpar{\small{What about the left vertical morphism?}}} You can do this by using the relative $K$-theory space construction. See Weibel, IV.8.5.3 and V.2.1.
+ It therefore suffices to show that the top row is a fibration.\reversemarginpar{\marginpar{\small{What about the left vertical morphism?}}} You can do this by using the relative $K$-theory space construction. See IV.8.5.3 and V.2.1 (Weibel).
 \end{proof}
 
 \begin{definition}
@@ -311,7 +312,7 @@ Let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^
 Let $\a$ be an exact category closed under kernels of surjections. Then the exact inclusion $\a \to \ch^b(\a)$ induces a homotopy equivalence $K(\a) \simeq K\ch^b(\a)$. Hence $$K_i(\a) = K_i \ch^b(\a)$$ for every $i$.
 \end{theorem}
 \begin{proof}
-Apply the localization theorem. See Weibel, V.2.2.
+Apply the localization theorem. See V.2.2 (Weibel).
 \end{proof}
 
 \begin{definition}
@@ -351,7 +352,7 @@ Let $\a$ be an abelian category. By homology theory, we have that $\ch^b(\a) \su
 \end{exmp}
 
 \begin{definition}
- A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $(\Sigma_{n}\times \Sigma_{k})$-equivariant for any $n,k\geq 0$, where $S^k \coloneqq \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $(f_n : X_n \to Y_n)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
+ A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $(\Sigma_{n}\times \Sigma_{k})$-equivariant for any $n,k\geq 0$, where $S^k \coloneqq \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $\left(f_n : X_n \to Y_n\right)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
 \[
 \begin{tikzcd}
 X_n \land S^1 \arrow[d, "\sigma"'] \arrow[r, "f_n \land \id"] & Y_n \land S^1 \arrow[d, "\sigma"] \\
@@ -362,7 +363,7 @@ commutes. Let $\Sp^{\Sigma}$ denote the category of symmetric spectra in topolog
 \end{definition}
 
 \begin{definition}
-Let $(\c, w\c)$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c).$$ It multidegree $(q_1, \ldots, q_n)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
+Let $(\c, w\c)$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$\left(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c\right).$$ It multidegree $(q_1, \ldots, q_n)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
 \begin{enumerate}
 \item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ if $i_k = j_k$ for some $1\leq k \leq n$.
 \item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q_t]$.
@@ -370,7 +371,7 @@ Let $(\c, w\c)$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bul
 \end{definition}
 
 \begin{definition}
-Let $(\c, w\c)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bullet}$-construction} on $\c$ is the simplicial Waldhausen category $$(S_{\bullet}^{(n)}\c, wS_{\bullet}^{(n)} \c).$$ It has as $q$-simplices the functor categories $(S_q \cdots S_q \c, wS_q \cdots S_q \c)$ whose objects are the $(\Ar[q])^n$-shaped diagrams  $X: (\Ar[q])^n\to \c$ such that
+Let $\left(\c, w\c\right)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bullet}$-construction} on $\c$ is the simplicial Waldhausen category $$(S_{\bullet}^{(n)}\c, wS_{\bullet}^{(n)} \c).$$ It has as $q$-simplices the functor categories $(S_q \cdots S_q \c, wS_q \cdots S_q \c)$ whose objects are the $\left(\Ar[q]\right)^n$-shaped diagrams  $X: \left(\Ar[q]\right)^n\to \c$ such that
 \begin{enumerate}
 \item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ if $i_k = j_k$ for some $1\leq k \leq n$.
 \item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q]$.
@@ -379,7 +380,7 @@ Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by $(\pi \cdot X)(\ldots, (i_
 \end{definition}
 
 \begin{definition}
-The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a small Waldhausen category $(\c, w\c)$ has $n$-th space $K(\c, w)_n = |wS_{\bullet}^{(n)}\c|$ based at $\ast$. There is a $\Sigma_n$-action on $K(\c, w)_n$ induced by permuting the order of the internal $S_{\bullet}$-constructions. Moreover, we have $$|wS_{\bullet}^{(n)}\c| \land S^1 \cong |wS_{\bullet}^{(n)}S_{\bullet}\c|^{(1)} \subset |wS_{\bullet}^{(n)}S_{\bullet}\c| \cong |wS_{\bullet}^{(n+1)}\c|$$, where $^{(1)}$ denotes the $1$-skeleton with respect to the last simplicial direction. This determines the structure map $\sigma$. Then $\sigma^k$ is $(\Sigma_{n} \times \Sigma_{k})$-invariant.
+The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a small Waldhausen category $\left(\c, w\c\right)$ has $n$-th space $K(\c, w)_n = \lvert{wS_{\bullet}^{(n)}\c}\rvert$ based at $\ast$. There is a $\Sigma_n$-action on $K(\c, w)_n$ induced by permuting the order of the internal $S_{\bullet}$-constructions. Moreover, we have $$\lvert{wS_{\bullet}^{(n)}\c}\rvert \land S^1 \cong \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert^{(1)} \subset \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert \cong \lvert{wS_{\bullet}^{(n+1)}\c}\rvert$$, where $^{(1)}$ denotes the $1$-skeleton with respect to the last simplicial direction. This determines the structure map $\sigma$. Then $\sigma^k$ is $\left(\Sigma_{n} \times \Sigma_{k}\right)$-invariant.
 \end{definition}
 
 
@@ -387,7 +388,7 @@ The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a
 For any $i\geq 0$, we have that $K_i(\c, w) = \pi_{i+1}K(\c, w)_1 \cong \pi_i \mathbf{K}(\c, w)$.
 \end{theorem}
 \begin{proof}
-See Rognes, Lemma 8.7.4.
+See Lemma 8.7.4 (Rognes).
 \end{proof}
 
 

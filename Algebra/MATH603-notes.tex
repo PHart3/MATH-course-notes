@@ -317,7 +317,7 @@ It suffices to show that $G$ is never divisible. There exists a maximal proper s
 \end{enumerate}
 \end{exmp}
 
-\begin{theorem}{(Baer embedding)}
+\begin{theorem}[Baer embedding]
 If $R$ is a ring, then every module embeds into an injective module.
 \begin{corollary}
 For any $R$-module $M$, we can find an injective resolution $$ 0 \to M \to I_0 \to I_1 \to \cdots \to I_k \to \cdots  . $$
@@ -2377,7 +2377,7 @@ M \arrow[r, "\alpha"] \arrow[rd, "f"'] & N \arrow[d, "g"] \\
 in $\c$ such that $\alpha$ is a split mono and $g$ is an iso in $\ho(\c)$.
 \end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}[Partial proof]
 For (b), take $N = L \oplus \cone(\id_M)$.
 \end{proof}
 
@@ -2435,7 +2435,7 @@ If $\a$ and $\b$ are differential graded categories, then a \textit{differential
 If $F, G : \a \to \b$ are two differential graded functors between differential graded categories, then define, for each $n \in \Z$, the group $$\Hom^n(F, G) \equiv \{\varphi_x \mid \varphi_x : F(x) \to G(x) \text{ in } \Hom_{\b}^n(F(x), G(x)), \ x \in \ob{\a} \}.$$ A \textit{map $F \to G$} is a natural transformation $F\to G$ such that each component $\varphi_x: F(x) \to G(x)$ belongs to $\Hom^n_{\b}(F(x), G(x))$. The differential on $\prod_{x \in \ob{\a}} \Hom^{\bullet}(F(x), G(x))$ induces a differential on $$\Hom^{\bullet}(F, G) \equiv \bigoplus_{n \in \Z}\Hom^n(F,G).$$ This produces a complex of maps between $F$ and $G$, and we get a differential graded category $\mathbf{dgFun}(\a, \b)$.
 \end{definition}
 
-\begin{exercise} $ $
+\begin{exercise} Prove the following assertions.
 \begin{enumerate}
 \item If $F : \a \to \b$ is a differential graded functor, then $H^0(F) : H^0(\a) \to H^0(\b)$ is an additive functor.
 \item If $F, G : \a \to \b$ are differential graded functors, then there is an embedding $H^0(\Hom(F, G)) \subset \Hom(H^0(F), H^0(G))$.
@@ -2448,12 +2448,14 @@ If $\a$ is a differential graded category, then a \textit{left $\a$-module} is a
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item If $ \a$ is a differential graded category with a single object $\ast$, then $\a \longleftrightarrow R \coloneqq \Hom_{\a}(\ast, \ast)$, which is precisely the complex of abelian groups equipped with a multiplication $\cdot$ such that $\lambda$ satisfies the graded Leibniz rule for $\cdot$.  Then a module over $\a$ is precisely the data of a complex $x$ of abelian groups together with a differential graded algebra homomorphism $R \to \Hom_{\mathbf{Compl}(\mathbf{Ab})}(x, x)$.
+\item If $ \a$ is a differential graded category with a single object $\ast$, then $\a \leftrightarrow R \coloneqq \Hom_{\a}(\ast, \ast)$, which is precisely the complex of abelian groups equipped with a multiplication-like operation $\cdot$ such that $\lambda$ satisfies the graded Leibniz rule for $\cdot$.  
+
+Show that a module over $\a$ is precisely the data of a complex $x$ of abelian groups together with a differential graded algebra homomorphism $R \to \Hom_{\mathbf{Compl}(\mathbf{Ab})}(x, x)$.
 \item  Given a differential graded category $\a$, we have respective categories of left and right modules over $\a$  that are linear over a field $k$, namely 
 \begin{align*}
   \a{-}\mathbf{dgmod}_k  & \equiv \mathbf{dgFun}(\A, \mathbf{Compl}(k{-}\mathbf{Vect}))
 \\  \mathbf{dgmod}_k{-}\a & \equiv \mathbf{dgFun}(\A^{\op}, \mathbf{Compl}(k{-}\mathbf{Vect})).
-\end{align*} Show that the differential graded functors
+\end{align*} Show that the functors
 \begin{align*}
 h^{\bullet} : \a^{\op} & \to  \a{-}\mathbf{dgmod}_k  
 \\ x & \mapsto h^{\times} \equiv \Hom_{\a}(x, {-})
@@ -2489,7 +2491,13 @@ A triangulated differential graded category is automatically strongly pre-triang
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item Suppose that $\d$ is a triangulated additive category.   Let $M \to N \to C \to M[1]$ be a distinguished triangle. Show that for every $L \in \ob{\d}$, the sequence  $$\cdots \to \Hom(L, M) \to \Hom(L, N) \to \Hom(L, C) \to \Hom(L, M[1]) \to \Hom(L, N[1]) \to \Hom(L, C[1]) \to \cdots$$ is  a long exact sequence of abelian groups. 
+\item Suppose that $\d$ is a triangulated additive category.   Let $M \to N \to C \to M[1]$ be a distinguished triangle. Show that for every $L \in \ob{\d}$, the sequence
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & {\Hom(L, M) } \arrow[r]    & {\Hom(L, N)} \arrow[r]    & { \Hom(L, C)} \arrow[lld]  &        \\
+                 & { \Hom(L, M[1])} \arrow[r] & {\Hom(L, N[1])} \arrow[r] & {\Hom(L, C[1]) } \arrow[r] & \cdots
+\end{tikzcd}
+\] is  a long exact sequence of abelian groups. 
 \item Suppose that $\d$ is triangulated. Show that the sum $\triangle_1 \oplus \triangle_2$ of two triangles in $\d$ is distinguished if and only if both $\triangle_1$ and $\triangle_2$ are distinguished. 
 \end{enumerate}
 \end{exercise}
@@ -2524,18 +2532,19 @@ If $\d$ is a triangulated category and $\a$ is an abelian category, then a \text
 
 \subsection{Lecture 29}
 
-\begin{note}
+
 Let $\d$ be a triangulated category and $\v \subset \d$ a triangulated subcategory (i.e., the inclusion functor is triangulated). We wish to construct a quotient category $\d/\v$, i.e., a triangulated category $\d/\v$ together with a triangulated functor $q : \d \to \d/\v$ such that $q(x) = 0$ for any $x \in \ob{\v}$ and for any triangulated functor $f: \d \to \d'$ with $f(x) =0$ for any $x \in \ob{\v}$, we have $g \circ q= f$.
 
-In the triangulated category of triangulated categories with exact functors, the triangle $\v \to \d \to \d/\v \to \v[1]$ is exact.
-\end{note}
 
-\begin{note}
- If $\d$ is triangulated and $u: x \to y$ is a morphism in $\d$, then there exists an object $\cone(u)$ in $\d$ that is unique up to a non-unique isomorphism. This is the third term in a distinguished $\triangle$ completing $u$. 
+\begin{note} $ $
+\begin{enumerate}
+\item In the triangulated category of triangulated categories with exact functors, the triangle $\v \to \d \to \d/\v \to \v[1]$ is exact.
+\item If $\d$ is triangulated and $u: x \to y$ is a morphism in $\d$, then there exists an object $\cone(u)$ in $\d$ that is unique up to a non-unique isomorphism. This is the third term in a distinguished $\triangle$ completing $u$. 
+\end{enumerate}
 \end{note}
 
 \begin{exercise}
-If $u : x \to y$ is a map in $\d$, then it is an isomorphism in $\d$ if and only if $\cone(u) =0$. 
+Show that if $u : x \to y$ is a map in $\d$, then it is an isomorphism in $\d$ if and only if $\cone(u) =0$. 
 \end{exercise}
 
 \begin{definition}
@@ -2543,11 +2552,11 @@ If $\d$ is a triangulated category and $\v\subset \d$ a triangulated subcategory
 \end{definition}
 
 \begin{exercise}
-Let $\v \subset \d$ be a pair of triangulated categories. Us the octahedron axiom to show that if $f$ and $g$ are compassable morphisms in $\d$, then every morphism in $\{f, g, g \circ f\}$ is a $\v$-quasi-isomorphism if and only if at least two morphisms in it are $\v$-quasi-isomorphisms. 
+Let $\v \subset \d$ be a pair of triangulated categories. Use the octahedron axiom to show that if $f$ and $g$ are compassable morphisms in $\d$, then every morphism in $\{f, g, g \circ f\}$ is a $\v$-quasi-isomorphism if and only if at least two morphisms in it are $\v$-quasi-isomorphisms. 
 \end{exercise}
 
 \begin{remark}
-One may define $\d/\v$ as the localization of $\d$ in the set of all $\v$-quasi-isomorphisms. But doing so required a lot of work. 
+One may define $\d/\v$ as the localization of $\d$ in the set of all $\v$-quasi-isomorphisms. But doing so requires a lot of work. 
 \end{remark}
 
 \begin{definition}
@@ -2581,11 +2590,12 @@ x_1 \arrow[r] \arrow[rd] & x_2 \arrow[r]  & x_4 \\
 Let $\i$ be small. There is a well-defined functor $\colim : \Fun(\i, \mathbf{Ab}) \to \mathbf{Ab}$, but this need not be exact even though both $\mathbf{Ab}$ and $\Fun(\i, \mathbf{Ab})$ are abelian. Show, however, that if $\i$ is directed, then $\colim$ is an exact functor. 
 \end{exercise}
 
-\begin{definition}
- Let $\v \subset \d$ be a pair of triangulated categories. Let $x \in \ob{\d}$ and let $\q/\x$ be the full subcategory of $\d/\x$ consisting of morphisms $y \to x$ that are $\v$-quasi-isomorphisms. Similarly, let $x/\Q$ be the full subcategory of $x/\d$ consisting morphisms $x \to z$ that are $\v$-quasi-isomorphisms. 
-\end{definition}
+\smallskip
 
-\begin{exercise} $ $
+Now,  let $\v \subset \d$ be a pair of triangulated categories. Let $x \in \ob{\d}$ and let $\q/\x$ be the full subcategory of $\d/\x$ consisting of morphisms $y \to x$ that are $\v$-quasi-isomorphisms. Similarly, let $x/\Q$ be the full subcategory of $x/\d$ consisting morphisms $x \to z$ that are $\v$-quasi-isomorphisms. 
+
+
+\begin{exercise} Prove the following assertions.
 \begin{enumerate}
 \item Both $x/ \q$ and $(\q/x)^{\op}$ are directed categories. 
 \item Any map in $x/\q$ or $\q/x$ is automatically a $\v$-quasi-isomorphism. 
@@ -2593,7 +2603,7 @@ Let $\i$ be small. There is a well-defined functor $\colim : \Fun(\i, \mathbf{Ab
 \end{exercise}
 
 \begin{definition}
-Define the \textit{Verdier quotient of $\d$ by $\v$} is the category $\d/\v$ with $\ob{\d/\v} \equiv \ob{\d}$ and $\Hom_{\d/\v}(a,b) \equiv \colim_{a' \in (\q/a)^{\op}} \Hom_{\d}(a',b)$.
+Define the \textit{Verdier quotient of $\d$ by $\v$} as the category $\d/\v$ with $\ob{\d/\v} \equiv \ob{\d}$ and $\Hom_{\d/\v}(a,b) \equiv \colim_{a' \in (\q/a)^{\op}} \Hom_{\d}(a',b)$.
 \end{definition}
 
 \begin{remark}
@@ -2636,15 +2646,15 @@ If $\d$ is triangulated and $\u, \v \subset \d$ are strict full triangulated sub
 \end{enumerate}
 \end{definition}
 
-\begin{exercise} $ $
+\begin{exercise} Prove the following assertions.
 \begin{enumerate}
 \item The $\triangle$ in condition (b) is unique up to a unique isomorphism and is functorial in $z$.
 \item The functor $\d \to \u$ given by $z \mapsto x(z)$ is triangulated and is right adjoint to $\u \hookrightarrow \d$. 
 
 Dually, the functor $\d \to \v$ given by $z \mapsto y(z)$ is triangulated and is left adjoint to $\v \hookrightarrow \d$.
 \item Each of $\u$ and $\v$ determines the other. Specifically, 
-\begin{align*} \v & = \u^{\perp} \underbrace{\equiv \{y \in \ob{\d} \mid \Hom_{\d}(x,y) = 0, \ x \in \ob{\u}\}}_{\text{full subcategory}}
-\\ \u  & = {^{\perp}{\v}} \underbrace{\equiv \{x \in \ob{\d} \mid \Hom_{\d}(x,y) =0, \ y \in \ob{\v}\}}_{\text{full subcategory}}.
+\begin{align*} \v & = \u^{\perp} \equiv \underbrace{\left\{y \in \ob{\d} \mid \Hom_{\d}(x,y) = 0, \ x \in \ob{\u}\right\}}_{\text{full subcategory}}
+\\ \u  & = {^{\perp}{\v}} \equiv \underbrace{\left\{x \in \ob{\d} \mid \Hom_{\d}(x,y) =0, \ y \in \ob{\v}\right\}}_{\text{full subcategory}}.
 \end{align*} In particular, both $\u$ and $\v$ are thick subcategories. 
 \item The natural compositions $\u \hookrightarrow \d \to \d/\v$ and $\v \hookrightarrow \d \to \d/\u$ are triangulated equivalences. 
 \end{enumerate}
@@ -2668,12 +2678,13 @@ If $\a$ is an abelian category, then the \textit{derived category of $\a$} is th
 \end{definition}
 
 \begin{remark}
-To do computations in $\D(\a)$, we must understand when $\D(a)$ can be embedded in $\mathcal{C}(\a)$ so that $(\mathcal{C}(\a)^{\acyc}, \D(\a))$ is an adjoint pair. This requires $(\mathcal{C}(\a)^{\acyc})^{\perp}$  to be large. 
+To do computations in $\D(\a)$, we must understand when $\D(a)$ can be embedded in $\mathcal{C}(\a)$ so that $\left(\mathcal{C}(\a)^{\acyc}, \D(\a)\right)$ is an adjoint pair. This requires $(\mathcal{C}(\a)^{\acyc})^{\perp}$  to be large. 
 \end{remark}
 
-\begin{definition}
+\smallskip
+
 Define ${^{\perp}{\mathcal{C}(\a)^{\acyc}}}$ as the category of \textit{homotopically projective objects} in $\mathcal{C}(\a)$ and $(\mathcal{C}(\a)^{\acyc})^{\perp}$ as the category of \textit{homotopically injective objects} in $\mathcal{C}(\a)$. 
-\end{definition}
+
 
 \begin{prop}
 Every bounded-above complex of projectives is a homotopically projective object in $\mathcal{C}(\a)$. Moreover, any bounded-below complex of injectives is a homotopically injective object in $\mathcal{C}(\a)$. 

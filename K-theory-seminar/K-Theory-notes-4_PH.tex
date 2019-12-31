@@ -156,6 +156,7 @@
 \DeclareMathOperator{\mor}{mor}
 \DeclareMathOperator{\iso}{iso}
 \DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\co}{\mathtt{co}}
 \DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\ZFC}{ZFC}
@@ -177,7 +178,7 @@
 \begin{document}
 
 \begin{abstract}
-We continue to do low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2(-)$, in various settings. The main sources for this talk are the following.
+We continue to do low-dimensional $K$-theory, finishing our description of $K_0(-)$ and then defining $K_1(-)$, and $K_2(-)$ for rings. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab.
 \item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory}, Chapters II and III.
@@ -187,7 +188,7 @@ We continue to do low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$,
 
 
 \begin{definition}
-Let $\c$ be a category equipped with a ``subcategory'' $co(\c)$ of morphisms called \textit{cofibrations}. The pair $(\c, co)$ is a \textit{category with cofibrations} if the following conditions hold.
+Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $(\c, co)$ is a \textit{category with cofibrations} if the following conditions hold.
 \begin{enumerate}
 \item (W0) Every isomorphism in $\c$ is a cofibration.
 \item (W1) There is a base point $0$ in $\c$ such that the unique morphism $0 \rightarrowtail A$ for every $A \in \ob \c$.
@@ -230,18 +231,22 @@ Let $\c$ be a Waldhausen category. Define $K_0(\c)$ as the abelian group generat
 \begin{prop} $ $
 \begin{enumerate}
 \item $[0] = 0$.
-\item $[B \coprod C] = [B] +[C]$.
-\item $[B \cup_A C] = [B]+[C]-[A]$.
+\item $\left[B \coprod C\right] = [B] +[C]$.
+\item $\left[B \cup_A C\right] = [B]+[C]-[A]$.
 \item $[C]= 0$ whenever $0 \simeq C$.
 \end{enumerate}
 \end{prop}
 
 \begin{exmp}
-Let $\mathcal{R}_f(\ast)$ denote the category of finite CW complexes. Cofibrations and weak equivalences correspond to cellular inclusions  and weak homotopy equivalences, respectively. By homology theory, we get $K_0(\mathcal{R}_f) \cong \Z$.
+Let $\mathcal{R}_f(\ast)$ denote the category of finite CW complexes. Here, cofibrations and weak equivalences correspond to cellular inclusions  and weak homotopy equivalences, respectively. One can show that $K_0(\mathcal{R}_f) \cong \Z$.
 \end{exmp}
 
 \begin{definition}
-if $\c$ and $\d$ are Waldhausen, then a functor $F: \c \to \d$ is \textit{exact} if it (a) preserves base points, cofibrations, and weak equivalences and (b) for any $A \rightarrowtail B$ we have that $FB \cup_{FA} FC \to F(B\cup_A C)$ is an isomorphism. 
+if $\c$ and $\d$ are Waldhausen, then a functor $F: \c \to \d$ is \textit{exact} if
+\begin{enumerate}[label=(\alph*)] 
+\item preserves base points, cofibrations, and weak equivalences and 
+\item for any $A \rightarrowtail B$, $FB \cup_{FA} FC \to F(B\cup_A C)$ is an isomorphism. 
+\end{enumerate}
 \end{definition}
 
 Note that $F$ induces a group map $K_0(F) :K_0(\c) \to K_0(\d)$.
@@ -258,7 +263,7 @@ Then $F$ induces an isomorphism $K_0(\a) \cong K_0(\b)$.
 Apply condition (2) to any $0 \rightarrowtail B$ to get $FA' \overset{\sim}{\longrightarrow} B$. If this is a w.e., then there is some $A \overset{\sim}{\longrightarrow} A'$. Hence there is a bijection between the set $W$ of w.e. classes of objects of $\a$ and that in $\b$. 
 \medskip
 
- The group $K_0(\b)$ is given by the free abelian group $\Z[W]$ modulo $[C] = [B] + \left[\faktor{C}{B}\right]$. Let $FA \overset{\sim}{\longrightarrow}  B$. Then applying condition (2) induces the diagram
+ The group $K_0(\b)$ is given by the free abelian group $\Z[W]$ modulo the relation $$[C] = [B] + \left[\faktor{C}{B}\right].$$ Let $FA \overset{\sim}{\longrightarrow}  B$. Then applying condition (2) yields the diagram
 \[
 \begin{tikzcd}
 0 \arrow[d, no head] \arrow[d, no head] & FA \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & FA' \arrow[d, "\sim"'] \\
@@ -282,9 +287,9 @@ The universal property of $\ab: \mathbf{Grp} \to \Ab$ induces the universal prop
 Any ring map $f: R \to S$ induces a natural map $\GL(R) \to \GL(S)$. Hence $K_1$ is a functor $\mathbf{Rng} \to \Ab$.
 \end{prop}
 
-\begin{remark}
-Due to Whitehead, we know that the commutator subgroup $[\GL(R), \GL(R)]$ is equal to $E(R) = \bigcup_n E_n(R)$, the group of elementary matrices $E_{i, j}(r)$ where $r \in R$ and $i\ne j$. Thus, $K_1(R)$ can be viewed as the ``stabilized'' group of automorphisms of the trivial projective module modulo trivial automorphisms.
-\end{remark}
+
+Thanks to Whitehead, we know that the commutator subgroup $[\GL(R), \GL(R)]$ is equal to $E(R) = \bigcup_n E_n(R)$, the group of elementary matrices $E_{i, j}(r)$ where $r \in R$ and $i\ne j$. Thus, $K_1(R)$ can be viewed as the ``stabilized'' group of automorphisms of the trivial projective module modulo trivial automorphisms.
+
 
 \begin{exmp}
 If $F$ is a field, then $K_1(F) = F^{\times}$.
@@ -368,11 +373,15 @@ By the previous remark, for any $P \in \P(R)$ and $m\in \N$, there is a homomorp
 \end{proof}
 
 \begin{theorem}
-Using homology theory, one can show that $K_1(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
+One can show that $K_1(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
 \end{theorem}
 
+\smallskip
+
+Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $Wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $\left(g, \pm 1\right)\mapsto \left(\pm g\right)$. 
+
 \begin{theorem}
-Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $Wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $\left(g, \pm 1\right)\mapsto \left(\pm g\right)$. Then a homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the \textit{Whitehead torsion} $\tau$, which is a certain function from continuous maps to $Wh_1(\pi)$.
+A homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the \textit{Whitehead torsion} $\tau$, which is a certain function from continuous maps to $Wh_1(\pi)$.
 \end{theorem}
 
 \begin{theorem}[The $s$-cobordism theorem]
@@ -392,7 +401,7 @@ Let $I$ is an ideal in $R$. Define $GL(I)$ as the kernel of the map $\GL(R) \to 
 \end{definition}
 
 \begin{prop}
-$[\GL(I), \GL(I)] \subset E(R, I)\unlhd \GL(I)$
+$\left[\GL(I), \GL(I)\right] \subset E(R, I)\unlhd \GL(I)$
 \end{prop}
 
 \begin{definition}
@@ -408,8 +417,8 @@ There is an exact sequence
 \[
 \begin{tikzcd}
 {K_1(R, I)} \arrow[r] & K_1(R) \arrow[r] & K_1\left(\faktor{R}{I}\right) \arrow[r] & K_0(I) \arrow[r] & K_0(R) \arrow[r] & K_0\left(\faktor{R}{I}\right)
-\end{tikzcd}.
-\] See Chapter III.2.3. of \textit{Weibel}.
+\end{tikzcd}.\footnote{Section III.2.3  (Weibel).}
+\]
 \end{prop}
 
 \begin{definition}
@@ -426,31 +435,31 @@ x_{kj}(-sr) & j \ne k, \quad i=l
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
-There is a natural group surjection $\phi_n : St_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $St_n(R) \hookrightarrow St_{n+1}(R)$. Note that $St(R)\coloneqq \colim_n St_n(R)$ exists. The $\phi_n$ thus induce a group surjection $\phi : St(R) \to E(R)$.
-\end{remark}
+\smallskip
 
-\begin{definition}
-Define $K_2(R)  = \ker \phi$. We have an exact sequence
+There is a natural group surjection $\phi_n : St_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $St_n(R) \hookrightarrow St_{n+1}(R)$. Note that $St(R)\coloneqq \colim_n St_n(R)$ exists. The $\phi_n$ thus form a group epimorphism $\phi : St(R) \to E(R)$.
+
+
+Let $K_2(R)  = \ker \phi$. We have an exact sequence
 \[
 \begin{tikzcd}
 1 \arrow[r] & K_2(R) \arrow[r] & St(R) \arrow[r, "\phi"] & GL(R) \arrow[r] & K_1(R) \arrow[r] & 1
 \end{tikzcd}.
 \]
-\end{definition}
+
 
 \begin{lemma}
 $K_2(R) = Z(St(R))$.
 \end{lemma}
 \begin{proof}
-That $K_2(R) \supset Z(St(R))$ follows from the fact that $Z(E(R))$ is trivial. The reverse containment is easy but longer. See \textit{Weibel}, III.5.2.1.
+That $K_2(R) \supset Z(St(R))$ follows from the fact that $Z(E(R))$ is trivial. The reverse containment is easy but more tedious to prove. See III.5.2.1 (Weibel).
 \end{proof}
 
-\begin{remark}
+Note that
 $K_2(-) : \mathbf{Rng} \to \Ab$ is a functor.
-\end{remark}
 
-\begin{exmp} A Euclidean algorithm enables the following computations.
+
+\begin{exmp} A sort of Euclidean algorithm yields the following computations.
 \begin{enumerate}
 \item $K_2(\Z) \cong C_2$
 \item $K_2(\Z[i]) =1$
@@ -459,22 +468,22 @@ $K_2(-) : \mathbf{Rng} \to \Ab$ is a functor.
 \end{exmp}
 
 \begin{theorem}
-Write $K_2(n, R) = \ker \phi_n$. Suppose that $R$ is Noetherian of dimension $d$. Then $K_2(n, R) \cong K_2(R)$ for any $n\geq d +3$.
+Let $K_2(n, R) = \ker \phi_n$. Suppose that $R$ is Noetherian of dimension $d$. Then $K_2(n, R) \cong K_2(R)$ for any $n\geq d +3$.
 \end{theorem}
 
 \begin{theorem}
-By homology theory, one can show that $K_2(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_2(R) \cong K_2(R)$.
+One can show that $K_2(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_2(R) \cong K_2(R)$.
 \end{theorem}
 
 \begin{exmp}
-$R$ and $S\coloneqq M_n(R)$ are Morita equivalent for any $n\geq 1$, so that $K_i(R) \cong K_i(M_n(R))$ for $i=0, 1, 2$. In one direction, we define $F: M \mapsto M^n$. In the other direction, we define $G: M \mapsto e_{11}M$ where $e_11$ denotes the matrix with $1$ in position $(1, 1)$ and $0$ elsewhere. Define the natural isomorphism $\id_{\Mod_R} \Rightarrow G\circ F$ by the components $f_M : M \to \{(m, 0, \ldots, 0) : m \in M\}$. Further, define the natural isomorphism $\id_{\Mod_S} \Rightarrow F\circ G$ by the components  $g_M : M \to (e_{11}M)^n$ given by $m\mapsto (e_{11}m, \ldots, e_{1n}m)$. Hence $\Mod_R$ and $\Mod_S$ are equivalent, hence Morita equivalence as they are preadditive.
+$R$ and $S\coloneqq M_n(R)$ are Morita equivalent for any $n\geq 1$, so that $K_i(R) \cong K_i(M_n(R))$ for $i=0, 1, 2$. Such an equivalence is given as follows. In one direction, define $F: M \mapsto M^n$. In the other direction, define $G: M \mapsto e_{11}M$ where $e_11$ denotes the matrix with $1$ in position $(1, 1)$ and $0$ elsewhere. Define the natural isomorphism $\id_{\Mod_R} \Rightarrow G\circ F$ by the components $f_M : M \to \left\{(m, 0, \ldots, 0) : m \in M\right\}$. Further, define the natural isomorphism $\id_{\Mod_S} \Rightarrow F\circ G$ by the components  $g_M : M \to (e_{11}M)^n$ given by $m\mapsto (e_{11}m, \ldots, e_{1n}m)$. Hence $\Mod_R$ and $\Mod_S$ are equivalent, hence Morita equivalence as they are preadditive.
 \end{exmp}
 
 \begin{lemma}
 Let $R$ be a commutative Banach algebra. Then there is a surjection from $K_2(R)$ onto $\pi_1\SL(R)$. 
 \end{lemma}
 \begin{proof}
-See \textit{Weibel}, III.5.9.
+See III.5.9 (Weibel).
 \end{proof}
 
 \begin{exmp}
@@ -488,10 +497,15 @@ Let $F$ be a field. Then $K_2(F)$ is isomorphic to the free abelian group with s
 \item $\{a, bd\} = \{a, b\}\{a, d\}$
 \item $\{a, 1-a\}=1$ when $a \ne 1 \ne 1-a$.
 \end{enumerate}
-The $\{a,b\}$ are called \textit{Steinberg symbols}.
 \end{theorem}
-\begin{remark}
-Suppose $A, B \in E(F)$ commute. Write $\phi(a) =A$ and $\phi(b) = B$. Then define $$A \bigstar B =[a,b] \in K_2(R).$$ If $a,b\in F$, we can alternatively define the Steinberg symbol $$\{a, b\} = \begin{bmatrix}
+
+\begin{term}
+The $\{a,b\}$ are called \textit{Steinberg symbols}.
+\end{term}
+
+\smallskip
+
+Suppose that $A, B \in E(F)$ commute. Write $\phi(a) =A$ and $\phi(b) = B$. Then define $$A \bigstar B =[a,b] \in K_2(R).$$ If $a,b\in F$, then we can alternatively define the Steinberg symbol $$\{a, b\} = \begin{bmatrix}
     r & & \\
     & r^{{-}1} & \\
     & & 1
@@ -503,17 +517,16 @@ Suppose $A, B \in E(F)$ commute. Write $\phi(a) =A$ and $\phi(b) = B$. Then defi
     & & s^{{-}1}
   \end{bmatrix}
  .$$
-\end{remark}
 
 \begin{corollary}
 $K_2(\F_p^n) =1$ for any prime $p$ and $n\geq 1$.
 \end{corollary}
 \begin{proof}
-The proof is entirely computational. See \textit{Weibel}, III.6.1.1.
+The proof is entirely computational. See III.6.1.1 (Weibel).
 \end{proof}
 
 \begin{prop}
-If $F \supset \Q(t)$, then $|K_2(F)| = |F|$.
+If $F \supset \Q(t)$, then $\lvert{K_2(F)}\rvert = \lvert{F}\rvert$.
 \end{prop}
 
 \end{document}

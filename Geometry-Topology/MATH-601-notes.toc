@@ -23,12 +23,12 @@
 \contentsline {subsection}{\numberline {4.1}Lecture 19}{47}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Lecture 20}{50}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Lecture 21}{52}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Lecture 22}{54}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Lecture 22}{55}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Lecture 23}{57}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Lecture 24}{62}{subsection.4.6}
-\contentsline {section}{\numberline {5}Sheaves on spaces}{62}{section.5}
-\contentsline {subsection}{\numberline {5.1}Lecture 25}{63}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Lecture 26}{66}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Lecture 27}{70}{subsection.5.3}
-\contentsline {section}{\numberline {6}Vector bundles}{72}{section.6}
-\contentsline {subsection}{\numberline {6.1}Lecture 28}{73}{subsection.6.1}
+\contentsline {subsection}{\numberline {4.6}Lecture 24}{63}{subsection.4.6}
+\contentsline {section}{\numberline {5}Sheaves on spaces}{63}{section.5}
+\contentsline {subsection}{\numberline {5.1}Lecture 25}{64}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Lecture 26}{67}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Lecture 27}{71}{subsection.5.3}
+\contentsline {section}{\numberline {6}Vector bundles}{73}{section.6}
+\contentsline {subsection}{\numberline {6.1}Lecture 28}{74}{subsection.6.1}

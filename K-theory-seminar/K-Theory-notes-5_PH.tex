@@ -141,6 +141,7 @@
 \DeclareMathOperator{\norm}{N}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\co}{\mathtt{co}}
 \DeclareMathOperator{\ext}{Ext}
 \DeclareMathOperator{\stab}{Stab}
 \DeclareMathOperator{\orb}{Orb}
@@ -187,12 +188,13 @@ We begin higher Waldhausen $K$-theory. The main sources for this talk are the fo
 For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-theory of spaces} (1985). 
 \end{abstract}
 
+\smallskip
 
-Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : |w \c| \to K(\c)$ where $w \c$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to |w \c| \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, eventually rendering $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the algebraic $K$-theory spectrum of $\c$.
+Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \lvert{w \c}\rvert \to K(\c)$ where $w \c$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \lvert{w \c}\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, eventually rendering $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the algebraic $K$-theory spectrum of $\c$.
 
 
 \begin{definition}
-Let $\c$ be a category equipped with a subcategory $co(\c)$ of morphisms called \textit{cofibrations}. The pair $(\c, co\c)$ is a \textit{category with cofibrations} if the following conditions hold.
+Let $\c$ be a category equipped with a subcategory $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $\left(\c, \co{\c}\right)$ is a \textit{category with cofibrations} if the following conditions hold.
 \begin{enumerate}
 \item (W0) Every isomorphism in $\c$ is a cofibration.
 \item (W1) There is a base point $\ast$ in $\c$ such that the unique morphism $\ast \rightarrowtail A$ is a cofibration for any $A \in \ob \c$.
@@ -232,7 +234,7 @@ We now introduce the main concept to be generalized.
 
 \medskip
 
- Let $\c$ be a category with cofibrations. Let the \textit{extension category} $S_2\c$ have as objects the cofiber sequences in $(\c, co\c)$ and as morphisms the triples $(f', f, f'')$ such that
+ Let $\c$ be a category with cofibrations. Let the \textit{extension category} $S_2\c$ have as objects the cofiber sequences in $\left(\c, \co{\c}\right)$ and as morphisms the triples $(f', f, f'')$ such that
 \[
 \begin{tikzcd}
 X' \arrow[r, tail] \arrow[d, "f'"] & X \arrow[r, two heads] \arrow[d, "f"] & X'' \arrow[d, "f''"] \\
@@ -296,19 +298,19 @@ This is pointed at the constant diagram at $\ast$.
 
 \begin{note}\label{note}
 A generic object in $S_q\c$ looks like
-\[ \tag{$\ast$}
+\[ \label{eqn:D} 
 \begin{tikzcd}
 \ast \arrow[r, tail] & X_1 \arrow[r, tail] \arrow[d, two heads] & \cdots \arrow[r, tail] & X_{q-1} \arrow[r, tail] \arrow[d, two heads] & X_q \arrow[d, two heads] \\
  & \ast \arrow[r, tail] & \cdots \arrow[r, tail] & \faktor{X_{q-1}}{X_1} \arrow[d, two heads] \arrow[r, tail] & \faktor{X_q}{X_1} \arrow[d, two heads] \\
  &  & \ddots & \vdots \arrow[d, two heads] & \vdots \arrow[d, two heads] \\
  &  &  & \ast \arrow[r, tail] & \faktor{X_q}{X_{q-1}} \arrow[d, two heads] \\
  &  &  &  & \ast
-\end{tikzcd}.
+\end{tikzcd}. \tag{$\dagger$}
 \] where $X_q$ corresponds to $X_{0, q}$ and $\faktor{X_j}{X_i}$ to $X_{i, j}$ for any $1 \leq i \leq j \leq q$. 
 \end{note}
 
 \begin{definition}
-Let $(\c, co\c)$ be a category with cofibrations. Let $coS_q\c \subset S_q \c$ consist of the morphisms $f: X \rightarrowtail Y$ of $\Ar[q]$-shaped diagrams such that for each $1\leq j \leq q$ we have
+Let $\left(\c, \co{\c}\right)$ be a category with cofibrations. Let $coS_q\c \subset S_q \c$ consist of the morphisms $f: X \rightarrowtail Y$ of $\Ar[q]$-shaped diagrams such that for each $1\leq j \leq q$ we have
 \[
 \begin{tikzcd}
 {X_{0, j-1}} \arrow[d, "{f_{0, j-1}}"'] \arrow[r, tail] & {X_{0, j}} \arrow[d] \arrow[rdd, "{f_{0, j}}", bend left] &  \\
@@ -328,7 +330,7 @@ If $f: X \to Y$ is a cofibration of $S_q\c$, then
 \] for any $i \leq j \leq k$ in $[q]$.
 \end{prop}
 \begin{proof}
-See Rognes, Lemma 8.3.12.
+See Lemma 8.3.12 (Rognes).
 \end{proof}
 
 \begin{lemma}
@@ -390,7 +392,7 @@ $(S_q \c, wS_q \c)$ is a Waldhausen category.
 Let $\c$ be a category with cofibrations. If $\alpha : [p] \to [q]$, then define $\alpha^{\ast} : S_q \c \to S_p \c$ by
 $$\alpha^{\ast}(X: \Ar[q] \to \c) = X \circ \Ar(\alpha) : \Ar[p] \to \Ar[q] \to \c.$$
 It's easy to check that this satisfies the two conditions of a diagram in $S_p \c$.
-Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in $(\ast)$ of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$.\reversemarginpar{\marginpar{\small{Not sure that the $s_i$ work.}}}
+Moreover, the face maps $d_i$ are given by deleting the row $X_{i, -}$ and the column containing $X_i$ in \eqref{eqn:D} of \cref{note} and then reindexing as necessary. The degeneracy maps $s_i$ are given by duplicating $X_i$ and then reindexing such that $X_{i+1, i} =0$.\reversemarginpar{\marginpar{\small{Not sure that the $s_i$ work.}}}
 \end{definition}
 
 \begin{prop}
@@ -411,7 +413,7 @@ such that $X^k_{i,j} \cong \faktor{X_j^k}{X_i^k}$ for every $i\leq j\leq q$ and 
 
 
 \begin{lemma}
-There is a natural map $N_{\bullet} w \c \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma |w \c|\to |w S_{\bullet} \c|$ of classifying spaces.
+There is a natural map $N_{\bullet} w \c \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma \lvert{w \c}\rvert\to \lvert{w S_{\bullet} \c}\rvert$ of classifying spaces.
 \end{lemma}
 \begin{proof}
 We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N_{\bullet} w S_q \c$. This defines a right skeletal structure on $N_{\bullet} w S_{\bullet} \c$. 
@@ -425,16 +427,16 @@ Therefore, $I$ must equal $$N_{\bullet} w \c  \land \Delta_{\bullet}^1  = \frac{
 \end{proof}
 
 \begin{remark}
-The axiom (W3) implies that $w\c$ is closed under coproducts, making $|wS_{\bullet} \c|$ into an $H$-space via the map $$\coprod: |wS_{\bullet} \c| \times |wS_{\bullet} \c| \cong |wS_{\bullet} \c \times  wS_{\bullet} \c|\to |wS_{\bullet} \c|.$$
+The axiom (W3) implies that $w\c$ is closed under coproducts, making $\lvert{wS_{\bullet} \c}\rvert$ into an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$
 \end{remark}
 
 \begin{definition}
-Let $(\c, w\c)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega | N_{\bullet} wS_{\bullet} \c|.$$ Then we have a right adjoint $\iota: |w \c | \to K(\c, w)$ to the based map $\sigma$.
+Let $\left(\c, w\c\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \lvert{ N_{\bullet} wS_{\bullet} \c}\rvert.$$ Then we have a right adjoint $\iota: \lvert{w \c}\rvert \to K(\c, w)$ to the based map $\sigma$.
 
 \medskip
 
  Moreover,
-let $F : (\c, w \c) \to (\d, w\d)$ be an exact functor. Then set $K(F) = \Omega | wS_{\bullet}F| : K(\c, w) \to K(\d, w)$. We have thus defined the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
+let $F : \left(\c, w \c\right) \to \left(\d, w\d\right)$ be an exact functor. Then set $K(F) = \Omega\lvert{wS_{\bullet}F}\rvert : K(\c, w) \to K(\d, w)$. We have thus defined the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 \end{definition}
 
 
@@ -449,28 +451,28 @@ Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(
 Assume that $\c$is a small Waldhausen category where $w\c$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $|s_{\bullet} \c| \hookrightarrow |iS_{\bullet} \c|$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
 \end{exmp}
 
-Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $|w S_{\bullet} \c|$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
+Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $\lvert{w S_{\bullet} \c}\rvert$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
 
 \begin{definition}
 Define the \textit{$i$-th algebraic $K$-group} as $K_i(\c, w) = \pi_iK(\c, w)$ for each $i\geq 0$. 
 \end{definition}
 
 \begin{prop}\label{P4}
-$\pi_1|w S_{\bullet} \c| \cong K_0(\c, w)$.
+$\pi_1\lvert{w S_{\bullet} \c}\rvert \cong K_0(\c, w)$.
 \end{prop}
 
 \begin{lemma}
-The group $K_0(\c, w)$ is generated by $[X]$ for every $X \in \ob \c$ such that $[X'] + [X''] = [X]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and $[X] = [Y]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
+The group $K_0(\c, w)$ is generated by $\left[X\right]$ for every $X \in \ob \c$ such that $\left[X'\right] + \left[X''\right] = \left[X\right]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and $\left[X\right] = \left[Y\right]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
 \end{lemma}
 \begin{proof}
-We compute $\pi_1|N_{\bullet}w S_{\bullet} \c|$ based at the $(0,0)$-bisimplex $\ast$. Notice that $|N_{\bullet}w S_{\bullet} \c|$ has a CW structure  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
+We compute $\pi_1\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ based at the $(0,0)$-bisimplex $\ast$. Notice that $\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ has a CW structure  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
 \end{proof}
 
 \begin{corollary}
-We obtain the functors $K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$, called the \textit{algebraic $K$-group functors}.
+We obtain the functors $K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$, known as the \textit{algebraic $K$-group functors}.
 \end{corollary}
 \begin{proof}
-By \cref{P4}, we know that $K_i(\c, w) = \pi_{i+1}|w S_{\bullet} \c|$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $[X'] + [X''] = [X' \vee X''] = [X'' + X']$. Hence $K_0(\c, w)$ is also abelian.
+By \cref{P4}, we know that $K_i(\c, w) = \pi_{i+1}\lvert{w S_{\bullet} \c}\rvert$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
 \end{proof}
 
 \begin{exmp}
@@ -486,7 +488,7 @@ If $\b$ is a Waldhausen subcategory of $\c$, then it is \textit{cofinal in $\c$}
 \end{definition}
 
 \begin{theorem}
-Let $(\b, w)$ be cofinal in $(\c, w)$ and closed under extensions. Assume that $K_0(\b) = K_0(\c)$. Then $wS_{\bullet}\b \to wS_{\bullet}\c$ is a homotopy equivalence. Therefore, $K_i(\b) \cong K_i(\c)$ for every $i\geq 0$.
+Let $\left(\b, w\right)$ be cofinal in $\left(\c, w\right)$ and closed under extensions. Assume that $K_0(\b) = K_0(\c)$. Then $wS_{\bullet}\b \to wS_{\bullet}\c$ is a homotopy equivalence. Therefore, $K_i(\b) \cong K_i(\c)$ for every $i\geq 0$.
 \end{theorem}
 
 \end{document}

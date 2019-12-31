@@ -16,7 +16,14 @@
 \usepackage{bm}
 \usepackage{ dsfont }
 \usepackage{mathrsfs}
-
+\usepackage{hyperref}
+\usepackage{scrextend}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+\usepackage{adjustbox}
+\usepackage{media9}
 \usepackage{thmtools}
 \usepackage[capitalise]{cleveref} 
     
@@ -167,7 +174,7 @@ More basic category theory. The main sources for this talk are the following.
 \end{abstract}
 
 \begin{definition}
-Let $\c$ and $\d$ be categories and $F,G: \c \to \d$ be functors.  A \textit{natural transformation} $\phi :F \Rightarrow G$  is a function $A \mapsto f_A$ from $\ob \c$ to $\mor \d$ such that $f_A : F(A) \to G(A)$ and the following diagram commutes for any morphism $f: A \to B$.
+Let $\c$ and $\d$ be categories and $F,G: \c \to \d$ be functors.  A \textit{natural transformation} $\phi :F \Rightarrow G$  is a function $A \mapsto f_A$ from $\ob \c$ to $\mor \d$ such that $f_A$ is a map  $F(A) \to G(A)$ and the following diagram commutes for any morphism $f: A \to B$.
 
 \begin{center}
 \begin{tikzcd}[row sep=large, column sep = large]
@@ -184,13 +191,14 @@ In symbols, this may be written as $f_Bf_{\ast} = f_{\ast}f_A$, where $f_A$ and 
 If every $f_A$ is an isomorphism, then the $(f_A)^{{-}1}$ define a natural transformation between the same two functors.
 \end{remark}
 
-\begin{definition}
+\smallskip
+
 Let $F, G, H: \c \to \d$ be functors. The \textit{identity natural transformation} $\id_F : F \Rightarrow F$ is given by $A \mapsto \id_{F(A)}$. Moreover, given natural transformations $\phi: F \to G$ and $\psi: G \to H$, define the \textit{composite natural transformation} $\psi \circ \phi$ by $A \mapsto (\psi \circ \phi)_A \coloneqq \psi_{A} \circ \phi_{A}$.
-\end{definition}
+
 
 
 \begin{definition}
-If each $f_A$ is an isomorphism, then we call $\phi: F \cong G$ a \textit{natural isomorphism}.
+If each $f_A$ is an isomorphism, then we say that $\phi: F \cong G$ a \textit{natural isomorphism}.
 \end{definition}
 
 \begin{remark}
@@ -201,7 +209,7 @@ If $\d$ is a groupoid, then $\phi$ must be a natural isomorphism.
 A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse $\phi^{{-}1} : G \Rightarrow F$.
 \end{lemma}
 \begin{proof}
-This follows from \cref{rmk} and the definition of composite natural transformation.
+This follows from \cref{rmk} and the definition of a composite natural transformation.
 \end{proof}
 
 \begin{exmp}
@@ -230,12 +238,13 @@ Consider the preorders $(P, \leq)$ and $(Q, \leq)$ as small categories where fun
 \end{exmp}
 
 \begin{exmp}\label{grp}
-The inversion isomorphism from a group $G$ to $G^{\op}$ defines a natural transformation $\phi: \id_{\mathbf{Grp}} \Rightarrow (^{\op}: \mathbf{Grp} \to \mathbf{Grp})$. In other words, $G$ is naturally isomorphic to $G^{\op}$.
+The inversion isomorphism from a group $G$ to $G^{\op}$ defines a natural transformation $\phi: \id_{\mathbf{Grp}} \Rightarrow \left(^{\op}: \mathbf{Grp} \to \mathbf{Grp}\right)$. In other words, $G$ is naturally isomorphic to $G^{\op}$.
 \end{exmp}
 
-\begin{definition}
+\smallskip
+
 Let $\c$ and $\d$ be categories with $\c$ small. The $\textit{functor category}$ $\mathbf{Fun}(\c, \d)\coloneqq \d^\c$ has functors $F: \c \to \d$ as objects and natural transformations as morphisms. 
-\end{definition}
+
 
 \begin{remark}
 Given functors $F, G: \c \to \d$, why is the class of natural transformation $\phi: F \Rightarrow G$ necessarily a set?
@@ -277,21 +286,21 @@ A functor $F : \c \to \d$ is \textit{essentially surjective} if for each object 
 A functor is an equivalence iff it is full, faithful, and essentially surjective. 
 \end{theorem}
 \begin{proof}
-See Rognes, Theorem 3.2.10.
+See Theorem 3.2.10 (Rognes).
 \end{proof}
 
 \begin{definition}
 A \textit{skeleton} of $\c$ is a full subcategory $\c' \subset \c$ such that each element of $\ob \c$ is isomorphic to exactly one element of $\ob \c'$.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{e1}
 With notation as before, $\c'$ and $\c$ are equivalent categories via the inclusion functor.
 \end{lemma}
 \begin{proof}
 Apply \cref{equiv}.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{e2}
 Any two skeleta $\c', \c'' \subset \c$ are isomorphic.
 \end{lemma}
 \begin{proof}
@@ -300,20 +309,19 @@ To get $F^{{-}1}$, similarly define $G: \c'' \to \c'$ by choosing $(h_X)^{{-}1}$
 \end{proof}
 
 \begin{remark}
-The previous two lemmas are equivalent to the axiom of choice, as is the statement that every category admits a skeleton.
+Both \cref{e1} and \cref{e2} are equivalent to the axiom of choice, as is the statement that every category admits a skeleton.
 \end{remark}
 
-\begin{definition}
-Fix $X \in \ob \c$. Define the functor $\y^X : \c \to \mathbf{Set}$ by $Y \mapsto \c(X, Y)$  and mapping each morphism $g: Y \to Z$ to $g_{\ast} : \c(X, Y) \to \c(X, Z)$ given by $f \mapsto gf$. We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented} by $X$ in $\c$.
+\begin{definition} $ $
+\begin{enumerate}
+\item Let $X \in \ob \c$. Define the functor $\y^X : \c \to \mathbf{Set}$ by $Y \mapsto \c(X, Y)$  and mapping each morphism $g: Y \to Z$ to $g_{\ast} : \c(X, Y) \to \c(X, Z)$ given by $f \mapsto gf$. We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented} by $X$ in $\c$.
+\item Let $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$ by $Y \mapsto \c(Y, Z)$ and mapping each morphism $f: X \to Y$ in $\c$ to $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. We call $\c(-, Z)\coloneqq \y^Z$ the set-valued functor \textit{represented} by $Z$ in $\c$.
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
-Fix $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$ by $Y \mapsto \c(Y, Z)$ and mapping each morphism $f: X \to Y$ in $\c$ to $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. We call $\c(-, Z)\coloneqq \y^Z$ the set-valued functor \textit{represented} by $Z$ in $\c$.
-\end{definition}
-
-\begin{definition}
+\begin{term}
 A functor $F: \c \times \c' \to \d$ is also called a \textit{bifunctor}.
-\end{definition}
+\end{term}
 
 \begin{exmp}
 Let $\c$ be a category. Define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ by $(X, X') \to \c(X, X')$ and mapping each morphism $(f, f') : (X, X') \to (Y, Y')$ to $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto f'gf$.

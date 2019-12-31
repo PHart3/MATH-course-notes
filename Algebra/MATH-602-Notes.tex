@@ -894,7 +894,7 @@ If the first condition holds so that $\sigma = (i_1 \cdots i_r)(j_1 \cdots j_r)\
 \\ \tau (j_1 \cdots j_r) \tau^{-1} & = (i_1 \cdots i_r).
 \end{align*} This implies that $\tau \in Z_{S_n}(\sigma)$. It's easy to see as well that there is an odd permutation in the centralizer when the second condition holds. Now, let $\phi \in \conj_{S_n}(\sigma)$. Write $\phi = \alpha \phi \alpha^{-1}$. Assume $\alpha$ is odd. Then there is some odd $\tau \in Z_{S_n}(\sigma)$. Noe that $(\alpha \tau) \sigma (\alpha \tau)^{-1} = \alpha \tau \sigma \tau^{-1} \alpha^{-1} = \alpha \sigma \alpha^{-1} = \phi$. But $\alpha \tau$ is even, completing the lemma.
 \end{proof}
-We have three cases to consider. If $p=2$, then $\sigma$ is the product of two independent transpositions. By the lemma, it follows that $N = A_5$. If $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose $p=5$. Write $\sigma = (i_1 \cdots i_5)$ and $\tau = (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5)$. Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper.  \reversemarginpar{\marginpar{\small{Why did we need that whole lemma?}}}
+We have three cases to consider. If $p=2$, then $\sigma$ is the product of two independent transpositions. By the lemma, it follows that $N = A_5$. If $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose $p=5$. Let $\sigma = (i_1 \cdots i_5)$ and $\tau = (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5)$. Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper.  \reversemarginpar{\marginpar{\small{Why did we need that whole lemma?}}}
 \end{proof}
 
 \begin{exmp}
@@ -956,7 +956,7 @@ Check that condition (1) is equivalent to saying $G_1 \cdots G_k = G$ and $G_i \
 \begin{enumerate}
 \item $\C^{\ast} \cong S^1 \times \R$ via $z \mapsto (e^{i\theta}, r)$. Note also the extension \[
 	\begin{tikzcd}
-	1\rar & S^1\rar["i" above] & \C^{\ast}\rar["|\cdot|" above] & \R_{>0}\rar & 1. \\
+	1\rar & S^1\rar["i" above] & \C^{\ast}\rar["\lvert{\cdot}\rvert" above] & \R_{>0}\rar & 1. \\
 	\end{tikzcd}
 \]
 \item $\GL_n^{+}(\R) \cong \SL_n(\R) \times \R_{>0}$ via $A\mapsto \left(\frac{A}{\sqrt[n]{\det A}}, \det A\right)$.
@@ -1371,7 +1371,7 @@ We assume for the remainder of the classification problem that the subgroup of $
 A \textit{$K$-module} is a pair $\left(A, \alpha\right)$ where $A$ is an abelian group and $\alpha : K \to \aut(A)$ is a group map.
 \end{definition}
 
-\begin{definition} We work to define an operation on $\ext(K, (A, \alpha))$.
+\begin{definition} Let us define a certain operation on $\ext(K, (A, \alpha))$.
 \begin{enumerate}
 \item Let $\phi  : L \to K$ be a group map and $(\xi) : 1 \to A \to G \to K \to 1$ be an extension. We can use $\phi$ to produce an extension of $L$ by $A$. Define the \textit{fiber product} $G \times_K L = \{(g, l) \in G \times L : q(g) = \phi(l)\}$, which is a subgroup of $G \times L$.
 
@@ -1396,7 +1396,7 @@ Injectivity follows from the fact that $i$ is injective. Recall the group law on
 (g, b)(a, \psi(a)()g,b)^{-1} & = (g, b)(a, \psi(a) )(g^{-1}, \beta \circ q(g^{-1})(b^{-1})) 
 \\ & = (ga, b\beta \circ q(g)(\psi(a)))(g^{-1}, \beta \circ q(g^{-1})(b^{-1}))
 \\ &  = (gag^{-1}, b\beta \circ q(g)(\psi(a))\beta \circ q(ga)\beta \circ q(g^{-1})(b^{-1}))
-\\ &  = (gag^{-1}, b\beta \circ q(g)(\psi(a)) \beta (q(g)\underbrace{q(a)}_{=1}q(g^{-1}))(b^{-1}))
+\\ &  = (gag^{-1}, b\beta \circ q(g)(\psi(a)) \beta (q(g)\underbrace{q(a)}_{1}q(g^{-1}))(b^{-1}))
 \\ & =  (gag^{-1}, b\beta \circ q(g)(\psi(a))b^{-1}) 
 \\ & = (gag^{-1}, \beta \circ q(g)(\psi(a)))
 \\ &  = (gag^{-1}, \psi(\alpha \circ q(g)(a)))
@@ -1407,7 +1407,8 @@ which belongs to $\im(i \times \psi)$.\reversemarginpar{\marginpar{\small{Why do
 Finally, observe that 
 \begin{align*}
 \ker (G\ltimes_{\beta \circ q} B \twoheadrightarrow K) & = \{(g, b) : q(g) =e\} 
-\\ & = \{(g, b) : g \in A\} \geq A\times \{e\} \cong A.\end{align*}
+\\ & = \{(g, b) : g \in A\}
+\\ &  \geq A\times \{e\} \cong A.\end{align*}
 \end{proof}
 Now, let $G_{\psi_{\ast}\xi}$ denote $G \cup_A B$, which equals $\faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
 
@@ -1888,14 +1889,14 @@ $\id_L \cong \eta \circ \epsilon$.
 \end{exercise}
 
 \begin{prop}
-Conversely, if $(L, R, \epsilon, \eta)$ satisfies $\eta \circ \epsilon \cong \id_L$ and $\eta \circ \epsilon \cong \id_R$, then $(L, R)$ is an adjoint pair.
+Conversely, if $\left(L, R, \epsilon, \eta\right)$ satisfies $\eta \circ \epsilon \cong \id_L$ and $\eta \circ \epsilon \cong \id_R$, then $(L, R)$ is an adjoint pair.
 \end{prop}
 
 \subsection{Lecture 23}
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $|\cdot| : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it has as left adjoint the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, |G|)$ for any set $S$ and group $G$. That is, for any function $f: S \to |G|$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
+\item Let $\lvert{\cdot}\rvert : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it has as left adjoint the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, |G|)$ for any set $S$ and group $G$. That is, for any function $f: S \to |G|$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
 \begin{proof}
 \begin{align*}
  \Hom(\Fr(S), G) & = \Hom\left(\coprod_S \Z, G\right) 
@@ -1918,7 +1919,7 @@ Any inverse pair of functors $(F, G)$, however, is automatically an adjunction.
 
 
 \begin{prop}
-$(-)^{\ab}$ admits no left adjoint.
+$(-)^{\ab}$ has no left adjoint.
 \end{prop}
 \begin{proof}
 Suppose, for contradiction, that $F: \mathbf{Ab} \to \mathbf{Grp}$ is  left adjoint to $(-)^{\ab}$. Then $$\Hom_{\mathbf{Grp}}(F(A), G) \cong \Hom_{\mathbf{Ab}}(A, G^{\ab})$$ for any abelian group $A$. This entails the following three properties.
@@ -1936,7 +1937,7 @@ Suppose $F(A)= \{e\}$. Then $$\{e\} \cong \Hom_{\mathbf{Grp}}(\{e\}, G) \cong \H
 \item If $A$ is nontrivial, then $F(A)$ contains no proper maximal normal subgroup. 
 \begin{proof}
 Suppose $A$ is nontrivial and $M \unlhd F(A)$ is proper and maximal. Then $\faktor{F(A)}{M}$ is simple. If $\faktor{F(A)}{M}$ is also nonabelian, then we get
-$$\{e\} \not \cong \Hom_{\mathbf{Grp}}(F(A), \faktor{F(A)}{M}) \cong \Hom_{\mathbf{Ab}}(A, \left(\faktor{F(A)}{M})^{\ab} \right)\cong \{e\},$$ a contradiction. If $\faktor{F(A)}{M}$ is abelian, then it is isomorphic to $C_p$ and we can make an argument as before.
+$$\{e\} \not \cong \Hom_{\mathbf{Grp}}\big(F(A), \faktor{F(A)}{M}\big) \cong \Hom_{\mathbf{Ab}}\big(A, \left(\faktor{F(A)}{M}\right)^{\ab} \big)\cong \{e\},$$ a contradiction. If $\faktor{F(A)}{M}$ is abelian, then it is isomorphic to $C_p$ and we can make an argument as before.
 \end{proof}
 \end{enumerate}
 \end{proof}
@@ -2023,7 +2024,7 @@ Our main setting for ring theory will be $\mathbf{CommRing}$, the category of un
 
 
 \begin{definition}
-Let $A \in \mathbf{CommRing}$. Then we have the $A$-module $\bigoplus_{\N} A$ For each $k\geq 0$, define $$m_k = \left(0, \ldots, 0, \underbrace{1}_{k-\text{th place}}, 0 , \ldots \right).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\N} A$. Define $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\N} A$ by linearity. Then $(\bigoplus_{\N} A, + , \cdot) \in  \mathbf{CommRing}$. Moreover, $((\bigoplus_{\N} A, + , \cdot), i) \in  \mathbf{CommRing}^A$ where $i : A \to \bigoplus_{\N}A$ denotes inclusion by $a \mapsto (a, 0, \ldots, 0, \ldots)$. We call this the \textit{one-variable ring over $A$}.
+Let $A \in \mathbf{CommRing}$. Then we have the $A$-module $\bigoplus_{\N} A$ For each $k\geq 0$, define $$m_k = \left(0, \ldots, 0, \underbrace{1}_{k-\text{th place}}, 0 , \ldots \right).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\N} A$. Define $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\N} A$ by linearity. Then $\left(\bigoplus_{\N} A, + , \cdot\right) \in  \mathbf{CommRing}$. Moreover, $\left(\left(\bigoplus_{\N} A, + , \cdot\right), i\right) \in  \mathbf{CommRing}^A$ where $i : A \to \bigoplus_{\N}A$ denotes inclusion by $a \mapsto \left(a, 0, \ldots, 0, \ldots\right)$. We call this the \textit{one-variable ring over $A$}.
 \end{definition}
 
 
@@ -2037,7 +2038,7 @@ $\deg(p_1 + p_2) \leq \max(\deg p_1, \deg p_2)$.
 \subsection{Lecture 25}
 
 \begin{definition}
-Let $S$ be a set. Note that $\underbrace{\Fun^{\fs}(S, \Z_{\geq 0})}_{\text{finite support}}$ is an additive monoids because $\Z$ is one. View its elements as monomials in elements of $S$. For any $s\in S$, define $t_s : S \to \Z_{\geq 0}$ by $x \mapsto \begin{cases} 0 & s \ne x \\ 1 & s =x \end{cases}.$ Then for any $\xi \in \Fun^{\fs}(S, \Z_{\geq 0})$, we write $\xi = \prod_{s\in S}t_s^{\xi(s)} =\prod_{s\in \supp(\xi)}t_s^{\xi(s)}$.
+Let $S$ be a set. Note that $\overbrace{\Fun^{\fs}(S, \Z_{\geq 0})}^{\text{finite support}}$ is an additive monoids because $\Z$ is one. View its elements as monomials in elements of $S$. For any $s\in S$, define $t_s : S \to \Z_{\geq 0}$ by $$x \mapsto \begin{cases} 0 & s \ne x \\ 1 & s =x \end{cases}.$$ Then for any $\xi \in \Fun^{\fs}(S, \Z_{\geq 0})$, we write $\xi = \prod_{s\in S}t_s^{\xi(s)} =\prod_{s\in \supp(\xi)}t_s^{\xi(s)}$.
 Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial ring over $A$ on $\{t_s\}_{s\in S}$} as $$A[S] = \Fun^{\fs}(\Fun^{\fs|}(S, \Z_{\geq 0}), A)$$ equipped with the operations
 \begin{align*}
 (f+g)(\xi) &= f(\xi) +g(\xi)
@@ -2047,10 +2048,10 @@ Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial r
 
 \begin{note} $ $
 \begin{enumerate}
-\item Note that $A[S] \in  \ob \mathbf{CommRing}$ with $0_{A[S]}(\xi) =0$ and and $1_{A[S]}(\xi) = \begin{cases} 0_A & \xi \ne 0 \\ 1_A & \xi =0   \end{cases}$ for each monomial $\xi$. 
+\item Note that $A[S] \in  \ob \mathbf{CommRing}$ with $0_{A[S]}(\xi) =0$ and and $$1_{A[S]}(\xi) = \begin{cases} 0_A & \xi \ne 0 \\ 1_A & \xi =0   \end{cases}$$ for each monomial $\xi$. 
 \item There is  a natural ring monomorphism $i : A \hookrightarrow A[S]$ given by $a \mapsto a1_{A[S]}$.
 \item Given $f\in A[S]$, we can write $f = \sum_{\xi \in \supp(f)} f(\xi)\delta_{\xi}$. Let $ \delta_{\xi}\coloneqq \prod_{s\in \supp(\xi)}t_s^{\xi(s)}$, so that instead we can write $$ f = \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)} $$ in the form of a polynomial in several variables.  
-\item Consider the forgetful functor $\lvert - \rvert: \mathbf{CommRing}^A \to \mathbf{Set}$. The polynomial functor $A[-]: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to $\lvert - \rvert$.
+\item Consider the forgetful functor $\lvert{-}\rvert: \mathbf{CommRing}^A \to \mathbf{Set}$. The polynomial functor $A[-]: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to $\lvert{-}\rvert$.
 \begin{proof}
 We want a natural bijection $\Hom_{\mathbf{CommRing}^A}(A[S], B) \cong \Hom_{\mathbf{Set}}(S, |B|)$ for any ring map $i: A\to B$ and any set $S$. Given a commutative diagram  
 \[
@@ -2514,17 +2515,17 @@ X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
 \medskip
 
  Now, drop the assumption that $M$ is free but assume that $M \coprod N$ is free for some $R$-module $N$. Let 
-\[ \tag{$\eta$}
+\[ \label{eqn:eta}
 \begin{tikzcd}
 M \arrow[rd, "\phi"] &  &  \\
 X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
-\end{tikzcd}
+\end{tikzcd} \tag{$\eta$}
 \] be a projectivity diagram. As $M \coprod N$ is free, our previous argument shows that there is some morphism $f$ such that
 \[\begin{tikzcd}
 M\coprod N \arrow[rd, "\phi \coprod 0"] \arrow[d, "f"'] &  &  \\
 X \arrow[r, "q"'] & X'' \arrow[r] & 0
 \end{tikzcd}
-\] commutes. Define $\psi : M \to X$ by the composition $M \hookrightarrow M\coprod N \overset{f}{\longrightarrow} X$. Then $\psi$ fills $(\eta)$.
+\] commutes. Define $\psi : M \to X$ by the composition $M \hookrightarrow M\coprod N \overset{f}{\longrightarrow} X$. Then $\psi$ fills \eqref{eqn:eta}.
 
 \medskip
 
