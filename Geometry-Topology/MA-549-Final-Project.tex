@@ -155,7 +155,7 @@ Let $\left(\C^2, \| \cdot \|\right)$ denote the normed vector space $\C^2$ over 
 The symbol $\bullet$ denote the Euclidean inner product as well.
 \end{notation}
 
-	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $d(\v, \x)=\|\v-\x\|=\|T\v -T\x \|=d'(T\v, T\x)$ for any $\v, \x \in \C^2$. Likewise, we see that $d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$ for any $\y, \z \in \R^4$.
+	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $d(\v, \x)=\|\v-\x\|=\|T(\v) -T(\x) \|=d'(T(\v), T(\x))$ for any $\v, \x \in \C^2$. Likewise, we see that $d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$ for any $\y, \z \in \R^4$.
 Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Isom(\C^2)\cong \Isom(\R^4)$, provided that both $\Isom(\C^2)$ and $\Isom(\R^4)$ are groups under composition. Certainly they are closed under composition and contain the identity map. Also, every isometry $f$ of a given metric space $\left(X, \rho\right)$ must be injective. Indeed, if $x\ne y$ but $f(x)=f(y)$, then $\rho(x,y)\ne 0 = \rho(f(x),f(y))$, which is impossible. Since the inverse of $f$ must also be an isometry, it just remains to show that $f$ is surjective in order to prove that the two are in fact groups. We do this below. 
 
 \medskip

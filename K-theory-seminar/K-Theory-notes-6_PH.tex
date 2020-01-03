@@ -157,6 +157,7 @@
 \DeclareMathOperator{\mor}{mor}
 \DeclareMathOperator{\iso}{iso}
 \DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\co}{co}
 \DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\ZFC}{ZFC}
@@ -168,6 +169,8 @@
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Ar}{Ar}
+\DeclareMathOperator{\hb}{hb}
+\DeclareMathOperator{\bo}{b}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\cone}{cone}
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
@@ -199,7 +202,7 @@ Recall that $\lvert{wS_{\bullet} \c}\rvert$ is an $H$-space via the map $$\copro
 Let $\b$ and $\c$ be Waldhausen categories. We say that $F' \rightarrowtail F \twoheadrightarrow F''$ is a \textit{short exact sequence} or \textit{cofiber sequence of exact functors} if every $F'(B) \rightarrowtail F(B) \twoheadrightarrow F''(B)$ is a cofiber sequence and $F(A) \cup_{F'(A)} F'(B) \rightarrowtail F(B)$ is a cofibration in $\c$ for every $A \rightarrowtail B$ in $\b$.
 \end{definition}
 
-Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving things about a given cofiber sequence of exact functors $\b \to \c$. We say that $S_2\c$ is universal in this sense.
+Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. We say that $S_2\c$ is universal in this sense.
 
 \begin{theorem}[Extension theorem]
 Let $\c$ be Waldhausen. The exact functor $(s, q) : S_2 \c \to \c \times \c$ induces  a homotopy $K(S_2\c) \simeq K(\c) \times K(\c)$. The functor $\coprod : (A, B) \to (A \rightarrowtail A \coprod B \twoheadrightarrow  B)$ is a homotopy inverse.
@@ -239,9 +242,11 @@ Induct on $n$.
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $$F_{\ast}'' \simeq F_{\ast} - F_{\ast} \simeq 0.$$ This implies that the homotopy fiber of $F_{\ast}'' : K(\b) \to K(\c)$ is homotopy equivalent to $K(\b) \vee \Omega K(\c)$.
 \end{corollary}
 
-\begin{definition}
+\medskip
+
 Let $\c$ be a Waldhausen category. Recall the arrow category $\Ar(\c)$ of $\c$ consisting of morphisms in $\c$ as objects and commutative squares as morphisms. Let $s$ and $t$ denote the source and target functors $\Ar(\c)\to \c$, respectively. 
 
+\begin{definition}
 A functor $T: \Ar(\c) \to \c$ is a \textit{(mapping) cylinder functor} on $\c$ if it comes equipped with natrual transformations $j_1 :  s \Rightarrow T$, $j_2 : t \Rightarrow T$, and $p: T \Rightarrow t$ such that for any $f: A \to B$, we have the commutative diagram
 \[
 \begin{tikzcd}
@@ -257,12 +262,14 @@ Moreover, $T$ must satisfy the following axioms.
 \item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom 2 is a cofibration in $\c$.
 \item {(Cylinder Axiom)} The map $p: T(f) \to B$ is a w.e. in $\c$.
 \end{enumerate}
-\begin{definition} Let $T$ be a cylinder functor on $\c$.
+
+\begin{term} Let $T$ be a cylinder functor on $\c$.
 \begin{enumerate}
 \item We call $T(A \to \ast)$ the \textit{cone} of $A$, denoted by $\cone(A)$.
 \item We call $\faktor{\cone(A)}{A}$ the \textit{suspension} of $A$, denoted by $\Sigma A$. 
 \end{enumerate}
-\end{definition}
+\end{term}
+
 \begin{corollary}
 The induced suspension map $\Sigma : K(\c) \to K(\c)$ is a homotopy inverse for the $H$-space $K(\c)$.
 \end{corollary}
@@ -291,25 +298,26 @@ It turns out that treating $w \c$ as a bicategory with a single vertical morphis
 
 \medskip
 
- Now, let $v_{(-)}\text{co}w_{(-)}\c$ denote the subcategory of the above squares where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\text{co}w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we simplicial bi-subcategory $v_{(-)}\text{co}w_{(-)}S_{\bullet}\c$ such that the inclusion intro $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. We have now obtained the following diagram.
+ Now, let $v_{(-)}\co w_{(-)}\c$ denote the subcategory of the above squares where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\co w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we simplicial bi-subcategory $v_{(-)}\co w_{(-)}S_{\bullet}\c$ such that the inclusion intro $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. We have now obtained the following diagram.
 \[
 \begin{tikzcd}
-vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\text{co}w_{(-)}S_{\bullet}C \arrow[d, "\simeq"] \\
+vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\co w_{(-)}S_{\bullet}C \arrow[d, "\simeq"] \\
  & wS_{\bullet}C \arrow[r, "\simeq"] & v_{(-)}w_{(-)}S_{\bullet}C
 \end{tikzcd}
 \]
 
 \medskip
 
- It therefore suffices to show that the top row is a fibration.\reversemarginpar{\marginpar{\small{What about the left vertical morphism?}}} You can do this by using the relative $K$-theory space construction. See IV.8.5.3 and V.2.1 (Weibel).
+ It therefore suffices to show that the top row is a fibration.\reversemarginpar{\marginpar{\small{What about the left vertical morphism?}}} One can do this by using the relative $K$-theory space construction. See IV.8.5.3 and V.2.1 (Weibel).
 \end{proof}
 
-\begin{definition}
-Let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^b(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^b(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those giving a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
-\end{definition}
+\smallskip
+
+Let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^{\bo}(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^{\bo}(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those giving a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
+
 
 \begin{theorem}[Gillet-Waldhausen]
-Let $\a$ be an exact category closed under kernels of surjections. Then the exact inclusion $\a \to \ch^b(\a)$ induces a homotopy equivalence $K(\a) \simeq K\ch^b(\a)$. Hence $$K_i(\a) = K_i \ch^b(\a)$$ for every $i$.
+Let $\a$ be an exact category closed under kernels of surjections. Then the exact inclusion $\a \to \ch^{\bo}(\a)$ induces a homotopy equivalence $K(\a) \simeq K\ch^{\bo}(\a)$. Hence $$K_i(\a) = K_i \ch^{\bo}(\a)$$ for every $i$.
 \end{theorem}
 \begin{proof}
 Apply the localization theorem. See V.2.2 (Weibel).
@@ -344,15 +352,21 @@ One can show that each functor $S_n \a \to S_n \b$ is exact and also has the app
 \end{proof}
 
 \begin{definition}
-Let $\a$ be an abelian category $\ch(\a)$ denote the category of chain complexes over $\a$. We say that a complex $C_{\bullet}$ is \textit{homologically bounded} if only finitely many $H_i(C_j)$ are nonzero. Let $\ch_{\pm}^{hb}$ denote the subcategory of bounded below (respectively, bounded above) complexes. 
+Let $\a$ be an abelian category $\ch(\a)$ denote the category of chain complexes over $\a$. We say that a complex $C_{\bullet}$ is \textit{homologically bounded} if only finitely many $H_i(C_j)$ are nonzero. 
 \end{definition}
 
+\begin{notation}
+Let $\ch_{\pm}^{\hb}$ denote the subcategory of bounded below (respectively, bounded above) complexes. 
+\end{notation}
+
 \begin{exmp}
-Let $\a$ be an abelian category. By homology theory, we have that $\ch^b(\a) \subset \ch_{-}^{hb}(\a)$ and $\ch_+^{hb}(\a)\subset \ch^{hb}(\a)$ have the approximate lifting property. We also have that $\ch^b(\a) \subset \ch_+^{hb}(\a)$ and $\ch_+^{hb}(\a)\subset \ch^{hb}(\a)$ satisfy the dual of the approximate lifting property. Thus, we can apply the approximation theorem and Gillet-Waldhausen to see that $$  K(\a) \simeq K\ch^b(\a) \simeq  K\ch_{-}^{hb}\simeq K\ch_{+}^{hb}(\a) \simeq K \ch^{hb}(\a).$$
+Let $\a$ be an abelian category. One can show that $\ch^{\bo}(\a) \subset \ch_{-}^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ have the approximate lifting property. We also have that $\ch^{\bo}(\a) \subset \ch_+^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ satisfy the dual of the approximate lifting property. Thus, we can apply the approximation theorem and Gillet-Waldhausen to see that $$  K(\a) \simeq K\ch^{\bo}(\a) \simeq  K\ch_{-}^{\hb}\simeq K\ch_{+}^{\hb}(\a) \simeq K \ch^{\hb}(\a).$$
 \end{exmp}
 
+\bigskip
+
 \begin{definition}
- A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $(\Sigma_{n}\times \Sigma_{k})$-equivariant for any $n,k\geq 0$, where $S^k \coloneqq \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $\left(f_n : X_n \to Y_n\right)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
+ A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $\left(\Sigma_{n}\times \Sigma_{k}\right)$-equivariant for any $n,k\geq 0$, where $S^k \equiv \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $\left(f_n : X_n \to Y_n\right)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
 \[
 \begin{tikzcd}
 X_n \land S^1 \arrow[d, "\sigma"'] \arrow[r, "f_n \land \id"] & Y_n \land S^1 \arrow[d, "\sigma"] \\
@@ -384,15 +398,13 @@ The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a
 \end{definition}
 
 
-\begin{theorem}
-For any $i\geq 0$, we have that $K_i(\c, w) = \pi_{i+1}K(\c, w)_1 \cong \pi_i \mathbf{K}(\c, w)$.
+\begin{theorem}\label{lt}
+For any $i\geq 0$, we have that $K_i(\c, w) = \pi_{i+1}K(\c, w)_1 \cong \pi_i \mathbf{K}(\c, w)$.\footnote{Lemma 8.7.4 (Rognes).}
 \end{theorem}
-\begin{proof}
-See Lemma 8.7.4 (Rognes).
-\end{proof}
 
 
-In this way, we encode our algebraic $K$-theory in an infinite loop space.
+
+Thanks to \cref{lt}, we can encode our algebraic $K$-theory in an infinite loop space.
 
 
 \end{document}

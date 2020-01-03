@@ -145,6 +145,7 @@
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\tor}{Tor}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\stab}{Stab}
 \DeclareMathOperator{\homeo}{Homeo}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
@@ -350,7 +351,7 @@ Thus, we get a chain complex
 \end{tikzcd}
 \] where $\kappa_1 = \begin{cases} 0 & n \text{ odd} \\ \pm 2 & n \text{ even} \end{cases}$ and $\kappa_2 = \begin{cases} \pm 2 & n \text{ odd} \\ 0 & n \text{ even} \end{cases}$.
 
-This proves that $$ H_i( \RP^n) = \begin{cases} \Z & i =0 \\ \Z/2 & i =1 \\ 0 & i =2 \\ \Z/2 & \underset{odd}{i} <n \\ 0 & \underset{even}{i} <n \\ 0 & i >n \\ \Z & i =n \text{ odd} \\ 0 & i= n \text{ even}    \end{cases}  .$$
+This proves that $$ H_i( \RP^n) = \begin{cases} \Z & i =0 \\ \Z_2 & i =1 \\ 0 & i =2 \\ \Z_2 & \underset{odd}{i} <n \\ 0 & \underset{even}{i} <n \\ 0 & i >n \\ \Z & i =n \text{ odd} \\ 0 & i= n \text{ even}    \end{cases}  .$$
 \end{exmp}
 
 \smallskip
@@ -451,7 +452,7 @@ This result can't be improved in general. For example, $\pi_3(S^2) \cong \Z$, wh
 Let $A \subset X$ be a subcomplex. Recall that $H_i(X, A) \cong H_i(X/A. \ast)$ for each $i\geq 1$. But it is \emph{not} the case that $\pi_i(X, A) \cong \pi_i(X/A. \ast)$, for otherwise  $\pi_i(S^n) \cong \pi_i(D^n, S^{n-1}) \cong \pi_i(S^{n-1})$, which is known to be false exactly when $i > 2n-2$. 
 
 \begin{exmp}
-$\pi_4(S^3) \cong \Z/2 \not \cong  \pi_4(S^4)$.
+$\pi_4(S^3) \cong \Z_2 \not \cong  \pi_4(S^4)$.
 \end{exmp}
 
 \bigskip
@@ -688,7 +689,7 @@ It suffices to prove the following claim:
 
 \smallskip
 
-If $h : Z \to X \times [0,1]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a cell complex, and $\sigma_0 : X \times \{0\} \to Z$ satisfies $h \circ \sigma_0 = \id_{X \times \{0\}}$, then there is some map $\sigma : X \times [0,1] \to Z$ such that $\sigma_{X \times \{0\}} = \sigma_0$ and $h \circ \sigma = \id_{X \times [0,1]}$. 
+If $h : Z \to X \times [0,1]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a cell complex, and $\sigma_0 : X \times \{0\} \to Z$ satisfies $h \circ \sigma_0 = \id_{X \times \{0\}}$, then there is some map $\sigma : X \times [0,1] \to Z$ such that $\sigma_{X \times \{0\}} = \sigma_0$ and $h \circ \sigma = \id_{X \times [0,1]}$.
 \end{addmargin}
 
 \smallskip
@@ -705,7 +706,7 @@ X \times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & E \arrow[d, "p"] \\
                                                       & f^{\ast}{E} \arrow[r] \arrow[d]                                   & E \arrow[d, "p"] \\
 X \times \{0\} \arrow[ru, "\sigma_0"] \arrow[r, hook] & {X \times [0,1]} \arrow[r, "f"'] \arrow[u, "\sigma"', bend right] & B               
 \end{tikzcd}
-\] commutes where $\sigma_0(x,0) = (x,0, \hat{f}(x,0))$.
+\] commutes where $\sigma_0(x,0) = \left(x,0, \hat{f}(x,0)\right)$.
 
 \medskip
 
@@ -713,24 +714,41 @@ For induction, let us assume that our claim is true for each $X^0, X^1, \ldots, 
 \[
 \begin{tikzcd}
                                                         & Z \arrow[d, "h"]                                       &                                                           \\
-D^n \times \{0\} \arrow[r, hook] \arrow[ru, "\sigma_0"] & {D^n \times [0,1]}                                     & {S^{n-1}\times [0,1]} \arrow[l, hook] \arrow[lu, "\tau"'] \\
+D^n \times \{0\} \arrow[r, hook] \arrow[ru, "\sigma_0"] & {D^n \times [0,1]}                                     & {S^{n-1}\times [0,1]} \arrow[l, hook] \arrow[lu, "\tau"', dashed] \\
                                                         & S^{n-1} \times \{0\} \arrow[lu, hook] \arrow[ru, hook] &                                                          
 \end{tikzcd}
-\] commutes since there is a retraction $D^n \times [0,1] \to D^{n} \times \{0\} \cup S^{n-1}\times [0,1]$. Fix a positive integer $m$. For any $i\in \N$, let $a_i = \frac{i}{m}$ and let $I_j = [a_j, a_{j+1}]$. By making $m$ large enough, we can ensure that $p\restriction_{p^{-1}(I_{j_1} \times \cdots I_{j_{n+1}})}$ is trivial. 
+\] commutes as there is a retraction $$r: D^n \times [0,1] \to D^{n} \times \{0\} \cup S^{n-1}\times [0,1].$$ To this end, fix a positive integer $m$. For each $j\in \left\{0,1, \ldots, m\right\}$, let $a_j = \frac{j}{m}$ and let $I_j = \left[a_j, a_{j+1}\right]$. Since $D^n \times [0,1]$ is compact,  by making $m$ large enough, we can ensure that $h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_{n+1}})}$ is trivial.
 \begin{claim}
-$p\restriction_{p^{-1}(I_{j_1} \times I_{j_n} \times \cdots [0,1])}$ is also trivial. 
+$h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  [0,1])}$ is also trivial. 
 \end{claim}
 \begin{proof}
-??
+We may assume, wlog, that $h$ is trivial on $h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  I_j)$ for any $j$. Let $k\in \left\{0, 1, \ldots, m-1\right\}$ and assume, for induction, that $h$ is trivial on $h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  \left[0,a_k\right])$. Let $K = I_{j_1} \times \cdots \times I_{j_n}$ and $J = K\times \left[0, a_k\right]$ and $\tilde{J}= K\times \left[a_k, a_{k+1}\right]$. By assumption, there exists a homeomorphism $\varphi :h^{-1}(J) \overset{\cong}{\longrightarrow} J\times F$ such that $\pi_J \circ \varphi =h$. Likewise, there exists a homeomorphism $\psi : h^{-1}(\tilde{J}) \overset{\cong}{\longrightarrow} \tilde{J} \times F$ such that $\pi_{\tilde{J}} \circ \psi = h$.
+
+\smallskip
+
+If $\psi =\varphi$ on $K\times \left\{a_k\right\}$, then $h^{-1}(J\cup \tilde{J}) \overset{\varphi \cup \psi}{\longrightarrow} \left(J \cup \tilde{J}\right) \times F$ is a well-defined trivialization, in which case we're done. With this in mind, let
+\[
+w = \left(\varphi\restriction_{K\times \left\{a_k\right\}} \circ \left(\psi\restriction_{K\times \left\{a_k\right\}}\right)^{-1}\right) \times \id_{\left[a_k, a_{k+1}\right]}
+.\]
+Note that 
+\[
+\begin{tikzcd}
+h^{-1}(\tilde{J}) \arrow[r, "\psi"] \arrow[d, "h"'] & \tilde{J}\times F \arrow[d, "w \times \id_F"]               \\
+\tilde{J}                                           & \tilde{J}\times F \arrow[l, "\pi_{\tilde{J}}"]
+\end{tikzcd}
+\] commutes and that $\gamma \coloneqq \left(\left(w \times \id_F\right) \circ \psi\right)$ agrees with $\varphi$ on $K\times \left\{a_k\right\}$. Hence we may take $\varphi \cup \gamma$ as our desired trivialization.
 \end{proof}
-?? 
+As a result, we may assume that $h$ is trivial on its entire domain, i.e., that $h$ is the projection $$\left(D^n \times \left[0,1\right]\right) \times F \twoheadrightarrow D^n \times \left[0,1\right].$$ Moreover, by induction, we can find a right inverse $\sigma : X^{n-1} \times \left[0,1\right] \to D^n \times \left[0,1\right]$ of $h : Z \to X^{n-1} \times \left[0,1\right]$ that extends $\sigma_0\restriction_{X^{n-1}\times \left\{0\right\}}$. But $X^{n-1}$ consists of all $\left(n-1\right)$-dimensional faces of the $n$-cube, and thus we have a map $$\tau \equiv \sigma \restriction_{\partial{I^n} \times \left[0,1\right]} : S^{n-1} \times  \left[0,1\right]   \to  \left(D^n \times \left[0,1\right]\right) \times F,$$ which has the form $\left(x,t\right) \mapsto \left(x,t,\tilde{\tau}(x,t)\right)$. Further, $\sigma_0$ has the form $(x,0) \mapsto \left(x,0, \tilde{\sigma}_0(x,0)\right)$. Therefore, our desired map $\sigma :  D^n \times \left[0,1\right] \to \left(D^n \times \left[0,1\right]\right) \times F $  is given by 
+\[
+\sigma(x,t) = \left(x,t, \left(\tilde{\sigma}_0 \cup \tilde{\tau}\right)(r(x,t))\right).
+\]
 \end{proof}
 
 
 \section{Fiber bundles}
 
 \begin{defn}
-A \textit{topological group} $G$ is a group such that both multiplication $G \times G \overset{\mu}{\longrightarrow} G$ and inversion $G \overset{({-})^{-1}}{\longrightarrow} G$ are continuous.
+A \textit{topological group} $G$ is a group such that both multiplication $G \times G \overset{\mu}{\longrightarrow} G$ and inversion $G \overset{{-}^{-1}}{\longrightarrow} G$ are continuous.
 \end{defn}
 
 \begin{defn}[Fiber bundle] Let $G$ be a topological group.
@@ -898,7 +916,8 @@ commutes. Define the free action $E \times G \to E$ by
 e\cdot g = h_{\alpha}^{-1}\left(h_{\alpha}(e)\cdot g\right).
 \] where $p(e) \in U_{\alpha}$ and $(u,h) \cdot g \equiv \left(u, hg\right)$. This is well-defined because it does not depend on our choice of $\alpha$. Indeed, suppose that $p(e)$ also belongs to $U_{\beta}$. We have that $h_{\alpha}(e) =\left(p(e), h\right)$ and $h_{\beta}(e) = \left(p(e), h'\right)$ for some $h, h' \in G$. Then $e\cdot g = h_{\alpha}^{-1}\left(p(e), hg\right)$, and we must show that this equals $h_{\beta}^{-1}\left(p(e), h'g\right)$.  Note that $h_{\beta}\left(e\cdot g\right) = \left(p(e), h_{\beta{\alpha}}(p(e))hg\right)$.  But $$\left(p(e), h_{\beta{\alpha}}(p(e))h\right)  =  h_{\beta}\left(h_{\alpha}^{-1}\left(p(e), h\right)\right) = \left(p(e), h'\right),$$ 
 so that $h_{\beta{\alpha}}(p(e))h = h'$, and thus $h_{\beta}\left(e\cdot g\right) = \left(p(e), h'g\right)$, as desired.
-\begin{note}
+
+\begin{note}\label{quot}
 $\faktor{E}{G} \cong \{p^{-1}(x) \mid x \in X \} \cong X$.
 \end{note}
 
@@ -1075,7 +1094,7 @@ where $G_0$ denotes the connected component of $e_G$.
 
 \smallskip
 
-For example, if $G=F = \GL\left(n, \R\right)$, then $\pi_0(G)$ consists of the set of matrices with positive determinant and the set of matrices with negative determinant, so that $\B\left(S^1, G, F\right) \cong \Z/2$.
+For example, if $G=F = \GL\left(n, \R\right)$, then $\pi_0(G)$ consists of the set of matrices with positive determinant and the set of matrices with negative determinant, so that $\B\left(S^1, G, F\right) \cong \Z_2$.
 \end{exmp}
 
 \begin{exmp}
@@ -1189,10 +1208,10 @@ Let $G = \{\pm 1\}$.  Then any principal $G$-bundle over $X$ is a two-fold cover
 Using the fact that $\pi_1$ is the abelianization of $H_1$ along with the universal coefficient theorem for cohomology, one can prove the following.
 
 \begin{prop}
-$\B\left(X, \Z_2, F \right) \cong \left[X, \RP^n\right] \cong \Hom\left(\pi_1\left(X\right), \Z/2\right) \cong H^1\left(X, \Z/2\right)$. 
+$\B\left(X, \Z_2, F \right) \cong \left[X, \RP^n\right] \cong \Hom\left(\pi_1\left(X\right), \Z_2\right) \cong H^1\left(X; \Z_2\right)$. 
 \end{prop}
 
-Let $w_1 \in H^1\left(\RP^n, \Z/2\right) \cong \Z_2$ be nonzero. Let $p_1 : E \to X$ be a $\Z/2$-bundle. We call $w_1\left(p_1\right) \coloneqq f^{\ast}{w_1} \in H^1\left(X, \Z/2\right)$ the \textit{first Stiefel-Whitney class of p}. 
+Let $w_1 \in H^1\left(\RP^n; \Z_2\right) \cong \Z_2$ be nonzero. Let $p_1 : E \to X$ be a $\Z_2$-bundle. We call $w_1\left(p_1\right) \coloneqq f^{\ast}{w_1} \in H^1\left(X; \Z_2\right)$ the \textit{first Stiefel-Whitney class of p}. 
 
 \subsection{Lecture 10}
 
@@ -1234,7 +1253,7 @@ An \textit{Eilenberg-MacLane space of type $K\left(G, n\right)$} is a space sati
 \end{defn}
 
 \begin{theorem}\label{EM}
-If $X$ is a cell complex, then $\left[X, K\left(G, n\right)\right] \cong H^n\left(X, G\right)$.
+If $X$ is a cell complex, then $\left[X, K\left(G, n\right)\right] \cong H^n\left(X; G\right)$.
 \end{theorem}
 
 \begin{exmp}
@@ -1251,7 +1270,7 @@ By inspecting the long exact sequence
 S^i \arrow[u] \arrow[ru] &                      
 \end{tikzcd}
 \] for any $i\in \N$. Thus, $\pi_i\left(\CP^{\infty}\right) = \pi_i\left(\CP^n\right)$ when $n$ is large enough. This means that $\CP^{\infty}$ is also 
-an Eilenberg-MacLane space of type $K\left(\Z, 2\right)$. By \cref{EM}, we have that $$\B\left(X, S^1, F\right) \cong H^2\left(X, \Z\right)$$ whenever $X$ is a cell complex. 
+an Eilenberg-MacLane space of type $K\left(\Z, 2\right)$. By \cref{EM}, we have that $$\B\left(X, S^1, F\right) \cong H^2\left(X; \Z\right)$$ whenever $X$ is a cell complex. 
 \end{exmp}
 
 For us, a CW complex refers to a cell complex $X$ for which there may be infinitely many attaching maps of any dimension. In this name, ``C" stands for the property \textit{closure-finite}, i.e., every open cell $e^i$ is contained in a finite subcomplex of $X$. Further, ``W" stands for the weak topology, with which $X$ is equipped.
@@ -1399,7 +1418,7 @@ B
 \begin{remark} $ $
 \bi
 \item  The space $E_{\Or(k)}$ consists of all orthonormal $k$-frames in $\R^{\infty}$. 
-\item The \textit{Grassmannian}  $B_{\Or(k)} \equiv B_{\GL(k)} \equiv G_{\infty, k}$ consists of all $k$-planes in $\R^{\infty}$. 
+\item The \textit{Grassmannian}  $G_{\infty, k} \equiv B_{\Or(k)} = B_{\GL(k)}$ consists of all $k$-planes in $\R^{\infty}$. 
 \item Similarly, the space $B_{U(k)}$ consists of all $k$-planes in $\C^{\infty}$.
 \ei
 \end{remark}
@@ -1766,6 +1785,46 @@ This yields a LES in homotopy
 If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
 \end{theorem}
 
+\begin{exercise}[Freudenthal suspension theorem]
+Let $i \in \Z_{\geq 1}$ and suppose that the space $X$ satisfies $\pi_n(X) =0$ for each $0\leq n \leq i-1$. Show that $\pi_i(X) \cong \pi_{i+1}(S{X})$ through around dimension $2i-3$ (figure this out exactly). (For extra credit, find a spectral sequence proof of the relative Hurewicz theorem.)
+\end{exercise}
+\begin{proof}
+We could use a spectral sequence argument together with the relative Hurewicz theorem. Rather, let us show that it follows from the following famous theorem in homotopy theory:
+\begin{theorem}[Blakers-Massey]\label{BM}
+Suppose that 
+\[
+\begin{tikzcd}
+X \arrow[d, hook] \arrow[r, hook] & B \arrow[d] \\
+A \arrow[r]                        & C          
+\end{tikzcd}
+\] is a pushout diagram. Also, suppose that $\pi_n(B, X)=0$ and $\pi_m(A, X)=0$ for each $0\leq n \leq k_1$ and each $0\leq m \leq k_2$. The map $\left(A, X\right) \to \left(C, B\right)$ of pairs itself induces an isomorphism $\pi_n(A, X) \overset{\cong}{\longrightarrow} \pi_n(C, B)$ for each $0 \leq n \leq k_1 + k_2 -1$.
+\end{theorem}
+Now, let us prove the Freudenthal suspension theorem with an upper bound of $2i-2$ rather than $2i-3$. To start, decompose $S{X}$ into the union of two cones $\underset{\text{top}}{C_+{X}}$ and $\underset{\text{bottom}}{C_{-}{X}}$ that meet at a copy of $X$. Note that $S{X}$ is precisely the pushout of the diagram
+\[
+\begin{tikzcd}
+C_{-}{X} & X \arrow[l, hook'] \arrow[r, hook] & C_{+}{X}.
+\end{tikzcd}
+\]
+As $C^+{X}$ is contractible, the LES of homotopy groups for the pair  $\left(C_{+}{X},X\right)$ shows that the map $\partial : \pi_{n+1}(C_{+}{X}, X) \to \pi_n(X)$ is an isomorphism. Similarly, we see that the map $\iota : \pi_{n+1}(S{X}) \to \pi_{n+1}(S{X}, C_{-}{X})$ induced by inclusion is an isomorphism.  Consider the sequence of homomorphisms
+\[
+\begin{tikzcd}
+\pi_n(X) \arrow[r, "\partial^{-1}"] & {\pi_{n+1}(C_{+}{X},X)} \arrow[r, "\psi"] & {\pi_{n+1}(S{X}, C_{-}{X})} \arrow[r, "\iota^{-1}"] & \pi_{n+1}(S{X})
+\end{tikzcd}
+\]
+where $\psi$ is induced by pullback. Since $\pi_n(X) =0$ for each $0\leq n \leq i-1$, the LES for the pair $\left(C_{\pm}{X}, X\right)$ also  shows that $\pi_n(C_{\pm}{X}) =0$ for any $0 \leq n \leq i$. By \cref{BM}, it follows that $\psi$ is an isomorphism so long as $n+1 \leq 2i-1$. Hence $\pi_n(X) \cong \pi_{n+1}(S{X})$ for any $n \leq 2i-2$, as desired.
+
+\medskip
+
+
+Furthermore, the upper bound of $2i-2$ is sharp. Indeed, we have that
+\bi
+\item $\pi_0(S^2) = \pi_1(S^2) =0$,
+\item $\pi_3(S^2) \cong \Z$, and
+\item $\pi_4(S^3) \cong \Z/2$.
+\ei
+If we could increase our upper bound to $2i-1$, then we would have an isomorphism  $\pi_3(S^2) \cong  \pi_4(S^3)$, which is impossible.
+\end{proof}
+
 \subsection{Lecture 13}
 
 As expected, spectral sequences have exact analogues in cohomology.  Before introducing them, let us review a bit of singular cohomology theory.  Let $X$ be a cell complex and let $n\in \Z_{\geq0}$. Recall that $C_n(X)$ the free abelian group on the set of all $n$-cells of $X$ and the boundary map $\partial_n : C_n(X) \to C_{n-1}(X)$. Let $$C^{n}(X) = \Hom(C_{n}(X), \Z) $$ and define the homomorphism $\delta^n : C^n(X) \to C^{n+1}(X)$ by $$\delta^n(\varphi) = \varphi \circ \partial_n.$$
@@ -2003,13 +2062,152 @@ where each $d_2$ is an isomorphism. Suppose that $x$ is a generator of $H^1(S^1)
 
 By letting $c^0 =1$ and making $n$ large enough, we have determined the ring structure of $H^{\ast}(\CP^{\infty})$.
 
-\begin{theorem}
+\begin{theorem}\label{chbase}
 If $c_1$ is a generator of $H^2(\CP^{\infty})\cong \Z$, then $\underbrace{H^{\ast}(B_{S^1})  =H^{\ast}(\CP^{\infty})}_{\cref{classcirc}} \cong \Z[c_1]$.
 \end{theorem}
 
 \section{Characteristic classes}
 
-\textit{To do.}
+\subsection{Lecture 14}
+
+Recall the space $B_{\Un(n)} = B_{\GL(n, \C)}$ of $n$-planes in $\C^{\infty}$ as well as the space $B_{\Or(n)} = B_{\GL(n, \R)}$ of $n$-planes in $\R^{\infty}$. We want to describe the graded rings 
+$H^{\ast}(B_{\Un(n)}; \Z)$ and  
+$H^{\ast}(B_{\Or(n)}; \Z_2)$. Let's begin with the former.
+
+\medskip
+
+Consider the embedding $\Un(n-1) \hookrightarrow \Un(n)$ given by $A \mapsto \begin{bmatrix} A & 0 \\ 0 & 1\end{bmatrix}$. Consider also the mapping $\Un(n) \to S^{2n-1}$ given by $A \mapsto A{e_n}$. These fit into a ``short exact sequence"
+\[
+\label{eqn:ses} 0 \to \Un(n-1)\to \Un(n) \to S^{2n-1} \to 0 \tag{1}
+\] of spaces,
+and thus the bundle
+\[\label{eqn:Bfib}
+ \frac{\Un(n)}{\Un(n-1)} \to B{\Un(n-1)} \overset{\pi}{\longrightarrow} B{\Un(n)} \tag{2}
+\] has fiber $S^{2n-1}$.
+
+\begin{aside}
+Let us make \eqref{eqn:ses} precise. Note that $\Un(n)$ acts transitively on $S^{2n-1}$ because any point in $S^{2n-1}$ belongs to at least one orthonormal bases of $\C^n$.This means that $S^{2n-1}$ is a \textit{homogenous} $\Un(n)$-space. 
+\begin{prop}
+Any homogenous $G$-space $X$ is homeomorphic to the coset space $\faktor{G}{\stab_G(\vec{o})}$ where $\vec{o}$ is any choice of ``identity." 
+\end{prop}
+In our case, let $\vec{o} = e_n$, so that $\stab_{\Un(n)}(\vec{o}) = \Un(n-1)$. 
+\end{aside}
+
+\medskip
+
+Now, \eqref{eqn:Bfib} induces a spectral sequence $E_{\ast}$ converging to $H^{\ast}(B{\Un(n-1)})$ such that
+\[
+E_2^{p,q} = H^p(B{\Un(n)}; H^q(S^{2n-1}))
+\]
+and 
+\[
+\begin{tikzcd}
+H^p(B{\Un(n)}) \arrow[r] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \arrow[r, two heads] & {E_3^{p,0}} \arrow[r, two heads] & \cdots \arrow[r, two heads] & {E_{\infty}^{p,0}} \arrow[r, hook] & H^p(B{\Un(n-1)})
+\end{tikzcd}
+\] commutes. If $p< 2n$, then $H^p(B{\Un(n)}) \cong E_{\infty}^{p,0}$, in which case $\pi^{\ast}$ is injective. Also, we have that $E_2^{p-k, k} = E_{\infty}^{p-k, k}$ whenever $0<p-k < 2n+1$, so that $\pi^{\ast}$ is surjective whenever $p<2n$. It follows that $\pi^{\ast}$ is an isomorphism 
+\[
+\label{eqn:Biso} H^p(B{\Un(n)}) \cong H^p(B{\Un(n-1)}) \tag{3}
+\] when $p\leq 2n-1$.
+
+\smallskip
+
+Consider the differential $d_2 : \underbrace{H^{2n-1}(S^{2n-1})}_{\Z} \to H^{2n}(B{\Un(n)})$ and pick a generator (i.e., an orientation) $g_n$ of $H^{2n-1}(S^{2n-1})$. Let
+\[
+c_n= d_{2}(g_n).
+\]
+In light of \eqref{eqn:Biso}, we see that
+\[
+c_i \in H^{2i}(B{\Un(n)}) \cong \cdots \cong H^{2i}(B{\Un(i+1)}) \cong H^{2i}(B{\Un(i)}) 
+\] for each $i\leq n$. Abusing notation, we shall write $c_i \in H^{2i}(B{\Un(i)})$.
+\medskip
+
+\begin{theorem}
+$H^{\ast}(B{\Un(n)}; \Z)\cong  \Z[c_1, \ldots, c_n]$
+\end{theorem}
+\begin{proof}
+Proceed by induction on $n\in \N$. Our base case holds by virtue of \cref{chbase}. Assume that 
+\[
+H^{\ast}(B{\Un(n-1)}) \cong \Z[c_1, \ldots, c_{n-1}].
+\]
+Note that $E_{2n}=E_{\infty}$ and $E_{2n-1}=E_2$, yielding
+\[
+\begin{sseqpage}[ cohomological Serre grading,  classes = {draw = none}, y tick gap = 2.0 em, scale = 1.6, y axis gap = 20pt, x axis extend end = 1.1cm, x range = {0}{6}, y range = {0}{2},
+x tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+1
+\else	
+\ifnum#1 = 2\relax
+2
+\else	
+\ifnum#1 = 3\relax
+3
+\else	
+\ifnum#1 = 4\relax
+4
+\else	
+\ifnum#1 = 5\relax
+{\cdots}
+\else	
+\ifnum#1 = 6\relax
+% \vphantom is fragile so we \protect it
+\protect\vphantom{2}2n
+\else
+#1n
+\fi
+\fi
+\fi
+\fi
+\fi
+\fi
+\fi
+}, 
+y tick handler = {
+\ifnum#1 = 0\relax
+0
+\else
+\ifnum#1 = 1\relax
+% \vphantom is fragile so we \protect it
+{\vdots}
+\else
+2n-1
+\fi
+\fi
+}]
+\begin{scope}[background]
+\node at (\xmax/2,\ymax+0.6) {\textup{Page $2n-1$}};
+\node[font = \small] at (\xmax/2,-1.1) {H^p(B{\Un(n)})};
+\node at (-2.0,\ymax/2) {H^q(S^{2n-1})};
+\end{scope}
+\class["\Z"](0,0)
+\class(0,1)
+\class[circle, fill](0,2)
+\class(0,3)
+\class["c_1"](2,0)
+\class(2,1)
+\class["0"](1,0)
+\class["0"](3,0)
+\class(1,1)
+\class(2,2)
+\class(2,3)
+\class(3,-1)
+\class(0, 3)
+\class["\cdots"](5,0)
+\class["c_2"](4,0)
+\class["c_{n}"](6,0)
+\draw[->](0,2) to["d_{2n-1}"] (6,0);
+\end{sseqpage}.
+\]
+
+\end{proof} 
+
+\bigskip
+
+\[
+\vdots
+\]
 
 \section{Cobordism theory}
 

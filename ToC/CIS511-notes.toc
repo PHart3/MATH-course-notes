@@ -20,11 +20,11 @@
 \contentsline {subsection}{\numberline {3.9}Lecture 17}{20}{subsection.3.9}
 \contentsline {subsection}{\numberline {3.10}Lecture 18}{21}{subsection.3.10}
 \contentsline {subsection}{\numberline {3.11}Lecture 19}{22}{subsection.3.11}
-\contentsline {subsection}{\numberline {3.12}Lecture 20}{23}{subsection.3.12}
-\contentsline {subsection}{\numberline {3.13}Lecture 21}{24}{subsection.3.13}
-\contentsline {subsection}{\numberline {3.14}Lecture 22}{25}{subsection.3.14}
+\contentsline {subsection}{\numberline {3.12}Lecture 20}{24}{subsection.3.12}
+\contentsline {subsection}{\numberline {3.13}Lecture 21}{25}{subsection.3.13}
+\contentsline {subsection}{\numberline {3.14}Lecture 22}{26}{subsection.3.14}
 \contentsline {subsection}{\numberline {3.15}Lecture 23}{26}{subsection.3.15}
 \contentsline {subsection}{\numberline {3.16}Lecture 24}{27}{subsection.3.16}
-\contentsline {subsection}{\numberline {3.17}Lecture 25}{27}{subsection.3.17}
+\contentsline {subsection}{\numberline {3.17}Lecture 25}{28}{subsection.3.17}
 \contentsline {subsection}{\numberline {3.18}Lecture 26}{28}{subsection.3.18}
 \contentsline {subsection}{\numberline {3.19}Final exam review session}{29}{subsection.3.19}

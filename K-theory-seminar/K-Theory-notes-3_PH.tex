@@ -153,6 +153,8 @@
 \DeclareMathOperator{\mor}{mor}
 \DeclareMathOperator{\iso}{iso}
 \DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\vect}{\mathbf{Vect}}
+\DeclareMathOperator{\topp}{\mathrm{top}}
 \DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\ZFC}{ZFC}
@@ -182,18 +184,14 @@ We begin low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2
 
 \smallskip
 
-Recall that the forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab$, called the \textit{group completion} functor. 
-
-\begin{definition}
-For any commutative monoid $\left(C, +\right)$, we call the abelian group $K(C)$ the \textit{Grothendieck group of $G$}, which is constructed as follows.
+Recall that the forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab$, called the \textit{group completion} functor. Specifically, for any commutative monoid $\left(C, +\right)$, we call the abelian group $K(C)$ the \textit{Grothendieck group of $G$}, which is constructed as follows.
 
 \medskip
 
- Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$(a_1 + b_2 +k = b_1 + a_2 +k)$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $(a_1, b_1) {\sim'} (a_2, b_2)$ if $$(a_1 + k_1, b_1 + k_1) = (a_2 +k_2, b_2 + k_2)$$ for some $(k_1, k_2) \in C\times C$. Then set $K(C) = (S, +)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Notice that ${\sim'}$ makes it clear that $[a_1, b_1]^{{-}1} = [b_1, a_1]$.
-\end{definition}
+ Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$a_1 + b_2 +k = b_1 + a_2 +k$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $(a_1, b_1) {\sim'} (a_2, b_2)$ if $$\left(a_1 + k_1, b_1 + k_1\right) = \left(a_2 +k_2, b_2 + k_2\right)$$ for some $\left(k_1, k_2\right) \in C\times C$. Then set $K(C) = \left(S, +\right)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. The definition of ${\sim'}$ makes it clear that $\left[a_1, b_1\right]^{{-}1} = \left[b_1, a_1\right]$.
 
 \begin{prop}
-The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto [x]\coloneqq[x, 0]$ is injective iff $C$ is a cancellation monoid.
+The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto [x]\coloneqq \left[x, 0\right]$ is injective iff $C$ is a cancellation monoid.
 \end{prop}
 
 \begin{lemma}[Universal property of the Grothendieck group] $ $
@@ -234,7 +232,7 @@ A submonoid $L$ of $C$ is \textit{cofinal} if for any $c\in C$, there is some $c
 \end{exmp}
 
 \begin{definition}
-Let $R$ be a unital ring. Let $(\P(R), \oplus, \otimes_R)$ denote the semiring  of (isomorphism classes of) finitely generated projective $R$-modules. Then we define $K_0(R) = K(\P(R))$.
+Let $R$ be a unital ring. Let $\left(\P(R), \oplus, \otimes_R\right)$ denote the semiring  of (isomorphism classes of) finitely generated projective $R$-modules. Then we define $K_0(R) = K(\P(R))$.
 \end{definition}
 
 \begin{lemma}
@@ -421,11 +419,11 @@ X_1 \arrow[r, "g"'] & X_2
 \end{definition}
 
 \begin{definition}
-Let $(Vect_{\F}(X), \oplus)$ denote the abelian monoid of (isomorphism classes of) $\F$-vector bundles on the paracompact space $X$. We define $$KU(X) = K(Vect_{\C}(X)) \quad \quad KO(X) = K(Vect_{\R}(X)).$$ Note that these are commutative rings with identity. \textbf{We apply the notation $K_{top}(-)$ on topological spaces when we wish to omit the base field.}
+Let $(\vect_{\F}(X), \oplus)$ denote the abelian monoid of (isomorphism classes of) $\F$-vector bundles on the paracompact space $X$. We define $$KU(X) = K(\vect_{\C}(X)) \quad \quad KO(X) = K(\vect_{\R}(X)).$$ Note that these are commutative rings with identity. \textbf{We apply the notation $K_{\topp}(-)$ on topological spaces when we wish to omit the base field.}
 \end{definition}
 
 \begin{remark}
-$KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Define the subspace $f^{\ast}E = \{(y, e) \in Y \times E : f(y) = \phi(e)\}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the restriction of the projection map $\pi : Y \times E \to Y$. Hence we have a morhism $\phi \mapsto f^{\ast}(\phi) \to Vect_{\F}(X)$ to $Vect_{\F}(Y)$ of monoids. The universal property of $K$ induces a unique morphism $f^{\ast}: K_{top}(X) \to K_{top}(Y)$.
+$KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Define the subspace $f^{\ast}E = \{(y, e) \in Y \times E : f(y) = \phi(e)\}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the restriction of the projection map $\pi : Y \times E \to Y$. Hence we have a morhism $\phi \mapsto f^{\ast}(\phi) \to \vect_{\F}(X)$ to $\vect_{\F}(Y)$ of monoids. The universal property of $K$ induces a unique morphism $f^{\ast}: K_{\topp}(X) \to K_{\topp}(Y)$.
 \end{remark}
 
 \begin{lemma}
@@ -437,7 +435,7 @@ Apply the homotopy invariance theorem (HIT), which states that if $Y$ is paracom
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item $K_{top}(\ast) = \Z$.
+\item $K_{\topp}(\ast) = \Z$.
 \item If $X$ is contractible, then the HIT implies that $KO(X) = KU(X) = \Z$
 \item According to I.4.9 of \textit{The K-book}, we have
 \begin{align*}
@@ -467,28 +465,33 @@ Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N} (f^{{-}1}(i)
 \end{proof}
 
 \begin{remark}
-Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $Vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), giving $\Z \leq [X, \Z] \leq K_{top}(X)$.
+Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $\vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), yielding $\Z \leq [X, \Z] \leq K_{\topp}(X)$.
 \end{remark}
 
-\begin{remark}
-We get a split exact sequence. 
+\begin{note} $ $
+\begin{enumerate}
+\item We get a split exact sequence. 
 \[
 \begin{tikzcd}
-1 \arrow[r] & \widetilde{K}_{top}(X) \arrow[r] & K_{top}(X) \arrow[r, "\widehat{\dim}"'] & {[X, \mathbb Z]} \arrow[r] \arrow[l, hook, bend right] & 1
+1 \arrow[r] & \widetilde{K}_{\topp}(X) \arrow[r] & K_{\topp}(X) \arrow[r, "\widehat{\dim}"'] & {[X, \mathbb Z]} \arrow[r] \arrow[l, hook, bend right] & 1
 \end{tikzcd},
-\] where $\widetilde{K}_{top}(X)$ denotes $\ker\left(\widehat{\dim}\right)$.
-\end{remark}
+\] where $\widetilde{K}_{\topp}(X)$ denotes $\ker\left(\widehat{\dim}\right)$.
+\item The map of monoids $\vect_{\R}(X) \to \vect_{\C}(X)$ given by $[E] \mapsto [E \otimes \C]$ extends by universality to a homomorphism $KO(X) \to KU(X)$. Likewise, the forgetful functor $\vect_{\C}(X) \to \vect_{\R}(X)$ extends to a homomorphism $KU(X) \to KO(X)$.
+\end{enumerate}
+\end{note}
 
-\begin{remark}
-The map of monoids $Vect_{\R}(X) \to Vect_{\C}(X)$ given by $[E] \mapsto [E \otimes \C]$ extends by universality to a homomorphism $KO(X) \to KU(X)$. Likewise, the forgetful functor $Vect_{\C}(X) \to Vect_{\R}(X)$ extends to a homomorphism $KU(X) \to KO(X)$.
-\end{remark}
+Here is a nice early connection between algebraic and topological $K$-theory. Let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any $E \in \vect_{\F}(X)$, set $\Gamma(X, E) = \{s: X \to E : p \circ s = \id_X\}$, the vector space of global sections of $E$.
 
 \begin{theorem}[Swan]
-Here is a nice early connection between algebraic and topological $K$-theory. Let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any $E \in Vect_{\F}(X)$, set $\Gamma(X, E) = \{s: X \to E : p \circ s = \id_X\}$, the vector space of global sections of $E$. Then the map $E \mapsto \Gamma(X, E)$ induces isomorphisms $KO(X) \cong K_0(\mathcal C(X, \R))$ and $KU(X) \cong K_0( \mathcal C(X, \C))$.
+The map $E \mapsto \Gamma(X, E)$ induces isomorphisms $KO(X) \cong K_0(\mathcal C(X, \R))$ and $KU(X) \cong K_0( \mathcal C(X, \C))$.
 \end{theorem}
 
+\smallskip
+
+Our results thus far can be extended to symmetric monodical categories because these come equipped with a notion of direct sum that enabled our Grothendieck construction. 
+
 \begin{definition}
-Our results thus far can be extended to symmetric monodical categories because these come equipped with a notion of direct sum that enabled our Grothendieck construction. A \textit{symmetric monoidal category} $S$ is equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and that $e$ acts as an identity. These four must also satisfy coherence properties.
+A \textit{symmetric monoidal category} $S$ is equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and that $e$ acts as an identity. These four isomorphisms must also satisfy certain coherence properties.
 \end{definition}
 
 \begin{exmp} The following are examples of symmetric monoidal category	.
@@ -499,8 +502,6 @@ Our results thus far can be extended to symmetric monodical categories because t
 \end{enumerate} 
 \end{exmp}
 
-\begin{definition}
-Suppose that the class of isomorphism classes of objects of a category $S$ is a set, called $S^{\iso}$. If $S$ is symmetric monoidal, then $(S^{\iso}, \square)$ is an abelian monoid with identity element $e$. Then we define the \textit{Grothendieck group} of $S$ as $K_0(S)$.
-\end{definition}
+Suppose that the class of isomorphism classes of objects of a category $S$ is a set, called $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. Then we define the \textit{Grothendieck group} of $S$ as $K_0(S)$.
 
 \end{document}

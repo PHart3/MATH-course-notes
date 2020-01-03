@@ -464,7 +464,9 @@ A\times \{0\} \arrow[uu, hook] \arrow[rr, hook] &  & A\times I \arrow[uu, hook] 
 The pair $(X, A)$ has HEP if and only if $A\times I \cup X \times \{0\}$ is a retract of $X\times I$.
 \end{lemma}
 \begin{proof} $ $
-\\
+
+\smallskip
+
 ($\Longrightarrow$) We have the commutative diagram
 \[
 \begin{tikzcd}
@@ -473,7 +475,9 @@ A\times \{0\} \arrow[dd] \arrow[rr] &  & A\times I \arrow[ld] \arrow[dd] \\
 X\times \{0\} \arrow[ru] \arrow[rr] &  & X\times I \arrow[lu, "\varphi"', dashed]
 \end{tikzcd}
 .\] Then $\varphi$ is a retraction as desired. 
-\\
+
+\medskip
+
 ($\Longleftarrow$) By hypothesis, there is some retraction $r: X\times I \to X\times \{0\} \cup A \times I$. This enables us to fill the diagram
 \[
 \begin{tikzcd}
@@ -946,7 +950,10 @@ Z \arrow[r, "f"'] \arrow[ru, "\tilde{f}", dashed] & X
 \end{tikzcd}
 \] if and only if  $f_{\ast}\pi_1(Z, z_0) \subset p_{\ast} \pi_1(Y, y_0) \subset \pi_1(X, x_0)$. 
 \end{lemma}
-\begin{proof} $ $ \\
+\begin{proof} $ $
+
+\smallskip
+
 ($\Longrightarrow$) Note that $f_{\ast} = (p\tilde{f})_{\ast}= p_{\ast}\tilde{f}_{\ast}$.
 
 \medskip
@@ -1014,7 +1021,10 @@ Define an equivalence relation $\sim$ on the universal cover $p: \widetilde{X} \
 \begin{lemma}
 Let $X$ be path connected and locally path connected. Suppose that $p_1:(Y_1, y_1) \to (X, x_0)$ and $p_2 : (Y_2, y_2) \to (X, x_0)$ are two (path connected) covering maps. Then there exists an isomorphism $\varphi : (Y_1, y_1) \to (Y_2, y_2)$ if and only if  $p_{1\ast} \pi_1(Y_1, y_1) = p_{2 \ast} \pi_1(Y_2, y_2)$.
 \end{lemma}
-\begin{proof}
+\begin{proof} $ $
+
+\smallskip
+
 The ($\Longrightarrow$) direction follows from the fact that $p_1 = p_2f$ and $p_2 = p_1f^{-1}$. 
 
 \medskip
@@ -1076,7 +1086,7 @@ Since every tree is contractible, we see that $G$ is homotopy equivalent to a we
 If $X$ is a graph and $p: Y \to X$ is a covering space, then $Y$ is also a graph. 
 \end{note}
 
-\begin{theorem}
+\begin{theorem}[Nielsen?Schreier]
 Let $\Gamma$ be a free group and $H\leq \Gamma$. Then $H$ is free. 
 \end{theorem}
 \begin{proof}
@@ -1095,7 +1105,7 @@ We have that $\Gamma \cong \pi_1(X)$ where $X\coloneqq  \bigvee_{\alpha} S_{\alp
 \end{definition}
 
 \begin{definition}
-Let $(K, \Sigma)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Define $$C_k(K, \Sigma) =\faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim ({-}1)^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
+Let $(K, \Sigma)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Define $$C_k(K, \Sigma) =\faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim ({-1})^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
 \end{definition}
 
 \begin{note}
@@ -1103,7 +1113,7 @@ $C_k(K, \Sigma)$ is a free abelian group.
 \end{note}
 
 \begin{definition}
-Define the \textit{differential} $\partial_{k} : C_k(K, \Sigma) \to C_{k-1}(K, \Sigma)$ by  $$\partial_{k}(v_0\cdots v_k) = \sum_{i=0}^k ({-}1)^i v_0 \cdots \widehat{v_i} \cdots v_k, $$ which we extend linearly.  
+Define the \textit{differential} $\partial_{k} : C_k(K, \Sigma) \to C_{k-1}(K, \Sigma)$ by  $$\partial_{k}(v_0\cdots v_k) = \sum_{i=0}^k ({-1})^i v_0 \cdots \widehat{v_i} \cdots v_k, $$ which we extend linearly.  
 \end{definition}
 
 \begin{exercise}
@@ -1133,23 +1143,23 @@ If $K$ is a simplicial complex, then $K^p \coloneqq  \{\sigma \in \Sigma_K : |\s
 \end{exmp}
 
 \begin{definition}
-If $K$ is a simplicial complex, then define $|K|$ as the set $$\{\alpha : K \to I \mid \sum_{v\in K} \alpha(v)=1 \land \{v \mid \alpha(v) \ne 0\} \in \Sigma_K \}.$$ Let $|K|_d$ denote this set endowed with the topology induced by the metric given by $$d(\alpha, \beta) = \sqrt{\sum_{v\in K} |\alpha(v) -\beta(v)|^2} .$$
+If $K$ is a simplicial complex, then define $\lvert{K}\rvert$ as the set $$\{\alpha : K \to I \mid \sum_{v\in K} \alpha(v)=1 \land \{v \mid \alpha(v) \ne 0\} \in \Sigma_K \}.$$ Let $\lvert{K}\rvert_d$ denote this set endowed with the topology induced by the metric given by $$d(\alpha, \beta) = \sqrt{\sum_{v\in K} |\alpha(v) -\beta(v)|^2} .$$
 \end{definition}
 
 \begin{exmp}
-Let  $K= \{0, 1, \ldots, n\}$ and let $\Sigma$ consist of all finite subsets of $K$. Then $$|K|_d = \{ (\alpha(0), \ldots, \alpha(n)) \mid \alpha(0) + \cdots + \alpha(n) = 1\} \cong_{\mathbf{Set}} \Delta^n,$$ which recovers the Euclidean metric. 
+Let  $K= \{0, 1, \ldots, n\}$ and let $\Sigma$ consist of all finite subsets of $K$. Then $$\lvert{K}\rvert_d = \left\{ (\alpha(0), \ldots, \alpha(n)) \mid \alpha(0) + \cdots + \alpha(n) = 1\right\} \cong_{\mathbf{Set}} \Delta^n,$$ which recovers the Euclidean metric. 
 \end{exmp}
 
 \begin{note} $ $
 \begin{enumerate}
-\item When $\sigma \in \Sigma_K$ is a $q$-simplex, there exists a natural map $|\sigma^q|_d : \Delta^q \to |K|_d$  given by mapping $x$ to the function $\alpha$ where $\alpha(\sigma) =x$ and $\alpha(v) = 0$ for any $v\notin \sigma$.  
-\item Define a new topology on $|K|$ where $A\subset |K|$ is closed (resp. open) if $(|\sigma|_d)^{-1}(A)$ is closed (resp. open) in $\Delta^{|\sigma| -1}$ for each $\sigma \in \Sigma_K$. From now on, $|K|$ is assumed to have this topology. 
-\item Given a simplicial map $f: K \to L$, define the map $|f| : |K| \to |L|$ by $\alpha \mapsto (w \mapsto \sum_{v\in f^{-1}(w)} \alpha(v))$. Thus, we get a functor $|\cdot | : \Delta \to \mathbf{Top}$.
+\item When $\sigma \in \Sigma_K$ is a $q$-simplex, there exists a natural map $|\sigma^q|_d : \Delta^q \to \lvert{K}\rvert_d$  given by mapping $x$ to the function $\alpha$ where $\alpha(\sigma) =x$ and $\alpha(v) = 0$ for any $v\notin \sigma$.  
+\item Define a new topology on $\lvert{K}\rvert$ where $A\subset \lvert{K}\rvert$ is closed (resp. open) if $(|\sigma|_d)^{-1}(A)$ is closed (resp. open) in $\Delta^{|\sigma| -1}$ for each $\sigma \in \Sigma_K$. From now on, $\lvert{K}\rvert$ is assumed to have this topology. 
+\item Given a simplicial map $f: K \to L$, define the map $|f| : \lvert{K}\rvert \to \lvert{L}\rvert$ by $\alpha \mapsto \left(w \mapsto \sum_{v\in f^{-1}(w)} \alpha(v)\right)$. Thus, we get a functor $\lvert{\cdot}\rvert : \Delta \to \mathbf{Top}$.
 \end{enumerate}
 \end{note}
 
 \begin{definition}
-A \textit{triangulation of a space $X$} is a pair $((K, \Sigma), \varphi)$ such that $\varphi : |K| \to X$ is a homeomorphism. 
+A \textit{triangulation of a space $X$} is a pair $((K, \Sigma), \varphi)$ such that $\varphi : \lvert{K}\rvert \to X$ is a homeomorphism. 
 \end{definition}
 
 \begin{remark}
@@ -1173,42 +1183,43 @@ B_0 & B_1 \arrow[l, "\partial'_1"] & B_2 \arrow[l, "\partial'_2"] & B_3 \arrow[l
 
 \begin{definition} $ $
 \begin{enumerate}
-\item Given a chain complex $(A, \partial)$, define its \textit{$i$-th homology group} as $$ H_i(A, \partial) = \faktor{Z(A_i)}{B(A_i)} $$ where $\underbrace{Z_i \coloneqq  \ker{\partial_{i}}}_{\textit{cycles}}$ and $\underbrace{B_i \coloneqq  \im{\partial_{i+1}}}_{\textit{boundaries}}$. 
+\item Given a chain complex $\left(A, \partial\right)$, define its \textit{$i$-th homology group} as $$ H_i(A, \partial) = \faktor{Z(A_i)}{B(A_i)} $$ where $\underbrace{Z_i \coloneqq  \ker{\partial_{i}}}_{\textit{cycles}}$ and $\underbrace{B_i \coloneqq  \im{\partial_{i+1}}}_{\textit{boundaries}}$. 
 \item Any morphism $f: (A, \partial) \to (B, \partial ')$ induces a map $H_q(f) : H_q(A) \to H_q(B)$. We say that $f$ is a \textit{quasi-isomorphism} if $H_q(f)$ is an isomorphism for each $q$. 
 \end{enumerate}
 \end{definition}
 
-\begin{note}
-Any chain map preserves both cycles and boundaries.
-\end{note}
-
-\begin{note}
-We get a functor $C_{\bullet}: \Delta \to \ch$ given by $(K, \Sigma) \mapsto (C_q(K, \Sigma), \partial_{q})_{q\geq 0}$. As a result, we find ourselves with the following diagram of functors.
+\begin{note} $ $
+\begin{enumerate}
+\item Any chain map preserves both cycles and boundaries.
+\item We get a functor $C_{\bullet}: \Delta \to \ch$ given by $\left(K, \Sigma\right) \mapsto \left(C_q(K, \Sigma), \partial_{q}\right)_{q\geq 0}$. As a result, we find ourselves with the following diagram of functors.
 \[
 \begin{tikzcd}
 \Delta \arrow[d, "C_{\bullet}"'] \arrow[r, "|\cdot|"] & \mathbf{Top} \\
 \ch \arrow[r, "H_{\bullet}"] & \mathbf{Ab}
 \end{tikzcd}
 \]
+\end{enumerate}
 \end{note}
 
-\begin{remark}[Singular simplex]
+\smallskip
+
 The $\textit{Hauptvermutung}$ is the conjecture that if $X$ is a nice topological space such as a manifold, then for any two triangulations of $X$, you  can get from one to the other in a combinatorial way. It turns out that this is false. Hence we cannot fill our above diagram with a functor $\mathbf{Top} \to \Delta$.
 
 Eilenberg and Steenrod, however, created the following approach to obtain certain reverse arrows in our diagram. Let $X$ be a space. A \textit{singular $q$-simplex on $X$}  is a continuous map $\Delta^q \to X$. Let $\text{Sing}_q(X)$ denote the set of all singular $q$-simplices on $X$. Let $C_q(X)$ be the free abelian group on $\text{Sing}_q(X)$. Define $\partial_{q} : C_q(X) \to C_{q-1}(X)$ by 
-$$\sigma \mapsto \sum_{i=0}^q({-}1)^i \sigma \restriction_{[v_0, \ldots, \widehat{v_i}, \ldots, v_q]}$$ 
-where $\Delta^q \cong [v_0, \ldots, v_q]$. Then $\partial_{q-1}\partial_q =0$. We now have a functor $\mathbf{Top} \to \ch$ that maps each map $f: X \to Y$ of spaces to the chain map $(f_n)$ where $f_n(g: \Delta^n \to X) = f \circ g_n$. Note that the induced homology functor $\mathbf{Top} \to \mathbf{Ab}$ is a topological invariant. 
-\end{remark}
+$$\sigma \mapsto \sum_{i=0}^q({-1})^i \sigma \restriction_{\left[v_0, \ldots, \widehat{v_i}, \ldots, v_q\right]}$$ 
+where $\Delta^q \cong \left[v_0, \ldots, v_q\right]$. Then $\partial_{q-1}\partial_q =0$. We now have a functor $\mathbf{Top} \to \ch$ that maps each map $f: X \to Y$ of spaces to the chain map $(f_n)$ where $f_n(g: \Delta^n \to X) = f \circ g_n$. Note that the induced homology functor $\mathbf{Top} \to \mathbf{Ab}$ is a topological invariant. 
+
+\smallskip
 
 \begin{note}
-Suppose that $F : X \times I \to Y$ is a homotopy from $f$ to $g$. Then we want to show that $H_q(f) =H_q(g)$ for each $q$. Although $\Delta^q \times I $ is not a simplex, we can write $\Delta^q \times \{0\} = [v_0, \ldots, v_q]$ and $\Delta^q \times  \{1\} = [v_0', \ldots, v_q']$ and consider the following decomposition of  $\Delta^q \times I$ into simplices. 
-\begin{align*}
-[v_0, v_1, & \ldots, v_q]
-\\ [v_0, \ldots, & v_q, v_q']
-\\ [v_0, \ldots,  v_{q-1}&  , v_{q-1}', v_q']
-\\ & \vdots
-\\ [v_0', v_1', & \ldots, v_q']
-\end{align*}
+Suppose that $F : X \times I \to Y$ is a homotopy from $f$ to $g$. Then we want to show that $H_q(f) =H_q(g)$ for each $q$. Although $\Delta^q \times I $ is not a simplex, we can write $\Delta^q \times \{0\} = \left[v_0, \ldots, v_q\right]$ and $\Delta^q \times  \{1\} = [v_0', \ldots, v_q']$ and consider the following decomposition of  $\Delta^q \times I$ into simplices. 
+\begin{gather*}
+\left[v_0, v_1,  \ldots, v_q\right]
+\\ \left[v_0, \ldots,  v_q, v_q'\right]
+\\ \left[v_0, \ldots,  v_{q-1}  , v_{q-1}', v_q'\right]
+\\  \vdots
+\\ \left[v_0', v_1',  \ldots, v_q'\right]
+\end{gather*}
 \end{note}
 
 \begin{definition}
@@ -1226,15 +1237,17 @@ Let $H$ be a chain homotopy between $f$ and $g$. If $x\in A_q$ and $\partial{x} 
 
 \subsection{Lecture 10}
 
-\begin{lemma}\label{l1}
 Let $F: X \times I \to Y$ be a homotopy between $f$ and $g$. 
-Decompose $\Delta^k \times I$ into $k+1$ simplices. Label the vertices of $\Delta^k \times \{0\}$ and $\Delta^k \times \{1\}$ by $v_0, \ldots, v_k$ and $w_0, \ldots, w_k$, respectively. Then $\bigcup_{i=0}^k \underbrace{[v_0, v_1, \ldots, v_i, w_i, \ldots, w_k]}_{\text{convex span}}$.
-For each $k$, define the map $p: C_k(X) \to C_{k+1}(Y)$ by $$ p\sigma = \sum_i ({-}1)^i F \circ (\sigma \times \1_I \restriction_{[v_0, \ldots, v_i, w_i, \ldots, w_k]}).$$ Then $p$ is a chain homotopy between $f_{\ast}$ and $g_{\ast}$. 
+Decompose $\Delta^k \times I$ into $k+1$ simplices. Label the vertices of $\Delta^k \times \{0\}$ and $\Delta^k \times \{1\}$ by $v_0, \ldots, v_k$ and $w_0, \ldots, w_k$, respectively. Then $$\Delta^k \times I = \bigcup_{i=0}^k \underbrace{[v_0, v_1, \ldots, v_i, w_i, \ldots, w_k]}_{\text{convex span}}.$$
+For each $k$, define $p: C_k(X) \to C_{k+1}(Y)$ by $$ p\sigma = \sum_i ({-1})^i F \circ (\sigma \times \1_I \restriction_{[v_0, \ldots, v_i, w_i, \ldots, w_k]}).$$ 
+
+\begin{lemma}\label{l1}
+The map $p$ is a chain homotopy between $f_{\ast}$ and $g_{\ast}$. 
 \end{lemma}
 \begin{proof}
 We just verify some low-dimensional cases. First, consider a simplex $\sigma : \Delta^1 \to X$.  Then 
 \begin{align*} \partial p \sigma & = (F \circ \sigma \times \1)[v_0,w_0]  + (F \circ \sigma \times \1)[w_0, w_1] - (F \circ \sigma \times \1)[v_1, w_1] - (F \circ \sigma \times \1)[v_0, v_1].
-\\ p \partial \sigma & = - (F \circ \sigma \times \1)[v_0, w_0] + (F \circ \sigma \times \1)[v_1, w_1]. 
+\\ p \partial \sigma & = {- (F \circ \sigma \times \1)[v_0, w_0]} + (F \circ \sigma \times \1)[v_1, w_1]. 
 \end{align*}
 Thus, 
 \[
@@ -1258,7 +1271,7 @@ p \partial \sigma = \sigma \restriction_{[v_1, w_1, w_2]} - \sigma \restriction_
 \end{proof}
 
 
-\begin{corollary}
+\begin{corollary}[Homotopy invariance]
 If $X \simeq Y$, then $H_{\ast}(X) \cong H_{\ast}(Y)$.
 \end{corollary}
 \begin{proof}
@@ -1272,7 +1285,7 @@ Let $X =\{x_0\}$, so that $\sing_k(X) = \{c_{x_0} : \Delta^k \to \{x_0\}\}$. The
 \begin{tikzcd}
 C_{\ast}(X) =  \Z & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \cdots \arrow[l, "\partial"']
 \end{tikzcd}.
-\]  Note that $\partial{c_{x_0}} = c_{x_0}([v_1]) - c_{x_0}([v_0]) =0$ when $c_{x_0} : \Delta^1 \to X$. If $c_{x_0} : \Delta^k \to X$, then $$\partial{c_{x_0}} = \sum_{i=0}^k ({-}1)^i \underbrace{c_{x_0}\restriction_{[v_0, \ldots, \hat{v_i}, \ldots, v_k]}}_{c_{x_0} : \Delta^{k-1} \to X}.$$ Hence $\partial_k : C_k(X) \to C_{k-1}(X)$ equals $0$ if $k$ is odd and $\1$ if $k$ is even. As a result, we get a sequence in homology 
+\]  Note that $\partial{c_{x_0}} = c_{x_0}([v_1]) - c_{x_0}([v_0]) =0$ when $c_{x_0} : \Delta^1 \to X$. If $c_{x_0} : \Delta^k \to X$, then $$\partial{c_{x_0}} = \sum_{i=0}^k ({-1})^i \underbrace{c_{x_0}\restriction_{[v_0, \ldots, \hat{v_i}, \ldots, v_k]}}_{c_{x_0} : \Delta^{k-1} \to X}.$$ Hence $\partial_k : C_k(X) \to C_{k-1}(X)$ equals $0$ if $k$ is odd and $\1$ if $k$ is even. As a result, we get a sequence in homology 
 \[
 \begin{tikzcd}
 \Z & 0 & 0 & 0 & \cdots
@@ -1352,8 +1365,8 @@ Given a pair $(X,A)$ with $A\subset X$, define $C_{\ast}(X,A) = \faktor{C_{\ast}
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Consider the pair $(\R, [0,3])$. Let $\sigma : \Delta^1 \to [0,3]\subset \R$. Then $\partial{\sigma} = [3] -[0]$, so that $[0] = [3]$ in $C_0(\R, [0,3])$.
-\item Consider the pair $(\R, \R \setminus (0,1))$. Choose $[x_0] \in C_0(A)$ and $[x_1] \in C_0((0,1))$. Let $\sigma : \Delta^1 \overset{\cong}{\longrightarrow} [x_1, 1]$. Then $\partial{\sigma} = [1] -[x_1]$. As $[1]\in C_0(A)$, we see that $[x_1] = \partial{\sigma}$ in $C_0(\R, \R\setminus (0,1))$.
+\item Consider the pair $\left(\R, \left[0,3\right]\right)$. Let $\sigma : \Delta^1 \to [0,3]\subset \R$. Then $\partial{\sigma} = [3] -[0]$, so that $[0] = [3]$ in $C_0(\R, [0,3])$.
+\item Consider the pair $\left(\R, \R \setminus (0,1)\right)$. Choose $[x_0] \in C_0(A)$ and $[x_1] \in C_0((0,1))$. Let $\sigma : \Delta^1 \overset{\cong}{\longrightarrow} \left[x_1, 1\right]$. Then $\partial{\sigma} = [1] -[x_1]$. As $[1]\in C_0(A)$, we see that $[x_1] = \partial{\sigma}$ in $C_0(\R, \R\setminus (0,1))$.
 \end{enumerate}
 \end{exmp}
 
@@ -1417,7 +1430,9 @@ Therefore, $\partial{b'} =i(a -\partial{u})$. Since $[a] = [a-\partial{u}] $ in 
 \end{proof}
 \item Verify that the given long sequence is exact both at $H_k(C)$ and at  $H_{k-1}(A)$.
 \begin{proof} $ $
-\\
+
+\smallskip
+
 \underline{$H_k(C)$:} 
 We must show that $\im{j  (\bullet)} = \ker{\partial '}$. 
 
@@ -1426,6 +1441,8 @@ Let $[f] \in \im{j  (\bullet)}$, so that $[f] = [j(g)]$ for some $g \in Z(B_k) =
 Conversely, suppose that $[f] \in \ker{\partial'}$. Then $a_c \in \im \partial$, so that $a_c = \partial(\tilde{f})$ for some $\tilde{f}$.  Moreover, $f = j(g)$ for some $g$. Letting $y \coloneqq  i(\tilde{f})$, we get
 $$ \partial(y) = \partial( i(\tilde{f}))= i(\partial(\tilde{f})) = i(a_c)$$ and
 $$ j( g -y) =j(g) - j(y) =f - \underbrace{j( i(\tilde{f}))}_{ji =0} = f.$$ Therefore, $\partial(g - y) = i(a_c) - i(a_c) =0$, so that $g- y \in \ker \partial = Z(B_k)$. Since $[j  (g-y)] = [f]$, it follows that $[f] \in \im{j  (\bullet)}$, i.e., $ \im{j  (\bullet)} \supset \ker{\partial'}$.
+
+\smallskip
 
 \underline{$H_{k-1}(A)$:} We must show that $\ker{i(\bullet)} =\im{\partial '}$. The fact that $\ker{i(\bullet)} \supset \im{\partial '}$ is evident from our construction of $\partial '$.
 
@@ -1471,7 +1488,7 @@ If $(X, A)$ is a pair and $Z\subset A$ such that $\cl(Z) \subset \mathring{A}$. 
 \end{theorem}
 
 \begin{corollary}
-If $(X,A)$ is a good pair, then the natural projection $q: (X, A) \to (X/A, A/A)$ induces an isomorphism on homology $$ H_{\ast}(X,A) \to H_{\ast}(X/A, A/A) \cong \widetilde{H}_{\ast}(X/A)  .$$
+If $(X,A)$ is a good pair, then the natural projection $q: \left(X, A\right) \to \left(X/A, A/A\right)$ induces an isomorphism on homology $$ H_{\ast}(X,A) \to H_{\ast}(X/A, A/A) \cong \widetilde{H}_{\ast}(X/A)  .$$
 \end{corollary}
 \begin{proof}
 There is some neighborhood $U$ of $A$ that deformation retracts onto $A$. For each $k$, the diagram 
@@ -1496,7 +1513,7 @@ Note that $\bigvee_{\alpha} X_{\alpha} = \faktor{\coprod_{\alpha}X_{\alpha}}{\co
 \end{proof}
 
 \begin{definition}
-Let $(K, \Sigma)$ be a simplicial complex and $L \subset K$ a subcomplex. Then  $\faktor{C_{\ast}(K)}{C_{\ast}(L)} = C_{\ast}(K,L).$ Recall that $$|K|=\{f: K \to I \mid \{v\in K \mid f(v) \ne 0\} \in \Sigma, \ \sum_{v\in K}f(v) =1\} .$$ Define $\varphi : C_k(K) \to C_k(|K|)$ by $[v_0, v_1, \ldots, v_k] \mapsto (\sigma_{[v_0, \ldots, v_k]} : \Delta^k \to |K|)$ where $$\sigma_{[v_0, \ldots, v_k]}(t_0, \ldots, t_k)(v \in K) = \begin{cases} t_i & v=v_i \\ 0 & v \ne v_i \end{cases},$$ extended by linearity. This induces a map $\varphi : C_{\ast}(K) \to C_{\ast}(|K|)$.
+Let $(K, \Sigma)$ be a simplicial complex and $L \subset K$ a subcomplex. Then  $\faktor{C_{\ast}(K)}{C_{\ast}(L)} = C_{\ast}(K,L).$ Recall that $$\lvert{K}\rvert=\{f: K \to I \mid \{v\in K \mid f(v) \ne 0\} \in \Sigma, \ \sum_{v\in K}f(v) =1\} .$$ Define $\varphi : C_k(K) \to C_k(\lvert{K}\rvert)$ by $\left[v_0, v_1, \ldots, v_k\right] \mapsto \left(\sigma_{[v_0, \ldots, v_k]} : \Delta^k \to \lvert{K}\rvert\right)$ where $$\sigma_{[v_0, \ldots, v_k]}(t_0, \ldots, t_k)(v \in K) = \begin{cases} t_i & v=v_i \\ 0 & v \ne v_i \end{cases},$$ extended by linearity. This induces a map $\varphi : C_{\ast}(K) \to C_{\ast}(\lvert{K}\rvert)$.
 \end{definition}
 
 \begin{exercise}
@@ -1512,7 +1529,7 @@ We have that $C_i(K^0) = \begin{cases} \Z[\Sigma_K^0] & i =0 \\ 0 & i>0\end{case
 \end{note}
 
 \begin{lemma}
-$\varphi : H_{\ast}(K) \to H_{\ast}(|K|)$ is an isomorphism.
+$\varphi : H_{\ast}(K) \to H_{\ast}(\lvert{K}\rvert)$ is an isomorphism.
 \end{lemma}
 \begin{proof}
 Induct on the $k$-skeleton of $K$. The case where $k=0$ is obvious. Suppose that  $\varphi : H_{\ast}(K^i) \overset{\cong}{\longrightarrow} H_{\ast}(|K^i|)$. Note that $$C_{\ast}(K^{i+1}, K^i) = \faktor{C_{\ast}(K^{i+1})}{C_{\ast}(K^i)} \cong \begin{cases} \Z[\Sigma_{K^{i+1}}^{i+1} = \Sigma_K^{i+1}] & \ast = i+1 \\ 0 & \ast \ne i+1 \end{cases}   .$$ Therefore, $H_{i+1}(K^{i+1}, K^i) \cong \Z[\Sigma_K^{i+1}]$. Moreover, observe that $K^{i+1}/K^i \cong \bigvee_{\sigma \in \Sigma_K^{i+1}} S_{\sigma}^{i+1}$. From this we get $$  H_{\ast}(|K^{i+1}|, |K^i|) \cong \widetilde{H}_{\ast}(|K^{i+1}|/|K^i|) \cong \begin{cases} \Z[\Sigma_{K^{i+1}}^{i+1} = \Sigma_K^{i+1}] & \ast = i+1 \\ 0 & \ast \ne i+1 \end{cases} .$$ We now have a commutative diagram with exact rows 
@@ -1542,14 +1559,14 @@ If $i\geq j+1$, then $C_j(K) = C_j(K^i)$, so that $H_j(K) \cong H_j(K^i)$.
 \end{note}
 
 \begin{prop}\label{p1}
-A map $\psi : C \to |K|$ with $C$ a compact space has $\im{\psi} \subset |K^i|$ for some $i$.
+A map $\psi : C \to \lvert{K}\rvert$ with $C$ a compact space has $\im{\psi} \subset |K^i|$ for some $i$.
 \end{prop}
 
 \begin{corollary}
-$H_{\ast}(|K|) = \underbrace{\varinjlim H_{\ast}(|K^i|)}_{\text{direct limit}}$.
+$H_{\ast}(\lvert{K}\rvert) = \underbrace{\varinjlim H_{\ast}(|K^i|)}_{\text{direct limit}}$.
 \end{corollary}
 \begin{proof}
-Any cycle $c\in C_i(|K|)$ is finite linear combination of singular simplices. \Cref{p1} implies that there exists $j\geq 0$ small enough so that $c \in  C_i(K^j|)$ and $[c]\ne 0 \in H_i(|K^j|)$.
+Any cycle $c\in C_i(\lvert{K}\rvert)$ is finite linear combination of singular simplices. \Cref{p1} implies that there exists $j\geq 0$ small enough so that $c \in  C_i(K^j|)$ and $[c]\ne 0 \in H_i(|K^j|)$.
 \end{proof}
 
 
@@ -1566,10 +1583,10 @@ The excision theorem holds if and only if whenever $X= \mathring{A} \cup \mathri
 For the forward direction, set $Z= X\setminus B$. Conversely, set $B = X \setminus Z$.
 \end{proof}
 
-\begin{definition} Let $X$ be a space. Let $\mathcal{U} =\{\mathring{U}_{\alpha}\}$ be a cover of $X$ with each $U_{\alpha} \subset X$.
+\begin{definition} Let $X$ be a space. Let $\mathcal{U} =\left\{\mathring{U}_{\alpha}\right\}$ be a cover of $X$ with each $U_{\alpha} \subset X$.
 \begin{enumerate}
-\item Define $\sing_n^{\U}(X) =\{\sigma : \Delta^n  \to X \mid \im{\sigma}\subset U_{\alpha}$ for some $\alpha\}$. We call elements of this set \textit{small simplices relative to $\U$}.
-\item Define  $C_n^{\U}(X) =\Z[\sing_n^{\U}(X)]$.
+\item The set of  \textit{small simplices relative to $\U$} is $\sing_n^{\U}(X) \equiv \left\{\sigma : \Delta^n  \to X \mid \im{\sigma}\subset U_{\alpha} \text{ for some }\alpha\right\}$.
+\item $C_n^{\U}(X) \equiv\Z\left[\sing_n^{\U}(X)\right]$.
 \end{enumerate}
 \end{definition}
 
@@ -1624,7 +1641,7 @@ Let $\sigma : \Delta^n \to X$, which induces a map $\sigma_{\ast}: C_{\ast}(\Del
 \begin{note}
 Any linear chain $\lambda: \Delta^k \to Y$ is determined by the values $w_i \coloneqq  \lambda(v_i)$ where $v_i$ denotes the $i$-th vertex of $\Delta^k$. For each $b\in Y$, we have a group homomorphism $b: LC_k(Y) \to LC_{k+1}(Y)$ given by $[w_0, \ldots, w_k] \mapsto [b, w_0, \ldots, w_k]$. Note that 
 \begin{align*} \partial{b[w_0, \ldots, w_k]} & =  \partial{[b, w_0, \ldots, w_k]}
-\\ & = [w_0, \ldots, w_k] - \sum_{i=0}^k ({-}1)^i[b, w_0, \ldots, \hat{w}_j, \ldots, w_k]
+\\ & = [w_0, \ldots, w_k] - \sum_{i=0}^k ({-1})^i[b, w_0, \ldots, \hat{w}_j, \ldots, w_k]
 \\ & = [w_0, \ldots, w_k] - b{\partial{[w_0, \ldots, w_k]}}.
 \end{align*}
 This shows that $\partial{b} + b{\partial} =\1$, so that $b$ is a chain homotopy between $\1$ and and $0$.
@@ -1882,12 +1899,12 @@ Let $x\in S^n \setminus \im{f}$. Since $S^n \setminus \{x\} \cong \R^n$, we have
 \begin{corollary}
 If $f$ is a homotopy equivalence, then $\deg{f}= \pm 1$.
 \end{corollary}
-\item Define the map $i_k : S^n \to S^n$ by $(x_0, \ldots, x_n) \mapsto (x_0, \ldots, -x_k, \ldots, x_n)$. Then $\deg{i_k} = {-}1$.
+\item Define the map $i_k : S^n \to S^n$ by $(x_0, \ldots, x_n) \mapsto (x_0, \ldots, -x_k, \ldots, x_n)$. Then $\deg{i_k} = {-1}$.
 \begin{proof}
 Recall that $\Delta_1^n -\Delta_2^n$ generates $\widetilde{H}_n(S^n)$. Situate things so that $\partial{\Delta_1^n} = \partial{\Delta_2^n}$ is in the hyperplane $x_k=0$. Then $i_k$ fixes both $\partial{\Delta_1^n}$ and $\partial{\Delta_2^n}$ and interchanges the two hemispheres. Hence $i_k(\Delta_1^n -\Delta_2^n)= \Delta_2^n- \Delta_1^n $.
 \end{proof}
 \item Let $i: S^n \to S^n$ be the antipodal map. Then $\deg{i} = ({-1})^{n+1}$ since $i= i_0 \circ i_1 \circ \cdots \circ i_n$.
-\item Suppose that $f: S^n \to S^n$ has no fixed point. Then $\deg{f}= ({-}1)^{n+1}$.
+\item Suppose that $f: S^n \to S^n$ has no fixed point. Then $\deg{f}= ({-1})^{n+1}$.
 \begin{proof}
 If $f(x) \ne x$ for every $x\in S^n$, then the line segment $(1-t)f(x) - tx$ never passes through the origin. Therefore, the maps $$H_t = \frac{ (1-t)f(x)-tx  }{|(1-t)f(x) -tx|     }$$ define a homotopy between $f$ and the antipodal map $i$.
 \end{proof}
@@ -1998,7 +2015,7 @@ Let $\Delta_{\alpha{\beta}}\coloneqq  q_{\beta}q \varphi_{\alpha}$. Then we have
 0 \arrow[r] & \Z \arrow[r, "d_2"] & \Z^{2g} \arrow[r, "d_1"] & \Z \arrow[r] & 0
 \end{tikzcd}
 .\] We know that $d_1=0$ because $S_g$ is connected and has exactly one $0$-cell. Moreover, the maps $\Delta_{\alpha{\beta}}$ are homotopic to constant maps, which implies that $d_2 =0$. It follows that $$  H_n(S_g) \cong \begin{cases}  \Z & n\in \{0,2\} \\ \Z^{2g} & n =1 \\ 0 & \text{otherwise} \end{cases}  .$$
-\item Recall that $\RP^n = e^0 \cup e^1 \cup \cdots \cup e^n$ with attaching maps the two-sheeted covering projections $\varphi : S^{k-1} \to \RP^{k-1}$. If $q : \RP^{k-1} \to \RP^{k-1}/\RP^{k-2} = S^{k-1}$ denotes the quotient map, then the composition $q{\varphi}$ is a homeomorphism when restricted to each of the two components of $S^{k-1} \setminus S^{k-2}$, one being the identity and the other being the antipodal map. In particular, these two homeomorphisms are obtained from each other by precomposing with the antipodal map $S^{k-1} \to S^{k-1}$, which has degree $({-}1)^k$. Therefore, $\deg{q\varphi} = \deg(\1)+\deg({-}\1) = 1+({-}1)^k$ by our local-degree formula. It follows that
+\item Recall that $\RP^n = e^0 \cup e^1 \cup \cdots \cup e^n$ with attaching maps the two-sheeted covering projections $\varphi : S^{k-1} \to \RP^{k-1}$. If $q : \RP^{k-1} \to \RP^{k-1}/\RP^{k-2} = S^{k-1}$ denotes the quotient map, then the composition $q{\varphi}$ is a homeomorphism when restricted to each of the two components of $S^{k-1} \setminus S^{k-2}$, one being the identity and the other being the antipodal map. In particular, these two homeomorphisms are obtained from each other by precomposing with the antipodal map $S^{k-1} \to S^{k-1}$, which has degree $({-1})^k$. Therefore, $\deg{q\varphi} = \deg(\1)+\deg({-}\1) = 1+({-1})^k$ by our local-degree formula. It follows that
 \[
 \begin{tikzcd}
 0 \arrow[r] & \Z \arrow[r, "2"] & \Z \arrow[r, "0"] & \cdots \arrow[r, "2"] & \Z \arrow[r, "0"] & \Z \arrow[r, "2"] & \Z \arrow[r, "0"] & \Z \arrow[r] & 0 & n \text{ even} \\
@@ -2013,7 +2030,7 @@ Let $\Delta_{\alpha{\beta}}\coloneqq  q_{\beta}q \varphi_{\alpha}$. Then we have
 \begin{definition} $ $
 \begin{enumerate}
 \item Let $G$ be a finitely generated abelian group. We can write $G$ uniquely as  $\Z^m \times T_1 \times \cdots \times T_s$ where each $T_i$ is a  finite cyclic group. Define $\rnk{G} = m$.
-\item Let $X$ be a space whose singular chain complex is finite. The \textit{Euler characteristic $\chi(X)$ of $X$} is $ \sum_n({-}1)^n\rnk{H_n(X)}$, which is a finite sum by \cref{c19}.
+\item Let $X$ be a space whose singular chain complex is finite. The \textit{Euler characteristic $\chi(X)$ of $X$} is $ \sum_n({-1})^n\rnk{H_n(X)}$, which is a finite sum by \cref{c19}.
 \end{enumerate}
 \end{definition}
 
@@ -2026,18 +2043,18 @@ If $0 \to A \to B \to C \to 0$ is an exact sequence of finitely generated abelia
 \end{exercise}
 
 \begin{lemma}
-Let $(C_{\ast}(X), d)$ be a finite singular chain complex. Then $\chi(X) =\sum_n ({-}1)^n\rnk{C_n}$.
+Let $(C_{\ast}(X), d)$ be a finite singular chain complex. Then $\chi(X) =\sum_n ({-1})^n\rnk{C_n}$.
 \end{lemma}
 \begin{proof}
 We can write out chain complex as
 \[\begin{tikzcd}
 0 \arrow[r] & C_k \arrow[r, "d_k"] & C_{k-1} \arrow[r, "d_{k-1}"] & \cdots \arrow[r] & C_1 \arrow[r, "d_1"] & C_0 \arrow[r] & 0
 \end{tikzcd}
-.\] We have short exact sequences $0 \to Z_n \to C_n \to B_{n-1} \to 0$ and $0 \to B_n \to Z_n \to H_n \to 0$. This shows that $\rnk{C_n}= \rnk{Z_n} +\rnk{B_{n-1}}$ and $\rnk{Z_n} = \rnk{B_n} + \rnk{H_n}$. It follows that $$\rnk{C_n}=  \rnk{B_n} + \rnk{H_n}  +\rnk{B_{n-1}}  .  $$ Hence $ \sum_n({-}1)^n\rnk{C_n(X)} =  \sum_n({-}1)^n\rnk{H_n(X)}$.
+.\] We have short exact sequences $0 \to Z_n \to C_n \to B_{n-1} \to 0$ and $0 \to B_n \to Z_n \to H_n \to 0$. This shows that $\rnk{C_n}= \rnk{Z_n} +\rnk{B_{n-1}}$ and $\rnk{Z_n} = \rnk{B_n} + \rnk{H_n}$. It follows that $$\rnk{C_n}=  \rnk{B_n} + \rnk{H_n}  +\rnk{B_{n-1}}  .  $$ Hence $ \sum_n({-1})^n\rnk{C_n(X)} =  \sum_n({-1})^n\rnk{H_n(X)}$.
 \end{proof}
 
 \begin{corollary}
- Let $X$ be a finite CW-complex. Then $$\chi(X) = \sum_{n} ({-}1)^nc_n$$ where $c_n$ denotes the number of $n$-cells of $X$.
+ Let $X$ be a finite CW-complex. Then $$\chi(X) = \sum_{n} ({-1})^nc_n$$ where $c_n$ denotes the number of $n$-cells of $X$.
 \end{corollary}
 
 \subsection{Lecture 16}
@@ -2342,7 +2359,7 @@ There exists a non-canonical split short exact sequence $$\begin{tikzcd}
 
 \begin{note} $ $
 \begin{enumerate}
-\item Let $X$ be a space and $C_{\ast}(X)$ our singular chain complex. Then $C^n(X; G) = \Hom(C_n(X), G)$. For any \textit{singular $n$-cochain} $\varphi$, we have that $$\delta{\varphi}(\sigma : \Delta^{n+1} \to X) = \sum_{k=0}^{n+1}({-}1)^k\varphi(\sigma \restriction_{ [v_0, \ldots, \hat{v}_i, \ldots, v_{n+1}]}).$$ 
+\item Let $X$ be a space and $C_{\ast}(X)$ our singular chain complex. Then $C^n(X; G) = \Hom(C_n(X), G)$. For any \textit{singular $n$-cochain} $\varphi$, we have that $$\delta{\varphi}(\sigma : \Delta^{n+1} \to X) = \sum_{k=0}^{n+1}({-1})^k\varphi(\sigma \restriction_{ [v_0, \ldots, \hat{v}_i, \ldots, v_{n+1}]}).$$ 
 \item Any map $f: X \to Y$ of spaces induces a chain map $f_{\ast} : C_{\ast}(X) \to C_{\ast}(Y)$, which in turn induces a cochain map $f^{\ast} : C^{\ast}(Y; G) \to C^{\ast}(X; G)$ such that $\delta{f} = f{\delta}$.  We thus get a map on cohomology $f^{\ast} : H^n(Y; G) \to H^n(X;G)$, called the \textit{pullback of $f$}.
 \item  {\textbf{(Reduced cohomology)}} Define the map $f : G \to C^n(X; G)$ by $g \mapsto c_g$ where $c_g$ denotes the constant map at $g$. Let $\widetilde{C}^{\ast}(X; G) \coloneqq  \coker{f}$, thereby defining $\widetilde{H}^{\ast}(X; G)$.
 
@@ -2385,7 +2402,7 @@ Let $\1 \in C^0(X; R)$ denote the constant map at $1_R$. Then $\1 \smile \varphi
 \end{prop}
 
 \begin{lemma}
-$\delta(\varphi \smile \psi) = \delta{\varphi} \smile \psi + ({-}1)^k \varphi \smile \delta{\psi}$.
+$\delta(\varphi \smile \psi) = \delta{\varphi} \smile \psi + ({-1})^k \varphi \smile \delta{\psi}$.
 \end{lemma}
 \begin{proof}
 We do the case where $\varphi, \psi \in C^1(X;R)$. If $\sigma \in \sing_3(X)$, then
@@ -2436,7 +2453,7 @@ Therefore, $$H^k(\CP^n; \Z) \cong \begin{cases} \Z & k \text{ even} \\ 0 & k \te
 \end{exmp}
 
 \begin{theorem}
-If $R$ is commutative and $\varphi, \psi \in H^{\ast}(X, A; R)$, then $\varphi \smile \psi = ({-}1)^{|\varphi||\psi|} \psi \smile \varphi$ where $|\cdot|$ denotes the degree of a cocycle. That is, $\smile$ is \textit{graded commutative}.
+If $R$ is commutative and $\varphi, \psi \in H^{\ast}(X, A; R)$, then $\varphi \smile \psi = ({-1})^{|\varphi||\psi|} \psi \smile \varphi$ where $|\cdot|$ denotes the degree of a cocycle. That is, $\smile$ is \textit{graded commutative}.
 \end{theorem}
 
 \begin{remark}
@@ -2661,20 +2678,20 @@ Let $k\geq l$. The $\textit{cap product}$ is the map $C_k(X; R) \times C^l(X; R)
 \end{definition}
 
 \begin{lemma}
-$\partial(\sigma \frown\varphi) = ({-}1)^l(\partial{\sigma} \frown \varphi - \sigma \frown \delta{\varphi})$.
+$\partial(\sigma \frown\varphi) = ({-1})^l(\partial{\sigma} \frown \varphi - \sigma \frown \delta{\varphi})$.
 \end{lemma}
 \begin{proof}
 We compute
 \begin{align*}
- \partial{\sigma} \frown \varphi & = \sum_{i=0}^k ({-}1)^i \sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_k]} \frown \varphi
- \\ & = \sum_{i=0}^l ({-}1)^i \varphi (\sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_{l+1}]})\sigma \restriction_{[v_{l+1}, \ldots, v_k]} 
- \\ & + \sum_{i=l+1}^k ({-}1)^i \varphi( \sigma \restriction_{[v_0, \ldots, v_l]}) \sigma \restriction_{[v_l, \ldots, \hat{v}_i, \ldots, v_k]}
+ \partial{\sigma} \frown \varphi & = \sum_{i=0}^k ({-1})^i \sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_k]} \frown \varphi
+ \\ & = \sum_{i=0}^l ({-1})^i \varphi (\sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_{l+1}]})\sigma \restriction_{[v_{l+1}, \ldots, v_k]} 
+ \\ & + \sum_{i=l+1}^k ({-1})^i \varphi( \sigma \restriction_{[v_0, \ldots, v_l]}) \sigma \restriction_{[v_l, \ldots, \hat{v}_i, \ldots, v_k]}
  \\ \sigma \frown \delta{\varphi} & = \delta{\varphi(\sigma \restriction_{[v_0, \ldots, v_{l+1}]})}\sigma \restriction_{[v_{l+1}, \ldots, v_k]}
- \\ & = \sum_{i=0}^{l+1} ({-}1)^i \varphi (\sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_{l+1}]})\sigma \restriction_{[v_{l+1}, \ldots, v_k]}
+ \\ & = \sum_{i=0}^{l+1} ({-1})^i \varphi (\sigma \restriction_{[v_0, \ldots, \hat{v}_i, \ldots, v_{l+1}]})\sigma \restriction_{[v_{l+1}, \ldots, v_k]}
  \\ \partial(\sigma \frown \varphi) & =  \partial(\varphi(\sigma \restriction_{[v_0, \ldots, v_l]})\sigma \restriction_{[v_l, \ldots, v_k]})
- \\ & = \sum_{i=l}^k ({-}1)^{i-l}\varphi(\sigma \restriction_{[v_0, \ldots, v_l]})\sigma \restriction_{[v_l, \ldots, \hat{v}_i, \ldots, v_k]}.
+ \\ & = \sum_{i=l}^k ({-1})^{i-l}\varphi(\sigma \restriction_{[v_0, \ldots, v_l]})\sigma \restriction_{[v_l, \ldots, \hat{v}_i, \ldots, v_k]}.
 \end{align*}
-It's easy to check that $({-}1)^l \partial(\sigma \frown \varphi) = \partial{\sigma} \frown \varphi - \sigma \frown \delta{\varphi}.$
+It's easy to check that $({-1})^l \partial(\sigma \frown \varphi) = \partial{\sigma} \frown \varphi - \sigma \frown \delta{\varphi}.$
 \end{proof}
 
 \begin{corollary}
@@ -2848,11 +2865,11 @@ Let $\mathcal{U}$ denote the set of open $U\subset X$ such that $D_U$ is an isom
 If $X$ is a closed $R$-oriented manifold of odd dimension $n$, then $\chi(X) =0$.
 \end{corollary}
 \begin{proof}
-We have that \begin{align*} \chi(X) &= \sum_i({-}1)^i\rnk{H_i(X)} \\ & = \sum_i({-}1)^i\rnk{H^{n-i}(X)} \\ &= \sum_i({-}1)^i\rnk{H_{n-i}(X)} =0.\end{align*}
+We have that \begin{align*} \chi(X) &= \sum_i({-1})^i\rnk{H_i(X)} \\ & = \sum_i({-1})^i\rnk{H^{n-i}(X)} \\ &= \sum_i({-1})^i\rnk{H_{n-i}(X)} =0.\end{align*}
 \end{proof}
 
 \begin{exercise}
-Let $X$ be a closed manifold. Use the universal coefficient theorem to show that the value $ \sum_i({-}1)^i\rnk{H_i(X; \Z)}$ remains the same when $\Z$ is replaced by any $R$.  
+Let $X$ be a closed manifold. Use the universal coefficient theorem to show that the value $ \sum_i({-1})^i\rnk{H_i(X; \Z)}$ remains the same when $\Z$ is replaced by any $R$.  
 \end{exercise}
 
 \begin{corollary}
@@ -2939,8 +2956,6 @@ H^k_c(\Int{M}) & \cong \varinjlim_{K_{\Int{M}}} H^k(\Int{M}, \Int{M} \setminus K
 By PD, it follows that $$H^k(M, \partial{M}) \cong H^k_c(\Int{M}) \cong H_{n-k}(\Int{M}) \cong H_{n-k}(M)  .$$
 \end{proof}
 
-\newpage
-
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -2953,7 +2968,7 @@ By PD, it follows that $$H^k(M, \partial{M}) \cong H^k_c(\Int{M}) \cong H_{n-k}(
 {A^{0,0}} \arrow[u, "d"] \arrow[r, "\delta"] & {A^{1,0}} \arrow[u, "d"] \arrow[r, "\delta"] & {A^{2,0}} \arrow[u, "d"] \arrow[r, "\delta"] & \cdots
 \end{tikzcd}
 \] in $\mathbf{Ab}$ such that $d^2 = 0 = \delta^2$ and $d{\delta} + \delta{d} =0$.
-\item If $(A^{\bullet, \bullet}, d^{\bullet}, \delta^{\bullet})$ denotes a double complex, then the \textit{total complex $\tot(A)$ of $A$} is the single complex with $\tot(A)^n \equiv \bigoplus_{p+q = n} A^{p,q}$ and $d_{\tot(A)} \restriction_{A^{p,q}} \equiv  \delta + ({-}1)^pd$.
+\item If $(A^{\bullet, \bullet}, d^{\bullet}, \delta^{\bullet})$ denotes a double complex, then the \textit{total complex $\tot(A)$ of $A$} is the single complex with $\tot(A)^n \equiv \bigoplus_{p+q = n} A^{p,q}$ and $d_{\tot(A)} \restriction_{A^{p,q}} \equiv  \delta + ({-1})^pd$.
 \item If $(A^{\bullet, \bullet}, d^{\bullet}, \delta^{\bullet})$ denotes a double complex, then define the \textit{cohomology of $A$} as $$H^{\ast}(A, d, \delta) = H^{\ast}(\tot(A), d_{\tot(A)}).$$
 \end{enumerate}
 \end{definition}
@@ -3015,7 +3030,7 @@ The \textit{\v{C}ech-de-Rham complex $\check{C}^{\bullet}(\U; \Omega^{\bullet})$
 \prod_{\alpha_0}\Omega^1(U_{\alpha_0}) \arrow[u, "d"] \arrow[r, "\delta"] & \prod_{\alpha_0{\alpha_1}}\Omega^1(U_{\alpha_0{\alpha_1}}) \arrow[u, "d"] \arrow[r, "\delta"] & \prod_{\alpha_0{\alpha_1{\alpha_2}}}\Omega^1(U_{\alpha_0{\alpha_1{\alpha_2}}}) \arrow[u, "d"] \arrow[r, "\delta"] & \prod_{\alpha_0{\alpha_1{\alpha_2{\alpha_3}}}}\Omega^1(U_{\alpha_0{\alpha_1{\alpha_2}{\alpha_3}}}) \arrow[r, "\delta"] \arrow[u, "d"] & \cdots \\
 \prod_{\alpha_0}\Omega^0(U_{\alpha_0}) \arrow[r, "\delta"] \arrow[u, "d"] & \prod_{\alpha_0{\alpha_1}}\Omega^0(U_{\alpha_0{\alpha_1}}) \arrow[r, "\delta"] \arrow[u, "d"] & \prod_{\alpha_0{\alpha_1{\alpha_2}}}\Omega^0(U_{\alpha_0{\alpha_1{\alpha_2}}}) \arrow[r, "\delta"] \arrow[u, "d"] & \prod_{\alpha_0{\alpha_1{\alpha_2{\alpha_3}}}}\Omega^0(U_{\alpha_0{\alpha_1{\alpha_2}{\alpha_3}}}) \arrow[r, "\delta"] \arrow[u, "d"] & \cdots
 \end{tikzcd}.
-\] where  $$(\delta{\omega})_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1}({-}1)^i\omega_{\alpha_0\ldots \hat{\alpha}_i\ldots \alpha_{p+1}} \restriction_{U_{\alpha_0 \ldots \alpha_{p+1}}}  .$$
+\] where  $$(\delta{\omega})_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1}({-1})^i\omega_{\alpha_0\ldots \hat{\alpha}_i\ldots \alpha_{p+1}} \restriction_{U_{\alpha_0 \ldots \alpha_{p+1}}}  .$$
 \begin{exmp}
 Let $\omega \in \prod_{\alpha_0} \Omega^q (U_{\alpha_0})$. Then $(\delta{\omega})_{\alpha_0{\alpha_1}} =\omega_{\alpha_1}\restriction_{U_{\alpha_0{\alpha_1}}} -\omega_{\alpha_0}\restriction_{U_{\alpha_0{\alpha_1}}}$. From this, we compute 
 \begin{align*}
@@ -3025,7 +3040,9 @@ Let $\omega \in \prod_{\alpha_0} \Omega^q (U_{\alpha_0})$. Then $(\delta{\omega}
 \\ & = 0.
 \end{align*}
 \end{exmp}
-\newpage
+
+\medskip
+
 If $X$ is a space, then let $C_{lc}(X, \R)$ denote the additive group of locally constant functions $X \to \R$. Now, let  $\underline{\check{C}^{\bullet}(\U; \Omega^{\bullet})}$ denote the augmented \v{C}ech-de-Rham complex
 \[
 \begin{tikzcd}
@@ -3043,12 +3060,12 @@ If $X$ is a space, then let $C_{lc}(X, \R)$ denote the additive group of locally
 The rows of $\underline{\check{C}^{\bullet}(\U; \Omega^{\bullet})}$ are exact.
 \end{lemma}
 \begin{proof}
-It is clear that  $\delta{\epsilon}=0$. Since $\delta^2 = 0$, it just remains to check that $\ker{\delta} \subset \im{\delta}$ and $\ker{\delta} \subset \im{\epsilon}$.  Let $\omega \in \prod_{\alpha_0 \ldots \alpha_p} \Omega^q(U_{\alpha_0 \ldots \alpha_p})$ such that $\omega \in \ker{\delta}$. Then $(\delta{\omega})_{\alpha \alpha_0 \ldots \alpha_p} =\omega_{\alpha_0 \ldots \alpha_p} + \sum_{i=0}^p ({-}1)^{i+1} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p} = 0, $ so that $$\omega_{\alpha_0 \ldots \alpha_p}  =  \sum_{i=0}^p ({-}1)^{i} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p}   .$$ 
+It is clear that  $\delta{\epsilon}=0$. Since $\delta^2 = 0$, it just remains to check that $\ker{\delta} \subset \im{\delta}$ and $\ker{\delta} \subset \im{\epsilon}$.  Let $\omega \in \prod_{\alpha_0 \ldots \alpha_p} \Omega^q(U_{\alpha_0 \ldots \alpha_p})$ such that $\omega \in \ker{\delta}$. Then $(\delta{\omega})_{\alpha \alpha_0 \ldots \alpha_p} =\omega_{\alpha_0 \ldots \alpha_p} + \sum_{i=0}^p ({-1})^{i+1} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p} = 0, $ so that $$\omega_{\alpha_0 \ldots \alpha_p}  =  \sum_{i=0}^p ({-1})^{i} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p}   .$$ 
 Now, choose a partition of unity $\{\lambda_{\alpha}\}$ subordinate to $\U$. Define $s{\omega} \in \prod_{\alpha_0 \ldots \alpha_{p-1}} \Omega^q(U_{\alpha_0 \ldots \alpha_{p-1}})$ by $$(s{\omega})_{\alpha_0 \ldots \alpha_{p-1}} = \sum_{\alpha} \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \alpha_{p-1}}   .$$ We have that
 \begin{align*}
-(\delta{s\omega})_{\alpha_0 \ldots \alpha_p}  & = \sum_{i=0}^p ({-}1)^i (s\omega)_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
-\\ &  = \sum_{i=0}^p \sum_{\alpha} ({-}1)^i \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
-\\ & = \sum_{\alpha} \sum_{i=0}^p ({-}1)^i \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
+(\delta{s\omega})_{\alpha_0 \ldots \alpha_p}  & = \sum_{i=0}^p ({-1})^i (s\omega)_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
+\\ &  = \sum_{i=0}^p \sum_{\alpha} ({-1})^i \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
+\\ & = \sum_{\alpha} \sum_{i=0}^p ({-1})^i \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
 \\ & =  \sum_{\alpha} \lambda_{\alpha}\omega_{\alpha_0 \ldots \alpha_p} 
 \\ & = \omega_{\alpha_0 \ldots \alpha_p}
 . \end{align*}
@@ -3061,7 +3078,7 @@ This shows that $\delta{s{\omega}} =\omega$, so that $\omega \in \im{\delta}$, a
 
 \begin{prop}\label{p4} Let $V$ be a smooth vector field and $\omega, \eta$ be differential forms. Let $\mathcal{L}$ denote the Lie derivative.
 \begin{enumerate} 
-\item  $i_V(\omega \wedge \eta) = i_V (\omega) + \eta  +({-}1)^{|\omega|}\omega \wedge i_V{\eta}.$
+\item  $i_V(\omega \wedge \eta) = i_V (\omega) + \eta  +({-1})^{|\omega|}\omega \wedge i_V{\eta}.$
 \item {\textbf{(Cartan's magic formula)}}
 $\mathcal{L}_V{\omega} = i_V{d(\omega)} + d(i_V{\omega}).$
 \end{enumerate}
@@ -3113,20 +3130,25 @@ Let $M$ be a smooth manifold and let $(\Omega^{\ast}(M), d)$ denote the cochain 
 Choose a finite good cover $\U$ of $M$. We have just proven that $H^{\ast}_{\dr}(M) \cong  \check{H}^{\ast}(\U; \R)$. By a similar argument, we can also show that $H^{\ast}(M; \R) \cong \check{H}^{\ast}(\U; \R)$.
 \end{proof}
 
-\subsection{Lecture 24}
-
-
 \section{Sheaves on spaces}
 
+\subsection{Lecture 24}
+
+Let $X$ be a space and $\Op(X)$ denote the category of open sets in $X$.
+
 \begin{definition}
-Let $X$ be a space and $\Op(X)$ denote the category of open sets in $X$. A \textit{presheaf on $X$} is a functor $F: \Op(X)^{\op} \to \mathbf{Ab}$ such that $F(\emptyset) =0$. If $V\subset X$ is open, then any $s\in F(V)$ is called a \textit{section of $U$}. If $i : U \hookrightarrow V$, then $F(i): F(V) \to F(U)$ is called a \textit{restriction morphism} and is denoted by $r_{UV}$. Let $r_{UV}(s)\coloneqq  s \restriction_U$. Let $\mathbf{PreSh}_X$ denote the category of presheaves on $X$.
+ A \textit{presheaf on $X$} is a functor $F: \Op(X)^{\op} \to \mathbf{Ab}$ such that $F(\emptyset) =0$. If $V\subset X$ is open, then any $s\in F(V)$ is called a \textit{section of $U$}. If $i : U \hookrightarrow V$, then $F(i): F(V) \to F(U)$ is called a \textit{restriction morphism} and is denoted by $r_{UV}$. Let $r_{UV}(s)\coloneqq  s \restriction_U$. 
 \end{definition}
 
-\begin{remark}[\v{C}ech cohomology]
+\begin{notation}
+Let $\mathbf{PreSh}_X$ denote the category of presheaves on $X$.
+\end{notation}
+
+\begin{note}[\v{C}ech cohomology]
 We can build a cohomology theory of presheaves as follows. Let $X$ be a space with $\mathcal{U}$ an open cover. Let $F$ be a presheaf on $X$.  Let $\check{C}(\mathcal{U}, F)$ denote the chain complex
 $$   \prod_{\alpha_0}F(U_{\alpha_0}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1} F(U_{\alpha_0 \alpha_1}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1\alpha_2}F(U_{\alpha_0\alpha_1\alpha_2}) \overset{\delta}{\longrightarrow} \cdots 
-$$  where for any $f = (\underbrace{f_{\alpha_0\ldots \alpha_p}}_{\in F(U_{\alpha_0\ldots \alpha_p})})$, we take $(\delta{f})_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1} ({-}1)^i f_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_{p+1}} \restriction_{U_{\alpha_0\ldots \alpha_{p+1}}}.$ Define the \textit{$p$-th \v{C}ech cohomology group} as $$\check{H}^p(X, F) = \varinjlim_{\mathcal{R}} \check{H}^p(\mathcal{U}, F)  $$ where $\mathcal{R}$ denotes the set of all open covers of $X$ ordered by refinement. 
-\end{remark}
+$$  where for any $f = (\underbrace{f_{\alpha_0\ldots \alpha_p}}_{\in F(U_{\alpha_0\ldots \alpha_p})})$, we take $(\delta{f})_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1} ({-1})^i f_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_{p+1}} \restriction_{U_{\alpha_0\ldots \alpha_{p+1}}}.$ Define the \textit{$p$-th \v{C}ech cohomology group} as $$\check{H}^p(X, F) = \varinjlim_{\mathcal{R}} \check{H}^p(\mathcal{U}, F)  $$ where $\mathcal{R}$ denotes the set of all open covers of $X$ ordered by refinement. 
+\end{note}
 
 \begin{definition}
 A presheaf $F$ on $X$ is a \textit{sheaf} if for any open $U \subset X$ and any open cover $\{U_{\alpha}\}$ of $U$, we have an exact sequence $$    0 \to F(U) \to \prod_{\alpha} F(U_{\alpha}) \overset{\tau}{\longrightarrow} \prod _{\alpha_0\alpha_1} F(U_{\alpha_0 \alpha_1})  $$ where $(\tau{f})_{\alpha_0 \alpha_1} \equiv f_{\alpha_1}\restriction_{U_{\alpha_0\alpha_1}} - f_{\alpha_0} \restriction_{U_{\alpha_0\alpha_1}} .$ Let $\mathbf{Sh}_{X}$ denote the category of sheaves on $X$, which is a full subcategory of $\mathbf{PreSh}_X$.
@@ -3366,9 +3388,9 @@ Suppose that $x\in \ker \delta +d$. Then $(\delta(x), d(x)) = (0,0)$, so that $g
 
 Conversely, suppose that $x= g(f(y))$ for some $y\in E(X)$. Then 
 \begin{align*}
-\delta + d(g(f(y))) & = (\delta(g(f(y))), d(g(f(y)))) 
-\\ & = (g(\delta(f(y))), d(g(f(y)))) 
-\\ & = (0, 0)
+\delta + d(g(f(y))) & = \left(\delta(g(f(y))), d(g(f(y)))\right) 
+\\ & = \left(g(\delta(f(y))), d(g(f(y)))\right) 
+\\ & = \left(0, 0\right)
 \end{align*} 
  since  $\delta \circ f = 0 = d \circ g$. Therefore, $x \in \ker{\delta +d}$.
 \end{proof}$ $\\It follows that $$H^{\ast}(X, E) \cong H^{\ast}(I^{\bullet, \bullet}, d, \delta) \cong H^{\ast}(\Gamma(X, F^{\bullet})).$$  
@@ -3503,7 +3525,7 @@ Let $X$ be a smooth manifold. We have that $0 \to \underline{\R} \to \Omega^{\bu
 \end{note}
 
 \begin{note}
-Let $A$ be a ring. For each $p \in \N$, define the presheaf $U\subset X \mapsto \{f : \sing_p(U) \to A\}$. Sheafify this to get $\frak{S}^p(A)$. Define the map of sheaves $\delta: \frak{S}^p(A)\to \frak{S}^{p+1}(A)$ by $$\delta_U(f : \sing_{p}(U) \to A)(\sigma : \Delta^{p+1} \to A) = \sum_{i=0}^{p+1} ({-}1)^i f{\sigma \restriction_{\partial_i{\Delta^{p+1}}}}    $$ where $\partial_i{\Delta^p} = [e_0, \ldots, e_{i-1}, \hat{e}_i, e_{i+1}, \ldots, e_p]$. This induces a resolution $0 \to \underline{A} \to \frak{S}^{\bullet}(A)$.
+Let $A$ be a ring. For each $p \in \N$, define the presheaf $U\subset X \mapsto \{f : \sing_p(U) \to A\}$. Sheafify this to get $\frak{S}^p(A)$. Define the map of sheaves $\delta: \frak{S}^p(A)\to \frak{S}^{p+1}(A)$ by $$\delta_U(f : \sing_{p}(U) \to A)(\sigma : \Delta^{p+1} \to A) = \sum_{i=0}^{p+1} ({-1})^i f{\sigma \restriction_{\partial_i{\Delta^{p+1}}}}    $$ where $\partial_i{\Delta^p} = [e_0, \ldots, e_{i-1}, \hat{e}_i, e_{i+1}, \ldots, e_p]$. This induces a resolution $0 \to \underline{A} \to \frak{S}^{\bullet}(A)$.
 
 Likewise, if $X$ is a smooth manifold, then define the sheaf $U \mapsto \{f : \sing_p^{\infty}(U) \to A\}$ where $\sing_p^{\infty}(U)$ denotes the free abelian group on the set of smooth maps $\sigma: \Delta^p\subset \R^{p+1} \to U$, i.e., all $\sigma$ with a smooth extension to some neighborhood of $\Delta^p$. Sheafify this to get $\frak{S}_{\infty}^p(A)$. We still have a resolution $$0 \to \underline{A} \to \frak{S}_{\infty}^{\bullet}(A).$$
 \end{note}
@@ -3517,7 +3539,7 @@ Let $\omega \in \Omega^p(U)$ and $\sigma \in \sing_{p+1}^{\infty}(U)$, We can ap
 \begin{align*}
 I(d{\omega})(\sigma) & = \int_{\Delta^{p+1}}\sigma^{\ast}d{\omega}
 \\ & = \int_{\Delta^{p+1}}d{\sigma^{\ast}{\omega}}
-\\ & = \sum_{i=0}^{p+1}({-}1)^i \int_{\partial_i{\Delta^{p+1}}}\sigma^{\ast}{\omega}
+\\ & = \sum_{i=0}^{p+1}({-1})^i \int_{\partial_i{\Delta^{p+1}}}\sigma^{\ast}{\omega}
 \\ & = \delta(I(\omega)).
 \end{align*}
 \end{proof}
@@ -3617,7 +3639,7 @@ On e general vector bundle $ \pi : E \to X$, take a local trivialization $E \res
 
 Let $\pi : E^{k/\R} \to X$ be a vector bundle with a connection $\nabla$. Let $x,y \in X$ and let $p(t)$ be a path from $x$ to $y$. Let $e(t)$ be a section of $E$ along $p(t)$. We say that $e(t)$ is \textit{covariantly constant} or \textit{parallel} if $\nabla_{\overset{\circ}{p}(t)}e(t) = 0$. Consider $E_x \ni e_0$. The we have a first-order ODE with initial condition $e(0) = e_0$ and $\nabla_{\overset{\circ}{p}(t)}e(t) =0$. By Picard, there exists a unique solution $e(t)$. Thus, we have defined a map given by $h(p)(e_0) = e(1)$, so that $h(p) : E_x \to E_y$ is linear. We call $h$ the \textit{holonomy map}. We get $$  \nabla_v{s}(x) = \lim_{t \to 0} \frac{h(p_t)^{-1}s(p(t)) 0s(x)}{t}  $$ where $p$ is any path with $p'(0) = v$.
 
-Given $\pi: E \to X$ and $\nabla : \Omega^0(X; E) \to |omega^1(X; E)$, we can extend $\nabla$ to a map $\nabla : \Omega^k(X; E) \to \Omega^{k+1}(X; E)$ by taking $$\nabla(\omega \otimes s) = d{\omega}\otimes s +({-}1)^{|\omega|}{\omega} \wedge d{s}.$$ Consider the composition $\Omega^0(X; E) \overset{\nabla}{\longrightarrow} \Omega^1(X; E) \overset{\nabla}{\longrightarrow} \Omega^2(X; E)$. Observe that 
+Given $\pi: E \to X$ and $\nabla : \Omega^0(X; E) \to |omega^1(X; E)$, we can extend $\nabla$ to a map $\nabla : \Omega^k(X; E) \to \Omega^{k+1}(X; E)$ by taking $$\nabla(\omega \otimes s) = d{\omega}\otimes s +({-1})^{|\omega|}{\omega} \wedge d{s}.$$ Consider the composition $\Omega^0(X; E) \overset{\nabla}{\longrightarrow} \Omega^1(X; E) \overset{\nabla}{\longrightarrow} \Omega^2(X; E)$. Observe that 
 \begin{align*}
 \nabla^2(fs) & = \nabla(\nabla(fs))
 \\ & = \nabla(df \cdots s + f\nabla_s)
