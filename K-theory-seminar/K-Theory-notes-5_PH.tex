@@ -32,15 +32,16 @@
 \newtheorem{note}[definition]{Note}
 
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{conj}[definition]{Conjecture}
 \newtheorem*{claim}{Claim}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercise}[definition]{Exercise}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[definition]{Remark}
 \newtheorem*{todo}{To do}
 \newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
@@ -170,9 +171,11 @@
 \DeclareMathOperator{\Ar}{Ar}
 \DeclareMathOperator{\Mod}{\mathbf Mod}
 
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{Homotopy and K-theory seminar}
+\class{$K$-theory seminar}
 \assignment{Talk \#15}
 \duedate{November 12, 2018}
 
@@ -190,7 +193,7 @@ For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-the
 
 \smallskip
 
-Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \lvert{w{\c}}\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \lvert{w{\c}}\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, eventually rendering $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the algebraic $K$-theory spectrum of $\c$.
+Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \lvert{w{\c}}\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \lvert{w{\c}}\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, thereby making $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the \textit{algebraic $K$-theory spectrum} of $\c$.
 
 
 \begin{definition}
@@ -213,7 +216,7 @@ We see that $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and tha
 
 
 \begin{definition}
-A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w\c$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Gluing axiom'' holds.
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w{\c}$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Gluing axiom'' holds.
 \begin{enumerate}
 \item (W3) For any diagram
 \[
@@ -267,7 +270,7 @@ We view $[q]$ as a full subcategory of $\Ar[q]$ via the embedding $[q] \overset{
 
 \begin{note} $ $
 \begin{enumerate}
-\item Any triple $i\leq j \leq k$ determines the morphisms $(i, j) \to (i, k)$ and $(i, k) \to (j, k)$. Conversely, any morphism in the arrow category is a composition of such triples.
+\item Any triple $i\leq j \leq k$ determines the morphisms $(i, j) \to (i, k)$ and $(i, k) \to (j, k)$. Conversely, any morphism in the arrow category is a composite of such triples.
 \item $\Ar[q] \cong \mathbf{Fun}([1], [q])$ by identifying each pair $(i, j)$ with the functor satisfying $0 \mapsto i$ and $1 \mapsto j$.
 \end{enumerate}
 \end{note}
@@ -358,7 +361,7 @@ These form a functor $W: \Ar[q] \to \c$. If $i < j < k$, then we have $W_{i,j} \
 {Y_{i,j} \cup_{X_{i,j}} Z_{i,j}} \arrow[r, tail] & {Y_{i,j} \cup_{X_{i,j}} Z_{i,k}} \arrow[r, tail] & {Y_{i,k} \cup_{X_{i,k}} Z_{i,k}} \\
  & {Y_{i,j} \cup_{X_{i,j}} X_{i,k}} \arrow[u, "{\id \cup g_{i,k}}"] \arrow[r, tail] & {Y_{i,k}} \arrow[u, "{\id \cup g_{i,k}}"']
 \end{tikzcd}
-.\] The fact that colimits commute confirms that $W_{j,k} \cong \faktor{W_{i,k}}{W_{i,j}}$ Hence $W$ is the pushout of $f$ and $g$. To verify that this is a cofibration, we must check that the pushout map $W_{0, j-1} \cup_{Z_{0, j-1}} Z_{0, j} \to W_{0, j}$ is a cofibration. But this follows from the pushout square
+.\] The fact that colimits commute with each other ensures that $W_{j,k} \cong \faktor{W_{i,k}}{W_{i,j}}$ Hence $W$ is the pushout of $f$ and $g$. To verify that this is a cofibration, we must check that the pushout map $W_{0, j-1} \cup_{Z_{0, j-1}} Z_{0, j} \to W_{0, j}$ is a cofibration. But this follows from the pushout square
 \[
 \begin{tikzcd}
 {Y_{0, j-1}\cup_{X_{0, j-1}} X_{0, j}} \arrow[d] \arrow[r, tail] & {Y_{0, j}} \arrow[d] \\
@@ -424,15 +427,15 @@ We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N
  If $q = 0$, then $w S_0 \c = S_0 \c = \ast$, so that $N_{\bullet} w S_0\c = \ast$ as well. If $q= 1$, then
 $w S_1 \c \cong w{\c}$. Thus, the right $1$-skeleton is equal to $N_{\bullet} w{\c}  \land \Delta_{\bullet}^1$, which in turn must be equal to the image $I$ of the canonical map $$\coprod_{q\leq 1} N_{\bullet} w S_q \c \times \Delta_{\bullet}^q \to N_{\bullet} w S_{\bullet} \c.$$ Now, the degeneracy map $s_0$ collapses $\{\ast\} \times \Delta_{\bullet}^1$, and the face maps $d_0$ and $d_1$ collapse $ N_{\bullet} w{\c} \times \partial{\Delta_{\bullet}^1}$. 
 Therefore, $I$ must equal $$N_{\bullet} w{\c}  \land \Delta_{\bullet}^1  = \frac{N_{\bullet} w{\c} \times \Delta_{\bullet}^1}{\{\ast\} \times \Delta_{\bullet}^1 \cup N_{\bullet} w{\c} \times \partial{\Delta_{\bullet}^1}}.$$  We have defined a natural inclusion map $\lambda : N_{\bullet} w{\c} \land \Delta_{\bullet}^1 \to  N_{\bullet} w S_{\bullet} \c$.
-\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$ immediately induces the desired map $\sigma$.\footnote{This is a tentative explanation due to Thomas Brazelton.}
+\\  \\ Since $\Delta_{\bullet}^1$ is isomorphic to the unit interval and the map $\lambda$ agrees on the endpoints, we can pass to $S^1$ during the suspension. Hence $\lambda$  induces the desired map $\sigma$.\footnote{This is a tentative explanation due to Thomas Brazelton.}
 \end{proof}
 
-\begin{remark}
-The axiom (W3) implies that $w\c$ is closed under coproducts, making $\lvert{wS_{\bullet} \c}\rvert$ into an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$
-\end{remark}
+\begin{note}
+The axiom (W3) implies that $w{\c}$ is closed under coproducts, making $\lvert{wS_{\bullet} \c}\rvert$ into an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$
+\end{note}
 
 \begin{definition}
-Let $\left(\c, w\c\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \lvert{ N_{\bullet} wS_{\bullet} \c}\rvert.$$ 
+Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \lvert{ N_{\bullet} wS_{\bullet} \c}\rvert.$$ 
 \end{definition}
 
 Then we have a right adjoint $\iota: \lvert{w{\c}}\rvert \to K(\c, w)$ to the based map $\sigma$.
@@ -440,11 +443,11 @@ Then we have a right adjoint $\iota: \lvert{w{\c}}\rvert \to K(\c, w)$ to the ba
 \medskip
 
  Moreover,
-let $F : \left(\c, w{\c}\right) \to \left(\d, w\d\right)$ be an exact functor. Set $K(F) = \Omega\lvert{wS_{\bullet}F}\rvert : K(\c, w) \to K(\d, w)$. This defines the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
+let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor. Let $$K(F) = \Omega\lvert{wS_{\bullet}F}\rvert : K(\c, w) \to K(\d, w).$$ This is the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 
 \medskip
 
-Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $\lvert{iS_{\bullet}\a}\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Hence our current definition of higher algebraic $K$-theory agrees with Quillen's.
+Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $\lvert{iS_{\bullet}\a}\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
 
 
 \begin{exmp}
@@ -452,10 +455,12 @@ Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(
 \end{exmp}
 
 \begin{exmp}
-Assume that $\c$is a small Waldhausen category where $w\c$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $\lvert{s_{\bullet} \c}\rvert \hookrightarrow \lvert{iS_{\bullet} \c}\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
+Assume that $\c$is a small Waldhausen category where $w{\c}$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $\lvert{s_{\bullet} \c}\rvert \hookrightarrow \lvert{iS_{\bullet} \c}\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
 \end{exmp}
 
+\begin{remark}
 Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $\lvert{w S_{\bullet} \c}\rvert$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
+\end{remark}
 
 \begin{definition}
 The \textit{$i$-th algebraic $K$-group} is $K_i(\c, w) \equiv \pi_iK(\c, w)$ for each $i\geq 0$. 
@@ -465,19 +470,20 @@ The \textit{$i$-th algebraic $K$-group} is $K_i(\c, w) \equiv \pi_iK(\c, w)$ for
 $\pi_1\lvert{w S_{\bullet} \c}\rvert \cong K_0(\c, w)$.
 \end{prop}
 
-\begin{lemma}
-The group $K_0(\c, w)$ is generated by $\left[X\right]$ for every $X \in \ob \c$ such that $\left[X'\right] + \left[X''\right] = \left[X\right]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and $\left[X\right] = \left[Y\right]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
+\begin{lemma}\label{L8}
+The group $K_0(\c, w)$ is generated by all elements $\left[X\right]$ such that 
+\begin{itemize}
+\item $\left[X'\right] + \left[X''\right] = \left[X\right]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and
+\item  $\left[X\right] = \left[Y\right]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
+\end{itemize}
 \end{lemma}
 \begin{proof}
-We compute $\pi_1\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ based at the $(0,0)$-bisimplex $\ast$. Notice that $\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ has a CW structure  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
+In light of \cref{P4}, it suffices to compute $\pi_1\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ based at the $(0,0)$-bisimplex $\ast$. For this, just notice the CW structure of $\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$,  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
 \end{proof}
 
-\begin{corollary}
-We obtain the functors $K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$, known as the \textit{algebraic $K$-group functors}.
-\end{corollary}
-\begin{proof}
-By \cref{P4}, we know that $K_i(\c, w) = \pi_{i+1}\lvert{w S_{\bullet} \c}\rvert$, which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then the previous lemma implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
-\end{proof}
+
+As a result, we obtain functors $$K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$$ known as the \textit{algebraic $K$-group functors}. Indeed, thanks to \cref{P4}, we know that $$K_i(\c, w) = \pi_{i+1}\lvert{w S_{\bullet} \c}\rvert,$$ which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then \cref{L8} implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
+
 
 \begin{exmp}
 Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained from $X$ by attaching at least one cell such that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. 
@@ -495,7 +501,11 @@ If $\b$ is a Waldhausen subcategory of $\c$, then it is \textit{cofinal in $\c$}
 \end{definition}
 
 \begin{theorem}
-Let $\left(\b, w\right)$ be cofinal in $\left(\c, w\right)$ and closed under extensions. Assume that $K_0(\b) = K_0(\c)$. Then $wS_{\bullet}\b \to wS_{\bullet}\c$ is a homotopy equivalence. Therefore, $K_i(\b) \cong K_i(\c)$ for every $i\geq 0$.
+Let $\left(\b, w\right)$ be cofinal in $\left(\c, w\right)$ and closed under extensions. Assume that $K_0(\b) = K_0(\c)$. Then $wS_{\bullet}\b \to wS_{\bullet}\c$ is a homotopy equivalence.
 \end{theorem}
+
+\smallskip
+
+It follows that $K_i(\b) \cong K_i(\c)$ for every $i\geq 0$.
 
 \end{document}

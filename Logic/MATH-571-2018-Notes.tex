@@ -230,6 +230,9 @@
 \newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
 \newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
 
+\pagestyle{headings}
+
+\linespread{1.3}
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
@@ -237,7 +240,7 @@
 \assignment{Spring 2018}
 
 \begin{document}
-
+\thispagestyle{empty}
 \begin{abstract}
 These notes, which are unfinished, are based on Scott Weinstein's ``Topics in Logic: Set Theory'' lectures at UPenn along with  Thomas Jech's \textit{Set Theory - The Third Millennium Edition, revised and expanded}. Any mistake in what follows is my own.
 \end{abstract}
@@ -463,7 +466,7 @@ Let $\epsilon >0$. Choose $n\in \N$ so large that $(\frac{1}{3})^n <\epsilon$. L
  Let $\mathcal{O}$ denote the set of all open sets. Recall that $\R$ has the set of rational intervals as a countable basis. Since $ \underbrace{\P(\Q \times \Q)}_{\text{power set}} \sim \R$, it follows by  the Cantor-Schr\"oder-Bernstein theorem that  $\mathcal{O} \sim \R$.
 \end{note}
 
-\begin{lemma}
+\begin{lemma}\label{PL''}
 If $C$ is a closed interval, $P$ is perfect, and $\lvert{C \cap P}\rvert >  2$, then for every $n \in \N$, there are closed intervals $C_1, C_2 \subset C$ each of length $\leq n^{-1}$ such that $\lvert{C_1 \cap P}\rvert > 2$, $\lvert{C_2 \cap P}\rvert > 2$, and $C_1 \cap C_2 =\emptyset$.
 \end{lemma}
 \begin{proof}
@@ -485,7 +488,7 @@ Due to  the Cantor-Schr\"oder-Bernstein theorem, it suffices to exhibit an injec
 \item $I_{w0} \cap I_{w1} = \emptyset$, and
 \item $\lvert{I_s}\rvert < \frac{1}{\lvert{w}\rvert+1}$.
 \end{itemize}
-where $\sigma \in \{0,1\}$. For the base case, there exists a closed interval $I_{\epsilon}$ such that $\lvert{I_{\epsilon}}\rvert < 1$ and $\lvert{I_{\epsilon}\cap P}\rvert >2$ since $P$ has no isolated points. In addition, by our previous lemma, we can find disjoint subintervals $I_1$ and $I_0$ each on length $< \frac{1}{2}$ such that $\lvert{I_1 \cap P}\rvert>2$ and $\lvert{I_0 \cap P}\rvert >2$. Moreover, the same lemma automatically completes our induction step. 
+where $\sigma \in \{0,1\}$. For the base case, there exists a closed interval $I_{\epsilon}$ such that $\lvert{I_{\epsilon}}\rvert < 1$ and $\lvert{I_{\epsilon}\cap P}\rvert >2$ since $P$ has no isolated points. In addition, by \cref{PL''}, we can find disjoint subintervals $I_1$ and $I_0$ each on length $< \frac{1}{2}$ such that $\lvert{I_1 \cap P}\rvert>2$ and $\lvert{I_0 \cap P}\rvert >2$. Moreover, the same lemma automatically completes our induction step. 
 \\ \\ Now, for each $f\in \{0,1\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \lvert{I_{\bar{f}(n)}}\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \{c_f\}$$ for some $c_f \in \R$. 
 \begin{claim}
 $c_f \in P$. 
@@ -532,14 +535,14 @@ By \cref{closed}, we get a descending chain $$ C = C^0 \supset C^1 \supset C^2 \
 \\ \\ Enumerate the rational intervals $(J_n)_{n\in \N}$. We have that $$ C\setminus P = {\bigcup_{\alpha < \tau} C^{\alpha} \setminus (C^{\alpha})'}.    $$ Since the sets $C^{\alpha} \setminus (C^{\alpha})'$ are pairwise disjoint, for any $x\in C\setminus P$, there is some unique $\alpha_x$ such that $x$ is an isolated point of $C^{\alpha_x}$. Hence there is a least $k_x \in \N$ such that $J_{k_x} \cap C^{\alpha_x} = \{x\}$. If $y \in C \setminus P$ with $x\ne y$, then it's easy to check that $k_x \ne k_y$. Thus, the function $C\setminus P \to \N$ given by $x \mapsto k_x$ is an injection, which proves that $C\setminus P$ is at most countable. 
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{LC'}
 Any uncountable closed set is equipollent to $\R$.
 \end{corollary}
 
 \begin{remark}[Continuum Hypothesis] 
 Observe that any real number $r$ equals $\sup\{q\in \Q \mid q<r\}$. Thus, there exists a surjection $\R \to \P(\Q)$. Further, we have the inclusion $\bm{\mathcal{C}} \subset \R$. By the Cantor-Schr\"oder-Bernstein, it follows that $$\lvert{\R}\rvert =2^{\aleph_0}.$$ The \textit{continuum hypothesis} ($\mathsf{CH}$) asserts that every uncountable subset of $\R$ is equipollent to $\R$ (i.e., that   $\aleph_1 =2^{\aleph_0}$).
 
-Hilbert placed the resolution of $\mathsf{CH}$ first on his famous 1900 research agenda for mathematics in the twentieth century. W. Hugh Woodin, a prominent set theorist, has recently argued that $\mathsf{CH}$ is true. It's clear that every nonempty open set is equipollent to $\R$. Moreover, our last corollary shows that any closed set is either finite, equipollent to $\N$, or equipollent to $\R$. Therefore, no closed or open subset of $\R$ is a counterexample to $\mathsf{CH}$. Our next result, however, shows that we \emph{cannot} confirm $\mathsf{CH}$ by showing that every uncountable subset of $\R$ contains a perfect set.
+Hilbert placed the resolution of $\mathsf{CH}$ first on his famous 1900 research agenda for mathematics in the twentieth century. W. Hugh Woodin, a prominent set theorist, has recently argued that $\mathsf{CH}$ is true. It's clear that every nonempty open set is equipollent to $\R$. Moreover, \cref{LC'} shows that any closed set is either finite, equipollent to $\N$, or equipollent to $\R$. Therefore, no closed or open subset of $\R$ is a counterexample to $\mathsf{CH}$. Our next result, however, shows that we \emph{cannot} confirm $\mathsf{CH}$ by showing that every uncountable subset of $\R$ contains a perfect set.
 \end{remark}
 
 \begin{theorem}
@@ -761,7 +764,7 @@ Suppose, towards a contradiction, that the set $M \coloneqq \{w\in W \mid f(w) <
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}[label=(\arabic*)]
-\item Let $f: (W, <) \to (W,<)$ be an automorphism.  Let $x\in W$. By our previous lemma, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
+\item Let $f: (W, <) \to (W,<)$ be an automorphism.  Let $x\in W$. By \cref{woprop}, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
 \item Suppose, towards a contradiction, that $\delta$ and $\psi$ are distinct isomorphisms $ W_1\to W_2$. Then $\psi^{-1} \circ \delta$ is an automorphism of $W_1$. But $\delta^{-1} \ne \psi^{-1}$, and thus $\psi^{-1} \circ \delta \ne \id_{W_1}$. This contradicts part (1). 
 \end{enumerate}
 \end{proof}
@@ -790,7 +793,7 @@ Let $(W, <)$ and $(Y, <')$ be any two well-orderings.  Then \emph{exactly one} o
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-First, note that our previous lemma implies that no two of (a), (b), and (c) can occur simultaneously. We must show that at least one occurs. Consider the set $$ f \coloneqq \left\{(w,y) \in W\times Y \mid W_w \cong Y_y\right\}  .$$ If $Y_y \cong Y_{y'}$, then $y = y'$ by our previous lemma. Hence $f$ is a partial function. Moreover,  if $w,w'\in \dom{f}$ and $w<w'$ with $h : W_{w'} \overset{\cong}{\longrightarrow} Y_{f(w')}$, then $W_w \cong Y_{h(w)}$, so that $f(w) = h(w)<' f(w')$. It follows that $f$ is order-preserving. 
+First, note that \cref{non-iso} implies that no two of (a), (b), and (c) can occur simultaneously. We must show that at least one occurs. Consider the set $$ f \coloneqq \left\{(w,y) \in W\times Y \mid W_w \cong Y_y\right\}  .$$ If $Y_y \cong Y_{y'}$, then $y = y'$ by \cref{non-iso}. Hence $f$ is a partial function. Moreover,  if $w,w'\in \dom{f}$ and $w<w'$ with $h : W_{w'} \overset{\cong}{\longrightarrow} Y_{f(w')}$, then $W_w \cong Y_{h(w)}$, so that $f(w) = h(w)<' f(w')$. It follows that $f$ is order-preserving. 
 There are three cases to consider.
 \begin{enumerate}[label=(\roman*)]
 \item Suppose that $\dom{f} \subsetneq W$. Let $m = \min(W \setminus \dom{f})$. If $Y \setminus \im{f} \ne \emptyset$, then $(m, n) \in f$ where $n = \min(Y \setminus \im{f})$, a contradiction. Hence $\im{f} = Y$. Then $f\restriction_{W_m} : W_m \to Y$ is an isomorphism. Thus, scenario (c) occurs.
@@ -862,16 +865,16 @@ Suppose that $\alpha \subsetneq \beta$. Then $\beta \setminus \alpha \ne \emptys
 $(\ord, \in)$ is a well-ordered class.
 \end{lemma}
 \begin{proof}
-It is clear that $\in$ is set-like. Let $S \subset \ord$ be a nonempty subset. We must show that $S$ has a minimal element. Note that $\bigcap{S} \subset \alpha$ for every $\alpha \in S$. Therefore, $\left(\bigcap{S}, \in\right)$ is a  well-ordering as the restriction of a well-ordering. Now, suppose that $\beta \in \bigcap{S}$. Then $\beta \in \alpha$ for every $\alpha \in S$. By transitivity, for any $x\in \beta$, we have  $x \in \alpha$ for every $\alpha \in S$, so that $\beta \subset \bigcap{S}$. This implies that $\bigcap{S}$ is transitive. Hence $\bigcap{S}$ is an ordinal. By our previous lemma, we see that $\bigcap{S}$ is minimal. 
+It is clear that $\in$ is set-like. Let $S \subset \ord$ be a nonempty subset. We must show that $S$ has a minimal element. Note that $\bigcap{S} \subset \alpha$ for every $\alpha \in S$. Therefore, $\left(\bigcap{S}, \in\right)$ is a  well-ordering as the restriction of a well-ordering. Now, suppose that $\beta \in \bigcap{S}$. Then $\beta \in \alpha$ for every $\alpha \in S$. By transitivity, for any $x\in \beta$, we have  $x \in \alpha$ for every $\alpha \in S$, so that $\beta \subset \bigcap{S}$. This implies that $\bigcap{S}$ is transitive. Hence $\bigcap{S}$ is an ordinal. By \cref{alt-def}, we see that $\bigcap{S}$ is minimal. 
 \\ \\
-It remains to show that $\ord$ is linearly ordered. By our previous lemma, it suffices to show that if $\alpha$ and $\beta$ are ordinals, then either $\alpha \subset \beta$ or $\beta \subset \alpha$. Suppose, towards a contradiction, that  both $\alpha \not \subset \beta$ and $\beta \not \subset \alpha$. Our last paragraph shows that $\alpha \cap \beta$ is an ordinal, which must be a proper subset both of $\alpha$ and of $\beta$. Our previous lemma implies that $\alpha \cap \beta \in \alpha$ and $\alpha \cap \beta \in \beta$. Hence $\alpha \cap \beta \in \alpha \cap \beta$, a contradiction. 
+It remains to show that $\ord$ is linearly ordered. By \cref{alt-def}, it suffices to show that if $\alpha$ and $\beta$ are ordinals, then either $\alpha \subset \beta$ or $\beta \subset \alpha$. Suppose, towards a contradiction, that  both $\alpha \not \subset \beta$ and $\beta \not \subset \alpha$. Our last paragraph shows that $\alpha \cap \beta$ is an ordinal, which must be a proper subset both of $\alpha$ and of $\beta$. \Cref{alt-def} implies that $\alpha \cap \beta \in \alpha$ and $\alpha \cap \beta \in \beta$. Hence $\alpha \cap \beta \in \alpha \cap \beta$, a contradiction. 
 \end{proof}
 
 \begin{corollary}
 If $S$ is a nonempty set of ordinals, then  $\bigcap{S} = \min(S)$.
 \end{corollary}
 
-\begin{lemma}
+\begin{lemma}\label{PL}
 Let $(W, <)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to some ordinal. 
 \end{lemma}
 \begin{proof}
@@ -896,8 +899,8 @@ For any woset $(W, <)$, there is a unique ordinal $\alpha$ such that $W \cong \a
 For any $x\in W$, there is some ordinal $Z(x)$ such that $W_x \cong Z(x)$.
 \end{claim}
 \begin{proof}
-Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $(W_m)_y = W_y \cong Z(y)$.  By our previous lemma, this implies that $W_m$ is isomorphic to some ordinal, contrary to our choice of $m$.
-\end{proof}It follows from our previous lemma that $W \cong \alpha$ for some ordinal $\alpha$.
+Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $(W_m)_y = W_y \cong Z(y)$.  By \cref{PL}, this implies that $W_m$ is isomorphic to some ordinal, contrary to our choice of $m$.
+\end{proof}It follows from \cref{PL} that $W \cong \alpha$ for some ordinal $\alpha$.
 \end{proof}
 
 \subsection{Lecture 9}
@@ -974,7 +977,7 @@ If $\alpha$ is an ordinal and $x\in \alpha$, then $x$ is an ordinal.
 This follows from the ($\Longrightarrow$) direction of \cref{ord-char}.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{LC}
 If $X$ is a nonempty set of ordinals, then $\bigcup{X}$ is an ordinal and $\sup(X) = \bigcup{X}$.
 \end{corollary}
 
@@ -982,7 +985,7 @@ If $X$ is a nonempty set of ordinals, then $\bigcup{X}$ is an ordinal and $\sup(
 $\ord$ is a proper class.
 \end{corollary}
 \begin{proof}
-Otherwise, $\sup{\ord}$ and $\sup{\ord}+1$ are ordinals by our last corollary, in which case $$\sup{\ord} < \sup{\ord} +1 \leq \sup{\ord},$$ a contradiction. 
+Otherwise, $\sup{\ord}$ and $\sup{\ord}+1$ are ordinals by \cref{LC}, in which case $$\sup{\ord} < \sup{\ord} +1 \leq \sup{\ord},$$ a contradiction. 
  \end{proof}
 
 \begin{definition}
@@ -1005,7 +1008,7 @@ Let $X$ and $Y$ be sets.
 \end{itemize}
 \end{definition}
 
-\begin{theorem}[Cantor-Schr\"oder-Bernstein]
+\begin{theorem}[Cantor-Schr\"oder-Bernstein]\label{CSB}
 If $\lvert{X}\rvert\leq \lvert{Y}\rvert$ and $\lvert{Y}\rvert\leq \lvert{X}\rvert$, then $\lvert{X}\rvert = \lvert{Y}\rvert$.
 \end{theorem}
 
@@ -1014,7 +1017,7 @@ If $\lvert{X}\rvert\leq \lvert{Y}\rvert$ and $\lvert{Y}\rvert\leq \lvert{X}\rver
 $\lvert{X}\rvert < \lvert{\P(X)}\rvert$.
 \end{theorem}
 \begin{proof}
-It's clear that $\lvert{X}\rvert \leq \lvert{\P(X)}\rvert$. Let $f: X \to \P(X)$. Consider the set $$Z\coloneqq \{x\in X \mid x \notin f(x)    \} .$$ If $Z= f(y)$ for some $y\in X$, then $y\in Z \iff y\notin Z$, which is false. Thus, $Z\notin \im{f}$. This shows that there is no surjection (and hence no bijection) from $X$ onto $\P(X)$. By our previous theorem, it follows that   $\lvert{\P(X)}\rvert \not \leq \lvert{X}\rvert$, so that $\lvert{X}\rvert < \lvert{\P(X)}\rvert$.
+It's clear that $\lvert{X}\rvert \leq \lvert{\P(X)}\rvert$. Let $f: X \to \P(X)$. Consider the set $$Z\coloneqq \{x\in X \mid x \notin f(x)    \} .$$ If $Z= f(y)$ for some $y\in X$, then $y\in Z \iff y\notin Z$, which is false. Thus, $Z\notin \im{f}$. This shows that there is no surjection (and hence no bijection) from $X$ onto $\P(X)$. By \cref{CSB}, it follows that   $\lvert{\P(X)}\rvert \not \leq \lvert{X}\rvert$, so that $\lvert{X}\rvert < \lvert{\P(X)}\rvert$.
 \end{proof}
 
 
@@ -1090,7 +1093,7 @@ $\ac \iff \mathsf{WOP}$.
 Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\lvert{X}\rvert \coloneqq \min\{\alpha \in \ord \mid \alpha \sim X\}.$$
 \end{definition}
 
-\begin{remark} $ $
+\begin{remark}\label{LR} $ $
 \begin{enumerate}
 \item One can show that $\zf \nvDash \underbrace{\forall X\forall Y(\lvert{X}\rvert \leq \lvert{Y}\rvert \vee \lvert{Y}\rvert \leq \lvert{X}\rvert)}_{\psi}$. In fact,  $\ac$ is equivalent to the sentence $\psi$. In particular, $\ac$ is independent of $\zf$.
 \item Let $\varphi$ denote the sentence ``Every surjection has a right inverse."  Then $\zf \nvDash \varphi$, whereas  $\zfc \models \varphi$. Since every right inverse is injective, the following assertion is also provable in $\zfc$: If there exists a surjection of $X$ onto $Y$, then $\lvert{Y}\rvert \leq \lvert{X}\rvert$. 
@@ -1100,7 +1103,7 @@ Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\lver
 
 \begin{note}[Linear ordering of cardinals]
 \begin{enumerate}
-\item Consider the binary relation $< $ on the class of all cardinal numbers where $\lvert{X}\rvert < \lvert{Y}\rvert$ if there is an injection from $X$ intro $Y$ but $\lvert{X}\rvert \ne \lvert{Y}\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By our last remark, we see that $<$ is actually a linear ordering in $\zfc$. 
+\item Consider the binary relation $< $ on the class of all cardinal numbers where $\lvert{X}\rvert < \lvert{Y}\rvert$ if there is an injection from $X$ intro $Y$ but $\lvert{X}\rvert \ne \lvert{Y}\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
 \item In $\zfc$, if $\lambda$ is an infinite cardinal, then $\lambda = \aleph_{\alpha}$ for some ordinal $\alpha$. In this case, we get a transfinite enumeration of class of all cardinals
 \[
 0 < 1 < 2 < 3 < \cdots < \aleph_0 < \aleph_1 < \aleph_2 < \aleph_3 <  \cdots < \aleph_{\omega} < \cdots
@@ -1305,10 +1308,10 @@ We can write $X=\{X_{\alpha} \mid \alpha <\lambda\}$. For each $\alpha <\lambda$
 A countable union of countable sets is countable.
 \end{corollary}
 \begin{proof}
-Apply our last lemma with $\lambda =\omega$ and $\kappa = \omega$. Since $\omega \times \omega$ is countable, we're done.
+Apply \cref{card-prop} with $\lambda =\omega$ and $\kappa = \omega$. Since $\omega \times \omega$ is countable, we're done.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{PL'}
 $\cf(\alpha)$ is a cardinal for any limit ordinal $\alpha >0$.
 \end{lemma}
 \begin{proof}
@@ -1325,7 +1328,7 @@ If $\lambda \leq \kappa$, then $\cf(\kappa^+) > \lambda$.
 \end{claim}
 \begin{proof}
 Suppose, towards a contradiction, that $\cf(\kappa^+) \leq \lambda$ for some $\lambda \leq \kappa$. Then there is some $\eta \leq \lambda$ such that $$\kappa^+ = \bigcup{\left\{\alpha_i \mid i <\eta \right\}}$$ for some $\alpha_i \in \kappa^+$. Note that $\lvert{\alpha_i}\rvert \leq \kappa$ for each $i$ and that $\lvert{\eta}\rvert \leq \kappa$. By \cref{card-prop}, it follows $\kappa^+ \leq \kappa \cdot \kappa = \kappa$, a contradiction.  
-\end{proof}But $\cf(\kappa^+)$ is a cardinal  by our previous lemma. Hence $\cf(\kappa^+) \geq \kappa^+$.
+\end{proof}But $\cf(\kappa^+)$ is a cardinal  by \cref{PL'}. Hence $\cf(\kappa^+) \geq \kappa^+$.
 \end{proof}
 
 
@@ -1371,7 +1374,7 @@ Note that if a set $x$ is transitive, then  $\P(x)$ is transitive and $x\subset 
 Let $x$ be a set. If every $y\in x$ belongs to $V$, then $x$ belongs to $V$. 
 \end{corollary}
 \begin{proof}
-Using our last lemma, we have that $\bigcup{x} \in V$. Thus, $\bigcup{x}\subset V_{\beta}$ for some $\beta \in \ord$. This implies that $y \subset V_{\beta}$ for each $y\in x$. Hence $x\subset \P(V_{\beta}) = V_{\beta +1}$, so that $x \in \P(V_{\beta +1}) = V_{\beta +2}$.
+Using \cref{cum}, we have that $\bigcup{x} \in V$. Thus, $\bigcup{x}\subset V_{\beta}$ for some $\beta \in \ord$. This implies that $y \subset V_{\beta}$ for each $y\in x$. Hence $x\subset \P(V_{\beta}) = V_{\beta +1}$, so that $x \in \P(V_{\beta +1}) = V_{\beta +2}$.
 \end{proof}
 
 \begin{definition}
@@ -1572,7 +1575,7 @@ In particular, there is a countable $\L$-structure $\B$ such that $\B \preceq \A
 \end{theorem}
 
 
-\begin{lemma}[Mostowski collapse]
+\begin{lemma}[Mostowski collapse]\label{MC}
 Consider  a class model $(A, E^A)$ of $\zf$, where $E^A$ is a (strict) binary relation interpreting $\in$. If $E^A$ is both well-founded and extensional, then there is some transitive class model $(B, \in_B)$  such that $A \cong B$.
 \end{lemma}
 \begin{proof}
@@ -1582,7 +1585,7 @@ Suppose that $E^A$ is both well-founded and extensional. We can extend transfini
 \end{proof}
 
 \begin{term}
-We call $(B, E^B)$ from our previous lemma the \textit{transitive collapse of $A$}.
+We call $\left(B, E^B\right)$ from \cref{MC} the \textit{transitive collapse of $A$}.
 \end{term}
 
 \begin{prop}

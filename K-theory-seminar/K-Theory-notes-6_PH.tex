@@ -26,21 +26,22 @@
 \usepackage[capitalise]{cleveref} 
     
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{exmp}[definition]{Example}
 \newtheorem{non-exmp}[definition]{Non-example}
 \newtheorem{note}[definition]{Note}
 
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{conj}[definition]{Conjecture}
 \newtheorem*{claim}{Claim}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercise}[definition]{Exercise}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[definition]{Remark}
 \newtheorem*{todo}{To do}
 \newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
@@ -176,16 +177,18 @@
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
 \DeclareMathOperator{\Mod}{\mathbf Mod}
 
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{Homotopy and K-theory seminar}
+\class{$K$-theory seminar}
 \assignment{Talk \#16}
 \duedate{November 14, 2018}
 
 \begin{document}
 
 \begin{abstract}
-We continue doing higher Waldhausen $K$-theory. The main sources for this talk are the following.
+We continue looking at higher Waldhausen $K$-theory by presenting several of its key theorems. At the end, we see an encoding of Waldhausen $K$-theory as the infinite loop space of a sort of spectrum. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab.
 \item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory},  Ch. V.2.
@@ -195,19 +198,23 @@ We continue doing higher Waldhausen $K$-theory. The main sources for this talk a
 
 \smallskip
 
-Recall that $\lvert{wS_{\bullet} \c}\rvert$ is an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$ This produces an $H$-space structure $\left(K(\c), +\right)$.
+\section{Extension and additivity}
+
+Let $\b$ and $\c$ be Waldhausen categories. We say that $F' \rightarrowtail F \twoheadrightarrow F''$ is a \textit{short exact sequence} or \textit{cofiber sequence of exact functors $\b \to \c$} if 
+\begin{enumerate}[label=(\roman*)]
+\item every $F'(B) \rightarrowtail F(B) \twoheadrightarrow F''(B)$ is a cofiber sequence and 
+\item $F(A) \cup_{F'(A)} F'(B) \rightarrowtail F(B)$ is a cofibration in $\c$ for every $A \rightarrowtail B$ in $\b$.
+\end{enumerate}
 
 
-\begin{definition}
-Let $\b$ and $\c$ be Waldhausen categories. We say that $F' \rightarrowtail F \twoheadrightarrow F''$ is a \textit{short exact sequence} or \textit{cofiber sequence of exact functors} if every $F'(B) \rightarrowtail F(B) \twoheadrightarrow F''(B)$ is a cofiber sequence and $F(A) \cup_{F'(A)} F'(B) \rightarrowtail F(B)$ is a cofibration in $\c$ for every $A \rightarrowtail B$ in $\b$.
-\end{definition}
+Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$, respectively. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. 
 
-Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. We say that $S_2\c$ is universal in this sense.
+Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. (We say that $S_2\c$ is \textit{universal} in this sense.)
 
-\begin{theorem}[Extension theorem]
-Let $\c$ be Waldhausen. The exact functor $(s, q) : S_2 \c \to \c \times \c$ induces  a homotopy $K(S_2\c) \simeq K(\c) \times K(\c)$. The functor $\coprod : (A, B) \to (A \rightarrowtail A \coprod B \twoheadrightarrow  B)$ is a homotopy inverse.
+\begin{theorem}[Extension]\label{ext}
+The exact functor $(s, q) : S_2 \c \to \c \times \c$ induces  a homotopy equivalence $K(S_2\c) \simeq K(\c) \times K(\c)$. The functor $\coprod : \left(A, B\right) \to \left(A \rightarrowtail A \coprod B \twoheadrightarrow  B\right)$ is a homotopy inverse.
 \end{theorem}
-\begin{proof}
+\begin{proof}[Proof sketch]
 Let $\c^w_m$ denote the category of $m$-length sequences of weak equivalences. For each $n$, define $s_n\c^w_m$ as the commutative diagram
 \[
 \begin{tikzcd}
@@ -217,32 +224,37 @@ X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim
  X_1^m \arrow[r, tail] & X_2^m \arrow[r, tail] & \cdots \arrow[r, tail] & X_n^m
 \end{tikzcd}
 .\]
-This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2 \c \to \c$ give a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, completing the proof.
+This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2 \c \to \c$ induce a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, thereby completing our proof.
 \end{proof}
 
-\begin{theorem}[Additivity theorem]
-Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $F_{\ast} = F_{\ast}' + F_{\ast}''$ as maps $K_i(\b) \to K_i(\c)$. 
+\bigskip
+
+Recall that $\lvert{wS_{\bullet} \c}\rvert$ is an $H$-space via the map 
+\[ \label{eqn:HS} \coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.
+\tag{$\star$}\] This produces an $H$-space structure $\left(K(\c), +\right)$.
+
+\begin{theorem}[Additivity]\label{add}
+Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $$F_{\ast} = F_{\ast}' + F_{\ast}''$$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
-As $S_2\c$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2 \c  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. The extension theorem implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2 \c)$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
+As $S_2\c$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2 \c  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. \Cref{ext} implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2 \c)$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
 \end{proof}
 
 \begin{definition}
-Let $\c$ be Waldhausen. We say that a sequence $\ast \to A_n \to \cdots \to A_0 \to \ast$ is \textit{admissibly exact} if each morphism in the sequences can be written as a cofiber sequence $A_{i+1} \twoheadrightarrow B_i \rightarrowtail A_i$. 
+ We say that a sequence $$\ast \to A_n \to \cdots \to A_0 \to \ast$$ is \textit{admissibly exact} if each morphism in the sequences can be written as a cofiber sequence $$A_{i+1} \twoheadrightarrow B_i \rightarrowtail A_i.$$
 \end{definition}
 
 \begin{corollary}
-Suppose that $\ast \to F^0 \to F^1 \to \cdots \to F^n \to \ast$ is an admissibly exact sequence of exact functors $\b \to \c$. Then $\sum_i ({-}1)^iF_{\ast}^i = 0$ as maps $K_i(\b) \to K_i(\c)$.
+Suppose that $$\ast \to F^0 \to F^1 \to \cdots \to F^n \to \ast$$ is an admissibly exact sequence of exact functors $\b \to \c$. Then $$\sum_i ({-1})^iF_{\ast}^i = 0$$ as maps $K_i(\b) \to K_i(\c)$.
 \end{corollary}
-\begin{proof}
-Induct on $n$.
-\end{proof}
 
 \begin{corollary}
-Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $$F_{\ast}'' \simeq F_{\ast} - F_{\ast} \simeq 0.$$ This implies that the homotopy fiber of $F_{\ast}'' : K(\b) \to K(\c)$ is homotopy equivalent to $K(\b) \vee \Omega K(\c)$.
+Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $$F_{\ast}'' \simeq F_{\ast} - F_{\ast} \simeq 0.$$ 
 \end{corollary}
 
-\medskip
+This implies that the homotopy fiber of $F_{\ast}'' : K(\b) \to K(\c)$ is homotopy equivalent to $K(\b) \vee \Omega K(\c)$.
+
+\bigskip
 
 Let $\c$ be a Waldhausen category. Recall the arrow category $\Ar(\c)$ of $\c$ consisting of morphisms in $\c$ as objects and commutative squares as morphisms. Let $s$ and $t$ denote the source and target functors $\Ar(\c)\to \c$, respectively. 
 
@@ -255,13 +267,15 @@ A \arrow[r, "j_1"] \arrow[rd, "f"'] & T(f) \arrow[d, "p"] & B \arrow[l, "j_2"'] 
 \end{tikzcd}
 . \]
 Moreover, $T$ must satisfy the following axioms.
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*)]
 \item $T$ sends every initial morphism $\ast \to A$ to $A$ for any $A \in \ob \c$.
 \item $j_1 \coprod j_2 : A \coprod B \rightarrowtail T(f)$ is a cofibration for any $f: A \to B$.
 \item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are w.e. in $\c$, then so is $T(f) \to T(f').$
-\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom 2 is a cofibration in $\c$.
-\item {(Cylinder Axiom)} The map $p: T(f) \to B$ is a w.e. in $\c$.
+\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom (2) is a cofibration in $\c$.
+\item {(Cylinder axiom)} The map $p: T(f) \to B$ is a w.e. in $\c$.
 \end{enumerate}
+
+\smallskip
 
 \begin{term} Let $T$ be a cylinder functor on $\c$.
 \begin{enumerate}
@@ -271,39 +285,43 @@ Moreover, $T$ must satisfy the following axioms.
 \end{term}
 
 \begin{corollary}
-The induced suspension map $\Sigma : K(\c) \to K(\c)$ is a homotopy inverse for the $H$-space $K(\c)$.
+The induced suspension map $\Sigma : K(\c) \to K(\c)$ is a homotopy inverse for the $H$-space structure \eqref{eqn:HS}.
 \end{corollary}
 \begin{proof}
-Note that axiom 3 gives us a cofiber sequence $A \rightarrowtail \cone(A) \twoheadrightarrow \Sigma A$. Therefore, $1 \rightarrowtail \cone \twoheadrightarrow \Sigma$ is an exact sequence of functors. By the cylinder axiom, we know that $\cone$ is null-homotopic. It follows by the additivity theorem that $\Sigma_{\ast} + 1 =  \cone_{\ast} = \ast$.
+Note that axiom (3) gives us a cofiber sequence $A \rightarrowtail \cone(A) \twoheadrightarrow \Sigma A$. Therefore, $1 \rightarrowtail \cone \twoheadrightarrow \Sigma$ is an exact sequence of functors. By the cylinder axiom, we know that $\cone$ is null-homotopic. It follows by \cref{add} that $\Sigma_{\ast} + 1 =  \cone_{\ast} = \ast$.
 \end{proof}
 \end{definition}
 
-Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
-\begin{notation}
-Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of any $A$ where $\ast \to A$ is in $w(\c)$.
-\end{notation}\reversemarginpar{\marginpar{\small{Are the initial morphisms the only w.e.?}}}
+\section{Localization}
 
-\begin{theorem}[Waldhausen localization theorem]
-The sequence $$ K(A^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
+Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
+
+\smallskip
+
+
+Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of all $A$ such that $\ast \to A$ belongs to $w(\c)$.\reversemarginpar{\marginpar{\small{Are the initial morphisms the only w.e.?}}}
+
+\begin{theorem}[Waldhausen localization]\label{local}
+The sequence $$ K(\c^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
 \end{theorem}
-\begin{proof}
+\begin{proof}[Proof sketch]
 Recall that a small bicategory is a bisimplicial set such that each row/column is the nerve of a category. Note that $v_{(-)}w_{(-)}\c$ is a bicategory whose bimorphisms are commutative squares of the form
-\[
+\[ \label{eqn:like}
 \begin{tikzcd}
 (-) \arrow[r, "w'"] \arrow[d, "v"'] & (-) \arrow[d, "v'"] \\
-(-) \arrow[r, "w"] & (-)
-\end{tikzcd}.
+(-) \arrow[r, "w"'] & (-)
+\end{tikzcd}. \tag{$\star$}
 \]
-It turns out that treating $w \c$ as a bicategory with a single vertical morphism proves that $w \c \simeq v_{(-)}w_{(-)}\c$. This gives $wS_n \c \simeq v_{(-)}w_{(-)}S_n\c$ for each $n$.
+Treating $w \c$ as a bicategory with a single vertical morphism reveals that $$w \c \simeq v_{(-)}w_{(-)}\c.$$This yields  $wS_n \c \simeq v_{(-)}w_{(-)}S_n\c$ for each $n$.
 
 \medskip
 
- Now, let $v_{(-)}\co w_{(-)}\c$ denote the subcategory of the above squares where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\co w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we simplicial bi-subcategory $v_{(-)}\co w_{(-)}S_{\bullet}\c$ such that the inclusion intro $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. We have now obtained the following diagram.
+ Now, let $v_{(-)}\co w_{(-)}\c$ denote the subcategory of all squares like \eqref{eqn:like} where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\co w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we obtain a simplicial bi-subcategory $v_{(-)}\co w_{(-)}S_{\bullet}\c$ such that the inclusion into $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. This yields the commutative diagram
 \[
 \begin{tikzcd}
 vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\co w_{(-)}S_{\bullet}C \arrow[d, "\simeq"] \\
- & wS_{\bullet}C \arrow[r, "\simeq"] & v_{(-)}w_{(-)}S_{\bullet}C
-\end{tikzcd}
+ & wS_{\bullet}C \arrow[r, "\simeq"'] & v_{(-)}w_{(-)}S_{\bullet}C
+\end{tikzcd}.
 \]
 
 \medskip
@@ -313,43 +331,47 @@ vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\co w_{(-
 
 \smallskip
 
-Let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^{\bo}(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^{\bo}(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those giving a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
+Now, let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^{\bo}(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^{\bo}(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those admitting a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
 
+\medskip
 
-\begin{theorem}[Gillet-Waldhausen]
+Our next result is a consequence of \cref{local} and can be found in V.2.2 (Weibel).
+
+\begin{theorem}[Gillet-Waldhausen]\label{GW}
 Let $\a$ be an exact category closed under kernels of surjections. Then the exact inclusion $\a \to \ch^{\bo}(\a)$ induces a homotopy equivalence $K(\a) \simeq K\ch^{\bo}(\a)$. Hence $$K_i(\a) = K_i \ch^{\bo}(\a)$$ for every $i$.
 \end{theorem}
-\begin{proof}
-Apply the localization theorem. See V.2.2 (Weibel).
-\end{proof}
 
 \begin{definition}
-Let $F: \a \to \b$ be an exact functor between Waldhausen categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there is some map $a : A \to A'$ in $\a$ and some w.e. $b' : F(A') \simeq B$ in $\b$ so that
+Let $F: \a \to \b$ be an exact functor between \emph{Waldhausen} categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there exist a map $a : A \to A'$ in $\a$ and a w.e. $b' : F(A') \simeq B$ in $\b$ such that
 \[
 \begin{tikzcd}
 F(A') \arrow[r, "\sim", dashed] & B \\
 F(A) \arrow[u, "F(a)", dashed] \arrow[ru, "b"] & 
 \end{tikzcd}.
 \]
-commutes. In this way, we can lift to  a w.e.
+commutes.
 \end{definition}
 
-\begin{prop}
-Let $F: \a \to \b$ be an exact functor between Waldhausen categories such that the following hold.
+This means that $F$ has the approximate lifting property just in case we can always lift to  a w.e.
+
+\begin{prop}\label{pp}
+Let $F: \a \to \b$ be an exact functor between Waldhausen categories with the following properties.
 \begin{enumerate}
 \item $F$ satisfies the approximate lifting property.
 \item $\a$ admits a cylinder functor.
 \item A morphism $f$ in $\a$ is a w.e. iff $F(f)$ is a w.e. in $\b$.
 \end{enumerate}
-Then $wF : w \a \to w\b$ is a homotopy equivalence.
+Then $wF : w{\a} \to w{\b}$ is a homotopy equivalence.
 \end{prop}
 
-\begin{corollary}[Waldhausen approximation theorem]
-With the same conditions as before, we have $$K(\a) \simeq K(\b).$$
+\begin{corollary}[Waldhausen approximation]\label{approx}
+With the same hypotheses as in \cref{pp}, we have $$K(\a) \simeq K(\b).$$
 \end{corollary}
-\begin{proof}
-One can show that each functor $S_n \a \to S_n \b$ is exact and also has the approximate lifting property.  The previous proposition thus gives degree-wise homotopy equivalence between the bisimplicial map $wS_{\bullet}\a \to wS_{\bullet} \b$, which is enough. 
+\begin{proof}[Proof sketch]
+One can show that each functor $S_n \a \to S_n \b$ is exact and also has the approximate lifting property.  \Cref{pp} thus gives degree-wise homotopy equivalence between the bisimplicial map $wS_{\bullet}\a \to wS_{\bullet} \b$, which is enough. 
 \end{proof}
+
+\smallskip
 
 \begin{definition}
 Let $\a$ be an abelian category $\ch(\a)$ denote the category of chain complexes over $\a$. We say that a complex $C_{\bullet}$ is \textit{homologically bounded} if only finitely many $H_i(C_j)$ are nonzero. 
@@ -360,42 +382,52 @@ Let $\ch_{\pm}^{\hb}$ denote the subcategory of bounded below (respectively, bou
 \end{notation}
 
 \begin{exmp}
-Let $\a$ be an abelian category. One can show that $\ch^{\bo}(\a) \subset \ch_{-}^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ have the approximate lifting property. We also have that $\ch^{\bo}(\a) \subset \ch_+^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ satisfy the dual of the approximate lifting property. Thus, we can apply the approximation theorem and Gillet-Waldhausen to see that $$  K(\a) \simeq K\ch^{\bo}(\a) \simeq  K\ch_{-}^{\hb}\simeq K\ch_{+}^{\hb}(\a) \simeq K \ch^{\hb}(\a).$$
+Let $\a$ be an abelian category. One can show that the inclusions $\ch^{\bo}(\a) \subset \ch_{-}^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ have the approximate lifting property. Also, the inclusions $\ch^{\bo}(\a) \subset \ch_+^{\hb}(\a)$ and $\ch_+^{\hb}(\a)\subset \ch^{\hb}(\a)$ satisfy the dual of the approximate lifting property. Thus, we can apply \cref{approx} along with \cref{GW} to find that $$  K(\a) \simeq K\ch^{\bo}(\a) \simeq  K\ch_{-}^{\hb}\simeq K\ch_{+}^{\hb}(\a) \simeq K \ch^{\hb}(\a).$$
 \end{exmp}
 
-\bigskip
+\section{$K$-theory spectrum}
 
 \begin{definition}
- A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $\left(\Sigma_{n}\times \Sigma_{k}\right)$-equivariant for any $n,k\geq 0$, where $S^k \equiv \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. A map $\mathbf{f} : \x \to \mathbf{Y}$ of symmetric spectra is a sequence $\left(f_n : X_n \to Y_n\right)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
+ A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $\left(\Sigma_{n}\times \Sigma_{k}\right)$-equivariant for any $n,k\geq 0$, where $S^k \equiv \underbrace{S^1 \land \cdots \land S^1}_{k\text{-times}}$. 
+ 
+ \smallskip
+ 
+ A map $\mathbf{f} : \X \to \mathbf{Y}$ of symmetric spectra is a sequence $\left(f_n : X_n \to Y_n\right)$ of based $\Sigma_n$-equivariant maps such that for each $n\geq 0$, the square
 \[
 \begin{tikzcd}
 X_n \land S^1 \arrow[d, "\sigma"'] \arrow[r, "f_n \land \id"] & Y_n \land S^1 \arrow[d, "\sigma"] \\
-X_{n+1} \arrow[r, "f_{n+1}"] & Y_{n+1}
+X_{n+1} \arrow[r, "f_{n+1}"'] & Y_{n+1}
 \end{tikzcd}
 \]
 commutes. Let $\Sp^{\Sigma}$ denote the category of symmetric spectra in topological spaces.
 \end{definition}
 
 \begin{definition}
-Let $(\c, w\c)$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$\left(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c\right).$$ It multidegree $(q_1, \ldots, q_n)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
-\begin{enumerate}
-\item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ if $i_k = j_k$ for some $1\leq k \leq n$.
+Let $(\c,w{\c})$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$\left(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c\right).$$ In multidegree $\left(q_1, \ldots, q_n\right)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ when $i_k = j_k$ for some $1\leq k \leq n$ and
 \item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q_t]$.
 \end{enumerate}
 \end{definition}
 
 \begin{definition}
-Let $\left(\c, w\c\right)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bullet}$-construction} on $\c$ is the simplicial Waldhausen category $$(S_{\bullet}^{(n)}\c, wS_{\bullet}^{(n)} \c).$$ It has as $q$-simplices the functor categories $(S_q \cdots S_q \c, wS_q \cdots S_q \c)$ whose objects are the $\left(\Ar[q]\right)^n$-shaped diagrams  $X: \left(\Ar[q]\right)^n\to \c$ such that
-\begin{enumerate}
-\item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ if $i_k = j_k$ for some $1\leq k \leq n$.
+Let $\left(\c,w{\c}\right)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bullet}$-construction} on $\c$ is the simplicial Waldhausen category $$\left(S_{\bullet}^{(n)}\c, wS_{\bullet}^{(n)} \c\right).$$ It has as $q$-simplices the functor categories $\left(S_q \cdots S_q \c, wS_q \cdots S_q \c\right)$ whose objects are precisely the $\left(\Ar[q]\right)^n$-shaped diagrams  $X: \left(\Ar[q]\right)^n\to \c$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ when $i_k = j_k$ for some $1\leq k \leq n$.
 \item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q]$.
 \end{enumerate}
-Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by $(\pi \cdot X)(\ldots, (i_t, j_t), \ldots) = X(\ldots, (i_{\pi^{{-}1}(t)}, j_{\pi^{{-}1}(t)}), \ldots)$.
+Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by the relation $(\pi \cdot X)(\ldots, (i_t, j_t), \ldots) = X(\ldots, (i_{\pi^{{-1}}(t)}, j_{\pi^{{-1}}(t)}), \ldots)$.
 \end{definition}
 
-\begin{definition}
-The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a small Waldhausen category $\left(\c, w\c\right)$ has $n$-th space $K(\c, w)_n = \lvert{wS_{\bullet}^{(n)}\c}\rvert$ based at $\ast$. There is a $\Sigma_n$-action on $K(\c, w)_n$ induced by permuting the order of the internal $S_{\bullet}$-constructions. Moreover, we have $$\lvert{wS_{\bullet}^{(n)}\c}\rvert \land S^1 \cong \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert^{(1)} \subset \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert \cong \lvert{wS_{\bullet}^{(n+1)}\c}\rvert$$, where $^{(1)}$ denotes the $1$-skeleton with respect to the last simplicial direction. This determines the structure map $\sigma$. Then $\sigma^k$ is $\left(\Sigma_{n} \times \Sigma_{k}\right)$-invariant.
-\end{definition}
+\medskip
+
+
+The \textit{(symmetric) algebraic $K$-theory  spectrum $\mathbf{K}(\c, w)$} of a small Waldhausen category $\left(\c,w{\c}\right)$ has $n$-th space $$K(\c, w)_n \equiv \lvert{wS_{\bullet}^{(n)}\c}\rvert$$ based at $\ast$. There is a $\Sigma_n$-action on $K(\c, w)_n$ induced by permuting the order of the internal $S_{\bullet}$-constructions. Moreover, we have that $$\lvert{wS_{\bullet}^{(n)}\c}\rvert \land S^1 \cong \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert^{(1)} \subset \lvert{wS_{\bullet}^{(n)}S_{\bullet}\c}\rvert \cong \lvert{wS_{\bullet}^{(n+1)}\c}\rvert$$ where $^{(1)}$ denotes the $1$-skeleton with respect to the last simplicial direction. This determines the structure map $\sigma$.
+
+\begin{note}
+$\sigma^k$ is $\left(\Sigma_{n} \times \Sigma_{k}\right)$-invariant.
+\end{note}
+
 
 
 \begin{theorem}\label{lt}
@@ -404,7 +436,7 @@ For any $i\geq 0$, we have that $K_i(\c, w) = \pi_{i+1}K(\c, w)_1 \cong \pi_i \m
 
 
 
-Thanks to \cref{lt}, we can encode our algebraic $K$-theory in an infinite loop space.
+This enables us to encode our algebraic $K$-theory in an infinite loop space.
 
 
 \end{document}

@@ -199,6 +199,9 @@
 \newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
 \newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
 
+\pagestyle{headings}
+
+\linespread{1.3}
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
@@ -206,7 +209,7 @@
 \assignment{Spring 2019}
 
 \begin{document}
-
+\thispagestyle{empty}
 \begin{abstract}
 These notes are based on Anindya De's ``Theory of Computation'' lectures at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation, 3rd ed.} and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
 \end{abstract}
@@ -220,7 +223,7 @@ These notes are based on Anindya De's ``Theory of Computation'' lectures at UPen
 
 \begin{definition} $ $
 \begin{enumerate}
-\item An \textit{alphabet} is a nonempty finite set of characters, e.g., $\Sigma \coloneqq \{0,1\}$. 
+\item An \textit{alphabet} is a nonempty finite set of characters, e.g., $\Sigma \coloneqq \left\{0,1\right\}$. 
 \item A \textit{string} is a finite ordered sequence of elements from a given alphabet $\Sigma$. The empty sequence $\epsilon$ is allowed.
 \item Let $\Sigma^{\ast}$ denote the set of all finite-length strings over $\Sigma$. Any subset of $\Sigma^{\ast}$ is called a \textit{(formal) language}.
 \end{enumerate}
@@ -232,7 +235,7 @@ Both the set of binary strings representing prime numbers and the set of binary 
 
 \smallskip
 
-Consider a function $f: \{0,1\}^{\ast} \to \{0,1\}$. The computation of $f$ is equivalent to determining whether $$x\in \underbrace{f^{-1}}_{\text{a language}} \subset \{0,1\}^{\ast}.$$ Thus, computing any boolean function is the same as determining membership in some language.
+Consider a function $f: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}$. The computation of $f$ is equivalent to determining whether $$x\in \underbrace{f^{-1}(1)}_{\text{a language}} \subset \left\{0,1\right\}^{\ast}.$$ Thus, computing any boolean function is the same as determining membership in some language.
 
 
 \begin{note}
@@ -260,7 +263,7 @@ Let $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For eac
 $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 \end{notation}
 
-\begin{exmp} Set $\Sigma = \{0,1\}$.
+\begin{exmp} Set $\Sigma = \left\{0,1\right\}$.
 \begin{enumerate}
 \item Let $M$ denote
 \[
@@ -306,7 +309,7 @@ Every regular expression induces a $\DFA$, and vice versa. Thus, they have equal
 A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(Q, \Sigma, q_0, \delta, Q_F)$ of the sort above except that $\delta : Q\times \Sigma \to \P(Q)$.
 \end{definition}
 
-\begin{exmp} Set $\Sigma = \{0,1\}$ and $M =$
+\begin{exmp} Set $\Sigma = \left\{0,1\right\}$ and $M =$
 \[
 \begin{tikzpicture}[shorten >=1pt, node distance=2cm, on grid, auto]
 \node[state, initial] (q_0) {$q_0$};
@@ -471,7 +474,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 
 \smallskip
 
-There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\} \cong \N$. Also, we have that $\{0,1\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\{0,1\}^{\ast}) = \{L : L \text{ is a language over } \{0,1\}\}$. Since there is a surjection $$\{F: F \text{ is a finite automaton.}\} \to \{L : L \text{ is a regular language over } \{0,1\}\},$$ it follows that there are uncountably many non-regular languages over $\{0,1\}$.
+There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \{L : L \text{ is a language over } \left\{0,1\right\}\}$. Since there is a surjection $$\{F: F \text{ is a finite automaton.}\} \to \{L : L \text{ is a regular language over } \left\{0,1\right\}\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
 
 
 \subsection{Lecture 4}
@@ -497,7 +500,7 @@ By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such tha
 \begin{exmp} Let $n_0\geq 0$ be an integer. Suppose that $x=wyz$ with $\lvert{y}\rvert >0$ and $|wy|\leq n_0$.
 \begin{enumerate}
 \item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x\coloneqq 1^{2^{n_0+1}}$.  But note that $|wy^iz| = |wyz| + (i-1)\lvert{y}\rvert = 2^{n_0+1} + (i-1)\lvert{y}\rvert$. Hence if $i=2$, then $|wy^i z| = 2^{n_0+1} +\lvert{y}\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < |wy^iz|$ as well. Therefore, $L$ is not a regular language. 
-\item Let $L = \left\{ ww : w \in \{0,1\}^{\ast}\right\}$. Let $x\coloneqq 0^{n_0}10^{n_0}1$. If $\lvert{y}\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is not a regular language. 
+\item Let $L = \left\{ ww : w \in \left\{0,1\right\}^{\ast}\right\}$. Let $x\coloneqq 0^{n_0}10^{n_0}1$. If $\lvert{y}\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is not a regular language. 
 \end{enumerate}
 \end{exmp}
 
@@ -577,7 +580,7 @@ Every decidable language is recursively enumerable.
 By the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is not regular.  But $L$ is decidable. 
 \end{exmp}
 \begin{proof}
-Set $\Sigma = \{0,1\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$. Define the $\TM$ $M$ as follows.
+Set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$. Define the $\TM$ $M$ as follows.
 \[
 \begin{tikzpicture}[shorten >=1pt,node distance=6cm,on grid,auto] 
    \node[state,initial] (q_0)   {$q_0$}; 
@@ -620,14 +623,14 @@ Write $M= (Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R)$. Let $$ \{\#\} \bigcup_{\g
 \end{proof}
 
 \begin{exmp}
-Let $L = \{w \in \{0,1\}^{\ast} \mid w$ is a palindrome$\}$. This cannot be recognized by a $\TM$ running in better than quadratic time  but can be recognized by a $2$-tape $\TM$ running in linear time.  Thus, computational models may differ in complexity even when they don't in decidability.
+Let $L = \left\{w \in \left\{0,1\right\}^{\ast} \mid w \text{ is a palindrome}\right\}$. This cannot be recognized by a $\TM$ running in better than quadratic time  but can be recognized by a $2$-tape $\TM$ running in linear time.  Thus, computational models may differ in complexity even when they don't in decidability.
 \end{exmp}
 
 \begin{definition}
 A \textit{nondeterministic Turing machine} $M$ is exactly like an ordinary Turing machine except that $M$'s transition function is of the form $$ \delta : Q \times \Gamma \to \P(Q \times \Gamma \times \{L, R\})  $$ such that $M$ accepts on an input as long as at least one branch of computation accepts.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{LT}
 Let $M$ be a $\NDTM$ and let $L = L(M)$. Then there exists a $\TM$ $M'$ such that $L= L(M')$. 
 \end{theorem}
 \begin{proof}
@@ -654,17 +657,17 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 \begin{note} $ $
 \begin{enumerate}
 \item This simulation has time complexity $O(m^T)$ where $T$ denotes the steps taken by $M$.
-\item We can modify the proof of our last theorem to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
+\item We can modify the proof of \cref{LT} to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
 \end{enumerate}
 \end{note}
 
 \begin{remark}
-There is an injective function $\iota$ from the set of Turning machines into $\{0,1\}^{\ast}$ because any $\TM$'s transition function admits a finite description. In particular, the set of $\TM$ is countable. Let $\langle M \rangle $ denote the binary encoding of the $\TM$ $M$. Let any $x\notin \im{\iota}$ correspond to the $\TM$ that immediately halts and outputs zero on every input. As a result, every binary string corresponds to some Turing machine. 
+There is an injective function $\iota$ from the set of Turning machines into $\left\{0,1\right\}^{\ast}$ because any $\TM$'s transition function admits a finite description. In particular, the set of $\TM$ is countable. Let $\langle M \rangle $ denote the binary encoding of the $\TM$ $M$. Let any $x\notin \im{\iota}$ correspond to the $\TM$ that immediately halts and outputs zero on every input. As a result, every binary string corresponds to some Turing machine. 
 \end{remark}
 
 \begin{theorem}
- There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\langle M \rangle$ and $x$, (i.e., one string over $\{0,1\} \times \Sigma$) such that
- \begin{enumerate}
+ There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\langle M \rangle$ and $x$, (i.e., one string over $\left\{0,1\right\} \times \Sigma$) such that
+ \begin{enumerate}[label=(\alph*)]
  \item if $M$ accepts $x$, then $U_{\TM}$ accepts,
  \item if $M$ rejects $x$, then $U_{\TM}$ rejects, and
  \item if $M$ does not halt on $x$, then neither does $U_{\TM}$.
@@ -680,26 +683,26 @@ We call $U_{\TM}$ a \textit{universal Turing machine}.
 
 \subsection{Lecture 7}
 
-\begin{note}
+
 Alternatively, we can view $U_{\TM}$ as a ternary function with input $(\langle M \rangle,  w, 1^k)$ such that
-\begin{enumerate}
-\item if $M$ accepts (resp. rejects) on $w$ in $\leq k$ steps, then $U_{\TM}$ accepts (resp. rejects), and
+\begin{enumerate}[label=(\roman*)]
+\item if $M$ accepts (resp. rejects) on $w$ in $\leq k$ steps, then $U_{\TM}$ accepts (resp. rejects) and
 \item if $M$ does not halt on $w$ in $\leq k$ steps, then $U_{\TM}$ will reach a special state.
 \end{enumerate}
-\end{note}
+
 
 \begin{lemma}
 Let $A_{\TM}$ denote the language $\{ \langle M, w \rangle \mid M$ accepts $w\}$. Then $A_{\TM}$ is recursively enumerable.
 \end{lemma}
 \begin{proof}
-Observe that $L(U_{\TM}) = A_{\TM}$.
+Simply observe that $L(U_{\TM}) = A_{\TM}$.
 \end{proof}
 
 \begin{theorem}
 $A_{\TM}$ is undecidable.
 \end{theorem}
 \begin{proof}
-Suppose, for contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
+Suppose, toward a contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
 \begin{enumerate}[label=(\alph*)]
 \item Given a binary string $x$, run $M$ on $(\langle M_x \rangle, \langle M_x \rangle)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
 \item Let $N$ reject when $M$ accepts and $N$ accept when $M$ rejects.
@@ -803,7 +806,7 @@ We may assume that $\emptyset \notin C$ for otherwise we could show that $\overl
 If $M$ accepts $w$, then $L(M') = L(M_y)$. If $M$ rejects $w$, then $L(M') = \emptyset$. If $M$ does not halt on $w$, then $L(M') = \emptyset$.
 \end{proof}
 
-\medskip
+\smallskip
 
 This means that every nontrivial semantic property of Turing machines is undecidable.
 
@@ -815,7 +818,7 @@ Let $A_{\text{fin}} \coloneqq \{\langle M \rangle : L(M)$ is finite$\}$. Then $A
 
 \smallskip
 
-Indeed, we can strengthen \cref{fin}.
+In fact, we can strengthen \cref{fin}.
 
 \smallskip
 
@@ -839,7 +842,7 @@ Recall that $\overline{A_{\TM}}$ is not recursively enumerable.  We show that $\
 
 \smallskip
 
-If $M$ accepts $w$, then $L(M') = \{0,1\}^{\ast}$. Otherwise, $L(M') = \emptyset$.  
+If $M$ accepts $w$, then $L(M') = \left\{0,1\right\}^{\ast}$. Otherwise, $L(M') = \emptyset$.  
 \end{proof}
 
 \begin{note}
@@ -850,7 +853,7 @@ It's possible that both a language and its complement are not recursively enumer
 
 \subsection{Lecture 9}
 
-\begin{remark}
+
 Once we know that a question is decidable, we want to determine the amount of computational resources required to decide it. Such resources include 
 \begin{enumerate}[label=(\alph*)]
 \item time
@@ -861,7 +864,8 @@ Once we know that a question is decidable, we want to determine the amount of co
 \item randomness
 .\end{enumerate}
 We also want to study how these trade off with each other. 
-\end{remark}
+
+\smallskip
 
 \begin{definition}
 Given any $\TM$ $M$, its \textit{time complexity} is the function $f: \N \to \N$ where $f(n) =\max\{$steps used by $M$ on input $w\mid \lvert{w}\rvert =n\}$. We say that $M$ \textit{runs in time $f(n)$}.
@@ -922,7 +926,7 @@ A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\T
 \smallskip
 
 There is some $\NDTM$ $M$ running in polynomial time such that $L(M) = L$. Say that $M$ runs in time $n^c$. The sequence of choices along any branch of $M$ can be represented by a binary string of length $n^c$.
-Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \{0,1\}^{n^c}$ and executing $M$ on $x$ with choice of branch given by $y$. Then $V$ runs in polynomial time, and $x\in L \iff V(x,y) =1$ for some $y$.
+Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \left\{0,1\right\}^{n^c}$ and executing $M$ on $x$ with choice of branch given by $y$. Then $V$ runs in polynomial time, and $x\in L \iff V(x,y) =1$ for some $y$.
 
 \medskip
 
@@ -980,32 +984,32 @@ The \textit{size of a circuit} is the number of its internal nodes.
 This is an example of a non-uniform model of computation as we must specify a new circuit for each input size. 
 \end{remark}
 
-\begin{lemma}
-Every function $g: \{0,1\}^n \to \{0,1\}$ can be computed by a circuit of size $O(2^n)$. 
+\begin{lemma}\label{pl1}
+Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O(2^n)$. 
 \end{lemma}
 \begin{proof}
-We use induction to show that any $g:\{0,1\}^n \to \{0,1\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
+We use induction to show that any $g:\left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
 \begin{enumerate}[label=(\alph*)]
-\item If $g= \id_{\{0,1\}}$, then $g$ can be computed by a circuit of size $0$.
+\item If $g= \id_{\left\{0,1\right\}}$, then $g$ can be computed by a circuit of size $0$.
 \item If $g(0) =1$ and $g(1) =0$, then $g(x) = \neg x$.
 \item If $g(0) = g(1) = 0$, then $g(x) = x \land \neg x$.
 \item If $g(0) = g(1) = 1$, then $g(x) = x \vee \neg x$.
 \end{enumerate}
-Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \{0,1\}$ by $g_0(y) = g(0, y)$ and $g_1(y) = g(1,y)$. Then $g$ satisfies $$g(y) = (\neg y_1 \land g_0(y_2, \ldots, y_n)) \vee (y_1 \land g_1(y_2, \ldots, y_n))$$ for each $y$. By induction, $g$ can be computed by a circuit of size at most $4 + 2(3 \cdot 2^{n-1} -4) = 3 \cdot 2^n -4$. 
+Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \left\{0,1\right\}$ by $g_0(y) = g(0, y)$ and $g_1(y) = g(1,y)$. Then $g$ satisfies $$g(y) = (\neg y_1 \land g_0(y_2, \ldots, y_n)) \vee (y_1 \land g_1(y_2, \ldots, y_n))$$ for each $y$. By induction, $g$ can be computed by a circuit of size at most $4 + 2(3 \cdot 2^{n-1} -4) = 3 \cdot 2^n -4$. 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{pl2}
 Let $M= (Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O(t^2 \cdot (|\Gamma|\cdot |Q|)^3) = O(t^2)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
 \end{lemma}
 \begin{proof}
-We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{|\Gamma|}$ bits, $1$ bit, and $\log{|Q|}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{|\Gamma|} +\log{|Q|}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \{0,1\}^{3B}\to \{0,1\}$ that computes the next configuration. Our previous lemma implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O((|\Gamma|\cdot |Q|)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  (|\Gamma| \cdot |Q|)^3 )$ that simulates $M$ on inputs of size $n$.
+We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{|\Gamma|}$ bits, $1$ bit, and $\log{|Q|}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{|\Gamma|} +\log{|Q|}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O((|\Gamma|\cdot |Q|)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  (|\Gamma| \cdot |Q|)^3 )$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
 Define $\mathsf{CIRCUIT{-}SAT} = \{ \langle C \rangle : \exists x. C(x) = 1\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)} \land V(x,y) =1 \land (x\notin L \implies \forall y. V(x,y)=0).$$ Thus, for each $n\in \N$, we can use our previous lemma to construct a circuit of size $n^{O(1)}$ such that $C(x,y) = V(x,y)$ for each string $x$ of size $n$ and each string $y$ with $\lvert{y}\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\lvert{x}\rvert^{O(1)}$ such that $C_x(y) = V(x,y)$ for any $y$ with $\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
+If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)} \land V(x,y) =1 \land (x\notin L \implies \forall y. V(x,y)=0).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C(x,y) = V(x,y)$ for each string $x$ of size $n$ and each string $y$ with $\lvert{y}\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\lvert{x}\rvert^{O(1)}$ such that $C_x(y) = V(x,y)$ for any $y$ with $\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
 \end{proof}
 
 \subsection{Lecture 12}
@@ -1018,9 +1022,11 @@ Showing that $\mathsf{CIRCUIT{-}SAT}$ is not in $\mathbf{P}$ is equivalent to sh
 Suppose that $\mathsf{CIRCUIT{-}SAT} \leq_m^p L$ and $L\in \NP$. Then any $L' \in \NP$ satisfies $L' \leq_m^p L$, i.e., $L$ is $\NP$-complete.
 \end{corollary}
 
-\begin{note}
+\smallskip
+
 Our last two corollaries hold with $\mathsf{CIRCUIT{-}SAT}$ replaced by any $\NP$-complete language. 
-\end{note}
+
+\smallskip
 
 \begin{definition}
 A Boolean formula in CNF is a \textit{3cnf formula} if each clause contains exactly $3$ literals.  
@@ -1270,7 +1276,7 @@ $\mathbf{NL} \subset \mathbf{P}$ because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}
 \begin{exmp} $ $
 \begin{enumerate}
 \item Let $\Sigma_2{-}\mathsf{SAT} \coloneqq \{\varphi \text{ Boolean} \mid \forall \bar{x} \exists \bar{y}(\varphi(\bar{x}, \bar{y}) = 1)\}$. It is unclear that this (or its complement) belongs to $\NP$. 
-\item Let $\mathsf{TQBF{-}SAT} : = \left\{ \varphi(\overline{x_1}, \ldots, \overline{x_n}) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} (\varphi(\overline{x_1}, \ldots, \overline{x_n}) = 1), \ Q_i \in \{\forall, \exists\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
+\item Let $\mathsf{TQBF{-}SAT} \coloneqq \left\{ \varphi(\overline{x_1}, \ldots, \overline{x_n}) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} (\varphi(\overline{x_1}, \ldots, \overline{x_n}) = 1), \ Q_i \in \{\forall, \exists\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
 \begin{proof}
 Construct an algorithm $T(\varphi)$ as follows. 
 \begin{itemize}
@@ -1382,8 +1388,8 @@ Thanks to Bertrand's postulate, some prime number between $N$ and $2N$ always ex
 \item We call a $\TM$ a \textit{probabilistic/randomized Turing machine} if it consists of an input tape, a work tape, and a ``random bits" tape.  
 \item Let $p: \N \to \N$ be a polynomial. A probabilistic $\TM$ $M({\cdot}, {\cdot})$ \textit{decides $L$ with respect to $p$} if 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \{0,1\}^{p(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{2}{3}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \{0,1\}^{p(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$.
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{p(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{2}{3}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{p(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$.
 \end{itemize}
 \end{enumerate}
 \end{definition}
@@ -1451,13 +1457,13 @@ Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mat
 \begin{corollary}
 Let $M$ be a randomized polynomial-time $\TM$ and $L\subset \Sigma^{\ast}$ be a language. Suppose that there exists $c>0$ such that
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{1}{2} +n^{-c}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{1}{2} + n^{-c}$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{1}{2} +n^{-c}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{1}{2} + n^{-c}$
 \end{itemize} where $n$ denotes $\lvert{x}\rvert$.
 Then for any $c' >0$, there exist a randomized polynomial-time $\TM$ $M'$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=1] \geq 1 - 2^{{-}n^{c'}}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=0] \geq 1 - 2^{{-}n^{c'}}$.
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=1] \geq 1 - 2^{{-}n^{c'}}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=0] \geq 1 - 2^{{-}n^{c'}}$.
 \end{itemize}
 \end{corollary}
 \begin{proof}
@@ -1475,25 +1481,26 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
  \\ & = \frac{1}{e^{ \frac{n^{2c' +100}}{8} +\frac{n^{2c' -c+100}}{4}          }}
  \\ & =  \frac{1}{e^{ \frac{n^{2c' +100} + 2 n^{2c' -c+100}}{8}       }}
  \\ &
- \leq \frac{1}{e^{\frac{1}{8}n^{2c' +100}}   }\leq \frac{1}{2^{n^{c'}}} . 
+ \leq \frac{1}{e^{\frac{1}{8}n^{2c' +100}}   }
+ \\ & \leq \frac{1}{2^{n^{c'}}} . 
 \end{align*} 
 \end{proof}
 
 \begin{remark}\label{good}
-Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is bad for $x] \leq 2^{{-}n^c}$. Thus, $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is bad for some $x$ of length $n] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$ when $c$ is large, and $\mathbb{P}_{r\in_R \{0,1\}^{\poly(\lvert{x}\rvert)}}[r$ is good for every $x$ of length $n] \geq 1 - 2^{{-}n}$. 
+Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
 \end{remark}
 
 \begin{definition} $ $
 \begin{enumerate}
 \item Let $\mathbf{RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \{0,1\}^{t(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{2}{3}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \{0,1\}^{t(\lvert{x}\rvert)}}[M(x,r)=0] = 1$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{2}{3}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\lvert{x}\rvert)}}[M(x,r)=0] = 1$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
 \item Let $\mathbf{co{-}RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \{0,1\}^{t(\lvert{x}\rvert)}}[M(x,r)=1]= 1$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \{0,1\}^{t(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\lvert{x}\rvert)}}[M(x,r)=1]= 1$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
 \end{enumerate}
 Let $\mathbf{ZPP} \coloneqq \mathbf{RP} \cap \mathbf{co{-}RP}$.
@@ -1501,9 +1508,9 @@ Let $\mathbf{ZPP} \coloneqq \mathbf{RP} \cap \mathbf{co{-}RP}$.
 
 \smallskip
 
-\begin{note}
-$L \in \mathbf{ZPP}$ if there exists a randomized algorithm that runs in expected polynomial time and never errs. 
-\end{note}
+
+We have that $L \in \mathbf{ZPP}$ if there exists a randomized algorithm that runs in expected polynomial time and never errs. 
+
 
 \subsection{Lecture 20}
 
@@ -1511,9 +1518,11 @@ $L \in \mathbf{ZPP}$ if there exists a randomized algorithm that runs in expecte
 If there exist $L \in \mathsf{DTIME}(2^{O(n)})$ and $\gamma >0$ such that $L$ requires circuits of size at least $2^{\gamma{n}}$, then $\mathbf{P} = \mathbf{BPP}$.
 \end{theorem}
 
-\begin{note}
+\smallskip
+
 Recall that any algorithm running in time $t(n)$ can be simulated by circuits of size $t(n)^2$. Let $L \coloneqq \{ 1^n \mid n \in \N,$ the $\TM$ represented by the number $n$ in binary halts when its input equals $n\}$. Then $L$ is undecidable \hl{but has polynomial size circuits}. 
-\end{note}
+
+\smallskip
 
 \begin{theorem}[Adleman]
 Every $L\in \mathbf{BPP}$ has polynomial size circuits. In other words, $\mathbf{BPP} \subset \mathbf{P}/\mathrm{poly}$.
@@ -1528,14 +1537,14 @@ $\mathbf{BPP} \subset \mathbf{EXP}$.
 
 \begin{definition}[Polynomial hierarchy]  $ $
 \begin{enumerate}
-\item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \{0,1\}^{p_1(\lvert{x}\rvert)} \forall \overline{x_2} \in  \{0,1\}^{p_2(\lvert{x}\rvert)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(\lvert{x}\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
-\item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \{0,1\}^{p_1(\lvert{x}\rvert)} \exists \overline{x_2} \in  \{0,1\}^{p_2(\lvert{x}\rvert)}\cdots \exists /\forall \overline{x_i}\in \{0,1\}^{p_i(\lvert{x}\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
+\item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \left\{0,1\right\}^{p_1(\lvert{x}\rvert)} \forall \overline{x_2} \in  \left\{0,1\right\}^{p_2(\lvert{x}\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\lvert{x}\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
+\item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \left\{0,1\right\}^{p_1(\lvert{x}\rvert)} \exists \overline{x_2} \in  \left\{0,1\right\}^{p_2(\lvert{x}\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\lvert{x}\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
 \end{enumerate}
 The \textit{polynomial hierarchy} is the set of languages $\mathbf{PH} \coloneqq \bigcup_{i\in \N}\Sigma_p^i$.
 \end{definition}
 
 \begin{aside}
-For a given (finite) \textit{vocabulary} $\sigma$, let $\mathsf{STRUC}[\sigma]$ denote the set of all  finite structures of $\sigma$ equipped with a total ordering. Consider the set $$\mathcal{B} \coloneqq \left\{I_b \mid I_b :   \mathsf{STRUC}[\sigma] \to \{0,1\},\  \sigma \text{ is a vocabulary}\right\}.$$ For each  function $I_b :  \mathsf{STRUC}[\sigma] \to \{0,1\}$, let $$\mathcal{L}_{I_b} = \left\{A \in \mathsf{STRUC}[\sigma] \mid I_b(A) = 1\right\},$$ called a $\textit{Boolean query}$. 
+For a given (finite) \textit{vocabulary} $\sigma$, let $\mathsf{STRUC}[\sigma]$ denote the set of all  finite structures of $\sigma$ equipped with a total ordering. Consider the set $$\mathcal{B} \coloneqq \left\{I_b \mid I_b :   \mathsf{STRUC}[\sigma] \to \left\{0,1\right\},\  \sigma \text{ is a vocabulary}\right\}.$$ For each  function $I_b :  \mathsf{STRUC}[\sigma] \to \left\{0,1\right\}$, let $$\mathcal{L}_{I_b} = \left\{A \in \mathsf{STRUC}[\sigma] \mid I_b(A) = 1\right\},$$ called a $\textit{Boolean query}$. 
 
 Consider the set $\mathcal{B} \coloneqq \left\{ \mathcal{L}_{I_b} \mid I_b \in \mathcal{B}\right\}$ of all Boolean queries. Let $\mathbf{SO}$ denote the set of all Boolean queries expressible in second-order logic. That is, $\mathcal{L}_{I_b} \in \mathbf{SO}$ iff there is some second-order sentence $\varphi$ such that $$I_b(A) =1 \iff A \models \varphi.$$ It is known that $\mathbf{SO} = \mathbf{PH}$. This is a well-known result of so-called \textit{descriptive complexity theory}, a branch of finite model theory.
 \end{aside}
@@ -1567,9 +1576,9 @@ For convenience, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some for
 $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \end{theorem}
 \begin{proof}
-Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\mathbb{P}_{r \in_R \{0,1\}^{\text{poly}(n)}}[A(x,r) = \chi_L(x)] \geq \frac{2}{3}$ where $n$ denotes $\lvert{x}\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\mathbb{P}_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\mathbb{P}[A'(x, \overline{r}) = \chi_L(x)] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
+Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\mathbb{P}_{r \in_R \left\{0,1\right\}^{\text{poly}(n)}}[A(x,r) = \chi_L(x)] \geq \frac{2}{3}$ where $n$ denotes $\lvert{x}\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\mathbb{P}_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\mathbb{P}[A'(x, \overline{r}) = \chi_L(x)] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
 \begin{claim}
-$x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \{0,1\}^m \forall \overline{z} \in \{0,1\}^m \bigvee_{j=1}^m A'(x, \overline{y_j} \oplus \overline{z})=1$.
+$x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\right\}^m \forall \overline{z} \in \left\{0,1\right\}^m \bigvee_{j=1}^m A'(x, \overline{y_j} \oplus \overline{z})=1$.
 \end{claim}
 \begin{proof} $ $
 
@@ -1577,7 +1586,7 @@ $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \{0,1\}^m \fora
 
 \smallskip
 
-Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\exists \overline{z} \in \{0,1\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] <1   .$$ Note that $\mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\bigwedge_{j=1}^m  A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] \leq \frac{1}{(100m^2)^m}$ for any $\overline{z} \in \{0,1\}^m$. Therefore, $$      \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}}  \left[\exists \overline{z} \in \{0,1\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right ]   \leq \frac{2^m}{(100m^2)^m} <1.$$
+Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] <1   .$$ Note that $\mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\bigwedge_{j=1}^m  A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] \leq \frac{1}{(100m^2)^m}$ for any $\overline{z} \in \left\{0,1\right\}^m$. Therefore, $$      \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}}  \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right ]   \leq \frac{2^m}{(100m^2)^m} <1.$$
 
 \medskip
 
@@ -1585,7 +1594,7 @@ Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}
 
 \smallskip
 
-Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_R \{0,1\}^{\ast}}[A(x, y_j \oplus z) =1] \leq \frac{1}{100m^2}$ for each $j=1, \ldots, m$. This implies that $$\mathbb{P}_{z \in_R \{0,1\}^{\ast}}\left[\bigvee_{j=1}^m A(x, y_j \oplus z) =1\right] \leq \frac{1}{100m^2} \leq \frac{m}{100m^2} = \frac{1}{100m} <1.$$
+Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_R \left\{0,1\right\}^{\ast}}[A(x, y_j \oplus z) =1] \leq \frac{1}{100m^2}$ for each $j=1, \ldots, m$. This implies that $$\mathbb{P}_{z \in_R \left\{0,1\right\}^{\ast}}\left[\bigvee_{j=1}^m A(x, y_j \oplus z) =1\right] \leq \frac{1}{100m^2} \leq \frac{m}{100m^2} = \frac{1}{100m} <1.$$
 \end{proof}
 \end{proof}
 
@@ -1593,21 +1602,21 @@ Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_
 
 \begin{definition} $ $
 \begin{enumerate}
-\item  Let $V, P: \{0,1\}^{\ast} \to \{0,1\}^{\ast}$ be mappings and $x$ a binary string. Let $r\in_R \{0,1\}^{\ast}$. A \textit{$k$-round (randomized) interaction of $V$ and $P$ on $x$ and $r$} is the sequence of length $k$  consisting of the following strings.
+\item  Let $V, P: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}^{\ast}$ be mappings and $x$ a binary string. Let $r\in_R \left\{0,1\right\}^{\ast}$. A \textit{$k$-round (randomized) interaction of $V$ and $P$ on $x$ and $r$} is the sequence of length $k$  consisting of the following strings.
 \[
 \begin{aligned} a_{1} &=V(x, r) \\ a_{2} &=P\left(x, a_{1}\right) \\ \vdots & \\ a_{2 i+1} &=V\left(x,r, a_{1}, \ldots, a_{2 i}\right) \\ a_{2 i+2} &=P\left(x, a_{1}, \ldots, a_{2 i+1}\right) \end{aligned}
 \] Let $\out{\langle V, P\rangle (x, r)}$ denote the final string of this sequence. We call $V$ a \textit{verifier} and $P$ a \textit{prover}.
 \item Let $k : \N \to \N$ be polynomial computable. A language $L$ has a \textit{has a $k$-round (randomized) interactive protocol} or \textit{lies in the class $\mathsf{IP}[k]$} if there exists a randomized $\TM$ $V$ that $V$ is polynomial in its first input and
 \begin{enumerate}
-\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\langle V, P\rangle(x)$ is $k(\lvert{x}\rvert)$-round interaction and $$\mathbb{P}_{r\in_R \in \{0,1\}^{\poly(\lvert{x}\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
-\item (soundness) if $x\notin L$, then for any prover $P$ such that $\langle V, P\rangle(x)$ is $k(\lvert{x}\rvert)$-round interaction, $$\mathbb{P}_{r\in_R \in \{0,1\}^{\poly(\lvert{x}\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
+\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\langle V, P\rangle(x)$ is $k(\lvert{x}\rvert)$-round interaction and $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
+\item (soundness) if $x\notin L$, then for any prover $P$ such that $\langle V, P\rangle(x)$ is $k(\lvert{x}\rvert)$-round interaction, $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
 \end{enumerate}
 \item Let $\mathbf{IP} \coloneqq \bigcup_{k\in \N}\mathsf{IP}[n^k]$.
 \end{enumerate}
 \end{definition}
 
 \begin{exmp}
-Let $\mathsf{NIP}\coloneqq \{ \langle G_1, G_2 \rangle \mid G_1$ and $G_2$ are non-isomorphic graphs$\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
+Let $\mathsf{NIP}\coloneqq \left\{ \langle G_1, G_2 \rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
 \[
 \begin{array}{l}{V : \text { Pick } i \in\{1,2\} \text { uniformly randomly. Randomly permute the vertices of } G_{i} \text { to get a  new isomorphic graph } H .} \\ {\text {\quad \quad Send } H \text { to } P .} \\ {P : \text { If } H \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_j \text{ denote the selected graph. Send } j \text { to } V \text {. }} \\
@@ -1661,18 +1670,18 @@ Let $G$ and $H$ be graphs.
 \end{prop}
 
 \begin{exmp}[Goldwasser{-}Sipser set bound protocol]
-Let $S \subset \{0,1\}^m$ and $K\in \N$. We want to construct a verifier $V$ and prover $P$ such that
+Let $S \subset \left\{0,1\right\}^m$ and $K\in \N$. We want to construct a verifier $V$ and prover $P$ such that
 \begin{itemize}
 \item $V$ can efficiently check whether any given $x$ belongs to $S$, and
 \item it is guaranteed that either $|S| \leq \frac{K}{2}$ or $|S| \geq K$.
 \end{itemize}
-To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $|S| \leq 2^{l-1}$. Let $\H$ denote a pairwise independent set of mappings $\{0,1\}^m \to \{0,1\}^l$. 
+To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $|S| \leq 2^{l-1}$. Let $\H$ denote a pairwise independent set of mappings $\left\{0,1\right\}^m \to \left\{0,1\right\}^l$. 
 
 \medskip
 
 
 \fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
-Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ to $P$. Next, have $P$ send $x \in_R \{0,1\}^m$ to $V$.  Finally, have $V$ accept if and only if $x\in S$ and $h(x) =y$. 
+Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then send $(h,y)$ to $P$. Next, have $P$ send $x \in_R \left\{0,1\right\}^m$ to $V$.  Finally, have $V$ accept if and only if $x\in S$ and $h(x) =y$. 
 }}
 
 \begin{caseof}
@@ -1691,13 +1700,15 @@ Have $V$ randomly choose $h \in \H$ and $y \in \{0,1\}^l$ and then send $(h,y)$ 
 
 \subsection{Lecture 25}
 
-\begin{lemma}[Sum-check protocol]
 Let $n\in \N$ and choose a prime $2^{10n}\leq p\leq 2^{20n}$. Let  $\varphi(x_1, \ldots, x_n)$ be a 3cnf formula with $m$ clauses and let $\tilde{\varphi}(x_1, \ldots, x_n)$ be the polynomial obtained from $\varphi$ by the following translation rules.
 \begin{itemize}
 \item $\bar{x} \longleftrightarrow (1-x)$.
 \item $x \land y \longleftrightarrow x \cdot y$.
 \end{itemize} 
-For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \{0,1\}^{n-i}} \tilde{\varphi}(a_1, \ldots, a_i, x) \mod p.$$ For any $K\in \N$, there exists an efficient interactive protocol $(V, P)$ such that 
+For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \left\{0,1\right\}^{n-i}} \tilde{\varphi}(a_1, \ldots, a_i, x) \mod p.$$ 
+
+\begin{lemma}[Sum-check protocol]
+For any $K\in \N$, there exists an efficient interactive protocol $(V, P)$ such that 
 \begin{itemize}
 \item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\langle \varphi, p \rangle$ with probability $1$ and
 \item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq (1-\frac{d}{p})^{n-i}$ where \hl{$d \coloneqq 3m\leq n^3$}.
@@ -1707,27 +1718,25 @@ For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \
 
 \subsection{Lecture 26}
 
-\begin{proof} $ $
-\\
-\smallskip
+\begin{proof} 
 First, we construct $(V, P)$ as follows. 
 \begin{enumerate}
 \item $\underline{V}:$ If $n=1$, then compute $\tilde{\varphi}(0) + \tilde{\varphi}(1)$. If this equals $K$, then \textit{accept}. Otherwise, \textit{reject}. 
 
-If $n>1$, then let $h_1(x_1) = \sum_{x_2, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$, which is a univariate polynomial of degree at most $n^3$. Ask $P$ to send $h_1(x_1)$. 
+If $n>1$, then let $h_1(x_1) = \sum_{x_2, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$, which is a univariate polynomial of degree at most $n^3$. Ask $P$ to send $h_1(x_1)$. 
 \item $\underline{P}:$ Return  $h'_1(x_1)$ to $V$ where $h'_1(x_1)$ is univariate and has degree at most $d$. 
 \item $\underline{V}:$ Compute $h'_1(0) + h'_1(1)$. If this equals $K$, then \textit{reject}. 
 
-Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
+Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
 \end{enumerate}
-Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
+Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
 
 \medskip
 
- Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \{0,1\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \{0,1\}} \cdots \sum_{x_n \in \{0,1\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
+ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{LP}
 The language of all unsatisfiable 3cnf formulas is $\mathbf{co{-}NP}$-complete.
 \end{prop}
 
@@ -1735,7 +1744,7 @@ The language of all unsatisfiable 3cnf formulas is $\mathbf{co{-}NP}$-complete.
 $\mathbf{co{-}NP} \subset \mathbf{IP}$.
 \end{corollary}
 \begin{proof}
-We can modify our last interactive protocol so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $(V, P)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \{0,1\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \{0,1\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \{0,1\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. By our last proposition, we are done. 
+We can modify our last interactive protocol so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $(V, P)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. By \cref{LP}, we are done. 
 \end{proof}
 
 \begin{theorem}

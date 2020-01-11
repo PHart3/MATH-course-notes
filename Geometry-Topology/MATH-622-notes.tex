@@ -222,13 +222,17 @@
 \newlist{steps}{enumerate}{1}
 \setlist[steps, 1]{label = Step \arabic*:}
 
+\pagestyle{headings}
+
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
 \class{MATH 622}
 \assignment{Fall 2019}
 
 \begin{document}
-
+\thispagestyle{empty}
 \begin{abstract}
 These notes are based on Ron Donagi's lectures for the course ``Complex Algebraic Geometry'' at UPenn along with Daniel Huybrechts's \textit{Complex Geometry}. Any mistake in what follows is my own.
 \end{abstract}
@@ -386,7 +390,7 @@ A sheaf $F$ on a complex manifold $X$ is \textit{invertible} if there exist an o
 If $J$ is a line bundle, then $\L_J$ is invertible.
 \end{exmp}
 
-Consider the composition
+Consider the composite
 \[
 \begin{tikzcd}
 \O_{U_i \cap U_j} \arrow[r, "\varphi_i"] & \L_J\restriction_{U_i \cap U_j} \arrow[r, "\varphi_j^{-1}"] & \O_{U_i \cap U_j}

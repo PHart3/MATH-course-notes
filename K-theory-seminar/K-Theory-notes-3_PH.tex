@@ -26,21 +26,22 @@
 \usepackage[capitalise]{cleveref} 
     
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{exmp}[definition]{Example}
 \newtheorem{non-exmp}[definition]{Non-example}
 \newtheorem{note}[definition]{Note}
 
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{conj}[definition]{Conjecture}
 \newtheorem*{claim}{Claim}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercise}[definition]{Exercise}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[definition]{Remark}
 \newtheorem*{todo}{To do}
 \newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
@@ -164,17 +165,20 @@
 \DeclareMathOperator{\spec}{Spec}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\wh}{Wh}
+
+\linespread{1.3}
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{Homotopy and K-theory seminar}
+\class{$K$-theory seminar}
 \assignment{Talks \#9}
 \duedate{October 19, 2018}
 
 \begin{document}
 
 \begin{abstract}
-We begin low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2(-)$, in various settings. The main sources for this talk are the following.
+We begin low-dimensional $K$-theory, which consists of the groups $K_0(-)$, $K_1(-)$, and $K_2(-)$. Specifically, we describe $K_0$ for rings and for topological spaces. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab.
 \item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory}, Chapters I and II.
@@ -184,17 +188,19 @@ We begin low-dimensional $K$-theory, i.e., describe $K_0(-)$, $K_1(-)$, and $K_2
 
 \smallskip
 
-Recall that the forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab$, called the \textit{group completion} functor. Specifically, for any commutative monoid $\left(C, +\right)$, we call the abelian group $K(C)$ the \textit{Grothendieck group of $G$}, which is constructed as follows.
+\section{$K_0$ for rings}
+
+The forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab$, called the \textit{group completion} functor. Specifically, for any commutative monoid $\left(C, +\right)$, we call the abelian group $K(C)$ the \textit{Grothendieck group of $C$}, which is constructed as follows.
 
 \medskip
 
- Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$a_1 + b_2 +k = b_1 + a_2 +k$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $(a_1, b_1) {\sim'} (a_2, b_2)$ if $$\left(a_1 + k_1, b_1 + k_1\right) = \left(a_2 +k_2, b_2 + k_2\right)$$ for some $\left(k_1, k_2\right) \in C\times C$. Then set $K(C) = \left(S, +\right)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. The definition of ${\sim'}$ makes it clear that $\left[a_1, b_1\right]^{{-}1} = \left[b_1, a_1\right]$.
+ Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$a_1 + b_2 +k = b_1 + a_2 +k$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $(a_1, b_1) {\sim'} (a_2, b_2)$ if $$\left(a_1 + k_1, b_1 + k_1\right) = \left(a_2 +k_2, b_2 + k_2\right)$$ for some $\left(k_1, k_2\right) \in C\times C$. Now set $K(C) = \left(S, +\right)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Our definition of ${\sim'}$ makes it clear that $\left[a_1, b_1\right]^{{-1}} = \left[b_1, a_1\right]$.
 
 \begin{prop}
 The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto [x]\coloneqq \left[x, 0\right]$ is injective iff $C$ is a cancellation monoid.
 \end{prop}
 
-\begin{lemma}[Universal property of the Grothendieck group] $ $
+\begin{lemma}[Universal property of the $K$] $ $
 Let $B$ be an abelian group and $f: A \to B$ a monoid homomorphism. Then we have 
 \[
 \begin{tikzcd}[column sep=large]
@@ -226,52 +232,60 @@ A submonoid $L$ of $C$ is \textit{cofinal} if for any $c\in C$, there is some $c
 
 \begin{exmp}\label{Z} $ $
 \begin{enumerate}
-\item $K(\N) \cong \Z$ via $[a_1, b_1] \mapsto a_1 - b_1$.
-\item $K(\Z^{\times}) \cong \Q^{\times}$ via $[a_1, b_1] \mapsto \frac{a_1}{b_1}$.
+\item $K(\N) \cong \Z$ via the map $[a_1, b_1] \mapsto a_1 - b_1$.
+\item $K(\Z^{\times}) \cong \Q^{\times}$ via the map $[a_1, b_1] \mapsto \frac{a_1}{b_1}$.
 \end{enumerate}
 \end{exmp}
 
-\begin{definition}
-Let $R$ be a unital ring. Let $\left(\P(R), \oplus, \otimes_R\right)$ denote the semiring  of (isomorphism classes of) finitely generated projective $R$-modules. Then we define $K_0(R) = K(\P(R))$.
-\end{definition}
+\smallskip
+
+
+Let $R$ be a unital ring. Let $\left(\P(R), \oplus, \otimes_R\right)$ denote the semiring  of (isomorphism classes of) finitely generated projective $R$-modules. Let $K_0(R) = K(\P(R))$.
 
 \begin{lemma}
 $\P(R_1 \times R_2) \cong \P(R_1) \times \P(R_2)$. Therefore, $K_0$ can be computed componentwise by \cref{L2}. 
 \end{lemma}
 
-\begin{remark}
-$K_0(-)$ defines a functor from $\mathbf{Ring}$ to $\Ab$. Let $f: R \to S$ be a ring homomorphism and $P$ be a finitely generated projective $R$-module. The assignment of $f$ under $K_0(-)$ goes as follows.
+\smallskip
+
+$K_0(-)$ defines a functor from $\mathbf{Ring}$ to $\Ab$. Let $f: R \to S$ be a ring homomorphism and $P$ be a finitely generated projective $R$-module. Define the group map $K_0(f)$ as follows.
 \begin{enumerate}
-\item Construct $S\otimes_R P$, the base extension of $P$. This is the \textit{unique} $S$-module $(s', s \otimes p) \mapsto  s's \times p$ compatible with the $R$-module structure on $S$ induced by $f$. This is also an $R$-module with $f(r) \cdot t \coloneqq r\cdot t$ for $t\in S \otimes_R P$. We know that $P \oplus Q$ is free for some $R$-module $Q$. Since $S\otimes_R (P \oplus Q) \cong_S (S \otimes_R P)\oplus (S \otimes_R Q)$ and $P\oplus Q$ is free over $S$ via $f$, it follows that  $S \otimes_R P$ is a finitely generated projective $S$-module.
+\item Construct $S\otimes_R P$, the base extension of $P$. This is the \textit{unique} $S$-module  compatible with the $R$-module structure on $S$ induced by $f$, and its action is given by $$\left(s', s \otimes p\right) \mapsto  s's \times p.$$ This is also an $R$-module with $f(r) \cdot t \coloneqq r\cdot t$ for $t\in S \otimes_R P$. We know that $P \oplus Q$ is free for some $R$-module $Q$. Since $S\otimes_R (P \oplus Q) \cong_S (S \otimes_R P)\oplus (S \otimes_R Q)$ and $P\oplus Q$ is free over $S$ via $f$, it follows that  $S \otimes_R P$ is a finitely generated projective $S$-module.
 \item We've just defined a monoid homomorphism $\tilde{f} : \P(R) \to \P(S)$.
-\item Apply the universal property of $K$ to find the filling 
+\item Apply the universal property of $K$ to find the filler
 \[
 \begin{tikzcd}
 \mathbf{P}(R) \arrow[d, hook] \arrow[r, "\tilde{f}"] & \mathbf{P}(S) \arrow[d, hook] \\
-K(\mathbf{P}(R)) \arrow[r, "f_{\ast}", dotted] & K(\mathbf{P}(S))
+K(\mathbf{P}(R)) \arrow[r, "f_{\ast}"', dotted] & K(\mathbf{P}(S))
 \end{tikzcd},
 \]
-where we set $K_0(f) = f_{\ast}$.
+and set $K_0(f) = f_{\ast}$.
 \end{enumerate}
-\end{remark}
 
-\begin{remark}[Eilenberg Swindle]
+\smallskip
+
+\begin{theorem}[Eilenberg swindle]
 Suppose $P \oplus Q =R^n$ as $R$-modules. Then $$P \oplus R^{\infty} \cong P \oplus  (Q \oplus P) \oplus (Q \oplus P) \oplus \cdots \cong (P \oplus Q) \oplus (P \oplus Q) \oplus \cdots \cong R^{\infty}.$$
+\end{theorem}
+
 Therefore, if we added $R^{\infty}$ to $\P(R)$, then we would have $[P] = 0$ for each finitely generated projective $P$.
-\end{remark}
+
+\smallskip
 
 \begin{exmp}
-If $R =F$ is a field, then $\P(R) \cong \N$ and, by \cref{Z}, $K_0(R) \cong \Z$. 
-
-We can generalize this phenomenon a bit.
+If $R$ is a field, then $\P(R) \cong \N$ and, by \cref{Z}, $K_0(R) \cong \Z$. 
 \end{exmp}
 
-\begin{definition}
-A ring $R$ has the \textit{invariant basis property (IBP)} if $R^n \not \cong R^m$ when $n \ne m$. Note that any commutative ring has the IBP.
-\end{definition}
+We can generalize this phenomenon a bit.
 
 \begin{definition}
-An $R$-module $P$ is \textit{stably free} of rank $m-n$ if $P \oplus R^m \cong R^n$ for some $m$ and $n$.
+A ring $R$ has the \textit{invariant basis property (IBP)} if $R^n \not \cong R^m$ whenever $n \ne m$. 
+\end{definition}
+
+Note that any commutative ring has the IBP.
+
+\begin{definition}
+An $R$-module $P$ is \textit{stably free of rank $n-m$} if $P \oplus R^m \cong R^n$.
 \end{definition}
 
 \begin{lemma}\label{L4}
@@ -284,45 +298,45 @@ The map $f: \N \to \P(R)$ defined by $n \mapsto R^n$ induces a homomorphism $\ph
 \begin{proof} $ $
 \begin{enumerate}
 \item By \cref{prop2}(4), we know that $[P] = [Q]$ in $K_0(R)$ iff $P\oplus R^m \cong Q\oplus R^m$ for some $m$. 
-\item $[P]= [R^n]$ iff $P$ is stably free.
+\item $[P]= \left[R^n\right]$ iff $P$ is stably free.
 \end{enumerate}
 \end{proof}
 
 
 \begin{exmp}
-Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by \cref{L4}. Letting $K\coloneqq \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups, so that $K_0(R) \cong \Z \oplus K$.
+Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by \cref{L4}. With $K\coloneqq \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups
 \[
 \begin{tikzcd}
 1 \arrow[r] & K \arrow[r] & K_0(R) \arrow[r] & \mathbb Z \arrow[r] & 1
-\end{tikzcd}
+\end{tikzcd},
 \]
+so that $K_0(R) \cong \Z \oplus K$.
 \end{exmp}
 
 \begin{exmp}
-A ring $R$ is a \textit{flasque} if there is an $R$-bimodule $M$ which is also a finitely generated projective on one side along with a bimodule isomorphism $R\oplus M \cong M$. Then since $P \oplus (P \otimes_R M) \cong P \otimes_R (R \oplus M) \cong P \otimes_R M$, we see that $K_0(R) =0$.
+A ring $R$ is a \textit{flasque} if there exist an $R$-bimodule $M$ which is also a finitely generated projective on one side and a bimodule isomorphism $R\oplus M \cong M$. In this case, since $$P \oplus \left(P \otimes_R M\right) \cong P \otimes_R \left(R \oplus M\right) \cong P \otimes_R M,$$ we see that $K_0(R) =0$.
 \end{exmp}
 
 \begin{exmp}
-A module is \textit{semisimple} if it is the direct sum of simple modules. A ring $R$ is called semisimple if it a semisimple $R$-module. Notice that any semisimple module is both Noetherian and Artinian and that any module over a semisimple ring is semisimple. 
-\medskip
+A module is \textit{semisimple} if it is the direct sum of simple modules. A ring $R$ is  \textit{semisimple} if it a semisimple $R$-module. Notice that any semisimple module is both Noetherian and Artinian and that any module over a semisimple ring is semisimple. 
 
- Suppose $R$ is semisimple with summands $V_1, \ldots, V_m$. Then any finitely generated $R$-module is $\bigoplus_{i=1}^m V_i^{l_i}$, where the $l_i$ are uniquely determined by Krull-Remak-Schmidt. Hence $\P(R) \cong \N^m$, and $K_0(R) \cong \Z^m$.
+ Suppose $R$ is semisimple with summands $V_1, \ldots, V_m$. Then any finitely generated $R$-module has the form $\bigoplus_{i=1}^m V_i^{l_i}$, where each integer $l_i$ is uniquely determined thanks to Krull-Remak-Schmidt. Hence $\P(R) \cong \N^m$, and $K_0(R) \cong \Z^m$.
 \end{exmp}
 
 \begin{exmp}
-A ring $R$ is \textit{von Neumann regular} if $$(\forall r \in R)(\exists x_r\in R)(rx_rr=r).$$ It turns out that any one-sided ideal in $R$ is generated by an idempotent element. Let $\faktor{E}{\sim}$ denote the set of idempotent elements in $R$ under the equivalence $e_1 \sim e_2$ if the two generate the same ideal. Then  $\faktor{E}{\sim}$  forms a lattice where the join and meet correspond to ideal addition and intersection, respectively.
+A ring $R$ is \textit{von Neumann regular} if $$(\forall r \in R)(\exists x_r\in R)(rx_rr=r).$$ It turns out that any one-sided ideal in $R$ is generated by an idempotent element. Let $\faktor{E}{\sim}$ denote the set of idempotent elements in $R$ modulo the equivalence relation where $e_1 \sim e_2$ if the two generate the same ideal. Then  $\faktor{E}{\sim}$  forms a lattice where the join and meet correspond to the addition and intersection of ideals, respectively.
 
-\medskip
+\smallskip
 
  Kaplansky (1998) proved that any projective $R$-module is some direct sum of $(e)$ with $e$ idempotent. It follows that $\faktor{E}{\sim}$ determines $K_0(R)$.
 \end{exmp}
 
 \begin{prop}\label{Krull}
-Let $R$ be commutative. It can be shown that the following are equivalent.
+Let $R$ be commutative. TFAE
 \begin{enumerate}
 \item $R_{\red}$ is a commutative von Neumann regular ring.
 \item $R$ has (Krull) dimension $0$.
-\item $\spec(R)$ is compact, Hausdorff, and totally disconnected. (This is a very strong condition.)
+\item $\spec(R)$ is compact, Hausdorff, and totally disconnected.
 \end{enumerate}
 \end{prop}
 
@@ -335,20 +349,22 @@ Let $R$ be a commutative ring. The \textit{rank} of a finitely generated project
 \end{definition}
 \begin{prop} The rank of a finitely generated projective module is
 \begin{enumerate}
-\item continuous.
+\item continuous and
 \item a semiring homomorphism.
 \end{enumerate}
 \end{prop}
 
 \begin{definition}
-An $R$-module $M$ is a \textit{componentwise free module} if we have $R = \prod_{i=1}^n R_i$ and $M \cong \prod_{i=1}^n R_i^{c_i}$ for some integers $c_i$. Note that $M$ must be projective in this case.
+An $R$-module $M$ is a \textit{componentwise free module} if we have $R = \prod_{i=1}^n R_i$ and $M \cong \prod_{i=1}^n R_i^{c_i}$ for some integers $c_i$.
 \end{definition}
+
+Note that $M$ must be projective in this case.
 
 \begin{lemma}\label{L6}
 Let $R$ be commutative. The monoid $L$ of finitely generated componentwise free $R$-modules has is isomorphic to $\left[\spec(R), \N\right]$.
 \end{lemma}
 \begin{proof}
-Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that $\im f$ is finite, say $\{n_1, \ldots, n_c\}$. It's also possible to write $R= R_1 \times \cdots \times R_c$. Then $R^f \coloneqq R_1^{n_1} \times \cdots \times R_c^{n_c}$ is a finitely generated componentwise free $R$-module. Moreover, $f \mapsto R^f$ has inverse $\rk$ restricted to componentwise free modules.
+Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that $\im f$ is finite, say $\left\{n_1, \ldots, n_c\right\}$. It's also possible to write $R= R_1 \times \cdots \times R_c$. Then $R^f \coloneqq R_1^{n_1} \times \cdots \times R_c^{n_c}$ is a finitely generated componentwise free $R$-module. Moreover, $f \mapsto R^f$ has inverse $\rk$ restricted to componentwise free modules.
 \end{proof}
 
 
@@ -356,11 +372,12 @@ Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that 
 If $R$ is a $0$-dimensional commutative ring, then $$K_0(R) \cong \left[\spec(R), \Z\right],$$ where $[X, Y]$ denotes the semiring of continuous maps $f: X\to Y$.
 \end{theorem}
 \begin{proof}
-We have that $R_{\red}$ is a commutative von Neumann regular ring by \cref{Krull}. Any ideal $(d)$ in $R_{\red}$  where $d$ is idempotent is componentwise free. By Kaplansky, every object $X$ of $\P(R)$ is therefore componentwise free. Therefore, $\P(R_{\red}) \cong [\spec(R_{\red}), \N]$, giving $K_0(R_{\red}) \cong [\spec(R_{\red}), \Z]$. By \cref{L5} and the fact that $\spec(R_{\red})$ is homeomorphic to $\spec(R)$, it follows that $K_0(R)\cong [\spec(R_{\red}), \Z] \cong [\spec(R), \Z]$.
+We have that $R_{\red}$ is a commutative von Neumann regular ring by \cref{Krull}. Any ideal $(d)$ in $R_{\red}$  where $d$ is idempotent is componentwise free. By Kaplansky, every object $X$ of $\P(R)$ is therefore componentwise free. Therefore, $\P(R_{\red}) \cong \left[\spec(R_{\red}), \N\right]$, giving $K_0(R_{\red}) \cong [\spec(R_{\red}), \Z]$. By \cref{L5} and the fact that $\spec(R_{\red})$ is homeomorphic to $\spec(R)$, it follows that $K_0(R)\cong \left[\spec(R_{\red}), \Z\right] \cong \left[\spec(R), \Z\right]$.
 \end{proof}
 
-\begin{remark}
-When $R$ is commutative, let $H_0(R): = [\spec(R), \Z]$. If $R$ is Noetherian, then $H_0(R) \cong \Z^c$ where $c <\infty$ denotes the number of components of $H_0(R)$. If $R$ is a domain, then $H_0(R)$ is connected, implying $H_0(R) \cong \Z$.
+\smallskip
+
+When $R$ is commutative, let $H_0(R) \coloneqq [\spec(R), \Z]$. If $R$ is Noetherian, then $H_0(R) \cong \Z^c$ where $c <\infty$ denotes the number of components of $H_0(R)$. If $R$ is a domain, then $H_0(R)$ is connected, implying $H_0(R) \cong \Z$.
 
 The submonoid $L\subset \P(R)$ of componentwise free modules is cofinal, so that $K(L) \leq K_0(R)$. Moreover, $K(L) \cong H_0(R)$ by \cref{L6}.
 
@@ -371,60 +388,95 @@ The rank of a projective module induces a homomorphism $\rank: K_0(R) \to H_0(R)
 \end{tikzcd}
 \]
 splits. This implies that $$K_0(R) \cong H_0(R) \oplus \widetilde{K}_0(R),$$ where $\widetilde{K}_0(R)$ denotes $\ker(\rank)$.
-\end{remark}
+
 
 \begin{exmp}
-The \textit{Whitehead group} of a group $G$ is the quotient $Wh_0(G) =\faktor{K_0(\Z[G])}{\Z}$, where $\Z[G]$ denotes the group ring. The augmentation map $f: \Z[G] \to \Z$ induces a split exact sequence 
+The \textit{Whitehead group} of a group $G$ is the quotient $$\wh_0(G) \equiv \faktor{K_0(\Z[G])}{\Z},$$ where $\Z[G]$ denotes the group ring of $G$ over $\Z$. The augmentation map $f: \Z[G] \to \Z$ induces a split exact sequence 
 \[
 \begin{tikzcd}
-1 \arrow[r] & Wh_0(G) \arrow[r] & K_0(\Z[G]) \arrow[r] & K_0(\Z) =\mathbb Z \arrow[r] & 1
+1 \arrow[r] & \wh_0(G) \arrow[r] & K_0(\Z[G]) \arrow[r] & \underbrace{K_0(\Z)}_{\Z} \arrow[r] & 1
 \end{tikzcd}.
 \]
- Hence $K_0(\Z[G]) \cong \Z \oplus Wh_0(G)$. We know due to Swan that if $G$ is finite, then $Wh_0(G) \cong \widetilde{K}_0(\Z[G])$  and $\Z \cong H_0(\Z)$. 
+ Hence $K_0(\Z[G]) \cong \Z \oplus \wh_0(G)$. Due to \cref{swan}, if $G$ is finite, then $\wh_0(G) \cong \widetilde{K}_0(\Z[G])$  and $\Z \cong H_0(\Z)$. 
 \end{exmp}
 
-\begin{definition}
-A functor $F: \c \to \d$ is \textit{additive} if $F: \c(X, Y) \to \d(FX, FY)$ is a homomorphism of abelian groups for any $X, Y \in \ob \c$.
+\smallskip
+
+\begin{definition} $ $
+\begin{enumerate}
+\item A category $\c$ is \textit{preadditive} if each of its $\hom$-sets is an abelian group.
+\item A functor $F: \c \to \d$ of preadditive categories is \textit{additive} if $F: \c(X, Y) \to \d(FX, FY)$ is a group homomorphism for any $X, Y \in \ob \c$.
+\end{enumerate}
 \end{definition}
 
 \begin{definition}
-The rings $R$ and $S$ are \textit{Morita equivalent} if there exists an additive equivalence between $\mathbf{Mod}_R$$R$ and $\mathbf{Mod}_S$. 
+The rings $R$ and $S$ are \textit{Morita equivalent} if there exists an additive equivalence between $\mathbf{Mod}_R$ and $\mathbf{Mod}_S$. 
 \end{definition}
 
 \begin{theorem}
 If $R$ and $S$ are Morita equivalent, then $K_0(R) \cong K_0(S)$.
 \end{theorem}
-\begin{proof}
-Click \href{http://www.staff.science.uu.nl/~henri105/Seminars/AlgKthy2011Talk3.pdf}{here} for a self-contained proof.
-\end{proof}
 
-Let's move from algebraic to topological $K$-theory.
+\bigskip
+
+
+
+Our results thus far can be extended to symmetric monodical categories because these come equipped with a notion of direct sum that enabled our Grothendieck construction. 
 
 \begin{definition}
-Let $f: F \to X$ and $g: G \to X$ be vector bundles. The \textit{Whitney sum} of $f$ and $g$ is the vector bundle $F \oplus G$ on $X$ whose fiber at $x \in X$ is $F_x \oplus G_x$.  The \textit{tensor product bundle} $F \oplus G$ is defined similarly.
+A \textit{symmetric monoidal category} $S$ is equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and that $e$ acts as an identity. These four isomorphisms must also satisfy certain coherence properties.
+\end{definition}
+
+\begin{exmp} The following are examples of symmetric monoidal category	.
+\begin{enumerate}
+\item $k$-vector spaces with $\otimes_k$.
+\item Any category with finite coproducts where $s \square t\coloneqq s \amalg t$.
+\item The category of pointed topological spaces where $s \square t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
+\end{enumerate} 
+\end{exmp}
+
+Suppose that the class of isomorphism classes of objects of a category $S$ is a set and denote it by $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. In this case, we define the \textit{Grothendieck group} of $S$ as $K_0(S)$.
+
+\section{Topological $K$-theory}
+
+\begin{definition}
+Let $f: F \to X$ and $g: G \to X$ be vector bundles. The \textit{Whitney sum} of $f$ and $g$ is the vector bundle $F \oplus G$ on $X$ whose fiber at $x \in X$ is $F_x \oplus G_x$.  The \textit{tensor product bundle} $F \otimes G$ is defined similarly.
 \end{definition}
 
 \begin{definition}
-A \textit{vector bundle homomorphism} between $\phi : E_1 \to X_1$ and $\psi : E_2 \to X_2$ is a pair of maps $f: E_1 \to E_2$ and $g: X_1 \to X_2$ such that the following conditions holds.
-\begin{enumerate}
-\item 
+A \textit{vector bundle homomorphism} between $\phi : E_1 \to X_1$ and $\psi : E_2 \to X_2$ is a pair of maps $f: E_1 \to E_2$ and $g: X_1 \to X_2$ such that
+\begin{enumerate}[label=(\roman*)]
+\item the square
 \[
 \begin{tikzcd}
 E_1 \arrow[r, "f"] \arrow[d, "\phi"'] & E_2 \arrow[d, "\psi"] \\
 X_1 \arrow[r, "g"'] & X_2
 \end{tikzcd}
-\]
-\item For each $x \in X_1$, the map $f \restriction_{\phi^{{-}1}(x)} : \phi^{{-}1}(x) \to \psi^{{-}1}(g(x))$ is a linear map.
+\] commutes and
+\item for each $x \in X_1$, the map $f \restriction_{\phi^{{-1}}(x)} : \phi^{{-1}}(x) \to \psi^{{-1}}(g(x))$ is linear.
 \end{enumerate}
 \end{definition}
 
-\begin{definition}
-Let $(\vect_{\F}(X), \oplus)$ denote the abelian monoid of (isomorphism classes of) $\F$-vector bundles on the paracompact space $X$. We define $$KU(X) = K(\vect_{\C}(X)) \quad \quad KO(X) = K(\vect_{\R}(X)).$$ Note that these are commutative rings with identity. \textbf{We apply the notation $K_{\topp}(-)$ on topological spaces when we wish to omit the base field.}
+\begin{definition}[Topological $K$-groups]
+Let $\left(\vect_{\F}(X), \oplus\right)$ denote the abelian monoid of (isomorphism classes of) $\F$-vector bundles on a paracompact space $X$. 
+\begin{itemize}
+\item $KU(X) \equiv K(\vect_{\C}(X))$ 
+\item $KO(X) \equiv K(\vect_{\R}(X)).$
+\end{itemize}
 \end{definition}
 
-\begin{remark}
-$KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Define the subspace $f^{\ast}E = \{(y, e) \in Y \times E : f(y) = \phi(e)\}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the restriction of the projection map $\pi : Y \times E \to Y$. Hence we have a morhism $\phi \mapsto f^{\ast}(\phi) \to \vect_{\F}(X)$ to $\vect_{\F}(Y)$ of monoids. The universal property of $K$ induces a unique morphism $f^{\ast}: K_{\topp}(X) \to K_{\topp}(Y)$.
-\end{remark}
+Note that these are commutative rings with identity. 
+
+\smallskip
+
+\begin{center}
+ \textbf{We apply the notation $K_{\topp}(-)$ to topological spaces when we wish to omit the base field.}
+\end{center}
+
+\medskip
+
+Both $KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Recall the pullback $f^{\ast}E = \left\{(y, e) \in Y \times E : f(y) = \phi(e)\right\}$ of $E$ in $\mathbf{Top}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the appropriate restriction of the projection map $\pi : Y \times E \to Y$. The assignment $\phi \mapsto f^{\ast}(\phi)$ defines a morphism  $\vect_{\F}(X) \to \vect_{\F}(Y)$ of monoids. In turn, the universal property of $K$ induces a unique morphism $f^{\ast}: K_{\topp}(X) \to K_{\topp}(Y)$.
+
 
 \begin{lemma}
 If $X$ and $Y$ are homotopy equivalent, then $K(X) \cong K(Y)$.
@@ -455,53 +507,37 @@ The \textit{dimension} of bundle $E$ over $X$ is the continuous homomorphism $\w
 \end{definition}
 
 \begin{definition}
-A vector bundle $p: E \to X$ is a \textit{componentwise trivial bundle} if we can write $X =\coprod X_i$ such that each $X_i$ is a component of $X$ and $p\restriction_{p^{{-}1}(X_i)}$ is trivial. 
+A vector bundle $p: E \to X$ is a \textit{componentwise trivial bundle} if we can write $X =\coprod X_i$ such that each $X_i$ is a component of $X$ and $p\restriction_{p^{{-1}}(X_i)}$ is trivial. 
 \end{definition}
 \begin{lemma}
-The submonoid of componentwise trivial bundles over $X$ is isomorphic to $[X, \N]$.
+The submonoid of componentwise trivial bundles over $X$ is isomorphic to $\left[X, \N\right]$.
 \end{lemma}
 \begin{proof}
-Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N} (f^{{-}1}(i) \times \F)$. Conversely, if $E$ be a componentwise trivial bundle, then $E \cong T^{\widehat{\dim}(E)}$.
+Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N}\left(f^{{-1}}(i) \times \F\right)$. Conversely, if $E$ is a componentwise trivial bundle, then $E \cong T^{\widehat{\dim}(E)}$.
 \end{proof}
 
-\begin{remark}
-Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $\vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), yielding $\Z \leq [X, \Z] \leq K_{\topp}(X)$.
-\end{remark}
+
+Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $\vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), yielding the relations $$\Z \leq [X, \Z] \leq K_{\topp}(X).$$
+
 
 \begin{note} $ $
 \begin{enumerate}
-\item We get a split exact sequence. 
+\item We have a split exact sequence. 
 \[
 \begin{tikzcd}
 1 \arrow[r] & \widetilde{K}_{\topp}(X) \arrow[r] & K_{\topp}(X) \arrow[r, "\widehat{\dim}"'] & {[X, \mathbb Z]} \arrow[r] \arrow[l, hook, bend right] & 1
 \end{tikzcd},
 \] where $\widetilde{K}_{\topp}(X)$ denotes $\ker\left(\widehat{\dim}\right)$.
-\item The map of monoids $\vect_{\R}(X) \to \vect_{\C}(X)$ given by $[E] \mapsto [E \otimes \C]$ extends by universality to a homomorphism $KO(X) \to KU(X)$. Likewise, the forgetful functor $\vect_{\C}(X) \to \vect_{\R}(X)$ extends to a homomorphism $KU(X) \to KO(X)$.
+\item The map of monoids $\vect_{\R}(X) \to \vect_{\C}(X)$ given by $\left[E\right] \mapsto \left[E \otimes \C\right]$ extends by universality to a homomorphism $KO(X) \to KU(X)$. Likewise, the forgetful functor $\vect_{\C}(X) \to \vect_{\R}(X)$ extends to a homomorphism $KU(X) \to KO(X)$.
 \end{enumerate}
 \end{note}
 
-Here is a nice early connection between algebraic and topological $K$-theory. Let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any $E \in \vect_{\F}(X)$, set $\Gamma(X, E) = \{s: X \to E : p \circ s = \id_X\}$, the vector space of global sections of $E$.
+To state a nice early connection between algebraic and topological $K$-theory, let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any vector bundle $p: E \to X$ over $\F$, set $$\Gamma(X, E) = \left\{s: X \to E : p \circ s = \id_X\right\},$$ the vector space of global sections of $E$.
 
-\begin{theorem}[Swan]
+\begin{theorem}[Swan]\label{swan}
 The map $E \mapsto \Gamma(X, E)$ induces isomorphisms $KO(X) \cong K_0(\mathcal C(X, \R))$ and $KU(X) \cong K_0( \mathcal C(X, \C))$.
 \end{theorem}
 
-\smallskip
 
-Our results thus far can be extended to symmetric monodical categories because these come equipped with a notion of direct sum that enabled our Grothendieck construction. 
-
-\begin{definition}
-A \textit{symmetric monoidal category} $S$ is equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and that $e$ acts as an identity. These four isomorphisms must also satisfy certain coherence properties.
-\end{definition}
-
-\begin{exmp} The following are examples of symmetric monoidal category	.
-\begin{enumerate}
-\item $k$-vector spaces with $\otimes_k$.
-\item Any category with finite coproducts where $s \square t\coloneqq s \amalg t$.
-\item The category of pointed topological spaces where $s \square t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
-\end{enumerate} 
-\end{exmp}
-
-Suppose that the class of isomorphism classes of objects of a category $S$ is a set, called $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. Then we define the \textit{Grothendieck group} of $S$ as $K_0(S)$.
 
 \end{document}

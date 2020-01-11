@@ -26,21 +26,22 @@
 \usepackage[capitalise]{cleveref} 
     
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{exmp}[definition]{Example}
 \newtheorem{non-exmp}[definition]{Non-example}
 \newtheorem{note}[definition]{Note}
 
 \theoremstyle{theorem}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{conj}[definition]{Conjecture}
 \newtheorem*{claim}{Claim}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercise}[definition]{Exercise}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[definition]{Remark}
 \newtheorem*{todo}{To do}
 \newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
@@ -166,19 +167,23 @@
 \DeclareMathOperator{\spec}{Spec}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\st}{St}
+\DeclareMathOperator{\wh}{Wh}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Mod}{\mathbf Mod}
 
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{Homotopy and K-theory seminar}
+\class{$K$-theory seminar}
 \assignment{Talk \#10}
 \duedate{October 24, 2018}
 
 \begin{document}
 
 \begin{abstract}
-We continue to do low-dimensional $K$-theory, finishing our description of $K_0(-)$ and then defining $K_1(-)$, and $K_2(-)$ for rings. The main sources for this talk are the following.
+We continue to look at low-dimensional $K$-theory, finishing our description of $K_0(-)$ and then defining $K_1(-)$, and $K_2(-)$ for rings. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab.
 \item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory}, Chapters II and III.
@@ -186,6 +191,9 @@ We continue to do low-dimensional $K$-theory, finishing our description of $K_0(
 \end{itemize}
 \end{abstract}
 
+\smallskip
+
+\section{$K_0$ of a Waldhausen category}
 
 \begin{definition}
 Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $(\c, co)$ is a \textit{category with cofibrations} if the following conditions hold.
@@ -202,12 +210,12 @@ C \arrow[r, dotted, tail] & B \cup_A C
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
-We see that $B \coprod C$ always exists as the pushout $B \cup_0 C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A 0$ along $A \to 0$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofibration sequence}.
-\end{remark}
+
+Note that $B \coprod C$ always exists as the pushout $B \cup_0 C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A 0$ along $A \to 0$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofibration sequence}.
+
 
 \begin{definition}
-A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w(\c)$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``Glueing axiom'' holds.
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w(\c)$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a w.e. and the following ``glueing axiom'' holds.
 \begin{enumerate}
 \item (W3) For any diagram
 \[
@@ -270,18 +278,19 @@ Apply condition (2) to any $0 \rightarrowtail B$ to get $FA' \overset{\sim}{\lon
 0 & B \arrow[r, tail] \arrow[l] & C
 \end{tikzcd}.
 \]
-Apply the Glueing axiom to see that $F\left(\faktor{A'}{A}\right) \to \faktor{C}{B}$ is a w.e. Hence $[C] = [B] + \left[\faktor{C}{B}\right]$
+Apply the glueing axiom to see that $F\left(\faktor{A'}{A}\right) \to \faktor{C}{B}$ is a w.e. Hence $[C] = [B] + \left[\faktor{C}{B}\right]$
  holds iff $[A'] = [A] + \left[\faktor{A'}{A}\right]$ holds.
 \end{proof}
 
-\bigskip
+
+\section{$K_1$ for rings}
 
 
 Let $R$ be a unital ring. Recall that direct limits in $\Mod_R$ always exist. Let $$K_1 = \GL(R)^{\ab}$$ where $\GL(R) \equiv\colim_n \GL(n, R)$.
 
-\begin{remark}
+\begin{note}[Universal property of $K$]
 The universal property of $\ab: \mathbf{Grp} \to \Ab$ induces the universal property of $K_1$ that any homomorphism $f: \GL(R) \to H$ with $H$ abelian has $f = g \circ \pi$ for some unique $g: K_1(R) \to H$.
-\end{remark}
+\end{note}
 
 \begin{prop}
 Any ring map $f: R \to S$ induces a natural map $\GL(R) \to \GL(S)$. Hence $K_1$ is a functor $\mathbf{Rng} \to \Ab$.
@@ -305,8 +314,10 @@ Suppose $R$ is commutative. Consider the sequence $R^{\times} \cong \GL(1, R) \t
 1 \arrow[r] & SK_1(R) \arrow[r, hook] & K_1(R) \arrow[r, "\det"] & R^{\times} \arrow[r] & 1,
 \end{tikzcd}
 \]
-where $SK_1(R)$ denotes $\ker(\det)$. Therefore, $K_1(R) \cong R^{\times} \times SK_1(R)$.
+where $SK_1(R)$ denotes $\ker(\det)$.
 \end{prop}
+
+This means that $K_1(R) \cong R^{\times} \times SK_1(R)$.
 
 \begin{exmp}
 Suppose $R$ is a Euclidean domain. Then $SK_1(R) =1$, so that $K_1(R) \cong R^{\times}$.
@@ -319,24 +330,31 @@ Let $D$ be a division ring. Then $K_1(D) \cong \faktor{\GL_n(D)}{E_n(D)}$ for an
 Any invertible matrix over $D$ is reducible (a la Gaussian elimination) to a diagonal matrix of the form $(r, 1, \ldots, 1)$. Moreover, $E_n(D)\unlhd \GL_n(D)$ for each $n$. In particular, Dieudonn\'e (1943) showed that  $\faktor{\GL_n(D)}{E_n(D)} \cong \faktor{D^{\times}}{(D^{\times})'}$ for any $n\ne 2$. 
 \end{proof}
 
+\smallskip
+
+Now, suppose that $R$ is Noetherian of dimension $d$, so that $E_n(R)\unlhd \GL_n(R)$ for any $n\geq d+2$. 
+
 \begin{prop}[Vaserstein]
-Suppose $R$ is Noetherian of dimension $d$, so that $E_n(R)\unlhd \GL_n(R)$ for any $n\geq d+2$. Then $K_1(R) \cong \faktor{\GL_n(R)}{E_n(R)}$ for any $n \geq d+2$. 
+$K_1(R) \cong \faktor{\GL_n(R)}{E_n(R)}$ for any $n \geq d+2$. 
 \end{prop}
 
-\begin{remark}
-Let $D$ be a $d$-dimensional division algebra over the field $F\coloneqq Z(D)$. We know that $d =n^2$ for some integer $n$. By Zorn there is some maximal subfield $E\subset D$ such that $[E : F] = n$. Then $D \otimes_F E \cong M_n(E)$, where $M_n$ denotes the $n$-dimensional matrix ring over $E$. Any field with this property is called a \textit{splitting field} for $D$.
-\end{remark}
+\medskip
 
-\begin{definition}
+
+Let $D$ be a $d$-dimensional division algebra over the field $F\coloneqq Z(D)$. We know that $d =n^2$ for some integer $n$. By Zorn's lemma, there is some maximal subfield $E\subset D$ such that $[E : F] = n$. Then $D \otimes_F E \cong M_n(E)$, where $M_n$ denotes the $n$-dimensional matrix ring over $E$. Any field with this property is called a \textit{splitting field} for $D$.
+
 Let $E'$ be a splitting field for $D$. For any $r \in \N$, the inclusions $D \hookrightarrow M_n(E')$ and $M_r(D) \hookrightarrow M_{nr}(E')$ induce maps $D^{\times}\subset \GL_n(E') \overset{\det}{\longrightarrow} (E')^{\times}$ and $\GL_r(D)\to \GL_{nr}(E')  \overset{\det}{\longrightarrow} (E')^{\times}$ whose images are contained in $F^{\ast}$. The induced maps are called the \textit{reduced norms} $N_{\red}$ for $D$.
-\end{definition}
 
 \begin{exmp}
 If $D = \H$, then $N_{\red}$ is the square of the usual norm. It induces an isomorphism $K_1(\H) \cong \R_+^{\times}$.
 \end{exmp}
 
-\begin{prop}
-Let $R$ be a commutative Banach algebra over $\R$ or $\C$. Recall that $\GL_n(R)$ and $\SL_n(R)$ are topological groups as subspaces of $\R^{n^2}$. We have that $E_n(R)$ is the path component of the identity matrix $I_n$ for any $n\geq 2$.
+\medskip
+
+Let $R$ be a commutative Banach algebra over $\R$ or $\C$. Recall that $\GL_n(R)$ and $\SL_n(R)$ are topological groups as subspaces of $\R^{n^2}$. 
+
+\begin{prop}\label{prev}
+We have that $E_n(R)$ is the path component of the identity matrix $I_n$ for any $n\geq 2$.
 \end{prop}
 
 \begin{corollary}
@@ -349,7 +367,7 @@ Note that $E(R)\leq \SL_(R)$. By the third isomorphism theorem, we get $$ \fakto
 1 \arrow[r] & \faktor{\SL(R)}{E(R)} \arrow[r] & \faktor{\GL(R)}{E(R)}\cong K_1(R) \arrow[r] & \faktor{\GL(R)}{\SL(R)} \cong R^{\times} \arrow[r] & 1
 \end{tikzcd}
 \]
-By the previous proposition, we know that $\faktor{\SL(R)}{E(R)} \cong \pi_0\SL(R)$, giving the short exact sequence.
+By \cref{prev}, we know that $\faktor{\SL(R)}{E(R)} \cong \pi_0\SL(R)$, yielding a short exact sequence.
 \[
 \begin{tikzcd}
 1 \arrow[r] & \pi_0\SL(R) \arrow[r] & K_1(R) \arrow[r, "\det"] & R^{\times} \arrow[r] & 1
@@ -357,47 +375,53 @@ By the previous proposition, we know that $\faktor{\SL(R)}{E(R)} \cong \pi_0\SL(
 \]
 \end{proof}
 \begin{exmp} $ $
-If $X$ is compact, then $SK_1(\R^X) \leftrightarrow [X, \SL(\R)] \cong [X, \SO]$ and $SK_1(\C^X) \leftrightarrow [X, \SL(\C)] \cong [X, \SU]$.
+If $X$ is compact, then 
+\begin{align*}
+SK_1(\R^X) &\leftrightarrow [X, \SL(\R)] \cong [X, \SO]
+\\ SK_1(\C^X) &\leftrightarrow [X, \SL(\C)] \cong [X, \SU].
+\end{align*}
 In particular, $SK_1(\R^{S^1}) \leftrightarrow \pi_1 \SO \cong C_2$.
 \end{exmp}
 
-\begin{remark}
-Let $P$ be a finitely generated projective $R$-module. Each isomorphism $P \oplus Q \cong R^n$ induces a group map $\aut(P) \to \aut(P) \oplus \aut(Q) \cong \aut(R^n) \cong \GL_n(R)$. The group map $\aut(P) \to \GL(R)$ is independent of the choice of isomorphism up to inner automorphism of $\GL(R)$. Therefore, there is a well-defined homomorphism $\Phi: \aut(R) \to K_1(R)$.
-\end{remark}
+\smallskip
+
+
+Let $P$ be a finitely generated projective $R$-module. Each isomorphism $P \oplus Q \cong R^n$ induces a group map $$\aut(P) \to \aut(P) \oplus \aut(Q) \cong \aut(R^n) \cong \GL(n,R).$$ The group map $\aut(P) \to \GL(R)$ is independent of the choice of isomorphism up to inner automorphism of $\GL(R)$. Therefore, there is a well-defined homomorphism $\Phi: \aut(R) \to K_1(R)$.
+
 
 \begin{lemma}
 Suppose that $R$ is commutative and $T$ is an $R$-algebra. Then $K_1(T)$ has a natural module structure over $K_0(R)$.
 \end{lemma}
 \begin{proof}
-By the previous remark, for any $P \in \P(R)$ and $m\in \N$, there is a homomorphism $\Phi : \aut(P \otimes T^m) \to K_1(R\otimes T).$ For any $\beta \in \GL_m(T)$, define $[P] \cdot \beta = \Phi(1_P \otimes \beta)$. This action factors through $K_0(R)$ and $K_1(T)$, inducing an operation $K_0(R) \times K_1(T) \to K_1(R \otimes S)$. Now, since $T$ is an $R$-algebra, there is a ring map $R\otimes T \to T$. The induced composite $K_0(R) \times K_1(T) \to K_1(R \otimes T) \to K_1(T)$ is the desired module structure.
+For any $P \in \P(R)$ and $m\in \N$, consider the homomorphism $\Phi : \aut(P \otimes T^m) \to K_1(R\otimes T).$ For any $\beta \in \GL_m(T)$, let $$[P] \cdot \beta = \Phi(1_P \otimes \beta).$$This action factors through $K_0(R)$ and $K_1(T)$, inducing an operation $K_0(R) \times K_1(T) \to K_1(R \otimes S)$. Now, since $T$ is an $R$-algebra, there is a ring map $R\otimes T \to T$. The induced composite $K_0(R) \times K_1(T) \to K_1(R \otimes T) \to K_1(T)$ is the desired module structure.
 \end{proof}
 
+\medskip
+
+As it turns out, $K_1(R)$ is completely determined by the category $\P(R)$. This means that $K_1$ is invariant under Morita equivalence, just as $K_0$ is.
+
 \begin{theorem}
-One can show that $K_1(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
+ if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
 \end{theorem}
 
 \smallskip
 
-Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $Wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $\left(g, \pm 1\right)\mapsto \left(\pm g\right)$. 
+Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $\wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $\left(g, \pm 1\right)\mapsto \left(\pm g\right)$. 
 
 \begin{theorem}
-A homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the \textit{Whitehead torsion} $\tau$, which is a certain function from continuous maps to $Wh_1(\pi)$.
+A homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the so-called \textit{Whitehead torsion} $\tau$ (which is a certain function from continuous maps to $\wh_1(\pi)$).
 \end{theorem}
 
 \begin{theorem}[The $s$-cobordism theorem]
-Suppose that $W$, $M$, and $N$ are compact PL-manifolds and that $W$ is a cobordism of $M$ and $N$. Then if $\dim(M) \geq 5$, it follows that $(W, M, N) \cong (M \times [0, 1], M \times 0, M \times 1)$ iff $\tau= 0$.
+Suppose that $W$, $M$, and $N$ are compact PL-manifolds and that $W$ is a cobordism of $M$ and $N$. If $\dim(M) \geq 5$, then $\left(W, M, N\right) \cong \left(M \times [0, 1], M \times 0, M \times 1\right)$ iff $\tau= 0$.
 \end{theorem}
 
 \begin{corollary}
-Let $A$ denote the disjoint union of $W$, $CM$, and $CN$. Then $N$ is PL-homeomorphic to $\Sigma M$ iff $\tau = 0$ (even though they are homeomorphic as spaces).
-\end{corollary}
-
-\begin{corollary}
-The Generalized Poincar\'e Conjecture holds.
+The generalized Poincar\'e conjecture.
 \end{corollary}
 
 \begin{definition}
-Let $I$ is an ideal in $R$. Define $GL(I)$ as the kernel of the map $\GL(R) \to \GL\left(\faktor{R}{I}\right)$. Moreover, define $E(R, I)$ as the smallest normal subgroup of $E(R)$ that contains $E_{i, j}(x)$ for $r\in I$ and $i\ne j$.
+Let $I$ is an ideal in $R$. Define $\GL(I)$ as the kernel of the map $\GL(R) \to \GL\left(\faktor{R}{I}\right)$. Moreover, define $E(R, I)$ as the smallest normal subgroup of $E(R)$ that contains $E_{i, j}(x)$ for $r\in I$ and $i\ne j$.
 \end{definition}
 
 \begin{prop}
@@ -409,11 +433,11 @@ The \textit{relative group} $K_1(R, I)$ is the the abelian group $\faktor{\GL(I)
 \end{definition}
 
 \begin{remark}
-Swan has shown that a ring homomorphism $f: R\to S$ that maps the ideal $I$ isomorphically to the ideal $J$ need not induce an isomorphism $K_1(R, I) \to K_1(S, J)$.
+Swan has shown that a ring homomorphism $f: R\to S$ mapping the ideal $I$ isomorphically to the ideal $J$ need \emph{not} induce an isomorphism $K_1(R, I) \to K_1(S, J)$.
 \end{remark}
 
 \begin{prop}
-There is an exact sequence 
+We have an exact sequence 
 \[
 \begin{tikzcd}
 {K_1(R, I)} \arrow[r] & K_1(R) \arrow[r] & K_1\left(\faktor{R}{I}\right) \arrow[r] & K_0(I) \arrow[r] & K_0(R) \arrow[r] & K_0\left(\faktor{R}{I}\right)
@@ -421,12 +445,15 @@ There is an exact sequence
 \]
 \end{prop}
 
+\section{$K_2$ for rings}
+
 \begin{definition}
-Let $n\geq 3$ and $R$ be a ring. The \textit{Steinberg group} $St_n(R)$ is the group generated by the symbols $x_{ij}(r)$ with $1\leq i\ne j\leq n$ and $r\in R$ that satisfy the following relations.
+Let $n\geq 3$ and $R$ be a ring. The \textit{Steinberg group} $\st_n(R)$ is the group generated by the symbols $x_{ij}(r)$ with $1\leq i\ne j\leq n$ and $r\in R$ that satisfy the following relations.
 \begin{enumerate}
 \item $$x_{ij}(r)x_{ij}(s) = x_{ij}(r+s)$$
 \item 
-\[ [x_{ij}(r), x_{kl}(s)] = 
+\[
+\left[x_{ij}(r), x_{kl}(s)\right] = 
 \begin{cases}
 1 & j\ne k, \quad i\ne l \\
 x_{il}(rs) & j= k, \quad i\ne l \\
@@ -437,29 +464,30 @@ x_{kj}(-sr) & j \ne k, \quad i=l
 
 \smallskip
 
-There is a natural group surjection $\phi_n : St_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $St_n(R) \hookrightarrow St_{n+1}(R)$. Note that $St(R)\coloneqq \colim_n St_n(R)$ exists. The $\phi_n$ thus form a group epimorphism $\phi : St(R) \to E(R)$.
+We have a natural group surjection $\phi_n : \st_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $\st_n(R) \hookrightarrow \st_{n+1}(R)$. Note that $\st(R)\coloneqq \colim_n \st_n(R)$ exists. The $\phi_n$ thus form a group epimorphism $\phi : \st(R) \to E(R)$.
+Let \begin{align*}
+K_2(n, R) &= \ker \phi_n
+\\K_2(R)  &= \ker \phi.
+\end{align*} 
 
-
-Let $K_2(R)  = \ker \phi$. We have an exact sequence
+Note that
+$K_2(-)$ is a functor  $\mathbf{Rng} \to \Ab$. Furthermore, we have an exact sequence
 \[
 \begin{tikzcd}
-1 \arrow[r] & K_2(R) \arrow[r] & St(R) \arrow[r, "\phi"] & GL(R) \arrow[r] & K_1(R) \arrow[r] & 1
+1 \arrow[r] & K_2(R) \arrow[r] & \st(R) \arrow[r, "\phi"] & \GL(R) \arrow[r] & K_1(R) \arrow[r] & 1
 \end{tikzcd}.
 \]
 
 
 \begin{lemma}
-$K_2(R) = Z(St(R))$.
+$K_2(R) \cong Z(\st(R))$.
 \end{lemma}
 \begin{proof}
-That $K_2(R) \supset Z(St(R))$ follows from the fact that $Z(E(R))$ is trivial. The reverse containment is easy but more tedious to prove. See III.5.2.1 (Weibel).
+The fact that $K_2(R) \supset Z(\st(R))$ follows from the fact that $Z(E(R))$ is trivial. The reverse containment is easy but more tedious to prove. See III.5.2.1 (Weibel).
 \end{proof}
 
-Note that
-$K_2(-) : \mathbf{Rng} \to \Ab$ is a functor.
 
-
-\begin{exmp} A sort of Euclidean algorithm yields the following computations.
+\begin{exmp} A certain sort of Euclidean algorithm yields the following computations.
 \begin{enumerate}
 \item $K_2(\Z) \cong C_2$
 \item $K_2(\Z[i]) =1$
@@ -467,20 +495,23 @@ $K_2(-) : \mathbf{Rng} \to \Ab$ is a functor.
 \end{enumerate}
 \end{exmp}
 
+\smallskip
+
+
 \begin{theorem}
-Let $K_2(n, R) = \ker \phi_n$. Suppose that $R$ is Noetherian of dimension $d$. Then $K_2(n, R) \cong K_2(R)$ for any $n\geq d +3$.
+ Suppose that $R$ is Noetherian of dimension $d$. Then $K_2(n, R) \cong K_2(R)$ for any $n\geq d +3$.
 \end{theorem}
 
 \begin{theorem}
-One can show that $K_2(R)$ is determined by the category $\P(R)$. Thus, if $R$ and $S$ are Morita equivalent, then $K_2(R) \cong K_2(R)$.
+If $R$ and $S$ are Morita equivalent, then $K_2(R) \cong K_2(R)$.
 \end{theorem}
 
 \begin{exmp}
-$R$ and $S\coloneqq M_n(R)$ are Morita equivalent for any $n\geq 1$, so that $K_i(R) \cong K_i(M_n(R))$ for $i=0, 1, 2$. Such an equivalence is given as follows. In one direction, define $F: M \mapsto M^n$. In the other direction, define $G: M \mapsto e_{11}M$ where $e_11$ denotes the matrix with $1$ in position $(1, 1)$ and $0$ elsewhere. Define the natural isomorphism $\id_{\Mod_R} \Rightarrow G\circ F$ by the components $f_M : M \to \left\{(m, 0, \ldots, 0) : m \in M\right\}$. Further, define the natural isomorphism $\id_{\Mod_S} \Rightarrow F\circ G$ by the components  $g_M : M \to (e_{11}M)^n$ given by $m\mapsto (e_{11}m, \ldots, e_{1n}m)$. Hence $\Mod_R$ and $\Mod_S$ are equivalent, hence Morita equivalence as they are preadditive.
+Let $n\in \Z_{\geq 1}$. Let $R$ be any ring and let $S= M_n(R)$. These are Morita equivalent, so that $$K_i(R) \cong K_i(M_n(R))$$ for each $i=0, 1, 2$. Indeed, in one direction, define $F: M \mapsto M^n$. In the other direction, define $G: M \mapsto e_{11}M$ where $e_11$ denotes the matrix with $1$ in position $(1, 1)$ and $0$ elsewhere. Define the natural isomorphism $\id_{\Mod_R} \Rightarrow G\circ F$ by the components $f_M : M \to \left\{(m, 0, \ldots, 0) : m \in M\right\}$. Further, define the natural isomorphism $\id_{\Mod_S} \Rightarrow F\circ G$ by the components  $g_M : M \to (e_{11}M)^n$ given by $m\mapsto \left(e_{11}m, \ldots, e_{1n}m\right)$. Hence $\Mod_R$ and $\Mod_S$ are equivalent, hence Morita equivalence as they are preadditive.
 \end{exmp}
 
 \begin{lemma}
-Let $R$ be a commutative Banach algebra. Then there is a surjection from $K_2(R)$ onto $\pi_1\SL(R)$.\footnote{See III.5.9 (Weibel).} 
+Let $R$ be a commutative Banach algebra. Then there is a surjection from $K_2(R)$ onto $\pi_1\SL(R)$.\footnote{III.5.9 (Weibel).} 
 \end{lemma}
 
 \begin{exmp}
@@ -489,7 +520,7 @@ There is a surjection $K_2(\R) \to \pi_1 \SL_(\R) \cong \pi_1\SO \cong C_2$. Hen
 
 \begin{theorem}[Matsumoto 1969]
 Let $F$ be a field. Then $K_2(F)$ is isomorphic to the free abelian group with system of generators $\{a, b\}$  satisfying the following relations.
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*)]
 \item $\{ac, b\} = \{a, b\}\{c, b\}$
 \item $\{a, bd\} = \{a, b\}\{a, d\}$
 \item $\{a, 1-a\}=1$ when $a \ne 1 \ne 1-a$.
@@ -504,19 +535,19 @@ The $\{a,b\}$ are called \textit{Steinberg symbols}.
 
 Suppose that $A, B \in E(F)$ commute. Write $\phi(a) =A$ and $\phi(b) = B$. Then define $$A \bigstar B =[a,b] \in K_2(R).$$ If $a,b\in F$, then we can alternatively define the Steinberg symbol $$\{a, b\} = \begin{bmatrix}
     r & & \\
-    & r^{{-}1} & \\
+    & r^{{-1}} & \\
     & & 1
   \end{bmatrix}
  \bigstar
   \begin{bmatrix}
     s & & \\
     & 1 & \\
-    & & s^{{-}1}
+    & & s^{{-1}}
   \end{bmatrix}
  .$$
 
 \begin{corollary}
-$K_2(\F_p^n) =1$ for any prime $p$ and $n\geq 1$.
+$K_2(\F_p^n) =1$ for any prime $p$ and any integer $n\geq 1$.
 \end{corollary}
 \begin{proof}
 The proof is entirely computational. See III.6.1.1 (Weibel).

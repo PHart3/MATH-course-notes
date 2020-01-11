@@ -136,6 +136,8 @@
 \newcommand{\jhat}{\bm{\hat{\jmath}}}
 \newcommand{\hhat}{\bm{\hat{k}}}
 
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
 \class{August 10, 2017}
@@ -143,24 +145,25 @@
 \begin{document}
 
 \begin{abstract}
-We briefly describe the group of isometries of $\C^2\cong \R^4$. In particular, we give both algebraic and topological characterizations of five important subgroups. 
+We briefly describe the isometries of $\C^2$. In particular, we classify five important groups of such maps in the category $\mathbf{Top}$ of topological spaces. 
 \end{abstract}
 
-Let $\left(\C^2, \| \cdot \|\right)$ denote the normed vector space $\C^2$ over $\R$ where $\|\cdot\| : \C^2\to \left[0,\infty\right)$ is given by  $$\|(z,w) \|=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\|\cdot\|$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T$ given by 
+\smallskip
+
+\section{Isometries of $\C^2$ over $\R$}
+
+If $M$ is a metric space, then let $\Isom(M)$ denote the set of all isometries of $M$. For now, let $\left(\C^2, \| \cdot \|\right)$ denote the normed vector space $\C^2$ over $\R$ where $\|\cdot\| : \C^2\to \left[0,\infty\right)$ is given by  $$\|(z,w) \|=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\|\cdot\|$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T: \C^2 \to \R^4$ given by 
 \[ \label{eqn:T}
-(a+bi, a'+b'i)\mapsto (a,a',b,b')
+\left(a+bi, a'+b'i\right)\mapsto \left(a,a',b,b'\right)
 \tag{$\ast$}.\] 
 
-\begin{notation}
-The symbol $\bullet$ denote the Euclidean inner product as well.
-\end{notation}
 
-	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $d(\v, \x)=\|\v-\x\|=\|T(\v) -T(\x) \|=d'(T(\v), T(\x))$ for any $\v, \x \in \C^2$. Likewise, we see that $d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$ for any $\y, \z \in \R^4$.
-Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Isom(\C^2)\cong \Isom(\R^4)$, provided that both $\Isom(\C^2)$ and $\Isom(\R^4)$ are groups under composition. Certainly they are closed under composition and contain the identity map. Also, every isometry $f$ of a given metric space $\left(X, \rho\right)$ must be injective. Indeed, if $x\ne y$ but $f(x)=f(y)$, then $\rho(x,y)\ne 0 = \rho(f(x),f(y))$, which is impossible. Since the inverse of $f$ must also be an isometry, it just remains to show that $f$ is surjective in order to prove that the two are in fact groups. We do this below. 
+	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $$d(\v, \x)=\|\v-\x\|=\|T(\v) -T(\x) \|=d'(T(\v), T(\x))$$ for any $\v, \x \in \C^2.$ Likewise, we see that $$d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$$ for any $\y, \z \in \R^4$.
+Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Isom(\C^2) \overset{\cong}{\longrightarrow} \Isom(\R^4)$, provided that both $\Isom(\C^2)$ and $\Isom(\R^4)$ are, in fact, groups under composition. Certainly they are closed under composition and contain the identity map. Also, every isometry $f$ of a given metric space $\left(X, \rho\right)$ must be injective. Indeed, if $x\ne y$ but $f(x)=f(y)$, then $\rho(x,y)\ne 0 = \rho(f(x),f(y))$, which is impossible. Since the inverse of $f$ must also be an isometry, it just remains to show that $f$ is surjective in order to prove that the two are groups. This is the content of \cref{c12} below. 
 
 \medskip
 
-Let $\ORT(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0\right\}$. For each $\v\in \R^4$, define $T_{\v}:\R^4\to \R^4$ by $\x \mapsto \x + \v$.
+Consider the group $\ORT(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0\right\}$. For each $\v\in \R^4$, define $T_{\v}:\R^4\to \R^4$ by $\x \mapsto \x + \v$.
 
 \begin{lemma}\label{l1}
 Any $A\in \Isom(\R^4)$ can be  written uniquely as $T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. 
@@ -187,6 +190,12 @@ A matrix  $X\in \M^4(\R)$ is \textit{orthogonal} if its column vectors are ortho
 \begin{proof}
 We have that $X\v \bullet X\w=\v\bullet X^TX\w=\v \bullet I\w =\v \bullet \w$.
 \end{proof}
+
+\smallskip
+
+\begin{notation}
+The symbol $\bullet$ will denote the Euclidean inner product.
+\end{notation}
 
 \begin{cor}\label{c2}
 
@@ -221,7 +230,7 @@ Soon we shall prove that $\ORT(4)\subset \GL(4,\R)$. Therefore, it makes sense t
 Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We are now ready to establish a so-called \textit{TRF-decomposition} of $\Isom(\R^4)$. 
 
 \begin{theorem}\label{t1}
-Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we can write $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
+Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we have $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
 \end{theorem}
 \begin{proof}
  By \cref{l1}, we can write $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $\|\x-\y \|^2=\|g(\x)-g(\y) \|^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $\|g(\v)\|=\v$ for any $\v\in \R^4$.
@@ -237,7 +246,7 @@ Now, it follows that $\|g(\e_i)\|^2=\|\e_i \|^2=1$ for each $i=1,2,3,4$, so that
 Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
 
 By \cref{c2}, $\det(g)=\pm 1$. If $\det(g)=1$, then $g\in \SO(4)$, and we're done. Assume that $\det(g)=-1$. 
- Note that the reflection $$\phi(a,b,c,d)\equiv (a,b,c,-d)$$ is given by the matrix $$S\coloneqq\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0&1&0&0\\ 0 & 0 &1 & 0 \\ 0 & 0 &0 &-1 \end{bmatrix}.$$ Since it's clear that $\phi \in \ORT(4)$, we see that $g\circ \phi\in \ORT(4)$. Also, $\det(gS)=\det(g)\det(S)=(-1)(-1)=1$. Therefore, $g\circ \phi \in \SO(4)$. Since $\phi = \phi^{-1}$, it follows that $(g\circ \phi)\circ \phi= g\circ (\phi^2)=g$. Now, set $R'=g\circ \phi$ and $\F=\phi$, thereby completing out proof.
+ Note that the reflection $$\phi(a,b,c,d)\equiv (a,b,c,-d)$$ is given by the matrix $$S\coloneqq\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0&1&0&0\\ 0 & 0 &1 & 0 \\ 0 & 0 &0 &-1 \end{bmatrix}.$$ Since it's clear that $\phi \in \ORT(4)$, we see that $g\circ \phi\in \ORT(4)$. Also, $\det(gS)=\det(g)\det(S)=(-1)(-1)=1$. Therefore, $g\circ \phi \in \SO(4)$. As $\phi = \phi^{-1}$, it follows that $(g\circ \phi)\circ \phi= g\circ (\phi^2)=g$. Now, set $R'=g\circ \phi$ and $\F=\phi$, thereby completing out proof.
 
 
 \end{proof}
@@ -260,14 +269,14 @@ We have that
 A function $f$ is an element of $\Isom(\R^4)$ if and only if there exist $M\in \ORT(4)$ and $\b \in \R^4$ such that for any $\x\in \R^4$, $f(\x)=M\x+\b$. In this case, $M=R'\circ \F$ with notation as in \cref{t1}.
 \end{cor}
 
-\begin{cor}
+\begin{cor}\label{c12}
 Every  $f\in \Isom(\R^4)$ and every $g\in \Isom(\C^2)$ are invertible, so that  both $\Isom(\C^2)$ and $\Isom(\R^4)$ are groups under composition. 
 \end{cor}
 
 \begin{proof}
 Thanks to \cref{af}, we can write $f(\x)=M\x+\b$. Then it's easy to verify that $f^{-1}(\x)=M^{-1}\x-M^{-1}\b$.
 
-Moreover, with $T$ given by \eqref{eqn:T}, we find that $g=T\circ h \circ T^{-1}$ for some $h\in \Isom(\R^4)$. Hence $g$ is the composition of three invertible functions and thus is invertible. 
+Moreover, with $T$ given by \eqref{eqn:T}, we find that $g=T\circ h \circ T^{-1}$ for some $h\in \Isom(\R^4)$. Hence $g$ is the composite of three invertible functions and thus is invertible. 
 \end{proof}
 
 
@@ -279,17 +288,17 @@ The  decomposition of $A$ given in \cref{t1} is unique.
 Suppose $A(\x)=M\x +\b =M'\x+\b'$ for every $\x\in \R^4$. Then $\b =\b'$, so that $M=M'$.  Moreover, if $M=T\circ \F$ for some $T\in \SO(4)$, then $T=M\circ \F$. This shows that the decomposition $A=T_{A(\0)}\circ g\circ \F$ given in \cref{t1}  is, indeed,  unique.
 \end{proof}
 
-\medskip
+\section{Isometries of $\C^2$ over $\C$}
 
-Recall that the Hermitian inner product $H:\C^2 \times \C^2 \to [0,\infty)$ is defined by $H(x,y)=x_1\bar{y}_1+x_2\bar{y}_2$.
+Now, view $\C^2$ as a two-dimensional vector space over $\C$. Recall that the Hermitian inner product $H:\C^2 \times \C^2 \to [0,\infty)$ is defined by $H(x,y)=x_1\bar{y}_1+x_2\bar{y}_2$.
 
 \begin{definition}
 For any $n\in \N$, a matrix $X\in \M^n(\C)$ is \textit{unitary} if its column vectors are orthonormal with respect to $H$.  
 \end{definition}
 
-\begin{notation}
-Let $\U(n)$ denote the set of such matrices. 
-\end{notation}
+
+Let $\U(n)$ denote the set of all unitary matrices. \Cref{l18} below indicates that these are isometries of $\C^2$.
+
 
 \begin{prop}
 The following are equivalent.
@@ -303,15 +312,15 @@ The following are equivalent.
 \end{cor}
 
 \begin{proof}
-First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group because the complex modulus is multiplicative and $|z|=1\implies \lvert{z^{-1}}\rvert=\frac{\lvert{\bar{z}}\rvert}{\lvert{z}\rvert^2}=1$. Next, consider $\U(2)$. It suffices to verify closure. If $A,B\in \U(2)$, then $(AB)^\ast(AB)=B^\ast A^\ast AB=B^\ast B=I$, and thus  $AB\in \U(2)$.
+First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group because the complex modulus is multiplicative and $|z|=1\implies \lvert{z^{-1}}\rvert=\frac{\lvert{\bar{z}}\rvert}{\lvert{z}\rvert^2}=1$. Next, consider $\U(2)$. It suffices to verify closure. If $A,B\in \U(2)$, then $$(AB)^\ast(AB)=B^\ast A^\ast AB=B^\ast B=I,$$ and thus  $AB\in \U(2)$.
 \end{proof}
 
-\begin{remark}
-$\U(2)$ is nonabelian.
-\end{remark}
-\begin{proof}
-Let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\begin{bmatrix} 0 & 1 \\  1 & 0\end{bmatrix}$. These are unitary, but  $0\ne AB={-B}A$.
-\end{proof}
+\smallskip
+
+Note that
+$\U(2)$ is nonabelian. Indeed, 
+let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\begin{bmatrix} 0 & 1 \\  1 & 0\end{bmatrix}$. These are unitary, but  $0\ne AB={-B}A$.
+
 
 \begin{cor}\label{unitnorm}
 Every $2\times 2$ unitary matrix $X$ has $\lvert{\det(X)}\rvert=1$, where $\lvert{\cdot}\rvert$ denote the complex modulus.   
@@ -321,14 +330,14 @@ Every $2\times 2$ unitary matrix $X$ has $\lvert{\det(X)}\rvert=1$, where $\lver
 We have that $1=\det(I)=\det(XX^\ast)= \det(X)\det(X^\ast)=\det(X)\overline{\det(X)}=\lvert{\det(X)}\rvert$.
 \end{proof}
 
-\smallskip
+\medskip
 
 From a linear-algebraic perspective, we see that $\U(2)$ is the complex analogue of $\ORT(4)$. Group-theoretically, however, we can construct an embedding $F: \U(2) \hookrightarrow \SO(4)$ as follows.\footnote{As a result, $\SO(4)$ is nonabelian and hence not isomorphic to $\SO(2).$} For each $M\in \U(2)$, write $$M=\begin{bmatrix} a_1+b_1i & a_2+b_2i \\ a_3+b_3i & a_4+b_4i \end{bmatrix}=\begin{bmatrix} a_1 & a_2 \\ a_3 & a_4 \end{bmatrix} +i \begin{bmatrix} b_1 & b_2 \\ b_3 & b_4\end{bmatrix}=A+iB$$ and set $F(M)=\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}$. It's easy to verify that $F(M)$ is orthogonal.
 Also, note that 
 \begin{align*}
-\det(F(M))& =1\cdot \det \big (\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix} \big )\cdot 1
-\\ & = \det \big (\begin{bmatrix} I & 0 \\ iI & I\end{bmatrix}\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}\begin{bmatrix} I & 0 \\ -iI & I\end{bmatrix} \big )
-\\ & =\det \big (\begin{bmatrix} A +iB& {-B} \\ 0 & A-iB \end{bmatrix} \big )
+\det(F(M))& =1\cdot \det \left(\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix} \right)\cdot 1
+\\ & = \det \left(\begin{bmatrix} I & 0 \\ iI & I\end{bmatrix}\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}\begin{bmatrix} I & 0 \\ -iI & I\end{bmatrix} \right)
+\\ & =\det \left(\begin{bmatrix} A +iB& {-B} \\ 0 & A-iB \end{bmatrix} \right)
 \\ & =\det(A+iB)\det(A-iB)
 \\ &= \det(A)^2 + \det(B)^2
 \\ & =\lvert{\det(M)}\rvert^2=1
@@ -341,12 +350,17 @@ Furthermore, if $F(M)\in \ker(F)$, then $A=I_2$ and $B=0_{2}$, i.e., $M=I_2$. He
 
 In fact, the  $2\times 2$ unitary matrices are precisely those elements of $\SO(4)$ which preserve the Hermitian inner product $H$. This provides us with a geometric distinction between $\U(2)$ and $\SO(4)$.
 
-\begin{lemma}
+\begin{lemma}\label{l18}
 The map $R\in \M^2(\C)$ satisfies $H(R(x), R(y))=H(x,y)$ for any $x,y\in \C^2$ if and only if  $R\in \U(2)$.
 \end{lemma}
 
 \begin{proof}
-Note that $H(x,y)=\bar{x}^Ty$. Then $H(Rx, Ry)=H(x,y)\iff \overline{Rx}^TRy=\bar{x}^Ty\iff \bar{x}^T(\overline{R}^TR)y=\bar{x}^Ty \iff \overline{R}^TR =I$.
+Note that $H(x,y)=\bar{x}^Ty$. Then 
+\begin{align*}
+H(Rx, Ry)=H(x,y) & \iff \overline{Rx}^TRy=\bar{x}^Ty
+\\ & \iff \bar{x}^T(\overline{R}^TR)y=\bar{x}^Ty 
+\\ & \iff \overline{R}^TR =I.
+\end{align*}
 \end{proof}
 
 \smallskip
@@ -379,9 +393,17 @@ f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}}
 \end{align*}
 \end{proof}
 
-\medskip
+\section{Topology of $\Isom(\C^2)$}
 
-Next, we turn our attention to providing $\Isom(\R^4)$, $\ORT(4)$, $\SO(4)$, $\U(2)$, and $\SU(2)$ with topological characterizations.  This will enable us to determine each one's relative size.
+Let us turn our attention to providing the groups
+\begin{itemize}
+\item $\SU(2)$
+\item $\U(2)$
+\item $\SO(4)$
+\item $\ORT(4)$
+\item $\Isom(\R^4)$
+\end{itemize}
+with \emph{topological} characterizations, having treated them only as algebraic objects thus far.
 We begin by deepening the equivalence between $\SU(2)$ and $\SO(3)$.
 
 \begin{theorem}
@@ -396,12 +418,11 @@ We claim that the map $f$ from \cref{iso1} is a homeomorphism. Indeed, note that
 $\SU(2)$ is simply connected.
 \end{cor}
 
-\smallskip
+\medskip
 
 \begin{theorem}
  $\U(2)\cong \left(\SU(2)\times \U(1)\right)/\Z_2$ in $\mathbf{Top}$.
 \end{theorem}.
-
 \begin{proof}
 We claim that the map $\tilde{\psi}$ from \cref{u2iso} is a homeomorphism. Indeed, it is clearly continuous due to the universal property of quotient spaces. Moreover, its inverse is given by 
 \[
@@ -409,11 +430,13 @@ X\mapsto \left[\left(X\frac{1}{\sqrt{\det{X}}}, \sqrt{\det{X}}\right)\right]
 ,\] which is continuous because both $\sqrt{\cdot}$ and $\det(\cdot)$ are continuous.
 \end{proof}
 
-\smallskip
+\bigskip
 
 \begin{prop}
 For any quaternions $x,y$, we have $\overline{xy}=\bar{y}\bar{x}$.
 \end{prop}
+
+\smallskip
 
 Recall that by definition $\lvert{x}\rvert=\sqrt{x\bar{x}}$.
 
@@ -429,10 +452,16 @@ $\SO(4) \cong S^3\times \SO(3)$ in $\mathbf{Top}$.
 \begin{proof}
 Identity $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $|aq|=|a||q|=|a|$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we get $|a-b|=|\alpha_q(a-b)|=|aq-bq|$, so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
 
+\smallskip
+
 We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and write $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Then set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, (1,x, y, z)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $(v, u, r, s)\mapsto \left(v, (1, uv^{-1}, rv^{-1}, sv^{-1})\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $(1,0,0,0)$, as required.  
 
-Finally, the restriction of $f$ to $S^3 \times \SO(3)$ yields the desired homeomorphism.  
+\smallskip
+
+Finally, the restriction of $f$ to $S^3 \times \SO(3)$ yields our desired homeomorphism.  
 \end{proof}
+
+\smallskip
 
 \begin{cor}
 $\SO(4) \cong S^3\times \RP^3$.
@@ -442,15 +471,15 @@ $\SO(4) \cong S^3\times \RP^3$.
 $\ORT(4) \cong S^3\times \ORT(3)$.
 \end{cor}
 
-\smallskip
+\medskip
 
-Our final result  characterizes the entire space $\Isom(\R^4)$.
+Our final result  classifies the entire space $\Isom(\R^4)$.
 
 \begin{theorem}
 $\Isom(\R^4) \cong \ORT(4)\times \R^4$ in $\mathbf{Top}$. 
 \end{theorem}
 
 \begin{proof}
-With notation as in \cref{af}, define  $F:\Isom(\R^4)\to \ORT(4)\times \R^4$ by $f\mapsto \left(M, \b\right)$. \Cref{unique} implies that $F$ is well-defined, and \cref{orth} implies that it is a bijection. Note that $F_1(f)=M=T_{-\b}\circ f$, which is a composition of continuous functions. Further, $F_2(f)=\b=f(\0)$. Hence each component map of $F$ is continuous. It's clear that the inverse $\left(M,\b\right)\to \left(\x \mapsto M\x +\b\right)$ is also continuous. Thus, $F$ is a homeomorphism.
+With notation as in \cref{af}, define  $F:\Isom(\R^4)\to \ORT(4)\times \R^4$ by $f\mapsto \left(M, \b\right)$. \Cref{unique} implies that $F$ is well-defined, and \cref{orth} implies that it is a bijection. Note that $F_1(f)=M=T_{-\b}\circ f$, which is a composite of continuous functions. Further, $F_2(f)=\b=f(\0)$. Hence each component map of $F$ is continuous. It's clear that the inverse $\left(M,\b\right)\to \left(\x \mapsto M\x +\b\right)$ is also continuous. Thus, $F$ is a homeomorphism.
 \end{proof}
 \end{document}

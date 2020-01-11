@@ -214,13 +214,17 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newlist{steps}{enumerate}{1}
 \setlist[steps, 1]{label = Step \arabic*:}
 
+\pagestyle{headings}
+
+\linespread{1.3}
+
 % info for header block in upper right hand corner
 \name{Perry Hart}
 \class{MATH 618}
 \assignment{Fall 2019}
 
 \begin{document}
-
+\thispagestyle{empty}
 \begin{abstract}
 These notes are based on Julius Shaneson's lectures for the course ``Algebraic Topology, Part I'' at UPenn. Any mistake in what follows is my own.
 \end{abstract}
@@ -257,7 +261,7 @@ where
 Each $D_i^n$ is called an \textit{$n$-cell of $X$}.
 \end{term}
 
-Every attaching map $\varphi_i : \partial{D_i^n} \to X^{n-1}$ can be extended to a \textit{characteristic map} given by the composition  $$ D^n_i \hookrightarrow  X^{n-1}  \coprod D_1^n \coprod \cdots \coprod D_{k_n}^n \twoheadrightarrow X^n \hookrightarrow X     .$$
+Every attaching map $\varphi_i : \partial{D_i^n} \to X^{n-1}$ can be extended to a \textit{characteristic map} given by the composite  $$ D^n_i \hookrightarrow  X^{n-1}  \coprod D_1^n \coprod \cdots \coprod D_{k_n}^n \twoheadrightarrow X^n \hookrightarrow X     .$$
 
 \begin{exmp} There are at least two ways of endowing $S^2$ with a cell structure.
 \be
@@ -442,7 +446,7 @@ In order to interpret an exact sequence involving objects in the category of poi
 \end{prop}
 
 \begin{theorem}[Hurewicz] 
-Let $n\in \N_{\geq 2}$. If $\pi_i(X) =0$ for each $i < n$, then $\pi_n(X) \cong H_n(X)$. 
+Let $n\in \Z_{\geq 2}$. If $\pi_i(X) =0$ for each $i < n$, then $\pi_n(X) \cong H_n(X)$. 
 \end{theorem}
 
 \begin{note}
@@ -666,7 +670,7 @@ If $p$ is locally trivial, then so is $f^{\ast}{p}$.
 \begin{proof}
 Let $a \in X$. Since $p$ is locally trivial by assumption, we can find a neighborhood $U$ of $f(a)$ in $B$ and a homeomorphism $\varphi : p^{-1}(U) \to U \times F$. Observe that 
 \[
-(f^{\ast}{p})^{-1}(f^{-1}(U)) = \{(x,e) \mid f(x) = p(e), \ f(x) \in U\} \subset f^{-1}(U) \times p^{-1}(U).
+(f^{\ast}{p})^{-1}(f^{-1}(U)) = \left\{(x,e) \mid f(x) = p(e), \ f(x) \in U\right\} \subset f^{-1}(U) \times p^{-1}(U).
 \] Further, we have a map $\psi : f^{-1}(U) \to p^{-1}(U) \to f^{-1}(U) \times F$ given by $(x,e) \mapsto (x, \pi_F(\varphi(e)))$. Define $\lambda : f^{-1}(U) \times F \to (f^{\ast}{p})^{-1}(f^{-1}(U))$ by $(x,y) \mapsto (x, \varphi^{-1}(f(x), y))$. Using the fact that 
 \[
 \begin{tikzcd}
@@ -780,7 +784,7 @@ If $B$ is equipped with a bundle structure, then we say that $p$ is a (fiber) bu
 Let $(U, \varphi)$ be any coordinate chart for $M$ with coordinate functions $(x^i)$. Define $h: \pi^{-1}(U) \to U \times \R^n$ by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(p, \left(v^1, \ldots, v^n\right)\right).$$ It is clear that $\pi_{U}(h(p)) = \pi(c)$ for any $c\in \pi^{-1}(U)$. To see that $h$ is a homeomorphism, note that the composite $\left(\varphi \times \id_{\R^n}\right) \circ h : \pi^{-1}(U) \to \varphi(U) \times \R^n$ is given by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(x^1(p), \ldots, x^n(p), v^1, \ldots, v^n\right),$$ the inverse of which is given by $\left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto v^i\frac{\partial}{\partial{x^i}}\left(\varphi^{-1}(x)\right)$. Therefore,  $\left(\varphi \times \id_{\R^n}\right) \circ h$ is given locally by 
 \[
 \left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto \left(\tilde{x}^1(x), \ldots, \tilde{x}^n(x), \frac{\partial{\tilde{x}^1}}{\partial{x^j}}(x)v^j, \ldots, \frac{\partial{\tilde{x}^n}}{\partial{x^j}}(x)v^j\right),
-\] which is smooth. Thus, $h$ is a diffeomorphism as the composition of two diffeomorphisms. In particular, $h$ is a homeomorphism. 
+\] which is smooth. Thus, $h$ is a diffeomorphism as the composite of two diffeomorphisms. In particular, $h$ is a homeomorphism. 
 
 \smallskip
 
@@ -1415,13 +1419,13 @@ B
   \end{matrix}
 \end{pmatrix}$. Note that $G_{n_k, k}$  may be viewed as the space of all $k$-dimensional planes in $\R^{n+k}$. 
 
-\begin{remark} $ $
-\bi
+\begin{prop} $ $
+\be
 \item  The space $E_{\Or(k)}$ consists of all orthonormal $k$-frames in $\R^{\infty}$. 
 \item The \textit{Grassmannian}  $G_{\infty, k} \equiv B_{\Or(k)} = B_{\GL(k)}$ consists of all $k$-planes in $\R^{\infty}$. 
 \item Similarly, the space $B_{U(k)}$ consists of all $k$-planes in $\C^{\infty}$.
-\ei
-\end{remark}
+\ee
+\end{prop}
 
 \smallskip
 
@@ -1433,7 +1437,7 @@ The map $p_2$ is a principal $\Or(k)$-bundle.
 This follows from the fact that $\Or(n + k) \to G_{n+k, l}$ is a principal $\Or(n) \times \Or(k)$-bundle.
 \end{proof}
 
-It follows that $\pi_i(G_{n+k, k}) =0$ for each $i\leq n-2$.
+As a result, $\pi_i(G_{n+k, k}) =0$ for each $i\leq n-2$.
 \end{exmp}
 
 \section{Spectral sequences}
@@ -1613,7 +1617,7 @@ E \arrow[d, "\pi"] \\
 B                 
 \end{tikzcd}
 \]
-is a fibration with $B$ simply connected and $F$ path connected. Thanks to \cref{spfib}, we have the inclusion $$E_{0,n}^{\infty} \cong \frac{D_{0,n}}{D_{{-1}, n+1}} =D_{0,n}  \subset H_n(E)$$ as well as a commutative (??) diagram
+is a fibration with $B$ simply connected and $F$ path connected. Thanks to \cref{spfib}, we have the inclusion $$E_{0,n}^{\infty} \cong \frac{D_{0,n}}{D_{{-1}, n+1}} =D_{0,n}  \subset H_n(E)$$ as well as a commutative diagram
 \[
 \begin{tikzcd}
 \overbrace{H_p(B; H_0(F))}^{H_p(B)} \arrow[r, equals] & {E_{p,0}^2}                  & {E_{p,0}^3} \arrow[l, hook']        &                                                                      &           \\
@@ -1650,11 +1654,11 @@ Likewise, we can define the \textit{relative Hurewicz homomorphism} $\tilde{h} :
 Let $n\in \Z_{\geq 2}$. If $\pi_i(X) =0$ for each $1\leq i \leq n-1$, then $h_n$ is an isomorphism and $h_{n+1}$ is surjective.  
 \end{theorem}
 
-\begin{theorem}[Relative Hurewicz]
+\begin{theorem}[Relative Hurewicz]\label{relHur}
 Let $n\in \Z_{\geq 2}$. If both $X$ and $A$ are simply connected and $\pi_i(X, A) =0$ for each $i\leq n-1$, then $\tilde{h}_n$ is an isomorphism and $\tilde{h}_{n+1}$ is surjective.
 \end{theorem}
 
-\begin{proof}[Proof of Hurewicz theorem]
+\begin{proof}[Proof of \cref{Hur}]
 Suppose that $\pi_i(X) =0$ for each $1\leq i \leq n-1$. For induction, assume that $h_{n-1}$ is an isomorphism for any path connected space. From \cref{psfb}, we gather that the $n$-th page of the spectral sequence induced by the path space fibration $\Omega{X} \to P{X} \to X$ looks like
 \[
 \begin{sseqpage}[ homological Serre grading,  classes = {draw = none}, y tick gap = 2.0 em, scale = 1.6, y axis gap = 40pt, x axis extend end = 1.1cm, x range = {0}{2}, y range = {0}{1},
@@ -1701,19 +1705,22 @@ y tick handler = {
 \[ \label{eqn:gsq}
 \begin{tikzcd}
 \pi_n(X) \arrow[d, "h_n"'] \arrow[r, "\underset{\cong}{\partial}"] & \pi_{n-1}(\Omega{X}) \arrow[d, "\underset{\cong}{h_{n-1}}"] \\
-H_n(X) \arrow[r, "\underset{\cong}{d_n}"']                         & H_{n-1}(\Omega{X})                                         
+H_n(X) \arrow[r, "\overset{\cong}{d_n}"']                         & H_{n-1}(\Omega{X})                                         
 \end{tikzcd}. \tag{$\ast$}
 \] This implies that $h_n$ is an isomorphism. It remains to verify our base case. Note that $\pi_1(\Omega{X})$ is isomorphic to $\pi_2(X)$ and thus abelian. It can be shown directly that $h_1$ factors as a composite
 \[
 \begin{tikzcd}
 \pi_1(\Omega{X}) \arrow[r, "\cong", two heads] \arrow[rr, "h_1"', bend right] & \pi_1(\Omega{X})^{\ab} \arrow[r, "\cong"] & H_1(\Omega{X})
 \end{tikzcd}
-\] of isomorphisms. Hence $h_2$ must be an ismorphism by \eqref{eqn:gsq}.
+\] of isomorphisms. Hence $h_2$ must be an isomorphism in light of \eqref{eqn:gsq}.
 \end{proof}
 
 \begin{question}
-Does a similar argument work for the relative Hurewicz theorem?
+Does a similar argument work for \cref{relHur}?
 \end{question}
+\begin{proof}[Answer]
+Yes, in the sense that there is a spectral sequence proof of it. Specifically, there is a relative version of the spectral sequence. Suppose that $B'$ is a simply connected subspace of $B$ and let $E' = \pi^{-1}(B')$, yielding a fibration $F \to E' \overset{\pi\restriction_{E'}}{\longrightarrow} B'.$ Then there exists a spectral sequence $E^{\ast}$ converging to $H_{\ast}(E, E')$ such that $$E^2_{p,q}\cong H_p(B, B'; H_q(F)).$$ One can use this to deduce \cref{relHur} from \cref{Hur}.  
+\end{proof}
 
 \begin{corollary}\label{Hcor} Let $X$ be path connected.
 \be
@@ -1781,12 +1788,16 @@ This yields a LES in homotopy
 \end{tikzcd},
 \] which proves the following statement.
 
-\begin{theorem}[Suspension theorem]
+\begin{theorem}[Suspension theorem]\label{ST}
 If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
 \end{theorem}
 
+This can be generalized as follows.
+
+\smallskip
+
 \begin{exercise}[Freudenthal suspension theorem]
-Let $i \in \Z_{\geq 1}$ and suppose that the space $X$ satisfies $\pi_n(X) =0$ for each $0\leq n \leq i-1$. Show that $\pi_i(X) \cong \pi_{i+1}(S{X})$ through around dimension $2i-3$ (figure this out exactly). (For extra credit, find a spectral sequence proof of the relative Hurewicz theorem.)
+Let $i \in \Z_{\geq 1}$ and suppose that the space $X$ satisfies $\pi_n(X) =0$ for each $0\leq n \leq i-1$. Show that $$\pi_i(X) \cong \pi_{i+1}(S{X})$$ through around dimension $2i-3$ (figure this out exactly), where $S({-})$ denotes the suspension functor.
 \end{exercise}
 \begin{proof}
 We could use a spectral sequence argument together with the relative Hurewicz theorem. Rather, let us show that it follows from the following famous theorem in homotopy theory:
@@ -1797,7 +1808,7 @@ Suppose that
 X \arrow[d, hook] \arrow[r, hook] & B \arrow[d] \\
 A \arrow[r]                        & C          
 \end{tikzcd}
-\] is a pushout diagram. Also, suppose that $\pi_n(B, X)=0$ and $\pi_m(A, X)=0$ for each $0\leq n \leq k_1$ and each $0\leq m \leq k_2$. The map $\left(A, X\right) \to \left(C, B\right)$ of pairs itself induces an isomorphism $\pi_n(A, X) \overset{\cong}{\longrightarrow} \pi_n(C, B)$ for each $0 \leq n \leq k_1 + k_2 -1$.
+\] is a pushout diagram. Also, suppose that $\pi_n(B, X)=0$ and $\pi_m(A, X)=0$ for each $0\leq n \leq k_1$ and each $0\leq m \leq k_2$. The map $\left(A, X\right) \to \left(C, B\right)$ of pairs induces an isomorphism $\pi_n(A, X) \overset{\cong}{\longrightarrow} \pi_n(C, B)$ for each $0 \leq n \leq k_1 + k_2 -1$.
 \end{theorem}
 Now, let us prove the Freudenthal suspension theorem with an upper bound of $2i-2$ rather than $2i-3$. To start, decompose $S{X}$ into the union of two cones $\underset{\text{top}}{C_+{X}}$ and $\underset{\text{bottom}}{C_{-}{X}}$ that meet at a copy of $X$. Note that $S{X}$ is precisely the pushout of the diagram
 \[
@@ -2070,7 +2081,7 @@ If $c_1$ is a generator of $H^2(\CP^{\infty})\cong \Z$, then $\underbrace{H^{\as
 
 \subsection{Lecture 14}
 
-Recall the space $B_{\Un(n)} = B_{\GL(n, \C)}$ of $n$-planes in $\C^{\infty}$ as well as the space $B_{\Or(n)} = B_{\GL(n, \R)}$ of $n$-planes in $\R^{\infty}$. We want to describe the graded rings 
+Recall the space $B_{\Un(n)} = B_{\GL(n, \C)}$ of $n$-planes in $\C^{\infty}$ as well as the space $B_{\Or(n)} = B_{\GL(n, \R)}$ of $n$-planes in $\R^{\infty}$. We want to classify the graded rings 
 $H^{\ast}(B_{\Un(n)}; \Z)$ and  
 $H^{\ast}(B_{\Or(n)}; \Z_2)$. Let's begin with the former.
 
@@ -2085,13 +2096,13 @@ and thus the bundle
  \frac{\Un(n)}{\Un(n-1)} \to B{\Un(n-1)} \overset{\pi}{\longrightarrow} B{\Un(n)} \tag{2}
 \] has fiber $S^{2n-1}$.
 
-\begin{aside}
+\begin{remark}
 Let us make \eqref{eqn:ses} precise. Note that $\Un(n)$ acts transitively on $S^{2n-1}$ because any point in $S^{2n-1}$ belongs to at least one orthonormal bases of $\C^n$.This means that $S^{2n-1}$ is a \textit{homogenous} $\Un(n)$-space. 
 \begin{prop}
 Any homogenous $G$-space $X$ is homeomorphic to the coset space $\faktor{G}{\stab_G(\vec{o})}$ where $\vec{o}$ is any choice of ``identity." 
 \end{prop}
 In our case, let $\vec{o} = e_n$, so that $\stab_{\Un(n)}(\vec{o}) = \Un(n-1)$. 
-\end{aside}
+\end{remark}
 
 \medskip
 
@@ -2111,7 +2122,7 @@ H^p(B{\Un(n)}) \arrow[r] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \
 
 \smallskip
 
-Consider the differential $d_2 : \underbrace{H^{2n-1}(S^{2n-1})}_{\Z} \to H^{2n}(B{\Un(n)})$ and pick a generator (i.e., an orientation) $g_n$ of $H^{2n-1}(S^{2n-1})$. Let
+Consider the differential $d_2 : \underbrace{H^{2n-1}(S^{2n-1})}_{\Z} \to H^{2n}(B{\Un(n)})$ and pick a generator $g_n$ of $H^{2n-1}(S^{2n-1})$, i.e., an orientation of $S^{2n-1}$. Let
 \[
 c_n= d_{2}(g_n).
 \]

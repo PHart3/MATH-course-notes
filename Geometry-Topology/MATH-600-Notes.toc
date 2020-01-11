@@ -1,37 +1,37 @@
-\contentsline {section}{\numberline {1}Smooth manifolds}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Lecture 1}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Lecture 2}{3}{subsection.1.2}
-\contentsline {section}{\numberline {2}Smooth maps}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Lecture 3}{4}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Lecture 4}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Lecture 5}{7}{subsection.2.3}
-\contentsline {section}{\numberline {3}Tangent vectors}{7}{section.3}
-\contentsline {subsection}{\numberline {3.1}Lecture 6}{7}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Lecture 7}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Lecture 8}{10}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Lecture 9}{11}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Lecture 10}{13}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Lecture 11}{14}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Lecture 12}{14}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Lecture 13}{16}{subsection.3.8}
-\contentsline {section}{\numberline {4}Vector bundles}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}Lecture 14}{17}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Lecture 15}{18}{subsection.4.2}
-\contentsline {section}{\numberline {5}Differential forms}{20}{section.5}
-\contentsline {subsection}{\numberline {5.1}Lecture 16}{20}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Lecture 17}{21}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Lecture 18}{23}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Lecture 19}{25}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Lecture 20}{25}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Lecture 21}{27}{subsection.5.6}
-\contentsline {section}{\numberline {6}Integration}{29}{section.6}
-\contentsline {subsection}{\numberline {6.1}Lecture 22}{29}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Lecture 23}{31}{subsection.6.2}
-\contentsline {section}{\numberline {7}De Rham cohomology}{32}{section.7}
-\contentsline {subsection}{\numberline {7.1}Lecture 24}{32}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Lecture 25}{34}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Lecture 26}{34}{subsection.7.3}
-\contentsline {section}{\numberline {8}Integral curves and flows}{35}{section.8}
-\contentsline {subsection}{\numberline {8.1}Lecture 27}{35}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Lecture 28}{37}{subsection.8.2}
-\contentsline {section}{\numberline {9}Distributions}{38}{section.9}
+\contentsline {section}{\numberline {1}Smooth manifolds}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Lecture 1}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Lecture 2}{4}{subsection.1.2}
+\contentsline {section}{\numberline {2}Smooth maps}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Lecture 3}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Lecture 4}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Lecture 5}{9}{subsection.2.3}
+\contentsline {section}{\numberline {3}Tangent vectors}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Lecture 6}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Lecture 7}{12}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Lecture 8}{14}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Lecture 9}{15}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Lecture 10}{17}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Lecture 11}{18}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Lecture 12}{19}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Lecture 13}{21}{subsection.3.8}
+\contentsline {section}{\numberline {4}Vector bundles}{22}{section.4}
+\contentsline {subsection}{\numberline {4.1}Lecture 14}{23}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Lecture 15}{25}{subsection.4.2}
+\contentsline {section}{\numberline {5}Differential forms}{26}{section.5}
+\contentsline {subsection}{\numberline {5.1}Lecture 16}{26}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Lecture 17}{29}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Lecture 18}{30}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Lecture 19}{32}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Lecture 20}{33}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Lecture 21}{36}{subsection.5.6}
+\contentsline {section}{\numberline {6}Integration}{38}{section.6}
+\contentsline {subsection}{\numberline {6.1}Lecture 22}{38}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lecture 23}{40}{subsection.6.2}
+\contentsline {section}{\numberline {7}De Rham cohomology}{42}{section.7}
+\contentsline {subsection}{\numberline {7.1}Lecture 24}{42}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Lecture 25}{44}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Lecture 26}{44}{subsection.7.3}
+\contentsline {section}{\numberline {8}Integral curves and flows}{46}{section.8}
+\contentsline {subsection}{\numberline {8.1}Lecture 27}{46}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Lecture 28}{47}{subsection.8.2}
+\contentsline {section}{\numberline {9}Distributions}{48}{section.9}
