@@ -2,38 +2,38 @@
 \contentsline {subsection}{\numberline {1.1}Lecture 1}{3}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Lecture 2}{5}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Lecture 3}{6}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Lecture 4}{8}{subsection.1.4}
-\contentsline {section}{\numberline {2}Solvable and nilpotent groups}{9}{section.2}
-\contentsline {subsection}{\numberline {2.1}Lecture 5}{10}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Lecture 6}{13}{subsection.2.2}
+\contentsline {subsection}{\numberline {1.4}Lecture 4}{9}{subsection.1.4}
+\contentsline {section}{\numberline {2}Solvable and nilpotent groups}{10}{section.2}
+\contentsline {subsection}{\numberline {2.1}Lecture 5}{11}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Lecture 6}{14}{subsection.2.2}
 \contentsline {section}{\numberline {3}Sylow theorems}{14}{section.3}
-\contentsline {subsection}{\numberline {3.1}Lecture 7}{15}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Lecture 8}{16}{subsection.3.2}
-\contentsline {section}{\numberline {4}Composition series}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}Lecture 9}{17}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Lecture 10}{20}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Lecture 11}{22}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Lecture 12}{25}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Lecture 13}{26}{subsection.4.5}
-\contentsline {section}{\numberline {5}Group cohomology}{29}{section.5}
-\contentsline {subsection}{\numberline {5.1}Lectures 14 and 15}{29}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Lecture 16}{33}{subsection.5.2}
-\contentsline {section}{\numberline {6}Categories and functors}{35}{section.6}
-\contentsline {subsection}{\numberline {6.1}Lecture 17}{35}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Lecture 18}{37}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Lectures 19 and 20}{38}{subsection.6.3}
-\contentsline {section}{\numberline {7}The Yoneda lemma}{39}{section.7}
-\contentsline {subsection}{\numberline {7.1}Lecture 21}{41}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Lecture 22}{43}{subsection.7.2}
-\contentsline {section}{\numberline {8}Adjoint functors}{44}{section.8}
-\contentsline {subsection}{\numberline {8.1}Lecture 23}{45}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Lecture 24}{48}{subsection.8.2}
-\contentsline {section}{\numberline {9}Polynomial rings}{49}{section.9}
-\contentsline {subsection}{\numberline {9.1}Lecture 25}{49}{subsection.9.1}
-\contentsline {section}{\numberline {10}Noetherian and Artinian modules}{51}{section.10}
-\contentsline {subsection}{\numberline {10.1}Lecture 26}{51}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Lecture 27}{53}{subsection.10.2}
-\contentsline {subsection}{\numberline {10.3}Lecture 28}{57}{subsection.10.3}
-\contentsline {section}{\numberline {11}Projective and injective modules}{59}{section.11}
-\contentsline {subsection}{\numberline {11.1}Lecture 29}{59}{subsection.11.1}
-\contentsline {subsection}{\numberline {11.2}Lecture 30}{61}{subsection.11.2}
+\contentsline {subsection}{\numberline {3.1}Lecture 7}{16}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Lecture 8}{18}{subsection.3.2}
+\contentsline {section}{\numberline {4}Composition series}{19}{section.4}
+\contentsline {subsection}{\numberline {4.1}Lecture 9}{19}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Lecture 10}{21}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Lecture 11}{24}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Lecture 12}{27}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Lecture 13}{28}{subsection.4.5}
+\contentsline {section}{\numberline {5}Group cohomology}{31}{section.5}
+\contentsline {subsection}{\numberline {5.1}Lectures 14 and 15}{31}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Lecture 16}{35}{subsection.5.2}
+\contentsline {section}{\numberline {6}Categories and functors}{37}{section.6}
+\contentsline {subsection}{\numberline {6.1}Lecture 17}{37}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lecture 18}{39}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Lectures 19 and 20}{42}{subsection.6.3}
+\contentsline {section}{\numberline {7}The Yoneda lemma}{43}{section.7}
+\contentsline {subsection}{\numberline {7.1}Lecture 21}{46}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Lecture 22}{49}{subsection.7.2}
+\contentsline {section}{\numberline {8}Adjoint functors}{50}{section.8}
+\contentsline {subsection}{\numberline {8.1}Lecture 23}{52}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Lecture 24}{54}{subsection.8.2}
+\contentsline {section}{\numberline {9}Polynomial rings}{55}{section.9}
+\contentsline {subsection}{\numberline {9.1}Lecture 25}{56}{subsection.9.1}
+\contentsline {section}{\numberline {10}Noetherian and Artinian modules}{58}{section.10}
+\contentsline {subsection}{\numberline {10.1}Lecture 26}{58}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Lecture 27}{61}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}Lecture 28}{65}{subsection.10.3}
+\contentsline {section}{\numberline {11}Projective and injective modules}{67}{section.11}
+\contentsline {subsection}{\numberline {11.1}Lecture 29}{67}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Lecture 30}{69}{subsection.11.2}

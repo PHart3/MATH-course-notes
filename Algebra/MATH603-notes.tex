@@ -246,8 +246,8 @@ These notes are based on Tony Pantev's ``Algebra II'' lectures at UPenn. Any mis
 where $\frak{a}$ is an ideal in $R$.
 \end{prop}
 \begin{proof} $ $
-\\
 \smallskip
+
 $(\Longrightarrow)$
 
 This is obvious.
@@ -263,14 +263,14 @@ Let
  &  & M \\
 0 \arrow[r] & X' \arrow[ru, "\varphi"] \arrow[r] & X
 \end{tikzcd} \] 
-be an injectivity diagram of $R$-modules and define $$S = \left\{(A, \xi) \mid X' \subset A \subset X, \ \xi : A \to M, \ \xi \restriction_{X'} = \varphi\right\} . $$ By Zorn's lemma, there is some maximal element $(N, \psi)$ of $S$. Suppose, toward a contradiction, that $X \ne N$. Pick any $x\in X \setminus N$. We have the ideal $$\frak{a} \coloneqq  \{a \in R : ax \in N\}$$ in $R$. Define the $R$-module morphism $\theta : \frak{a} \to M$ by $a \mapsto \psi(ax)$. By hypothesis, we get the following commutative diagram.
+be an injectivity diagram of $R$-modules and define $$S = \left\{(A, \xi) \mid X' \subset A \subset X, \ \xi : A \to M, \ \xi \restriction_{X'} = \varphi\right\} . $$ By Zorn's lemma, there is some maximal element $(N, \psi)$ of $S$. Suppose, toward a contradiction, that $X \ne N$. Pick any $x\in X \setminus N$. We have the ideal $$\frak{a} \coloneqq  \left\{a \in R : ax \in N\right\}$$ in $R$. Define the $R$-module morphism $\theta : \frak{a} \to M$ by $a \mapsto \psi(ax)$. By hypothesis, we get the following commutative diagram.
 \[
 \begin{tikzcd}
  &  & M \\
 0 \arrow[r] & \frak{a} \arrow[ru, "\theta"] \arrow[r, hook] & R \arrow[u, "\tilde{\theta}"', dashed]
 \end{tikzcd}
 \] Define the $R$-submodule $\widetilde{N} = \langle N, x\rangle$. We can write any $z\in \widetilde{N}$ as $z = y + ax$ for some $y\in N$ and some $a\in R$. Define $\tilde{\psi} : \widetilde{N} \to M$ by $y+ax \mapsto \psi(y) + \tilde{\theta}(a)$. To see that this is well-defined, let $y+ax = y'+a'x$. Then $(y-y') = (a'-a)x$, so that $$\psi(y-y') = \psi((a'-a)x) = \tilde{\theta}(a'-a) = \tilde{\theta}(a') - \tilde{\theta}(a) . $$
-This implies that $\tilde{\psi}$ is a well-defined homomorphism. But then $\left(\widetilde{N}, \tilde{\psi}\right)> (N, \psi)$, a contradiction.  
+This implies that $\tilde{\psi}$ is a well-defined homomorphism. But then $\left(\widetilde{N}, \tilde{\psi}\right)> \left(N, \psi\right)$, a contradiction.  
 \end{proof}
 
 \begin{aside}
@@ -280,7 +280,7 @@ The categorical dual $\Rho^{\op}$ of this recognition principle for injectivity 
 M \arrow[rd, "\varphi"] \arrow[d, dashed] &  &  \\
 R \arrow[r, two heads] & \faktor{R}{I} \arrow[r] & 0
 \end{tikzcd}
-\] if and only if $M$ is projective. This is equivalent to saying that $M$ is projective if and only if the obvious group map $\Hom_R(M, R) \to \Hom_R \left(M, \faktor{R}{I} \right)$ is surjective. 
+\] if and only if $M$ is projective. This is equivalent to saying that $M$ is projective if and only if the natural group map $\Hom_R(M, R) \to \Hom_R \left(M, \faktor{R}{I} \right)$ is surjective. 
 But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``Faith's problem on $R$-projectivity,'' which Trlifaj (2017) proved to be undecidable in ZFC + GCH. Therefore, both $\Rho^{\op}$ and $\neg (\Rho^{\op})$ are consistent with ZFC + GCH.
 \end{aside}
 
@@ -338,7 +338,7 @@ For any $R$-module $M$, we can find an injective resolution $$ 0 \to M \to I_0 \
 \begin{proof}
 We want to invent a duality operation that will convert $R {-} \mathbf{Mod}^{\op}$ to  $R^{\op} {-} \mathbf{Mod}$ and then use projective objects in $R^{\op}{-}\mathbf{Mod}$. If $T$ is an abelian group, then the functor $$ \mathbf{Ab}\underset{\Hom_{\mathbf{Ab}}(-, T)}{ \longrightarrow} \mathbf{Ab}^{\op}$$ will reverse arrows. The choice of $T$ that ends up working is precisely $\faktor{\Q}{\Z}$.
 \begin{claim}
-Let $\Hom_{\mathbf{Ab}}(-, \faktor{\Q}{\Z}) \coloneqq  (-)^D$. Note that for any abelian group $A$, we have a canonical homomorphism $\epsilon_A : A \to A^{DD}$ given by $a \mapsto ([\varphi :A \to \faktor{\Q}{\Z}] \to \varphi(a)).$ Then $\epsilon_A$ is injective.
+Let $\Hom_{\mathbf{Ab}}(-, \faktor{\Q}{\Z}) \coloneqq  (-)^D$. Note that for any abelian group $A$, we have a canonical homomorphism $\epsilon_A : A \to A^{DD}$ given by $a \mapsto \left(\left[\varphi :A \to \faktor{\Q}{\Z}\right] \to \varphi(a)\right).$ Then $\epsilon_A$ is injective.
 \end{claim}
 \begin{proof}
 We need to show that if $a\in A$ is nonzero, then we can find some homomorphism $f: A \to \faktor{\Q}{\Z}$ such that $f(a) \ne 0$.
@@ -458,15 +458,21 @@ By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note 
 0 \arrow[r] & N \arrow[r] \arrow[u, equal] & T \arrow[r] \arrow[u] & M \arrow[u, "f"] \arrow[r] & 0
 \end{tikzcd}
 .\]
-\begin{exercise}
-Show that the map $\rho: \ext_R^1(M, N) \to \ext_R(M, N)$ given by $\gamma \mapsto \xi$ is independent of the choice of $f$. Also show that $\rho$ is inverse to  $e$.
+\begin{exercise} $ $
+\begin{enumerate}
+\item Show that the map $\rho: \ext_R^1(M, N) \to \ext_R(M, N)$ given by $\gamma \mapsto \xi$ is independent of the choice of $f$.  
+\item Show that $\rho$ is the inverse of  $e$.
+\end{enumerate}
 \end{exercise}
 \end{proof}
 
 \subsection{Lecture 3}
 
 
-Let $N$ be a right $R$-module and $M$ an $R$-module. Then $N \otimes_R M \in \ob(\mathbf{Ab})$ represents the functor $B_{M, N}: \mathbf{Ab} \to \mathbf{Ab}$ given by $A \mapsto \left\{f:  M \times N \to A \mid f(ax, y) = f(x, ay) \right\}$. 
+Let $N$ be a right $R$-module and $M$ an $R$-module. Recall that $N \otimes_R M \in \ob(\mathbf{Ab})$ is precisely the object in $\Z{-}\mathbf{Mod}$ representing the functor $B_{M, N}: \mathbf{Ab} \to \mathbf{Ab}$ given by $$A \mapsto \left\{f:  M \times N \to A \mid f(ax, y) = f(x, ay) \right\}.$$ Moreover, recall that $N$ is \textit{flat} if the functor
+\[
+N \otimes_R (-) : R{-}\mathbf{Mod} \to \mathbf{Ab}
+\] is exact.
 
 
 \begin{definition} Let $N$ be a right $R$-module and $M$ an $R$-module. Let $x_1, \ldots, x_n \in M$.
@@ -507,7 +513,7 @@ We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)
 
 ($\Longleftarrow$)
 
- Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right)$. As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
+ Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $$0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right).$$ As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
  \begin{align*}
  \sum_{i=1}^n y_i \otimes z_i & = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i 
  \\ & = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) 
@@ -528,7 +534,7 @@ We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)
 
 \subsection{Lecture 4}
 
-Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B)$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some map $\underline{\varphi} : R_x \to B$.
+Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $$B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B).$$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some  map $\underline{\varphi} : R_x \to B$.
 
 In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make the \textit{multiplicative closure $\cl(S)$ of $S$} invertible.
 
@@ -536,23 +542,23 @@ In general, we can consider a set $S$ of nonzero elements and ask for a universa
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
 \end{definition}
 
-Given a multiplicatively closed subset $S \subset R$, find a universal way of inverting every element of $S$. Equivalently, find a ring representing $\Phi_S$. Equivalently, find a pair $(S^{-1}R, h)$ where  $h: R\to S^{-1}R$ such that $h(S) \subset (S^{-1}R)^{\times}$ and any $\varphi : R \to B$ with $\varphi(S) \subset B^{\times}$ has $\varphi = \underline{\varphi} \circ h$ for some map $ \underline{\varphi} : R \to B$.  We call the pair $(S^{-1}R, h)$ the \textit{localization of $R$ along $S$}.
+Given a multiplicatively closed subset $S \subset R$, we want to find a universal way of inverting every element of $S$. Equivalently, find a ring representing $\Phi_S$. Equivalently, we want to find a pair $(S^{-1}R, h)$ where  $h: R\to S^{-1}R$ such that $h(S) \subset (S^{-1}R)^{\times}$ and any $\varphi : R \to B$ with $\varphi(S) \subset B^{\times}$ has $\varphi = \underline{\varphi} \circ h$ for some unique map $ \underline{\varphi} : R \to B$.  We call the pair $(S^{-1}R, h)$ the \textit{localization of $R$ along $S$}.
 
-Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. Consider the set $(R \times S, \sim)$ where $(a, s) \sim (b,t)$ if $u(at-bs) =0$ for some $u\in S$. Set $S^{-1}R \coloneqq  \faktor{R\times S}{\sim}$. Let $\frac{a}{s} \coloneqq  [(a,s)]$. Define $$\frac{a}{s} + \frac{b}{t} = \frac{at+bs}{st}$$ and $$\frac{a}{s}\cdot \frac{b}{t} = \frac{ab}{st}.$$ Then $S^{-1}R$ becomes a ring with unity $\frac{1}{1}$. Also, we see that $h: R \to S^{-1}R$ given by $a\mapsto \frac{a}{1}$ is a ring homomorphism. Given $\varphi: R \to B$ such that $\im{\varphi} \subset B^{\times}$, we have a well-defined map of rings $\underline{\varphi} : S^{-1}R \to B$ given by $\frac{a}{s} \mapsto \varphi(a) \varphi(s)^{-1}$, which satisfies $\underline{\varphi} \circ h = \varphi$. 
+Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. Consider the set $(R \times S, \sim)$ where $(a, s) \sim (b,t)$ if $u(at-bs) =0$ for some $u\in S$. Set $S^{-1}R \coloneqq  \faktor{R\times S}{\sim}$. Let $\frac{a}{s} \coloneqq  [(a,s)]$. Define $$\frac{a}{s} + \frac{b}{t} = \frac{at+bs}{st}$$ and $$\frac{a}{s}\cdot \frac{b}{t} = \frac{ab}{st}.$$ Then $S^{-1}R$ becomes a ring with unity $\frac{1}{1}$. Also, we see that $h: R \to S^{-1}R$ given by $a\mapsto \frac{a}{1}$ is a ring homomorphism. Given a map $\varphi: R \to B$ such that $\im{\varphi} \subset B^{\times}$, we have a well-defined map of rings $\underline{\varphi} : S^{-1}R \to B$ given by $\frac{a}{s} \mapsto \varphi(a) \varphi(s)^{-1}$, which satisfies $\underline{\varphi} \circ h = \varphi$. 
 
 
 \begin{exmp}
 Here are some natural choices for $S$.
 \begin{enumerate}[label=(\alph*)]
-\item $S = \{1, x, x^2, \ldots \}$ with $x$ not nilpotent.
-\item $S = R^{\times}$.
-\item $S = \{r\in R : r$ is not a zero divisor.$\}$.
+\item  $\left\{1, x, x^2, \ldots \right\}$ with $x$ not nilpotent.
+\item $R^{\times}$.
+\item $\left\{r\in R : r \text{ is not a zero divisor}\right\}$.
 \end{enumerate}
 \end{exmp}
 
 \smallskip
 
-If $A$ is an integral domain and we take any multiplicatively closed subset $S\subset A$, then $\Frac(A)\coloneqq  (A \setminus \{0\})^{-1}A$ is a field and $h : A \to (A \setminus \{0\})^{-1}A$ is injective. For now, let $S$ denote the set of non zero-divisors.  If $\frac{a}{b} \in \Frac(A)$ is nonzero, then $\frac{a}{b} \ne \frac{0}{1}$, i.e., $a\cdot 1$ is not a zero divisor, so that $a\ne 0$ and thus $\frac{b}{a} \in \Frac(A)$. This shows that $\Frac(A)$ is a field. Moreover, if $a\in A$ has $h(a) = \frac{a}{1} = 0\in \Frac(A)$, then $\frac{a}{1}= \frac{0}{1} \implies a\cdot 1$ is a zero divisor. Hence $a=0$, and $h$ is injective. 
+If $A$ is an integral domain and we take any multiplicatively closed subset $S\subset A$, then $\Frac(A)\coloneqq  \left(A \setminus \{0\}\right)^{-1}A$ is a field and $h : A \to \left(A \setminus \{0\}\right)^{-1}A$ is injective. For now, let $S$ denote the set of non zero-divisors.  If $\frac{a}{b} \in \Frac(A)$ is nonzero, then $\frac{a}{b} \ne \frac{0}{1}$, i.e., $a\cdot 1$ is not a zero divisor, so that $a\ne 0$ and thus $\frac{b}{a} \in \Frac(A)$. This shows that $\Frac(A)$ is a field. Moreover, if $a\in A$ satisfies $h(a) = \frac{a}{1} = 0\in \Frac(A)$, then $\frac{a}{1}= \frac{0}{1} \implies a\cdot 1$ is a zero divisor. Hence $a=0$, and $h$ is injective. 
 
 If $S$ is generic, then $S^{-1}A \subset \Frac(A)$ since $S^{-1}A$ equals the subring generated by $A\cong h(A)$ and $S^{-1} = \left\{\frac{1}{s}\mid s\in S\right\}$. In this case, $(S^{-1}A, h)$ represents the functor $\Phi : \mathbf{Field} \to \mathbf{Set}$ given by $k \mapsto \{\varphi : A \to k \mid \varphi$ is injective.$\}$. This means that for any ring map $\varphi: A \to B$ with $\varphi(S) \subset B^{\times}$, there is some unique map $\psi$ such that $\psi \circ h = \varphi$.
 
@@ -563,7 +569,7 @@ If $S$ is generic, then $S^{-1}A \subset \Frac(A)$ since $S^{-1}A$ equals the su
 \begin{enumerate}
 \item If  $S = \left\{1, x, x^2, \ldots \right\}$ with $x$ not nilpotent, then $S^{-1}A = A_f \equiv \left\{\frac{a}{f^n} : n\geq 0, \ a \in A\right\} $.
 \item If $S \subset A^{\times}$, then $h: A \to S^{-1}A$ is an isomorphism. 
-\item If $A$ is any ring and $S\subset A$ denotes the set of all non-zero divisors, then $\Frac(A) = S^{-1}A$ is called the \textit{fraction ring of $A$}. If $A$ is an integral domain, then $\Frac(A)$ is a field and $H : A \to \Frac(A)$ is injective. In this cases, $(\Frac(A), h)$ represents the functor $F_A : \mathbf{Field} \to \mathbf{Set}$ given by $K \mapsto \left\{\varphi: A \to K \mid \varphi \text{ monomorphism}\right\}$. 
+\item If $A$ is any ring and $S\subset A$ denotes the set of all non-zero divisors, then $\Frac(A) = S^{-1}A$ is called the \textit{fraction ring of $A$}. If $A$ is an integral domain, then $\Frac(A)$ is a field (called the \textit{field of fractions of $A$}) and $H : A \to \Frac(A)$ is injective. In this case, $(\Frac(A), h)$ represents the functor $F_A : \mathbf{Field} \to \mathbf{Set}$ given by $K \mapsto \left\{\varphi: A \to K \mid \varphi \text{ monomorphism}\right\}$. 
 \end{enumerate}
 \end{exmp}
 
@@ -614,15 +620,18 @@ Let $M \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} N$ be an exac
 
 \smallskip
 
-Suppose that $f\in A$ is not nilpotent. We can compute $A_f$ explicitly as follows. There is a natural map $A_f[x] \to A_f$ given by $x \mapsto \frac{1}{f}$. This induces $\faktor{A_f[x]}{\left(x-\frac{1}{f}\right)} \overset{\cong}{\longrightarrow} A_f$. We also have a map $A[x] \to A_f[x]$ from the  map $h$ on the coefficients. Define the map $\alpha: A[x] \to A_f$ by $a \mapsto h(a) = \frac{a}{1}$ and $x\mapsto \frac{1}{f}$. We must compute $\ker{\alpha}$ as an ideal in $A[x]$. This is surjective since any element in $A_f$ is of the form $\frac{a}{f^n}$ for some $a\in A $ and $n\in \N$, so that $ax^n \mapsto \frac{a}{f^n}$.
+Suppose that $f\in A$ is not nilpotent. We can compute $A_f$ explicitly as follows. There is a natural map $A_f[x] \to A_f$ given by $x \mapsto \frac{1}{f}$. This induces an isomorphism $$\faktor{A_f[x]}{\left(x-\frac{1}{f}\right)} \overset{\cong}{\longrightarrow} A_f.$$ We also have a map $A[x] \to A_f[x]$ from the  map $h$ on the coefficients. Define the map $\alpha: A[x] \to A_f$ by $a \mapsto h(a) = \frac{a}{1}$ and $x\mapsto \frac{1}{f}$. We must compute $\ker{\alpha}$ as an ideal in $A[x]$. This is surjective since any element in $A_f$ is of the form $\frac{a}{f^n}$ for some $a\in A $ and $n\in \N$, so that $ax^n \mapsto \frac{a}{f^n}$.
 
 \subsection{Lecture 6}
+
+\newcommand{\invin}{%
+\mathrel{\reflectbox{\rotatebox[origin=c]{270}{$\in$}}}}
 
 \begin{claim}
 $\ker{\alpha} = (fx-1)$.
 \end{claim}
 \begin{proof}
-Note that $xf-1\in \ker{\alpha}$. Also, note that  $ \exists n\geq 0. f^ng\left(\frac{1}{f}\right)=0 \iff  \alpha(g) = 0 \iff  g\left(\frac{1}{f}\right) = 0$ in $A_f$. Without loss of generality, we may assume that $n\geq \deg{g}$. Thus, $f^ng(x)$ is a polynomial of $fx$ with coefficients in $A$, so that there is some $G(y) \in A[y]$ such that $G(fx) = f^ng(x)$. Then $g\in \ker{\alpha} \iff \exists G(y) \in A[y]. G(fx) = f^ng(x) \land G(1) =0$. But then $G(y) = (y-1)h(y)$ where $h(y) \in A[y]$. This implies that $g(x) \in \ker{\alpha} \iff \exists n\geq 0 . f^ng(x) \in (xf -1)$. But $f, fx-1 \in A[x]$ are relatively prime since $1= fx + (fx-1)(-1)$.  Hence $1^n = (fx + (fx-1)(-1))^n = f^n x^n + (fx-1)s(x)$ for some $s(x) \in A[x]$. Multiply by $g(x)$ to get $$  g(x) = \underbrace{f^ng(x)}_{\in (xf-1)} + \underbrace{(fx -1)s(x)g(x)}_{\in (xf-1)}  .$$ Therefore, $g(x) \in (xf-1)$, and $(xf-1)=  \ker{\alpha}$. 
+Note that $xf-1\in \ker{\alpha}$. Also, note that  $$ \exists n\geq 0 \text{ s.t. } f^ng\left(\frac{1}{f}\right)=0 \iff  \alpha(g) = 0 \iff  g\left(\frac{1}{f}\right) = 0 \text{ in } A_f.$$ Without loss of generality, we may assume that $n\geq \deg{g}$. Thus, $f^ng(x)$ is a polynomial of $fx$ with coefficients in $A$, so that there is some $G(y) \in A[y]$ such that $G(fx) = f^ng(x)$. Then $$g\in \ker{\alpha} \iff \exists G(y) \in A[y] \text{ s.t. } G(fx) = f^ng(x) \land G(1) =0.$$ But then $G(y) = (y-1)h(y)$ where $h(y) \in A[y]$. This implies that $$g(x) \in \ker{\alpha} \iff \exists n\geq 0 \text{ s.t. } f^ng(x) \in (xf -1).$$ But $f, fx-1 \in A[x]$ are relatively prime since $1= fx + (fx-1)(-1)$.  Hence $1^n = (fx + (fx-1)(-1))^n = f^n x^n + (fx-1)s(x)$ for some $s(x) \in A[x]$. Multiply by $g(x)$ to get $$  g(x) = \underbrace{f^ng(x)}_{\overset{\invin}{(xf-1)}} + \underbrace{(fx -1)s(x)g(x)}_{\overset{\invin}{(xf-1)}}  .$$ Therefore, $g(x) \in (xf-1)$, and $(xf-1)=  \ker{\alpha}$. 
 \end{proof}
 
 Suppose that $\varphi : A \to B$ is a map of commutative rings. Then we can transport the ideals along $\varphi$ as follows. 
@@ -635,28 +644,43 @@ Given an ideal $\frak{a} \unlhd A$, the \textit{extension of $\frak{a}$ along $\
 \end{enumerate}
 \end{definition}
 
-Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively closed. Recall the map $h: A \to S^{-1}A$. We want to study $(-)^e$ and $(-)^c$ along $h$. 
+Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively closed. Recall the localization morphism $h: A \to S^{-1}A$. We want to study $(-)^e$ and $(-)^c$ along $h$. 
 
 \begin{prop} $ $
 \begin{enumerate}
 \item If $\frak{a} \unlhd A$, then $\frak{a}^e = \left\{\frac{a}{s} \mid a\in \frak{a}, \ s \in S\right\}$.
 \begin{proof}
-By definition, $\frak{a}^e = h(\frak{a}) \cdot S^{-1}A = \{ \sum_{i} \frac{b_i}{t_i}\frac{a_i}{s_i} \mid a_i \in \frak{a}, \ b_i \in A, \ s_i, t_i \in S\}$. Since $a_ib_i \in \frak{a}$ and $s_it_i \in S$, our proof is complete.
+By definition, $\frak{a}^e = h(\frak{a}) \cdot S^{-1}A = \left\{ \sum_{i} \frac{b_i}{t_i}\frac{a_i}{s_i} \mid a_i \in \frak{a}, \ b_i \in A, \ s_i, t_i \in S\right\}$. Since $a_ib_i \in \frak{a}$ and $s_it_i \in S$, our proof is complete.
 \end{proof}
 \item If $\frak{a} \unlhd A$, then $\frak{a}^e = (1) \iff \frak{a} \cap S \ne \emptyset$. 
 \begin{proof}
-Note that $(S^{-1}A)^{\times}$ consists of every fraction $\frac{a}{s}$ for which we can find some fraction $\frac{b}{t}$ such that $\frac{a}{s}\frac{b}{t} =1$. Therefore, we must have some element $u\in S$ such that $u(ab-st) = 0 \iff \exists \beta \in A. \beta a \in S$. Thus, $(S^{-1}A)^{\times} = \left\{\frac{a}{s} \mid \exists \beta \in A. \beta a \in S\right\}$. But then $\frak{a}^e = (1) \iff \frak{a}^e$ contains some unit $\iff \exists \frac{a}{s} \in \frak{a}^e. \exists \beta \in A. \beta \cdot a \in S \iff \beta \cdot a \in S\cap \frak{a}$.
+Note that $(S^{-1}A)^{\times}$ consists of every fraction $\frac{a}{s}$ for which we can find some fraction $\frac{b}{t}$ such that $\frac{a}{s}\frac{b}{t} =1$. Therefore, we must have some element $u\in S$ such that $u(ab-st) = 0 \iff \exists \beta \in A \text{ s.t. } \beta a \in S$. Thus, $(S^{-1}A)^{\times} = \left\{\frac{a}{s} \mid \exists \beta \in A \text{ s.t. } \beta a \in S\right\}$. But then 
+\begin{align*}
+\frak{a}^e = (1) & \iff \frak{a}^e  \text{ contains some unit }
+\\ &  \iff \left(\exists \frac{a}{s} \in \frak{a}^e\right)\left(\exists \beta \in A\right)\left(\beta \cdot a \in S\right)
+\\ &  \iff \beta \cdot a \in S\cap \frak{a}.
+\end{align*}
 \end{proof}
-\item Suppose that $I \unlhd S^{-1}A$ is an ideal . Then we can form $I^{ce} \unlhd S^{-1}A$. By definition, $I \supset I^{ce}$. In fact, $I = I^{ce}$.  
+\end{enumerate}
+\end{prop}
+
+\medskip
+
+
+Suppose that $I \unlhd S^{-1}A$ is an ideal . Then we can form $I^{ce} \unlhd S^{-1}A$. By definition, $I \supset I^{ce}$.
+
+\begin{prop} $ $
+\begin{enumerate}
+\item  In fact, $I = I^{ce}$.  
 \begin{proof}
-If $\frac{a}{s} \in I$, then $a\in h^{-1}(I)$ because $h^{-1}(I) = \{ r\in A \mid \frac{r}{1}\in I \}$. But $\frac{a}{1}  = s\cdot \frac{a}{s}$ where $s\in S^{-1}A$ and $\frac{a}{s} \in I$, so that $a\in I$. This implies that $\frac{a}{s} \in I^{ ce}$ for each $s\in S$, and thus $I\subset I^{ce}$. 
+If $\frac{a}{s} \in I$, then $a\in h^{-1}(I)$ because $h^{-1}(I) = \left\{ r\in A \mid \frac{r}{1}\in I\right\}$. But $\frac{a}{1}  = s\cdot \frac{a}{s}$ where $s\in S^{-1}A$ and $\frac{a}{s} \in I$, so that $a\in I$. This implies that $\frac{a}{s} \in I^{ ce}$ for each $s\in S$, and thus $I\subset I^{ce}$. 
 \end{proof}
-\item If $\frak{a} \unlhd A$, then $\frak{a}^{ec} = \{r\in A  \mid \exists s \in S. sr \in \frak{a}\}$. 
+\item If $\frak{a} \unlhd A$, then $\frak{a}^{ec} = \left\{r\in A  \mid \exists s \in S \text{ s.t. } sr \in \frak{a}\right\}$. 
 \begin{proof}
-Suppose that $a\in \frak{a}^{ec}$. Then $\frac{a}{1} = h(a) \in  \frak{a}^e$, so that $\exists b \in \frak{a}.\exists s \in S. \frac{a}{1} = \frac{b}{s}$. This implies that $\exists u \in S$ such that $u(sa - b) =0$. Hence $(us)a = b$, and $\frak{a}^{ec} \subset \{r\in A  \mid \exists s \in S. sr \in \frak{a}\}$.  If $r\in A$ is such that $rs \in \frak{a}$ for some $s\in S$, then $\frac{r}{1} = \frac{rs}{s} \in \frak{a}^e$ and thus $r \in \frak{a}^{ec}$. 
+Suppose that $a\in \frak{a}^{ec}$. Then $\frac{a}{1} = h(a) \in  \frak{a}^e$, so that $\left(\exists b \in \frak{a}\right)\left(\exists s \in S\right)\left(\frac{a}{1} = \frac{b}{s}\right)$. This implies that $\exists u \in S$ such that $u(sa - b) =0$. Hence $(us)a = b$, and $\frak{a}^{ec} \subset \left\{r\in A  \mid \exists s \in S \text{ s.t. } sr \in \frak{a}\right\}$.  If $r\in A$ satisfies $rs \in \frak{a}$ for some $s\in S$, then $\frac{r}{1} = \frac{rs}{s} \in \frak{a}^e$ and thus $r \in \frak{a}^{ec}$. 
 \end{proof}
-\item We have that $\frak{a} \unlhd A$ is contracted (i.e., $\frak{a} = I^c$ for some $I \unlhd S^{-1}A$) if and only if $\frak{a} = \frak{a}^{ec}$ if and only if $[s] \in \faktor{A}{\frak{a}}$ is not a zero divisor for any $s\in S$.
-\item The map $(-)^e$ induces a bijection $(-)^e : \{\frak{a} \unlhd A \mid \frak{a}$ is a contraction of some ideal $\} \to \{I \mid I \unlhd S^{-1}A\}$ that preserves inclusions of ideals.
+\item $\frak{a} \unlhd A$ is contracted (i.e., $\frak{a} = I^c$ for some $I \unlhd S^{-1}A$) if and only if $\frak{a} = \frak{a}^{ec}$ if and only if $[s] \in \faktor{A}{\frak{a}}$ is not a zero divisor for any $s\in S$.
+\item The map $(-)^e$ induces a bijection $$(-)^e : \left\{\frak{a} \unlhd A \mid \frak{a} \text{ is a contraction of some ideal} \right\} \to \left\{I \mid I \unlhd S^{-1}A\right\}$$ that preserves inclusions of ideals.
 \end{enumerate}
 \end{prop}
 
@@ -668,7 +692,15 @@ A submodule $N \subset M$ is \textit{$S$-saturated} if $N=\left \{x \in M \mid \
 \end{definition} 
 If $M=A$ and $N= \frak{a}$, then $N$ is $S$-saturated if and only if $\frak{a} = \frak{a}^{ec}$. The localization on modules induces an inclusion-preserving bijection $$S^{-1}(-) : \{N \subset M \mid N \text{ is } S\text{-saturated}\} \to \{M \mid M \subset S^{-1}M\}.$$
 
-\smallskip
+\medskip
+
+
+\begin{definition} Let $\frak{a}$ be an ideal in $A$.
+\begin{enumerate}
+\item We say that $\frak{a}$ is a \textit{maximal ideal} if it is properly contained in $A$ and is maximal in the set of   all properly contained ideals in $A$ partially ordered by inclusion.
+\item We say that $\frak{a}$ is a \textit{prime ideal} if $xy\in \frak{a} \implies x \in \frak{a} \vee y \in \frak{a}$.
+\end{enumerate}
+\end{definition}
 
 \begin{exercise}
 An ideal $\frak{b} \unlhd A$ is prime if and only if $A \setminus \frak{b}$ is multiplicatively closed. 
@@ -679,7 +711,7 @@ An ideal $\frak{b} \unlhd A$ is prime if and only if $A \setminus \frak{b}$ is m
 \begin{prop}  If $\frak{p} \unlhd A$ is prime and $ S\subset A$ is multiplicatively closed, then $\frak{p}^e \unlhd S^{-1}A$ is prime if and only if $S \cap \frak{p} = \emptyset$. 
 \end{prop}
 \begin{proof}
-The forward direction is obvious. Conversely, suppose that $S \cap \frak{p} = \emptyset$. Then $\p^{ec} = \p$. Indeed, $\p^{ec} = \{a\in A\mid \exists s \in S. sa \in \p \}$. But if $sa\in \p$, then either $s\in \p$ or $a\in \p$. Since $S \cap \p = \emptyset$, we see that $s\notin \p \implies a\in \p$. Suppose that $x\cdot y\in \p^e$. Then $x= \frac{a}{s}$ for some $a\in A$ and $s\in S$, and $y = \frac{b}{t}$ for some $b\in A$ and $t\in B$.  Then $\frac{ab}{st}\in \p^e$, so that $\frac{ab}{t} \in \p^e$ since $\p^e$ is an ideal. Hence $ab \in \p$, which is prime by assumption. Say that $a\in \p$. Then $\frac{a}{s} \in \p^e$. 
+The forward direction is obvious. Conversely, suppose that $S \cap \frak{p} = \emptyset$. Then $\p^{ec} = \p$. Indeed, $\p^{ec} = \left\{a\in A\mid \exists s \in S \text{ s.t. } sa \in \p \right\}$. But if $sa\in \p$, then either $s\in \p$ or $a\in \p$. Since $S \cap \p = \emptyset$, we see that $s\notin \p \implies a\in \p$. Suppose that $x\cdot y\in \p^e$. Then $x= \frac{a}{s}$ for some $a\in A$ and $s\in S$, and $y = \frac{b}{t}$ for some $b\in A$ and $t\in B$.  Then $\frac{ab}{st}\in \p^e$, so that $\frac{ab}{t} \in \p^e$ since $\p^e$ is an ideal. Hence $ab \in \p$, which is prime by assumption. Say that $a\in \p$. Then $\frac{a}{s} \in \p^e$. 
 \end{proof}
 
 \begin{corollary} If $S \subset A$ is multiplicatively closed, then we get a bijection $$\{ \p \in \mathsf{Spec}(A) \mid \p \cap S=\emptyset\} \overset{(-)^e}{\longrightarrow}\mathsf{Spec}(S^{-1}A).$$  
@@ -705,13 +737,13 @@ Conversely, let $a,b \in A$ such that $a,b \notin \frak{a}$. We must show that $
  \end{note}
 
 \begin{definition}
-Let $A$ be a ring. We call $A$ a \textit{local} ring if any of the following equivalent conditions holds.
+Let $A$ be a ring. We call $A$ a \textit{local ring} if any of the following equivalent conditions holds.
 \begin{enumerate}[label=(\alph*)]
 \item $A$ has a unique maximal ideal $\frak{m}$.
 \item $A \setminus A^{\times}$ is an ideal.
 \item If $\frak{m}$ is maximal and $x\in \frak{m}$, then $1+x \in A^{\times}$. 
 \end{enumerate}
-If $A$ is a ring and $\p$ a prime ideal, we will denote the localization $(A- \p)^{-1}A $ by $A_{\p}$. 
+If $A$ is a ring and $\p$ a prime ideal, we will denote the localization $(A\setminus \p)^{-1}A $ by $A_{\p}$. 
 \end{definition}
 
 \begin{prop}
@@ -726,7 +758,7 @@ In particular, the map $$\left(\text{prime ideal of } A \mid A \subset \p\right)
 \end{corollary}
 
 \begin{definition}
-If $A$ is a commutative ring, then for every $\p \unlhd A$ prime, we define the \textit{height of $\p$} as $$\mathsf{ht}(\p) \equiv \sup\{ k \mid \p = \p_0 \supsetneq \p_1 \supsetneq \p_2 \supsetneq \cdots \supsetneq \p_k, \  \p_i \unlhd A   \}. $$ Note that $\mathsf{ht}(\p) = \mathsf{ht}(\p^e \text{ in } A_{\p})$.
+Let $A$ be a commutative ring, For every $\p \unlhd A$ prime, the \textit{height of $\p$} is $$\mathsf{ht}(\p) \equiv \sup\{ k \mid \p = \p_0 \supsetneq \p_1 \supsetneq \p_2 \supsetneq \cdots \supsetneq \p_k, \  \p_i \unlhd A   \}. $$ Note that $\mathsf{ht}(\p) = \mathsf{ht}(\p^e \text{ in } A_{\p})$.
 \end{definition}
 
 \begin{definition}
@@ -734,7 +766,7 @@ The \textit{Krull dimension} of $A$ is $$ \dim{A} \equiv \sup \{  \mathsf{ht}(\f
 \end{definition}
 
 
-Note that $\dim{A_{\p}} = \mathsf{ht}(\p)$ and that $\dim{A} = \sup \{ \dim{A_{\frak{m}}} \mid \text{maximal } \frak{m} \properideal A \}$.
+Note that $\dim{A_{\p}} = \mathsf{ht}(\p)$ and that $\dim{A} = \sup\left\{ \dim{A_{\frak{m}}} \mid \text{maximal } \frak{m} \properideal A\right\}$.
 
 
 \begin{exmp} $ $
@@ -746,7 +778,7 @@ Note that $\dim{A_{\p}} = \mathsf{ht}(\p)$ and that $\dim{A} = \sup \{ \dim{A_{\
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item Show that $\Z[-\sqrt{5}]$ is not a PID but has dimension $1$. 
+\item Show that $\Z\left[{-\sqrt{5}}\right]$ is not a PID but has dimension $1$. 
 \item Sow that $\dim{\C[x_1, \ldots, x_n]} =n$. 
 \end{enumerate}
 \end{exercise}
@@ -754,7 +786,7 @@ Note that $\dim{A_{\p}} = \mathsf{ht}(\p)$ and that $\dim{A} = \sup \{ \dim{A_{\
 \section{Basic algebraic geometry}
 
 
-Any information about $A$, any prime ideal in $A$, any localization in $A$, and their relations can be packaged in a geometrical entity, specifically, a topological space along with a distinguished class of maps. 
+Any information about a commutative ring $A$, a prime ideal in $A$, a localization in $A$, and the relations between them can be packaged into a geometrical object, specifically, a topological space along with a distinguished class of maps. 
 
 \medskip
 
@@ -791,7 +823,7 @@ $X$ is quasi-compact, meaning that for any Zariski-open $U \subset X$ and any op
 \end{lemma}
 
 \begin{note}
-$X$ is not Hausdorff in general. 
+$X$ is \emph{not} Hausdorff in general. 
 \end{note}
 \begin{exercise}
 Let $A= \C[x]$. Show that $X = \mathsf{Spec}(A)$ is not Hausdorff. 
@@ -801,7 +833,7 @@ Let $A= \C[x]$. Show that $X = \mathsf{Spec}(A)$ is not Hausdorff.
 
 \begin{note} $ $
 \begin{enumerate}
-\item We have that $V(S) = V(\frak{a})$ when $\frak{a} = \langle S \rangle $.
+\item We have that $V(S) = V(\frak{a})$ whenever $\frak{a} = \langle S \rangle $.
 \item The Zariski topology is generated by the collection of principal open subsets on $X$, i.e., subsets of the form $X_f= \left\{\frak{b} \in X \mid  f\notin \frak{b} \right\}$ where $f\in A$. The elements in the ring $A$ may be viewed as kinds of functions on $X$. View $f\in A$ as a function $X \to \coprod_{\frak{b} \in X} A_{\frak{b}} \to \coprod_{\frak{b} \in X} \faktor{A+{\frak{b}}}{\frak{b}^c}$ defined by $\frak{b} \mapsto \frac{f}{1} \in A_{\frak{b}}$.
 \end{enumerate}
 \end{note}
@@ -922,7 +954,7 @@ Suppose $A$ is a local ring with maximal ideal $\frak{a}_A$. Let $M$ be a finite
 
 \begin{prop} $ $
 \begin{enumerate}
-\item If $A$ is a commutative ring,  then the functor $(-) \otimes \faktor{A}{\Jac(A)} : A-\mathbf{Mod^{fg}} \to \faktor{A}{\Jac(A)} - \mathbf{Mod^{fg}}$ is faithful.  
+\item If $A$ is a commutative ring,  then the functor $(-) \otimes \faktor{A}{\Jac(A)} : A{-}\mathbf{Mod^{fg}} \to \faktor{A}{\Jac(A)} - \mathbf{Mod^{fg}}$ is faithful.  
 \item If $M$ is a finitely generated $A$-module and $m_1, \ldots, m_t \in M$ are such that their images $\bar{m}_1, \ldots, \bar{m}_t \in \faktor{M}{\Jac(A) \cdot M}$ generate the module $\faktor{M}{\Jac(A)\cdot M}$, then they generate $M$.
 \end{enumerate}
 \end{prop}
@@ -1084,7 +1116,7 @@ If $f(x) \in \Z[x]$ is irreducible, then it is irreducible in $\Q[x]$.
 Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(x) \in \Z[x]$ and the coefficients  of $Np$ are pairwise coprime. Suppose that $f(x) \in \Z[x]$ is irreducible in $\Z[x]$. Suppose, towards a contradiction, that  there are $g(x), h(x)\in \Q[x]$ non-units such that $f(x) = g(x)h(x)$. Then $g(x)$ and $h(x)$ are $\Q$-proportional to some $\tilde{g}(x)$ and $\tilde{h}(x)$, respectively, over $\Z$ with each having pairwise coprime coefficients. Thus, $f(x) = \lambda \tilde{g}(x)\tilde{h}(x)$ for some $\lambda \in \Q^{\times}$. Let $\lambda = \frac{a}{b}$ with $(a,b)=1$. If $b \ne \pm 1$, then there is some $p>0$ where $p \mid b$ and $pf = a \tilde{g}\tilde{h}$. We have that $bf, a \tilde{g}, \tilde{h} \in \Z[x]$. We can reduce $\mod p$ to get $[bf]_p = [a]_p[\tilde{g}]_p[\tilde{h}]_p$ But $f(x) \in \Z[x]$, so that $[bf]_p  = [b]_p[f]_p =0$.Hence $[a]_p[\tilde{g}]_p[\tilde{h}]_p =0$ in $(\Z/p)[x]$, so that one of $[a]_p$, $[\tilde{g}]_p$, and $[\tilde{h}_p]$ must be $0$. But $(a,b) =1$, so that $[a]_p \ne 0$. Since each of $\tilde{g}$ and $\tilde{h}$ has coprime coefficients, we have that $[\tilde{g}]_p \ne 0$ and $[\tilde{h}]_p \ne 0$, a contradiction. 
 \end{proof}
 
-Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x) (x-1) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = [(x-1)^p]_p$, so that $[f]_p[(x-1)]_p = ([x-1]_p)^p$ and $[f]_p = [(x-1)]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = ([(x-1)]_p)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
+Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x) (x-1) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = [(x-1)^p]_p$, so that $[f]_p[(x-1)]_p = ([x-1]_p)^p$ and $[f]_p = [(x-1)]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = \left([(x-1)]_p\right)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
 
 \smallskip
 
@@ -1911,7 +1943,7 @@ Now, suppose that $K \supsetneq \R$ is a finite field extension. If $[K : \R]$ i
 
 We want to prove the \textit{fundamental theorem of algebra}: that any $f(x) \in \C[x]$ has a root in $\C$. Note that if $c$ is a complex root of $f(x)\overline{f(x)} \in \R[x]$, then either $c$ or $\bar{c}$ is a root of $f(x)$.  Thus, it suffices to show that any polynomial over $\R$ has a root in $\C$.
 
-To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \lvert{\gal(L/\R)}\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$[L: \R] = \left[L: L^H\right] = \lvert{\gal(L/L^H)}\rvert = \lvert{H}\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
+To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \lvert{\gal(L/\R)}\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$\left[L: \R\right] = \left[L: L^H\right] = \lvert{\gal(L/L^H)}\rvert = \lvert{H}\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
 
 
 \begin{theorem}[Primitive element theorem]
@@ -2032,10 +2064,10 @@ Hilbert's syzygy theorem states that $Z_{n-1}(I)$ is free, i.e., that there is a
 
 \begin{definition} $ $
 \begin{enumerate}
-\item  A \textit{chain complex} (in $\mathbf{Ab}$) is a pair $\left(M_{\bullet}, \partial_{\bullet}\right)$ where $M_{\bullet} = \{M_i\}_{i\in \Z}$ is a set of abelian groups and $\partial_{\bullet} =\{\partial_i\}_{\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $\partial_i : M_i \to M_{i-1}$ satisfies $\partial_{i-1} \circ \partial_i = 0$. 
+\item  A \textit{chain complex} (in $\mathbf{Ab}$) is a pair $\left(M_{\bullet}, \partial_{\bullet}\right)$ where $M_{\bullet} = \{M_i\}_{i\in \Z}$ is a set of abelian groups and $\partial_{\bullet} =\{\partial_i\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $\partial_i : M_i \to M_{i-1}$ satisfies $\partial_{i-1} \circ \partial_i = 0$. 
 
 We call $Z_n \equiv \ker{\partial_{n}}$ \textit{the group of degree $n$ cycles} and $B_n \equiv \im{\partial_{n+1}}$ \textit{the group of degree $n$ boundaries}. Finally, we call $H_n \equiv Z_n/B_n$ the \textit{degree $n$ homology group}.
-\item A \textit{((co)chain) complex} (in $\mathbf{Ab}$) is a pair $\left(M^{\bullet}, d^{\bullet}\right)$ where $M^{\bullet} = \{M^i\}_{i\in \Z}$ is a set of abelian groups and $d^{\bullet} =\{d^i\}_{\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $d^i : M^i \to M^{i+1}$ satisfies $d^{i+1} \circ d^i = 0$. 
+\item A \textit{((co)chain) complex} (in $\mathbf{Ab}$) is a pair $\left(M^{\bullet}, d^{\bullet}\right)$ where $M^{\bullet} = \{M^i\}_{i\in \Z}$ is a set of abelian groups and $d^{\bullet} =\{d^i\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $d^i : M^i \to M^{i+1}$ satisfies $d^{i+1} \circ d^i = 0$. 
 
 We call $Z^n \equiv \ker{d^n}$ \textit{the group of degree $n$ cocycles} and $B^n \equiv \im{d^{n-1}}$ \textit{the group of degree $n$ coboundaries}. 
 

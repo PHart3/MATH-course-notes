@@ -181,21 +181,21 @@ This is an introduction to natural transformations in category theory, including
 \section{Natural transformations}
 
 
-Let $\c$ and $\d$ be categories and $F$ and $G$ be functors $\c \to \d$.  A \textit{natural transformation} $\phi :F \Rightarrow G$  is a function $A \mapsto f_A$ from $\ob \c$ to $\mor \d$ such that $f_A$ is a map  $F(A) \to G(A)$ and the following diagram commutes for any morphism $f: A \to B$ in $\c$.
+Let $\c$ and $\d$ be categories and $F$ and $G$ be functors $\c \to \d$.  A \textit{natural transformation} $\phi :F \Rightarrow G$  is a function $A \mapsto f_A$ from $\ob \c$ to $\mor \d$ such that $f_A$ is a map  $F(A) \to G(A)$ and the following diagram commutes for any morphism $h: A \to B$ in $\c$.
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
-FA \arrow[r, "F{f}"] \arrow[d, "f_A", swap]
+FA \arrow[r, "F{h}"] \arrow[d, "f_A", swap]
 & FB \arrow[d, "f_B"] \\
-GA \arrow[r, "G{f}"']
+GA \arrow[r, "G{h}"']
 & GB
 \end{tikzcd}
 \]
-In symbols, this may be written as $f_Bf_{\ast} = f_{\ast}f_A$, where $f_A$ and $f_B$ are called the \textit{components} of $\phi$.
+In symbols, this may be written as $f_Bh_{\ast} = h_{\ast}f_A$, where $f_A$ and $f_B$ are called the \textit{components} of $\phi$.
 
 
 \begin{note}\label{rmk}
-If every $f_A$ is an isomorphism, then the $(f_A)^{{-1}}$ define a natural transformation between the same two functors.
+If every $f_A$ is an isomorphism, then the $\left(f_A\right)^{{-1}}$ define a natural transformation between the same two functors.
 \end{note}
 
 If each $f_A$ is an isomorphism, then we say that $\phi$ is a \textit{natural isomorphism}.
@@ -214,7 +214,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ which satisfies $f(\det(A)) = \det(\GL_n(f)(A))$. Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Rng}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ which satisfies $f(\det(A)) = \det(\GL_n(f)(A))$. Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]

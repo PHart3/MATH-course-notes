@@ -323,12 +323,14 @@ Define the dependent type $D$ over $\id_A$ by $$D(x, y, q) \equiv (y \leadsto z)
 \end{proof}
 
 Furthermore, we can use the induction principle to show that $A$ is a groupoid whose structure is exactly similar to the groupoid structure of a topological space $X$, which we recall now.
-\begin{enumerate}
-\item Let $\gamma : I \to X$ in $X$ be a path in $X$. Then $\bar{\gamma}\coloneqq \gamma(1-t)$ is a path from $\gamma(1)$ to $\gamma(0)$, called the \textit{inverse of $\gamma$}. This fact corresponds to the function $\mathsf{sym}$. 
-\item Let $\phi, \psi: I \to X$ be paths in the topological space $X$ such that $\phi(1) = \psi(0)$. Then $\phi \ast \psi : I \to X$ defined by  $$t\mapsto  \begin{cases} \phi(2t) & 0\leq t \leq \frac{1}{2} \\ \psi(2t-1) & \frac{1}{2} \leq t \leq 1 \end{cases}$$ is a path from $\phi(0)$ to $\psi(1)$. This fact corresponds to the function $\mathsf{trans}$.
-\item Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ with $\ob(\Pi_1(X)) = X$ and $\Hom_{\Pi_1(X)}(x,y) = \left\{[\gamma]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}$. The composition of morphisms is given by the operation $\ast$. 
-\end{enumerate}
+\begin{itemize}
+\item Let $\gamma : I \to X$ in $X$ be a path in $X$. Then $\bar{\gamma}(t)\coloneqq \gamma(1-t)$ is a path from $\gamma(1)$ to $\gamma(0)$, called the \textit{inverse of $\gamma$}. This corresponds to the function $\mathsf{sym}$. 
+\item Let $\phi, \psi: I \to X$ be paths in the topological space $X$ such that $\phi(1) = \psi(0)$. Then $\phi \ast \psi : I \to X$ defined by  $$t\mapsto  \begin{cases} \phi(2t) & 0\leq t \leq \frac{1}{2} \\ \psi(2t-1) & \frac{1}{2} \leq t \leq 1 \end{cases}$$ is a path from $\phi(0)$ to $\psi(1)$. This corresponds to the function $\mathsf{trans}$.
+\item Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ with $\ob(\Pi_1(X)) \equiv X$ and $\Hom_{\Pi_1(X)}(x,y) \equiv \left\{[\gamma]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}$. The composition of morphisms is given by the operation $\ast$. 
+\end{itemize}
 It is straightforward but tedious to verify that $\Pi_1$ satisfies the definition of a groupoid with $\left[\bar{\gamma}\right] = \left[\gamma\right]^{{-}1}$.
+
+\smallskip
 
 \begin{remark}
  It is known that the semantic structure of Martin-L\"of identity types is that of $\infty$-groupoids (i.e., $\infty$-categories in which any $k$-morphism is an equivalence).
@@ -634,7 +636,7 @@ One key feature of HoTT that we have neglected is the ability to define so-calle
 
 \begin{itemize}
 \item \href{https://ncatlab.org/nlab/show/HomePage}{\textit{nLab}}.
-\item Univalent Foundations Program. \textit{Homotopy Type Theory: Univalent Foundations of Mathematics}. Institute For Advanced Study, 2013.
+\item Univalent Foundations Program. \textit{Homotopy Type Theory: Univalent Foundations of Mathematics}. Institute for Advanced Study, 2013.
 \item Altenkirch, Thorsten. \textit{Introduction to Homotopy Type Theory}. 2017.
 \end{itemize}
 
