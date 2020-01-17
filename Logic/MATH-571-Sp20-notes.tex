@@ -1,0 +1,316 @@
+\documentclass[10pt,letterpaper,cm]{nupset}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{graphicx}
+ \usepackage{enumerate}
+  \usepackage{enumitem}
+ \usepackage{stmaryrd}
+ \usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{tikz-cd}
+\usetikzlibrary{quotes}
+\usetikzlibrary{decorations.markings}
+\usepackage{faktor}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage[utf8]{inputenc}
+\sisetup{group-separator={,}}
+\hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           }
+
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref} 
+    
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{exmp}[definition]{Example}
+\newtheorem{non-exmp}[definition]{Non-example}
+\newtheorem{note}[definition]{Note}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{claim}{Claim}
+\newtheorem{exercise}[definition]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem*{todo}{To do}
+\newtheorem*{question}{Question}
+\newtheorem*{conv}{Convention}
+\newtheorem*{aside}{Aside}
+\newtheorem*{notation}{Notation}
+\newtheorem*{term}{Terminology}
+\newtheorem*{background}{Background}
+\newtheorem*{further}{Further reading}
+\newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\pgfplotsset{unit circle/.style={width=4cm,height=4cm,axis lines=middle,xtick=\empty,ytick=\empty,axis equal,enlargelimits,xmax=1,ymax=1,xmin=-1,ymin=-1,domain=0:pi/2}}
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\mathbb G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathbb K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\M}{\mathbb M}
+\newcommand{\N}{\mathbb N}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathcal P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathtt S}
+\newcommand{\T}{\mathbf T}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\renewcommand{\a}{\mathscr{A}}
+\renewcommand{\b}{\mathscr{B}}
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\newcommand{\y}{\mathscr{Y}}
+\renewcommand{\j}{\mathscr{J}}
+\newcommand{\X}{\mathscr X}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\mathscr{I}}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\frak{p}}
+\newcommand{\q}{\mathscr{Q}}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\mathscr{U}}
+\renewcommand{\v}{\mathscr{V}}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\newcommand{\0}{\mathsf 0}
+
+\newcommand{\arrowcircle}[1][]{%
+  \begin{tikzpicture}[#1]
+    \draw[->] (0,0ex) -- (2em,0ex);
+    \draw (1em,0ex) circle (0.7ex);
+  \end{tikzpicture}%
+}
+
+\DeclareMathOperator{\card}{\text{card}}
+
+\newcommand{\Rho}{\mathrm{P}}
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator*{\SL}{SL}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\Char}{\mathsf{char}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\conj}{conj}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ed}{End}
+\DeclareMathOperator{\gr}{\mathsf{gr}}
+\DeclareMathOperator{\map}{Map}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\fs}{fs}
+\DeclareMathOperator{\fo}{\mathsf{FO}}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\thh}{Th}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Fr}{Fr}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\nilp}{Nilp}
+\DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\kor}{Kor}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator{\cn}{Cn}
+\DeclareMathOperator{\mult}{mult}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\disc}{Discr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\acyc}{acyclic}
+
+\pagestyle{headings}
+
+\linespread{1.3}
+
+% info for header block in upper right hand corner
+\name{Perry Hart}
+\class{MATH 571}
+\assignment{Spring 2020}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{abstract}
+These notes are based on Scott Weinstein's ``Model Theory'' lectures at UPenn along with David Marker's \textit{Model Theory: An Introduction}. Any mistake in what follows is my own.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection{Lecture 1}
+
+Recall the structure $\N \coloneqq \langle \omega, \S, \mathtt{0}\rangle$ where 
+\begin{itemize}
+\item $\omega$ denotes the set of natural numbers $\left\{0,1,2,\ldots,\right\}$, 
+\item $\S$ is interpreted as the successor function $\omega \to \omega$, and 
+\item the constant symbol $\mathtt{0}$ is interpreted as the natural number $0$.
+\end{itemize}
+
+The formal language $\mathcal{L}$ for which $\N$ is a structure consists of the first-order (FO) logical symbols
+\[
+\forall, \ \exists, \ \land,\ \neg,\ \vee,\ \rightarrow, \ =
+\]
+along with non-logical symbols such as $\mathtt{0}$, $\S^n{\mathtt{0}}\coloneqq \underbrace{\S\cdots \S}_{n\text{-copies}}{\mathtt{0}}$, and $\S^n{x}$. Let $\fo$ denote the set of all (first-order) $\mathcal{L}$-sentences. 
+
+\smallskip
+
+The \textit{theory of $\N$} is 
+\[
+\thh(\N) \coloneqq \left\{\varphi \in \fo \mid \N \models \varphi \right\},
+\] which consists of all sentences satisfied by $\N$. Further, for any $\sigma \in \fo$, consider the set $$\cn(\sigma)  \coloneqq \left\{\varphi \in \fo \mid \sigma \models \varphi\right\}$$ of consequences of $\sigma$.
+
+\begin{question}
+Can we find a sentence $\sigma$ such that $\cn(\sigma) = \thh(\N)$?
+\end{question}
+
+Let $\Delta = \left\{\forall{x}\left(\S{x}\ne \0\right), \ \forall{x}\forall{y}\left(\S{x} = \S{y} \rightarrow x =y\right), \ \forall{x}\left(x\ne \0 \rightarrow \exists{y}\left(\S{y}=x\right)\right)\right\}$. Each element of $\Delta$ is clearly true in $\N$, i.e., $\A \models \Delta$. But is it the case that $\cn(\Delta) = \thh(\N)$? No, provided that we allow ourselves access to monadic second-order sentences. Specifically, consider the \textit{induction axiom $\mathsf{IA}$}:
+\[ \label{eqn:IA}
+\forall{P}\left(\left(P(0) \land \forall{x}\left(P(x) \rightarrow P(\S{x})\right) \rightarrow \forall{x}\left(P(x)\right)\right)\right). \tag{$\ast$}
+\] This is clearly true in $\N$. Consider, however, a new structure $\A \coloneqq \langle \omega \cup \Z, \S, \0\rangle$. Then $\Delta \subset \thh(\A)$, and we have a \textit{$\Z$-chain} in $\A$ (pretending, for the moment, that $\lvert{\A}\rvert$ has the usual order $<$):
+\[
+\begin{tikzcd}
+\cdots \arrow[r, bend left] & {-\left(n+1\right)}^{\A} \arrow[r, bend left] & {-n}^{\A} \arrow[r, bend left] & \cdots \arrow[r, bend left] & {-1}^{\A} \arrow[r, bend left] & \0^{\A} \arrow[r, bend left] & 1^{\A} \arrow[r, bend left] & \cdots
+\end{tikzcd}
+.\] The second-order sentence \eqref{eqn:IA} with $P$ instantiated by the ``initial segment" $\Z_{\geq {-1}}$ is not true in $\A$, so that  $\A \not\models \mathsf{IA}$. In this case, $\mathsf{IA} \in \thh(\N)\setminus \cn(\sigma)$.
+
+Sill, we want to restrict ourselves to $\fo$. Recall that two structures $\B$ and $\C$ are \textit{elementarily equivalent} if $\thh(\B) = \thh(\C)$. 
+
+\begin{question}
+Are $\A$ and $\N$ elementarily equivalent?
+\end{question}
+
+If we can find some sentence belonging to $\thh(\N)\setminus \thh(\A)$, then $\cn(\Delta) \ne \thh(\N)$.
+
+\begin{definition}
+A sentence $\sigma$ is \textit{categorical} if for any structures $\B$ and $\C$, if $\B \models \sigma$ and $\C \models \sigma$, then $\B \cong \C$.
+\end{definition}
+
+\begin{exmp}
+$\Delta' \coloneqq \Delta +\mathsf{IA}$ is categorical.
+\end{exmp}
+
+Perhaps exhibiting that the usual order $<$ on $\omega$ is definable in $\N$ would reveal that $\A \not \equiv \N$. For this, we must find a (well-formed) formula $\theta(x,y)$ such that for every $n,m\in \omega$, $$m<n \iff \N \models \theta[n,m].$$
+Thanks to Lagrange's four square theorem, we could define $<$ on the positive integers. But it's unclear how to proceed further.
+
+\smallskip
+
+\begin{theorem}
+If $\B$ is infinite, then for every infinite  cardinal $\kappa$, there is some $\C$ such that $\C \equiv \B$ and $\card(\C) = \kappa$.
+\end{theorem}
+
+\begin{corollary}
+If $\B$ is infinite, then there exists a $\C$ such that $\C \equiv \B$ and $\C \not\cong \B$.
+\end{corollary}
+
+Therefore, $\Delta$ does \emph{not} categorically describe $\N$. Now, consider the structure $\widetilde{\N}$ obtained from $\N$ by adding a single point $\bullet$ fixed by $\S$. Then the sentence $\forall{x}\left(S{x} \ne x\right)$ is true in $\N$ but not in $\widetilde{\N}$. Moreover, $\Delta \subset \thh(\widetilde{\N})$, which proves that $$\cn(\Delta) \ne \thh(\N).$$ With this in mind, let $\Sigma = \Delta \cup \left\{ \forall{x}\left(\S^n{x} \ne x\right) \mid n \in \omega \right\}$. To show that $\cn(\Sigma) = \thh(\N)$, it suffices to show that for any $\B$, if $\B \models \Sigma$, then $\B \equiv \N$. To this end, for any cardinal $\kappa$, let $\A_{\kappa} = \N \cup \left(\kappa \times \Z\right)$, which is precisely the structure obtained form $\N$ by adding $\kappa$ many disjoint $\Z$-chains.
+
+\begin{question}
+How many structures that 
+\begin{enumerate}[label=(\alph*)]
+\item satisfy $\Sigma$ and 
+\item are of cardinality $\kappa$ 
+\end{enumerate}
+are there up to isomorphism?
+\end{question}
+
+If $\kappa < \omega$, then $\card(\A_{\kappa}) = \aleph_0$. Also, if  $\kappa > \omega$, then $\card(\A_{\kappa}) = \kappa$, so that $\Sigma$ is \textit{$\kappa$-categorical}, i.e., every structure satisfying (a) and (b) is isomorphic to $\A_{\kappa}$.  
+
+\end{document}

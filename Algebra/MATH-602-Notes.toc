@@ -20,7 +20,7 @@
 \contentsline {subsection}{\numberline {5.2}Lecture 16}{35}{subsection.5.2}
 \contentsline {section}{\numberline {6}Categories and functors}{37}{section.6}
 \contentsline {subsection}{\numberline {6.1}Lecture 17}{37}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Lecture 18}{39}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Lecture 18}{40}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Lectures 19 and 20}{42}{subsection.6.3}
 \contentsline {section}{\numberline {7}The Yoneda lemma}{43}{section.7}
 \contentsline {subsection}{\numberline {7.1}Lecture 21}{46}{subsection.7.1}
@@ -30,10 +30,10 @@
 \contentsline {subsection}{\numberline {8.2}Lecture 24}{54}{subsection.8.2}
 \contentsline {section}{\numberline {9}Polynomial rings}{55}{section.9}
 \contentsline {subsection}{\numberline {9.1}Lecture 25}{56}{subsection.9.1}
-\contentsline {section}{\numberline {10}Noetherian and Artinian modules}{58}{section.10}
-\contentsline {subsection}{\numberline {10.1}Lecture 26}{58}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Lecture 27}{61}{subsection.10.2}
-\contentsline {subsection}{\numberline {10.3}Lecture 28}{65}{subsection.10.3}
+\contentsline {section}{\numberline {10}Noetherian and Artinian modules}{59}{section.10}
+\contentsline {subsection}{\numberline {10.1}Lecture 26}{59}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Lecture 27}{62}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}Lecture 28}{66}{subsection.10.3}
 \contentsline {section}{\numberline {11}Projective and injective modules}{67}{section.11}
 \contentsline {subsection}{\numberline {11.1}Lecture 29}{67}{subsection.11.1}
-\contentsline {subsection}{\numberline {11.2}Lecture 30}{69}{subsection.11.2}
+\contentsline {subsection}{\numberline {11.2}Lecture 30}{70}{subsection.11.2}

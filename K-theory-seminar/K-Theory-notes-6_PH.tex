@@ -207,12 +207,12 @@ Let $\b$ and $\c$ be Waldhausen categories. We say that $F' \rightarrowtail F \t
 \end{enumerate}
 
 
-Let $\c$ be a Waldhausen category. Let $(\eta): A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2\c$. Define the source $s$, target $t$, and quotient $q$ functors $S_2\c \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$, respectively. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. 
+Let $\eta :\ A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2{\c}$. Define the source $s$, target $t$, and quotient $q$ functors $S_2{\c} \to \c$ by $s(\eta) = A$, $t(\eta) = B$, and $q(\eta) = C$, respectively. Then $s \rightarrowtail t \twoheadrightarrow q$ is a cofiber sequence of functors. 
 
-Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2 \c$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. (We say that $S_2\c$ is \textit{universal} in this sense.)
+Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2{\c}$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. (We say that $S_2{\c}$ is \textit{universal} in this sense.)
 
 \begin{theorem}[Extension]\label{ext}
-The exact functor $(s, q) : S_2 \c \to \c \times \c$ induces  a homotopy equivalence $K(S_2\c) \simeq K(\c) \times K(\c)$. The functor $\coprod : \left(A, B\right) \to \left(A \rightarrowtail A \coprod B \twoheadrightarrow  B\right)$ is a homotopy inverse.
+The exact functor $(s, q) : S_2{\c} \to \c \times \c$ induces  a homotopy equivalence $K(S_2{\c}) \simeq K(\c) \times K(\c)$. The functor $\coprod : \left(A, B\right) \to \left(A \rightarrowtail A \coprod B \twoheadrightarrow  B\right)$ is a homotopy inverse.
 \end{theorem}
 \begin{proof}[Proof sketch]
 Let $\c^w_m$ denote the category of $m$-length sequences of weak equivalences. For each $n$, define $s_n\c^w_m$ as the commutative diagram
@@ -224,7 +224,7 @@ X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim
  X_1^m \arrow[r, tail] & X_2^m \arrow[r, tail] & \cdots \arrow[r, tail] & X_n^m
 \end{tikzcd}
 .\]
-This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2 \c \to \c$ induce a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, thereby completing our proof.
+This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2{\c} \to \c$ induce a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, thereby completing our proof.
 \end{proof}
 
 \bigskip
@@ -237,7 +237,7 @@ Recall that $\lvert{wS_{\bullet} \c}\rvert$ is an $H$-space via the map
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $$F_{\ast} = F_{\ast}' + F_{\ast}''$$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
-As $S_2\c$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2 \c  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. \Cref{ext} implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2 \c)$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
+As $S_2{\c}$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2{\c}  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. \Cref{ext} implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2{\c})$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
 \end{proof}
 
 \begin{definition}
@@ -259,7 +259,7 @@ This implies that the homotopy fiber of $F_{\ast}'' : K(\b) \to K(\c)$ is homoto
 Let $\c$ be a Waldhausen category. Recall the arrow category $\Ar(\c)$ of $\c$ consisting of morphisms in $\c$ as objects and commutative squares as morphisms. Let $s$ and $t$ denote the source and target functors $\Ar(\c)\to \c$, respectively. 
 
 \begin{definition}
-A functor $T: \Ar(\c) \to \c$ is a \textit{(mapping) cylinder functor} on $\c$ if it comes equipped with natrual transformations $j_1 :  s \Rightarrow T$, $j_2 : t \Rightarrow T$, and $p: T \Rightarrow t$ such that for any $f: A \to B$, we have the commutative diagram
+A functor $T: \Ar(\c) \to \c$ is a \textit{(mapping) cylinder functor} on $\c$ if it comes equipped with natrual transformations $j_1 :  s \Rightarrow T$, $j_2 : t \Rightarrow T$, and $p: T \Rightarrow t$ such that for any $f: A \to B$, we have a commutative diagram
 \[
 \begin{tikzcd}
 A \arrow[r, "j_1"] \arrow[rd, "f"'] & T(f) \arrow[d, "p"] & B \arrow[l, "j_2"'] \arrow[ld, "="] \\
@@ -294,7 +294,7 @@ Note that axiom (3) gives us a cofiber sequence $A \rightarrowtail \cone(A) \two
 
 \section{Localization}
 
-Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $(\c, w)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
+Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcategories $v(\c)$ and $w(\c)$ of weak equivalences such that $v(\c) \subset w(\c)$. Assume that $\left(\c, w\right)$ admits a cylinder functor. Suppose that $w(\c)$ is saturated and closed under extensions. 
 
 \smallskip
 
@@ -316,7 +316,7 @@ Treating $w \c$ as a bicategory with a single vertical morphism reveals that $$w
 
 \medskip
 
- Now, let $v_{(-)}\co w_{(-)}\c$ denote the subcategory of all squares like \eqref{eqn:like} where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\co w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we obtain a simplicial bi-subcategory $v_{(-)}\co w_{(-)}S_{\bullet}\c$ such that the inclusion into $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. This yields the commutative diagram
+ Now, let $v_{(-)}\co w_{(-)}\c$ denote the subcategory of all squares like \eqref{eqn:like} where the horizontal maps are also cofibrations. One can show that the inclusion $v_{(-)}\co w_{(-)}\c \subset v_{(-)}w_{(-)}\c$ is a homotopy equivalence. Since each $S_n \c$ inherits a cylinder functor from $\c$, we obtain a simplicial bi-subcategory $v_{(-)}\co w_{(-)}S_{\bullet}\c$ such that the inclusion into $v_{(-)}w_{(-)}S_{\bullet}\c$ is a homotopy equivalence. This yields a commutative diagram
 \[
 \begin{tikzcd}
 vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\co w_{(-)}S_{\bullet}C \arrow[d, "\simeq"] \\

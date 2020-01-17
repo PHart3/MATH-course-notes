@@ -551,7 +551,7 @@ The pair $(X, A)$ has HEP if and only if $A\times I \cup X \times \{0\}$ is a re
 
 \smallskip
 
-($\Longrightarrow$) We have the commutative diagram
+($\Longrightarrow$) We have a commutative diagram
 \[
 \begin{tikzcd}
 A\times \{0\} \arrow[dd] \arrow[rr] &  & A\times I \arrow[ld] \arrow[dd] \\
@@ -709,20 +709,20 @@ G(s,t) &\equiv \begin{cases} x_0 & s\leq t \\ \gamma(1 + t-s) & s \geq t   \end{
 \section{Covering spaces} 
 
 \begin{definition}
-We say that a map $p: Y \to X$ is a \textit{covering projection} if for each $x\in X$, there is some neighborhood $U\ni x$ such that 
+We say that a map $p: Y \to X$ is a \textit{covering projection} if for each $x\in X$, there exists a neighborhood $U\ni x$ together with a discrete space $S$ and a homeomorphism $h_U : p^{-1}(U) \overset{\cong}{\longrightarrow} U \times S$  such that 
 \[
 \begin{tikzcd}
-p^{-1}(U) \arrow[rd, "p"'] \arrow[r, "\cong"] & U \times S \arrow[d, "\pi_1"] \\
+p^{-1}(U) \arrow[rd, "p"'] \arrow[r, "h_U"] & U \times S \arrow[d, "\pi_1"] \\
  & U
 \end{tikzcd}
-\] commutes for some discrete set $S$.
+\] commutes. In this case, we say that $Y$ is a \textit{covering space of $X$}.
 \end{definition}
 
 \begin{term} $ $
 \begin{enumerate}
 \item 
 We call a triple of the form $\left(X \times S, X, \pi_1\right)$ a \textit{trivial covering space}.
-\item  If every $S$ has $\lvert{S}\rvert = n$ for some $n\in \N$, then $p$ is called an \textit{$n$-fold cover of $X$}.
+\item  If there is some $n\in \N$ such that every $S$ has cardinality $n$, then $p$ is called an \textit{$n$-fold cover of $X$}.
 \end{enumerate}
 \end{term}
 
@@ -787,7 +787,7 @@ Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection.
 $\pi_1(S^1, 1) \cong \Z$.
 \end{theorem}
 \begin{proof}
-Let $\gamma$ be a path in $S^1$ based at $1$. We have a covering map $p: \R \to S^1$ given by $t\mapsto e^{2\pi i t}$. By \cref{cor1}, there is some unique lift $\tilde{\gamma}$ of $\gamma$ such that $\tilde{\gamma}(0) = 0$ and $p \circ \tilde{\gamma} = \gamma$. Since $p^{-1}(1) = \Z$, \cref{cor1} gives a function $\psi: \pi_1(S^1, 1) \to \Z$ given by $[\gamma ] \mapsto \tilde{\gamma}(1)$. Since $\R$ is simply connected, we have that $\psi$ is bijective. It remains to verify that it's a homomorphism. Let $[f], [g] \in \pi_1(S^1, 1)$ and take their respective unique lifting $\tilde{f}$ and $\tilde{g}$. Write $n = \tilde{f}(1)$ and $m= \tilde{g}(1)$. Define the path $\tilde{\tilde{g}}(s) = n+ \tilde{g}(s)$ in $\R$, which begins at $n$. Since $p(n+x) = p(x)$ for every $x\in \R$, we see that $\tilde{\tilde{g}}$ lifts $g$. Then $\tilde{f} \ast \tilde{\tilde{g}}$ lifts $f \ast g$ and ends at the point $n+m$. Hence $\psi([f] \ast [g]) = n+m = \psi([f])  + \psi([g])$, as required. 
+Let $\gamma$ be a path in $S^1$ based at $1$. We have a covering projection $p: \R \to S^1$ given by $t\mapsto e^{2\pi i t}$. By \cref{cor1}, there is some unique lift $\tilde{\gamma}$ of $\gamma$ such that $\tilde{\gamma}(0) = 0$ and $p \circ \tilde{\gamma} = \gamma$. Since $p^{-1}(1) = \Z$, \cref{cor1} gives a function $\psi: \pi_1(S^1, 1) \to \Z$ given by $[\gamma ] \mapsto \tilde{\gamma}(1)$. Since $\R$ is simply connected, we have that $\psi$ is bijective. It remains to verify that it's a homomorphism. Let $[f], [g] \in \pi_1(S^1, 1)$ and take their respective unique lifting $\tilde{f}$ and $\tilde{g}$. Write $n = \tilde{f}(1)$ and $m= \tilde{g}(1)$. Define the path $\tilde{\tilde{g}}(s) = n+ \tilde{g}(s)$ in $\R$, which begins at $n$. Since $p(n+x) = p(x)$ for every $x\in \R$, we see that $\tilde{\tilde{g}}$ lifts $g$. Then $\tilde{f} \ast \tilde{\tilde{g}}$ lifts $f \ast g$ and ends at the point $n+m$. Hence $\psi([f] \ast [g]) = n+m = \psi([f])  + \psi([g])$, as required. 
 \end{proof}
 
 
@@ -836,7 +836,7 @@ Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0})
 \end{proof}
 
 \begin{corollary}
-Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$  be a covering map. Then $p_{\ast} : \pi_1\left(Y, y_0\right) \to \pi_1\left(X, x_0\right)$ is injective. 
+Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$  be a covering projection. Then $p_{\ast} : \pi_1\left(Y, y_0\right) \to \pi_1\left(X, x_0\right)$ is injective. 
 \end{corollary}
 \begin{proof}
 Let $[\gamma] \in \ker{p_{\ast}}$, so that $[p\circ \gamma] = [c_{x_0}]$. By \cref{cor1}, there must be some homotopy $\gamma \simeq_p c_{y_0}$. Thus, $[\gamma] = 0$.
@@ -876,7 +876,7 @@ Write the space $X$ as the union $\bigcup_{\alpha \in A} A_{\alpha}$ of path con
 \end{theorem}
 
 
-Equivalently, van Kampen says that functor $\pi_1(-) : \mathbf{Top} \to \mathbf{Grp}$ respects fibered coproducts (also known as \textit{amalgamated free products}).
+Equivalently, van Kampen says that the functor $\pi_1(-) : \mathbf{Top} \to \mathbf{Grp}$ respects fibered coproducts (also known as \textit{amalgamated free products}).
 
 \smallskip
 
@@ -1093,14 +1093,14 @@ The comb space is path connected but not locally path connected.
 \smallskip
 
 \begin{lemma}
-If $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ is a covering map, then there is an isomorphism of sets $$p^{-1}(x_0) \overset{\cong}{\longrightarrow} \faktor{\pi_1\left(X, x_0\right)}{p_{\ast}\pi_1\left(Y, y_0\right)}.   $$
+If $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ is a covering projection, then there is an isomorphism of sets $$p^{-1}(x_0) \overset{\cong}{\longrightarrow} \faktor{\pi_1\left(X, x_0\right)}{p_{\ast}\pi_1\left(Y, y_0\right)}.   $$
 \end{lemma}
 \begin{proof}
 Let $\gamma$ be a loop in $\left(X, x_0\right)$. Lift it to $\tilde{\gamma}$ such that $\tilde{\gamma}(0) = y_0$. Set $\alpha(\gamma) = \tilde{\gamma}(1) \in p^{-1}(x_0)$. The map $\alpha : \faktor{\pi_1\left(X, x_0\right)}{p_{\ast}\pi_1\left(Y, y_0\right)} \to p^{-1}(x_0)$ is well-defined since $\widetilde{h \ast \gamma} = \tilde{h} \ast \tilde{\gamma}$ when $[h] \in p_{\ast}\pi_1\left(Y, y_0\right)$. It is surjective because $Y$ is path connected. If $\alpha(\gamma_1) = \alpha(\gamma_2)$, then $\tilde{\gamma}_1\ast \tilde{\gamma}_2^{-1}= \widetilde{\gamma_1 \ast \gamma_2^{-1}}$ is a loop in $\left(Y, y_0\right)$, so that $\gamma_1 \ast \gamma_2^{-1}  \in p_{\ast}\pi_1\left(Y, y_0\right)$. This shows that $\alpha$ is injective as well.
 \end{proof}
 
 \begin{lemma}[Lifting criterion]\label{LC}
-Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a covering map and $f: (Z, z_0) \to \left(X, x_0\right)$ a map with $Z$ path connected and locally path connected.  Then there exists some map $\tilde{f}$ fitting into the commutative diagram \[
+Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a covering projection and $f: (Z, z_0) \to \left(X, x_0\right)$ a map with $Z$ path connected and locally path connected.  Then there exists some map $\tilde{f}$ fitting into a commutative diagram \[
 \begin{tikzcd}
  & Y \arrow[d, "p"] \\
 Z \arrow[r, "f"'] \arrow[ru, "\tilde{f}", dashed] & X
@@ -1124,7 +1124,7 @@ Z \arrow[r, "f"'] \arrow[ru, "\tilde{f}", dashed] & X
 \end{proof}
 
 \begin{prop}[Unique lifting property]\label{ULP}
-Let $p: Y \to X$ be a covering map and $f: Z \to X$ a map with $\tilde{f}_1, \tilde{f}_2 : Z \to Y$ lifts of $f$. Let $Z$ be connected. If there is some $z_0 \in Z$ such that $\tilde{f}_1(z_0) = \tilde{f}_2(z_0)$, then $\tilde{f}_1 =  \tilde{f}_2$.
+Let $p: Y \to X$ be a covering projection and $f: Z \to X$ a map with $\tilde{f}_1, \tilde{f}_2 : Z \to Y$ lifts of $f$. Let $Z$ be connected. If there is some $z_0 \in Z$ such that $\tilde{f}_1(z_0) = \tilde{f}_2(z_0)$, then $\tilde{f}_1 =  \tilde{f}_2$.
 \end{prop}
 
 \begin{question}
@@ -1136,7 +1136,7 @@ Such a property of $X$ is called being \textit{semilocally simply connected}.
 
 
 \begin{theorem}
-Suppose that $X$ is path connected, locally path connected, and semilocally simply connected (hereafter ``swell"). Then there is some covering map $p: \widetilde{X} \to X$ such that $\widetilde{X}$ is simply connected. 
+Suppose that $X$ is path connected, locally path connected, and semilocally simply connected (hereafter ``swell"). Then there is some covering projection $p: \widetilde{X} \to X$ such that $\widetilde{X}$ is simply connected. 
 \end{theorem}
 \begin{proof}
 Pick $x_0 \in X$. Let $P_{x_0} \coloneqq  \{\gamma : I \to X \mid \gamma(0) = x_0\}$. Set $\widetilde{X} = \faktor{P_{x_0}}{\simeq_p}$, endowed with the compact-open topology. 
@@ -1166,7 +1166,7 @@ Y_2 \arrow[r, "p_2"'] \arrow[ru, "\tilde{p}_2", dashed] & X
 \subsection{Lecture 8}
 
 
-If $X$ is a swell space, then we call such a cover $p: \left(\widetilde{X}, \tilde{x}_0\right) \to \left(X, x_0\right)$ the \textit{universal cover of $X$}. It is universal in that for any path connected covering space $p': \left(Y, y_0\right) \to \left(X, x_0\right)$, there exists a unique covering map $p'': \left(\widetilde{X}, \tilde{x}_0\right) \to \left(Y, y_0\right)$ such that $p'' p' = p$. 
+If $X$ is a swell space, then we call such a cover $p: \left(\widetilde{X}, \tilde{x}_0\right) \to \left(X, x_0\right)$ the \textit{universal cover of $X$}. It is universal in that for any path connected covering space $p': \left(Y, y_0\right) \to \left(X, x_0\right)$, there exists a unique covering projection $p'': \left(\widetilde{X}, \tilde{x}_0\right) \to \left(Y, y_0\right)$ such that $p'' p' = p$. 
 
 
 \begin{lemma}
@@ -1177,7 +1177,7 @@ Define an equivalence relation $\sim$ on the universal cover $p: \widetilde{X} \
 \end{proof}
 
 \begin{lemma}
-Let $X$ be path connected and locally path connected. Suppose that $p_1:(Y_1, y_1) \to \left(X, x_0\right)$ and $p_2 : (Y_2, y_2) \to \left(X, x_0\right)$ are two (path connected) covering maps. Then there exists an isomorphism $\varphi : (Y_1, y_1) \to (Y_2, y_2)$ if and only if  $$p_{1\ast} \pi_1(Y_1, y_1) = p_{2 \ast} \pi_1(Y_2, y_2).$$
+Let $X$ be path connected and locally path connected. Suppose that $p_1:(Y_1, y_1) \to \left(X, x_0\right)$ and $p_2 : (Y_2, y_2) \to \left(X, x_0\right)$ are two (path connected) covering projections. Then there exists an isomorphism $\varphi : (Y_1, y_1) \to (Y_2, y_2)$ if and only if  $$p_{1\ast} \pi_1(Y_1, y_1) = p_{2 \ast} \pi_1(Y_2, y_2).$$
 \end{lemma}
 \begin{proof} $ $
 \smallskip
@@ -2868,9 +2868,9 @@ We have a commutative diagram
 H^{2i}(\CP^n) \arrow[d, "\cong"'] & {H^{2i}(\CP^n, \CP^{i-1})} \arrow[l, "\cong"'] \arrow[d, "\cong"'] & {H^{2i}(\CP^n, \CP^n \setminus \CP^j)} \arrow[l, "\psi"'] \arrow[r, "\cong"] \arrow[d] & {H^{2i}(\C^n, \C^n \setminus \C^j)} \arrow[d] \\
 H^{2i}(\CP^i)                     & {H^{2i}(\CP^i, \CP^{i-1})} \arrow[l, "\cong"]                      & {H^{2i}(\CP^i, \CP^i \setminus \{p\})} \arrow[l, "\gamma"] \arrow[r, "\cong"']                             & {H^{2i}(\C^i, \C^i \setminus \{0\})}           
 \end{tikzcd}
-,\] where \hl{the isomorphisms of the leftmost square come from cellular cohomology} and those from the rightmost square come from excision. It suffices to show that each map in this diagram is an isomorphism. Note that $\gamma$ is an isomorphism because $\CP^i \setminus \{p\}$ deformation retracts onto $\CP^{i-1}$. Hence it suffices to observe that $\psi$ is an isomorphism because $\CP^n \setminus \CP^{j}$ deformation retracts onto $\CP^{i-1}$. Indeed, $$\CP^n \setminus \CP^{j}= \left\{[z_0, \ldots, z_n] \mid \exists s \in \{0, \ldots, i-1\} \text{ such that } z_s \ne 0\right\},$$ so that the maps given by $f_t([z_0, \ldots, z_n])  = [z_0, \ldots, z_{i-1}, tz_i, \ldots, tz_n]$ ($1 \overset{t}{\rightarrow} 0$) define a suitable deformation retraction. 
+,\] where \hl{the isomorphisms of the leftmost square come from cellular cohomology} and those from the rightmost square come from excision. It suffices to show that each map in this diagram is an isomorphism. Note that $\gamma$ is an isomorphism because $\CP^i \setminus \{p\}$ deformation retracts onto $\CP^{i-1}$. Hence it suffices to observe that $\psi$ is an isomorphism because $\CP^n \setminus \CP^{j}$ deformation retracts onto $\CP^{i-1}$. Indeed, $$\CP^n \setminus \CP^{j}= \left\{[z_0, \ldots, z_n] \mid \exists s \in \{0,1, \ldots, i-1\} \text{ such that } z_s \ne 0\right\},$$ so that the maps given by $f_t([z_0, \ldots, z_n])  = [z_0, \ldots, z_{i-1}, tz_i, \ldots, tz_n]$ ($1 \overset{t}{\rightarrow} 0$) define a suitable deformation retraction. 
 \end{proof}
-The map $H^{2i}(\C^n, \C^n \setminus \C^j)\times H^{2j}(\C^n, \C^n \setminus \C^i) \overset{\smile}{\longrightarrow} H^{2n}(\C^n, \C^n \setminus \{0\})$ is equivalent to the map $H^{2i}(I^{2i}, \partial{I^{2i}})\times H^{2j}(I^{2j}, \partial{I^{2j}}) \overset{\smile}{\longrightarrow} H^{2n}(I^{2n}, \partial{I^{2n}}),$ which maps any pair of generators to a generator by the K\"unneth theorem. 
+The map $H^{2i}(\C^n, \C^n \setminus \C^j)\times H^{2j}(\C^n, \C^n \setminus \C^i) \overset{\smile}{\longrightarrow} H^{2n}(\C^n, \C^n \setminus \{0\})$ is equivalent to the map $$H^{2i}(I^{2i}, \partial{I^{2i}})\times H^{2j}(I^{2j}, \partial{I^{2j}}) \overset{\smile}{\longrightarrow} H^{2n}(I^{2n}, \partial{I^{2n}}),$$ which maps any pair of generators to a generator by the K\"unneth theorem. 
 By commutativity, it follows that $ H^{2i}(\CP^n)\times H^{2j}(\CP^n) \overset{\smile}{\longrightarrow} H^{2n}(\CP^n) $ also maps any pair of generators to a generator.  
 \end{proof}
 
@@ -2882,7 +2882,7 @@ By commutativity, it follows that $ H^{2i}(\CP^n)\times H^{2j}(\CP^n) \overset{\
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}
-\item Suppose that $\R^n$ is a division algebra over $\R$. Then its bilinear product induces a continuous map $h: \RP^{n-1} \times \RP^{n-1} \to \RP^{n-1}$ such that $h\restriction_{\RP^{n-1} \times \{y\}}$ and $h\restriction_{\{x\} \times \RP^{n-1}}$ are homeomorphisms for any $x,y \in \RP^{n-1}$. The induced homomorphism $h^{\ast}: \faktor{\Z_2[\tilde{x}]}{(\tilde{x}^n)} \to  \faktor{\Z_2[\tilde{x}_1, \tilde{x}_2]}{(\tilde{x}_1^n, \tilde{x}_2^n)}$ is determined by the value $\tilde{x} \mapsto k_1 \tilde{x}_1 + k_2 \tilde{x_2}$. Since $h$ restricts to a homeomorphism on each copy of $\RP^{n-1}$, it follows that $k_1 \tilde{x}_1$ and $k_2\tilde{x}_2$ are nonzero. Hence $k_1 = 1 = k_2$. But $$0 = \tilde{x}^n = (\tilde{x}_1 + \tilde{x}^2)^n = \sum_{k=1}^{n-1} {n \choose k} \tilde{x}_1^k \tilde{x}_2^{n-k} .$$ This implies that ${n \choose k}\equiv 0 \mod 2$ for each $1\leq k \leq n-1$. 
+\item Suppose that $\R^n$ is a division algebra over $\R$. Then its bilinear product induces a continuous map $h: \RP^{n-1} \times \RP^{n-1} \to \RP^{n-1}$ such that $h\restriction_{\RP^{n-1} \times \{y\}}$ and $h\restriction_{\{x\} \times \RP^{n-1}}$ are homeomorphisms for any $x,y \in \RP^{n-1}$. The induced homomorphism $$h^{\ast}: \faktor{\Z_2\left[\tilde{x}\right]}{\left(\tilde{x}^n\right)} \to  \faktor{\Z_2\left[\tilde{x}_1, \tilde{x}_2\right]}{\left(\tilde{x}_1^n, \tilde{x}_2^n\right)}$$ is determined by the assignment $\tilde{x} \mapsto k_1 \tilde{x}_1 + k_2 \tilde{x_2}$. Since $h$ restricts to a homeomorphism on each copy of $\RP^{n-1}$, it follows that $k_1 \tilde{x}_1$ and $k_2\tilde{x}_2$ are nonzero. Hence $k_1 = 1 = k_2$. But $$0 = \tilde{x}^n = \left(\tilde{x}_1 + \tilde{x}^2\right)^n = \sum_{k=1}^{n-1} {n \choose k} \tilde{x}_1^k \tilde{x}_2^{n-k} .$$ This implies that ${n \choose k}\equiv 0 \mod 2$ for each $1\leq k \leq n-1$. 
 \begin{exercise}
 Use elementary number theory to prove this happens only if $n$ equals a power of $2$.
 \end{exercise}

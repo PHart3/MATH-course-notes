@@ -1433,7 +1433,7 @@ Let $(M, \in_M)$ consist of a class $M$ and the binary relation $\in$ on $M$ (i.
 For any particular $\varphi(\bar{x})$, the expression $$M \models \varphi(\bar{x})$$ (pronounced ``$M$ satisfies $\varphi$") will mean the same thing as $\varphi^M(\bar{x})$. Note, however, that unless $M$ is a set, we cannot formally define such a satisfaction relation $\models$ in $\zf$. Indeed, due to Tarski's undefinability theorem, if the existence of a satisfaction relation for $(V,\in)$ were provable in $\zf$, then $\zf$ could prove its own consistency, which is impossible. 
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{D0}
 A formula $\theta(\bar{x})$ of the language of set theory is a \textit{$\Delta_0$-formula} (written as $\theta(\bar{x}) \in \Delta_0$) if
 \be[label=(\alph*)]
 \item it is quantifier-free, or
@@ -1576,7 +1576,7 @@ In particular, there is a countable $\L$-structure $\B$ such that $\B \preceq \A
 
 
 \begin{lemma}[Mostowski collapse]\label{MC}
-Consider  a class model $(A, E^A)$ of $\zf$, where $E^A$ is a (strict) binary relation interpreting $\in$. If $E^A$ is both well-founded and extensional, then there is some transitive class model $(B, \in_B)$  such that $A \cong B$.
+Consider  a class model $(A, E^A)$ of $\zf$, where $E^A$ is a (strict) binary relation interpreting $\in$. If $E^A$ is both well-founded and extensional, then there is some transitive class model $\left(B, \in_B\right)$  such that $A \cong B$.
 \end{lemma}
 \begin{proof}
 Suppose that $E^A$ is both well-founded and extensional. We can extend transfinite induction (and thus recursion) on $\ord$ to any well-founded class.  Thus, we can define $f : A \to V$ by $$ f(a) = \left\{f(b) \mid b \in A \land b{E^A}a\right\}    .$$ Let $x\in f(A)$, so that $x = \{f(y) \mid y \in A \land y{E^A}z\}$ for some $z\in A$. Hence any element of $x$ belongs to the image of $f$, which shows that $f(A)$ is a transitive class. 
@@ -1615,7 +1615,7 @@ Any quantifier-free formula is  absolute for any class $A$.
 Let $M$ be a transitive class. \Cref{d0abs} states that any $\Delta_0$-formula is absolute for $M$.
 \end{note}
 
-\begin{exmp}\label{d0} The following expressions can be written as $\Delta_0$-formulas and thus are absolute for any transitive model. 
+\begin{exmp}\label{d0} The following expressions can be written as $\Delta_0$-formulas and thus are absolute for all transitive models. 
 \be
 \item Being an ordinal.
 \item Being a limit/successor ordinal.
@@ -1762,7 +1762,38 @@ For any $x\in L$, let $\order(x)$ denote the least ordinal $\alpha$ such that $x
 
 \smallskip
 
-G\"odel proved that $\zf \vdash \left(\zf\right)^L + \left(V=L\right)^L$, which means that if $\zf$ is consistent, then so is $\zf + {V=L}$. The assertion ``$V=L$" is known as the \textit{axiom of constructibility}.
+In 1939, G\"odel proved that $\zf \vdash \left(\zf\right)^L + \left(V=L\right)^L$, which means that if $\zf$ is consistent, then so is $\zf + {V=L}$. The assertion ``$V=L$" is known as the \textit{axiom of constructibility}.
+
+\medskip
+
+In order to prove this relative consistency result, we should introduce a classification of first-order definable properties that expands \cref{D0}. Define the \textit{L\'evy hierarcy} by mutual recursion as follows.
+
+\bi 
+\item A formula is $\Sigma_0$ if it is $\Delta_0$.
+\item A formula is $\Pi_0$ if it is $\Delta_0$.
+\item A formula is $\Sigma_{n+1}$ if it has the form $\exists{x}\varphi$ where $\varphi$ is $\Pi_n$.
+\item A formula is $\Pi_{n+1}$ if it has the form $\forall{x}\varphi$ where $\varphi$ is $\Sigma_n$.
+\item A formula is $\Delta_n$ if it both $\Sigma_n$ and $\Pi_n$.
+\ei
+
+Let $T$ be a theory in the language of set theory. We say that a first-order property $P$ of $\bar{x}$ is $\Sigma_n^T$ (resp. $\Pi_n^T$) if the formula
+$P(\bar{x}) \leftrightarrow \varphi(\bar{x})$ is provable in $T$ for some $\Sigma_n$ (resp. $\Pi_n$) formula $\varphi$.
+
+\begin{note}
+If $\varphi(\bar{x})$ is $\Delta_1$, then $\varphi(\bar{x})$ is absolute for all transitive models. This follows easily from the fact that any $\Delta_0$ formula is absolute for all transitive models.
+\end{note}
+
+\begin{exmp}
+``$R \text{ is a well-founded relation on }A$" is a $\Delta_1^{\zf}$ property.
+\end{exmp}
+\begin{proof}
+Consider the formulas
+\begin{align*}
+\varphi & \coloneqq \forall{X}\left(\overbrace{X \subset A \land X \ne \emptyset \rightarrow \left(\exists{y \in X}\right)\left(\forall{z \in A}\right)\left(\neg{Rzy}\right)}^{\tau(R, A, X)}\right)
+\\ \psi &  \coloneqq \exists{f}\left(f \text{ is a function} \land \dom(f) = A \land \rng(f) \in  \ord \land \left(\forall{x,y\in A}\right)\left(Rxy \rightarrow f(x) < f(y)\right)\right).
+\end{align*}
+Note that $\tau$ is $\Delta_0$ and that ``$R \text{ is a relation on }A$" is a $\Delta_0^{\zf}$ property $\eta(R, A)$, and thus $\eta \land \varphi$ is $\Pi_1$. Moreover, $\eta \land \psi$ is $\Sigma_1$. But both of these formulas express that $R$ is a well-founded relation on $A$, which must be $\Delta_1^{\zf}$ as a result.
+\end{proof}
 
 \subsection{Lecture 19}
 
@@ -1818,12 +1849,15 @@ Cohen proved that $$\con(\zf) \implies \con(\zfc + \neg{\mathsf{CH}}),$$ thereby
 \end{remark}
 
 \subsection{Lecture 41}
-Discussion of Homework 3 solutions.
+
+\textit{Discussion of Homework 3 solutions.}
 
 \subsection{Lecture 42}
-Discussion of Homework 3 solutions.
+
+\textit{Discussion of Homework 3 solutions.}
 
 \subsection{Lecture 43}
-Discussion of Homework 3 solutions.
+
+\textit{Discussion of Homework 3 solutions.}
 
 \end{document}

@@ -145,7 +145,7 @@
 \begin{document}
 
 \begin{abstract}
-We briefly describe the isometries of $\C^2$. In particular, we classify five important groups of such maps in the category $\mathbf{Top}$ of topological spaces. 
+This project briefly describes the isometries of $\C^2$. In particular, it classifies five important groups of such maps in the category $\mathbf{Top}$ of topological spaces. Thanks to Steven Rosenberg for his guidance on this topic.
 \end{abstract}
 
 \smallskip
@@ -233,7 +233,7 @@ Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We
 Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we have $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
 \end{theorem}
 \begin{proof}
- By \cref{l1}, we can write $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $\|\x-\y \|^2=\|g(\x)-g(\y) \|^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $\|g(\v)\|=\v$ for any $\v\in \R^4$.
+ By \cref{l1}, we have that $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $\|\x-\y \|^2=\|g(\x)-g(\y) \|^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $\|g(\v)\|=\v$ for any $\v\in \R^4$.
 We can apply the additivity of the inner product to get  
 \begin{align*}
 \| g(\v) \|^2+\|g(\w) \|^2-2\langle g(\v), g(\w)\rangle & =\langle g(\v)-g(\w), g(\v)-g(\w)\rangle 
@@ -245,7 +245,7 @@ Now, it follows that $\|g(\e_i)\|^2=\|\e_i \|^2=1$ for each $i=1,2,3,4$, so that
 
 Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
 
-By \cref{c2}, $\det(g)=\pm 1$. If $\det(g)=1$, then $g\in \SO(4)$, and we're done. Assume that $\det(g)=-1$. 
+By \cref{c2}, $\det(g)=\pm 1$. If $\det(g)=1$, then $g\in \SO(4)$, and we're done. Assume that $\det(g)={-1}$. 
  Note that the reflection $$\phi(a,b,c,d)\equiv (a,b,c,-d)$$ is given by the matrix $$S\coloneqq\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0&1&0&0\\ 0 & 0 &1 & 0 \\ 0 & 0 &0 &-1 \end{bmatrix}.$$ Since it's clear that $\phi \in \ORT(4)$, we see that $g\circ \phi\in \ORT(4)$. Also, $\det(gS)=\det(g)\det(S)=(-1)(-1)=1$. Therefore, $g\circ \phi \in \SO(4)$. As $\phi = \phi^{-1}$, it follows that $(g\circ \phi)\circ \phi= g\circ (\phi^2)=g$. Now, set $R'=g\circ \phi$ and $\F=\phi$, thereby completing out proof.
 
 
@@ -319,7 +319,7 @@ First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group beca
 
 Note that
 $\U(2)$ is nonabelian. Indeed, 
-let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\begin{bmatrix} 0 & 1 \\  1 & 0\end{bmatrix}$. These are unitary, but  $0\ne AB={-B}A$.
+let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\begin{bmatrix} 0 & 1 \\  1 & 0\end{bmatrix}$. These are unitary, but  $0\ne AB={-BA}$.
 
 
 \begin{cor}\label{unitnorm}
@@ -351,7 +351,7 @@ Furthermore, if $F(M)\in \ker(F)$, then $A=I_2$ and $B=0_{2}$, i.e., $M=I_2$. He
 In fact, the  $2\times 2$ unitary matrices are precisely those elements of $\SO(4)$ which preserve the Hermitian inner product $H$. This provides us with a geometric distinction between $\U(2)$ and $\SO(4)$.
 
 \begin{lemma}\label{l18}
-The map $R\in \M^2(\C)$ satisfies $H(R(x), R(y))=H(x,y)$ for any $x,y\in \C^2$ if and only if  $R\in \U(2)$.
+A map $R\in \M^2(\C)$ satisfies $H(R(x), R(y))=H(x,y)$ for any $x,y\in \C^2$ if and only if  $R\in \U(2)$.
 \end{lemma}
 
 \begin{proof}
@@ -365,7 +365,7 @@ H(Rx, Ry)=H(x,y) & \iff \overline{Rx}^TRy=\bar{x}^Ty
 
 \smallskip
 
-Let us look now at the complex analogue of $\SO(4)$. The map $D:\U(2)\to \U(1)$ given by $D(X)=\det(X)$ is well-defined by \cref{unitnorm}. As $\det$ is multiplicative, it is also a homomorphism. For any $e^{i\theta}\in \C$, we see that $M\coloneqq\begin{bmatrix}e^{i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix}\in \U(2)$ and $D(M)=e^{i\theta}$, which means that $D$ is surjective. Now note that $$\ker D=K\coloneqq\left\{X\in \U(2) :\det(X)=1\right\}.$$ This yields an isomorphism $\U(2)/K\cong \U(1)$ in $\mathbf{Grp}$. 
+Let us look now at the complex analogue of $\SO(4)$. The map $D:\U(2)\to \U(1)$ given by $D(X)=\det(X)$ is well-defined by \cref{unitnorm}. As $\det$ is multiplicative, it is also a homomorphism. For any $e^{i\theta}\in \C$, we see that $M\coloneqq\begin{bmatrix}e^{i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix}\in \U(2)$ and $D(M)=e^{i\theta}$, which means that $D$ is surjective. Now note that $$\ker D=K\coloneqq\left\{X\in \U(2) :\det(X)=1\right\}.$$ This yields an isomorphism $\U(2)/K\cong \U(1)$ in the category $\mathbf{Grp}$ of groups. 
 
 Let $\SU(2)\coloneqq \ker(D)$. Then $\SU(2)$ consists precisely of those $2\times 2$ unitary matrices which are orientation-preserving.
 Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Since $\det(W)=1$, we find that $W^{-1}=\begin{bmatrix} d & {-b} \\ {-c} & a \end{bmatrix}$. Since $W^\ast= W^{-1}$, it follows that $d=\bar{a}$ and ${-\bar{b}} ={c}$. Therefore, $\det(W)=\|(a,c)\|^2=a\bar{a}+c\bar{c}=1$, and $W=\begin{bmatrix} a & c\\ {-\bar{c}} & \bar{a} \end{bmatrix}$. Conversely, the column vectors of such a matrix are orthonormal. Hence $$\SU(2)= \left\{X\in \M^2(\C): X=  \begin{bmatrix} x & {y}\\ {-\bar{y}} & \bar{x} \end{bmatrix} \text{ with } x\bar{x}+y\bar{y}=1\right\}.$$
@@ -375,20 +375,20 @@ Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Si
 \end{theorem}
 
 \begin{proof}
-Define  $\psi : \SU(2)\times \U(1)\to \U(2)$ by $(A, k)\mapsto kA$. This map is certainly a well-defined homomorphism. Moreover, for any $X\in \U(2)$, note that $\sqrt{\det(X)}\in \U(1)$ and $\frac{1}{\sqrt{\det(X)}}X\in \SU(2)$, so that $\left(\frac{1}{\sqrt{\det(X)}}X, \sqrt{\det(X)}\right)\mapsto X$. Thus, $\psi$ is surjective. Finally, notice that $\ker \psi=\left\{\pm(I, 1)\right\}\cong \Z_2$. By the first isomorphism theorem, we get an isomorphism $\tilde{\psi}: \U(2)\overset{\cong}{\longrightarrow} (\SU(2)\times \U(1))/\Z_2$, as desired. 
+Define  $\psi : \SU(2)\times \U(1)\to \U(2)$ by $(A, k)\mapsto kA$. This map is certainly a well-defined homomorphism. Moreover, for any $X\in \U(2)$, note that $\sqrt{\det(X)}\in \U(1)$ and $\frac{1}{\sqrt{\det(X)}}X\in \SU(2)$, so that $$\psi\left(\frac{1}{\sqrt{\det(X)}}X, \sqrt{\det(X)}\right)= X.$$ Thus, $\psi$ is surjective. Finally, notice that $\ker \psi=\left\{\pm(I, 1)\right\}\cong \Z_2$. By the first isomorphism theorem, we get an isomorphism $\tilde{\psi}: \U(2)\overset{\cong}{\longrightarrow} \left(\SU(2)\times \U(1)\right)/\Z_2$, as desired. 
 
 \end{proof}
 
-It turns out that $\SU(2)$ is the same as the group of rotations of $\R^3$.
+It turns out that $\SU(2)$ is the same as the group of unit quaternions.
 
 \begin{theorem}\label{iso1}
 $\SU(2) \cong S^3$ in $\mathbf{Grp}$. 
 \end{theorem}
 
 \begin{proof}
-For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, write $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ -\bar{w} & \bar{z} \end{bmatrix}}=1$, which establishes a clear bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
+For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, let $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}=1$, which establishes a clear bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
 \begin{align*}
-f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}} & \overline{pz-q\bar{w}} \end{bmatrix}\\ & =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ {-\bar{p}\bar{w}-\bar{q}{z}} & {\bar{p}\bar{z}-\bar{q}{w}} \end{bmatrix}\\ & =\begin{bmatrix} p & q \\ -\bar{q} & \bar{p}\end{bmatrix}\begin{bmatrix} z & w \\ -\bar{w} & \bar{z}\end{bmatrix}
+f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}} & \overline{pz-q\bar{w}} \end{bmatrix}\\ & =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ {-\bar{p}\bar{w}-\bar{q}{z}} & {\bar{p}\bar{z}-\bar{q}{w}} \end{bmatrix}\\ & =\begin{bmatrix} p & q \\ {-\bar{q}} & \bar{p}\end{bmatrix}\begin{bmatrix} z & w \\ {-\bar{w}} & \bar{z}\end{bmatrix}
 \\ & =f(y)f(x).
 \end{align*}
 \end{proof}
@@ -403,8 +403,15 @@ Let us turn our attention to providing the groups
 \item $\ORT(4)$
 \item $\Isom(\R^4)$
 \end{itemize}
-with \emph{topological} characterizations, having treated them only as algebraic objects thus far.
-We begin by deepening the equivalence between $\SU(2)$ and $\SO(3)$.
+with \emph{topological} characterizations, having treated them only as algebraic objects thus far. The first four of these groups are topological spaces as subsets of normed vector spaces. The last group, $\Isom(\R^4)$, has the metric topology induced by
+\[
+d(f,g) \equiv \max\{ \lvert{f(x)-g(x)}\rvert : x \in \R^4,\ \lvert{x}\rvert \leq 1\},
+\]  which is a modest generalization of the metric induced by the familiar operator norm in the theory of finite-dimensional vector spaces.
+\begin{remark}
+All five groups are actually Lie groups.
+\end{remark}
+
+\smallskip
 
 \begin{theorem}
 $\SU(2) \cong S^3$ in $\mathbf{Top}$. 
@@ -450,11 +457,11 @@ $\SO(4) \cong S^3\times \SO(3)$ in $\mathbf{Top}$.
 \end{theorem}
 
 \begin{proof}
-Identity $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $|aq|=|a||q|=|a|$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we get $|a-b|=|\alpha_q(a-b)|=|aq-bq|$, so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
+Formally, we can identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $\lvert{aq}\rvert=\lvert{a}\rvert\lvert{q}\rvert=\lvert{a}\rvert$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we see that $$\lvert{a-b}\rvert=\lvert{\alpha_q(a-b)}\rvert=\lvert{aq-bq}\rvert,$$ so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
 
 \smallskip
 
-We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and write $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Then set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, (1,x, y, z)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $(v, u, r, s)\mapsto \left(v, (1, uv^{-1}, rv^{-1}, sv^{-1})\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $(1,0,0,0)$, as required.  
+We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and write $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Then set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, \left(1,x, y, z\right)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $(v, u, r, s)\mapsto \left(v, (1, uv^{-1}, rv^{-1}, sv^{-1})\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $(1,0,0,0)$, as required.  
 
 \smallskip
 

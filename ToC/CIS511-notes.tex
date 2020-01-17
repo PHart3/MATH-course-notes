@@ -122,7 +122,7 @@
 \newcommand{\y}{\mathscr{Y}}
 \renewcommand{\j}{\mathscr{J}}
 \newcommand{\X}{\mathscr X}
-
+\newcommand{\accpt}{\mathrm{accpt}}
 \newcommand{\h}{\vec h}
 \newcommand{\f}{\vec f}
 \newcommand{\g}{\vec g}
@@ -188,6 +188,7 @@
 \DeclareMathOperator{\Fr}{Fr}
 \DeclareMathOperator{\TM}{\mathsf{TM}}
 \DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\fin}{fin}
 \DeclareMathOperator{\poly}{poly}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\DFA}{\mathsf{DFA}}
@@ -211,7 +212,7 @@
 \begin{document}
 \thispagestyle{empty}
 \begin{abstract}
-These notes are based on Anindya De's ``Theory of Computation'' lectures at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation, 3rd ed.} and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
+These notes are based on Anindya De's ``Theory of Computation'' lectures at UPenn along with Michael Sipser's \textit{Introduction to the Theory of Computation}, 3rd ed. and Arora and Barak's \textit{Computational Complexity: A Modern Approach}. Any mistake in what follows is my own.
 \end{abstract}
 
 \tableofcontents
@@ -237,15 +238,15 @@ Both the set of binary strings representing prime numbers and the set of binary 
 
 Consider a function $f: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}$. The computation of $f$ is equivalent to determining whether $$x\in \underbrace{f^{-1}(1)}_{\text{a language}} \subset \left\{0,1\right\}^{\ast}.$$ Thus, computing any boolean function is the same as determining membership in some language.
 
+\bigskip
 
-\begin{note}
-Finite automata are characterized by $O(1)$ memory and passing over their inputs exactly once.
-\end{note}
-\begin{definition}
-Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is an ordered $5$-tuple $$M\coloneqq \left(Q, \Sigma, q_0, \delta, Q_F\right)  $$ where  $|Q| = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
-\end{definition}
+Informally, finite automata are characterized by $O(1)$ memory and passing over their inputs exactly once.
+Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is an ordered $5$-tuple 
+\[ \label{eqn:auto}
+M\coloneqq \left(Q, \Sigma, q_0, \delta, Q_F\right)  \tag{$\alpha$}
+\] where  $\lvert{Q}\rvert = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
 
-Intuitively, an automaton $M$ is a $\DFA$ if
+In other words, an automaton $M$ is a $\DFA$ if
 
 \begin{enumerate}[label=(\alph*)]
 \item $M$ has a finite number of states $Q$,
@@ -255,9 +256,10 @@ Intuitively, an automaton $M$ is a $\DFA$ if
 \item certain states $Q_F$ are designated as \textit{final states}.
 \end{enumerate}
 
-\begin{definition}
-Let $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For each $1\leq i\leq n$, define $q_i(x) =\delta(q_{i-1}(x), x_i)$. If $x= \epsilon$, then $n=0$, so that $q_0(x) = q_0$ as well. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
-\end{definition}
+\medskip
+
+Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For each $1\leq i\leq n$, let $$q_i(x) =\delta(q_{i-1}(x), x_i).$$ If $x= \epsilon$, then $n=0$, so that $q_0(x) = q_0$ as well. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
+
 
 \begin{notation}
 $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
@@ -293,7 +295,7 @@ $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 	edge node {1} (q_3)
 (q_3) edge [loop below] node {0, 1} ();
 \end{tikzpicture}.
-\] Then $L(M) = \{x\in \Sigma^{\ast} : x = y101z$ for some strings $y$ and $z\}$.
+\] Then $L(M) = \left\{x\in \Sigma^{\ast} : x = y101z \text{ for some strings } y \text{ and } z\right\}$.
 \end{enumerate}
 \end{exmp}
 
@@ -306,7 +308,7 @@ Every regular expression induces a $\DFA$, and vice versa. Thus, they have equal
 
 
 \begin{definition}
-A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(Q, \Sigma, q_0, \delta, Q_F)$ of the sort above except that $\delta : Q\times \Sigma \to \P(Q)$.
+A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(Q, \Sigma, q_0, \delta, Q_F)$ of the sort \eqref{eqn:auto} except that $\delta : Q\times \Sigma \to \P(Q)$.
 \end{definition}
 
 \begin{exmp} Set $\Sigma = \left\{0,1\right\}$ and $M =$
@@ -333,31 +335,36 @@ A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(
 
 \subsection{Lecture 2}
 
-\begin{definition}
+
 Let $\delta$ denote a transition function for the $\NFA$ $N$. Define the \textit{multi-step transition function} $$\hat{\delta} : Q\times \Sigma^{\ast} \to \P(Q)$$ inductively as follows.
 \begin{align*}
  \hat{\delta}(q, \epsilon) & = \{q\}
 \\  \hat{\delta} (q, x) & = \bigcup_{\gamma \in \hat{\delta}(q, y)}\delta(\gamma, \sigma) \quad \quad x = y\sigma, \ y \in \Sigma^{\ast}, \ \sigma \in \Sigma.
 \end{align*}
-\end{definition}
 
-\begin{note}
-If $p\in \hat{\delta}(q,y)$ and $r\in \hat{\delta}(p, \sigma)$, then $r\in \hat{\delta}(q, y\sigma) = \hat{\delta}(q, x)$.
-\end{note}
+
+Note that if $p\in \hat{\delta}(q,y)$ and $r\in \hat{\delta}(p, \sigma)$, then $r\in \hat{\delta}(q, y\sigma) = \hat{\delta}(q, x)$.
+
 
 \begin{definition}
-A string $x$ is \textit{accepted by $N$} if $\hat{\delta}(q_0, x) \cap Q_F \ne \emptyset$. Let $L(N) \coloneqq \{x \in \Sigma^{\ast} : N \text{ accepts } x\}$.
+A string $x$ is \textit{accepted by $N$} if $\hat{\delta}(q_0, x) \cap Q_F \ne \emptyset$
 \end{definition}
 
-\begin{remark}
-Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\{\delta\left(\hat{\delta}(q,y), \sigma\right)\right\}$. It's not the case, however, that any $\NFA$ is a $\DFA$.
-\end{remark}
+\begin{notation}
+$L(N) \coloneqq \left\{x \in \Sigma^{\ast} : N \text{ accepts } x\right\}$.
+\end{notation}
 
-\begin{theorem}
+\smallskip
+
+Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\{\delta\left(\hat{\delta}(q,y), \sigma\right)\right\}$. It's not the case, however, that any $\NFA$ is a $\DFA$.
+
+\smallskip
+
+\begin{theorem}\label{same}
 For any $\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Write $N = (Q, \Sigma, q_0, \delta_N, Q_F)$. Define the $\DFA$ $$M = \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} = \{q_0\}$, $\delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \coloneqq \{R \subset Q : R\cap Q_F \ne \emptyset\}$. For any string $x$, one can use induction on $\lvert{x}\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \widehat{\delta_N}(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \{q_0\}$, we are done.
+Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} \equiv \{q_0\}$, $\delta_M (Q', \sigma) \equiv \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \equiv \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}$. For any string $x$, one can use induction on $\lvert{x}\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \{q_0\}$, we are done.
 \end{proof}
 
 \begin{exmp}
@@ -380,15 +387,14 @@ Let $L\subset \{0, 1\}^{\ast}$ consist of those strings $x$ such that $``1010"$ 
 \] 
 \end{exmp}
 
-\begin{definition}
-An $\NFA$ is called an $\epsilon$-$\NFA$ if its transition function is of the form $\delta: Q\times (\Sigma \cup \{\epsilon\}) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
+\begin{definition} $ $
+\begin{enumerate}
+\item An $\NFA$ is called an \textit{$\epsilon{-}\NFA$} if its transition function is of the form $\delta: Q\times (\Sigma \cup \{\epsilon\}) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
+\item  Let $q$ be a state. The \textit{$\epsilon$-closure of $q$} is the set of states that can be reached from $q$ by taking finitely many $\epsilon$-transitions. 
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
-Let $q$ be a state. The \textit{$\epsilon$-closure of $q$} is the set of states that can be reached from $q$ by taking finitely many $\epsilon$-transitions. 
-\end{definition}
-
-This determines a function $\epsilon$-$\cl(-): \P(Q) \to \P(Q)$.
+This determines a function $\epsilon{-}\cl(-): \P(Q) \to \P(Q)$.
 
 \smallskip
 
@@ -399,10 +405,10 @@ We have that $\hat{\delta}(q, x) = \begin{cases} \epsilon \text{-}\cl(q) & x = \
 \end{note}
 
 \begin{theorem}
-For any $\epsilon$-$\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
+For any $\epsilon{-}\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Use a similar argument to the proof for an $\NFA$. In particular, set $$q_0^{(1)} = \epsilon \text{-}\cl(q_0)$$ and 
+Use a similar argument to the proof of \cref{same}. In particular, set $$q_0^{(1)} = \epsilon \text{-}\cl(q_0)$$ and 
 \begin{align*}
 \delta_M(R, \sigma)  & =  \bigcup_{r\in R}\bigcup_{p\in \epsilon \text{-}\cl(r)} \bigcup_{s\in \delta_N(p, \sigma)} \epsilon \text{-}\cl(s)
 \\ & = \bigcup_{r\in R} \bigcup_{s\in \delta_N(r, \sigma)} \epsilon \text{-}\cl(s)
@@ -413,27 +419,29 @@ Use a similar argument to the proof for an $\NFA$. In particular, set $$q_0^{(1)
 
 \begin{prop} Let $L_1, L_2\subset \Sigma^{\ast}$ be regular. 
 \begin{enumerate}[label=(\alph*)]
-\item $\overline{L_1}\coloneqq \Sigma^{\ast} \setminus L_1 = (L_1)^c$ is regular.
+\item $\overline{L_1}\coloneqq \Sigma^{\ast} \setminus L_1 = \left(L_1\right)^c$ is regular.
 \begin{corollary}
 If $L$ is finite or cofinite, then it is regular.
 \end{corollary}
 \item $L_1 \cup L_2$ is regular.
 \item $L_1 \cap L_2$ is regular. 
-\item Define $L_1\cdot L_2 = \{xy \mid x\in L_1 \land y\in L_2\}$. Then $L_1 \cdot L_2$ is regular. 
+\item The language $L_1\cdot L_2 \equiv  \left\{xy \mid x\in L_1 \land y\in L_2\right\}$ is regular. 
 \end{enumerate}
 \end{prop} 
 \begin{proof} By assumption, there exist $\DFA$'s $M_1$ and $M_2$ such that $L_1 = L(M_1)$ and $L_2 = L(M_2)$.
 \begin{enumerate}[label=(\alph*)]
 \item Construct a new $\DFA$ $M_3$ by making every final state of $M_1$ non-final and vice versa. Then $L(M_3) = \overline{L_1}$.
-\item Construct an $\epsilon$-$\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
-\item Note that $L_1 \cap L_2 = (\overline{L_1} \cup \overline{L_2})^c$.  Now apply (a) and (b).
-\item Construct an $\epsilon$-$\NFA$ $M_3$ as follows. Given any final state $q$ of $M_1$, add an $\epsilon$-transition from $q$ to the start state of $M_2$. Then $L(M_3) = L_1\cdot L_2$.
+\item Construct an $\epsilon{-}\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
+\item Note that $L_1 \cap L_2 = \left(\overline{L_1} \cup \overline{L_2}\right)^c$.  Now apply (a) and (b).
+\item Construct an $\epsilon{-}\NFA$ $M_3$ as follows. Given any final state $q$ of $M_1$, add an $\epsilon$-transition from $q$ to the start state of $M_2$. Then $L(M_3) = L_1\cdot L_2$.
 \end{enumerate}
 \end{proof}
 
-\begin{definition}
-Let $L$ be any language. Let $L^k \coloneqq \underbrace{L\cdot L \cdots L}_{k \text{ times}}$ for each integer $k\geq 1$. Moreover, define $L^0 = \{\epsilon\}$ (which is regular). Then define $$L^{\ast} = \bigcup_{k\geq 0} L^k.$$
-\end{definition}
+\medskip
+
+Now, let $L$ be any language. Let $L^k \coloneqq \underbrace{L\cdot L \cdots L}_{k \text{ times}}$ for each integer $k\geq 1$. Moreover, let $L^0 = \{\epsilon\}$ (which is regular). Then let $$L^{\ast} = \bigcup_{k\geq 0} L^k.$$
+
+\medskip
 
 \begin{prop}
 If $L$ is regular, then $L^{\ast}$ is regular as well.
@@ -474,7 +482,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 
 \smallskip
 
-There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \{L : L \text{ is a language over } \left\{0,1\right\}\}$. Since there is a surjection $$\{F: F \text{ is a finite automaton.}\} \to \{L : L \text{ is a regular language over } \left\{0,1\right\}\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
+There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}$. Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
 
 
 \subsection{Lecture 4}
@@ -482,25 +490,31 @@ There exists a canonical set isomorphism $\{F: F \text{ is a finite automaton.}\
 \begin{lemma}[Pumping] Let $L$ be a regular language. Then there exists $n_0 \in \N$ such that for any $x\in L$ with $\lvert{x}\rvert\geq n_0$, we may write $x=wyz$ such that
 \begin{enumerate}[label=(\alph*)]
 \item $\lvert{y}\rvert >0$,
-\item $|wy|\leq n_0$, and
+\item $\lvert{wy}\rvert\leq n_0$, and
 \item if $i\geq 0$, then $wy^iz \in L$ where $y^i \coloneqq \underbrace{y\cdots y}_{i \text{ times}}$.
 \end{enumerate}
 In this case, we call the minimal such $n_0$ the \textit{pumping length of $L$}.
 \end{lemma}
 \begin{proof}
-By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such that $L = L(M)$. Let $n_0 = |Q|$. Let $x\in L$ such that $\lvert{x}\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Define the three strings $$w= x_1\cdots x_i \quad  y= x_{i+1}\cdots x_j \quad z= x_{j+1} \cdots x_m$$ where $\lvert{x}\rvert = m$. It is straightforward to verify that these satisfy conditions (a), (b), and (c).
+By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such that $L = L(M)$. Let $n_0 = \lvert{Q}\rvert$. Let $x\in L$ such that $\lvert{x}\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Consider the three strings 
+\begin{gather*}
+w\coloneqq x_1\cdots x_i 
+\\  y\coloneqq  x_{i+1}\cdots x_j 
+\\  z\coloneqq x_{j+1} \cdots x_m.
+\end{gather*}
+where $\lvert{x}\rvert = m$. It is straightforward to verify that these satisfy conditions (a), (b), and (c).
 \end{proof}
 \begin{corollary} $ $
 \begin{enumerate} 
-\item Our last proof shows that any regular language $L$ has pumping length $\leq |Q|$.
-\item If $L(M) \ne \emptyset$, then there exists $x\in L(M)$ such that $\lvert{x}\rvert \leq |Q|$.
+\item Our last proof shows that any regular language $L$ has pumping length $\leq \lvert{Q}\rvert$.
+\item If $L(M) \ne \emptyset$, then there exists $x\in L(M)$ such that $\lvert{x}\rvert \leq \lvert{Q}\rvert$.
 \end{enumerate}
 \end{corollary}
 
-\begin{exmp} Let $n_0\geq 0$ be an integer. Suppose that $x=wyz$ with $\lvert{y}\rvert >0$ and $|wy|\leq n_0$.
+\begin{exmp} Let $n_0\geq 0$ be an integer. Suppose that $x=wyz$ with $\lvert{y}\rvert >0$ and $\lvert{wy}\rvert\leq n_0$.
 \begin{enumerate}
-\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x\coloneqq 1^{2^{n_0+1}}$.  But note that $|wy^iz| = |wyz| + (i-1)\lvert{y}\rvert = 2^{n_0+1} + (i-1)\lvert{y}\rvert$. Hence if $i=2$, then $|wy^i z| = 2^{n_0+1} +\lvert{y}\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < |wy^iz|$ as well. Therefore, $L$ is not a regular language. 
-\item Let $L = \left\{ ww : w \in \left\{0,1\right\}^{\ast}\right\}$. Let $x\coloneqq 0^{n_0}10^{n_0}1$. If $\lvert{y}\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is not a regular language. 
+\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x= 1^{2^{n_0+1}}$.  Note that $$\lvert{wy^iz}\rvert = \lvert{wyz}\rvert + (i-1)\lvert{y}\rvert = 2^{n_0+1} + (i-1)\lvert{y}\rvert.$$ Hence if $i=2$, then $\lvert{wy^i z}\rvert = 2^{n_0+1} +\lvert{y}\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < \lvert{wy^i z}\rvert$ as well. Therefore, $L$ is not a regular language. 
+\item Let $L = \left\{ ww : w \in \left\{0,1\right\}^{\ast}\right\}$. Let $x= 0^{n_0}10^{n_0}1$. If $\lvert{y}\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is \emph{not} a regular language. 
 \end{enumerate}
 \end{exmp}
 
@@ -508,13 +522,19 @@ By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such tha
 Let $D$ be a $\DFA$ with $\lvert{Q_D}\rvert =n$. Then $D$ recognizes an infinite language if and only if it accepts some string $s$ such that $n\leq \lvert{s}\rvert \leq 2n$.
 \end{aside}
 \begin{proof}
-The ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ is infinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle of states $c$ such that $c \cap p \ne \emptyset$. Note that $\lvert{c}\rvert \leq n$ and $\lvert{p}\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
+The ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ belongs tofinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle of states $c$ such that $c \cap p \ne \emptyset$. Note that $\lvert{c}\rvert \leq n$ and $\lvert{p}\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
 \end{proof}
 
 \section{Computability theory}
 
-\begin{definition}
-A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$$ where $\Gamma \supset \Sigma$ is finite such that there is some \textit{null character} $\bot \in \Gamma \setminus \Sigma$, $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, and $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. We call $\Sigma$ the \textit{input alphabet}, $\Gamma$ the \textit{tape alphabet}, $Q_F$ the set of \textit{accepting states}, and $Q_R$ the set of \textit{rejecting states}.
+\begin{definition}[Turing machine]
+A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$$ where $\Gamma \supset \Sigma$ is finite such that 
+\begin{enumerate}[label=(\roman*)]
+\item there is some \textit{null character} $\bot \in \Gamma \setminus \Sigma$,
+\item $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, 
+\item and $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. 
+\end{enumerate}
+We call $\Sigma$ the \textit{input alphabet}, $\Gamma$ the \textit{tape alphabet}, $Q_F$ the set of \textit{accepting states}, and $Q_R$ the set of \textit{rejecting states}.
 \end{definition}
 
 \begin{note}
@@ -528,7 +548,7 @@ A Turing machine is supposed to act as a minimal model of computation. It should
 
 \subsection{Lecture 5}
 
-\begin{remark}
+
 Every finite automaton may be viewed as a Turing machine $M$ with the following properties. 
 \begin{enumerate}[label=(\alph*)]
 \item $M$ never writes on the tape.
@@ -536,7 +556,7 @@ Every finite automaton may be viewed as a Turing machine $M$ with the following 
 \item $M$ writes on just a finite portion of the tape.
 \item $M$ either accepts or rejects immediately after reading the input string. 
 \end{enumerate}
-\end{remark}
+
 
 \begin{remark}
 Adding a stay option $S$ to the set $\{L, R\}$ would not increase a Turing machine's computational power.
@@ -558,12 +578,20 @@ Let $a,b,c\in \Gamma$ and $u,v\in \Gamma^{\ast}$. Let $p,q\in Q$. We say that th
 \item $uapbv$ yields $uqacv$ when $\delta(p,b) = (q, c, L)$.
 \item $uapbv$ yields $uacqv$ when $\delta(p, b) = (q, c, R)$. 
 \end{enumerate}
-We write $C_1 \vdash C_2$.
+In this case, we write $C_1 \vdash C_2$.
 \end{definition}
 
-\begin{definition}
-We say that the $\TM$ $M$ \textit{accepts} the input $w$ if there is some sequence $C_1, \ldots, C_k$ of configurations such that $C_1$ is $\bot q_0w$, each $C_i$ yields $C_{i+1}$ (in which case we write $C_1 \specialvdash{}{*} C_k $), and $C_k$ is an accepting configuration.  We define the \textit{language of the $\TM$ $M$} as $$L(M) = \left\{x \in \Sigma^{\ast}: M \text{ accepts } x \right\}.$$
-\end{definition}
+\medskip
+
+We say that the $\TM$ $M$ \textit{accepts} the input $w$ if 
+\begin{enumerate}[label=(\roman*)]
+\item there is some sequence $C_1, \ldots, C_k$ of configurations such that $C_1$ is $\bot q_0w$, 
+\item each $C_i$ yields $C_{i+1}$ (in which case we write $C_1 \specialvdash{}{*} C_k $), 
+\item and $C_k$ is an accepting configuration. 
+\end{enumerate}
+We define the \textit{language of the $\TM$ $M$} as $$L(M) \equiv \left\{x \in \Sigma^{\ast}: M \text{ accepts } x \right\}.$$
+
+\smallskip
 
 \begin{definition} Let $L$ be a language.
 \begin{enumerate}
@@ -577,10 +605,8 @@ Every decidable language is recursively enumerable.
 \end{note}
 
 \begin{exmp}
-By the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is not regular.  But $L$ is decidable. 
-\end{exmp}
-\begin{proof}
-Set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$. Define the $\TM$ $M$ as follows.
+By the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is \emph{not} regular.  But $L$ is decidable. Indeed,
+set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$. Define the $\TM$ $M$ as follows.
 \[
 \begin{tikzpicture}[shorten >=1pt,node distance=6cm,on grid,auto] 
    \node[state,initial] (q_0)   {$q_0$}; 
@@ -603,7 +629,7 @@ Set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$
 \end{tikzpicture}.
 \]
 Then $L(M) = L$.
-\end{proof}
+\end{exmp}
 
 \begin{remark}
 The \textit{Church-Turing thesis} states that our pre-theoretic notion of algorithm is entirely captured by decidability (equivalently, $\lambda$-computability). 
@@ -619,7 +645,7 @@ A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine 
 For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k(T^2)$ steps of a single-tape $\TM$.
 \end{theorem}
 \begin{proof}
-Write $M= (Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R)$. Let $$ \{\#\} \bigcup_{\gamma \in \Gamma} \{\gamma, \dot{\gamma} \}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
+Write $M= \left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$. Let $$ \{\#\} \bigcup_{\gamma \in \Gamma} \{\gamma, \dot{\gamma} \}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
 \end{proof}
 
 \begin{exmp}
@@ -661,9 +687,11 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 \end{enumerate}
 \end{note}
 
-\begin{remark}
+\medskip
+
 There is an injective function $\iota$ from the set of Turning machines into $\left\{0,1\right\}^{\ast}$ because any $\TM$'s transition function admits a finite description. In particular, the set of $\TM$ is countable. Let $\langle M \rangle $ denote the binary encoding of the $\TM$ $M$. Let any $x\notin \im{\iota}$ correspond to the $\TM$ that immediately halts and outputs zero on every input. As a result, every binary string corresponds to some Turing machine. 
-\end{remark}
+
+\smallskip
 
 \begin{theorem}
  There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\langle M \rangle$ and $x$, (i.e., one string over $\left\{0,1\right\} \times \Sigma$) such that
@@ -684,7 +712,7 @@ We call $U_{\TM}$ a \textit{universal Turing machine}.
 \subsection{Lecture 7}
 
 
-Alternatively, we can view $U_{\TM}$ as a ternary function with input $(\langle M \rangle,  w, 1^k)$ such that
+Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\langle M \rangle,  w, 1^k\right)$ such that
 \begin{enumerate}[label=(\roman*)]
 \item if $M$ accepts (resp. rejects) on $w$ in $\leq k$ steps, then $U_{\TM}$ accepts (resp. rejects) and
 \item if $M$ does not halt on $w$ in $\leq k$ steps, then $U_{\TM}$ will reach a special state.
@@ -712,7 +740,7 @@ Then $$N(\langle N \rangle) = \begin{cases} \textit{accept} & N \text{ does not 
 \end{proof}
 
 \begin{lemma}
-If $L$ is decidable, then clearly $\overline{L}$ is decidable.
+If $L$ is decidable, then  $\overline{L}$ is decidable.
 \end{lemma}
 
 \begin{lemma}
@@ -747,20 +775,22 @@ A function $f: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ is \textit{computabl
 \end{definition}
 
 \begin{definition}
-Let $L\subset \Sigma^{\ast}$ and $L' \subset \underline{\Sigma}^{\ast}$ be languages. We say that \textit{$L$ many-one reduces to $L'$}, written as $L \leq_m L'$, if there is some computable function $f: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ such that $x\in L \iff f(x) \in L'$. In this case, we call $f$ the \textit{reduction} from $L$ to $L'$.
+Let $L\subset \Sigma^{\ast}$ and $L' \subset \underline{\Sigma}^{\ast}$ be languages. We say that \textit{$L$ many-one reduces to $L'$}, written as $L \leq_m L'$, if there is some computable function $f: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ such that $$x\in L \iff f(x) \in L'.$$ In this case, we call $f$ the \textit{reduction} from $L$ to $L'$.
 \end{definition}
 
 \begin{lemma}
-Suppose that $L \leq_m L'$ and that $L'$ is decidable (resp. recursively enumerable), then $L$ is decidable (resp. recursively enumerable). In this way, $L'$ is at least as ``hard" as $L$.
+Suppose that $L \leq_m L'$ and that $L'$ is decidable (resp. recursively enumerable), then $L$ is decidable (resp. recursively enumerable).
 \end{lemma}
 \begin{proof}
 Find some $M$ that decides (resp. recognizes) $L'$ and some reduction $f$ from $L$ to $L'$. Construct the $\TM$ $N$ so that on input $w\in \Sigma^{\ast}$, we let $N$ compute $f(w)$ and then output whatever $M$ outputs on $f(w)$. Then $N$ decides (resp. recognizes) $L$. 
 \end{proof}
 
+In this way, $L'$ is at least as ``hard" as $L$.
+
 \subsection{Lecture 8}
 
 \begin{exmp}[Halting problem]
-Let $A_{\text{HALT}} \coloneqq \{\langle M, w \rangle \mid M$ halts on $w\}$. Then $A_{\text{HALT}}$ is undecidable.
+Let $A_{\text{HALT}} = \{\langle M, w \rangle \mid M$ halts on $w\}$. Then $A_{\text{HALT}}$ is undecidable.
 \end{exmp}
 \begin{proof}
 Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\text{HALT}}$. To do this, we want to design a computable function that maps any $\langle M, w \rangle$ to another $\langle M' \rangle, w'$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
@@ -784,7 +814,7 @@ Then we get a suitable function given by $(\langle M \rangle , w) \mapsto (\lang
 
 
 \begin{theorem}[Rice]
- Let $C$ be any subset of the universe of all languages over a fixed alphabet. Define $L_C = \{ \langle M \rangle : L(M) \in C\}$. Suppose that both $L_C$ and $\overline{L_C}$ are nonempty. Then $L_C$ is undecidable. 
+ Let $C$ be any subset of the universe of all languages over a fixed alphabet. Let $$L_C = \left\{ \langle M \rangle : L(M) \in C\right\}.$$ Suppose that both $L_C$ and $\overline{L_C}$ are nonempty. Then $L_C$ is undecidable. 
 \end{theorem}
 \begin{proof}
 We may assume that $\emptyset \notin C$ for otherwise we could show that $\overline{L_C}$ is undecidable.  We know that $L(M_y) \in C$ for some $\TM$ $M_y$.  We show that $A_{\TM} \leq_m L_C$. Consider any $\langle M, w \rangle \in A_{\TM}$. Define $M'$ as follows.
@@ -813,7 +843,7 @@ This means that every nontrivial semantic property of Turing machines is undecid
 \medskip
 
 \begin{exmp}\label{fin}
-Let $A_{\text{fin}} \coloneqq \{\langle M \rangle : L(M)$ is finite$\}$. Then $A_{\text{fin}}$ is undecidable. 
+Let $A_{\fin} = \left\{\langle M \rangle : L(M) \text{ is finite}\right\}$. Then $A_{\fin}$ is undecidable. 
 \end{exmp}
 
 \smallskip
@@ -823,10 +853,10 @@ In fact, we can strengthen \cref{fin}.
 \smallskip
 
 \begin{prop}
-$A_{\text{fin}}$ is not recursively enumerable. 
+$A_{\fin}$ is not recursively enumerable. 
 \end{prop}
 \begin{proof}
-Recall that $\overline{A_{\TM}}$ is not recursively enumerable.  We show that $\overline{A_{\TM}} \leq_m A_{\text{fin}}$. Given any $\langle M, w \rangle$, define $M'$ as follows.
+Recall that $\overline{A_{\TM}}$ is not recursively enumerable.  We show that $\overline{A_{\TM}} \leq_m A_{\fin}$. Given any $\langle M, w \rangle$, define $M'$ as follows.
 
 \smallskip
 
@@ -855,29 +885,30 @@ It's possible that both a language and its complement are not recursively enumer
 
 
 Once we know that a question is decidable, we want to determine the amount of computational resources required to decide it. Such resources include 
-\begin{enumerate}[label=(\alph*)]
+\begin{itemize}
 \item time
 \item space
 \item parallelism 
 \item communication 
 \item rounds
 \item randomness
-.\end{enumerate}
+.\end{itemize}
 We also want to study how these trade off with each other. 
 
 \smallskip
 
-\begin{definition}
-Given any $\TM$ $M$, its \textit{time complexity} is the function $f: \N \to \N$ where $f(n) =\max\{$steps used by $M$ on input $w\mid \lvert{w}\rvert =n\}$. We say that $M$ \textit{runs in time $f(n)$}.
+\begin{definition}[Time complexity]
+Given any $\TM$ $M$, its \textit{time complexity} is the function $f: \N \to \N$ where $$f(n) \equiv\max\{\text{steps used by }M \text{ on input }w\mid \lvert{w}\rvert =n\}.$$ We say that $M$ \textit{runs in time $f(n)$}.
 \end{definition}
 
-\begin{definition}
- Given any \textit{time-constructible} function $f: \N \to \N$, define $\mathsf{DTIME}(f(n)) = \{ L : \exists \TM \ M$ such that $L = L(M)$ and $M$ halts on all inputs of length $n$ in $O(f(n))$ steps$\}$.
-Let $\mathbf{P} \coloneqq \bigcup_{k\geq 0} \mathsf{DTIME}(n^k)$.
-\end{definition}
+\smallskip
+
+ Given any \textit{time-constructible} function $f: \N \to \N$, let $$\mathsf{DTIME}(f(n)) = \left\{ L : \exists \TM \ M  \text{ s.t. } L = L(M) \text{ and }M \text{ halts on all inputs of length }n \text{ in }O(f(n)) \text{ steps}\right\}.$$
+Let $\mathbf{P} = \bigcup_{k\geq 0} \mathsf{DTIME}(n^k)$.
+
 
 \begin{prop}
-$\mathbf{P}$ is independent of the variant of deterministic Turing machine used. 
+$\mathbf{P}$ belongs todependent of the variant of deterministic Turing machine used. 
 \end{prop}
 
 \begin{remark}
@@ -901,8 +932,12 @@ Let $f: \N \to \N$ be any function. Suppose that $g(n) = \omega(f(n) \log{f(n)})
 \end{theorem}
 
 \begin{definition}
-We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of $M$ runs in time $t(n)$. Define  $\mathsf{NTIME}(t(n)) = \{ L : \exists \NDTM M$ such that $L(M) = L$ and every branch of $M$ halts on any input of length $n$ in $O(t(n))$ steps$\}$. Let $\mathbf{NP} \coloneqq \bigcup_{k \geq 0} \mathsf{NTIME}(n^k)$.
+We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of $M$ runs in time $t(n)$. 
 \end{definition}
+
+\smallskip
+
+Let  $$\mathsf{NTIME}(t(n)) = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O(t(n))\text{ steps}\right\}.$$ Let $\mathbf{NP} = \bigcup_{k \geq 0} \mathsf{NTIME}(n^k)$.
 
 \begin{prop}
 $\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}(2^{O(t(n))})$.
@@ -911,13 +946,13 @@ $\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}(2^{O(t(n))})$.
 \begin{exmp}
 Let $\varphi$ be a Boolean formula in conjunctive normal form (CNF). Suppose that $\varphi$ contains $n$ clauses and $m$ literals. Then the size of the representation in bits of $\varphi$ is of order $O(2 m \cdot n) = O(mn)$. Also, deciding whether $\varphi$ evaluates to $1$ takes  $O(2 m \cdot n) = O(mn)$ steps. 
 
-Define $\mathsf{CNF\text{-}SAT} = \{\langle \varphi \rangle : \varphi$ is satisfiable$\}$. Notice that this can be decided by a nondeterministic Turing machine in linear time.  There is, however, no known deterministic Turing machine running faster than brute force. 
+Let $\mathsf{CNF\text{-}SAT} = \left\{\langle \varphi \rangle : \varphi \text{ is satisfiable}\right\}$. Notice that this can be decided by a nondeterministic Turing machine in linear time.  There is, however, no known deterministic Turing machine running faster than brute force. 
 \end{exmp}
 
 \subsection{Lecture 10}
 
 \begin{lemma}
-A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $L = \left\{ x \mid \exists y.\lvert{y}\rvert \leq \lvert{x}\rvert^{c_1} \land V(x,y) = 1 \text{ where } V \text{ runs in time }\lvert{x\cdot y}\rvert^{c_2}\right\}$. We call $V$ a \textit{verifier} and $y$ a \textit{witness}.
+A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $$L = \left\{ x \mid \exists y.\lvert{y}\rvert \leq \lvert{x}\rvert^{c_1} \land V(x,y) = 1 \text{ where } V \text{ runs in time }\lvert{x\cdot y}\rvert^{c_2}\right\}.$$ In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
 \end{lemma}
 \begin{proof} $ $
 
@@ -949,9 +984,9 @@ An \textit{independent set} of a graph $G=\left(V, E\right)$ is a set $I\subset 
 \begin{exmp} The following languages are in $\NP$.
 \begin{enumerate}
 \item $\mathsf{IND{-}SET} \coloneqq \{\langle G, k \rangle : G$ is an (undirected) graph with an independent set of size at least $k\}$
-\item $\mathsf{3{-}COLOR}\coloneqq \{ \langle G \rangle : G$ has a $3$-coloring$\}$
-\item $\mathsf{Composite} \coloneqq \{x \mid x$ is a composite number$\}$
-\item $\mathsf{PRIMES}\coloneqq \{ n \mid n$ is prime$\}$
+\item $\mathsf{3{-}COLOR}\coloneqq \left\{ \langle G \rangle : G\text{ has a }3\text{-coloring}\right\}$.
+\item $\mathsf{Composite} \coloneqq \left\{x \mid x\text{ is a composite number}\right\}$.
+\item $\mathsf{PRIMES}\coloneqq \left\{ n \mid n\text{ is prime}\right\}$.
 \end{enumerate}
 \end{exmp}
 
@@ -971,8 +1006,8 @@ We say that $L$ is $\NP$-complete if $L \in \NP$ and for any $L' \in \NP$, $L' \
 
 \begin{definition}
 A \textit{(Boolean) circuit} is a directed acyclic graph with a unique sink node such that 
-\begin{enumerate} 
-\item each node has indegree at most $2$
+\begin{enumerate}[label=(\roman*)]
+\item each node has indegree at most $2$,
 \item each internal node is labelled by $ \land$, $\vee$, or $\neg$,
 \item each leaf  node is labeled by a Boolean variable, and
 \item each edge is labeled by the Boolean value given as the output of the prior node. 
@@ -988,25 +1023,25 @@ This is an example of a non-uniform model of computation as we must specify a ne
 Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O(2^n)$. 
 \end{lemma}
 \begin{proof}
-We use induction to show that any $g:\left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
+We use induction to show that any function $g:\left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
 \begin{enumerate}[label=(\alph*)]
 \item If $g= \id_{\left\{0,1\right\}}$, then $g$ can be computed by a circuit of size $0$.
-\item If $g(0) =1$ and $g(1) =0$, then $g(x) = \neg x$.
-\item If $g(0) = g(1) = 0$, then $g(x) = x \land \neg x$.
-\item If $g(0) = g(1) = 1$, then $g(x) = x \vee \neg x$.
+\item If $g(0) =1$ and $g(1) =0$, then $g(x) = \neg{x}$.
+\item If $g(0) = g(1) = 0$, then $g(x) = x \land \neg{x}$.
+\item If $g(0) = g(1) = 1$, then $g(x) = x \vee \neg{x}$.
 \end{enumerate}
 Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \left\{0,1\right\}$ by $g_0(y) = g(0, y)$ and $g_1(y) = g(1,y)$. Then $g$ satisfies $$g(y) = (\neg y_1 \land g_0(y_2, \ldots, y_n)) \vee (y_1 \land g_1(y_2, \ldots, y_n))$$ for each $y$. By induction, $g$ can be computed by a circuit of size at most $4 + 2(3 \cdot 2^{n-1} -4) = 3 \cdot 2^n -4$. 
 \end{proof}
 
 \begin{lemma}\label{pl2}
-Let $M= (Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O(t^2 \cdot (|\Gamma|\cdot |Q|)^3) = O(t^2)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
+Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O(t^2 \cdot (\lvert{\Gamma}\rvert\cdot \lvert{Q}\rvert)^3) = O(t^2)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
 \end{lemma}
 \begin{proof}
-We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{|\Gamma|}$ bits, $1$ bit, and $\log{|Q|}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{|\Gamma|} +\log{|Q|}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O((|\Gamma|\cdot |Q|)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  (|\Gamma| \cdot |Q|)^3 )$ that simulates $M$ on inputs of size $n$.
+We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\lvert{\Gamma}\rvert}$ bits, $1$ bit, and $\log{\lvert{Q}\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{\lvert{\Gamma}\rvert} +\log{\lvert{Q}\rvert}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O(\left(\lvert{\Gamma}\rvert\cdot \lvert{Q}\rvert\right)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  \left(\lvert{\Gamma}\rvert \cdot \lvert{Q}\rvert\right)^3 )$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
-Define $\mathsf{CIRCUIT{-}SAT} = \{ \langle C \rangle : \exists x. C(x) = 1\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
+Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \langle C \rangle : \exists x. C(x) = 1\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
 If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)} \land V(x,y) =1 \land (x\notin L \implies \forall y. V(x,y)=0).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C(x,y) = V(x,y)$ for each string $x$ of size $n$ and each string $y$ with $\lvert{y}\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\lvert{x}\rvert^{O(1)}$ such that $C_x(y) = V(x,y)$ for any $y$ with $\lvert{y}\rvert\leq \lvert{x}\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
@@ -1014,17 +1049,17 @@ If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V
 
 \subsection{Lecture 12}
 
-\begin{corollary}
+\begin{corollary}\label{cc1}
 Showing that $\mathsf{CIRCUIT{-}SAT}$ is not in $\mathbf{P}$ is equivalent to showing that $\mathbf{P} \ne \NP$.
 \end{corollary}
 
-\begin{corollary}
+\begin{corollary}\label{cc2}
 Suppose that $\mathsf{CIRCUIT{-}SAT} \leq_m^p L$ and $L\in \NP$. Then any $L' \in \NP$ satisfies $L' \leq_m^p L$, i.e., $L$ is $\NP$-complete.
 \end{corollary}
 
 \smallskip
 
-Our last two corollaries hold with $\mathsf{CIRCUIT{-}SAT}$ replaced by any $\NP$-complete language. 
+\Cref{cc1} and \cref{cc2} hold with $\mathsf{CIRCUIT{-}SAT}$ replaced by any $\NP$-complete language. 
 
 \smallskip
 
@@ -1034,26 +1069,26 @@ A Boolean formula in CNF is a \textit{3cnf formula} if each clause contains exac
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Define $\mathsf{3{-}SAT}= \{\langle \varphi \rangle \mid \varphi$ is a 3cnf formula that is satisfiable$\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
+\item Consider $\mathsf{3{-}SAT}\coloneqq \left\{\langle \varphi \rangle \mid \varphi\text{ is a 3cnf formula that is satisfiable}\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \begin{proof}
 It suffices to show that $\mathsf{CIRCUIT{-}SAT} \leq_m^p \mathsf{3{-}SAT}$. We must construct an efficient algorithm $M( -)$ such that the circuit $C$ is satisfiable  if and only if $\varphi\coloneqq M(\langle C \rangle)$ is satisfiable. If $C$ has size $n$, then, wlog, we can use the associativity of our Boolean operations to add at most $n^k$ internal nodes to $C$ such that each gate labeled by $\land$ or $\vee$ takes exactly two inputs. 
 
 Let $g_1, \ldots, g_n$ and $x_1, \ldots, x_m$ denote  the Boolean values given by the edges and inputs of $C$, respectively. Relabel $g_1, \ldots, g_n, x_1, \ldots, x_m$ as $w_1, \ldots, w_{n+m}$. Let $\varphi$ be the 3cnf formula in the variables $w_1, \ldots, w_{n+m}$ where each clause of $\varphi$ corresponds either to $C$'s output value $w_s \vee w_s \vee w_s$ or to one of $C$'s internal edges. In the latter case, we can give the following descriptions.
 \begin{itemize}
-\item  If $w_j = \neg w_i$, then $\varphi$ contains exactly one clause of the form $$  (w_i \vee w_j) \land (\neg w_i \vee \neg w_j).
+\item  If $w_j = \neg w_i$, then $\varphi$ contains exactly one clause of the form $$  \left(w_i \vee w_j\right) \land \left(\neg w_i \vee \neg w_j\right).
 $$
-\item If $w_h = w_i \land w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$  (w_i \vee w_j \vee \neg w_h) \land (w_i \vee \neg w_j \vee \neg w_h) \land (\neg w_i \vee w_j \vee \neg w_h) \land (\neg w_i \vee \neg w_j \vee w_h).$$
-\item If $w_h = w_i \vee w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$ (w_i \vee w_j \vee \neg w_h) \land (w_i \vee \neg w_j \vee w_h) \land (\neg w_i \vee w_j \vee w_h) \land (\neg w_i \vee \neg w_j \vee w_h)
+\item If $w_h = w_i \land w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$  \left(w_i \vee w_j \vee \neg w_h\right) \land \left(w_i \vee \neg w_j \vee \neg w_h\right) \land \left(\neg w_i \vee w_j \vee \neg w_h\right) \land \left(\neg w_i \vee \neg w_j \vee w_h\right).$$
+\item If $w_h = w_i \vee w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$ \left(w_i \vee w_j \vee \neg w_h\right) \land \left(w_i \vee \neg w_j \vee w_h\right) \land \left(\neg w_i \vee w_j \vee w_h\right) \land \left(\neg w_i \vee \neg w_j \vee w_h\right)
 .$$
-\end{itemize} By construction, $\varphi$ is satisfiable if and only if $C$ is. The algorithm $M: \langle C \rangle \mapsto \varphi$ is linear in $n^k$, hence efficient. Hence it is a suitable reduction. 
+\end{itemize} By construction, $\varphi$ is satisfiable if and only if $C$ is. The algorithm $M: \langle C \rangle \mapsto \varphi$ is linear in $n^k$, hence efficient. Therefore, it is a suitable reduction. 
 \end{proof}
-\item  It's clear that $\mathsf{IND{-}SET}$ is in $\NP$. We claim that this is $\NP$-complete.
+\item  It's clear that $\mathsf{IND{-}SET}$ belongs to $\NP$. We claim that this is $\NP$-complete.
 \begin{proof}
-We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and write $\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m$. For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \langle G_{\varphi}, m\rangle$ defines a suitable reduction. 
+We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and let $$\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m.$$ For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \langle G_{\varphi}, m\rangle$ defines a suitable reduction. 
 \end{proof}
-\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $(x,y) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \{ \langle G, k\rangle \mid G$ has a vertex cover of size at most $k\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
+\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $(x,y) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \left\{ \langle G, k\rangle \mid G\text{ has a vertex cover of size at most }k\right\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
 \begin{proof}
-Let $G$ be a graph with an independent set $S$ with $|S|\geq k$.  Then $V \setminus S$ is a vertex cover of $G$. Conversely, if $G$ has a vertex cover $K$ of size at most $|V| - k$, then $V \setminus K$ is an independent set of size at least $k$ in $G$. Thus, the algorithm $\langle G, k \rangle \mapsto \langle G, |V| - k\rangle$ defines a suitable reduction.  
+Let $G$ be a graph with an independent set $S$ with $\lvert{S}\rvert\geq k$.  Then $V \setminus S$ is a vertex cover of $G$. Conversely, if $G$ has a vertex cover $K$ of size at most $\lvert{V}\rvert - k$, then $V \setminus K$ is an independent set of size at least $k$ in $G$. Thus, the algorithm $\langle G, k \rangle \mapsto \langle G, \lvert{V}\rvert - k\rangle$ defines a suitable reduction.  
 \end{proof}
 \end{enumerate}
 \end{exmp}
@@ -1066,8 +1101,8 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 
 \begin{definition} Let $G=\left(V, E\right)$ be a graph
 \begin{enumerate}
-\item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}\coloneqq \left\{\langle G, k \rangle \mid G \text{ has a clique of size at least }k\right\}.$$
-\item The graph $\overline{G} = (V, E')$ where $E' = \{(x,y) \mid (x,y) \notin E\}$ is the  \textit{complement graph of $G$}.
+\item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}= \left\{\langle G, k \rangle \mid G \text{ has a clique of size at least }k\right\}.$$
+\item The graph $\overline{G} = (V, E')$ where $E' \equiv \left\{(x,y) \mid (x,y) \notin E\right\}$ is the  \textit{complement graph of $G$}.
 \end{enumerate}
 \end{definition}
 
@@ -1076,16 +1111,18 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 \end{prop}
 
 \begin{exmp}
-$\mathsf{IND{-}SET} \leq_m^p \mathsf{CLIQUE}$ via $\langle G, k \rangle \mapsto \langle \overline{G}, k \rangle$. Hence $\mathsf{CLIQUE}$ is $\NP$-hard.
+$\mathsf{IND{-}SET} \leq_m^p \mathsf{CLIQUE}$ via the mapping $\langle G, k \rangle \mapsto \langle \overline{G}, k \rangle$. Hence $\mathsf{CLIQUE}$ is $\NP$-hard.
 \end{exmp}
 
 \begin{definition}
-Let $G= \left(V, E\right)$ be an (undirected) weighted graph with weight function $w : E \to \R_{\geq 0}$. Suppose $C \subset V$. A \textit{Steiner tree in $G$} is a connected subgraph of $G$ with no cycles that contains each vertex in $C$.
+Let $G= \left(V, E\right)$ be an (undirected) weighted graph with weight function $w : E \to \R_{\geq 0}$. Suppose that $C \subset V$. A \textit{Steiner tree in $G$} is a connected subgraph of $G$ with no cycles that contains each vertex in $C$.
 \end{definition}
 
 \begin{remark}
 Any connected subgraph of minimum weight must be a tree.
 \end{remark}
+
+\medskip
 
 \begin{prob}
 Given a weighted graph $G$ and set of vertices $C$ in $G$, find the Steiner tree in $G$ of minimum weight that contains $C$.
@@ -1096,30 +1133,30 @@ Let $G= \left(V, E\right)$. A subset $C\subset V$ \textit{has a Steiner tree of 
 \end{definition}
 
 \begin{exmp}
-Let $\mathsf{Steiner{-}tree} \coloneqq \{\langle G, C, W \rangle \mid C$ has a Steiner tree of total weight at most $W\}$. This is $\NP$-complete.
+Let $\mathsf{Steiner{-}tree} = \left\{\langle G, C, W \rangle \mid C\text{ has a Steiner tree of total weight at most }W\right\}$. This is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-It's clear that $\mathsf{Steiner{-}tree} $ is in $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = \left(V, E\right)$ be a graph with a vertex cover $S$ of size $k$. 
+It's clear that $\mathsf{Steiner{-}tree} $ belongs to  $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = \left(V, E\right)$ be a graph with a vertex cover $S$ of size $k$. 
  Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
 \begin{enumerate}[label=(\alph*)]
 \item Let $([u], [v])\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
 \item If $(u,v) \in E$, then let $\left([u], [u,v]\right), \left([u, v], [v]\right) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
 \item If $(v,w) \in E$ and $u,v,w$ are pairwise distinct, then let $\left([u], [v,w]\right) \in E'$ and and set $w'([u], [v,w]) = 2$.
-\item Finally, for any $(u,v), (w,z) \in E$, let $\left([u,v], [w,z]\right)\in E'$  with weight $$w'([u,v], [w,z]) = \begin{cases} 2 & (u,v) \text{ and } (w,z) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
+\item Finally, for any $(u,v), (w,z) \in E$, let $\left([u,v], [w,z]\right)\in E'$  with weight $$w'([u,v], [w,z])\equiv \begin{cases} 2 & (u,v) \text{ and } (w,z) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
 \end{enumerate}
-Set $C = \left\{ [u,v] : (u,v) \in E\right\}$. Also, set $W= |E|+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
+Set $C = \left\{ [u,v] : (u,v) \in E\right\}$. Also, set $W= \lvert{E}\rvert+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
 \begin{claim}
-$G'$ has a Steiner tree containing $C$ with weight at most $|E| + k -1$.
+$G'$ has a Steiner tree containing $C$ with weight at most $\lvert{E}\rvert + k -1$.
 \end{claim}
 \begin{proof}
 Let $S = \{v_1, \ldots, v_k\}$. Let 
 \begin{align*}
-S' & \coloneqq \left\{[v_1], \ldots, [v_k], \ \bigcup_{(u,v) \in E}[u,v]\right\}
-\\ E_{S'} & \coloneqq \left\{ (x,y)\in E' \mid w'(x,y)=1 \text{ and } x,y\in S'\right\}.
-\end{align*} Since $S$ is a vertex cover, we see that $(S', E_{S'})$ is a connected subgraph of $G'$ that contains $C$ and has weight $|E|+k -1$.
+S' & = \left\{[v_1], \ldots, [v_k], \ \bigcup_{(u,v) \in E}[u,v]\right\}
+\\ E_{S'} & = \left\{ (x,y)\in E' \mid w'(x,y)=1 \text{ and } x,y\in S'\right\}.
+\end{align*} Since $S$ is a vertex cover, we see that $(S', E_{S'})$ is a connected subgraph of $G'$ that contains $C$ and has weight $\lvert{E}\rvert+k -1$.
 \end{proof}
 \begin{claim}
-If $C$ has a a Steiner tree $T$ of total weight $W \leq |E| +k -1$, then $G$ has a vertex cover of size $k$. 
+If $C$ has a a Steiner tree $T$ of total weight $W \leq \lvert{E}\rvert +k -1$, then $G$ has a vertex cover of size $k$. 
 \end{claim}
 \begin{proof}
 Alter $T$ as follows.
@@ -1128,28 +1165,28 @@ Alter $T$ as follows.
 \item Replace any edge of weight $2$ between $[u,v]$ and $[v,w]$ with the edges $\left([u,v], [v]\right)$ and $\left([v], [v,w]\right)$.
 \item Replace any edge of weight $3$ between $[u,v]$ and $[w,z]$ with the edges $\left([u,v], [v]\right)$, $\left([v], [w]\right)$, and $\left([w], [w,z]\right)$.
 \end{itemize}
-The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $|E| + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $|E| +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $[v]$ such that $|R|\leq k$. If $(x,y)\in E$, then $[x,y]$ is connected to some $[v_0]$ by edges of weight $1$. This means that $[x]$ or $[y]$ is in $T'$, so that $[x]$ or $[y]$ is in $R$. This shows that $R$ is a vertex cover for $G$.
+The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $\lvert{E}\rvert + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $\lvert{E}\rvert +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $[v]$ such that $\lvert{R}\rvert\leq k$. If $(x,y)\in E$, then $[x,y]$ is connected to some $[v_0]$ by edges of weight $1$. This means that $[x]$ or $[y]$ belongs to $T'$, so that $[x]$ or $[y]$ belongs to $R$. This shows that $R$ is a vertex cover for $G$.
 \end{proof}
 \end{proof}
 
 \begin{remark}
-Any undirected  weighted (connected) graph can be endowed with a metric by taking the shortest path between any two vertices. Our choice of weights in part (d) of our construction of $E'$ made $G'$ a metric space. 
+Any undirected  weighted (connected) graph can be endowed with a metric by taking the shortest path between any two vertices. Our choice of weights in part (d) of our construction of $E'$ makes $G'$ a metric space. 
 \end{remark}
 
 \begin{exmp}
-Let $\mathsf{SUBSET{-}SUM}\coloneqq \{\langle a_1, \ldots, a_k, t\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
+Let $\mathsf{SUBSET{-}SUM} = \left\{\langle a_1, \ldots, a_k, t\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-It's clear that this is in $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $|V| = n$ and $|E|= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq |E|-1$ and  $(u,v) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
+It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $\lvert{V}\rvert = n$ and $\lvert{E}\rvert= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq \lvert{E}\rvert-1$ and  $(u,v) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
 
 \medskip
 
- Let $S = \{a_v \mid v\in C\} \cup \{b_{(u,v)} \mid $ exactly one of $u$ and $v$ belongs to $C\}$. Note that we can construct $S$ in polynomial time. It's straightforward to check that the terms of $S$ sum to $t$. 
+ Let $S = \left\{a_v \mid v\in C\right\} \cup \left\{b_{(u,v)} \mid\text{ exactly one of }u\text{ and }v\text{ belongs to }C\right\}$. Note that we can construct $S$ in polynomial time. It's straightforward to check that the terms of $S$ sum to $t$. 
 \begin{claim}
-Suppose that there are $U\subset V$ and $T\subset E$ such that $t= \sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}$. Then $U$ is a vertex cover for $G$ of size at most $k$.
+Suppose that there are subsets $U\subset V$ and $T\subset E$ such that $$t= \sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}.$$ Then $U$ is a vertex cover for $G$ of size at most $k$.
 \end{claim}
 \begin{proof}
-Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $|U|\leq k$. Note that, in base-4, each of the first $m$ digits of $t$ equals $2$. Thus, for each $(u,v) \in E$, at least two of $a_u$, $a_v$, and $b_{(u,v)}$ contribute to the summation $\sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}$. This implies that at least one of $u$ and $v$ belongs to $U$. Hence $U$ is a vertex cover for $G$.
+Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $\lvert{U}\rvert\leq k$. Note that, in base-4, each of the first $m$ digits of $t$ equals $2$. Thus, for each $(u,v) \in E$, at least two of $a_u$, $a_v$, and $b_{(u,v)}$ contribute to the summation $$\sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}.$$ This implies that at least one of $u$ and $v$ belongs to $U$. Hence $U$ is a vertex cover for $G$.
 \end{proof}
 \end{proof}
 
@@ -1159,32 +1196,34 @@ Using dynamic programming, one can show that there is a poly$(k, t)$ algorithm d
 
 \subsection{Lecture 14}
 
-\begin{definition} Let $S: \N \to \N$.
-\begin{enumerate}
-\item Define the \textit{space complexity class} $\mathsf{DSPACE}(S(n)) = \{L \mid \exists \TM M$ such that $L = L(M)$ and on any input of length $n$, $M$ touches at most $S(n)$ cells (on its work tape)$\}$.
-\item Define $\mathsf{NSPACE}(S(n)) = \{L \mid \exists \NDTM M$ such that $L = L(M)$ and on any input of length $n$, $M$ halts on every branch of computation and touches at most $S(n)$ cells on any branch$\}$.
-\end{enumerate}
-Unless we state otherwise, we assume that $S(n) \geq \log{n}$.
-\end{definition}
+Let $S: \N \to \N$. Unless we state otherwise, we assume that $S(n) \geq \log{n}$.
+Consider the \textit{space complexity class} 
+$\mathsf{DSPACE}(S(n))$ consisting of all languages $L$ for which $$\exists \TM M\text{ s.t. }L = L(M) \text{ and on any input of length }n,\ M \text{ touches at most }S(n)\text{ cells (on its work tape)}.$$
+Further, let $\mathsf{NSPACE}(S(n))$ consist of all languages $L$ for which  there is some $\NDTM M\text{ s.t. } L = L(M)$ and
+\[
+\text{on any input of length }n,\ M\text{ halts on every branch of computation and touches at most }S(n)\text{ cells on any branch}.
+\]
+
 
 \begin{definition}
-Let $M$ be a Turing machine that always halts. Define the \textit{configuration graph $G_{M,x}$ of $M$ on input $x$} as the directed graph $\left(V, E\right)$ where $V$ consists of the possible configurations of $M$ on $x$ and $E = \left\{(C,C') : C \vdash C'\right\}$. By making $M$ erase the contents of its work tapes right before halting, we may assume that $M$ has exactly one accepting configuration $C_{\text{accept}}$ on $x$.
+Let $M$ be a Turing machine that always halts. Define the \textit{configuration graph $G_{M,x}$ of $M$ on input $x$} as the directed graph $\left(V, E\right)$ where $V$ consists of the possible configurations of $M$ on $x$ and $E \equiv \left\{(C,C') : C \vdash C'\right\}$.
 \end{definition}
 
-\begin{note}
-Since $M$ always halts, it can never reach the same configuration more than once. Thus, $G_{M,x}$ is a directed acyclic graph.  
-\end{note}
+ By making $M$ erase the contents of its work tapes right before halting, we may assume that $M$ has exactly one accepting configuration $C_{\accpt}$ on $x$.
+Moreover,
+since $M$ always halts, it can never reach the same configuration more than once. Thus, $G_{M,x}$ is a directed acyclic graph.  
+
 
 \begin{lemma}
 $\mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$.
 \end{lemma}
 \begin{proof}
-Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$.  Given any input $x$ of length $n$, we can use $O(S(n))$ bits to describe the current contents of the tape, $O(\log{S(n)})$ bits to describe the current state, and $O(1)$ bits to describe the current location of the head. Thus, we need $O(S(n)) + O(1) + O(\log{S(n)})= O(S(n))$ bits to describe any vertex of $G_{M,x}$. 
+Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$.  Given any input $x$ of length $n$, we can use $O(S(n))$ bits to describe the current contents of the tape, $O(\log{S(n)})$ bits to describe the current state, and $O(1)$ bits to describe the current location of the head. Thus, we need $$O(S(n)) + O(1) + O(\log{S(n)})= O(S(n))$$ bits to describe any vertex of $G_{M,x}$. 
 
 \medskip
 
 
-Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided that any configuration of a $\NDTM$ yields at most two distinct configurations).  Therefore, we can construct $G_{M,x}$ in $2^{O(S(n))}$ steps. Now apply the standard linear-time BFS for connectivity to $G_{M,x}$ to decide if there is a path from $C_{\text{start}}$ to $C_{\text{accept}}$. 
+Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided that any configuration of a $\NDTM$ yields at most two distinct configurations).  Therefore, we can construct $G_{M,x}$ in $2^{O(S(n))}$ steps. Now apply the standard linear-time breadth-first search for connectivity to $G_{M,x}$ to decide if there is a path from $C_{\mathrm{start}}$ to $C_{\accpt}$. 
 \end{proof}
 
 
@@ -1199,12 +1238,12 @@ Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided
 It is not known whether these chains of containment can be improved. 
 \end{remark}
 
-\begin{definition} $ $
+\begin{notation} $ $
 \begin{enumerate}
 \item $\mathsf{PSPACE} \coloneqq \bigcup_{k\geq 0} \mathsf{DSPACE}(n^k)$.
 \item $\mathsf{NPSPACE} \coloneqq \bigcup_{k \geq 0} \mathsf{NSPACE}(n^k)$.
 \end{enumerate}
-\end{definition}
+\end{notation}
 
 \begin{note} $ $
 \begin{enumerate}
@@ -1214,12 +1253,12 @@ It is not known whether these chains of containment can be improved.
 \end{note}
 
 \begin{prop}
-Let $\mathbf{L} \coloneqq \mathsf{DSPACE}(\log{n})$ and $\mathbf{NL}\coloneqq \mathsf{NSPACE}(\log{n})$. 
+Let $\mathbf{L} = \mathsf{DSPACE}(\log{n})$ and $\mathbf{NL}= \mathsf{NSPACE}(\log{n})$. 
 \begin{enumerate}
-\item Let $L_1 = \{\langle x,y,z \rangle \mid x \cdot y = z\}$ and $L_2 = \{\langle x,y,z \rangle \mid x+y = z\}$. Then $L_1, L_2 \in \mathbf{L}$.
-\item Let $\mathsf{DIR{-}REACH} \coloneqq \{\langle G, s, t \rangle \mid G$ is directed and the vertex $t$ is reachable from $s\}$. Then $\mathsf{DIR{-}REACH}  \in \mathbf{NL}$.
+\item Let $L_1 = \left\{\langle x,y,z \rangle \mid x \cdot y = z\right\}$ and $L_2 = \left\{\langle x,y,z \rangle \mid x+y = z\right\}$. Then $L_1, L_2 \in \mathbf{L}$.
+\item Let $\mathsf{DIR{-}REACH} = \left\{\langle G, s, t \rangle \mid G\text{ is directed and the vertex }t\text{ is reachable from }s\right\}$. Then $\mathsf{DIR{-}REACH}  \in \mathbf{NL}$.
 \begin{remark}
-Omer Reingold has shown that $\mathsf{REACH} \coloneqq  \{\langle G, s, t \rangle \mid G$ is undirected and the vertex $t$ is reachable from $s\}$ belongs to $\mathbf{L}$.
+Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\langle G, s, t \rangle \mid G\text{ is undirected and the vertex }t\text{ is reachable from }s\right\}$$ belongs to $\mathbf{L}$.
 \end{remark}
 \end{enumerate}
 \end{prop}
@@ -1238,8 +1277,8 @@ $\mathsf{PSPACE} = \mathsf{NPSPACE}$.
 
 \subsection{Lecture 15}
 
-\begin{theorem}[Savitch]
-Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. But we have that $$\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n)).$$
+\begin{theorem}[Savitch]\label{Sav}
+ $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n)).$
 \end{theorem}
 \begin{proof}
 Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$. Recall that the configuration graph $G_{M,x}$ has at most $T_0\coloneqq 2^{O(S(n))}$ nodes. Consider the following recursive algorithm.
@@ -1250,12 +1289,12 @@ Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$. Recall that the configuratio
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
     \For{$j \in \{1, \ldots, T_0\}$}
-   {\eIf{$\mathsf{REACH}(C_{\text{start}}, j, \frac{T_0}{2})$ and $\mathsf{REACH}( j, C_{\text{accept}}, \frac{T_0}{2})$}{output ``yes"}{output ``no"}}
+   {\eIf{$\mathsf{REACH}(C_{\mathrm{start}}, j, \frac{T_0}{2})$ and $\mathsf{REACH}( j, C_{\accpt}, \frac{T_0}{2})$}{output ``yes"}{output ``no"}}
 \end{algorithm}
 
 
 Denote the space complexity of the preceding algorithm by $\mathcal{L}(T_0)$. Note that we we can reuse the space used by the first recursive call for the second recursive call. Since we need $\log{T_0}$ cells to encode the counter, it follows that
-$$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that the recursion depth is precisely $\log{T_0}$. Using this, we compute
+$$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that the recursion depth here is precisely $\log{T_0}$. Using this, we compute
 \begin{align*}  \mathcal{L}(T_0)  & =    \log{T_0} + \mathcal{L}(T_0/2) 
 \\ & = \log^2{T_0} + \mathcal{L}(1) =  \log^2{2^{O(S(n))}} + \mathcal{L}(1) 
 \\ & = O(S^2(n)) + O(S(n)) = O(S^2(n))  .
@@ -1263,20 +1302,23 @@ $$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that 
 \end{proof}
 
 \begin{corollary}
-$\mathbf{NL} \subset \mathbf{P}$ because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by our last proof, has a $\log^2{n}$-space deterministic algorithm.
+$\mathbf{NL} \subset \mathbf{P}$.
 \end{corollary}
+\begin{proof}
+The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by our proof of \cref{Sav}, has a $\log^2{n}$-space deterministic algorithm.
+\end{proof}
 
 \begin{note} $ $
 \begin{enumerate}
-\item We have that $\mathsf{NTIME}(\text{poly}(n)) \subset \mathsf{NPSACE}(\text{poly}(n)) \subset \mathsf{DPSACE}(\text{poly}(n)) = \mathsf{PSPACE}.$
+\item $\mathsf{NTIME}(\text{poly}(n)) \subset \mathsf{NPSACE}(\text{poly}(n)) \subset \mathsf{DPSACE}(\text{poly}(n)) = \mathsf{PSPACE}.$
 \item $\mathsf{PSPACE}$ is closed under complementation. 
 \end{enumerate}
 \end{note}
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $\Sigma_2{-}\mathsf{SAT} \coloneqq \{\varphi \text{ Boolean} \mid \forall \bar{x} \exists \bar{y}(\varphi(\bar{x}, \bar{y}) = 1)\}$. It is unclear that this (or its complement) belongs to $\NP$. 
-\item Let $\mathsf{TQBF{-}SAT} \coloneqq \left\{ \varphi(\overline{x_1}, \ldots, \overline{x_n}) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} (\varphi(\overline{x_1}, \ldots, \overline{x_n}) = 1), \ Q_i \in \{\forall, \exists\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
+\item Let $\Sigma_2{-}\mathsf{SAT} = \left\{\varphi \text{ Boolean} \mid \forall \bar{x} \exists \bar{y}(\varphi(\bar{x}, \bar{y}) = 1)\right\}$. It is unclear that this (or its complement) belongs to $\NP$. 
+\item Let $\mathsf{TQBF{-}SAT} = \left\{ \varphi(\overline{x_1}, \ldots, \overline{x_n}) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} (\varphi(\overline{x_1}, \ldots, \overline{x_n}) = 1), \ Q_i \in \{\forall, \exists\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
 \begin{proof}
 Construct an algorithm $T(\varphi)$ as follows. 
 \begin{itemize}
@@ -1284,7 +1326,7 @@ Construct an algorithm $T(\varphi)$ as follows.
 \item If $\varphi = \exists x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if either of these recursive calls accepts and reject otherwise. 
 \item If  $\varphi = \forall x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if both of these recursive calls accept and reject otherwise. 
 \end{itemize} 
-If $m$ denotes the size of $\varphi$, then $\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O(m^k)$ for some $k$.
+If $m$ denotes the size of $\varphi$, then $$\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O(m^k)$$ for some $k$.
 \end{proof}
 \end{enumerate}
 \end{exmp}
@@ -1299,19 +1341,19 @@ A language $L$ is $\mathsf{PSPACE}$-complete if it belongs to $\mathsf{PSPACE}$ 
 $\mathsf{TQBF{-}SAT} $ is $\mathsf{PSPACE}$-complete.
 \end{exmp}
 \begin{proof}
-Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\lvert{x}\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O(S(n)^2)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\text{start}}, C_{\text{accept}}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
+Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\lvert{x}\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O(S(n)^2)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
 
 
  We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
 \begin{align*}
-\varphi_{c_1, c_2, i} & \equiv \exists c(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1})
-\\ & \equiv \exists c \forall D^1 \forall D^2((D^1 = c_1 \land D^2 = c) \vee (D^1 = c) \land (D^2 = c_2)) \implies \varphi_{D^1, D^2, i-1}.
+\varphi_{c_1, c_2, i} & \leftrightarrow \exists c(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1})
+\\ & \leftrightarrow \exists c \forall D^1 \forall D^2((D^1 = c_1 \land D^2 = c) \vee (D^1 = c) \land (D^2 = c_2)) \implies \varphi_{D^1, D^2, i-1}.
 \end{align*}
 It follows that $\lvert{\varphi_{c_1, c_2, i}}\rvert\leq \lvert{\varphi_{c_1, c_2, i-1}}\rvert +O(S(n))$, so that $\lvert{\hat{\varphi}}\rvert \leq O(S(n)^2)$, as desired.
 \end{proof}
 
 \begin{prop}
-A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{|\text{(first input)}|})$ space and $$L = \left\{ x \mid \exists y.\lvert{y}\rvert \leq \lvert{x}\rvert^{c} \land V(x,y) = 1\right\}.$$ .
+A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{\lvert{\text{(first input)}}\rvert})$ space and $$L = \left\{ x \mid \exists y.\lvert{y}\rvert \leq \lvert{x}\rvert^{c} \land V(x,y) = 1\right\}.$$ .
 \end{prop}
 
 \subsection{Lecture 17}
@@ -1321,7 +1363,7 @@ A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and
 \item
 Let $M$ be a $\TM$ consisting of one read-only input tape, one work tape, and one write-only, single-axis output tape such that $M$'s work tape uses $O(\log{n})$ space. We call $M$ a \textit{log space transducer}.
 \item Let $A$ and $B$ be languages. We say that $A$ is \textit{log space reducible to $B$}, written as $A\leq_l B$, if there is some log space transducer $M: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ such that $x \in A \iff M(x) \in B$. 
-\item A language $L$ is \textit{$\mathbf{NL}$-complete} if it is in $\mathbf{NL}$ and $L' \leq_l L$ for any $L' \in \mathbf{NL}$.
+\item A language $L$ is \textit{$\mathbf{NL}$-complete} if it belongs to $\mathbf{NL}$ and $L' \leq_l L$ for any $L' \in \mathbf{NL}$.
 \end{enumerate}
 \end{definition}
 
@@ -1338,7 +1380,7 @@ $$\mathbf{NL} = \mathbf{co}{-}{\mathbf{NL}}.$$
 \end{theorem}
 \begin{proof}
 Since $\mathsf{DIR{-}REACH}$ is $\mathbf{NL}$-complete, it suffices to show that $\mathsf{DIR{-}REACH}^c\in \mathbf{NL}.$  
-Let $G= \left(V, E\right)$ be a graph of size $n$ and $s, t\in V$. Let $C_i$ denote the set of vertices $v\in V$ reachable from $s$ in at most $i$ steps. We can assume that $V$ is ordered $(v_1, \ldots, v_n)$ since each index can be described in $\log{n}$ bits.
+Let $G= \left(V, E\right)$ be a graph of size $n$ and $s, t\in V$. Let $C_i$ denote the set of vertices $v\in V$ reachable from $s$ in at most $i$ steps. We can assume that $V$ is ordered $\left(v_1, \ldots, v_n\right)$ since each index can be described in $\log{n}$ bits.
 
 \medskip
 
@@ -1362,7 +1404,7 @@ Second, given that $\lvert{C_{i-1}}\rvert = k$,  we can verify that $v\notin C_i
 \item Verify that $m = k$ by using a counter on the work tape. If not, then \textit{reject}. Otherwise, \textit{accept}.
 \end{enumerate}
 
-Finally, let $c\in \N$. Given that $\lvert{C_{i-1}}\rvert=k$, we can verify that $|C_i| = c$ as follows. 
+Finally, let $c\in \N$. Given that $\lvert{C_{i-1}}\rvert=k$, we can verify that $\lvert{C_i}\rvert = c$ as follows. 
 \begin{enumerate} 
 \item Write the next $v_i$ on the work tape (where $1\leq i \leq n$). 
 \item Decide if $v_i \in C_i$ using our two previous algorithms.
@@ -1395,7 +1437,7 @@ Thanks to Bertrand's postulate, some prime number between $N$ and $2N$ always ex
 \end{definition}
 
 \begin{definition} $ $
-A language $L$ is in \textit{$\underbrace{\mathsf{BPTIME}(t(n))}_{\text{bounded error probabilistic time}}$} if there exists a randomized $\TM$ $M$ running in time $t(\lvert{x}\rvert)$ (with probability $1$) such that $M$ decides $L$ with respect to $t(n)$. Let $\mathbf{BPP} \coloneqq \bigcup_{c\geq 0} \mathsf{BPTIME}(n^c)$.
+A language $L$ belongs to $$\underbrace{\mathsf{BPTIME}(t(n))}_{\textit{bounded error probabilistic time}}$$ if there exists a randomized $\TM$ $M$ running in time $t(\lvert{x}\rvert)$ (with probability $1$) such that $M$ decides $L$ with respect to $t(n)$. Let $\mathbf{BPP}= \bigcup_{c\geq 0} \mathsf{BPTIME}(n^c)$.
 \end{definition}
 
 \begin{note}
@@ -1406,6 +1448,8 @@ It's clear that $\mathbf{P} \subset \mathbf{BPP}$.
 $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 \end{prop}
 
+\bigskip
+
 \begin{remark} $ $
 \begin{enumerate}
 \item Computing the value of the determinant of an $n\times n$ matrix of integers via cofactor expansion takes $\omega(n!)$ steps. Computing it via Gaussian elimination, however, takes $O(n^3)$ steps. 
@@ -1415,55 +1459,59 @@ $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 
 \begin{prop}\label{poly} $ $
 \begin{enumerate}[label=(\alph*)]
-\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $[{-}2^n, 2^n]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
-\item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $\mathbb{P}[p(x) =0] \leq \frac{d}{|S|}$ for any $x\in_R S$.
+\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
+\item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $$\mathbb{P}\left[p(x) =0\right] \leq \frac{d}{\lvert{S}\rvert}$$ for any $x\in_R S$.
 \end{enumerate}
 \end{prop}
 
-\begin{lemma}[DeMillo-Lipton-Schwartz-Zippel]
-Let $p(x_1, \ldots, x_n)$ be a multivariate polynomial of degree at most $d\geq 0$. Let $S \subset \Z$ be finite. Then for any $a_1, \ldots, a_n$ randomly chosen with replacement from $S$, $$\mathbb{P}[p(a_1, \ldots, a_n) =0] \leq \frac{d}{|S|}.$$
+\begin{lemma}[DeMillo-Lipton-Schwartz-Zippel]\label{Dem}
+Let $p(x_1, \ldots, x_n)$ be a multivariate polynomial of degree at most $d\geq 0$. Let $S \subset \Z$ be finite. Then for any elements $a_1, \ldots, a_n$ randomly chosen with replacement from $S$, $$\mathbb{P}\left[p(a_1, \ldots, a_n) =0\right] \leq \frac{d}{\lvert{S}\rvert}.$$
 \end{lemma}
 \begin{proof}
 We use induction on $n$. If $n=1$, then this is exactly \cref{poly}(b). Now, we can write $$p(x_1, \ldots, x_n) = \sum_{i=0}^d = x_1^i q_i(x_2, \ldots, x_n)$$ where $\deg{q_i} \leq d-i$ for each $i$. Let $k$ be maximal such that $q_k(x_2, \ldots, x_n) \ne 0$. Let $E$ denote the event that $q_k(x_2, \ldots, x_n) =0$. 
 By induction together with \cref{poly}(b), it follows that  
-\begin{align*} \mathbb{P}\left[p(a_1, \ldots, a_n) =0\right] & \leq \mathbb{P}[E] + \mathbb{P}[p(a_1, \ldots, a_n) =0 \mid \neg{E}]
-\\ & \leq \frac{d-k}{|S|} + \frac{k}{|S|} = \frac{d}{|S|}.
+\begin{align*} \mathbb{P}\left[p(a_1, \ldots, a_n) =0\right] & \leq \mathbb{P}[E] + \mathbb{P}\left[p(a_1, \ldots, a_n) =0 \mid \neg{E}\right]
+\\ & \leq \frac{d-k}{\lvert{S}\rvert} + \frac{k}{\lvert{S}\rvert} = \frac{d}{\lvert{S}\rvert}.
 \end{align*}
 \end{proof}
 
 \begin{exmp}\label{matrix}
-Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $[{-}2^n, 2^n]$. Define the probabilistic $\TM$ $A$ on input $\langle L \rangle$ as follows. 
+Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Define the probabilistic $\TM$ $A$ on input $\langle L \rangle$ as follows. 
 \begin{enumerate}
-\item Set $S = \{1, \ldots, 100n\}$.
+\item Set $S = \left\{1, \ldots, 100n\right\}$.
 \item Choose $a_1, \ldots, a_n$ randomly from $S$ with replacement
 \item Evaluate $\det(a_1, \ldots, a_n)$.  If this equals $0$, then \textit{accept}. Otherwise, \textit{reject}.
 \end{enumerate}
-Then $A$ accepts $\langle L \rangle$ with probability $1$ when $\det{L} = 0$. Also, it rejects with probability $\geq \frac{99}{100}$ when $\det{L} \ne 0$ because $$\mathbb{P}[\det(a_1, \ldots, a_n) =0] \leq \frac{1}{100}.$$ Since evaluating a polynomial is polynomial in its degree, we see that $A$ is polynomial in $n$.
+Then $A$ accepts $\langle L \rangle$ with probability $1$ when $\det{L} = 0$. Also, it rejects with probability $\geq \frac{99}{100}$ when $\det{L} \ne 0$ because $$\mathbb{P}\left[\det(a_1, \ldots, a_n) =0\right] \leq \frac{1}{100}.$$ Since evaluating a polynomial is polynomial in its degree, we see that $A$ is polynomial in $n$.
 \end{exmp}
 
 \subsection{Lecture 19}
 
 \begin{exmp}
-Let $G=\left(V_1, V_2, E\right)$ be a bipartite graph with $|V_1=|V_2|=n$. 
-A \textit{perfect matching} is a permutation $\sigma$ of $\{1,2, \ldots, n\}$ such that $(i, \sigma(i)) \in E$ for each $i=1, \ldots, n$.
+Let $G=\left(V_1, V_2, E\right)$ be a bipartite graph with $\lvert{V_1}\rvert=\lvert{V_2}\rvert=n$. 
+A \textit{perfect matching} is a permutation $\sigma$ of $\left\{1,2, \ldots, n\right\}$ such that $\left(i, \sigma(i)\right) \in E$ for each $i=1, \ldots, n$.
 
-Let $M= (m_{i,j})$ be the $n\times n$ matrix with $$m_{i,j} = \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-}1)^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has some perfect matching. By \cref{matrix}, it follows that deciding whether or not a finite graph has a perfect matching is in $\mathbf{BPP}$.
+Let $M= \left(m_{i,j}\right)$ be the $n\times n$ matrix with $$m_{i,j} \equiv \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-1})^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has some perfect matching. By \cref{matrix}, it follows that deciding whether or not a finite graph has a perfect matching belongs to $\mathbf{BPP}$.
 \end{exmp}
 
+\medskip
+
+Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. 
+
 \begin{lemma}[Chernoff bound]
-Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. Then $$\mathbb{P}[\lvert{Z - \mu}\rvert \geq t] \leq e^{\frac{{-t^2n} \mu}{4}}$$ for any $t\in (0,1)$.
+$\mathbb{P}\left[\lvert{Z - \mu}\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}$ for any $t\in (0,1)$.
 \end{lemma}
 
 \begin{corollary}
 Let $M$ be a randomized polynomial-time $\TM$ and $L\subset \Sigma^{\ast}$ be a language. Suppose that there exists $c>0$ such that
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=1] \geq \frac{1}{2} +n^{-c}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{1}{2} + n^{-c}$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[M(x,r)=1\right] \geq \frac{1}{2} +n^{-c}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[M(x,r)=0\right] \geq \frac{1}{2} + n^{-c}$
 \end{itemize} where $n$ denotes $\lvert{x}\rvert$.
 Then for any $c' >0$, there exist a randomized polynomial-time $\TM$ $M'$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=1] \geq 1 - 2^{{-}n^{c'}}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}[M'(x,r)=0] \geq 1 - 2^{{-}n^{c'}}$.
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[M'(x,r)=1\right] \geq 1 - 2^{{-}n^{c'}}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[M'(x,r)=0\right] \geq 1 - 2^{{-}n^{c'}}$.
 \end{itemize}
 \end{corollary}
 \begin{proof}
@@ -1475,7 +1523,7 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 \begin{align*}
  \mathbb{P}\left[\sum_{i=1}^m X_i \leq \frac{m}{2}\right] & \leq \mathbb{P}\left[ \lvert{\frac{\sum_{i=1}^m X_i}{m} -\mu}\rvert \geq n^{-c}\right] 
 \\ & \leq
- e^{ \frac{ {-}n^{{-}2c}(n^{2c + 2c' + 100})(\frac{1}{2}+ n^{-c})}{4}
+ e^{ \frac{ {-}n^{{-2}c}(n^{2c + 2c' + 100})(\frac{1}{2}+ n^{-c})}{4}
  }
  \\ & = \frac{1}{e^{\frac{ n^{2c' +100}(\frac{1}{2} + n^{{-}c} )                 }{  4   }}  }
  \\ & = \frac{1}{e^{ \frac{n^{2c' +100}}{8} +\frac{n^{2c' -c+100}}{4}          }}
@@ -1487,7 +1535,7 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 \end{proof}
 
 \begin{remark}\label{good}
-Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
+Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, we have that  $\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\mathbb{P}_{r\in_R \left\{0,1\right\}^{\poly(\lvert{x}\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
 \end{remark}
 
 \begin{definition} $ $
@@ -1503,7 +1551,7 @@ Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \texti
 \item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\lvert{x}\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
 \end{enumerate}
-Let $\mathbf{ZPP} \coloneqq \mathbf{RP} \cap \mathbf{co{-}RP}$.
+Let $\mathbf{ZPP} = \mathbf{RP} \cap \mathbf{co{-}RP}$.
 \end{definition}
 
 \smallskip
@@ -1520,7 +1568,7 @@ If there exist $L \in \mathsf{DTIME}(2^{O(n)})$ and $\gamma >0$ such that $L$ re
 
 \smallskip
 
-Recall that any algorithm running in time $t(n)$ can be simulated by circuits of size $t(n)^2$. Let $L \coloneqq \{ 1^n \mid n \in \N,$ the $\TM$ represented by the number $n$ in binary halts when its input equals $n\}$. Then $L$ is undecidable \hl{but has polynomial size circuits}. 
+Recall that any algorithm running in time $t(n)$ can be simulated by circuits of size $t(n)^2$. Let $$L = \left\{ 1^n \mid n \in \N, \ \text{ the }\TM\text{ represented by the number }n\text{ in binary halts when its input equals }n\right\}.$$ Then $L$ is undecidable \hl{but has polynomial size circuits}. 
 
 \smallskip
 
@@ -1576,7 +1624,7 @@ For convenience, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some for
 $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \end{theorem}
 \begin{proof}
-Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\mathbb{P}_{r \in_R \left\{0,1\right\}^{\text{poly}(n)}}[A(x,r) = \chi_L(x)] \geq \frac{2}{3}$ where $n$ denotes $\lvert{x}\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\mathbb{P}_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\mathbb{P}[A'(x, \overline{r}) = \chi_L(x)] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
+Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\mathbb{P}_{r \in_R \left\{0,1\right\}^{\text{poly}(n)}}\left[A(x,r) = \chi_L(x)\right] \geq \frac{2}{3}$ where $n$ denotes $\lvert{x}\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\mathbb{P}_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\mathbb{P}[A'(x, \overline{r}) = \chi_L(x)] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
 \begin{claim}
 $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\right\}^m \forall \overline{z} \in \left\{0,1\right\}^m \bigvee_{j=1}^m A'(x, \overline{y_j} \oplus \overline{z})=1$.
 \end{claim}
@@ -1616,7 +1664,7 @@ Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_
 \end{definition}
 
 \begin{exmp}
-Let $\mathsf{NIP}\coloneqq \left\{ \langle G_1, G_2 \rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
+Let $\mathsf{NIP}=  \left\{ \langle G_1, G_2 \rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
 \[
 \begin{array}{l}{V : \text { Pick } i \in\{1,2\} \text { uniformly randomly. Randomly permute the vertices of } G_{i} \text { to get a  new isomorphic graph } H .} \\ {\text {\quad \quad Send } H \text { to } P .} \\ {P : \text { If } H \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_j \text{ denote the selected graph. Send } j \text { to } V \text {. }} \\
@@ -1644,12 +1692,12 @@ $\mathsf{PSPACE} \subset \mathbf{IP}$.
 $\mathsf{PSPACE} = \mathbf{IP}$.
 \end{corollary}
 
-\begin{definition}
-Let $A$ and $B$ be sets of size $2^n$ and $2^k$, respectively. A set of functions $\H\coloneqq \{h_1, \ldots, h_t\}$ from $A$ to $B$ is \textit{pairwise independent} if for any distinct $x, x' \in A$ and any $y, y' \in B$, $$  \mathbb{P}_{h \in_R \H}[h(x) = y \land h(x') = y'] = \frac{1}{2^{2k}}  = \frac{1}{|B|^2}.$$ An element of such a set is called a \textit{(pairwise independent) hash function}.
+\begin{definition}[Hash function]
+Let $A$ and $B$ be sets of size $2^n$ and $2^k$, respectively. A set of functions $\H\coloneqq \left\{h_1, \ldots, h_t\right\}$ from $A$ to $B$ is \textit{pairwise independent} if for any distinct $x, x' \in A$ and any $y, y' \in B$, $$  \mathbb{P}_{h \in_R \H}\left[h(x) = y \land h(x') = y'\right] = \frac{1}{2^{2k}}  = \frac{1}{\lvert{B}\rvert^2}.$$ An element of such a set is called a \textit{(pairwise independent) hash function}.
 \end{definition}
 
 \begin{exmp}
-The set of all functions $A \to B$ is a pairwise independent set of size $|B|^{|A|}$. 
+The set of all functions $A \to B$ is a pairwise independent set of size $\lvert{B}\rvert^{\lvert{A}\rvert}$. 
 \end{exmp}
 
 \begin{exmp}
@@ -1665,17 +1713,21 @@ is satisfied $\iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix} \begin{bmat
 Let $G$ and $H$ be graphs. 
 \begin{enumerate}
 \item If $G \not\cong H$, then $\aut(G \cup H) \cong \aut(G) \times \aut(H)$. 
-\item There is some $k\in \N$ such that  $\lvert{\aut(G \cup H)}\rvert \geq 2k$ whenever $G \cong H$  and $\lvert{\aut(G \cup H)}\rvert \leq k$ whenever $G \not\cong H$. 
+\item There is some $k\in \N$ such that  
+\begin{enumerate}
+\item $\lvert{\aut(G \cup H)}\rvert \geq 2k$ whenever $G \cong H$  and 
+\item $\lvert{\aut(G \cup H)}\rvert \leq k$ whenever $G \not\cong H$. 
+\end{enumerate}
 \end{enumerate}
 \end{prop}
 
 \begin{exmp}[Goldwasser{-}Sipser set bound protocol]
 Let $S \subset \left\{0,1\right\}^m$ and $K\in \N$. We want to construct a verifier $V$ and prover $P$ such that
 \begin{itemize}
-\item $V$ can efficiently check whether any given $x$ belongs to $S$, and
-\item it is guaranteed that either $|S| \leq \frac{K}{2}$ or $|S| \geq K$.
+\item $V$ can efficiently check whether any given $x$ belongs to $S$ and
+\item it is guaranteed that either $\lvert{S}\rvert \leq \frac{K}{2}$ or $\lvert{S}\rvert \geq K$.
 \end{itemize}
-To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $|S| \leq 2^{l-1}$. Let $\H$ denote a pairwise independent set of mappings $\left\{0,1\right\}^m \to \left\{0,1\right\}^l$. 
+To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $\lvert{S}\rvert \leq 2^{l-1}$. Let $\H$ denote a pairwise independent set of mappings $\left\{0,1\right\}^m \to \left\{0,1\right\}^l$. 
 
 \medskip
 
@@ -1685,14 +1737,14 @@ Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then se
 }}
 
 \begin{caseof}
-\case{Suppose that $|S| \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\lvert{K}\rvert}{2^l}$, then $$ \mathbb{P}_{h \in_R \H}[\exists x \in S, \ h(x) = y] \leq \frac{\lvert{S}\rvert}{2^l} \leq  \frac{\lvert{K}\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
-\case{Suppose that $|S| \geq K$.} {We compute 
+\case{Suppose that $\lvert{S}\rvert \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\lvert{K}\rvert}{2^l}$, then $$ \mathbb{P}_{h \in_R \H}[\exists x \in S, \ h(x) = y] \leq \frac{\lvert{S}\rvert}{2^l} \leq  \frac{\lvert{K}\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
+\case{Suppose that $\lvert{S}\rvert \geq K$.} {We compute 
 \begin{align*}
 \mathbb{P}_{h \in \H}[\exists x \in S, \ h(x) =y] & \geq \sum_{x \in S} \mathbb{P}[h(x) = y] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \mathbb{P}[h(x) = y \land h(x') = y]  
-\\ & \geq \frac{|S|}{2^l} - \underbrace{\frac{|S|(|S|-1)}{2}}_{|S| \choose 2}\cdot \frac{1}{2^{2l}}
-\\ & = \frac{|S|}{2^l} \left(  1- \frac{|S| -1}{2} \cdot \frac{1}{2^l}    \right)
-\\ & \geq \frac{|S|}{2^l} \left(  1 - \frac{|S|}{2 \cdot 2^l}    \right)
-\\ & \geq \frac{K}{2^l} \left(  1 - \frac{|S|}{2 \cdot 2^l}    \right)
+\\ & \geq \frac{\lvert{S}\rvert}{2^l} - \underbrace{\frac{\lvert{S}\rvert(\lvert{S}\rvert-1)}{2}}_{\lvert{S}\rvert \choose 2}\cdot \frac{1}{2^{2l}}
+\\ & = \frac{\lvert{S}\rvert}{2^l} \left(  1- \frac{\lvert{S}\rvert -1}{2} \cdot \frac{1}{2^l}    \right)
+\\ & \geq \frac{\lvert{S}\rvert}{2^l} \left(  1 - \frac{\lvert{S}\rvert}{2 \cdot 2^l}    \right)
+\\ & \geq \frac{K}{2^l} \left(  1 - \frac{\lvert{S}\rvert}{2 \cdot 2^l}    \right)
 \\ & \geq \frac{3}{4}\cdot p
 .  \end{align*}}
 \end{caseof}
@@ -1707,11 +1759,11 @@ Let $n\in \N$ and choose a prime $2^{10n}\leq p\leq 2^{20n}$. Let  $\varphi(x_1,
 \end{itemize} 
 For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \left\{0,1\right\}^{n-i}} \tilde{\varphi}(a_1, \ldots, a_i, x) \mod p.$$ 
 
-\begin{lemma}[Sum-check protocol]
+\begin{lemma}[Sum-check protocol]\label{SCP}
 For any $K\in \N$, there exists an efficient interactive protocol $(V, P)$ such that 
 \begin{itemize}
 \item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\langle \varphi, p \rangle$ with probability $1$ and
-\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq (1-\frac{d}{p})^{n-i}$ where \hl{$d \coloneqq 3m\leq n^3$}.
+\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq (1-\frac{d}{p})^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
 \end{itemize}
 \end{lemma}
 
@@ -1723,7 +1775,7 @@ First, we construct $(V, P)$ as follows.
 \begin{enumerate}
 \item $\underline{V}:$ If $n=1$, then compute $\tilde{\varphi}(0) + \tilde{\varphi}(1)$. If this equals $K$, then \textit{accept}. Otherwise, \textit{reject}. 
 
-If $n>1$, then let $h_1(x_1) = \sum_{x_2, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$, which is a univariate polynomial of degree at most $n^3$. Ask $P$ to send $h_1(x_1)$. 
+If $n>1$, then let $$h_1(x_1) = \sum_{x_2, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n),$$ which is a univariate polynomial of degree at most $n^3$. Ask $P$ to send $h_1(x_1)$. 
 \item $\underline{P}:$ Return  $h'_1(x_1)$ to $V$ where $h'_1(x_1)$ is univariate and has degree at most $d$. 
 \item $\underline{V}:$ Compute $h'_1(0) + h'_1(1)$. If this equals $K$, then \textit{reject}. 
 
@@ -1733,7 +1785,7 @@ Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n 
 
 \medskip
 
- Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By DeMillo-Lipton, it follows that  $$\mathbb{P}_{a \in_R \F_p} [h_1'(a) \ne h_1(a)] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $(\varphi, K, p)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
+ Now, assume that $K \ne \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$.  If $n=1$, then clearly $V$ rejects with probability $1$. Assume, inductively, that $V$ rejects with high probability for any polynomial of degree $\leq d$ in $n-1$ variables. If $h'_1(x_1) = h_1(x_1)$, then $V$ rejects with probability $1$. Assume that $h'_1(x_1) \ne h_1(x_1)$.  Note that the polynomial $h_1' - h_1$ is nonzero and has degree at most $d$.  By \cref{Dem}, it follows that  $$\mathbb{P}_{a \in_R \F_p}\left[h_1'(a) \ne h_1(a)\right] \geq 1- \frac{d}{p}.$$ Since $s(a) \ne h(a) = \sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n)$, we see, by our induction hypothesis, that $V$ rejects its recursive input with probability $\geq (1-\frac{d}{p})^{n-1}$. Thus, $V$ rejects $\left(\varphi, K, p\right)$ with probability $$ \geq \left(1-\frac{d}{p}\right)^{n-1} \cdot \left(1-\frac{d}{p}\right) = \left(1-\frac{d}{p}\right)^{n},$$ as desired.
 \end{proof}
 
 \begin{prop}\label{LP}
@@ -1744,7 +1796,7 @@ The language of all unsatisfiable 3cnf formulas is $\mathbf{co{-}NP}$-complete.
 $\mathbf{co{-}NP} \subset \mathbf{IP}$.
 \end{corollary}
 \begin{proof}
-We can modify our last interactive protocol so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $(V, P)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. By \cref{LP}, we are done. 
+We can modify our interactive protocol in \cref{SCP} so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $(V, P)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. Thanks to \cref{LP}, we are done. 
 \end{proof}
 
 \begin{theorem}

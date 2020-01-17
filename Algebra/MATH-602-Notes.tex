@@ -968,7 +968,7 @@ Moreover, given the equation $0 = a_1f_1 + \cdots + a_nf_n$, we see that $0= p(0
 Let $i : N \to \Z^n$ denote inclusion. As this is $\Z$-linear, it may be represented by some $C\in \Mat_n(\Z)$. But $\Z$-linearity entails $\Q$-linearity. Hence $C$ also defines a $\Q$-linear map $i_{\Q} : \Q^n \to \Q^n$. Note that if $\ker{i_{\Q}} \ne \left\{0\right\}$, then $\ker{i} \ne \left\{0\right\}$, which is impossible. It follows that $\det(C) \ne 0$.
 
 \begin{claim} %%%
-Byy elementary row and column operations, $C$ is equivalent to a diagonal matrix $\left(u_1, \ldots, u_n\right)$ such that  $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$. 
+By elementary row and column operations, $C$ is equivalent to a diagonal matrix $\left(u_1, \ldots, u_n\right)$ such that  $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$. 
 \end{claim}
 
  In particular, we can find bases $\left\{\tilde{f}_i\right\}$ and $\left\{\tilde{e}_i\right\}$ of $N$ and $\Z^n$, respectively, such that $ \tilde{f}_i = u_i \tilde{e}_i$ for each $i$. Therefore, we have that $G\cong \faktor{\Z^n}{N} \cong \Z/u_1 \times \cdots \times \Z/u_n$.
@@ -1040,14 +1040,17 @@ If condition (i) holds, then $\sigma = (i_1 \cdots i_r)(j_1 \cdots j_r)\cdots$ f
 \\ \tau (j_1 \cdots j_r) \tau^{-1} & = (i_1 \cdots i_r).
 \end{align*} This implies that $\tau \in Z_{S_n}(\sigma)$. It's easy to see as well that there is an odd permutation in the centralizer when the second condition holds. Now, let $\phi \in \conj_{S_n}(\sigma)$. Write $\phi = \alpha \phi \alpha^{-1}$. Assume that $\alpha$ is odd. Then there is some odd $\tau \in Z_{S_n}(\sigma)$. Noe that $$(\alpha \tau) \sigma (\alpha \tau)^{-1} = \alpha \tau \sigma \tau^{-1} \alpha^{-1} = \alpha \sigma \alpha^{-1} = \phi.$$ But $\alpha \tau$ is even, which completes our proof.
 \end{proof}
-We have three cases to consider. First, if $p=2$, then $\sigma$ is the product of two independent transpositions. By our claim, it follows that $N = A_5$. Second, if $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose that $p=5$. Let $\sigma = (i_1 \cdots i_5)$ and consider $$\tau \coloneqq (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5).$$ Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, implying that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper.  \reversemarginpar{\marginpar{\small{Why did we need that whole claim?}}}
+We have three cases to consider. First, if $p=2$, then $\sigma$ is the product of two independent transpositions. By our claim, it follows that $N = A_5$. Second, if $p=3$, then $N$ contains all $3$-cycles because any two $3$-cycles are conjugate in $A_5$. Finally, suppose that $p=5$. Let $\sigma = (i_1 \cdots i_5)$ and consider $$\tau \coloneqq (i_1 \; i_2\; i_3) \sigma (i_1 \; i_2\; i_3)^{-1} = (i_2 \; i_3 \; i_1 \; i_4 \; i_5).$$ Then $\tau \sigma^{-1} = (i_1 \; i_2 \; i_3) \in N$, which implies that $N$ contains all $3$-cycles. In conclusion, $N$ cannot be proper.  \reversemarginpar{\marginpar{\small{Why did we need that whole claim?}}}
 \end{proof}
 
 \bigskip
 
 
-Now, if $\lvert{G}\rvert = pq$, then $\faktor{\Z}{q} \overset{i}{\hookrightarrow} F \overset{\pi}{\twoheadrightarrow} \faktor{\Z}{p}$ where $\im(i) = \ker{\pi}$. What data do we need to reconstruct $G$ from $\faktor{\Z}{p}$ and $\faktor{\Z}{q}$?
+Now, if $\lvert{G}\rvert = pq$ with $p$ and $q$ distinct primes, then we have a sequence $$\faktor{\Z}{q} \overset{i}{\hookrightarrow} F \overset{\pi}{\twoheadrightarrow} \faktor{\Z}{p}$$ of group maps such that $\im(i) = \ker{\pi}$. 
 
+\begin{question}
+What data do we need to reconstruct $G$ from $\faktor{\Z}{p}$ and $\faktor{\Z}{q}$?
+\end{question}
 
 
 \begin{definition}
@@ -1068,7 +1071,7 @@ In general, a sequence $G_1 \overset{\phi_1}{\longrightarrow} G_2 \overset{\phi_
 
 \medskip
 
-If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$, then for each $0 \leq i \leq k-1$, we get an extension $$\eta_i : 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1.$$ Thus, $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
+If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$, then for each $0 \leq i \leq k-1$, we get an extension $$\eta_i :\ 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1.$$ Thus, $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
 
 \smallskip
 
@@ -1351,7 +1354,7 @@ Suppose that $G$ is indecomposable and has \acc + \dcc and that $\phi$ and $\psi
 
 \begin{proof}
 Thanks to \cref{pc1}, as long as $\phi + \psi$ is not nilpotent, it must be an automorphism. Set $\gamma = (\phi + \psi)^{-1}$. Then $\underbrace{\phi \circ \gamma}_U + \underbrace{\psi \circ \gamma}_V = (\phi +\psi) \circ \gamma = \id_G$. Hence $U + V = \id_G$. (We call $U$ and $V$ a \textit{normal decomposition} of $\id_G$.) We see that $V + U$ is also a normal decomposition of $\id_G$ by applying $(-)^{-1}$ to the equation $U(x)V(x) =x$ for any $x \in G$.
-Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker{U}\geq \gamma^{-1}(\ker{\phi}) \cup \{e\} > \{e\}$. Likewise, $\ker{V} > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$, implying that $G$ is trivial. This contradicts that $G$ is indecomposable.
+Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker{U}\geq \gamma^{-1}(\ker{\phi}) \cup \{e\} > \{e\}$. Likewise, $\ker{V} > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$. It follows that $G$ is trivial, and this contradicts that $G$ is indecomposable.
 \end{proof}
 
 We finally return to the proof of Krull-Schmidt. Suppose that $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $$\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1).$$ Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then \cref{PL1} implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$ so that $B_j = B_1$. 
@@ -1368,11 +1371,11 @@ By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an a
 \medskip
 
 
-Now, $\ker{q_1} = B_2 \times \cdots \times B_t$ \reversemarginpar{\marginpar{\small{Even after reindexing?}}}, and $\ker(q_1 \circ f_1) = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t = (q_1f_1)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t ,$$ which is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker{\psi} =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which means that $H=G$.
+Now, $\ker{q_1} = B_2 \times \cdots \times B_t$ \reversemarginpar{\marginpar{\small{Even after reindexing?}}}, and $\ker(q_1 \circ f_1) = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t,$$ whose output is precisely  $$\left(q_1f_1\right)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t .$$ Then $\psi$ is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker{\psi} =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which means that $H=G$.
 
 \medskip
 
- In summary, $A_2 \times \cdots \times A_s \cong \faktor{G}{A_1} \cong B_2\times \cdots \times B_t$. We can repeat our above argument to see that $s=t$ and that $A_i \cong B_i$ up to reindexing.
+ In summary, $A_2 \times \cdots \times A_s \cong \faktor{G}{A_1} \cong B_2\times \cdots \times B_t$. We can repeat our preceding argument to see that $s=t$ and that $A_i \cong B_i$ up to reindexing.
 \end{proof}
 
 \begin{corollary}
@@ -1505,7 +1508,7 @@ Since each intermediate term in a composition series is a maximal normal subgrou
 Suppose that 
 \[ 
 \begin{tikzcd}
-(\xi): 1 \arrow[r] & H \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1
+\xi :\ 1 \arrow[r] & H \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1
 \end{tikzcd}
 \]
 is an extension. Since $q$ is surjective, we can lift any $x \in K$ to some $\tilde{x}\in G$ via $q^{-1}$. Now $\conj_{\tilde{x}} : G \to G$ is a (group) automorphism. Since $H\unlhd G$, we thus have an automorphism $\conj_{\tilde{x}}\restriction_H$. Hence we get a map $K \ni x \mapsto \conj_{\tilde{x}}\restriction_H \in \aut(H)$. It turns out that distinct lifts of $x$ induce distinct automorphisms whose difference is an inner automorphism.
@@ -1543,7 +1546,7 @@ Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensio
 
 \medskip
 
-Let $f: G \to H$ be a surjective map and $\phi \in \aut(G)$ such that $\phi(\ker{f}) = \ker{f}$. This induces an automorphism $\phi^f : H \to H$ given by $h = f(g) \mapsto f(\phi(g))$. \reversemarginpar{\marginpar{\small{Is $\phi^f$ well-defined?}}} Note that if $x\in G$, then $\conj_x: G \to G$ preserves any normal subgroup. Thus, we get a map $\left(\conj_x\right)^f : H \to H$ given by $h\mapsto \conj_{f(x)}(h)$. In general, we have a group map $\inn(G) \to \inn(H)$, which in turn induces a group map $(-)^f: \faktor{\left\{\phi \in \aut(G) : \phi(\ker{f})= \ker{f}\right\}}{\inn(G)} \to \out(H)$.  \reversemarginpar{\marginpar{\small{Why does this induce $(-)^f$?}}}
+Let $f: G \to H$ be a surjective map and $\phi \in \aut(G)$ such that $\phi(\ker{f}) = \ker{f}$. This induces an automorphism $\phi^f : H \to H$ given by $h = f(g) \mapsto f(\phi(g))$. \reversemarginpar{\marginpar{\small{Is $\phi^f$ well-defined?}}} Note that if $x\in G$, then $\conj_x: G \to G$ preserves any normal subgroup. Thus, we get a map $\left(\conj_x\right)^f : H \to H$ given by $h\mapsto \conj_{f(x)}(h)$. In general, we have a group map $\inn(G) \to \inn(H)$, which in turn induces a group map $$(-)^f: \faktor{\left\{\phi \in \aut(G) : \phi(\ker{f})= \ker{f}\right\}}{\inn(G)} \to \out(H).$$\reversemarginpar{\marginpar{\small{Why does this induce $(-)^f$?}}}
 
 For example, consider the quotient $q : G \to G^{\ab}$. Since $[G, G]$ is a characteristic subgroup, we get $(-)^{\ab} : \out(G) \to \out(G^{\ab})\cong \aut(G^{\ab})$.
 
@@ -1612,7 +1615,7 @@ We have $H_1(\Sigma_g) = \pi_1(\Sigma_g)^{\ab} = \bigoplus_{i=1}^g\left(\Z a_i \
  &  & \{\pm 1\}
 \end{tikzcd}.
 \]
-Let $\map(\Sigma_g) \coloneqq  \ker{G}$. As it turns out, $\map(\Sigma_g) \cong \faktor{\text{Diff}^+(\Sigma_g)}{\text{Diff}_0(\Sigma_g)}$, where $\text{Diff}^+$ denotes the diffeomorphisms preserving orientation and $\text{Diff}_0$ denotes the diffeomorphisms isotopic to $\id_{\Sigma_g}$.
+Let $\map(\Sigma_g) =  \ker{G}$. As it turns out, $\map(\Sigma_g) \cong \faktor{\text{Diff}^+(\Sigma_g)}{\text{Diff}_0(\Sigma_g)}$, where $\text{Diff}^+$ denotes the diffeomorphisms preserving orientation and $\text{Diff}_0$ denotes the diffeomorphisms isotopic to $\id_{\Sigma_g}$.
 \end{exmp}
 
 \begin{remark}
@@ -1630,8 +1633,8 @@ A \textit{$K$-module} is a pair $\left(A, \alpha\right)$ where $A$ is an abelian
 There is a natural map $p: G\times_K L \twoheadrightarrow L$ given by $(g, l) \mapsto l$. Also, $$\ker{p} = \left\{(g, e) : q(g) = \phi(e) =e \right\} = \left\{(g, e) : g \in A\right\} \cong A.$$ This provides us with a commutative diagram
 \[ \label{eqn:fo}
 \begin{tikzcd}
-\quad (\xi): 1 \arrow[r] & A \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1 \\
-\left(\phi^{\ast}\xi\right): 1 \arrow[r] & A \arrow[r] \arrow[u, equal] & G\times_K L \arrow[r, "p"] \arrow[u] & L \arrow[u, "\phi"] \arrow[r] & 1
+\quad \xi:\ 1 \arrow[r] & A \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1 \\
+\phi^{\ast}\xi :\ 1 \arrow[r] & A \arrow[r] \arrow[u, equal] & G\times_K L \arrow[r, "p"] \arrow[u] & L \arrow[u, "\phi"] \arrow[r] & 1
 \end{tikzcd}. \tag{A}
 \]
 We call $G_{\phi^{\ast}\xi}\coloneqq  G\times_{K}L$ together with the induced map $\phi^{\ast} : G\times_{K}L\to G$ the \textit{pullback} of $q$ and $\phi$.  By construction, $\alpha^{\phi^{\ast}\xi} : L \to \aut(A)$ is given by $\alpha^{\xi} \circ \phi$. We have defined a function $\phi^{\ast} : \ext(K, (A, \alpha)) \to \ext(L, (L, \alpha \circ \phi))$. 
@@ -1663,7 +1666,7 @@ Finally, observe that
 \\ &  \geq A\times \{e\} \cong A.\end{align*}
 \end{proof}
 Now, let $G_{\psi_{\ast}\xi}$ denote $G \cup_A B$, which equals $\faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
-We have obtained the commutative diagram.
+We have obtained a commutative diagram.
 \[ \label{eqn:cd}
 \begin{tikzcd}
 1 \arrow[r] & A \arrow[d, hook] \arrow[r] & G \arrow[d, hook] \arrow[r] & K \arrow[d, equal] \arrow[r] & 1 \\
@@ -1758,7 +1761,7 @@ If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{
 This gives us a map $\delta: C^1_0 \to Z^2_0$ defined by $c \mapsto \left((x, y) \overset{\delta_c}{\longmapsto}   c(x)\alpha_x(c(y))c(xy)^{-1}\right)$, known as the \textit{first Hochschild differential of $K$ with coefficients in $(A, \alpha)$}.  \reversemarginpar{\marginpar{\small{How do we know any first normalized cochain can be written in that form?}}}
 We in turn obtain a natural map 
 \[\label{eqn:HH}
-\delta': \ext(K, (A, \alpha)) \to {HH}^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im{\delta}}
+\delta':\ \ext(K, (A, \alpha)) \to {HH}^2(K, (A, \alpha)) \coloneqq  \faktor{Z^2_0}{\im{\delta}}
 \tag{$\star$}
 \] given by $(\xi, f) \mapsto [f]$. We call ${HH}^2(K, (A, \alpha))$ the \textit{second cohomology group of $K$ with coefficients in $(A, \alpha)$}.
 
@@ -1815,7 +1818,7 @@ A \textit{category $\c$} consists of
 \item a class of \textit{objects $\ob{\c}$},
 \item a class of \textit{morphisms $\mor{\c}$},
 \item a set $\Hom_{\c}(x,y)$ of morphisms with \textit{source} $x$ and \textit{target} $y$ for each $x,y \in \ob{\c}$, and
-\item a \textit{composition} partial function $\circ : \Hom_{\c}(x,y) \times \Hom_{\c}(y,z) \to \Hom_{\c}(x,z)$ where $(f,g) \mapsto g \circ f$.
+\item a partial  \textit{composition} function $\circ : \Hom_{\c}(x,y) \times \Hom_{\c}(y,z) \to \Hom_{\c}(x,z)$ where $(f,g) \mapsto g \circ f$.
 \end{itemize}
 These data must satisfy the following properties.
 \begin{enumerate}[label=(\roman*)]
@@ -1827,7 +1830,7 @@ These data must satisfy the following properties.
 
 \smallskip
 
-When $\c$ is small, we see that $\left(\mor{\c}, \circ\right)$ is a partially-defined monoid encoding all information about $\c$. We may believe, therefore, that monoid homomorphisms are the correct tools for comparing categories. These, however, are not flexible enough. In particular, an isomorphism of monoids will prove stronger than our chosen notion of equivalence of categories.
+When $\c$ is small, we see that $\left(\mor{\c}, \circ\right)$ is a partially defined monoid encoding all information about $\c$. We may believe, therefore, that monoid homomorphisms are the correct tools for comparing categories. These, however, are not flexible enough. In particular, an isomorphism of monoids will prove stronger than our chosen notion of equivalence of categories.
 
 \smallskip
 
@@ -2551,16 +2554,36 @@ Apply the Yoneda lemma to the adjoint pair $(A[-], \lvert - \rvert)$ to prove th
 Given a monomial $\xi$ in elements of $S$, let $\deg(\xi) = \sum_{s\in S} \xi(s).$ If $f\in A[S]$, then define the \textit{degree of $f$} as $$ \deg(f)  \equiv \max \{ \deg (\xi) : f(\xi) \ne 0\}  .$$ By convention, $\deg(0) = {-\infty}$.
 
 
-\begin{lemma} $ $ %%% 
-\begin{enumerate}
+\begin{lemma} $ $ 
+\begin{enumerate}[label=(\arabic*)]
 \item $\deg(f+g)\leq \max \{\deg(f), \deg(g)\}$.
 \item $\deg(fg) \leq \deg(f) + \deg(g)$.
 \end{enumerate}
 \end{lemma}
+\begin{proof} 
+We may assume, wlog, that $S$ is finite because every polynomial consists of only finitely many monomials. Let $S = \left\{1, \ldots, n\right\}$. Order the set of all monomials of length $n$ by the dictionary order $<$, so that $t_1^{\alpha_1}\cdots t_n^{\alpha_n} < t_1^{\beta_1}\cdots t_n^{\beta_n}$ iff there is some $2\leq k \leq n$ such that $\alpha_k = \beta_k$ and $\alpha_i < \beta_i$ for each $1\leq i<k$.
+
+Now, we may write
+\begin{gather*}
+f= \sum_{\xi}f(\xi)t^{\xi}
+\\ g = \sum_{\xi}g(\xi)t^{\xi}.
+\end{gather*} This means that 
+\begin{gather*}
+f+g = \sum_{\xi}\left(f(\xi) +g(\xi)\right)t^{\xi}
+\\ fg = \sum_{\xi}\left(\sum_{\eta, \eta^{\prime} \atop \eta \cdot \eta^{\prime}=\xi} f(\eta) \cdot g\left(\eta^{\prime}\right)\right) t^{\xi}.
+\end{gather*}
+\begin{enumerate}[label=(\arabic*)]
+\item If $\eta$ satisfies $\deg{\eta} > \max\{\deg{f}, \deg{g}\}$, then $f(\eta) = g(\eta) =0$. In this case, $f(\eta)+g(\eta) =0$, so that $\deg(f+g)<\deg(\eta)$.
+\item If $f(\eta) \ne 0$,  then $\deg(t^{\eta}) = \deg(\eta) \leq \deg(g)$. Likewise, if $g(\eta') \ne 0$, then $\deg(t^{\eta'}) \leq \deg(g)$. But
+\[
+\deg(t^{\eta}) + \deg(t^{\eta'}) = \deg(t^{\eta \eta'}) = \deg(t^{\eta}) = \deg(\eta),
+\] and thus $\deg(\eta) \leq \deg(f) + \deg(g)$.
+\end{enumerate}
+\end{proof}
 
 \smallskip
 
-Recall that a commutative ring $R$ is called an \textit{integral domain} if it has no zero divisors, i.e., $xy=0 \implies x=0 \vee y =0$ for any $x,y\in R$. If $R$ is unital, then let $R^{\times} = \left\{x \in R \mid xy =yx = 1_R \text{ for some }y\in R\right\}$, the group of units of $R$ under multiplication.
+Recall that a commutative ring $R$ is called an \textit{integral domain} if it has no zero divisors, i.e., $$xy=0 \implies x=0 \text{ or } y =0$$ for any $x,y\in R$. If $R$ is unital, then let $R^{\times} = \left\{x \in R \mid xy =yx = 1_R \text{ for some }y\in R\right\}$, the group of units of $R$ under multiplication.
 
 \begin{lemma}
 If $A$ is an integral domain, then $\deg(fg) = \deg(f) + \deg(g)$.
@@ -2771,7 +2794,7 @@ Furthermore, we have the short exact sequence.
  &  &  & \coprod_{t\in T}R \arrow[u, "\beta", two heads] & 
 \end{tikzcd}
 .\]
-Since the free module functor is left adjoint to the forgetful functor, it follows that $\beta$ lifts to a homomorphism $ \coprod_{t\in T}R \overset{\theta}{\longrightarrow} M$  if and only if the set map $T \to \faktor{M}{N}$ lifts to a set map $T \to M$. But there is some set-theoretic section $s: \faktor{M}{N} \to M$, making $T \overset{\beta}{\longrightarrow} \faktor{M}{N} \overset{s}{\longrightarrow} M$ such a lift in $\mathbf{Set}$. Thus, we obtain such a lift $\theta$ in $R{-}\mathbf{Mod}$. Define the homomorphism $$\phi : \left(\coprod_{s\in S} R\right) \coprod \left(\coprod_{t\in T} R\right)\to M,\ \quad (x,y) \mapsto \alpha(x) + \theta(y),$$ which fits in the commutative diagram
+Since the free module functor is left adjoint to the forgetful functor, it follows that $\beta$ lifts to a homomorphism $ \coprod_{t\in T}R \overset{\theta}{\longrightarrow} M$  if and only if the set map $T \to \faktor{M}{N}$ lifts to a set map $T \to M$. But there is some set-theoretic section $s: \faktor{M}{N} \to M$, making $T \overset{\beta}{\longrightarrow} \faktor{M}{N} \overset{s}{\longrightarrow} M$ such a lift in $\mathbf{Set}$. Thus, we obtain such a lift $\theta$ in $R{-}\mathbf{Mod}$. Define the homomorphism $$\phi : \left(\coprod_{s\in S} R\right) \coprod \left(\coprod_{t\in T} R\right)\to M,\ \quad (x,y) \mapsto \alpha(x) + \theta(y),$$ which fits in a commutative diagram
 \[
 \begin{tikzcd}
 0 \arrow[r] & N \arrow[r, "i", hook] & M \arrow[r, "q", two heads] & \faktor{M}{N} \arrow[r] & 0 \\
@@ -2839,7 +2862,7 @@ Suppose, toward a contradiction, that there are finite sets $T$ and $S$ such tha
  \coprod_{t\in T}R \arrow[r] & \coprod_{s\in S} R \arrow[r] & \C \arrow[r]  & 0
 \end{tikzcd} 
 \]  is  exact. 
-Then we may construct the commutative diagram
+Then we may construct a commutative diagram
 \[
 \begin{tikzcd}
 0 \arrow[r] & {(x_1, x_2, \ldots)} \arrow[r] & R \arrow[r, "\text{ev}_0"] & \C \arrow[r] & 0 \\
