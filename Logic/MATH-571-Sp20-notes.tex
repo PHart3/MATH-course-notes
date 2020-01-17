@@ -255,23 +255,23 @@ along with non-logical symbols such as $\mathtt{0}$, $\S^n{\mathtt{0}}\coloneqq 
 The \textit{theory of $\N$} is 
 \[
 \thh(\N) \coloneqq \left\{\varphi \in \fo \mid \N \models \varphi \right\},
-\] which consists of all sentences satisfied by $\N$. Further, for any $\sigma \in \fo$, consider the set $$\cn(\sigma)  \coloneqq \left\{\varphi \in \fo \mid \sigma \models \varphi\right\}$$ of consequences of $\sigma$.
+\] which consists of all sentences satisfied by $\N$. Further, for any subset $\Sigma \subset \fo$, consider the set $$\cn(\Sigma)  \coloneqq \left\{\varphi \in \fo \mid \Sigma \models \varphi\right\}$$ of consequences of $\Sigma$.
 
 \begin{question}
-Can we find a sentence $\sigma$ such that $\cn(\sigma) = \thh(\N)$?
+Can we find a theory $\Sigma$ (other than $\thh(\N)$) such that $\cn(\Sigma) = \thh(\N)$?
 \end{question}
 
 Let $\Delta = \left\{\forall{x}\left(\S{x}\ne \0\right), \ \forall{x}\forall{y}\left(\S{x} = \S{y} \rightarrow x =y\right), \ \forall{x}\left(x\ne \0 \rightarrow \exists{y}\left(\S{y}=x\right)\right)\right\}$. Each element of $\Delta$ is clearly true in $\N$, i.e., $\A \models \Delta$. But is it the case that $\cn(\Delta) = \thh(\N)$? No, provided that we allow ourselves access to monadic second-order sentences. Specifically, consider the \textit{induction axiom $\mathsf{IA}$}:
 \[ \label{eqn:IA}
 \forall{P}\left(\left(P(0) \land \forall{x}\left(P(x) \rightarrow P(\S{x})\right) \rightarrow \forall{x}\left(P(x)\right)\right)\right). \tag{$\ast$}
-\] This is clearly true in $\N$. Consider, however, a new structure $\A \coloneqq \langle \omega \cup \Z, \S, \0\rangle$. Then $\Delta \subset \thh(\A)$, and we have a \textit{$\Z$-chain} in $\A$ (pretending, for the moment, that $\lvert{\A}\rvert$ has the usual order $<$):
+\] This is clearly true in $\N$. Consider, however, a new structure $\A \coloneqq \langle \omega \cup \Z, \S, \0\rangle$. Then $\Delta \subset \thh(\A)$, and we have a \textit{$\Z$-chain} in $\A$ (pretending, for the moment, that the universe $\lvert{\A}\rvert$ has the usual order $<$):
 \[
 \begin{tikzcd}
 \cdots \arrow[r, bend left] & {-\left(n+1\right)}^{\A} \arrow[r, bend left] & {-n}^{\A} \arrow[r, bend left] & \cdots \arrow[r, bend left] & {-1}^{\A} \arrow[r, bend left] & \0^{\A} \arrow[r, bend left] & 1^{\A} \arrow[r, bend left] & \cdots
 \end{tikzcd}
-.\] The second-order sentence \eqref{eqn:IA} with $P$ instantiated by the ``initial segment" $\Z_{\geq {-1}}$ is not true in $\A$, so that  $\A \not\models \mathsf{IA}$. In this case, $\mathsf{IA} \in \thh(\N)\setminus \cn(\sigma)$.
+.\] The second-order sentence \eqref{eqn:IA} with $P$ instantiated by the ``initial segment" $\Z_{\geq {-1}}$ is not true in $\A$, so that  $\A \not\models \mathsf{IA}$. In this case, $\mathsf{IA} \in \thh(\N)\setminus \cn(\Delta)$.
 
-Sill, we want to restrict ourselves to $\fo$. Recall that two structures $\B$ and $\C$ are \textit{elementarily equivalent} if $\thh(\B) = \thh(\C)$. 
+Nevertheless, we want to restrict ourselves to $\fo$. Recall that two structures $\B$ and $\C$ are \textit{elementarily equivalent} if $\thh(\B) = \thh(\C)$. 
 
 \begin{question}
 Are $\A$ and $\N$ elementarily equivalent?
@@ -280,7 +280,7 @@ Are $\A$ and $\N$ elementarily equivalent?
 If we can find some sentence belonging to $\thh(\N)\setminus \thh(\A)$, then $\cn(\Delta) \ne \thh(\N)$.
 
 \begin{definition}
-A sentence $\sigma$ is \textit{categorical} if for any structures $\B$ and $\C$, if $\B \models \sigma$ and $\C \models \sigma$, then $\B \cong \C$.
+A theory $\Sigma$ is \textit{categorical} if for any structures $\B$ and $\C$, if $\B \models \Sigma$ and $\C \models \Sigma$, then $\B \cong \C$.
 \end{definition}
 
 \begin{exmp}
@@ -311,6 +311,6 @@ How many structures that
 are there up to isomorphism?
 \end{question}
 
-If $\kappa < \omega$, then $\card(\A_{\kappa}) = \aleph_0$. Also, if  $\kappa > \omega$, then $\card(\A_{\kappa}) = \kappa$, so that $\Sigma$ is \textit{$\kappa$-categorical}, i.e., every structure satisfying (a) and (b) is isomorphic to $\A_{\kappa}$.  
+If $\kappa < \omega$, then $\card(\A_{\kappa}) = \aleph_0$. Also, if  $\kappa > \omega$, then $\card(\A_{\kappa}) = \kappa$, so that $\Sigma$ is \textit{$\kappa$-categorical}, i.e., every structure satisfying both (a) and (b) is isomorphic to $\A_{\kappa}$.  
 
 \end{document}
