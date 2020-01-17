@@ -305,7 +305,7 @@ Under Curry-Howard, each path from $x$ to $y$ corresponds to a proof of the prop
 \medskip
 
 \begin{note}[Path induction]
-Given a dependent type $D: \prod_{\{x,y:A\}}\id_A(x,y) \to \mathbf{Type}$, suppose that we have constructed a term $d: \prod_{a:A} D(a,a, \refl_a)$. Then the induction principle for identity types states that we can construct a \textit{section}  $$J(D, d)  :  \prod_{\substack{\{x,y:A\} \\ p: \id_A(x,y)}} D(x,y,p) $$  \textit{of $D$} such that $J(D, d, \refl_a) \equiv d(a)$ for each $a: A$.
+Given a dependent type $D: \prod_{\{x,y:A\}}\left(\id_A(x,y) \to \mathbf{Type}\right)$, suppose that we have constructed a term $d: \prod_{a:A} D(a,a, \refl_a)$. Then the induction principle for identity types states that we can construct a \textit{section}  $$J(D, d)  :  \prod_{\substack{\{x,y:A\} \\ p: \id_A(x,y)}} D(x,y,p) $$  \textit{of $D$} such that $J(D, d, \refl_a) \equiv d(a)$ for each $a: A$.
 \end{note}
 
 \begin{lemma}
@@ -344,14 +344,14 @@ Our next result shows that if two terms of type $A$ are propositionally equal an
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$. Then there exists a function $\mathsf{transport}(p) : P(x) \to P(y)$ such that $\mathsf{transport}(\refl_x)(u) \equiv u$ for any $u: P(x)$. Let $p \cdot u \coloneqq \mathsf{transport}(p)(u)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}(x\leadsto y) \to \type$ by  $D(x,y,p) \equiv P(x) \to P(y)$. We have the function $d\coloneqq \lambda x.\idmap_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
+Define $D: \prod_{x,y:A}\left((x\leadsto y) \to \type\right)$ by  $D(x,y,p) \equiv \left(P(x) \to P(y)\right)$. We have the function $d\coloneqq \lambda x.\idmap_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
 \end{proof}
 
 \begin{lemma}\label{LL}
 Let $f: \prod_{x:A}P(x)$ and $p: x\leadsto_A y$. Then there is some path $f(p):p \cdot f(x) \leadsto_{P(y)} f(y)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}(x\leadsto y) \to \type$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d\coloneqq \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes the proof.
+Define $D: \prod_{x,y:A}\left((x\leadsto y) \to \type\right)$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d\coloneqq \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes the proof.
 \end{proof}
 
 \begin{corollary}
@@ -369,7 +369,7 @@ This means that $f$ is continuous in a certain sense.
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$ and that $u: P(x)$. Then there is some path $$p_{\Sigma}(u) : (x, u) \leadsto_{\sum_{x:A}P(x)} (y, p\cdot u).$$
 \end{lemma}
 \begin{proof}
-Define $D: \prod (x,y:A), (x\leadsto y) \to \type$ by  $$D(x,y,p) \equiv \prod(u:P(x)), (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod_{u:P(x)}, (x,u) \leadsto (x,u)$. But then $$ d\coloneqq\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
+Define $D: \prod_{x,y:A}\left( (x\leadsto y) \to \type\right)$ by  $$D(x,y,p) \equiv \prod_{u:P(x)} (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod_{u:P(x)}, (x,u) \leadsto (x,u)$. But then $$ d\coloneqq\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
 \end{proof}
 
 As fiber bundles from topology possess the homotopy lifting property,  \cref{LL} encourages us to interpret the dependent sum $\sum_{x:A}P(x)$ as a fiber bundle over $A$.
@@ -522,7 +522,7 @@ Any two contractible types are equivalent.
 Note that any product of contractible spaces is contractible in traditional topology. 
 
 \begin{prop}[Axiom of choice]
-Let $P$ be a dependent type over $A$ and $R : \prod(x:A), P(x) \to \type$. Then there is some term of type $$\prod_{x:A}\sum_{u:P(x)} R(x, u) \to \sum\left(s:  \prod_{x:A} P(x)\right) \prod_{x:A}R(x, s(x)) .$$
+Let $P$ be a dependent type over $A$ and $R : \prod_{x:A}\left(P(x) \to \type\right)$. Then there is some term of type $$\prod_{x:A}\sum_{u:P(x)} R(x, u) \to \sum\left(s:  \prod_{x:A} P(x)\right) \prod_{x:A}R(x, s(x)) .$$
 \end{prop}
 
 \smallskip
@@ -531,7 +531,7 @@ Let $P$ and $Q$ be dependent spaces over $A$. Suppose that $\tau : \prod(x:A), P
 
 
 \begin{theorem}[Voevodsky]
-Let $P$ and $Q$ be dependent spaces over $A$. If a term $\tau : \prod_{x:A} P(x) \to Q(x)$ is such that $\Sigma_A \tau$ is an equivalence, then $\tau$ is a fiberwise equivalence, i.e., $\tau(x)$ is an equivalence for each $x:A$. 
+Let $P$ and $Q$ be dependent spaces over $A$. If a term $\tau : \prod_{x:A}\left(P(x) \to Q(x)\right)$ is such that $\Sigma_A \tau$ is an equivalence, then $\tau$ is a fiberwise equivalence, i.e., $\tau(x)$ is an equivalence for each $x:A$. 
 \end{theorem}
 
 Along with the axiom of choice and the fact that any two contractible spaces are equivalent, this result turns out to be enough to establish that $\wfe \implies \sfe$.
@@ -577,14 +577,14 @@ The univalence axiom ($\univ$) entails naive non-dependent functional extensiona
 $\univ$ entails $\wfe$ (hence $\sfe$).
 \end{corollary}
 \begin{proof}
-Suppose that $P: A \to \type$ and that there is some term $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A}, P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. Thanks to $\univ$, it follows that $P(x) \leadsto  \mathsf{unit}$.  \Cref{PP} now implies that $P\leadsto_{A \to \type} U$.
+Suppose that $P: A \to \type$ and that there is some term $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A} P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. Thanks to $\univ$, it follows that $P(x) \leadsto  \mathsf{unit}$.  \Cref{PP} now implies that $P\leadsto_{A \to \type} U$.
 
 \medskip
 
- Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A}, U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}, U(x)$ is contractible.  But $\prod_{x:A}, U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of \cref{PP} proves that $A \to \mathsf{unit}$ is contractible. 
+ Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A} U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}U(x)$ is contractible.  But $\prod_{x:A}U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of \cref{PP} proves that $A \to \mathsf{unit}$ is contractible. 
 \end{proof}
 
-Finally, by assuming $\univ$, we can prove a fundamental result of category theory \emph{in} our type theory. To this end, let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod(x:A), P(x) \to Q(x)$.
+Finally, by assuming $\univ$, we can prove a fundamental result of category theory \emph{in} our type theory. To this end, let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod_{x:A}\left(P(x) \to Q(x)\right)$.
 
 
 \begin{lemma}[Yoneda]

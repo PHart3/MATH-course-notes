@@ -915,7 +915,11 @@ By van Kampen, it follows that $\pi_1(\RP^2) \cong \pi_1(A) \underset{\pi_1(A \c
 \end{enumerate}
 \end{exmp}
 
+
+
 \subsection{Lecture 6}
+
+This lecture is a digression on knot theory.
 
 \begin{definition}
 A \textit{knot} is a piecewise smooth embedding of $S^1$ into $\R^3$. Two knots $K_1$ and $K_2$ are \textit{equivalent} if there is some homeomorphism $\varphi : \R^3 \to \R^3$ such that $\varphi(K_1) = K_2$.
@@ -951,7 +955,7 @@ The \textit{knot group} $ \pi_1(\R^3 \setminus K)$ is isomorphic to $\pi_1(S^3 \
 Recall that $S^3 \cong \R^3 \cup \{\infty\}$. Write $S^3 \setminus K$ as the union of $\R^3 \setminus K$ and the open ball $B\coloneqq  (\R^3 \setminus D) \cup \{\infty\}$ where $D\supset K$ is a sufficiently large disk. Then both $B \cap (\R^3 \setminus K)$ and $B$ are simply connected (the former being homeomorphic to $S^2 \times \R$). By van Kampen, $\pi_1(S^3 \setminus K) \cong \pi_1(\R^3 \setminus K)$. 
 \end{proof}
 
-\begin{note}
+\begin{remark}
 We have that $S^3 \cong ST_1 \cup_T ST_2$ where $ST_1$ and $ST_2$ denote solid tori with common boundary a torus. Indeed, 
 \begin{align*}
  S^3 & = \left\{(z_1, z_2) \in \C^2 \mid \lvert{z_1}\rvert^2 + \lvert{z_2}\rvert^2 =1\right\}
@@ -959,12 +963,12 @@ We have that $S^3 \cong ST_1 \cup_T ST_2$ where $ST_1$ and $ST_2$ denote solid t
 \\  ST_1 &= \left\{(z_1, z_2) \in S^3 \mid \lvert{z_2}\rvert^2 \leq \frac{1}{2}\right\} \cong S^1 \times D^2
 \\  ST_1 \cap ST_2 &= \left\{(z_1, z_2)\in \C^2 \mid \lvert{z_1}\rvert^2 = \lvert{z_2}\rvert^2 = \frac{1}{2}\right\} \cong S^1\times S^1
 .\end{align*}
-\end{note}
+\end{remark}
 
 \bigskip
 
 \begin{definition}
-Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alpha}\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $l$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $(U, \varphi)$ around $p$ with $\varphi(\L_{\alpha} \cap U) \subset \R^l$ for each $\alpha$.
+Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alpha}\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $l$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $(U, \varphi)$ around $p$ such that $\varphi(\L_{\alpha} \cap U) \subset \R^l$ for each $\alpha$.
 \end{definition}
 
 \begin{exmp} $ $
@@ -982,7 +986,7 @@ Nevertheless, the so-called Reeb torus demonstrates that there are foliations on
 
 \medskip
 
-Now if $M = \coprod_{\alpha} \L_{\alpha}$, then $\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}$ (where $x\in L_{\alpha_x}$) is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. The Frobenius theorem is precisely the converse of this. 
+Now if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}, \ \quad  x\in L_{\alpha_x}$$ is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. The Frobenius theorem is precisely the converse of this. 
 
 
 \bigskip
@@ -990,16 +994,17 @@ Now if $M = \coprod_{\alpha} \L_{\alpha}$, then $\L \coloneqq  \bigcup_{x\in M} 
 Let us return now to our discussion of knot theory.
 
 \begin{note}[Wirtinger presentation] 
-Draw our knot $K$ as follows. Take a finitely many arcs $\alpha_1, \ldots, \alpha_n$ such that each $\alpha_i$ is connected to $\alpha_{i+1} \mod n$. Orient the knot so that the arcs are labeled in the direction of the orientation. Draw a short arrow $x_i$ passing under each $\alpha_i$ from right to left. The $x_i$ represent loops starting at a base point going under the arc from its base to head and back to base. At each crossing, we get a relation among the $x_i$ as follows.
+Draw our knot $K$ as follows. Take a finitely many arcs $\alpha_1, \ldots, \alpha_n$ such that each $\alpha_i$ is connected to $\alpha_{i+1} \mod n$. Orient the knot so that the arcs are labeled in the direction of the orientation. Draw a short arrow $x_i$ passing under each $\alpha_i$ from right to left. Such $x_i$ represent loops starting at a base point going under the arc from its base to head and back to base. At each crossing, we get a relation among the $x_i$ as follows.
 \begin{figure}[H]
 \centering
 \includegraphics[width=68mm]{Wirtinger_presentation.png}
+\caption{\url{https://commons.wikimedia.org/wiki/File:Wirtinger_presentation.png} \label{overflow}}
 \end{figure}
 For each $i$, let $r_i$ denote the relation $x_kx_i = x_{i+1}x_k$.
 \end{note}
 
 \begin{prop}
-$\pi_1(S^3 \setminus \text{unknot})\cong \Z$.
+$\pi_1(S^3 \setminus \mathrm{unknot})\cong \Z$.
 \end{prop}
 
 \begin{theorem}
@@ -1020,12 +1025,12 @@ Then  we can write $$\R^3 \setminus K = A \cup B_1 \cup \cdots \cup B_n \cup C.$
 
 \subsection{Lecture 7}
 
-\begin{remark} If $G = \langle g_1, \ldots, g_n \mid w_1, \ldots, w_m \rangle$, then $G \cong \faktor{\F(g_1, \ldots, g_n)}{N}$ where $N$ denotes the normal subgroup generated by $w_1, \ldots, w_m$ and each $w_i$ is a word in $g_1, \ldots, g_n$. 
-Now, let $G_1 = \langle g_1, \ldots, g_n \mid w_1, \ldots, w_m \rangle$ and $G_2 = \langle h_1, \ldots, h_k \mid u_1, \ldots, u_l \rangle$
-It is known that the following two problems are undecidable.
+\begin{remark} If $G = \langle g_1, \ldots, g_n \mid w_1, \ldots, w_m \rangle$, then $$G \cong \faktor{\overbrace{\F(g_1, \ldots, g_n)}^{\text{free group}}}{N}$$ where  each $w_i$ is a word in $g_1, \ldots, g_n$ and $N$ denotes the normal subgroup generated by $w_1, \ldots, w_m$.
+Let $G_1 = \langle g_1, \ldots, g_n \mid w_1, \ldots, w_m \rangle$ and $G_2 = \langle h_1, \ldots, h_k \mid u_1, \ldots, u_l \rangle$.
+It is known that the following two problems are algorithmically undecidable.
 \begin{enumerate}[label=(\alph*)]
-\item{(isomorphism problem)} Is $G_1 \cong G_2$?
-\item {(word problem)} Given a word $w$ over $\left\{g_1, \ldots, g_n\right\}$, is $w=e$? 
+\item{(Isomorphism problem)} Is $G_1 \cong G_2$?
+\item {(Word problem)} Given a word $w$ over $\left\{g_1, \ldots, g_n\right\}$, is $w=e$? 
 \end{enumerate}
 \end{remark}
 
@@ -1441,7 +1446,7 @@ If $X \simeq Y$, then $H_{\ast}(X) \cong H_{\ast}(Y)$.
 
 
 \begin{exmp}
-Let $X =\{x_0\}$, so that $\sing_k(X) = \{c_{x_0} : \Delta^k \to \{x_0\}\}$. Then
+Let $X =\{x_0\}$, so that $\sing_k(X) = \left\{\underset{\text{continuous}}{c_{x_0} : \Delta^k \to \{x_0\}}\right\}$. Then
 \[
 \begin{tikzcd}
 C_{\ast}(X) =  \Z & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \Z \arrow[l, "\partial"'] & \cdots \arrow[l, "\partial"']
@@ -1490,7 +1495,7 @@ $H_{\ast}(S^0) = \begin{cases} \Z \times \Z & \ast = 0 \\ 0 & \ast \ne 0 \end{ca
 \end{exmp}
 
 \begin{definition}[Reduced homology]
-Define $\epsilon :C_0(X) \to \Z$ by $\sum a_x \cdot x \mapsto \sum a_x$. Note that $$(\epsilon \circ \partial)(\sigma : \Delta^1 \to X) = \epsilon(1 \cdot \sigma(v_1) - 1 \cdot \sigma(v_0)) = 1-1 =0.$$ This induces a map $\epsilon : H_0(X) \to \Z$. Let $$\widetilde{C}_k(X) = \begin{cases} C_k(X) & k >0 \\ \ker{\epsilon} & k =0 \end{cases}.$$ Let $$\widetilde{H}_k(X) \coloneqq H_k\left(\widetilde{C}_k(X)\right).$$ 
+Define $\epsilon :C_0(X) \to \Z$ by ${\sum {a_x \cdot x}} \mapsto \sum a_x$. Note that $$(\epsilon \circ \partial)(\sigma : \Delta^1 \to X) = \epsilon(1 \cdot \sigma(v_1) - 1 \cdot \sigma(v_0)) = 1-1 =0.$$ This induces a map $\epsilon : H_0(X) \to \Z$. Let $$\widetilde{C}_k(X) = \begin{cases} C_k(X) & k >0 \\ \ker{\epsilon} & k =0 \end{cases}.$$ Let $$\widetilde{H}_k(X) \coloneqq H_k\left(\widetilde{C}_k(X)\right).$$ 
 \end{definition}
 
 Note that $\widetilde{H}_k(X) = H_k(X)$ for any $k>0$.
