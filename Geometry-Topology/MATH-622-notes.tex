@@ -178,6 +178,7 @@
 \DeclareMathOperator{\ed}{End}
 \DeclareMathOperator{\BM}{BM}
 \DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\pgl}{PGL}
 \DeclareMathOperator{\clength}{cup{-}length}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\orb}{Orb}
@@ -244,7 +245,75 @@ These notes are based on Ron Donagi's lectures for the course ``Complex Algebrai
 
 \subsection{Lectures 1-4}
 
-These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously.
+These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously. The following problems give a taste of the initial concepts presented.
+
+\medskip
+
+\begin{problem}[Projective space.]
+
+Recall that projective space $\P^n$ of dimension $n$ is by definition the	quotient	of $\mathbb{A}^{n+1}\setminus \left\{0\right\}$		by	the	rescaling	action	of	$\GL(1)$.	This 	is a compactification	of	$n$-dimensional affine	space	$\mathbb{A}^n$.
+Show	that	$\P^n$	has	an	open	covering	by	$n+1$ many	open	subsets	$U_0,\ldots,U_n$	each	isomorphic	to $\mathbb{A}^n$.	Work	 out	all of the	transition	functions.
+\end{problem}
+\begin{solution}
+For simplicity, assume that $\mathbb{A}^n = \mathbb{R}^n$.  For each $i \in \left\{ 1, \ldots, n+1\right\}$, let $\widetilde{U_i}= \left\{\x \in \R^{n+1} : x_i \ne 0\right\}$. Let $\pi: \R^{n+1} \setminus \left\{0\right\} \twoheadrightarrow \RP^n$ denote the natural projection and let $U_i = \pi\left(\widetilde{U_i}\right)$. Since $\widetilde{U_i}$ is saturated and open, we know that $\pi \restriction_{\widetilde{U_i}}$ is a quotient map. Define $f_i : U_i \to \R^n$ by $[x_1, \ldots, x_{n+1}] \mapsto \left(\frac{x_1}{x_i}, \ldots, \frac{x^{i-1}}{x_i}, \frac{x^{i+1}}{x_i}, \ldots \frac{x_{n+1}}{x_i}\right)$, whose inverse is given by  $\left(x_1, \ldots, x_n\right) \mapsto \left[x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots x_n\right]$. Since $f_i \circ \pi$ is continuous, so is $f_i$. Hence we see that $f_i$ is a homeomorphism. 
+
+\smallskip
+
+Now, consider any transition map $f_i \circ f_j^{-1}$. 
+Let $1\leq i,j\leq n+1$. If $i=j$, then the transition map is the identity, which is smooth. So assume, wlog, that $j< i$.  Then $$f_j \circ f_i^{-1}(x_1, \ldots, x_n) = \left(\frac{x_1}{x_{j}}, \ldots, \frac{x_{j-1}}{x_{j}}, \frac{x_{j+1}}{x_{j}}, \ldots, \frac{x_{i-1}}{x_{j}}, \frac{1}{x_j}, \frac{x_{i}}{x_{j}}, \ldots, \frac{x_{n}}{x_{j}}\right)$$ when $(x_1, \ldots, x_n) \in f_i\left(\widetilde{U}_i \cap \widetilde{U}_j\right)$. This is clearly smooth. 
+\end{solution}
+
+\begin{problem}[Classification	of	conics.]
+
+Classify, up to linear automorphism, all conics	(i.e., $1$-dimensional	quadratic
+hypersurfaces)	in	$\RP^2$.
+\end{problem}
+\begin{solution}
+First of all, we may assume that any conic $C(x,y,z) =0$ in $\RP^2$ is a homogeneous polynomial of degree two. As a result, we can write  $C(x,y,z)= v^tAv$  for some symmetric $3\times 3$ matrix $A$ over $\R$ where $$v \coloneqq \begin{bmatrix} x \\ y \\ z \end{bmatrix}.$$  Since $A$ is orthogonally diagonalizable, we have that $C(v) = (Tv)^tD(Tv)$ for some orthogonal matrix $T$ and some diagonal matrix $D$.  Thus, $C$ is isomorphic to a curve in $\RP^2$ defined by $0 = a_1x^2 + a_2y^2 + a_3z^3$. We can apply another invertible change of variables to ensure that $a_i \in \left\{{-1}, 0, 1\right\}$ for each $i=1,2,3$.
+
+\smallskip
+
+Likewise, any quadratic hypersurface in $\CP^n$ is isomorphic to a curve in $\CP^n$ defined by $\sum_{i=1}^{n+1}a_ix_i^2 = 0$ where $a_i \in \left\{{-1}, 0, 1\right\}$ for each $i=1, \ldots, n+1$.
+
+\medskip
+
+We now see that there are exactly five distinct automorphism classes of conics in $\RP^2$:
+\be[label=(\alph*)]
+\item $\left[x^2 =0\right]$ (a double line),
+\item $\left[x^2 + y^2 =0\right]$ (a single point),
+\item $\left[x^2 -y^2= (x-y)(x+y)=0\right]$ (the union of two distinct lines that intersect at a single point),
+\item $\left[x^2 +y^2 + z^2 =0\right]$ (the empty set), and
+\item $\left[x^2 + y^2-z^2 =0\right]$ (a curve $C$ whose affine part is either an ellipse, a parabola, or a hyperbola, depending on whether $C$ intersects the line at infinity at zero, one, or two points, respectively).
+\ee
+
+\end{solution}
+
+\begin{problem}[Plane cubics.]
+
+Recall that a plane curve $C$ is \textit{smooth} if it has no \textit{singular} points, i.e., points at which all first-order partial derivatives of $C$ vanish.
+\be
+\item Consider	a	smooth	plane	cubic	 $X$	with	an	inflection	point, i.e., a non-singular point at which the tangent line to $X$ has
+intersection multiplicity at least $3$ with $X$. Show that $X$	is	isomorphic,	up	to	linear	automorphism	of	the	ambient	space,		to	a
+smooth	plane	cubic 	in	\textit{Weierstrass	form} $y^2 = x^3+ax+b$.
+\item 	Find	a	an	expression	of	the	form	$J\coloneqq \frac{a^m}{b^n}$	for	some	integers	$m$ and $n$	that	is	invariant	under	linear	changes	of	coordinates 	sending
+our	equation	of	$X$	to	another	Weierstrass	form.
+\item 	A	slight	 problem	with	$J$	is	that	it	goes 	to	infinity	when	$b=0$	even	 though	the	plane	cubic 	$X$	remains	smooth.	Can	you	suggest
+another	function	$j(a,b)$	which	has	the	same	invariance	property as $J$	 but	remains		finite	(i.e.	is	holomorphic)	whenever	$X$	is	smooth?
+Relate	$j$	to	$J$.
+\ee
+\end{problem}
+\begin{solution}
+\be
+\item Any linear automorphism of $\C^3$ induces a projective transformation of $\CP^2$ (i.e., an element of $\pgl(3, \C)$), and the group of all linear automorphisms of $\C^3$ acts transitively on the set of all $2$-dimensional subspaces of $\C^3$. It follows that for any two lines $L_1, L_2 \subset \CP^2$, there is some projective transformation $\psi : \CP^2 \to \CP^2$ such that $\psi(L_1) = L_2$. In particular, we can assume that the tangent line $L$ to our given inflection point $P$ is precisely the line at infinity $\left\{z=0\right\}$ and that any other line touching $P$ is precisely the line $\left\{x=0\right\}$. This means that $P$ corresponds to the point $\left[0, 1, 0\right]$ on our new, isomorphic copy $X'$ of $X$. Note that $X'$ is smooth since any projective transformation preserves smoothness by the familiar multivariable chain rule.
+
+Let $X'$ be the zero locus of the homogeneous polynomial $f(x,y, z)$ of degree three. This has the form $$ Ax^3 + Bxy^2 + Cyx^2 + Dy^3 +zg(x,yz)     $$ where $g(x,y,z)$ denotes a homogenous polynomial of degree two. We have that $d =0$ because $\left[0,1,0\right]$ lies on $X'$. Further, we have that $b=c=0$ because $\left\{z=0\right\}$ is tangent to an inflection point. Therefore, the affine part of $X'$ has the form $$f(x, y,1) =  Ax^3 + Bx^2  + Cxy + Dy^2+ Ex + Fy + G  $$ where both $A$ and $D$ are nonzero. By scaling this appropriately, we may write $$f(x, y,1) = x^3 + Bx^2 + Cxy - y^2 + Ex + Fy + G$$ for some $B, C, E, F, G \in \C$. 
+
+It remains to show that there exists an invertible affine map (or change or variables) $\C^2 \to \C^2$ that sends the zero locus of $f(x,y,1)$ to the zero locus of a cubic polynomial in Weierstrass form. To this end, first define the mapping $f : \left(x,y\right) \mapsto \left(x, \frac{ y+Cx+F }{2}\right)$. A tedious computation shows that $\varphi$ transforms the affine part of $X'$ to the curve $X''$ given by $ \frac{y^2 -F^2- C^2x^2}{4} - \frac{CFx}{2} = x^3 + Bx^2 + Ex + G    ,$ i.e., $$y^2 = 4x^3 + (C^2  + 4B)x^2 + (4E +2CF)x + (4G + F^2).$$ Substituting $2y$ for $y$, we can write $X''$ as $$ y^2 = x^3 + \left(\underbrace{\frac{C^2}{4}  + B}_{k_1} \right)x^2 + \left(\underbrace{E+ \frac{CF}{2}}_{k_2} \right)x + \left(\underbrace{G + \frac{F^2}{4}}_{k_3} \right)   .$$ Next, define the mapping $g : \left(x,y\right) \mapsto \left(x- \frac{k_1}{3}, y\right)$. By another tedious computation, we see that $g$ sends $X''$ to the curve given by $$ y^2 = x^3 + \left (k_2- \frac{\left(k_1\right)^2}{3} \right )x + \left (k_3 + \frac{2\left(k_1\right)^3}{27}- \frac{k_1k_2}{3} \right)    .$$ Since $f$ and $g$ are invertible affine maps, we are done. 
+\item Note that any linear change of variables preserving Weierstrass form must look like $\left(x,y\right) \mapsto \left(r^2x, r^3y\right)$ with $r \ne 0$. Let $J = \frac{A^3}{B^2}$. It's straightforward to check that $J$ is invariant under any affine map of the form $\left(x,y\right) \mapsto \left(r^2x, r^3y\right)$.
+\item Let $j = (27)(4^4)\left(\frac{A^3}{4A^3 + 27B^2}\right).$ This quantity is well-known as the \textit{j-invariant}. Though tedious,  checking that $j$ is invariant under any suitable linear change of variables is still straightforward. In addition, elementary algebra shows that $J = \frac{j}{(27)(4^4)} + \frac{A^3\left(4A^3 + 26B^2\right)}{B^2\left(4A^3 + 27B^2\right)}$.
+\ee
+
+\end{solution}
 
 \section{Complex analysis}
 
@@ -276,11 +345,11 @@ A bijective function $f: U \subset \C \to V \subset \C$ is \textit{biholomorphic
 
 \begin{fact}\label{singfacts} $ $
 \be[label = (\alph*)]
-\item (The maximum modulus principle) If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\lvert{f}\rvert$ has a local maximum, then $f$ is constant. 
-\item (Liouville's theorem) Any bounded entire function is constant. 
-\item (The Riemann extension theorem) If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \{z\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
-\item (The Riemann mapping theorem) If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
-\item (The residue theorem) If $f: B_{\epsilon}(0)\setminus \{0\}$ is holomorphic, then $f$ can be expanded in a Laurent series
+\item{\textbf{(Maximum modulus principle)}} If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\lvert{f}\rvert$ has a local maximum, then $f$ is constant. 
+\item{\textbf{(Liouville's theorem)}} Any bounded entire function is constant. 
+\item{\textbf{(Riemann extension theorem)}} If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \{z\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
+\item{\textbf{(Riemann mapping theorem)}} If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
+\item{\textbf{(Residue theorem)}} If $f: B_{\epsilon}(0)\setminus \{0\}$ is holomorphic, then $f$ can be expanded in a Laurent series
 $\sum_{n={-\infty}}^{\infty}a_nz^n$ such that $a_{-1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
 \ee
 \end{fact}
@@ -308,7 +377,7 @@ for each $i=1, \ldots, n$.
 \end{defn}
 
 \begin{note}
-Statements (a), (b), and (c) from \cref{singfacts} generalize to functions of several variables, as does the Cauchy integral formula:
+Statements (a), (b), and (c) of \cref{singfacts} generalize to functions of several variables, as does the Cauchy integral formula:
 \[
 f(z) = \frac{1}{(2\pi i)^n} \int_{\lvert{\eta_i - z_i}\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{(\eta_1 - z_1)\cdots (\eta_n - z_n)}d{\eta_1}\cdots d{\eta_n}
 \] where $\eta_i >0$ for each $i=1, \ldots, n$.
@@ -326,12 +395,26 @@ If $n>1$, then any holomorphic function $f: B_{\epsilon}(0)\setminus \{0\} \subs
 \] where $U_{ij} \coloneqq U_i \cap U_j$.
 \end{defn}
 
+\begin{exmp}
+Let $S$ be a suitable object (such as a set or $R$-module)  and $x\in X$. The \textit{skyscraper sheaf} of $X$ supported at $x$ with value $S$ is given by
+\[
+\left(\underset{\text{open}}{U \subset X}\right) \mapsto \begin{cases}
+S & x\in U
+\\ \pt & x\notin U
+\end{cases}.
+\]
+\end{exmp}
+
+\smallskip
+
 \begin{defn}
-A \textit{ringed space} is a pair $(X, \J)$ where $X$ is a space and $\J$ is a sheaf of rings on $X$.
+A \textit{ringed space} is a pair $\left(X, \J\right)$ where $X$ is a space and $\J$ is a sheaf of rings on $X$.
 \end{defn}
 
-\begin{remark} Given any standard object $(X, \J)$, we can define a \textit{geometric object} as a ringed space locally isomorphic to $(X, \J)$.
+\begin{remark} Given any standard object $\left(X, \J\right)$, we can define a \textit{geometric object} as a ringed space locally isomorphic to $\left(X, \J\right)$.
 \end{remark}
+
+\medskip
 
 \begin{defn}[Vector bundle]
 Let $X$ and $V$ be complex manifolds. Let $\pi : V \to X$ be holomorphic. We say that $\pi$ is a \textit{(holomorphic) vector bundle of rank $n$} if for any $x\in X$, there exist an open set $U\ni x$ in $X$ and an isomorphism $\pi^{-1}(U) \overset{\cong}{\longrightarrow} U \times \C^n$ such that the \textit{transition maps} $U_{ij} \times \C^n \to U_{ij} \times \C^n$ are holomorphic and fiber linear.

@@ -10,14 +10,16 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{upgreek}
+\usepackage{comment}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.13}
 \usepackage{amsmath,amsthm}
 \usepackage{tikz-cd}
-\usetikzlibrary{knots,calc}
+\usetikzlibrary{knots,calc, shadows}
 \usepackage{xcolor}
 \usepackage{soul}
 \usetikzlibrary{decorations.markings}
+\usetikzlibrary{backgrounds,fit}
 \usepackage{faktor}
 \usepackage{xfrac}
 \usepackage{ mathrsfs }
@@ -152,6 +154,7 @@
 \DeclareMathOperator{\norm}{N}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ho}{Ho}
 \DeclareMathOperator{\ext}{Ext}
 \DeclareMathOperator{\Or}{O}
 \DeclareMathOperator{\Un}{U}
@@ -187,6 +190,68 @@
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
 \DeclareMathOperator{\vf}{\mathscr{X}}
 
+
+\makeatletter
+% the contents of \squarecorner were mostly stolen from pgfmoduleshapes.code.tex
+\def\squarecorner#1{
+    % Calculate x
+    %
+    % First, is width < minimum width?
+    \pgf@x=\the\wd\pgfnodeparttextbox%
+    \pgfmathsetlength\pgf@xc{\pgfkeysvalueof{/pgf/inner xsep}}%
+    \advance\pgf@x by 2\pgf@xc%
+    \pgfmathsetlength\pgf@xb{\pgfkeysvalueof{/pgf/minimum width}}%
+    \ifdim\pgf@x<\pgf@xb%
+        % yes, too small. Enlarge...
+        \pgf@x=\pgf@xb%
+    \fi%
+    % Calculate y
+    %
+    % First, is height+depth < minimum height?
+    \pgf@y=\ht\pgfnodeparttextbox%
+    \advance\pgf@y by\dp\pgfnodeparttextbox%
+    \pgfmathsetlength\pgf@yc{\pgfkeysvalueof{/pgf/inner ysep}}%
+    \advance\pgf@y by 2\pgf@yc%
+    \pgfmathsetlength\pgf@yb{\pgfkeysvalueof{/pgf/minimum height}}%
+    \ifdim\pgf@y<\pgf@yb%
+        % yes, too small. Enlarge...
+        \pgf@y=\pgf@yb%
+    \fi%
+    %
+    % this \ifdim is the actual part that makes the node dimensions square.
+    \ifdim\pgf@x<\pgf@y%
+        \pgf@x=\pgf@y%
+    \else
+        \pgf@y=\pgf@x%
+    \fi
+    %
+    % Now, calculate right border: .5\wd\pgfnodeparttextbox + .5 \pgf@x + #1outer sep
+    \pgf@x=#1.5\pgf@x%
+    \advance\pgf@x by.5\wd\pgfnodeparttextbox%
+    \pgfmathsetlength\pgf@xa{\pgfkeysvalueof{/pgf/outer xsep}}%
+    \advance\pgf@x by#1\pgf@xa%
+    % Now, calculate upper border: .5\ht-.5\dp + .5 \pgf@y + #1outer sep
+    \pgf@y=#1.5\pgf@y%
+    \advance\pgf@y by-.5\dp\pgfnodeparttextbox%
+    \advance\pgf@y by.5\ht\pgfnodeparttextbox%
+    \pgfmathsetlength\pgf@ya{\pgfkeysvalueof{/pgf/outer ysep}}%
+    \advance\pgf@y by#1\pgf@ya%
+}
+\makeatother
+
+\pgfdeclareshape{square}{
+    \savedanchor\northeast{\squarecorner{}}
+    \savedanchor\southwest{\squarecorner{-}}
+
+    \foreach \x in {east,west} \foreach \y in {north,mid,base,south} {
+        \inheritanchor[from=rectangle]{\y\space\x}
+    }
+    \foreach \x in {east,west,north,mid,base,south,center,text} {
+        \inheritanchor[from=rectangle]{\x}
+    }
+    \inheritanchorborder[from=rectangle]
+    \inheritbackgroundpath[from=rectangle]
+}
 
 \tikzset{commutative diagrams/.cd,
 mysymbol/.style={start anchor=center,end anchor=center,draw=none}
@@ -347,7 +412,7 @@ Now, for each $0\leq m \leq n$, we have that $C_m(\RP^n) \cong \Z$ with generato
 S^{m-1} \arrow[rrrr, "\varphi"', bend right] \arrow[r] & \RP^{m-1} \arrow[r, two heads] & \faktor{\RP^{m-1}}{\RP^{m-1}} \arrow[r, equals] & \faktor{D^{m-1}}{\partial{D^{m-1}}} \arrow[r, equals] & S^{m-1}
 \end{tikzcd}
 \]
-Assume, for convenience, that $m=2$. Choose a regular value $p\in S^{1}$ so that $\varphi^{-1}(p) = \{N, S\}$. Let $\varphi_T$ and $\varphi_B$ denote the restrictions of $\varphi$ to the top and bottom components of $S^1 \setminus \{({-}1, 0), (1,0)\}$, respectively. Note that both of these are homeomorphisms and thus have degrees equal to $\pm 1$. If $a: S^{m-1} \to S^{m-1}$ denotes the antipodal map, we have that $\varphi_B \circ a= \varphi_T$. Hence $(d{\varphi})_S \circ (d{a})_N = (d{\varphi})_N$.  Since $\deg(a) = \det(d{a}) = ({-}1)^m$, it follows that $$\deg(\varphi) = \begin{cases} \pm 2 & m  \text{ even} \\ 0 & m \text{ odd} \end{cases}.$$
+Assume, for simplicity, that $m=2$. Choose a regular value $p\in S^{1}$ so that $\varphi^{-1}(p) = \{N, S\}$. Let $\varphi_T$ and $\varphi_B$ denote the restrictions of $\varphi$ to the top and bottom components of $S^1 \setminus \{({-}1, 0), (1,0)\}$, respectively. Note that both of these are homeomorphisms and thus have degrees equal to $\pm 1$. If $a: S^{m-1} \to S^{m-1}$ denotes the antipodal map, we have that $\varphi_B \circ a= \varphi_T$. Hence $(d{\varphi})_S \circ (d{a})_N = (d{\varphi})_N$.  Since $\deg(a) = \det(d{a}) = ({-}1)^m$, it follows that $$\deg(\varphi) = \begin{cases} \pm 2 & m  \text{ even} \\ 0 & m \text{ odd} \end{cases}.$$
 Thus, we get a chain complex
 \[
 \begin{tikzcd}
@@ -395,14 +460,70 @@ In particular, we have a composite
 
 \[
 M(([0,1], \{0,1\}), (M((D^{n-1}, \partial), (X,x)), e_x)) \hookrightarrow M([0,1], M(D^{n-1}, X)) \overset{\cong}{\longrightarrow} M([0,1] \times D^{n-1}, X),
-\] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $(I^n, \partial) \to (X,x)$ under the operation $[f] \ast [g] = [f \ast g]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
+\] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $\left(I^n, \partial\right) \to \left(X,x\right)$ under the operation $[f] \ast [g] = [f \ast g]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
       f(2t_1, t_2, \ldots, t_n) & 0\leq t_1 \leq \frac{1}{2}
       \\ f(2t_1-1, t_2, \ldots, t_n) & \frac{1}{2} \leq t\leq 1
-\end{cases}    .$$
+\end{cases}    .$$ 
 
-\begin{prop}
+\begin{lemma}
 If $n\geq 2$, then $\pi_n(X, x)$ is abelian.
-\end{prop}
+\end{lemma}
+\begin{proof}
+Let $f_1$ and $f_2$ be maps $\left(I^n, \partial\right) \to \left(X,x\right)$. We must find a homotopy $F : I^n \times I \to X$ between $f_1\ast f_2$ and  $f_2\ast f_1$ such that $F(t_1, \ldots, t_n, s) = x$ for any $\left(t_1, \ldots, t_n\right) \in \partial{I^n}$ and $s\in I$. To this end, first shrink the domains of $f_1$ and $f_2$ to small $n$-cubes in $I^n$ (thereby thickening the set of points mapped to $x$ under $F$), then slide these small cubes past each other, and finally enlarge them to their original sizes as follows.
+\[
+\begin{tikzpicture}[node distance=0cm,outer sep = 0pt,  baseline=(current bounding box.center)]
+\tikzstyle{box}=[draw=blue!10, fill=blue!50, minimum width=2em, 
+    text centered, minimum height=1.5em]
+    \node (f1) [box,minimum height=6.4em, minimum width=3.4em] {$f_1$};
+    \node (f2) [box,anchor=west,minimum height=6.4em, minimum width=3.4em] at (f1.east) {$f_2$};
+\end{tikzpicture}
+\quad \simeq \quad
+\begin{tikzpicture}[
+    baseline=(current bounding box.center)
+    ]
+\tikzstyle{bigbox} = [draw=blue!50, thick, fill=blue!10, square]
+\tikzstyle{box} = [square, draw=blue!10, fill=blue!50]
+%
+\matrix[row sep=2mm, column sep=3mm, inner sep=2mm, bigbox, every node/.style=box] {
+\node {$f_1$}; & \node {$f_2$};\\
+};
+%
+\end{tikzpicture}
+\quad \simeq \quad
+\begin{tikzpicture}[
+    baseline=(current bounding box.center)
+    ]
+\tikzstyle{bigbox} = [draw=blue!50, thick, fill=blue!10, square]
+\tikzstyle{box} = [square, draw=blue!10, fill=blue!50]
+%
+\matrix[row sep=2mm, column sep=3mm, inner sep=2mm, bigbox, every node/.style=box] {
+\node {$f_1$};\\
+\node {$f_2$};\\
+};
+%
+\end{tikzpicture}
+\quad \simeq \quad
+\begin{tikzpicture}[
+    baseline=(current bounding box.center)
+    ]
+\tikzstyle{bigbox} = [draw=blue!50, thick, fill=blue!10, square]
+\tikzstyle{box} = [square, draw=blue!10, fill=blue!50]
+%
+\matrix[row sep=2mm, column sep=3mm, inner sep=2mm, bigbox, every node/.style=box] {
+\node {$f_2$}; & \node {$f_1$};\\
+};
+%
+\end{tikzpicture}
+\quad \simeq \quad
+\begin{tikzpicture}[node distance=0cm,outer sep = 0pt,  baseline=(current bounding box.center)]
+\tikzstyle{box}=[draw=blue!10, fill=blue!50, minimum width=2em, 
+    text centered, minimum height=1.5em]
+    \node (f1) [box,minimum height=6.4em, minimum width=3.4em] {$f_2$};
+    \node (f2) [box,anchor=west,minimum height=6.4em, minimum width=3.4em] at (f1.east) {$f_1$};
+\end{tikzpicture}
+\]
+
+\end{proof}
 
 
 \begin{remark}
@@ -416,8 +537,10 @@ S^{n-1} \arrow[r, "f"'] \arrow[u, hook] & X
 \end{remark}
 
 \begin{theorem}[Whitehead]\label{WH}
-If $f: X \to Y$ is a map of connected cell complexes, then $f$ is a homotopy equivalence if and only if $f_{\ast} : \pi_n(X,x) \to \pi_n(Y, y)$ is an isomorphism for each $n \in \N$.
+If $\psi: X \to Y$ is a map of connected cell complexes, then $f$ is a homotopy equivalence if and only if $\psi_{\ast} : \pi_n(X,x) \to \pi_n(Y, y)$ is an isomorphism for each $n \in \N$.
 \end{theorem}
+
+A map $f : X \to Y$ of path connected spaces is a \textit{weak homotopy equivalence} if it induces an isomorphism $\pi_n(X) \to \pi_n(Y)$ for each $n\in \N$. Since any cell complex is locally path connected, it is connected if and only if it is path connected. Hence \cref{WH} says that $\psi$ is a homotopy equivalence if and only if it is a weak homotopy equivalence.
 
 \subsection{Lecture 3}
 
@@ -425,7 +548,7 @@ If $f: X \to Y$ is a map of connected cell complexes, then $f$ is a homotopy equ
 If $x\in A \subset X$, then the \textit{$n$-th relative homotopy group $\pi_n(X, A, x)$} consists of all homotopy classes of maps $(D^n, S^{n-1}, x_0) \to (X, A, x)$. 
 \end{defn}
 
-We see that  $$M((D^n, S^{n-1}, x), (X, A, x_0)) \cong M((I^n, I^{n-1} \times \{1\}, \underbrace{\partial{I^n} \setminus \Int(I^{n-1} \times \{1\})}_{\partial_0{I^n}}), (X, A, x_0))$$ by considering the homeomorphism $(I^n/\partial_0{I^n}, \partial{I^n}/\partial_0{I^n}) \cong (D^n, S^{n-1})$. Therefore, $\pi_n(X, A, x)$ can be viewed as consisting of all homotopy classes of maps $(I^n, \partial{I^n}, \partial_0{I^n}) \to (X, A, x)$.
+We see that  $$M((D^n, S^{n-1}, x), (X, A, x_0)) \cong M((I^n, I^{n-1} \times \{1\}, \underbrace{\partial{I^n} \setminus \Int(I^{n-1} \times \{1\})}_{\partial_0{I^n}}), (X, A, x_0))$$ by considering the homeomorphism $\left(I^n/\partial_0{I^n}, \partial{I^n}/\partial_0{I^n}\right) \cong \left(D^n, S^{n-1}\right)$. Therefore, $\pi_n(X, A, x)$ can be viewed as consisting of all homotopy classes of maps $\left(I^n, \partial{I^n}, \partial_0{I^n}\right) \to \left(X, A, x\right)$.
 
 \begin{defn}
 In order to interpret an exact sequence involving objects in the category of pointed sets, we define the \textit{kernel of a function $f: (X,x) \to (Y,y)$ of pointed sets} as $\ker{f} \equiv f^{-1}(y)$.   
@@ -1283,21 +1406,78 @@ For us, a CW complex refers to a cell complex $X$ for which there may be infinit
 Each of our results holds even if we assume that a certain space is merely a CW complex rather than a cell complex. 
 \end{remark}
 
-\begin{note}[Milnor construction]
-There exists a functor $\mathbf{TopGrp} \to \mathbf{PrinBund}$ that maps each topological group $G$ to a principal $G$-bundle $$E_G \overset{p_G}{\longrightarrow} B_G$$ such that $B_G$ is a CW complex and $\pi_i\left(E_G\right) =0$. This means that $B_G$ is a classifying space for principal $G$-bundles.
+\medskip
+
+We want to ensure that a classifying space for a topological group $G$ exists. There are at least two famous ways of finding a classifying space for $G$.
+
+\begin{theorem}[Milnor construction]\label{MC}
+There is some functor $\mathbf{TopGrp} \to \mathbf{PrinBund}$ that maps each topological group $G$ to a principal $G$-bundle $$E_G \overset{p_G}{\longrightarrow} B_G$$ such that $B_G$ is a CW complex and $\pi_i\left(E_G\right) =0$.
+\end{theorem}
+
+This means that $B_G$ is a classifying space for principal $G$-bundles.
+Moreover, by applying our LES on homotopy groups to $p_G$, we see that  $\pi_i\left(B_G\right) \cong \pi_{i-1}\left(G\right)$.
+
+\medskip
+
+Our next method is slightly less powerful than \cref{MC} in that  it produces a classifying space for principal $G$-bundles only over pointed connected (equivalently, path connected) CW complexes. At the same time, it produces ``classifying" objects in settings other than that of principal $G$-bundles.
+
+\begin{theorem}[Brown representability]\label{BR} Consider the homotopy category $\ho(\mathbf{CW}_{\ast}^{\text{conn}})$  of pointed connected CW complexes. Let $F$ be a functor $\ho(\mathbf{CW}_{\ast}^{\text{conn}})^{\op} \to \mathbf{Set}_{\ast}$ with the following properties. 
+\be[label=(\roman*)]
+\item (Wedge axiom) $F$ takes coproducts in $\ho(\mathbf{CW}_{\ast}^{\text{conn}})$ to products in $\mathbf{Set}_{\ast}$, i.e., 
+\[
+F\left(\bigvee_{\alpha}X_{\alpha}\right) \cong \prod_{\alpha}F(X_{\alpha}).
+\]
+\item (Mayer-Vietoris axiom) $F$ takes weak pushouts to weak pullbacks, i.e., the universal morphism
+\[
+F(B\cup_A C) \to F(B)\times_{F(A)} F(C)
+\] is a surjection (or split epimorphism) for any two cofibrations $A \to B$ and $A \to C$ in $\mathbf{CW}_{\ast}^{\text{conn}}$.
+\ee
+Then $F$ is representable.\footnote{According to a certain \href{https://mathoverflow.net/q/11523}{MathOverflow answer}, \cref{BR} holds when $F$ is instead a functor $\mathbf{CW} \to \mathbf{Ab}$.}
+
+\end{theorem}
+
+By the Yoneda lemma, this means that there exists a pointed  connected CW complex $B$ along with an element $b\in F(B)$ such that the set map $\left[X, B\right] \to F(X)$ given by $g\mapsto F(g)(b)$ is a natural bijection in $X$. In particular, \cref{BR} applied to the functor taking any pointed connected CW complex to the set of all pointed principal $G$-bundles over $X$ makes the  object $\left(B_G', b\right)$ representing $F$ a classifying space for $G$.
+
+\begin{remark}
+The converse of \cref{BR} is true because any representable contravariant functor takes colimits to limits.
+\end{remark}
+
+\begin{proof}[Proof sketch of \cref{BR}] $ $
+
+We say that a pointed  connected CW complex $B$ along with an element $b\in F(B)$ \textit{spherically represents $F$} if the set map $\nu_X : \left[X, B\right] \to F(X)$ given by $g\mapsto F(g)(b)$ is a natural bijection in $X\in \left\{S^n \mid n\in \Z_{\geq 1}\right\}$. 
 
 \smallskip
 
-By applying our LES on homotopy groups to $p_G$, we see that  $\pi_i\left(B_G\right) \cong \pi_{i-1}\left(G\right)$.
-\end{note}
+Suppose that $\left(B, b\right)$ and $\left(B', b'\right)$ are two objects spherically representing $F$. Let $f : B \to B'$ be a map such that $F(f)(b') = b$. Then $f$ induces a weak homotopy equivalence. By \cref{WH}, $f$ must be a homotopy equivalence.
 
+\smallskip
 
-Alternatively, one can use the Brown representability theorem (\href{https://ncatlab.org/nlab/show/Brown+representability+theorem}{nLab article}) to obtain a classifying space $B'_G$ (not necessarily a CW complex) because the pullback functor satisfies
-\bi
-\item homotopy invariance,
-\item excision, and
-\item Mayer-Vietoris.
-\ei
+Now, let $X$ be a pointed CW complex and $x\in F(X)$. It is known that there exist an object $\left(B, b\right)$ spherically representing $F$ and a map 
+\[ \label{eqn:sph}
+\varphi : X \to B, \ \quad F(\varphi)(b) =x \tag{$\bullet$}
+.\] Therefore, it suffices to prove the following assertion.
+
+\begin{claim}
+Any object $\left(B, b\right)$ spherically representing $F$ represents $F$.
+\end{claim}
+\begin{proof}
+We must show that $\nu_X$ is a bijection. In the interest of space, let us prove just that it is surjective.  Let $x\in F(X)$ and consider the coproduct
+\[
+\begin{tikzcd}
+X \arrow[r, "i_1"] & X\vee B & B \arrow[l, "i_2"']
+\end{tikzcd}.
+\] By the wedge axiom, we have that $F(X\vee B) \cong F(X)\times F(B)$ with $F(i_1) \cong \pi_1$ and $F(i_2) \cong \pi_2$. Thus, we have an element $\left(x,b\right) \in F(X\vee B)$ such that $F(i_1)(x,b) = x$ and $F(i_2)(x,b) =b$. Thanks to \eqref{eqn:sph}, we can find an object $\left(\widehat{B}, \hat{b}\right)$ spherically representing $F$ along with a map $\varphi : X \vee B \to \widehat{B}$ such that $F(\varphi)\left(\hat{b}\right) = \left(x, b\right)$. It follows that
+\begin{gather*}
+F(\varphi \circ i_1)\left(\hat{b}\right) = x
+\\  F(\varphi \circ i_2)\left(\hat{b}\right) = b.
+\end{gather*} Hence $\varphi \circ i_2$ is a homotopy equivalence $B \to \widehat{B}$, with homotopy inverse, say, $\eta$. This implies that $$F(\eta \circ \varphi \circ i_2)(b) = x,$$ so that $\nu_X$ is surjective.
+\end{proof}
+
+\end{proof}
+
+\medskip
+
+Let us turn to the question of uniqueness of a classifying space, having just considered the question of existence.
 
 \begin{lemma}\label{uniq}
 Let $p_1: E_1 \to B_1$ and $p_2 : E_2 \to B_2$ be classifying spaces for principal $G$-bundles. Then $B_1 \simeq B_2$. 
@@ -1751,7 +1931,7 @@ This is precisely the pushout of the span $X \times I \overset{\sigma_0}{\longle
 \begin{tikzcd}
 X \arrow[rr, "g", bend left] \arrow[r, "\iota"', hook] & \cyl(g) \arrow[r, "h"'] & Y
 \end{tikzcd}
-\] for some deformation retraction $h$. Further, $\iota$ is a so-called \textit{cofibration}, the dual notion to a fibration.
+\] for some deformation retraction $h$. Further, $\iota$ is a cofibration, the dual notion to a fibration.
 \end{remark}
 
 \smallskip
@@ -1788,7 +1968,7 @@ This yields a LES in homotopy
 \end{tikzcd},
 \] which proves the following statement.
 
-\begin{theorem}[Suspension theorem]\label{ST}
+\begin{theorem}[Suspension]\label{ST}
 If $0\leq i\leq 2n-4$, then $\pi_i(S^{n-1}) \cong \pi_{i+1}(S^n)$.
 \end{theorem}
 
@@ -1796,7 +1976,7 @@ This can be generalized as follows.
 
 \smallskip
 
-\begin{exercise}[Freudenthal suspension theorem]
+\begin{exercise}[Freudenthal suspension]
 Let $i \in \Z_{\geq 1}$ and suppose that the space $X$ satisfies $\pi_n(X) =0$ for each $0\leq n \leq i-1$. Show that $$\pi_i(X) \cong \pi_{i+1}(S{X})$$ through around dimension $2i-3$ (figure this out exactly), where $S({-})$ denotes the suspension functor.
 \end{exercise}
 \begin{proof}

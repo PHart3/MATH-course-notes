@@ -2040,7 +2040,7 @@ It follows that $f(x)$ has $k$-3 real roots in $[n_1, n_{k-2}]$ with $f(n_{k-2})
 \\ & = \left( \sum_{i=1}^{k-2} n_i \right)^2 -2m - 2 \left( \sum_{a<b} n_an_b \right)
 \\ & = \sum_{i=1}^{k-2} n_i^2 - 2m.
 \end{align*}
-Choose $m \gg \sum n_i^2$, so that $\sum_{i=1}^k \lambda_i^2  < 0$. This implies that there exists a non-real root. Hence we must have exactly two real roots. Further,  we can write $f(x) = x^k + a_1x^{k-1} + \cdots +a_{k-1} x +a_k$ with each $a_i \in 2\Z$. Since $a_k = f(0) = g(0) -2$, we see that $2 \mid a_{k-1}$ but $4 \nmid a_{k-1}$. By Eisenstein's criterion, $f$ must be irreducible. We thus get infinitely many $f$'s such that $G_f = S_p$. 
+Choose $m \gg \sum n_i^2$ so that $\sum_{i=1}^k \lambda_i^2  < 0$. This implies that there exists a non-real root. Hence we must have exactly two real roots. Further,  we can write $f(x) = x^k + a_1x^{k-1} + \cdots +a_{k-1} x +a_k$ with each $a_i \in 2\Z$. Since $a_k = f(0) = g(0) -2$, we see that $2 \mid a_{k-1}$ but $4 \nmid a_{k-1}$. By Eisenstein's criterion, $f$ must be irreducible. We thus get infinitely many $f$'s such that $G_f = S_p$. 
 \end{proof}
 
 \section{Chain complexes and chain maps}
@@ -2087,7 +2087,7 @@ Finally, we call $H^n \equiv Z^n/B^n$ the \textit{degree $n$ cohomology group}.
 \end{note}
 
 \begin{definition}
-We say that $(A^{\bullet}, d^{\bullet})$ is \textit{bounded above} if there is some $N$ such that $A^n =0$ for any $n\geq N$. We define \textit{bounded below} similarly. We say that $(A^{\bullet}, d^{\bullet})$ is \textit{bounded} if it is both bounded above and bounded below. 
+We say that $\left(A^{\bullet}, d^{\bullet}\right)$ is \textit{bounded above} if there is some $N$ such that $A^n =0$ for any $n\geq N$. We define \textit{bounded below} similarly. We say that $\left(A^{\bullet}, d^{\bullet}\right)$ is \textit{bounded} if it is both bounded above and bounded below. 
 \end{definition}
 
 As a result, we have the subcategories $\mathbf{CoCh}^{{-}}(\mathbf{Ab})$, $\mathbf{CoCh}^{+}(\mathbf{Ab})$, and $\mathbf{CoCh}^{b}(\mathbf{Ab})$, respectively. 
@@ -2099,12 +2099,44 @@ If $C^{\bullet} = \bigoplus_{i\in \Z} C^i$ is a graded abelian group, then it in
 
 Conversely, given a complex $(M^{\bullet}, d^{\bullet})$, we can form the graded abelian group $M^{\bullet} \equiv  \bigoplus_{i\in \Z} M^i$ and package the differential $d^i$ into a single group map $D: M^{\bullet} \to M^{\bullet}$ such that $D\restriction_{M^i} = d^i$ and $D^2 =0$. We can write $D$ as the block diagonal matrix
 $$  \begin{bmatrix} 0 & & &  & \\  d^i &0   &  &  & \\  &  d^{i+1} & 0  &   & \\ &   & d^{i+2}  & 0   &   \\  &  & &  \ddots &   \ddots \end{bmatrix} .$$
-As a result, we obtain the \textit{cochain functor} given by $(A^{\bullet}, d^{\bullet}) \to \bigoplus_{i\in \Z} A^i$ and $f^{\bullet} \mapsto (f^i)_{i\in \Z}$.
+As a result, we obtain the \textit{cochain functor} given by $\left(A^{\bullet}, d^{\bullet}\right) \to \bigoplus_{i\in \Z} A^i$ and $f^{\bullet} \mapsto (f^i)_{i\in \Z}$.
+
 
 
 \begin{definition}
-We say that $(A^{\bullet}, d^{\bullet})$ is \textit{acyclic} or \textit{exact} if $H^{\bullet}(A^{\bullet}, d^{\bullet})=0$.
+We say that $\left(A^{\bullet}, d^{\bullet}\right)$ is \textit{acyclic} or \textit{exact} if $H^{\bullet}\left(A^{\bullet}, d^{\bullet}\right)=0$.
 \end{definition}
+
+\medskip
+
+\begin{theorem}
+Let $K^{\bullet}$ be an exact complex of $R$-modules and $I^{\bullet}$ a bounded below complex of injective $R$-modules. Any chain map $f: K^{\bullet} \to I^{\bullet}$ is homotopic to zero.
+\end{theorem}
+\begin{proof}
+There is some $r\in \Z$ such that $I^k =0$ for any $k<r$. Then $f^k =0$ for any $k<r$. Define $h^k: K^k \to I^{k-1}$ by $h^k =0$ for each $k\leq r$. Then $f^{k} = 0 = d_I{h^{k}} + h^{k+1}{d_K}$ for any $k <r$. Let $s> r$ and assume, for induction, that, for each $k<s$, we have constructed $h^k : K^k \to I^{k-1}$ such that $f^{k-1} = d_I{h^{k-1}} + h^{k}{d_K}$. We must construct $h^s : K^s \to I^{s-1}$ such that $f^{s-1} = d_I{h^{s-1}} + h^{s}{d_K}$.
+\\ \\ Let $g^{s-1} = f^{s-1} - d_I{h^{s-1}}$. Note that 
+\begin{align*}
+g^{s-1}{d_K} & = \left(f^{s-1} - d_I{h^{s-1}}\right){d_K}
+\\ & = f^{s-1}{d_K} -  d_I{h^{s-1}}{d_K}
+\\ & = d_I{f^{s-2}} - d_I\left(f^{s-2} - d_Ih^{s-2}\right)
+\\ & = 0.
+\end{align*}
+Therefore, $g^{s-1}$ descends to a map ${g}^{s-1} : \faktor{K^{s-1}}{\im{d_K}} \to I^{s-1}$. Since $K^{\bullet}$ is exact, we have $${g}^{s-1} : \faktor{K^{s-1}}{\ker{d_K}} \to I^{s-1}.$$ Moreover, since $I^{s-1}$ is injective, we can find some map $h^s : K^s \to I^{s-1}$ such that
+\[
+\begin{tikzcd}
+I^{s-1}                                                              &                          &                                 \\
+\faktor{K^{s-1}}{\ker{d_K}} \arrow[u, "g^{s-1}"] \arrow[r, "\cong"'] & \im{d_K} \arrow[r, hook] & K^s \arrow[llu, "h^s"', dashed]
+\end{tikzcd}
+\] commutes. Hence $h^s{d_K} = g^{s-1}$. It follows that
+\begin{align*}
+  d_I{h^{s-1}} + h^{s}{d_K} & = d_I{h^{s-1}} + g^{s-1}
+\\ & = d_I{h^{s-1}} + f^{s-1} - d_I{h^{s-1}}
+\\ & = f^{s-1},
+\end{align*}
+as desired
+\end{proof}
+
+\medskip
 
 \begin{definition}
 If $A$ is an abelian group, then a \textit{left resolution of $A$} is an exact complex $(C^{\bullet}, d^{\bullet}) \in \ob{\mathbf{CoCh}^{\leq 0}(\mathbf{Ab})}$  of the form $$\cdots \to C^{i-1} \to C^i \to \cdots \to  C^0 \to A \to 0 .$$

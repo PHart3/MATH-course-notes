@@ -439,7 +439,7 @@ If $G$ acts on $S$, then let $G \diagdown S$ denote the set of orbits.
 \begin{definition} Let $\theta: G \to \aut(S)$ be an action.
 \begin{enumerate}
 \item We say that  $\theta$ is \textit{transitive} if for any $s, s' \in S$, there is some $g \in G$ such that $g(s) = s'$. 
-\item We say that $\theta$ is \textit{simple} if $\stab_\theta(x) = \{e\}$ for any $x \in S$.
+\item We say that $\theta$ is \textit{simple} if $\stab_\theta(x) = \left\{e\right\}$ for any $x \in S$.
 \item If $\theta$ is both simple and transitive, then it's called a \textit{$G$-torsor}.
 \end{enumerate}
 \end{definition}
@@ -584,7 +584,7 @@ Then $\Delta G$ is the smallest subgroup $H$ such that $\faktor{G}{H}$ is abelia
 \smallskip
 
 The group $G^{\ab}\coloneqq  \faktor{G}{\Delta G}$ is called the \textit{abelianization of $G$}.
-If $f: G \to \underset{\text{abelian}} A$, then $f$ factors uniquely as follows.
+If $f: G \longrightarrow \underset{\text{abelian}} A$, then $f$ factors uniquely as follows.
 
 \[ \begin{tikzcd}
 G \arrow[r, "f"] \arrow[dr, "g", swap] & A \\
@@ -595,13 +595,17 @@ where $\tilde{f}: G^{\ab} \to A$ is given by $x\mapsto f(x)$.
 In other words, the map $g$ is universal for maps from $G$ to abelian groups. 
 
 
-\begin{definition}
-We say that the derived series of $G$ \textit{terminates} if $\Delta^{(t+1)}G = \Delta^{(t)}G$ for some $t$. In this case, if $\Delta^{(t)}G=\{e\}$, then we say that the series \textit{terminates at $\{e\}$}.
+\begin{definition} $ $
+\begin{enumerate}
+\item We say that the derived series of $G$ \textit{terminates} if $\Delta^{(t+1)}G = \Delta^{(t)}G$ for some $t$. 
+
+In this case, if $\Delta^{(t)}G=\left\{e\right\}$, then we say that the series \textit{terminates at $\left\{e\right\}$}.
+\item We say that $G$ is \textit{solvable} if its derived series terminates at $\left\{e\right\}$. 
+
+The least $t$ for which $\Delta^{(t)}$ is trivial is called the \textit{solvable length of $G$}.
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
-We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$. The least $t$ for which $\Delta^{(t)}$ is trivial is called the \textit{solvable length of $G$}.
-\end{definition}
 
 \begin{exercise}\label{ex7} Prove the following assertions.
 \begin{enumerate}
@@ -614,7 +618,7 @@ We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$
 \begin{definition}{Let $G$ be a group.}
 \begin{enumerate}
 \item $G$ is called \textit{polycyclic} if it has a finite subnormal series with cyclic factors.
-\item $G$ is called \textit{nilpotent} if it has a finite normal series  $G =G_0 \unrhd G_1 \unrhd \cdots \unrhd G_n = \{e\}$ where $\faktor{G_{i-1}}{G_i}\subset Z\left(\faktor{G}{G_i}\right)$ for each $1\leq i\leq n$.
+\item $G$ is called \textit{nilpotent} if it has a finite normal series  $G =G_0 \unrhd G_1 \unrhd \cdots \unrhd G_n = \left\{e\right\}$ where $\faktor{G_{i-1}}{G_i}\subset Z\left(\faktor{G}{G_i}\right)$ for each $1\leq i\leq n$.
 \end{enumerate}
 \end{definition}
 
@@ -623,7 +627,7 @@ We say that $G$ is \textit{solvable} if its derived series terminates at $\{e\}$
 \item Every quotient and subgroup of a nilpotent group is nilpotent. 
 \item Every $p$-group $G$ is nilpotent. 
 \begin{proof}
-Let $G_0 = \{e\}$ and $G_1 = Z(G)$. Further, for each $i>1$, let $G_{i}$ satisfy 
+Let $G_0 = \left\{e\right\}$ and $G_1 = Z(G)$. Further, for each $i>1$, let $G_{i}$ satisfy 
 \begin{align*}
 G  \geq & G_i \geq G_{i-1}
 \\ \faktor{G_i}{G_{i-1}} & = Z\left(\faktor{G}{G_{i-1}}\right).
@@ -652,7 +656,7 @@ We claim that $D_n$ is nilpotent  if and only if $n$ equals a power of $2$. We k
 \end{proof}
 
 \begin{note}\label{r10}
- We have the following two chains of strict implications for certain classes of groups.
+ We have the following two chains of strict containments for certain classes of groups.
 \begin{enumerate}[label=(\roman*)]
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ Polycyclic $\subsetneq$  Solvable.
@@ -660,7 +664,7 @@ We claim that $D_n$ is nilpotent  if and only if $n$ equals a power of $2$. We k
 \end{note}
 
 
-To complete the proof that each implication is strict, it suffices to produce a nilpotent group which is not abelian.
+To complete our proof that each containment is strict, it suffices to produce a nilpotent group which is not abelian.
 
 
 \begin{exmp}
@@ -715,14 +719,15 @@ Let $k$ be a field and  $B_n(k)$ denote all $n\times n$ matrices of the form
 \\
     \end{matrix}
   \right]
-  \] so that $\ker{g} \cong (k^{n-1}, +)$, which is abelian.  Two applications of \cref{ex7}(2) show that $B_n(k)$ is solvable, thereby completing the proof.
+  \] so that $\ker{g} \cong \left(k^{n-1}, +\right)$, which is abelian.  Two applications of \cref{ex7}(2) show that $B_n(k)$ is solvable, thereby completing our proof.
 \end{exmp}
 
 \begin{prop}
 $S_n$ is solvable  if and only if $n\leq 4$.
 \end{prop}
 \begin{proof}
-Recall the surjective homomorphism $\sgn: S_n \to \{\pm 1\}$ given by $\sigma \mapsto \det(P_\sigma)$ where $P_\sigma$ is the permutation matrix. Note that if $\sigma = (i_1, \ldots, i_k)$, then $\sgn(\sigma) = ({-1})^{k-1}$. Then $\ker(\sgn) = A_n$, and we see that $S_n$ is solvable  if and only if $A_n$ is solvable. 
+Recall the surjective homomorphism $\sgn: S_n \to \{\pm 1\}$ given by $\sigma \mapsto \det(P_\sigma)$ where $P_\sigma$ denotes the permutation matrix. Then the \textit{alternating group} $A_n \coloneqq \ker(\sgn)$ consists of all \textit{even} permutations of $\left\{1,2, \ldots, n\right\}$. Note that if $\sigma = \left(i_1 \; \cdots \; i_k\right)$, then $\sgn(\sigma) = ({-1})^{k-1}$ since since $\sigma$ can be written as a cycle of
+$k - 1$ transpositions, each having a permutation matrix with determinant ${-1}$. We now see that $S_n$ is solvable  if and only if $A_n$ is solvable. 
 \end{proof}
 
 \begin{lemma}
@@ -733,7 +738,7 @@ $A_n$ is generated by $3$-cycles. Moreover, if $n\geq 5$, then it is generated b
 \begin{proof}
 We know that $A_n$ is generated by products of even numbers of transpositions.  Now observe that 
 \begin{flalign}
-& (i\;j)(j\;k) = (i\;j\;k) \\ & (i\;j) (k\;l) = (i\;j\;k)(j\;k\;l) \\ & (i\;j)(j\;l) = (i\;j)(l\;m)(k\;j)(l\;m).
+& (i\;j)(j\;k) = (i\;j\;k) \\ & (i\;j) (k\;\ell) = (i\;j\;k)(j\;k\;\ell) \\ & (i\;j)(j\;\ell) = (i\;j)(\ell\;m)(k\;j)(\ell\;m).
 \end{flalign}
 \end{proof}
 
@@ -754,7 +759,7 @@ Clearly, $A_n \supset \Delta S_n$.  When $n=3$, $S_n \cong C_3$ and $\Delta S_n$
 
 \begin{proof} $ $
 \begin{enumerate}
-\item Recall that $A_4 \unrhd \{(1), (1\;2), (3\; 4), (1\;2)(3\;4)\}\cong C_2 \times C_2$. Since $\faktor{A_4}{C_2 \times C_2}$ is abelian, we see that $C_2 \times C_2 \supset \Delta A_4\ne \{e\}$. Since $\Delta A_4$ is normal, it must equal $C_2 \times C_2$.
+\item Recall that $A_4 \unrhd \{(1), (1\;2), (3\; 4), (1\;2)(3\;4)\}\cong C_2 \times C_2$. Since $\faktor{A_4}{C_2 \times C_2}$ is abelian, we see that $C_2 \times C_2 \supset \Delta A_4\ne \left\{e\right\}$. Since $\Delta A_4$ is normal, it must equal $C_2 \times C_2$.
 \item 
 Note that $\Delta A_4 \subset \Delta A_n$ for each $n\geq 5$. Thus, $(1\; 2)(3\; 4)\in \Delta A_n=\Delta^{(2)}S_n\subset S_n$ for each $n\geq 4$. This implies that $\Delta A_n \unlhd S_n$ so that $\Delta A_n$ contains all conjugates of $(1\; 2)(3\; 4)$. But since two permutations are conjugate exactly when they have the same cycle type, it follows that  $\Delta A_n = A_n$ for each $n\geq 5$ .
 \end{enumerate}
@@ -763,6 +768,37 @@ Note that $\Delta A_4 \subset \Delta A_n$ for each $n\geq 5$. Thus, $(1\; 2)(3\;
 \begin{corollary}
 $A_n$ is not solvable when $n\geq 5$.
 \end{corollary}
+
+\bigskip
+
+\begin{aside}
+ We have that $A_5 \cong \faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)}.$
+ 
+ \smallskip
+ 
+Indeed, by inspection, there are exactly six lines in the vector space $\left(\Z/5\right)^2$. Enumerate the bases for these as follows.
+$$ \underbrace{\begin{bmatrix} 1 \\ 1  \end{bmatrix}}_{   \ell_1 }   
+\quad  \underbrace{\begin{bmatrix} 1 \\ 2  \end{bmatrix}}_{  \ell_2 }  
+\quad \underbrace{\begin{bmatrix} 1 \\ 3  \end{bmatrix}}_{   \ell_3 }  
+ \quad  \underbrace{\begin{bmatrix} 1 \\  4 \end{bmatrix}}_{ \ell_4   }  
+  \quad \underbrace{\begin{bmatrix} 0 \\ 1  \end{bmatrix}}_{  \ell_5  }  
+   \quad \underbrace{\begin{bmatrix} 1 \\  0 \end{bmatrix}}_{ \ell_6   }   .$$
+  Let $L= \left\{\ell_1, \ldots, \ell_6\right\}$. Define the group action $\theta : \SL_2(\Z /5)\to \aut(L)\cong S_6$ by $$M\cdot \left\{n\ell_i : n\in \Z/5\right\} = \left\{n M\ell_i : n \in \Z/5\right\}.$$
+  It's clear that $\left(\pm \I\right) \subset \ker \theta$. By the universal property of the natural projection, there is some unique homomorphism $\phi : \faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} \to S_6$ such that 
+  \[
+  \begin{tikzcd}
+\SL_2\left(\Z/5\right) \arrow[r, "\theta"] \arrow[d, "\pi"', two heads] &\aut( L) \\
+\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} \arrow[ru, "\phi"', dashed] & 
+\end{tikzcd}
+  \]
+ commutes. Let $X= \begin{bmatrix} 0 & 4 \\ 1 & 0  \end{bmatrix}$ and $Y= \begin{bmatrix} 0 & 4 \\ 1 & 4  \end{bmatrix}$. Then a few straightforward computations show that 
+ \begin{gather*}
+ \lvert{\phi(\pi(X))}\rvert = 2
+ \\  \lvert{\phi(\pi(Y))}\rvert = 3
+ \\ \lvert{\phi(\pi(XY))}\rvert =5.
+ \end{gather*}
+ It is a fact of elementary group theory that $$A_5 = \langle x, y \mid x^2 = y^3 = (xy)^5 = e \rangle.$$ From this we see that the restriction $\phi \restriction_{\langle \pi(X), \pi(Y) \rangle} : \langle \pi(X), \pi(Y) \rangle \to A_5$ is a surjective homomorphism.  Since $\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)}$ has order $60$, it follows that $$\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} =  \langle \pi(X), \pi(Y) \rangle    \cong A_5,$$ as desired.
+\end{aside}
 
 \subsection{Lecture 6}
 
@@ -773,7 +809,7 @@ In Galois theory, one finds that a polynomial $f(x)$ over $\Q$ is solvable in ra
 \medskip
 
 \begin{note}
-In the setting of finite groups, we can add information to our chain of implications in \cref{r10} as follows.
+In the setting of finite groups, we can add information to our chain of containments in \cref{r10} as follows.
 \begin{enumerate}[label=(\roman*)]
 \item Cyclic $\subsetneq$ Abelian $\subsetneq$ Nilpotent $\subsetneq$ Solvable.
 \item Cyclic $\subsetneq$ \textbf{Abelian} $\subsetneq$ Polycyclic $\bm =$  Solvable.
@@ -792,7 +828,7 @@ If $\Gamma$ is a group and $P$ a property of groups, then we say that $\Gamma$ i
 \end{definition}
 
 \begin{theorem}[Arapura-Nuri (2005)]
-For all groups of the form $\pi_1(X)$ with $X$ a K\"ahler manifold, we have the following chains of implications.
+For all groups of the form $\pi_1(X)$ with $X$ a K\"ahler manifold, we have the following chains of containments.
 \begin{align*}
  \text{v. Cyclic } &\subsetneq \text{ v. Abelian } \subsetneq \text{ v. Nilpotent } = \text{ v. Solvable}.
 \\ \text{v. Cyclic } &  \subsetneq \text{ v. Abelian } \subsetneq \text{ v. Polycyclic } = \text{ v. Solvable}.
@@ -805,7 +841,21 @@ For all groups of the form $\pi_1(X)$ with $X$ a K\"ahler manifold, we have the 
 If $\lvert{G}\rvert =p^2$ with $p$ prime, then $G$ is abelian.
 \end{exmp}
 \begin{proof}
-This follows from the fact that $G$ has nontrivial center as a result of the class equation.
+Note that $G$ has nontrivial center as a result of the class equation. If $\lvert{Z(G)}\rvert =p^2$, then $Z(G) = G$, as desired. Suppose that $\lvert{Z(G)}\rvert =p$. 
+\begin{claim}
+For any group $H$, if the quotient group $\faktor{H}{Z(H)}$ is cyclic $\langle \left[a\right]\rangle$, then $H$ is abelian. 
+\end{claim}
+\begin{proof}
+Let $f,h\in H$, so that $\left[f\right] = \left[a\right]^n$ and $\left[h\right] = \left[a\right]^m$ for some $n,m\in \Z_{\geq 0}$. This means that $f = a^nc_1$ and $h = a^mc_2$ for some $c_1, c_2\in Z(H)$. Therefore,
+\begin{align*}
+fh & = \left( a^nc_1\right)\left(a^mc_2\right)
+\\ & = a^na^mc_1c_2
+\\ & = a^ma^nc_2c_1
+\\ & = \left(a^mc_2\right)\left(a^nc_1\right)
+\\ & = hf.
+\end{align*}
+\end{proof}
+As the group  $\faktor{G}{Z(G)}$ has order $p$, it is cyclic. Thus, $G$ is abelian.
 \end{proof}
 
 \begin{exercise}
@@ -970,6 +1020,8 @@ Let $i : N \to \Z^n$ denote inclusion. As this is $\Z$-linear, it may be represe
 \begin{claim} %%%
 By elementary row and column operations, $C$ is equivalent to a diagonal matrix $\left(u_1, \ldots, u_n\right)$ such that  $u_i \in \Z_{>0}$ and $u_i \mid u_{i+1}$ for each $i=1, \ldots, n-1$. 
 \end{claim}
+\begin{proof}[Proof omitted]
+\end{proof}
 
  In particular, we can find bases $\left\{\tilde{f}_i\right\}$ and $\left\{\tilde{e}_i\right\}$ of $N$ and $\Z^n$, respectively, such that $ \tilde{f}_i = u_i \tilde{e}_i$ for each $i$. Therefore, we have that $G\cong \faktor{\Z^n}{N} \cong \Z/u_1 \times \cdots \times \Z/u_n$.
 \end{proof}
@@ -1001,14 +1053,14 @@ A group $G$ is \textit{simple} if it has no nontrivial proper normal subgroup.
 \end{exmp}
 
 \begin{definition}
-A \textit{composition series for $G$} is a subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$ where each $\faktor{G_i}{G_{i+1}}$ is simple.
+A \textit{composition series for $G$} is a subnormal series $G = G_0 > G_1 > \cdots > G_k = \left\{e\right\}$ where each $\faktor{G_i}{G_{i+1}}$ is simple.
 \end{definition}
 
 \begin{exmp} $ $
 \begin{enumerate}
 \item Any finite group $G$ has a composition series.
 \begin{proof}
-By Zorn's lemma, $G$ contains a maximal normal subgroup $G_1$. Likewise, $G_1$ contains a maximal normal subgroup $G_2$, and so on. Note that $\faktor{G_i}{G_{i+1}}$ has no nontrivial normal subgroup $H$, for otherwise $\pi^{-1}(H)$ is a nontrivial normal subgroup in $G_i$ such that $\pi^{-1}(H) \supsetneq G_{i+1}$, contrary to our choice of $G_{i+1}$.  Therefore,  $$G> G_1 > G_2 > \cdots > \{e\}$$ is a composition series for $G$.
+By Zorn's lemma, $G$ contains a maximal normal subgroup $G_1$. Likewise, $G_1$ contains a maximal normal subgroup $G_2$, and so on. Note that $\faktor{G_i}{G_{i+1}}$ has no nontrivial normal subgroup $H$, for otherwise $\pi^{-1}(H)$ is a nontrivial normal subgroup in $G_i$ such that $\pi^{-1}(H) \supsetneq G_{i+1}$, contrary to our choice of $G_{i+1}$.  Therefore,  $$G> G_1 > G_2 > \cdots > \left\{e\right\}$$ is a composition series for $G$.
 \end{proof}
 \item Any finitely generated group $G$ has a composition series.
 \begin{proof}
@@ -1016,7 +1068,7 @@ If $G$ is simple, then we're done. So assume otherwise. Let $n\in \N$ be maximal
 \end{proof}
 \item $\Z$ has no composition series, since no nontrivial subgroup of $\Z$ is simple.
 \item Every $p$-group has a composition series where each factor is $\faktor{\Z}{p}$.
-\item Let $\lvert{G}\rvert= pq$ with $p$ and $q$ distinct primes. Let $G_1$ be the unique $q$-Sylow subgroup of $G$. Then $G > G_1 > \{e\}$ is a composition series for $G$.
+\item Let $\lvert{G}\rvert= pq$ with $p$ and $q$ distinct primes. Let $G_1$ be the unique $q$-Sylow subgroup of $G$. Then $G > G_1 > \left\{e\right\}$ is a composition series for $G$.
 \end{enumerate}
 \end{exmp}
 
@@ -1071,7 +1123,7 @@ In general, a sequence $G_1 \overset{\phi_1}{\longrightarrow} G_2 \overset{\phi_
 
 \medskip
 
-If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \{e\}$, then for each $0 \leq i \leq k-1$, we get an extension $$\eta_i :\ 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1.$$ Thus, $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
+If $G$ has subnormal series $G = G_0 > G_1 > \cdots > G_k = \left\{e\right\}$, then for each $0 \leq i \leq k-1$, we get an extension $$\eta_i :\ 1 \to G_{i+1} \to G_i \to \faktor{G_i}{G_{i+1}} \to 1.$$ Thus, $G$ can be built successively from the $\faktor{G_i}{G_{i+1}}$ and $\eta_i$.
 
 \smallskip
 
@@ -1115,7 +1167,7 @@ Let $G$ be a group and $\left\{G_1, \ldots, G_k\right\}$ be a collection of subg
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item Check that condition (i) is equivalent to the condition that $G_1 \cdots G_k = G$ and $G_i \cap (G_1 \cdots \widehat{G}_i \cdots G_k) = \{e\}$.
+\item Check that condition (i) is equivalent to the condition that $G_1 \cdots G_k = G$ and $G_i \cap (G_1 \cdots \widehat{G}_i \cdots G_k) = \left\{e\right\}$.
 \item Check that condition (ii) is equivalent to the condition that $G_i \unlhd G$ for each $i$.
 \end{enumerate}
 \end{exercise}
@@ -1158,7 +1210,7 @@ Recall that if $H \unlhd G$ and $K \leq G$, then $HK$ is a subgroup of $G$ and $
 
 \medskip
 
-Suppose that $G = HK$ with $H\unlhd G$ and $H \cap K = \{e\}$. Let $\alpha : K \to \aut_{\mathbf{Grp}}(H)$ be the inner automorphism of $H$, which depends on the group law $*_G$. Then $*_G$ can be recovered from $*_H$, $*_K$, and $\alpha$.
+Suppose that $G = HK$ with $H\unlhd G$ and $H \cap K = \left\{e\right\}$. Let $\alpha : K \to \aut_{\mathbf{Grp}}(H)$ be the inner automorphism of $H$, which depends on the group law $*_G$. Then $*_G$ can be recovered from $*_H$, $*_K$, and $\alpha$.
 Indeed,
 let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely, so that $$g_1g_1 = (h_1\alpha_{k_1}(h_2))k_1k_2.$$
 
@@ -1266,7 +1318,7 @@ Let $D$ denote the class of groups that can be written as the product of indecom
 
 \smallskip
 
- Assume, toward a contradiction, that $G$ has \dcc but $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \{e\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus, we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
+ Assume, toward a contradiction, that $G$ has \dcc but $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \left\{e\right\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus, we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
 
 \smallskip
 
@@ -1354,10 +1406,10 @@ Suppose that $G$ is indecomposable and has \acc + \dcc and that $\phi$ and $\psi
 
 \begin{proof}
 Thanks to \cref{pc1}, as long as $\phi + \psi$ is not nilpotent, it must be an automorphism. Set $\gamma = (\phi + \psi)^{-1}$. Then $\underbrace{\phi \circ \gamma}_U + \underbrace{\psi \circ \gamma}_V = (\phi +\psi) \circ \gamma = \id_G$. Hence $U + V = \id_G$. (We call $U$ and $V$ a \textit{normal decomposition} of $\id_G$.) We see that $V + U$ is also a normal decomposition of $\id_G$ by applying $(-)^{-1}$ to the equation $U(x)V(x) =x$ for any $x \in G$.
-Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker{U}\geq \gamma^{-1}(\ker{\phi}) \cup \{e\} > \{e\}$. Likewise, $\ker{V} > \{e\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$. It follows that $G$ is trivial, and this contradicts that $G$ is indecomposable.
+Now, $U^2 + UV = U(U + V) = U = (U + V)U = U^2 + VU$. This implies that $UV = VU$. Hence we can apply the binomial theorem to get $$(U + V)^n = \sum_{a=0}^n{ {n}\choose {a}} U^aV^{n-a}.$$ But since $U = \phi \circ \gamma$, we know that $\ker{U}\geq \gamma^{-1}(\ker{\phi}) \cup \left\{e\right\} > \left\{e\right\}$. Likewise, $\ker{V} > \left\{e\right\}$. Thus, $U$ and $V$ must be nilpotent. There are minimal $k, l \in \N$ such that $U^k = 0 = V^l$. Set $n = k+l -1 \geq 1$. Then each $U^aV^{n-a}$ has either $a\geq k$ or $n-a\geq l$, so that $\id_G = (U+V)^n = 0$. It follows that $G$ is trivial, and this contradicts that $G$ is indecomposable.
 \end{proof}
 
-We finally return to the proof of Krull-Schmidt. Suppose that $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $$\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1).$$ Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then \cref{PL1} implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$ so that $B_j = B_1$. 
+We finally return to our proof of Krull-Schmidt. Suppose that $r=1$. Let $p_i : G \to A_i$ and $q_j : G \to B_j$ be projections and $f_i : A_i \hookrightarrow G$ and $g_j : B_j \hookrightarrow G$ be inclusions. Note that each $g_j \circ q_j$ is normal and that $\sum_{j=1}^t g_j \circ q_j = \id_G$. Note also that $p_i \circ f_i = \id_{A_i}$ and $q_j \circ g_j = \id_{B_j}$. This gives $$\id_{A_1} = p_1 \circ \id_G \circ f_1 = p_1 \circ \left(\sum_{j=1}^t g_j \circ g_j\right) \circ f_1 = \sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1).$$ Each $p_1 \circ g_j \circ q_j \circ f_1$ is normal, and each sub-sum of $\sum_{j=1}^t (p_1 \circ g_j \circ q_j \circ f_1)$ is normal. Hence if each sub-sum is nilpotent, then \cref{PL1} implies that $A_1$ is trivial, contrary to the fact that $A_1$ is indecomposable. Hence $ p_1 \circ g_j \circ q_j \circ f_1$ for some $1\leq j \leq t$. Reindex the $B_i$ so that $B_j = B_1$. 
 
 \medskip
 
@@ -1366,12 +1418,12 @@ We finally return to the proof of Krull-Schmidt. Suppose that $r=1$. Let $p_i : 
 \medskip
 
 Consider $\theta \coloneqq  (q_1f_1)(\gamma p_1g_1) : B_1 \to B_1$, which is normal. We want to check that this is the identity map. It's easy to check that $ \theta^2 =  \theta.$
-By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an automorphism, then $\theta^2 = \theta \implies \theta = \id_{B_1}$, and we're done. Suppose that it is nilpotent with $n$ minimal such that $\theta^n =0$. Then $0 = \theta^n = \theta^2 \circ \theta^{n-2} = \theta \circ \theta^{n-2}= \theta^{n-1}$. Hence $n=1$, so that $\theta =0$. This implies that $$\id_{A_1}^2 = (\gamma p_1 g_1)(q_1 f_1)(\gamma p_1 g_1)(q_1 f_1) = (\gamma p_1 g_1)\theta(q_1 f_1) = 0,$$ meaning $A_1= \{e\}$, a contradiction.
+By Fitting, $\theta$ is either an automorphism or nilpotent. If $\theta$ is an automorphism, then $\theta^2 = \theta \implies \theta = \id_{B_1}$, and we're done. Suppose that it is nilpotent with $n$ minimal such that $\theta^n =0$. Then $0 = \theta^n = \theta^2 \circ \theta^{n-2} = \theta \circ \theta^{n-2}= \theta^{n-1}$. Hence $n=1$, so that $\theta =0$. This implies that $$\id_{A_1}^2 = (\gamma p_1 g_1)(q_1 f_1)(\gamma p_1 g_1)(q_1 f_1) = (\gamma p_1 g_1)\theta(q_1 f_1) = 0,$$ meaning $A_1= \left\{e\right\}$, a contradiction.
 
 \medskip
 
 
-Now, $\ker{q_1} = B_2 \times \cdots \times B_t$ \reversemarginpar{\marginpar{\small{Even after reindexing?}}}, and $\ker(q_1 \circ f_1) = \{e\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t,$$ whose output is precisely  $$\left(q_1f_1\right)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t .$$ Then $\psi$ is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\{e\}$, we have $\ker{\psi} =\{e\}$. Therefore, $\psi$ is an isomorphism by Fitting, which means that $H=G$.
+Now, $\ker{q_1} = B_2 \times \cdots \times B_t$ \reversemarginpar{\marginpar{\small{Even after reindexing?}}}, and $\ker(q_1 \circ f_1) = \left\{e\right\}$. Hence $$H\coloneqq  A_1 \cdot (B_2 \times \cdots \times B_t) \cong A_1 \times B_2 \times \cdots \times B_t.$$ Define $\psi : G\to G$ by $$b_1b_2\cdots b_t \mapsto \gamma f_1p_1(b_1)b_2b_3\cdots b_t,$$ whose output is precisely  $$\left(q_1f_1\right)^{-1}(b_1)b_2\cdots b_t= f_1(q_1f_1)^{-1}q_1 + g_2q_2+\cdots + g_tq_t .$$ Then $\psi$ is a normal endomorphism with image equal to $H$. Moreover, since $A_1\cap (B_2 \times \cdots \times B_t) =\left\{e\right\}$, we have $\ker{\psi} =\left\{e\right\}$. Therefore, $\psi$ is an isomorphism by Fitting, which means that $H=G$.
 
 \medskip
 
@@ -1386,8 +1438,8 @@ Suppose that $G$ is a finite abelian group, so that $G \cong C_{p_1^{k_1}} \time
 
 Suppose that $G$ is finite and that 
 \begin{gather*}
-G = F^0G \geq F^1G \geq \cdots \geq F^sG = \{e\}  
-\\ G = T^0G \geq T^1G \geq \cdots \geq T^tG = \{e\}
+G = F^0G \geq F^1G \geq \cdots \geq F^sG = \left\{e\right\}  
+\\ G = T^0G \geq T^1G \geq \cdots \geq T^tG = \left\{e\right\}
 \end{gather*}
 are two composition series of $G$. Consider the \textit{graded groups} 
 \begin{gather*}
@@ -1539,7 +1591,7 @@ Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensio
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Since $Z(S_3) =\{e\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\lvert{\aut(S_3)}\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
+\item Since $Z(S_3) =\left\{e\right\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\lvert{\aut(S_3)}\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
 \item If $G$ is abelian, then $\aut(G)= \out(G)$.
 \end{enumerate}
 \end{exmp}
@@ -1663,7 +1715,7 @@ Finally, observe that
 \begin{align*}
 \ker(G\ltimes_{\beta \circ q} B \twoheadrightarrow K) & = \left\{(g, b) : q(g) =e\right\} 
 \\ & = \left\{(g, b) : g \in A\right\}
-\\ &  \geq A\times \{e\} \cong A.\end{align*}
+\\ &  \geq A\times \left\{e\right\} \cong A.\end{align*}
 \end{proof}
 Now, let $G_{\psi_{\ast}\xi}$ denote $G \cup_A B$, which equals $\faktor{G\ltimes_{\beta \circ q} B}{(i\times \psi)(A)}.$ 
 We have obtained a commutative diagram.
@@ -1863,7 +1915,7 @@ Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete top
 \item Let $\mathbf{Ouv}_X$ denote the category of open sets of a topological space $\left(X, \tau\right)$ with inclusion maps as morphisms.
  This is precisely the order category of $\tau$ associated to the poset $\subseteq$. 
  \item For any category $\c$, we have the \textit{opposite category $\c^{\op}$} where $\ob{\c^{\op}} \equiv \ob{\c}$ and $\Hom_{\c^{\op}}(x,y) \equiv \Hom_{\c}(y,x)$. Thus, $\c^{\op}$ is formed by keeping the objects but switching all of the arrows in $\c$.
-\item Let $G$ be a group. Then the \textit{classifying space $B{G}$ of $G$} is the category with a single object $\ast$ and $\Hom_{B{G}}(\ast, \ast) \equiv G$. Composition here is given by the group law of $G$, and the identity morphism is precisely $e_G$. 
+\item Let $G$ be a group. Then the \textit{classifying category $B{G}$ of $G$} is the category with a single object $\ast$ and $\Hom_{B{G}}(\ast, \ast) \equiv G$. Composition here is given by the group law of $G$, and the identity morphism is precisely $e_G$. 
 
 Note that $B\left(G^{\op}\right) =\left(BG\right)^{\op}$.
 \end{enumerate}
@@ -2084,7 +2136,7 @@ y \mapsto \Hom_{\c}(y, x)
 \end{gather*}
 
 \begin{definition}
-A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x$. We say that \textit{$x$ represents $F$} in this case.
+A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x\in \ob{\c}$. We say that \textit{$x$ represents $F$} in this case.
 \end{definition}
 The assignment $h: \c \to \widehat{\c}$ given by $x \mapsto h_x$ is a functor where $h(\phi : x \to x')$ is given by $$h(\phi)_y : \Hom_{\c}(y, x) \to \Hom_{\c}(y, x'),\ \quad u \mapsto \phi \circ u.$$ This is called the \textit{Yoneda functor}. The essential image of $h$ consists of all representable presheaves of $\c$.
 
@@ -2378,22 +2430,22 @@ Suppose, toward a contradiction, that $F: \mathbf{Ab} \to \mathbf{Grp}$ is  left
 \begin{enumerate}[label=(\alph*)]
 \item $F(A)$ cannot be simple.
 \begin{proof}
-On the one hand, if $F(A)$ is simple and nonabelian, then $F(A)^{\ab} =\{e\}$. But, in this case, $$\{e\} \not \cong \Hom_{\mathbf{Grp}}(F(A), F(A)) \cong \Hom_{\mathbf{Ab}}(A, \{e\})\cong \{e\},$$ a contradiction.
+On the one hand, if $F(A)$ is simple and nonabelian, then $F(A)^{\ab} =\left\{e\right\}$. But, in this case, $$\left\{e\right\} \not \cong \Hom_{\mathbf{Grp}}(F(A), F(A)) \cong \Hom_{\mathbf{Ab}}(A, \left\{e\right\})\cong \left\{e\right\},$$ a contradiction.
 
-On the other hand, if $F(A)$ is simple and abelian, then $F(A) \cong C_p$ for some prime $p$. Set $G = A_{3p}$, so that $G^{\ab} = \{e\}$. Then  we have $\Hom_{\mathbf{Grp}}(C_p, G) \cong \Hom_{\mathbf{Ab}}(A, \{e\}) \cong \{e\}.$ But $C_p \leq G$, so that $\Hom_{\mathbf{Grp}}(C_p, G) $ is nontrivial, a contradiction. 
+On the other hand, if $F(A)$ is simple and abelian, then $F(A) \cong C_p$ for some prime $p$. Set $G = A_{3p}$, so that $G^{\ab} = \left\{e\right\}$. Then  we have $\Hom_{\mathbf{Grp}}(C_p, G) \cong \Hom_{\mathbf{Ab}}(A, \left\{e\right\}) \cong \left\{e\right\}.$ But $C_p \leq G$, so that $\Hom_{\mathbf{Grp}}(C_p, G) $ is nontrivial, a contradiction. 
 \end{proof}
 \item If $F(A)$ is trivial, then so is $A$.
 \begin{proof}
-Suppose that $F(A)= \{e\}$. Then $$\{e\} \cong \Hom_{\mathbf{Grp}}\left(\{e\}, G\right) \cong \Hom_{\mathbf{Ab}}\left(A, G^{\ab}\right)\supset \{\id_A, 0_A\}.$$ Thus, $\id_A =0_A$, and thus $A$ is trivial.
+Suppose that $F(A)= \left\{e\right\}$. Then $$\left\{e\right\} \cong \Hom_{\mathbf{Grp}}\left(\left\{e\right\}, G\right) \cong \Hom_{\mathbf{Ab}}\left(A, G^{\ab}\right)\supset \{\id_A, 0_A\}.$$ Thus, $\id_A =0_A$, and thus $A$ is trivial.
 \end{proof}
 \item If $A$ is nontrivial, then $F(A)$ contains no proper maximal normal subgroup. 
 \begin{proof}
 Suppose that $A$ is nontrivial and that $M \unlhd F(A)$ is proper and maximal. Then $\faktor{F(A)}{M}$ is simple. If $\faktor{F(A)}{M}$ is also nonabelian, then 
-$$\{e\} \not \cong \Hom_{\mathbf{Grp}}\left(F(A), \faktor{F(A)}{M}\right) \cong \Hom_{\mathbf{Ab}}\left(A, \left(\faktor{F(A)}{M}\right)^{\ab} \right)\cong \{e\},$$ a contradiction. If $\faktor{F(A)}{M}$ is abelian, then it is isomorphic to $C_p$, in which case we can use an argument as in (a).
+$$\left\{e\right\} \not \cong \Hom_{\mathbf{Grp}}\left(F(A), \faktor{F(A)}{M}\right) \cong \Hom_{\mathbf{Ab}}\left(A, \left(\faktor{F(A)}{M}\right)^{\ab} \right)\cong \left\{e\right\},$$ a contradiction. If $\faktor{F(A)}{M}$ is abelian, then it is isomorphic to $C_p$, in which case we can use an argument as in (a).
 \end{proof}
 \end{enumerate}
 \end{lemma}
-Now, we have $$ \Hom_{\mathbf{Grp}}(F(C_2), C_2) \cong \Hom_{\mathbf{Ab}}(C_2, C_2) =\{0, \id\}.$$  Hence there is some group map $f : F(C_2) \rightarrow C_2$ such that $\{e\} < \ker{f} < F(C_2)$. But then $\faktor{F(C_2)}{\ker{f}}$ is nontrivial and finite, which implies that $F(C_2)$ has a proper maximal normal subgroup, contrary to \cref{LL}(c). 
+Now, we have $$ \Hom_{\mathbf{Grp}}(F(C_2), C_2) \cong \Hom_{\mathbf{Ab}}(C_2, C_2) =\{0, \id\}.$$  Hence there is some group map $f : F(C_2) \rightarrow C_2$ such that $\left\{e\right\} < \ker{f} < F(C_2)$. But then $\faktor{F(C_2)}{\ker{f}}$ is nontrivial and finite, which implies that $F(C_2)$ has a proper maximal normal subgroup, contrary to \cref{LL}(c). 
 \end{proof}
 
 \begin{lemma}
@@ -2692,7 +2744,7 @@ R{-}\mathbf{Ideal} \subset R{-}\mathbf{Mod}
 smallest submodule of $M$ containing each $M_{\alpha}$. 
 \item Let $S\subset M$ be any subset. We call $\coprod_{s\in S} R$ \textit{the free $R$-module generated by $S$}. Recall that the free $R$-module functor is left adjoint to the forgetful functor. Therefore, we have a natural map $g : \coprod_{s\in S} R \to M$ given by $(r_s) \mapsto \sum_s r_ss$. We say that $R \cdot S \coloneqq \im g$ is the \textit{submodule of $M$ generated by $S$}.
 \begin{aside}
-We can view $g$ as the \textit{copowering functor} over $\mathbf{Set}$ for $R-\mathbf{Mod}$.  
+We can view $g$ as the \textit{copowering functor} over $\mathbf{Set}$ for $R{-}\mathbf{Mod}$.  
 \end{aside}
 \item  Suppose that there is an exact sequence $$\bigoplus_{t\in T}{R}\to \bigoplus_{s\in S}{R} \to M \to 0$$ of $R$-modules with $T$ and $S$ finite. In this case, we say that $M$ is \textit{finitely presentable}. 
 \end{enumerate}

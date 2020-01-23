@@ -201,7 +201,7 @@
 \begin{document}
 \thispagestyle{empty}
 \begin{abstract}
-This is a brief, introductory overview of homotopy type theory (HoTT), focused on its synthetic aspect. After covering some preliminary concepts from type theory, we work to state the \textit{univalence axiom}, a strong feature of HoTT as formulated by Voevodsky. In doing this, we develop the notion both of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of HoTT.
+This is a brief, introductory overview of homotopy type theory (HoTT). After covering some preliminary concepts from type theory, we work to state the \textit{univalence axiom}, a powerful feature of HoTT's syntax as formulated by Voevodsky. Along the way, we develop the notion of an identity type and of type equivalence by way of homotopy theory (an area of algebraic topology). Afterward, we mention some categorical models of HoTT.
 \end{abstract}
 
 
@@ -225,7 +225,7 @@ One may think of HoTT as a topological (or, more generally, homotopical) version
 
 \section{Elements of type theory}
 
-We are given a formal language $\mathcal{L}$ consisting of certain terms, say, a variant of the untyped lambda calculus. We can enrich $\mathcal{L}$ with additional primitive objects called \textit{types}. If $a$ is a term and $A$ a type, then we write $a: A$ to express the \textit{judgment} (distinct from a proposition) that $a$ \textit{inhabits} or \textit{has type} $A$. We declare that types themselves inhabit types known as \textit{universes}, which are arranged in a cumulative hierarchy. $$\mathbf{Type}_0 :\mathbf{Type}_1 : \mathbf{Type}_2 : \cdots . $$ 
+We are given a formal language $\mathcal{L}$ consisting of certain terms, say, a variant of the untyped lambda calculus. We can enrich $\mathcal{L}$ with additional primitive objects called \textit{types}. If $a$ is a term and $A$ a type, then we write $a: A$ to express the \textit{judgment} (distinct from a proposition) that $a$ \textit{inhabits / has type} $A$. We declare that types themselves inhabit types known as \textit{universes}, which are arranged in a cumulative hierarchy. $$\mathbf{Type}_0 :\mathbf{Type}_1 : \mathbf{Type}_2 : \cdots . $$ 
 
 If instead we declared a single universe $\mathbf{Type}$ that every type inhabits, then we could encode Russel's paradox into our type theory. Our hierarchy avoids such a problem by tracking which level a newly formed type inhabits. For convenience, however, we usually avoid writing the level explicitly and use the term $\mathbf{Type}$ instead. In this sense, $\mathbf{Type}$ is known as a \textit{universe a la Russell}.
 \begin{exmp} The following (among others) will be base types of our language.
@@ -234,7 +234,7 @@ If instead we declared a single universe $\mathbf{Type}$ that every type inhabit
 \item The \textit{singleton type} $\mathsf{unit}$.
 \end{enumerate}
 \end{exmp}
-We write $a\equiv b :A$ to express that the terms $a$ and $b$ are \textit{definitionally equal with respect to the type $A$}. We declare that $\equiv$ is an equivalence relation with respect to a fixed type $A$. We also declare that if $A\equiv B : \mathbf{Type}$ and $a: A$, then $a:B$.
+We write $a\equiv b :A$ to express that $a$ and $b$ are \textit{definitionally equal terms type $A$}. We declare that $\equiv$ is an equivalence relation with respect to any type $A$. We also declare that if both $A\equiv B : \mathbf{Type}$ and $a: A$ are derivable judgments, then so is $a:B$.
 
 \begin{definition} Let $A$ be any type and $B : A \to \mathbf{Type}$ be any family of types (e.g., $\lambda n.T^n : \N \to \mathbf{Type}$).  
 \begin{enumerate}
@@ -300,7 +300,7 @@ The type $x \leadsto_A y$ can be thought of as the path space of $A$, which cons
 
 \medskip
 
-Under Curry-Howard, each path from $x$ to $y$ corresponds to a proof of the proposition that $x$ equals $y$. HoTT is an \emph{intensional} (as opposed to extensional) type theory in that it both distinguishes between definitional and propositional equality and allows an identity type to be inhabited by more than one term.
+Under the Curry-Howard isomorphism, each path from $x$ to $y$ corresponds to a proof of the proposition that $x$ equals $y$. HoTT is an \emph{intensional} (as opposed to extensional) type theory in that it both distinguishes between definitional and propositional equality and allows an identity type to be inhabited by more than one term.
 
 \medskip
 
@@ -579,9 +579,9 @@ $\univ$ entails $\wfe$ (hence $\sfe$).
 \begin{proof}
 Suppose that $P: A \to \type$ and that there is some term $K: \prod_{x:A}\mathsf{isContr}(P(x))$. We must show that $\prod_{x:A} P(x)$ is contractible.  Define $U: A \to \type$ the constant function $\lambda x. \mathsf{unit}$. Since both $P(x)$ and $ \mathsf{unit}$ are contractible for each $x:A$, we have that $P(x) \simeq  \mathsf{unit}$. Thanks to $\univ$, it follows that $P(x) \leadsto  \mathsf{unit}$.  \Cref{PP} now implies that $P\leadsto_{A \to \type} U$.
 
-\medskip
+\smallskip
 
- Therefore, there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A} U(x) \right)  .$$ This shows that it suffices to show that $\prod_{x:A}U(x)$ is contractible.  But $\prod_{x:A}U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of \cref{PP} proves that $A \to \mathsf{unit}$ is contractible. 
+ This means that there is some term of type $$  \left(\prod_{x:A} P(x) \right) \leadsto \left(\prod_{x:A} U(x) \right)  .$$ Therefore, it suffices to show that $\prod_{x:A}U(x)$ is contractible.  But $\prod_{x:A}U(x) \equiv A \to \mathsf{unit}$, and any term of this is homotopic to a constant function. Another use of \cref{PP} proves that $A \to \mathsf{unit}$ is contractible. 
 \end{proof}
 
 Finally, by assuming $\univ$, we can prove a fundamental result of category theory \emph{in} our type theory. To this end, let $P$ and $Q$ be dependent types over $A$ (viewed as type-valued presheaves on $A$). Let $\Hom(P, A) \coloneqq \prod_{x:A}\left(P(x) \to Q(x)\right)$.

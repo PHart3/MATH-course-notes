@@ -33,10 +33,10 @@
 \contentsline {subsection}{\numberline {10.2}Lecture 23}{53}{subsection.10.2}
 \contentsline {section}{\numberline {11}Chain complexes and chain maps}{55}{section.11}
 \contentsline {subsection}{\numberline {11.1}Lecture 24}{56}{subsection.11.1}
-\contentsline {subsection}{\numberline {11.2}Lecture 25}{58}{subsection.11.2}
+\contentsline {subsection}{\numberline {11.2}Lecture 25}{59}{subsection.11.2}
 \contentsline {section}{\numberline {12}Additive categories}{61}{section.12}
 \contentsline {subsection}{\numberline {12.1}Lecture 26}{62}{subsection.12.1}
 \contentsline {section}{\numberline {13}Triangulated categories}{65}{section.13}
 \contentsline {subsection}{\numberline {13.1}Lecture 27}{65}{subsection.13.1}
-\contentsline {subsection}{\numberline {13.2}Lecture 28}{68}{subsection.13.2}
+\contentsline {subsection}{\numberline {13.2}Lecture 28}{69}{subsection.13.2}
 \contentsline {subsection}{\numberline {13.3}Lecture 29}{71}{subsection.13.3}

@@ -36,6 +36,7 @@
     
 \usepackage{thmtools}
 \usepackage[capitalise]{cleveref} 
+\usepackage{comment}
     
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
@@ -152,6 +153,7 @@
 \newcommand{\zfc}{\mathsf{ZFC}}
 \newcommand{\ac}{\mathsf{AC}}
 \newcommand{\ord}{\mathsf{OR}}
+\newcommand{\VL}{\mathsf{V=L}}
 
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
@@ -358,16 +360,16 @@ $\Q$ is dense in $\R$.
 Any set of pairwise disjoint open intervals must be countable because $\Q$ is both countable and dense in $\R$.
 \end{note}
 
-\begin{definition} Let  $(P, <)$ be a (strict) linear ordering (also known as a (strict) total order).
+\begin{definition} Let  $\left(P, <\right)$ be a (strict) linear ordering (also known as a (strict) total order).
 \begin{enumerate}
-\item We say that $(P, <)$  is \textit{dense (in itself)} if for any $a, b \in P$ with $a<b$, there exists   $c\in P$ such that $a<c<b$. 
-\item We say that $(P, <)$ is \textit{complete} if every nonempty bounded subset of $P$ has a supremum. 
-\item We say that $(P, <)$ is \textit{unbounded} if it contains neither an upper bound nor a lower bound. 
+\item We say that $\left(P, <\right)$  is \textit{dense (in itself)} if for any $a, b \in P$ with $a<b$, there exists   $c\in P$ such that $a<c<b$. 
+\item We say that $\left(P, <\right)$ is \textit{complete} if every nonempty bounded subset of $P$ has a supremum. 
+\item We say that $\left(P, <\right)$ is \textit{unbounded} if it contains neither an upper bound nor a lower bound. 
 \end{enumerate}
 \end{definition}
 
 \begin{definition}
-Let $(P, <)$ and $(Q, <')$ be any two linear orderings. 
+Let $\left(P, <\right)$ and $\left(Q, <'\right)$ be any two linear orderings. 
 \begin{enumerate}
 \item We say that $f : P \to Q$ is \textit{order-preserving} if $x< y \implies f(x) <' f(y)$.
 \item We say that $P$ and $Q$ are \textit{(order) isomorphic}, written as $P\cong Q$, if there is some order-preserving bijection from $P$ onto $Q$.
@@ -384,16 +386,31 @@ The following  properties are invariant under isomorphism.
 \end{prop}
 
 \begin{theorem}
- Let $(C, <)$ be a complete linear ordering  containing some countable dense subset $(P, <)$ such that $P \cong \Q$ . Then $C\cong \R$. 
+ Let $\left(C, <\right)$ be a complete linear ordering  containing some countable dense subset $\left(P, <\right)$ such that $P \cong \Q$ . Then $C\cong \R$. 
 \end{theorem}
 \begin{proof} 
  By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $(q_n)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\{f^{-1}(q_n) \mid n \in \N\}$ to $r$.
 \end{proof}
 
+\smallskip
+
+\begin{theorem}[Cantor]
+ Any two countable unbounded dense linearly ordered sets $\left(P, <_P\right)$ and $\left(Q, <_Q\right)$ are isomorphic. 
+\end{theorem}
+\begin{proof} 
+Let $P = \left\{p_n \mid n \in \N\right\}$ and $Q = \left\{q_n \mid n\in \N\right\}$. We construct an isomorphism $\psi : P \overset{\cong}{\longrightarrow} Q$ by induction. Let $\psi(p_0)= q_0$. Let $n\in \N$ and suppose that we have defined $\psi(p_k)$ for each $k\leq n$. There are three cases to consider.
+\begin{enumerate}[label=(\alph*)]
+\item Suppose that both $X\coloneqq \left\{ p_k \in P \mid p_k < p_{n+1} \land k \leq n\right\}$ and $Y \coloneqq \left\{ p_k \in P \mid p_{n+1} < p_k \land k \leq n\right\}$  are nonempty. Let $p_{k_s} = \min(X)$ and $p_{k_b} = \min(Y)$. Since $Q$ is dense, there is a least $s\in \N$ such that $\psi(p_{k_s}) < q_s < \psi(p_{k_b})$. Let $\psi(p_{n+1}) = q_s$. 
+\item Suppose that $X$ is empty but $Y$ is nonempty. Let $p_{k_b} = \min(Y)$. Since $Q$ is unbounded, there is a least $s\in \N$ such that $q_s < \psi(p_{k_s})$. Let $\psi(p_{n+1}) = q_s$. 
+\item Suppose that  $Y$ is empty but $X$ is nonempty. This case is symmetric to case (b).
+\end{enumerate}
+We have thus completed our construction of $\psi$.
+\end{proof}
+
 \subsection{Lecture 3}
 
 \begin{definition}
-Let  $(P, <)$ be any linear ordering. A \textit{Dedekind cut in $P$} is a pair $(A, B)$ of disjoint nonempty subsets of $P$ such that
+Let  $\left(P, <\right)$ be any linear ordering. A \textit{Dedekind cut in $P$} is a pair $(A, B)$ of disjoint nonempty subsets of $P$ such that
 \begin{enumerate}[label=(\roman*)]
 \item $A \cup B = P$,
 \item $a<b$ for any $a\in A$ and $b \in B$, and
@@ -402,7 +419,7 @@ Let  $(P, <)$ be any linear ordering. A \textit{Dedekind cut in $P$} is a pair $
 \end{definition}
 
 \begin{theorem}
-Let $(P, <)$ be a dense unbounded linearly ordered set. Then there exist a linear ordering $(P', <')$ isomorphic to $(P, <)$ and a complete unbounded linearly ordered set $(C, \prec)$ such that
+Let $\left(P, <\right)$ be a dense unbounded linearly ordered set. Then there exist a linear ordering $\left(P', <'\right)$ isomorphic to $\left(P, <\right)$ and a complete unbounded linearly ordered set $\left(C, \prec\right)$ such that
 \begin{itemize}
 \item $P' \subset C$,
 \item $<'$ equals $\prec$ restricted to $P'$, and
@@ -410,18 +427,18 @@ Let $(P, <)$ be a dense unbounded linearly ordered set. Then there exist a linea
 \end{itemize}
 \end{theorem}
 \begin{proof}
-Set $C$ equal to the set of all Dedekind cuts in $P$. Let $(A_1, B_1)\preceq (A_2, B_2)$ if $A_1\subset A_2$. It's easy to check that $(C, \prec)$ is  a linear ordering. Also, since $P$ is unbounded, so is $C$. If $T\coloneqq \{(A_s, B_s) \mid s\in S\}$ is any nonempty bounded subset of $C$, then $$\left(\bigcup_{s\in S} A_s, \bigcap_{s\in S} B_s\right) = \sup(T).$$ Thus, $C$ is complete. 
+Set $C$ equal to the set of all Dedekind cuts in $P$. Let $\left(A_1, B_1\right)\preceq \left(A_2, B_2\right)$ if $A_1\subset A_2$. It's easy to check that $\left(C, \prec\right)$ is  a linear ordering. Also, since $P$ is unbounded, so is $C$. If $T\coloneqq \{(A_s, B_s) \mid s\in S\}$ is any nonempty bounded subset of $C$, then $$\left(\bigcup_{s\in S} A_s, \bigcap_{s\in S} B_s\right) = \sup(T).$$ Thus, $C$ is complete. 
 \\ \\
 Now, for each $p\in P$, let 
 \begin{align*}
 A_p & = \left\{x\in P \mid x<p\right\}
 \\ B_p & = \left\{x\in P \mid x\geq p\right\}.
 \end{align*}
-Note that each $(A_p, B_p)$ belongs to $C$ and that $$P' \coloneqq \left\{(A_p, B_p) \mid p\in P\right\} \cong P.$$ Suppose that $(A_1, B_1) \prec (A_2, B_2)$, so that $A_1 \subsetneq A_2$. Then there is some $x\in A_2 \setminus A_1$. Pick any $x' \in A_2$ such that $x<x'$. Note that $x\in A_{x'} \setminus A_1$ and $x'\in A_2\setminus A_{x'}$. Therefore, $A_1 \subsetneq A_{x'} \subset A_2$. This implies $(A_1, B_1) \prec (A_{x'}, B_{x'}) \prec (A_2, B_2)$. It follows that $P'$ is dense in $C$. 
+Note that each $\left(A_p, B_p\right)$ belongs to $C$ and that $$P' \coloneqq \left\{(A_p, B_p) \mid p\in P\right\} \cong P.$$ Suppose that $\left(A_1, B_1\right) \prec \left(A_2, B_2\right)$, so that $A_1 \subsetneq A_2$. Then there is some $x\in A_2 \setminus A_1$. Pick any $x' \in A_2$ such that $x<x'$. Note that $x\in A_{x'} \setminus A_1$ and $x'\in A_2\setminus A_{x'}$. Therefore, $A_1 \subsetneq A_{x'} \subset A_2$. This implies $\left(A_1, B_1\right) \prec \left(A_{x'}, B_{x'}\right) \prec \left(A_2, B_2\right)$. It follows that $P'$ is dense in $C$. 
 \end{proof}
 
 \begin{exmp}
-Given the ordered field $(\Q, <)$, we can construct $\R$ as the set of all Dedekind cuts in $\Q$.
+Given the ordered field $\left(\Q, <\right)$, we can construct $\R$ as the set of all Dedekind cuts in $\Q$.
 \end{exmp}
 
 \begin{lemma}
@@ -546,10 +563,11 @@ Hilbert placed the resolution of $\mathsf{CH}$ first on his famous 1900 research
 \end{remark}
 
 \begin{theorem}
-There exists a set $X\subset \R$ such that $X \sim \R$ and for any perfect set $P$, $P\not\subset X$.
+There exists a set $X\subset \R$ such that $X \sim \R \sim \R \setminus X$ and for any perfect set $P$, $P\not\subset X$ and $P \not \subset \R \setminus X$.
 \end{theorem}
 \begin{proof}
-This is Exercise 3 of Homework 2.
+Let $\mathcal{P}$ denote the set of all perfect sets. One can show that $\mathcal{P} \sim \R$. By the axiom of choice, we can well-order $\mathcal{P}$ as $$\mathcal{P} =\left\{P_{\alpha} \mid \alpha <2^{\aleph_0}\right\}.$$  Similarly, we can well-order $\R$ as $$\R =\left\{x_{\alpha}  \mid \alpha < 2^{\aleph_0}\right\}.$$
+Let $0$ denote the least element of $2^{\aleph_0}$. Let $r_0 = x_0$. For each $\gamma \in 2^{\aleph_0}$, let $\alpha_{\gamma}$ denote the least element of the set $$\left\{\alpha < 2^{\aleph_0} \mid r_{\beta} < x_{\alpha} \text{ for any } \beta < \gamma \text{ and } x_{\alpha} \in P_{\gamma} \right\},$$ which is nonempty because $P_{\gamma}$ is equipollent to $\R$ and thus cannot be contained in any initial segment of the $x_{\alpha}$. Now, let $\beta_{\gamma}$ denote the least element of the nonempty set $$ \left\{\alpha < 2^{\aleph_0} \mid x_{\alpha_{\gamma}} < x_{\alpha} \text{ for any } \beta < \gamma \text{ and } x_{\alpha} \in P_{\gamma}\right\}    .$$  Let $r_{\gamma} =x_{\beta_{\gamma}}$. Then both $X\coloneqq \{r_{\alpha} \mid \alpha < 2^{\aleph_0}\}$ and $\R\setminus X$ are equipollent to $\R$. For each $\gamma < 2^{\aleph_0}$, we have that $x_{\alpha_{\gamma}}, x_{\beta_{\gamma}} \in P_{\gamma}$. But exactly one of these belongs to $X$. Hence $P_{\gamma} \not \subset X$, and $P_{\gamma} \not \subset R\setminus X$.
 \end{proof}
 
 \section{Zermelo-Fraenkel set theory}
@@ -750,7 +768,7 @@ $\Q_{>0}$ with its usual order is not a woset. For example, the subset $\{\frac{
 \end{non-exmp}
 
 \begin{lemma}\label{woprop}
-Let $(W, <)$ be a woset. If $f: W \to W$ is order-preserving, then $f(w) \geq w$ for each $w\in W$.
+Let $\left(W, <\right)$ be a woset. If $f: W \to W$ is order-preserving, then $f(w) \geq w$ for each $w\in W$.
 \end{lemma}
 \begin{proof}
 Suppose, towards a contradiction, that the set $M \coloneqq \{w\in W \mid f(w) <w\}$ is nonempty. Let $m = \min(M)$. Then $f(f(m))< f(m) < m$, a contradiction. 
@@ -764,28 +782,28 @@ Suppose, towards a contradiction, that the set $M \coloneqq \{w\in W \mid f(w) <
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}[label=(\arabic*)]
-\item Let $f: (W, <) \to (W,<)$ be an automorphism.  Let $x\in W$. By \cref{woprop}, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
+\item Let $f: \left(W, <\right) \to (W,<)$ be an automorphism.  Let $x\in W$. By \cref{woprop}, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
 \item Suppose, towards a contradiction, that $\delta$ and $\psi$ are distinct isomorphisms $ W_1\to W_2$. Then $\psi^{-1} \circ \delta$ is an automorphism of $W_1$. But $\delta^{-1} \ne \psi^{-1}$, and thus $\psi^{-1} \circ \delta \ne \id_{W_1}$. This contradicts part (1). 
 \end{enumerate}
 \end{proof}
 
 \begin{definition}
-Let $(W, <)$ be a woset and $x\in W$. The \textit{initial segment of $W$ determined by $x$} is the set $$W_x \coloneqq \{ w\in W \mid w<x\}.$$
+Let $\left(W, <\right)$ be a woset and $x\in W$. The \textit{initial segment of $W$ determined by $x$} is the set $$W_x \coloneqq \left\{ w\in W \mid w<x\right\}.$$
 \end{definition}
 
 \begin{note}
-Let $(W, <)$ be a woset. If $x<y$, then $W_x$ is an initial segment of $W_y$.
+Let $\left(W, <\right)$ be a woset. If $x<y$, then $W_x$ is an initial segment of $W_y$.
 \end{note}
 
 \begin{lemma}\label{non-iso}
-Let $(W, <)$ be a woset and $x\in W$. Then $W\not \cong W_x$.
+Let $\left(W, <\right)$ be a woset and $x\in W$. Then $W\not \cong W_x$.
 \end{lemma}
 \begin{proof}
-Le t$f : W \overset{\cong}{\longrightarrow} W_x$. By \cref{woprop}, $f(x) >x$ since $x\notin W_x$. But since $f(x) \in W_x$, it follows that both $f(x) <x$ and $x>f(x)$, which is impossible. 
+Let $f : W \overset{\cong}{\longrightarrow} W_x$. Thanks to \cref{woprop}, we see that $f(x) >x$ since $x\notin W_x$. But since $f(x) \in W_x$, it follows that both $f(x) <x$ and $x>f(x)$, which is impossible. 
 \end{proof}
 
 \begin{theorem}
-Let $(W, <)$ and $(Y, <')$ be any two well-orderings.  Then \emph{exactly one} of the following scenarios occurs. 
+Let $\left(W, <\right)$ and $\left(Y, <'\right)$ be any two well-orderings.  Then \emph{exactly one} of the following scenarios occurs. 
 \begin{enumerate}[label=(\alph*)]
 \item $W \cong Y$.
 \item $W \cong  Y_y$ for some $y\in Y$.
@@ -875,7 +893,7 @@ If $S$ is a nonempty set of ordinals, then  $\bigcap{S} = \min(S)$.
 \end{corollary}
 
 \begin{lemma}\label{PL}
-Let $(W, <)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to some ordinal. 
+Let $\left(W, <\right)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to some ordinal. 
 \end{lemma}
 \begin{proof}
 \Cref{non-iso} together with \cref{ord-wo} proves that such a $Z(x)$ must be unique. Therefore, $$A\coloneqq \{Z(x) \mid x \in W\}$$ is a set by $\mathsf{Rep}$. Note that $(A, \in)$ is a well-ordering. To see that $A$ is transitive, let $v\in A$. Then $v = Z(y)$ for some $y\in W$. Let $x\in Z(y)$. Then $$ x \cong X_{g_y^{-1}(x)} \cong Z(g^{-1}_y(x))    $$ where $g_y : W_y \overset{\cong}{\longrightarrow} Z(y)$.  This implies that $x = Z(g^{-1}_y(x))$ since both $x$ and $Z(g^{-1}_y(x))$ are ordinals. Thus, $x \in A$, so that $v\subset A$.
@@ -891,7 +909,7 @@ By \cref{alt-def}, it follows that $f$ is order-preserving. Since $f$ is clearly
 \end{proof}
 
 \begin{theorem} 
-For any woset $(W, <)$, there is a unique ordinal $\alpha$ such that $W \cong \alpha$.
+For any woset $\left(W, <\right)$, there is a unique ordinal $\alpha$ such that $W \cong \alpha$.
 \end{theorem}
 \begin{proof}
 \Cref{non-iso} together with \cref{ord-wo} proves that such an $\alpha$ must be unique. We must prove that such an $\alpha$ exists.
@@ -919,7 +937,7 @@ Suppose, towards a contradiction, that $\ord \setminus C \ne \emptyset$. Let $m 
 \end{proof}
 
 \begin{note}
-We can replace the condition ``$\alpha +1 \in C$ whenever $\alpha \in C$" with the condition ``$\alpha +1 \in C$ whenever $\{\beta \mid \beta \leq \alpha \} \subset C$."
+We can replace the condition ``$\alpha +1 \in C$ whenever $\alpha \in C$" with the condition ``$\alpha +1 \in C$ whenever $\left\{\beta \mid \beta \leq \alpha\right\} \subset C$."
 \end{note}
 
 \begin{theorem}[Transfinite recursion]
@@ -1159,11 +1177,11 @@ $$ F(\alpha) = f(X \setminus \{F(\beta) \mid \beta \in \alpha \})   .$$ Since $f
 \end{proof}
 
 \begin{definition}
-Let $(P, <)$ be a partially ordered set. A \textit{chain in $P$} is a nonempty subset $X\subset P$ such that $(X, <\restriction_X)$ is a linear ordering. 
+Let $\left(P, <\right)$ be a partially ordered set. A \textit{chain in $P$} is a nonempty subset $X\subset P$ such that $(X, <\restriction_X)$ is a linear ordering. 
 \end{definition}
 
 \begin{definition}[Zorn's lemma ($\mathsf{Zorn}$)]
-If $(P, <)$ is a nonempty poset and every chain in $P$ has an upper bound in $P$, then $P$ has a maximal element. 
+If $\left(P, <\right)$ is a nonempty poset and every chain in $P$ has an upper bound in $P$, then $P$ has a maximal element. 
 \end{definition}
 
 \begin{lemma}
@@ -1564,7 +1582,7 @@ Let $\A$ be a model for $\L$ such that its domain $A$ is a set. (Such an $\A$ is
 Then $B$ forms an elementary submodel of $\A$. 
 \end{lemma}
 
-\begin{theorem}[(Downward) L\"owenheim-Skolem (L-S)]
+\begin{theorem}[(Downward) L\"owenheim-Skolem (L-S)]\label{LS}
 Let $\L$ be a countable language. For any infinite set model $\A$ for $\L$ and any set $X\subset \dom(\A)$, we can use $\ac$ to find a set model $\B$ for $\L$ such that 
 \be
 \item $X\subset \dom(\B)$, 
@@ -1576,12 +1594,12 @@ In particular, there is a countable $\L$-structure $\B$ such that $\B \preceq \A
 
 
 \begin{lemma}[Mostowski collapse]\label{MC}
-Consider  a class model $(A, E^A)$ of $\zf$, where $E^A$ is a (strict) binary relation interpreting $\in$. If $E^A$ is both well-founded and extensional, then there is some transitive class model $\left(B, \in_B\right)$  such that $A \cong B$.
+Consider  a class model $\left(A, E^A\right)$ of $\zf$, where $E^A$ is a (strict) binary relation interpreting $\in$. If $E^A$ is both well-founded and extensional, then there is some transitive class model $\left(B, \in_B\right)$  such that $A \cong B$.
 \end{lemma}
 \begin{proof}
-Suppose that $E^A$ is both well-founded and extensional. We can extend transfinite induction (and thus recursion) on $\ord$ to any well-founded class.  Thus, we can define $f : A \to V$ by $$ f(a) = \left\{f(b) \mid b \in A \land b{E^A}a\right\}    .$$ Let $x\in f(A)$, so that $x = \{f(y) \mid y \in A \land y{E^A}z\}$ for some $z\in A$. Hence any element of $x$ belongs to the image of $f$, which shows that $f(A)$ is a transitive class. 
+Suppose that $E^A$ is both well-founded and extensional. We can extend transfinite induction (and thus recursion) on $\ord$ to any well-founded class.  Thus, we can define $f : A \to V$ by $$ f(a) = \left\{f(b) \mid b \in A \land b{E^A}a\right\}    .$$ Let $x\in f(A)$, so that $x = \left\{f(y) \mid y \in A \land y{E^A}z\right\}$ for some $z\in A$. Hence any element of $x$ belongs to the image of $f$, which shows that $f(A)$ is a transitive class. 
 \\ \\ Now, we want to show that $f$ is an embedding. Let $a, b\in A$ with $a\ne b$. Suppose, towards a contradiction, that the class $$D\coloneqq \left\{z \in f(A) \mid (\exists a,b \in A)(a\ne b \land z = f(a) = f(b))\right\}$$ is nonempty. Choose $m \in D$ of least rank and let $a$ and $b$ witness that $m \in D$. Since $a\ne b$, we have $\ext_{E^A}(a) \ne \ext_{E^A}(b)$. Assume, wlog, that there is some $u \in \ext_{\E^A}(a) \setminus \ext_{E^A}(b)$.  Then $$f(u) \in f(a) =m = f(b),$$ and thus there is some $v \in \ext_{E^A}(b)$ such that $s\coloneqq f(u) = f(v)$.  Since $u \ne v$, we have $s \in D$. But $s\in m$, so that $\rnk(s) < \rnk(m)$, a contradiction. It follows that $f$ is injective. 
-\\ \\ It remains to show that $(x,y) \in E^A \iff f(x)\in f(y)$. The forward direction is obvious. For the reverse direction, suppose that $f(x) \in f(y)$. Then $f(x) = f(c)$ for some $c{E^A}y$. Since $f$ is injective, we have $x=c$. Thus, $(x,y) \in E^A$. 
+\\ \\ It remains to show that $(x,y) \in E^A \iff f(x)\in f(y)$. The forward direction is obvious. For the backward direction, suppose that $f(x) \in f(y)$. Then $f(x) = f(c)$ for some $c{E^A}y$. Since $f$ is injective, we have $x=c$. Thus, $(x,y) \in E^A$. 
 \end{proof}
 
 \begin{term}
@@ -1592,14 +1610,14 @@ We call $\left(B, E^B\right)$ from \cref{MC} the \textit{transitive collapse of 
 Provided that $\con(\zf)$, there exists a set model of $\zf$ that is not well-founded.
 \end{prop}
 \begin{proof}
-In general, as a result of the compactness theorem, if an $\L$-structure $(A, E^A)$ has a chain $$x_1{E^A}x_2{E^A}\cdots {E^A}x_n$$ for each $n\in \N$, then there is some $\L$-structure $(B, E^B)$ such that   $\underbrace{A\equiv B}_{\text{elem. equiv.}}$ but $E^B$ is not well-founded.
+In general, as a result of the compactness theorem, if an $\L$-structure $\left(A, E^A\right)$ has a chain $$x_1{E^A}x_2{E^A}\cdots {E^A}x_n$$ for each $n\in \N$, then there is some $\L$-structure $\left(B, E^B\right)$ such that   $\underbrace{A\equiv B}_{\text{elem. equiv.}}$ but $E^B$ is not well-founded.
 \end{proof}
 
 \begin{theorem}[Skolem's paradox]
 Let $\varphi(x)$ denote the formula $$\exists f(f : \omega  \to  x \land f \text{ is a bijection})  ,  $$ where $\omega$ denotes the smallest infinite ordinal. Provided that $\zf$ has at least one well-founded set model $\A$,\footnote{This assumption is strictly stronger than the assumption that $\con(\zf)$ but is weaker than the assumption that $\exists \kappa(\si(\kappa))$.} there is a transitive set model $\B$ of $\zf$ such that $\B \nvDash \varphi$ but $\varphi$ holds in the universe of all sets.
 \end{theorem}
 \begin{proof}
-By the L-S theorem, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By Mostowski, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi(\kappa^{\B})}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi(\kappa^{\B})$ holds in the universe of all sets.
+By \cref{LS}, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By Mostowski, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi(\kappa^{\B})}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi(\kappa^{\B})$ holds in the universe of all sets.
 \end{proof}
 
 \subsection{Lecture 16}
@@ -1762,7 +1780,7 @@ For any $x\in L$, let $\order(x)$ denote the least ordinal $\alpha$ such that $x
 
 \smallskip
 
-In 1939, G\"odel proved that $\zf \vdash \left(\zf\right)^L + \left(V=L\right)^L$, which means that if $\zf$ is consistent, then so is $\zf + {V=L}$. The assertion ``$V=L$" is known as the \textit{axiom of constructibility}.
+In 1939, G\"odel proved that $\zf \vdash \left(\zf\right)^L + \left(\VL\right)^L$, which means that if $\zf$ is consistent, then so is $\zf + {V=L}$. The assertion ``$\VL$" is known as the \textit{axiom of constructibility}.
 
 \medskip
 
@@ -1851,6 +1869,23 @@ Cohen proved that $$\con(\zf) \implies \con(\zfc + \neg{\mathsf{CH}}),$$ thereby
 \subsection{Lecture 41}
 
 \textit{Discussion of Homework 3 solutions.}
+
+\begin{problem}[The hierarchy of constructible sets.]
+
+Prove in $\zf + \VL$ that for any $\alpha < \aleph_1$, there is some $\alpha < \beta < \aleph_1$ such that for any $x\subset \omega$, if $x\in L_{\beta+1}$, then $x\in L_{\beta}$.
+\end{problem}
+\begin{solution}
+Recall that $\zf+ \VL \models \ac$, so that \cref{LS} holds. We know that $\P(\omega)\subset L_{\omega_1}$. Note that no $\theta < \omega_1$ satisfies $\P(\omega)\subset L_{\theta}$ because $\lvert{L_{\theta}}\rvert<\aleph_1$.
+
+\smallskip
+
+Thanks to \cref{LS}, we have a countable submodel $M\preceq L_{\omega_2}$ such that ${\alpha}\in M$. Since $\omega_2$ is a limit ordinal and the function $\alpha \mapsto L_{\alpha}$ is $\Delta_1$, this function must be absolute for $L_{\omega_{2}}$ and the transitive collapse of $M$. The collapse therefore must equal $L_{\chi}$ for some countable ordinal $\chi$. Hence ${\alpha}\in  L_{\chi} \preceq L_{\omega_2}$. Note that since $\omega_2$ is a limit, $\chi$ must be one as well. Also, note that $\omega \in L_{\chi}$ and that $L_{\omega_1}, \omega_1 \in L_{\omega_2}$. Finally, note that $L_{\omega_2} \models \alpha < \omega_1$. 
+
+\smallskip
+
+The formula $x=\delta$ is absolute for $L_{\omega_2}$ for any ordinal $\delta < \omega_2$, and thus the formula $x=L_{\delta}$ is absolute for it as well. Hence $L_{\omega_2}\models \VL$, which implies that $$L_{\omega_2}\models \exists \lambda(\lambda \in \ord \land P(\omega)\subset L_{\lambda}),$$ where $\omega_1$ is the least such $\lambda$.
+By elementary equivalence there is some ordinal $\beta' \in L_{\chi}$ such that $\P(\omega)^{L_{\chi}}\subset L_{\beta'}$. Let $\beta$ be the least such $\beta '$, so that by elementary equivalence we have that $\alpha <\beta$. As $L_\chi$ is countable and transitive, it follows that $\alpha < \beta < \aleph_1$. Also, since $\chi$ is a limit, we know that $L_{\beta+1}\in L_{\chi}$, thereby completing our proof.
+\end{solution}
 
 \subsection{Lecture 42}
 

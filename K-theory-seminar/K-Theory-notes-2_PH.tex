@@ -2,7 +2,6 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumitem}
- \usepackage{stmaryrd}
  \usepackage{bm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -14,6 +13,7 @@
 \usepackage{xfrac}
 \usepackage{mathtools}
 \usepackage{bm}
+\usepackage{extpfeil}
 \usepackage{ dsfont }
 \usepackage{mathrsfs}
 \usepackage{hyperref}
@@ -188,7 +188,7 @@ An object $X$ of $\c$ is \textit{initial} if for each $Y \in \ob \c$, there is a
 \end{definition}
 
 
-Any property $P$ of $\c$ has a dual property $P^{op}$ of $\c^{op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
+Any property $P$ of $\c$ has a dual property $P^{\op}$ of $\c^{\op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
 
 
 \begin{exmp}
@@ -199,11 +199,11 @@ Being initial and being terminal are dual properties.
 Any two initial objects of $\c$ are canonically isomorphic. The same holds for any two terminal objects of $\c$.
 \end{lemma}
 \begin{proof}
-Compose the two unique morphisms to get an isomorphism between the two initial objects. Apply duality to get the second claim.
+Let $X$ and $X'$ be two initial objects. Compose the two unique morphisms $X\to X'$ and $X'\to X$ to get an isomorphism between $X$ and $X'$. Apply duality to this argument for the case of terminal objects.
 \end{proof}
 
 
-We can think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F\left(\hat{f}\right) \circ f = f'$.
+We can think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $\left(Y, f\right)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F\left(\hat{f}\right) \circ f = f'$.
 \[ \begin{tikzcd}
 X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F\left(\hat{f}\right)"] \\% 
  & F(X')
@@ -231,7 +231,7 @@ The \textit{coslice} or \textit{right fiber category}, denoted by $\left(Y/F\rig
 
 
 
-If $F^{op}:C^{op} \to D^{op}$ is opposite to the functor $F: \c \to \d$ and $Y \in \ob \d$, then $(Y/F)^{op} = {F^{op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
+If $F^{\op}:C^{\op} \to D^{\op}$ is opposite to the functor $F: \c \to \d$ and $Y \in \ob \d$, then $(Y/F)^{\op} = {F^{\op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{\op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
 
 \smallskip
 
@@ -250,7 +250,7 @@ Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $(
 Any two universal arrows from $x$ to $F$ can be canonically identified by \cref{initial}.
 \end{corollary}
 
-\section{Colimits}
+\section{(Co)limits}
 
 \begin{definition}
 A \textit{zero object} of $\c$ is an object that is both initial and terminal.
@@ -283,7 +283,7 @@ commutes.
 
 
 \begin{remark}
-If $X \in \ob \c$, then $\left({X}/{\c}\right)^{\op} = {\c^{op}}/{X}$. Thus, the under- and overcategories are dual in the sense that $P(X, \c)$ is true of any undercategory ${X}/{\c}$ iff $P^{\op}(X, \c)$ is true of any overcategory ${\c}/{X}$. 
+If $X \in \ob \c$, then $\left({X}/{\c}\right)^{\op} = {\c^{\op}}/{X}$. Thus, the under- and overcategories are dual in the sense that $P(X, \c)$ is true of any undercategory ${X}/{\c}$ iff $P^{\op}(X, \c)$ is true of any overcategory ${\c}/{X}$. 
 \end{remark}
 
 \begin{lemma}
@@ -306,12 +306,12 @@ Let $\left(X, x\right)$ be a pointed set with $X= \{x\}$. Let $\set_{\ast}$ deno
 
 \smallskip
 
-Given a morphism $\alpha : X \to Z$ in $\c$, define the \textit{under-and-overcategory} $\left(X/\c/Z\right)_{\alpha}$ as having triples $(Y, i, p)$ as objects where $i : X \to Y$ and $p: Y \to Z$ are morphisms in $\c$ such that $p\circ i = \alpha$. Define the set of morphisms from $\left(Y, i, p\right)$ to $\left(Y', u', p'\right)$ as the set of morphisms $f: Y \to Y'$ such that 
+Given a morphism $\alpha : X \to Z$ in $\c$, define the \textit{under-and-overcategory} $\left(X/\c/Z\right)_{\alpha}$ as having triples $\left(Y, i, p\right)$ as objects where $i : X \to Y$ and $p: Y \to Z$ are morphisms in $\c$ such that $p\circ i = \alpha$. Define the set of morphisms from $\left(Y, i, p\right)$ to $\left(Y', u', p'\right)$ as the set of morphisms $f: Y \to Y'$ such that 
 \[
 \begin{tikzcd}[row sep=large, column sep=large]
-X \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, blue, "\alpha", swap]
+X \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, blue, sloped,pos=.8, "\alpha", swap]
 & Y' \arrow[to=2-2, "p' "] \\
-|[alias=Z]| Y \arrow[to=1-2, ur, red, "f"] \arrow[to=2-2, "p"'] 
+|[alias=Z]| Y \arrow[to=1-2, ur, red, sloped,pos=.3, "f"] \arrow[to=2-2, "p"'] 
 & Z
 \arrow[from=ul, to=1-2, "i' "]
 \end{tikzcd}
@@ -330,9 +330,9 @@ Let $\j$ be a category. A \textit{diagram of shape $\j$ in $\c$} is a functor $F
 \end{definition}
 
 \begin{definition}
-Given a functor $F: \j \to \c$ and $X \in \ob \c$, a \textit{cone over $F$} consists of an \textit{apex} $X\in \ob \c$ and \textit{legs} $f_j : X \to F(j)$ for each $j \in \ob \j$ such that for any $\alpha : j \to j'$, 
+Given a functor $F: \j \to \c$ and $X \in \ob \c$, a \textit{cone over $F$} consists of an \textit{apex} $X\in \ob \c$ and \textit{legs} $f_j : X \to F(j)$ for each $j \in \ob \j$ such that for any $\alpha : j \to j'$, the triangle
 \[ \begin{tikzcd}
-X \arrow[r, "f_j"] \arrow[swap, dr,  " f_{j'} "] & F(j) \arrow[d, "F\alpha"] \\% 
+X \arrow[r, "f_j"] \arrow[swap, dr,  " f_{j'} "] & F(j) \arrow[d, "F\alpha"] \\
  & F(j')
 \end{tikzcd}
 \]
@@ -348,8 +348,8 @@ The \textit{category of cones over $F$} is the right fiber category $X/F$. The \
 \begin{definition}
 Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta_{\c} g : \Delta_{\c} Y \Rightarrow \Delta_{\c} Z$ be the natural transformation with components $X \mapsto g$. 
 \begin{enumerate}
-\item A \textit{colimit} for the functor $F: \c \to \d$ consists of an object $Y$ of $\d$ and a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$. We write $Y = \colim_{\c} F$.
-\item  We say that $\d$ admits \textit{all $\c$-shaped colimits} if each functor $G: \c \to \d$ has a colimit.
+\item A \textit{colimit  $\colim_{\c}{F}$} of the functor $F: \c \to \d$ is an object $Y$ of $\d$ together with a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$.
+\item  We say that $\d$ \textit{admits/has  $\c$-shaped colimits} if each functor $G: \c \to \d$ has a colimit.
 \item We sat that $\d$ is \textit{cocomplete} if each functor $G : \c \to \d$ with $\c$ small has a colimit.
 \end{enumerate}
 \end{definition}
@@ -366,16 +366,16 @@ There is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta{Z})$
 Any two colimits are canonically isomorphic.
 \end{prop}
 \begin{proof}
-When $\c$ is small, this is immediate from \cref{initial}. But note that the proof of \cref{initial} does not require that $\c$ be locally small (a property which Rognes stipulates of any category). 
+When $\c$ is small, this is immediate from \cref{initial}. But note that the proof of \cref{initial} does \emph{not} require that $\c$ be locally small (a property which Rognes stipulates of any category). 
 \end{proof}
 
 \smallskip
 
-Assume that $\d$ admits all $\c$-shapes colimits and that $\c$ is small. Then a (possibly global) choice function $\colim_\c : \mathbf{Fun}(\c, \d) \to \d$ given by choosing a colimit for each functor determines a functor that is left adjoint to the constant diagram functor $\Delta_{\c} : \d \to \mathbf{Fun}(\c, \d)$. Indeed,
+Assume that $\d$ has $\c$-shaped colimits and that $\c$ is small. Then a (possibly global) choice function $\colim_\c : \mathbf{Fun}(\c, \d) \to \d$ given by choosing a colimit for each functor determines a functor that is left adjoint to the constant diagram functor $\Delta_{\c} : \d \to \mathbf{Fun}(\c, \d)$. Indeed,
 for any functor $F : \c \to \d$, there is a bijection $\d(\colim_{\c} F, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta_{\c}Z)$.
 
 \begin{definition}
-A \textit{limit} of the functor $F: \c \to \d$ is  the colimit of $F^{op} : \c^{op} \to \d^{op}$.
+A \textit{limit} of the functor $F: \c \to \d$ is  the colimit of $F^{\op} : \c^{\op} \to \d^{\op}$.
 \end{definition}
 
 
@@ -383,18 +383,18 @@ Explicitly,  a limit for $F: \c \to \d$ is an object $Z$ of $\d$ along with a na
 
 
 \begin{remark}
-The colimit of a functor $F$ is the limit of $F^{op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized to work for limits.
+The colimit of a functor $F$ is the limit of $F^{\op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized  for limits.
 \end{remark}
 
 \begin{exmp}
-If $\c$ is the empty category, then the empty functor $F: \c \to \d$ has $F/\Delta_{\c}\cong \d$, so that the colimit is an initial object of $\d$.
+If $\c$ is the empty category, then the empty functor $F: \c \to \d$ satisfies $F/\Delta_{\c}\cong \d$, so that the colimit is an initial object of $\d$.
 \end{exmp}
 
 \begin{definition}
-Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{i\in J}$ of shape $\j$. 
+Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{i\in \ob{\j}}$ of shape $\j$. 
 \begin{enumerate}
-\item The limit of this diagram is the \textit{product} $\prod_i A_i$, equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique $f: U \to \prod_i A_i$ with $\pi_i \circ f = f_i$. 
-\item  Dually, the colimit of the diagram is the \textit{coproduct} $\sum_i A_i$, equipped with inclusions $u_i : A_i \to \sum_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique $f : \sum_i A_i \to Y$ with $f_i = f \circ u_i$.
+\item The limit of this diagram is called the \textit{product} $\prod_i A_i$, equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique map $f\coloneqq \left(f_i\right) : U \to \prod_i A_i$ satisfying $\pi_i \circ f = f_i$. 
+\item  Dually, the colimit of the diagram is called the \textit{coproduct} $\coprod_i A_i$, equipped with inclusions $u_i : A_i \to \coprod_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique map $f\coloneqq \left(f_i\right) : \coprod_i A_i \to Y$ satisfying $f_i = f \circ u_i$.
 \end{enumerate}
 \end{definition}
 
@@ -408,7 +408,7 @@ Familiar examples of limits include cartesian products and direct products, wher
 Let $\j$ be the category $\bullet \rightrightarrows \bullet$. Then  a diagram of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over this with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $ff_1=f_2 = gf_1$.
 
 \begin{definition}
-If such an object $C$ together with $f_1$ is the limit of the diagram, then we say it is the \textit{equalizer} of $f$ and $g$. Dually, the colimit is called the \textit{coequalizer}.
+If such an object $C$ together with $f_1$ is the limit of the diagram, then we say it is the \textit{equalizer} of $f$ and $g$. Dually, the colimit is called the \textit{coequalizer} of $f$ and $g$.
 \end{definition}
 
 \begin{exmp}\label{set}
@@ -421,7 +421,7 @@ The equalizer in $\mathbf{Grp}$ is defined as in \cref{set} except that the rela
 
 \smallskip
 
-Now, let $\j$ be the category $\bullet \rightarrow \bullet \leftarrow \bullet$. Then a diagram of this shape looks like $B \overset{f}{\longrightarrow} D \overset{g}{\longleftarrow} A$, while a cone over this diagram looks like 
+Now, let $\j$ be the category $\bullet \rightarrow \bullet \leftarrow \bullet$. Then a diagram of this shape looks like $B \overset{f}{\longrightarrow} D \overset{g}{\longleftarrow} A$, and a cone over this diagram looks like 
 \[
 \begin{tikzcd}[row sep=large, column sep=large]
 C \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, "\alpha", swap]
@@ -429,37 +429,63 @@ C \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, "\alpha", swap]
 |[alias=Z]| B  \arrow[to=2-2, "f"'] 
 & D
 \arrow[from=ul, to=1-2, "j "]
-\end{tikzcd}
+\end{tikzcd}.
 \]
 
 \begin{definition}
 If such an object $C$ together with $i$ and $j$ is the limit of this diagram, then we call it the \textit{pullback} of $f$ and $g$, denoted by $B \times_{D} A$.
 \end{definition}
 
-\smallskip
 
-We can perform an analogous construction for $\j^{op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{D} A$.
+We can perform an analogous construction for $\j^{\op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{D} A$.
 
 
 \begin{exmp}
-The pullback in $\set$ of $f: X \to Z$ and $g: Y \to Z$ is the subset $\left\{(x,y) \in X \times Y : f(x) = g(y)\right\}$, called the \textit{fiber product} of $X$ and $Y$ over $Z$.
+The pullback in $\set$ of $f: X \to Z$ and $g: Y \to Z$ is the subset $\left\{\left(x,y\right) \in X \times Y : f(x) = g(y)\right\}$, called the \textit{fiber product} of $X$ and $Y$ over $Z$.
 \end{exmp}
+
+\smallskip
+
+All coequalizers $A \overset{f}{\underset{g}{\rightrightarrows}} B \overset{h}{\longrightarrow} C$ can be obtained from taking binary coproducts and pushouts as follows.
+\[
+\begin{tikzcd}
+A\coprod A \arrow[d, "{\left(\id_A, \id_A\right)}"']
+ \arrow[dr, phantom, "\ulcorner", very near end]
+ \arrow[r, "{\left(f,g\right)}"] & B \arrow[d, "h"] \\
+A \arrow[r]                                                                      & C               
+\end{tikzcd}
+\] Therefore, any category with binary coproducts and pushouts has coequalizers.
+
+\newextarrow{\xbigtoto}{{20}{20}{20}{20}}
+   {\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
+
+Moreover, any colimit of a sequence of the form
+\[ \label{eqn:col}
+\begin{tikzcd}
+X_0 \arrow[r, "f_0"] & X_1 \arrow[r, "f_1"] & X_2 \arrow[r, "f_2"] & \cdots
+\end{tikzcd} \tag{$\ast$}
+\] is precisely the coequalizer of
+\[
+\coprod_nX_n \xbigtoto[\left(u_{n+1}\circ f_n\right)]{\id} \coprod_nX_n.
+\] Therefore, any category with coequalizers and small coproducts has colimits of diagrams like \eqref{eqn:col}. This fact can be generalized as follows.
+
+\smallskip
 
 \begin{theorem}[Freyd] $ $
 \begin{enumerate}[label=(\roman*)]
-\item If $\c$ has equalizers and all small (resp. finite) products, then it has all small (resp. finite) limits.
-\item If $\c$ has pullbacks and a terminal object, then it has all finite limits.
+\item If $\c$ has equalizers and small (resp. finite) products, then it has small (resp. finite) limits.
+\item If $\c$ has pullbacks and a terminal object, then it has finite limits.
 \end{enumerate}
 \end{theorem}
 \begin{proof} $ $
 \begin{enumerate}
 \item See Theorem 4.9 (Johnstone).
-\item Thanks to part (i), it suffices to show that $\c$ has equalizers and all finite products. By assumption, there is some terminal object $1$. Then any product $A_1 \times A_2$ can be realized as the pullback of $A_1 \rightarrow 1 \leftarrow A_2$. By induction, $\c$ has all finite products. Moreover, for morphisms $f,g : A \to B$, note that any cone over the diagram 
+\item Thanks to part (i), it suffices to show that $\c$ has equalizers and finite products. By assumption, there is some terminal object $1$. Then any product $A_1 \times A_2$ can be realized as the pullback of $A_1 \rightarrow 1 \leftarrow A_2$. By induction, $\c$ has finite products. Moreover, for morphisms $f,g : A \to B$, note that any cone over the diagram 
 \[
 \begin{tikzcd}
-A \arrow[r, "{\left(1_A, g\right)}"] & A\times B & A \arrow[l, "{\left(1_A, f\right)}"']
+A \arrow[r, "{\left(\id_A, g\right)}"] & A\times B & A \arrow[l, "{\left(\id_A, f\right)}"']
 \end{tikzcd}
-\] yields morphisms $h: A \to C$ and $k : C \to A$ such that $h=k$ and $fk = gh$. Thus the pullback for this diagram is an equalizer for $(f, g)$, and thus our proof is complete.
+\] yields morphisms $h: A \to C$ and $k : C \to A$ such that $h=k$ and $fk = gh$. As a result, the pullback for this diagram is an equalizer of $f$ and $g$, and thus our proof is complete.
 \end{enumerate}
 \end{proof}
 

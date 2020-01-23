@@ -190,6 +190,7 @@
 \DeclareMathOperator{\rel}{rel}
 \DeclareMathOperator{\cat}{cat}
 \DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\lc}{\mathrm{LC}}
 \DeclareMathOperator{\Gd}{Gd}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\map}{Map}
@@ -631,7 +632,7 @@ This is, in fact, a groupoid in the sense of category theory.
 
 
 \begin{definition}
-Given $x_0 \in X$, define the \textit{fundamental group of the pointed space $\left(X, x_0\right)$} as $$\pi_1\left(X, x_0\right) = \Hom_{\Pi_1(X)}(x_0,x_0) .$$ 
+Given $x_0 \in X$, define the \textit{fundamental group of the pointed space $\left(X, x_0\right)$} as $$\pi_1\left(X, x_0\right) \equiv \Hom_{\Pi_1(X)}(x_0,x_0) .$$ 
 \end{definition}
 
 This means that $\pi_1\left(X, x_0\right) \equiv  \faktor{\left\{\gamma : S^1 \to X \mid \gamma(1,0) =x_0\right\}}{\simeq (\rel \ (1,0))}$.
@@ -656,7 +657,7 @@ Note that if $\eta : I \to S^n$ satisfies $\im{\eta} = S^n \setminus \{p\}$ for 
 Every path $\gamma$ in $S^n$ is path-homotopic to some path $\eta$ in $S^n$ such that $\im{\eta} \ne S^n$.
 \end{lemma}
 \begin{proof}
-Write $\gamma(t) = \left(\gamma_0(t), \gamma_1(t), \ldots, \gamma_n(t)\right)$. The Weierstrass approximation theorem implies that we can approximate each $\gamma_i$ by some smooth function. Hence we may find some smooth map $\tilde{\gamma}$ such that $$\lvert{\gamma(t) - \tilde{\gamma}(t)}\rvert <\epsilon$$ for each $t\in I$. Now, there is some smooth retraction $r: D^{n+1}\setminus \{0\} \to S^n$. Define $H : I \times I \to S^n$ by $$(t, s) \mapsto r(s\tilde{\gamma}(t) + (1-s)\gamma(t)).$$ This is a homotopy $\gamma \simeq_p r\circ \tilde{\gamma}$. But $r\circ \tilde{\gamma} : I \to S^n$ is smooth and $n>1$. By Sard's theorem, it follows that $\im(r\circ \tilde{\gamma})$ has measure zero in $S^n$. Thus, $r\circ \tilde{\gamma}$ is not surjective, as desired. 
+Let $\gamma(t) = \left(\gamma_0(t), \gamma_1(t), \ldots, \gamma_n(t)\right)$. The Weierstrass approximation theorem implies that we can approximate each $\gamma_i$ by some smooth function. Hence we may find some smooth map $\tilde{\gamma}$ such that $$\lvert{\gamma(t) - \tilde{\gamma}(t)}\rvert <\epsilon$$ for each $t\in I$. Now, there is some smooth retraction $r: D^{n+1}\setminus \{0\} \to S^n$. Define $H : I \times I \to S^n$ by $$(t, s) \mapsto r(s\tilde{\gamma}(t) + (1-s)\gamma(t)).$$ This is a homotopy $\gamma \simeq_p r\circ \tilde{\gamma}$. But $r\circ \tilde{\gamma} : I \to S^n$ is smooth and $n>1$. By Sard's theorem, it follows that $\im(r\circ \tilde{\gamma})$ has measure zero in $S^n$. Thus, $r\circ \tilde{\gamma}$ is not surjective, as desired. 
 \end{proof}
 \end{proof}
 
@@ -955,7 +956,9 @@ The \textit{knot group} $ \pi_1(\R^3 \setminus K)$ is isomorphic to $\pi_1(S^3 \
 Recall that $S^3 \cong \R^3 \cup \{\infty\}$. Write $S^3 \setminus K$ as the union of $\R^3 \setminus K$ and the open ball $B\coloneqq  (\R^3 \setminus D) \cup \{\infty\}$ where $D\supset K$ is a sufficiently large disk. Then both $B \cap (\R^3 \setminus K)$ and $B$ are simply connected (the former being homeomorphic to $S^2 \times \R$). By van Kampen, $\pi_1(S^3 \setminus K) \cong \pi_1(\R^3 \setminus K)$. 
 \end{proof}
 
-\begin{remark}
+\medskip
+
+\begin{remark}\label{S3}
 We have that $S^3 \cong ST_1 \cup_T ST_2$ where $ST_1$ and $ST_2$ denote solid tori with common boundary a torus. Indeed, 
 \begin{align*}
  S^3 & = \left\{(z_1, z_2) \in \C^2 \mid \lvert{z_1}\rvert^2 + \lvert{z_2}\rvert^2 =1\right\}
@@ -965,10 +968,10 @@ We have that $S^3 \cong ST_1 \cup_T ST_2$ where $ST_1$ and $ST_2$ denote solid t
 .\end{align*}
 \end{remark}
 
-\bigskip
+\medskip
 
 \begin{definition}
-Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alpha}\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $l$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $(U, \varphi)$ around $p$ such that $\varphi(\L_{\alpha} \cap U) \subset \R^l$ for each $\alpha$.
+Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alpha}\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $\ell$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $\left(U, \varphi\right)$ around $p$ such that $\varphi(\L_{\alpha} \cap U) \subset \R^{\ell}$ for each $\alpha$.
 \end{definition}
 
 \begin{exmp} $ $
@@ -982,11 +985,16 @@ Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alp
 The torus is the only surface that admits a foliation. 
 \end{theorem}
 
-Nevertheless, the so-called Reeb torus demonstrates that there are foliations on $S^3$. 
+\begin{exmp}[Reeb foliation]
+For a foliation of a non-surface, let us consider $S^3$. Thanks to \cref{S3}, to find a foliation of $S^3$, it suffices to find one of the solid torus $D^2 \times S^1$. To this end, define the smooth map $\psi : \Int(D^2) \times \R \to \R$ by $$\psi(x,y,t) = e^{\frac{1}{1-\sqrt{x^2 + y^2}}} -t.$$ Since this is a submersion, the constant rank theorem implies that the family of fibers of $\psi$ form the leaves of a foliation $\mathcal{F}$ of $\Int(D^2) \times \R$. Each leaf of $\mathcal{F}$ is thus the graph of a map $\Int(D^2) \to \R$ of the form 
+\[
+t = e^{\frac{1}{1-\sqrt{x^2 + y^2}}} -C, \quad C \in \R.
+.\] This means that $\mathcal{F}$ is invariant under any translation $\left(x,y,t\right) \mapsto \left(x,y, t+n\right)$ where $n\in \Z$. It follows that $\mathcal{F}$  induces a foliation $\mathcal{F}'$ of the quotient space $\Int(D^2) \times \underbrace{\R/\Z}_{S^1}$. Finally, add to $\mathcal{F}'$ the boundary of the solid torus to get a foliation of  $D^2 \times S^1$.
+\end{exmp}
 
 \medskip
 
-Now if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}, \ \quad  x\in L_{\alpha_x}$$ is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. The Frobenius theorem is precisely the converse of this. 
+Now, if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}, \ \quad  x\in L_{\alpha_x}$$ is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. The Frobenius theorem is precisely the converse of this. 
 
 
 \bigskip
@@ -1157,7 +1165,7 @@ X &
 \] commutes (i.e., $\psi$ is a bundle isomorphism).
 \end{lemma}
 \begin{proof}
-By \cref{LC}, we can obtain lifts
+By \cref{LC}, we obtain lifts
 \[
 \begin{tikzcd}
  & Y_2 \arrow[d, "p_2"] \\
@@ -1266,7 +1274,7 @@ For each $i=0, \ldots, k+1$, define the \textit{face map} $\partial^i : \Delta^k
 \end{definition}
 
 
-Let $(K, \Sigma)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Let $$C_k(K, \Sigma) \coloneqq \faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim ({-1})^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
+Let $\left(K, \Sigma\right)$ be a simplicial complex. Let $S$ denote the set of ordered $k$-simplices in $K$. Let $$C_k(K, \Sigma) \coloneqq \faktor{\bigoplus_{s\in S} \Z}{\sim}$$ where  $v_0\cdots v_k \sim ({-1})^{\tau} v_{\tau(0)}\cdots v_{\tau(k)}$ for any $\tau \in S_{k+1}$.
 
 
 \begin{note}
@@ -1365,7 +1373,7 @@ B_0 & B_1 \arrow[l, "\partial'_1"] & B_2 \arrow[l, "\partial'_2"] & B_3 \arrow[l
 
 \smallskip
 
-The $\textit{Hauptvermutung}$ is the conjecture that if $X$ is a nice topological space such as a manifold, then for any two triangulations of $X$, you  can get from one to the other in a combinatorial way. It turns out that this is false. Hence we cannot fill our above diagram with a functor $\mathbf{Top} \to \Delta$.
+The $\textit{Hauptvermutung}$ is the conjecture that if $X$ is a nice topological space such as a manifold, then for any two triangulations of $X$, you  can get one from the other in a combinatorial way. It turns out that this is false. Hence we cannot fill our above diagram with a functor $\mathbf{Top} \to \Delta$.
 
 Eilenberg and Steenrod, however, created the following approach to obtain certain reverse arrows in our diagram. Let $X$ be a space. A \textit{singular $q$-simplex on $X$}  is a continuous map $\Delta^q \to X$. Let $\text{Sing}_q(X)$ denote the set of all singular $q$-simplices on $X$. Let $C_q(X)$ be the free abelian group on $\text{Sing}_q(X)$. Define $\partial_{q} : C_q(X) \to C_{q-1}(X)$ by 
 $$\sigma \mapsto \sum_{i=0}^q({-1})^i \sigma \restriction_{\left[v_0, \ldots, \widehat{v_i}, \ldots, v_q\right]}$$ 
@@ -1826,11 +1834,11 @@ Let $\left(K, \Sigma_K\right)$ be a simplicial complex. Define a new simplicial 
 Now, consider a map $\sigma : \Delta^n \to X$, which induces a map $\sigma_{\ast}: C_{\ast}(\Delta^n) \to C_{\ast}(X)$. Let $Y \subset \R^n$ be convex (so that we can apply barycentric subdivision to it.) 
 
 \begin{definition}
-For each $k\geq 0$, define the group of \textit{linear chains $LC_k(Y)$} as the free abelian group on the set of linear maps $\Delta^k \to Y$.  For convenience, let $LC_{-1}(Y)\coloneqq  \Z\left[\emptyset\right] \cong \Z$.
+For each $k\geq 0$, define the group of \textit{linear chains $\lc_k(Y)$} as the free abelian group on the set of linear maps $\Delta^k \to Y$.  For convenience, let $\lc_{-1}(Y)\coloneqq  \Z\left[\emptyset\right] \cong \Z$.
 \end{definition}
 
 \begin{note}
-Any linear chain $\lambda: \Delta^k \to Y$ is determined by the values $w_i \coloneqq  \lambda(v_i)$ where $v_i$ denotes the $i$-th vertex of $\Delta^k$. For each $b\in Y$, we have a group homomorphism $b: LC_k(Y) \to LC_{k+1}(Y)$ given by $[w_0, \ldots, w_k] \mapsto [b, w_0, \ldots, w_k]$. Note that 
+Any linear chain $\lambda: \Delta^k \to Y$ is determined by the values $w_i \coloneqq  \lambda(v_i)$ where $v_i$ denotes the $i$-th vertex of $\Delta^k$. For each $b\in Y$, we have a group homomorphism $b: \lc_k(Y) \to \lc_{k+1}(Y)$ given by $[w_0, \ldots, w_k] \mapsto [b, w_0, \ldots, w_k]$. Note that 
 \begin{align*} \partial{b[w_0, \ldots, w_k]} & =  \partial{[b, w_0, \ldots, w_k]}
 \\ & = [w_0, \ldots, w_k] - \sum_{i=0}^k ({-1})^i[b, w_0, \ldots, \hat{w}_j, \ldots, w_k]
 \\ & = [w_0, \ldots, w_k] - b{\partial{[w_0, \ldots, w_k]}}.
@@ -1839,7 +1847,7 @@ This shows that $\partial{b} + b{\partial} =\1$, so that $b$ is a chain homotopy
 \end{note}
 
 \begin{definition}
-Let $b_{\lambda}$ denote the image under $\lambda$ of the barycenter of $\Delta^n$. Define the \textit{subdivision map $S: LC_{\ast}(Y) \to LC_{\ast}(Y)$} recursively by
+Let $b_{\lambda}$ denote the image under $\lambda$ of the barycenter of $\Delta^n$. Define the \textit{subdivision map $S: \lc_{\ast}(Y) \to \lc_{\ast}(Y)$} recursively by
 \begin{itemize}
 \item $S(\emptyset) = \emptyset$
 \item $S\lambda= b_{\lambda}{S(\partial{\lambda})}.$
@@ -1854,7 +1862,7 @@ If $\lambda$ is an embedding with $\im{\lambda} = \left[w_0, \ldots, w_n\right]$
 $S{\partial} = \partial{S}$.
 \end{lemma}
 \begin{proof}
-We see that $S\restriction_{LC_{-1}(Y)} = \1$. Also, on $LC_0(Y)$ we have that $$S([v]) = b_{[v]}S(\partial{[v]}) =b_{[v]}(\emptyset) =[v] .$$ Thus, $S\restriction_{LC_0(Y)} =\1$ as well. Hence the equation $S{\partial} = \partial{S}$ holds on $LC_0(Y)$. If ${\ast}>0$, then apply the fact that $\partial{b_{\lambda}} + b_{\lambda}{\partial} = \1$ to get
+We see that $S\restriction_{\lc_{-1}(Y)} = \1$. Also, on $\lc_0(Y)$ we have that $$S([v]) = b_{[v]}S(\partial{[v]}) =b_{[v]}(\emptyset) =[v] .$$ Thus, $S\restriction_{\lc_0(Y)} =\1$ as well. Hence the equation $S{\partial} = \partial{S}$ holds on $\lc_0(Y)$. If ${\ast}>0$, then apply the fact that $\partial{b_{\lambda}} + b_{\lambda}{\partial} = \1$ to get
 \begin{align*}
  \partial{S\lambda} & = \partial{b_{\lambda}S(\partial{\lambda}})
  \\ & =  (1- b_{\lambda}{\partial})S(\partial{\lambda})
@@ -1866,7 +1874,7 @@ We see that $S\restriction_{LC_{-1}(Y)} = \1$. Also, on $LC_0(Y)$ we have that $
 
 \medskip
 
-Define $T: LC_n(Y) \to LC_{n+1}(Y)$ a chain homotopy between $\1$ and $S$ recursively by 
+Define $T: \lc_n(Y) \to \lc_{n+1}(Y)$ a chain homotopy between $\1$ and $S$ recursively by 
 \begin{itemize}
 \item $T(\emptyset) =0$
 \item $T\lambda  = b_{\lambda}(\lambda  - T\partial{\lambda})$.
@@ -1874,8 +1882,8 @@ Define $T: LC_n(Y) \to LC_{n+1}(Y)$ a chain homotopy between $\1$ and $S$ recurs
 Then the diagram
 \[
 \begin{tikzcd}
-\cdots \arrow[r, "\partial"] & LC_2(Y) \arrow[r, "\partial"] \arrow[d, "S"] & LC_1(Y) \arrow[r, "\partial"] \arrow[d, "S"] \arrow[ld, "T"'] & LC_0(Y) \arrow[r, "\partial"] \arrow[d, "\1"] \arrow[ld, "T"'] & LC_{-1}(Y) \arrow[r, "\partial"] \arrow[d, "\1"] \arrow[d] \arrow[ld, "T"'] & 0 \\
-\cdots \arrow[r, "\partial"] & LC_2(Y) \arrow[r, "\partial"]                & LC_1(Y) \arrow[r, "\partial"]                                 & LC_0(Y) \arrow[r, "\partial"]                                  & LC_{-1}(Y) \arrow[r, "\partial"]                                            & 0
+\cdots \arrow[r, "\partial"] & \lc_2(Y) \arrow[r, "\partial"] \arrow[d, "S"] & \lc_1(Y) \arrow[r, "\partial"] \arrow[d, "S"] \arrow[ld, "T"'] & \lc_0(Y) \arrow[r, "\partial"] \arrow[d, "\1"] \arrow[ld, "T"'] & \lc_{-1}(Y) \arrow[r, "\partial"] \arrow[d, "\1"] \arrow[d] \arrow[ld, "T"'] & 0 \\
+\cdots \arrow[r, "\partial"] & \lc_2(Y) \arrow[r, "\partial"]                & \lc_1(Y) \arrow[r, "\partial"]                                 & \lc_0(Y) \arrow[r, "\partial"]                                  & \lc_{-1}(Y) \arrow[r, "\partial"]                                            & 0
 \end{tikzcd}
 \] commutes.
 \begin{lemma}
@@ -3392,25 +3400,27 @@ Choose a finite good cover $\U$ of $M$. We have just proven that $H^{\ast}_{\dr}
 
 \subsection{Lecture 24}
 
-Let $X$ be a space and $\Op(X)$ denote the category of open sets in $X$.
+Let $X$ be a space and $\Op(X)$ denote the category of open sets in $X$, with inclusion maps as morphisms.
 
 \begin{definition}
  A \textit{presheaf on $X$} is a functor $F: \Op(X)^{\op} \to \mathbf{Ab}$ such that $F(\emptyset) =0$. If $V\subset X$ is open, then any $s\in F(V)$ is called a \textit{section of $U$}. If $i : U \hookrightarrow V$, then $F(i): F(V) \to F(U)$ is called a \textit{restriction morphism} and is denoted by $r_{UV}$. 
 \end{definition}
 
 \begin{notation}
-$r_{UV}(s)\coloneqq  s \restriction_U$.
+$s \restriction_U \coloneqq r_{UV}(s)$.
 \end{notation}
 
 \smallskip
 
 Let $\mathbf{PreSh}_X$ denote the category of presheaves on $X$.
 
+\newcommand{\invin}{%
+\mathrel{\reflectbox{\rotatebox[origin=c]{270}{$\in$}}}}
 
 \begin{note}[\v{C}ech cohomology]
 We can build a cohomology theory of presheaves as follows. Let $X$ be a space with $\mathcal{U}$ an open cover. Let $F$ be a presheaf on $X$.  Let $\check{C}(\mathcal{U}, F)$ denote the chain complex
 $$   \prod_{\alpha_0}F(U_{\alpha_0}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1} F(U_{\alpha_0 \alpha_1}) \overset{\delta}{\longrightarrow} \prod_{\alpha_0\alpha_1\alpha_2}F(U_{\alpha_0\alpha_1\alpha_2}) \overset{\delta}{\longrightarrow} \cdots 
-$$  where for any $f = \left(\underbrace{f_{\alpha_0\ldots \alpha_p}}_{\text{in }F(U_{\alpha_0\ldots \alpha_p})}\right)$, we have $$\left(\delta{f}\right)_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1} ({-1})^i f_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_{p+1}} \restriction_{U_{\alpha_0\ldots \alpha_{p+1}}}.$$ Define the \textit{$p$-th \v{C}ech cohomology group} as $$\check{H}^p(X, F) = \varinjlim_{\mathcal{R}} \check{H}^p(\mathcal{U}, F)  $$ where $\mathcal{R}$ denotes the set of all open covers of $X$ ordered by refinement. 
+$$  where for any $f \coloneqq \big(\underbrace{f_{\alpha_0\ldots \alpha_p}}_{\overset{\invin}{F(U_{\alpha_0\ldots \alpha_p})}}\big)$, we have $$\left(\delta{f}\right)_{\alpha_0 \ldots \alpha_{p+1}} \equiv \sum_{i=0}^{p+1} ({-1})^i f_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_{p+1}} \restriction_{U_{\alpha_0\ldots \alpha_{p+1}}}.$$ Define the \textit{$p$-th \v{C}ech cohomology group} as $$\check{H}^p(X, F) = \varinjlim_{\mathcal{R}} \check{H}^p(\mathcal{U}, F)  $$ where $\mathcal{R}$ denotes the set of all open covers of $X$ ordered by refinement. 
 \end{note}
 
 \smallskip
@@ -3794,7 +3804,7 @@ Let $L\subset U$ be a compact set in $X$ such that $\Int(L) \supset C$. Let $t$ 
 
 \medskip
 
- Note that $$(m \cdot s') \restriction_C = m \restriction_C \cdot s' \restriction_C = s .$$ Now, glue $(m \cdot s') \restriction_L$ and the section $y$ which is equal to $0$ on $\cl(C \setminus L)$ to get a section $y'\in F(X)$ such that $y'\restriction_C = s$. This proves that the homomorphism $F(X) \to F(C)$ is surjective. 
+ Note that $$\left(m \cdot s'\right) \restriction_C = m \restriction_C \cdot s' \restriction_C = s .$$ Now, glue $(m \cdot s') \restriction_L$ and the section $y$ which is equal to $0$ on $\cl(C \setminus L)$ to get a section $y'\in F(X)$ such that $y'\restriction_C = s$. This proves that the homomorphism $F(X) \to F(C)$ is surjective. 
 \end{proof}
 
 
@@ -3803,13 +3813,13 @@ As a consequence, if $X$ is a smooth manifold, then the sheaf $\Omega^i(X)$ of $
 
 
 \begin{note}
-Let $X$ be a smooth manifold. We have that $0 \to \underline{\R} \to \Omega^{\bullet}_X$ is a soft resolution and that $\underbrace{H^{\ast}(X, \underline{\R})}_{\text{\v{C}ech cohom.}} \cong H^{\ast}(\Omega^{\bullet}(X), d)$.
+Let $X$ be a smooth manifold. Then $0 \to \underline{\R} \to \Omega^{\bullet}_X$ is a soft resolution, and $\underbrace{H^{\ast}(X, \underline{\R})}_{\text{\v{C}ech cohom.}} \cong H^{\ast}(\Omega^{\bullet}(X), d)$.
 \end{note}
 
 \medskip
 
 
-Let $A$ be a ring. For each $p \in \N$, define the presheaf $U\subset X \mapsto \{f : \sing_p(U) \to A\}$. Sheafify this to get $\frak{S}^p(A)$. Define the map of sheaves $\delta: \frak{S}^p(A)\to \frak{S}^{p+1}(A)$ by $$\delta_U(f : \sing_{p}(U) \to A)(\sigma : \Delta^{p+1} \to A) = \sum_{i=0}^{p+1} ({-1})^i f{\sigma \restriction_{\partial_i{\Delta^{p+1}}}}    $$ where $\partial_i{\Delta^p} = [e_0, \ldots, e_{i-1}, \hat{e}_i, e_{i+1}, \ldots, e_p]$. This induces a resolution $0 \to \underline{A} \to \frak{S}^{\bullet}(A)$.
+Let $A$ be a ring. For each $p \in \N$, define the presheaf $U\subset X \mapsto \left\{f : \sing_p(U) \to A\right\}$. Sheafify this to get $\frak{S}^p(A)$. Define the map of sheaves $\delta: \frak{S}^p(A)\to \frak{S}^{p+1}(A)$ by $$\delta_U(f : \sing_{p}(U) \to A)(\sigma : \Delta^{p+1} \to A) = \sum_{i=0}^{p+1} ({-1})^i f{\sigma \restriction_{\partial_i{\Delta^{p+1}}}}    $$ where $\partial_i{\Delta^p} = [e_0, \ldots, e_{i-1}, \hat{e}_i, e_{i+1}, \ldots, e_p]$. This induces a resolution $0 \to \underline{A} \to \frak{S}^{\bullet}(A)$.
 
 Likewise, if $X$ is a smooth manifold, then define the sheaf $U \mapsto \{f : \sing_p^{\infty}(U) \to A\}$ where $\sing_p^{\infty}(U)$ denotes the free abelian group on the set of smooth maps $\sigma: \Delta^p\subset \R^{p+1} \to U$, i.e., all $\sigma$ with a smooth extension to some neighborhood of $\Delta^p$. Sheafify this to get $\frak{S}_{\infty}^p(A)$. We still have a resolution $$0 \to \underline{A} \to \frak{S}_{\infty}^{\bullet}(A).$$
 

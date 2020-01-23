@@ -16,22 +16,22 @@
 \contentsline {subsection}{\numberline {3.8}Lecture 13}{22}{subsection.3.8}
 \contentsline {section}{\numberline {4}Vector bundles}{23}{section.4}
 \contentsline {subsection}{\numberline {4.1}Lecture 14}{24}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Lecture 15}{25}{subsection.4.2}
-\contentsline {section}{\numberline {5}Differential forms}{27}{section.5}
-\contentsline {subsection}{\numberline {5.1}Lecture 16}{27}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Lecture 17}{30}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Lecture 18}{31}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Lecture 19}{33}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Lecture 20}{35}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Lecture 21}{37}{subsection.5.6}
-\contentsline {section}{\numberline {6}Integration}{39}{section.6}
-\contentsline {subsection}{\numberline {6.1}Lecture 22}{39}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Lecture 23}{41}{subsection.6.2}
-\contentsline {section}{\numberline {7}De Rham cohomology}{43}{section.7}
-\contentsline {subsection}{\numberline {7.1}Lecture 24}{43}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Lecture 25}{45}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Lecture 26}{46}{subsection.7.3}
-\contentsline {section}{\numberline {8}Integral curves and flows}{47}{section.8}
-\contentsline {subsection}{\numberline {8.1}Lecture 27}{47}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Lecture 28}{49}{subsection.8.2}
-\contentsline {section}{\numberline {9}Distributions}{50}{section.9}
+\contentsline {section}{\numberline {5}Differential forms}{26}{section.5}
+\contentsline {subsection}{\numberline {5.1}Lecture 15}{26}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Lecture 16}{28}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Lecture 17}{30}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Lecture 18}{32}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Lecture 19}{34}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Lecture 20}{35}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Lecture 21}{38}{subsection.5.7}
+\contentsline {section}{\numberline {6}Integration}{40}{section.6}
+\contentsline {subsection}{\numberline {6.1}Lecture 22}{40}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lecture 23}{42}{subsection.6.2}
+\contentsline {section}{\numberline {7}De Rham cohomology}{44}{section.7}
+\contentsline {subsection}{\numberline {7.1}Lecture 24}{44}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Lecture 25}{46}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Lecture 26}{47}{subsection.7.3}
+\contentsline {section}{\numberline {8}Integral curves and flows}{48}{section.8}
+\contentsline {subsection}{\numberline {8.1}Lecture 27}{48}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Lecture 28}{50}{subsection.8.2}
+\contentsline {section}{\numberline {9}Distributions}{51}{section.9}
