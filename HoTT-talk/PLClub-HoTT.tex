@@ -623,13 +623,13 @@ Any proof in our type theory produces a theorem in any appropriate model of it.
 
 HoTT without $\univ$ may be modeled in a certain extension of $\mathsf{ZFC}$. In 2006, Voevodsky showed that the category of Kan complexes (i.e., simplicial sets with Kan fillers) is a model of HoTT.  In it, a type family corresponds to a Kan fibration.  His construction, however, is non-constructive to some degree as it relies heavily on the axiom of choice. Thus, it fails as a \emph{computational} interpretation of HoTT.
 
-Coquand, however, has designed a so-called cubical model of HoTT, in which $\univ$ is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model is a constructive account of $\univ$.  
+Coquand, however, has designed a so-called cubical model of HoTT, in which $\univ$ is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model serves as a constructive interpretation of $\univ$.  
 Anders M\"ortberg has designed a Haskell implementation of cubical type theory, called Cubical Agda (\url{https://github.com/agda/cubical}).
 
 \addcontentsline{toc}{section}{Further topics}
 \section*{Further topics}
 
-One key feature of HoTT that we have neglected is the ability to define so-called higher inductive types (HIT's). For example, the circle $S^1$ can be modeled as a HIT, from which we can prove that $\pi_1(S^1) \cong \Z$. Dan Licata has a formalized proof of this in Agda.
+One key feature of HoTT that we have neglected is the ability to define so-called higher inductive types (HIT's). For example, the circle $S^1$ can be modeled as a HIT, from which we can prove formally that $\pi_1(S^1) \cong \Z$. Dan Licata has a formalized proof of this in Agda.
 
 \addcontentsline{toc}{section}{Sources}
 \section*{Sources}
