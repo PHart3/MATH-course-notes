@@ -343,7 +343,7 @@ Let $\Hom_{\mathbf{Ab}}(-, \faktor{\Q}{\Z}) \coloneqq  (-)^D$. Note that for any
 \begin{proof}
 We need to show that if $a\in A$ is nonzero, then we can find some homomorphism $f: A \to \faktor{\Q}{\Z}$ such that $f(a) \ne 0$.
 
-\underline{Case 1:} Suppose that $\lvert{(a)}\rvert = n< \infty$. Then define the homomorphism $\varphi : (a) \to \faktor{\Q}{\Z}$ by $a \mapsto [\frac{1}{n}]$. Since $\faktor{\Q}{\Z}$ is divisible in $\mathbf{Ab}$, it is also injective. Thus, we may find some map  $\psi$ such that 
+\underline{Case 1:} Suppose that $\left\lvert{(a)}\right\rvert = n< \infty$. Then define the homomorphism $\varphi : (a) \to \faktor{\Q}{\Z}$ by $a \mapsto [\frac{1}{n}]$. Since $\faktor{\Q}{\Z}$ is divisible in $\mathbf{Ab}$, it is also injective. Thus, we may find some map  $\psi$ such that 
 \[
 \begin{tikzcd}
  &  & \faktor{\Q}{\Z} \\
@@ -403,7 +403,7 @@ Given two $R$-modules $M$ and $N$, the \textit{additive invariants of $M$ and $N
 
 \begin{prop}\label{prop2} $ $
 \begin{enumerate}
-\item $\ext^i_R(M, N)$ is independent of the choice of projective resolution. 
+\item $\ext^i_R(M, N)$ is independent of our choice of projective resolution. 
 \begin{proof}
 This follows from the fact that any two projective resolutions are chain homotopic.
 \end{proof}
@@ -460,7 +460,7 @@ By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note 
 .\]
 \begin{exercise} $ $
 \begin{enumerate}
-\item Show that the map $\rho: \ext_R^1(M, N) \to \ext_R(M, N)$ given by $\gamma \mapsto \xi$ is independent of the choice of $f$.  
+\item Show that the map $\rho: \ext_R^1(M, N) \to \ext_R(M, N)$ given by $\gamma \mapsto \xi$ is independent of our choice of $f$.  
 \item Show that $\rho$ is the inverse of  $e$.
 \end{enumerate}
 \end{exercise}
@@ -865,7 +865,7 @@ The natural map $X \overset{\varphi}{\longrightarrow} {\Max(A)}$ given by $x \ma
 \end{claim}
 \begin{proof}
 Let $\frak{a}_x \coloneqq  \ker(\ev_x : A \to \C)$.
-By Urysohn's lemma, for any two distinct points $x,y \in X$, there is some $f\in A$ such that $f(x) = 0$ and $f(y) =1$. But $f \in \frak{a}_x$ and $f\notin \frak{a}_y$, making $\frak{a}_x \ne \frak{a}_y$.  Now, suppose $\frak{a} \in \Max(A)$ and $\frak{a} \ne \frak{a}_x$ for any $x\in X$. This means that for any $x\in X$, there is some $f_x \in \frak{a}$ such that $f_x(x) \ne 0$. Let $U_x \subset U$ be an open neighborhood of $x\in X$ such that $f_x \restriction_{U_x} \ne 0$.  Then $X = \bigcup_{x\in X} U_x$, so that there is some finite subcover $U_{x_1}, \ldots, U_{x_k}$ of $X$.  Let $f = \sum_{i=1}^k \lvert{f_{x_i}}\rvert^2$, which does not vanish at any point of $X$. Note that $f = \sum_{i=1}^k f_{x_i} \cdot \bar{f}_{x_i}$, so that $f\in \frak{a}$. But $f$ is nowhere vanishing, so that $\frac{1}{f}$ is a well defined continuous function on $X$. Thus, $\frac{1}{f} \in A$, and $1\in \frak{a}$, contrary to the fact that $\frak{a}$ is maximal. 
+By Urysohn's lemma, for any two distinct points $x,y \in X$, there is some $f\in A$ such that $f(x) = 0$ and $f(y) =1$. But $f \in \frak{a}_x$ and $f\notin \frak{a}_y$, making $\frak{a}_x \ne \frak{a}_y$.  Now, suppose $\frak{a} \in \Max(A)$ and $\frak{a} \ne \frak{a}_x$ for any $x\in X$. This means that for any $x\in X$, there is some $f_x \in \frak{a}$ such that $f_x(x) \ne 0$. Let $U_x \subset U$ be an open neighborhood of $x\in X$ such that $f_x \restriction_{U_x} \ne 0$.  Then $X = \bigcup_{x\in X} U_x$, so that there is some finite subcover $U_{x_1}, \ldots, U_{x_k}$ of $X$.  Let $f = \sum_{i=1}^k \left\lvert{f_{x_i}}\right\rvert^2$, which does not vanish at any point of $X$. Note that $f = \sum_{i=1}^k f_{x_i} \cdot \bar{f}_{x_i}$, so that $f\in \frak{a}$. But $f$ is nowhere vanishing, so that $\frac{1}{f}$ is a well defined continuous function on $X$. Thus, $\frac{1}{f} \in A$, and $1\in \frak{a}$, contrary to the fact that $\frak{a}$ is maximal. 
 \begin{exercise}
 Check that $\varphi$ is continuous, hence a homeomorphism. 
 \end{exercise}
@@ -1245,7 +1245,7 @@ Now, $\disc(f) \in K_1^2 \iff (\alpha_1 - \alpha_2) ( \alpha_1 - \alpha_3)(\alph
 \begin{enumerate}
 \item Suppose that $K$ is a finite field. Then $\Char{K}>0$. 
 \item Suppose that $K$ is any field such that $\Char{K} = p>0$. Then the natural map $\varphi : K \to K$ given by $x \mapsto x^p$ respects addition due to the binomial theorem. Hence it is a field homomorphism, called the \textit{Frobenius morphism}. If $K$ is finite, then this map is an automorphism. In general, $\im{\varphi} =K^p \subset K$ is a subfield. 
-\item If $K$ has characteristic $p$, then the natural map $\F_p \to K$ given by $[n] \mapsto \underbrace{1 + 1 +\cdots +1}_{n \text{ times}}$ is a field extension. Therefore, if $K$ is finite, then $K\supset \F_p$ is a finite field extension. In this case, if $K$ has degree $n$, then $K \cong  \F_p^{\oplus n}$ is a vector space over $\F_p$. Hence $\lvert{K}\rvert = \lvert{\F_p}\rvert^n = p^n$. 
+\item If $K$ has characteristic $p$, then the natural map $\F_p \to K$ given by $[n] \mapsto \underbrace{1 + 1 +\cdots +1}_{n \text{ times}}$ is a field extension. Therefore, if $K$ is finite, then $K\supset \F_p$ is a finite field extension. In this case, if $K$ has degree $n$, then $K \cong  \F_p^{\oplus n}$ is a vector space over $\F_p$. Hence $\left\lvert{K}\right\rvert = \left\lvert{\F_p}\right\rvert^n = p^n$. 
 \end{enumerate}
 \end{note}
 
@@ -1255,17 +1255,17 @@ Now, $\disc(f) \in K_1^2 \iff (\alpha_1 - \alpha_2) ( \alpha_1 - \alpha_3)(\alph
 For every prime $p$ and integer $n>0$, there is some finite field $K$ consisting of $p^n$ elements that is unique up to an isomorphism over $\F_p$.
 \end{theorem}
 \begin{proof}
-We first prove uniqueness. If $F$ is a finite field with $q\coloneqq p^n$ elements, then $\lvert{F^{\times}}\rvert = q-1$. It follows that for any $a \in F^{\times}$,  $a^{q-1} =1$. But then for any $a \in F$, $a^q = a$, so that each element of $F$ is a root of $x^q -x \in \F_p[x]$. Then $\prod_{a\in F}(x-a) \mid x^q -x$ in $F[x]$. This implies that $x^q -x = \prod_{a\in F}(x-a)$ in $F[x]$. This means that $F$ is a splitting field for $x^q-x$ over $\F_p$, which must be unique up to isomorphism.
+We first prove uniqueness. If $F$ is a finite field with $q\coloneqq p^n$ elements, then $\left\lvert{F^{\times}}\right\rvert = q-1$. It follows that for any $a \in F^{\times}$,  $a^{q-1} =1$. But then for any $a \in F$, $a^q = a$, so that each element of $F$ is a root of $x^q -x \in \F_p[x]$. Then $\prod_{a\in F}(x-a) \mid x^q -x$ in $F[x]$. This implies that $x^q -x = \prod_{a\in F}(x-a)$ in $F[x]$. This means that $F$ is a splitting field for $x^q-x$ over $\F_p$, which must be unique up to isomorphism.
 
 \smallskip
 
- To prove existence, consider $F$ the splitting field for $x^q -x$ over $\F_p$. We want to show that $\lvert{F}\rvert =q$. 
+ To prove existence, consider $F$ the splitting field for $x^q -x$ over $\F_p$. We want to show that $\left\lvert{F}\right\rvert =q$. 
  
 \begin{note}
 If $A$ is any commutative ring, then $A[x]$ has a natural derivation. There exists a unique map $\frac{d}{dx} : A[x] \to A[x]$ such that $\frac{d}{dx}(a) = 0$ for any $a\in A$, $\frac{d}{dx}(x) =1$, and $\frac{d}{dx}$ satisfies the Leibniz rule, i.e., $\frac{d}{dx}(fg) = \frac{df}{dx}g + f\frac{dg}{dx}$. Note that $\frac{d}{dx}$ is given by $\frac{d}{dx}(a_nx^n  + a_{n-1}x^{n-1} + \cdots + a_0) = na_n + (n-1)a^{n-1}x^{n-2} + \cdots + 0$. Then $\frac{d}{dx}$ is an $A$-module homomorphism. If $A \subset B$ is a subring, then we get compatible derivations $\frac{d}{dx} \hookrightarrow A[x] \subset B[x] \hookleftarrow \frac{d}{dx}$. 
 \end{note}
 
-Returning to our proof, consider $f(x) = x^q -x$. Then since $F \supset \F_p$ is the splitting field for $f(x)$, it follows that $f(x) = \prod_{i=1}^q (x-c_i)$ where $c_i \in F$. How many distinct roots does $f(x)$ have in $F$? If $f(x)$ has a repeated root, then we can write $f(x) = (x-c)^2g(x)$ in $F[x]$. This implies that $\frac{df}{dx}(x) = 2(x-c)g + (x-c)^2 \frac{dg}{dx}$ will also have $c$ has a root. But $\frac{df}{dx} = qx^{q-1} -1 = {-1}$ in $\F_p[x]\subset F[x]$. But in this case $\frac{df}{dx}$ has no roots. Thus, $f(x)$ has no repeated roots in $F$, so that $\lvert{F}\rvert \geq q$.
+Returning to our proof, consider $f(x) = x^q -x$. Then since $F \supset \F_p$ is the splitting field for $f(x)$, it follows that $f(x) = \prod_{i=1}^q (x-c_i)$ where $c_i \in F$. How many distinct roots does $f(x)$ have in $F$? If $f(x)$ has a repeated root, then we can write $f(x) = (x-c)^2g(x)$ in $F[x]$. This implies that $\frac{df}{dx}(x) = 2(x-c)g + (x-c)^2 \frac{dg}{dx}$ will also have $c$ has a root. But $\frac{df}{dx} = qx^{q-1} -1 = {-1}$ in $\F_p[x]\subset F[x]$. But in this case $\frac{df}{dx}$ has no roots. Thus, $f(x)$ has no repeated roots in $F$, so that $\left\lvert{F}\right\rvert \geq q$.
 
 Now consider $R_f\coloneqq  \{c \in F \mid f(c) = 0\}$. Note that $\F_p \subset R_f \subset F$ and that  $R_f = \{c\in F \mid \varphi^n(c) = c\}$ where $\varphi$ denotes the Frobenius map. But since $\varphi$ is a field automorphism of $F$, so is $\varphi^n$. Hence the fixed points of $\varphi^n$ form a subfield. This means that $R_f$ is a subfield, hence a splitting field for $f$. Thus, $R_f \cong F$. 
 \end{proof}
@@ -1286,7 +1286,7 @@ By the structure theorem for finite abelian groups, we get
  \times \Z/p_2^{m_{21}} \times \Z/p_2^{m_{22}}  \times \cdots
  \\ &  \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{s1}} \times \Z/p_s^{m_{s2}} \times \cdots \times \Z/p_s^{m_{sk}} .
 \end{align*}
-Let $\alpha_i = p_1^{m_{1i}}p_2^{m_{2i}}\cdots p_s^{m_{si}}$ for each $i=1, \ldots, k$. Hence $\lvert{\F_q^{\times}}\rvert \mid d_1d_2 \cdots d_k$ where $d_1 \mid d_2 \mid \cdots \mid d_k$. Hence every element in $\F_q^{\times}$ has order dividing $d_k$.  For any $a\in \F_q$, $a^{d_k +1} =a$, so that $\lvert{\F_q}\rvert = \deg{x^{d_k+1} -x} = d_k+1$. Then $q \leq d_k+1$, so that $q-1 \leq d_k$. Since $d_k \mid q-1$, we have that $d_k = q-1$, and thus $d_1 = d_2 = \cdots = d_{k-1} = 1$. Hence $$\F_q^{\times} \cong \Z/p_1^{m_{1k}} \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{sk}}.$$ Since the $p_i^{m_{ik}}$ are pairwise coprime, it follows that $\F_q^{\times} \cong  \Z/p_1^{m_{1k}} p_2^{m_{2k}} \cdots p_s^{m_{sk}}$. 
+Let $\alpha_i = p_1^{m_{1i}}p_2^{m_{2i}}\cdots p_s^{m_{si}}$ for each $i=1, \ldots, k$. Hence $\left\lvert{\F_q^{\times}}\right\rvert \mid d_1d_2 \cdots d_k$ where $d_1 \mid d_2 \mid \cdots \mid d_k$. Hence every element in $\F_q^{\times}$ has order dividing $d_k$.  For any $a\in \F_q$, $a^{d_k +1} =a$, so that $\left\lvert{\F_q}\right\rvert = \deg{x^{d_k+1} -x} = d_k+1$. Then $q \leq d_k+1$, so that $q-1 \leq d_k$. Since $d_k \mid q-1$, we have that $d_k = q-1$, and thus $d_1 = d_2 = \cdots = d_{k-1} = 1$. Hence $$\F_q^{\times} \cong \Z/p_1^{m_{1k}} \times \Z/p_2^{m_{2k}} \times \cdots \times \Z/p_s^{m_{sk}}.$$ Since the $p_i^{m_{ik}}$ are pairwise coprime, it follows that $\F_q^{\times} \cong  \Z/p_1^{m_{1k}} p_2^{m_{2k}} \cdots p_s^{m_{sk}}$. 
 \end{proof}
 \begin{corollary}
 $\F_q = \F_p(\sigma)$.
@@ -1301,17 +1301,17 @@ Since $\F_q^{\times}$ is cyclic , we know that $\F_q^{\times} = \langle \sigma \
 \begin{proof}
 We have arranged it so that $\F_q$ is unique up to isomorphism over $\F_p$, so that each $\psi \in \aut(\F_q)$ restricts to the identity on $\F_p \subset \F_q$. This implies that $\aut(\F_q) \cong \aut(\F_q/\F_p)$, which is the subgroup of all $\psi : \F_q \overset{\cong}{\longrightarrow} \F_q$ such that $\psi \restriction_{\F_p} = \id_{\F_p}$.
 \begin{lemma}
-Let $L \supset K$ be a finite field extension of degree $n$. Then we have that $\lvert{\aut(L/K)}\rvert \leq n$.
+Let $L \supset K$ be a finite field extension of degree $n$. Then we have that $\left\lvert{\aut(L/K)}\right\rvert \leq n$.
 \end{lemma}
 \begin{proof}
-Since $[L:K] = n < \infty$, we can construct $L$ as a tower $K= K_0 \subset K_1 \subset \cdots \subset K_s =L$ where $K_{i+1} = K_i[\alpha_i]$ and $\alpha_i$ is a root of an irreducible $f_i(x) \in K_i[x]$. Consider $\varphi_0 : K \hookleftarrow L$ the natural inclusion. Applying \cref{mlGT}, we see that $\varphi_0$ extends to $\varphi_1 : K_1 \to L$ in finitely many ways such that the number of such $\varphi_1$'s equals the number of distinct roots of $f_0^{\varphi_0}$ in $L$. This quantity is $\leq \deg{f_0} = [K_1 : K_0]$ Each $\varphi_1$ extends to a map $\varphi_2 : K_2 \to L$ in at most $\deg{f_1}= [K_2 : K_1]$ ways. Therefore, $\varphi_0$ will extend to a map $\varphi_s : L \to L$ in $\left[K_1 : K_0\right]\left[K_2 : K_1\right] \cdots \left[K_s : K_{s-1}\right]$ many ways. It follows that $$\lvert{\aut(L/K)}\rvert \leq \prod_{i=0}^{s-1} [K_{i+1} : K_i] = [L:K] =n.$$ 
+Since $[L:K] = n < \infty$, we can construct $L$ as a tower $K= K_0 \subset K_1 \subset \cdots \subset K_s =L$ where $K_{i+1} = K_i[\alpha_i]$ and $\alpha_i$ is a root of an irreducible $f_i(x) \in K_i[x]$. Consider $\varphi_0 : K \hookleftarrow L$ the natural inclusion. Applying \cref{mlGT}, we see that $\varphi_0$ extends to $\varphi_1 : K_1 \to L$ in finitely many ways such that the number of such $\varphi_1$'s equals the number of distinct roots of $f_0^{\varphi_0}$ in $L$. This quantity is $\leq \deg{f_0} = [K_1 : K_0]$ Each $\varphi_1$ extends to a map $\varphi_2 : K_2 \to L$ in at most $\deg{f_1}= [K_2 : K_1]$ ways. Therefore, $\varphi_0$ will extend to a map $\varphi_s : L \to L$ in $\left[K_1 : K_0\right]\left[K_2 : K_1\right] \cdots \left[K_s : K_{s-1}\right]$ many ways. It follows that $$\left\lvert{\aut(L/K)}\right\rvert \leq \prod_{i=0}^{s-1} [K_{i+1} : K_i] = [L:K] =n.$$ 
 \end{proof}
 
 \begin{corollary}
-If $f(x) \in K[x]$ and $L$ is a splitting field for $f$ and $f$ has distinct roots in $L$, then $\lvert{\aut(L/K)}\rvert = \left[L:K\right]$.
+If $f(x) \in K[x]$ and $L$ is a splitting field for $f$ and $f$ has distinct roots in $L$, then $\left\lvert{\aut(L/K)}\right\rvert = \left[L:K\right]$.
 \end{corollary}
-We have that $\lvert{\aut(\F_q/\F_p)}\rvert = \left[\F_q : \F_p\right] =n$. 
-If $\varphi \in \aut(\F_q/\F_p)$, then $\varphi^n = \id$. Thus, it suffices to show that $\varphi^m \ne \id$ for any $m <n$. Suppose that $m$ has $\varphi^m = \id$. Then $\varphi^m(a) = a$ for every $a\in \F_q$. Therefore, $q^{p^m} = a$ for each $a\in \F_q$, so that $p^n = q = \lvert{\F_q}\rvert \leq p^m$. Then $m \geq n$.
+We have that $\left\lvert{\aut(\F_q/\F_p)}\right\rvert = \left[\F_q : \F_p\right] =n$. 
+If $\varphi \in \aut(\F_q/\F_p)$, then $\varphi^n = \id$. Thus, it suffices to show that $\varphi^m \ne \id$ for any $m <n$. Suppose that $m$ has $\varphi^m = \id$. Then $\varphi^m(a) = a$ for every $a\in \F_q$. Therefore, $q^{p^m} = a$ for each $a\in \F_q$, so that $p^n = q = \left\lvert{\F_q}\right\rvert \leq p^m$. Then $m \geq n$.
 
 \medskip
 
@@ -1322,7 +1322,7 @@ If $\varphi \in \aut(\F_q/\F_p)$, then $\varphi^n = \id$. Thus, it suffices to s
 There is a bijection $\left(\text{subfields of } \F_q\right) \cong_{\mathbf{Set}} \left(\text{subgroups of } \aut(\F_q)\right)$.
 \end{prop}
 \begin{proof}
-Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We have that $\lvert{F}\rvert \mid \lvert{\F_q}\rvert =p^n$, so that $\lvert{F}\rvert \leq p^d$ for some $d\leq n$. Since $\F_q \supset F$, we have that $\F_q$ is a vector space over $F$. If $\left[\F_q : F\right] = r$, then $\F_q \cong F^{\oplus r}$ as $F$-vector spaces. Note that $$p^n = \lvert{\F_q}\rvert = \lvert{F}\rvert^r = (p^d)^r = p^{dr},$$ which implies that $d \mid n$.
+Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We have that $\left\lvert{F}\right\rvert \mid \left\lvert{\F_q}\right\rvert =p^n$, so that $\left\lvert{F}\right\rvert \leq p^d$ for some $d\leq n$. Since $\F_q \supset F$, we have that $\F_q$ is a vector space over $F$. If $\left[\F_q : F\right] = r$, then $\F_q \cong F^{\oplus r}$ as $F$-vector spaces. Note that $$p^n = \left\lvert{\F_q}\right\rvert = \left\lvert{F}\right\rvert^r = (p^d)^r = p^{dr},$$ which implies that $d \mid n$.
 
 \medskip
 
@@ -1330,7 +1330,7 @@ Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We ha
 
 \medskip
 
-	Let $\psi \in \aut(\F_q)$ with $\psi \notin \langle \varphi^d \rangle$. Then $\psi =\varphi^e$ for some $e\geq 0$ such that $d \nmid e$. If $\xi$ generates $F^{\times}$ and $\xi^{p^e} =\psi(\xi) = \xi$, then $p^d -1 \mid p^e-1$ since $\lvert{F^{\times}}\rvert=p^d-1$. But this is impossible, which implies that $\psi\restriction_F \ne \id_F$. Therefore, $\langle \varphi^d \rangle =\aut(\F_q/F)$, and we have a bijection 
+	Let $\psi \in \aut(\F_q)$ with $\psi \notin \langle \varphi^d \rangle$. Then $\psi =\varphi^e$ for some $e\geq 0$ such that $d \nmid e$. If $\xi$ generates $F^{\times}$ and $\xi^{p^e} =\psi(\xi) = \xi$, then $p^d -1 \mid p^e-1$ since $\left\lvert{F^{\times}}\right\rvert=p^d-1$. But this is impossible, which implies that $\psi\restriction_F \ne \id_F$. Therefore, $\langle \varphi^d \rangle =\aut(\F_q/F)$, and we have a bijection 
 \begin{align*}
 \left(\text{subfields of } \F_q\right) & \cong_{\mathbf{Set}} \left(\text{subgroups of } \aut(\F_q)\right)
 \\ F & \mapsto \aut(\F_q/F)
@@ -1478,17 +1478,17 @@ If $L \supset K$ is a field extension, then the \textit{Galois group} is $$\gal(
 \begin{theorem}
 Let $L \supset K$ be a field extension of degree $n<\infty$. Let $G \leq  \gal(L/K)$.
 \begin{enumerate}[label=(\alph*)]
-\item $L^G = K \iff \lvert{G}\rvert = n$.
+\item $L^G = K \iff \left\lvert{G}\right\rvert = n$.
 \item  If $L^G = K$ and $K \subset P \subset Q \subset L$ is a chain of field extensions, then every homomorphism $\varphi : P \to L$ over $K$ extends to a homomorphism $Q \to L$ in exactly $[Q:P]$ many ways. 
 \end{enumerate}
 \end{theorem}
 \begin{proof} $ $
 \begin{enumerate}[label=(\alph*)]
-\item For the ($\Longleftarrow$) direction, note that if $G \leq \aut(L)$, then tautologically $G \leq \gal(L/L^G)$. Hence $\lvert{G}\rvert \leq \lvert{\gal(L/L^G)}\rvert = \left[L: L^G\right]$. If $G \leq \gal(L/K)$, then $L \subset L^G \subset L$, so that $\left[L:L^G\right]\leq [L:K] =n$. This means that $\lvert{G}\rvert\leq n$.
+\item For the ($\Longleftarrow$) direction, note that if $G \leq \aut(L)$, then tautologically $G \leq \gal(L/L^G)$. Hence $\left\lvert{G}\right\rvert \leq \left\lvert{\gal(L/L^G)}\right\rvert = \left[L: L^G\right]$. If $G \leq \gal(L/K)$, then $L \subset L^G \subset L$, so that $\left[L:L^G\right]\leq [L:K] =n$. This means that $\left\lvert{G}\right\rvert\leq n$.
 
 Conversely, let $L^G =K$.  Take $\alpha \in L$ and let $\orb_G(\alpha) = \left\{\lambda_1, \ldots, \lambda_m\right\} \subset L$. Consider $$f(x) = \prod_{i=1}^m (x-\lambda_i) \in L[x].$$ But the coefficients are symmetric polynomials in $\lambda_i$, and any $g\in G$ permutes the $\lambda_i$. In this case, $g$ permutes the coefficients of $f(x)$. Hence $f(x) \in L^G[x] = K[x]$. By construction, $\alpha$ is a root of $f(x)$, the minimal polynomial of $\alpha$.  We can decompose $f(x)$ into linear factors in $L$.
 
-Apply part (b) to $P = K$ and $Q=L$. In this case, (b) implies that if $L^G=K$, then $\lvert{\gal(L/K)}\rvert = [L:K]=n$. Thus, we must show that $G = \gal(L/K)$.
+Apply part (b) to $P = K$ and $Q=L$. In this case, (b) implies that if $L^G=K$, then $\left\lvert{\gal(L/K)}\right\rvert = [L:K]=n$. Thus, we must show that $G = \gal(L/K)$.
 
 Let $\varphi \in \gal(L/K)$. Recall that $f(x)$ is the minimal polynomial of $\alpha$ over $K$. Note that $\varphi(x)$ is a root of $f^{\varphi}(x)$. Indeed, since $\varphi_K = \id_K$, we have that $f^{\varphi}(x) = f(x)$. Hence $\varphi(\alpha) \in \orb_G(\alpha)$, so that there exists $g\in G$ such that $\varphi(\alpha) = g(\alpha)$. If $L$ is a finite field, then we can take $\alpha$ to be the generator of $L^{\times}$, in which case $\varphi(\alpha) = g(\alpha) \implies \varphi(\alpha^k)= g(\alpha^k)$ for each $k \implies \varphi = g.$ If $L$ is infinite, then $K$ is infinite and for any $g\in G$, we consider $L_g = \{a\in L \mid \varphi(a) = g(a)\}\subset L$. By definition, $L_g = L^{g^{-1}\circ \varphi}$ is a subfield in $L$. This contains $K$ because $g^{-1}\circ \varphi \in \gal(L/K)$. Therefore, $K\subset L_g \subset L$ is a field extension, meaning that $L_g$ is a $K$-vector subspace in $L$.
 
@@ -1508,7 +1508,7 @@ This proves our result for simple field extensions. Since every finite extension
 \end{proof}
 
 \begin{definition}
-A finite field extension $L \supset K$ is a \textit{Galois extension} if $\lvert{\gal(L/K)}\rvert = [L:K]$.
+A finite field extension $L \supset K$ is a \textit{Galois extension} if $\left\lvert{\gal(L/K)}\right\rvert = [L:K]$.
 \end{definition}
 
 \begin{corollary}\label{cor16}
@@ -1565,7 +1565,7 @@ Indeed,  if $L \supset K$ is such that $f$ has a root $\alpha$ in $L$, then $f$ 
 If $f(x) \in K[x]$ and every irreducible factor of $f$ is separable over $K$, then the splitting field $L$ of $f$ is Galois over $K$.
 \end{theorem}
 \begin{proof}
-We constructed $L$ as a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s = L$$ where $K_{i+1} = K_i(\alpha_{i+1})$ and $\alpha_{i+1}$  is a root of some irreducible factor $f_{i+1}(x)$ of $f(x)\in K_i[x]$. Since $f_{i+1}$ is irreducible in $K_i[x]$ and $f_{i+1} \mid f $ in $K_i[x]$, it follows that $f_{i+1}$ must divide one of the irreducible factors of $f(x)$ in $K[x]$. But these are separable, which implies that $f_{i+1}$ is separable for each $i$. By \cref{mlGT}, a field homomorphism $\varphi : K \to L$ extends to an isomorphism $\varphi : L \to L$ in $$\left(\# \text{ of distinct roots in } f_1\right) \cdot \left(\# \text{ of distinct roots in }f_2\right)\cdots \left(\# \text{ of distinct roots in }f_{s-1}\right)$$ many ways. Note that (\# of distinct roots in $f_1$) $\cdot$ (\# of distinct roots in $f_2$)$\cdots$ (\# of distinct roots in $f_{s-1}$) $= \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}}$. Hence $$\lvert{\gal(L/K)}\rvert = \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}} = [K_1: K_0][K_2: K_1] \cdots [K_s: K_{s-1}] = [L:K].$$
+We constructed $L$ as a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s = L$$ where $K_{i+1} = K_i(\alpha_{i+1})$ and $\alpha_{i+1}$  is a root of some irreducible factor $f_{i+1}(x)$ of $f(x)\in K_i[x]$. Since $f_{i+1}$ is irreducible in $K_i[x]$ and $f_{i+1} \mid f $ in $K_i[x]$, it follows that $f_{i+1}$ must divide one of the irreducible factors of $f(x)$ in $K[x]$. But these are separable, which implies that $f_{i+1}$ is separable for each $i$. By \cref{mlGT}, a field homomorphism $\varphi : K \to L$ extends to an isomorphism $\varphi : L \to L$ in $$\left(\# \text{ of distinct roots in } f_1\right) \cdot \left(\# \text{ of distinct roots in }f_2\right)\cdots \left(\# \text{ of distinct roots in }f_{s-1}\right)$$ many ways. Note that (\# of distinct roots in $f_1$) $\cdot$ (\# of distinct roots in $f_2$)$\cdots$ (\# of distinct roots in $f_{s-1}$) $= \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}}$. Hence $$\left\lvert{\gal(L/K)}\right\rvert = \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}} = [K_1: K_0][K_2: K_1] \cdots [K_s: K_{s-1}] = [L:K].$$
 \end{proof}
 
 \smallskip
@@ -1579,7 +1579,7 @@ If $f(x) \in K[x]$ and $L \supset K$ is the splitting field for $f$, then let $\
 \item Let $K$ be a field and let $f(x) \in K[x]$ be irreducible of degree $2$. Let $L$ denote the splitting field for $f(x)$. Then $K[\sqrt{D}]$ where $D = \disc(f) \in K$. In this case, $[L:K] = 2$, and $\gal(L/K) \subset S_2$ since $D \ne 0$. Thus, $f$ must have distinct roots in $L$. Note that $\gal(L/K) \ne \{\id\}$, since these roots are not in $K$. This shows that $\gal(L/K) = \langle \sigma \rangle = S_2$ where $\sigma : L \to L$ is given by $a + b \sqrt{D} \mapsto a-b \sqrt{D}$.
 \item Let $q=p^n$. Consider the extension $\F_q \supset \F_p$. Then $\gal(\F_q/\F_p) = \langle \varphi \rangle \cong \Z/n$.
 \item Recall that the cyclotomic field $\Gamma_n \supset \Q$ is the splitting field for $x^n-1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$. This polynomial has irreducible factors each of which is separable. Thus, $\Gamma_n \supset \Q$ is a Galois extension such that $\gal(\Gamma_n / \Q) \subset S_{\mu_n}$. Since any $g \in \gal(\Gamma_n/\Q)$ respects multiplication in $\Gamma_n$, we see that $g \restriction_{\mu_n} : \mu_n \to \mu_n$ is a a group automorphism. It follows that $\gal(\Gamma_n / \Q) \subset \aut_{\mathbf{Grp}}(\mu_n) \cong (\Z/n)^{\times}$, which has order $\phi(n)$.   We have shown that the minimal polynomial of a root of $1$ over $\Q$ is precisely $\Phi_n(x)$, where $\deg{\Phi_n(x)} = \phi(n)$. Hence $[\Gamma_n : \Q]= \phi(n)$, so that $\gal(\Gamma_n / \Q) = (\Z/n)^{\times}$.
-\item Suppose that $\Char{K} \notin \{2,3\}$. Let $f(x) \in K[x]$ be irreducible and monic of degree $3$. Let $D \in K$ denote the discriminant of $f$. Let $L \supset K$ be the splitting field for $f$, so that $L \supset K$ is Galois. Then $$\lvert{\gal(L/K)}\rvert = \begin{cases} 6 & D \notin K^2  \\ 3 & D \in K^2    \end{cases}.$$ But $\gal(L/K) \subset S_3$. This shows that $$\gal(L/K) = \begin{cases} S_3 & D \notin K^2  \\ A_3 & D \in K^2    \end{cases}.$$
+\item Suppose that $\Char{K} \notin \{2,3\}$. Let $f(x) \in K[x]$ be irreducible and monic of degree $3$. Let $D \in K$ denote the discriminant of $f$. Let $L \supset K$ be the splitting field for $f$, so that $L \supset K$ is Galois. Then $$\left\lvert{\gal(L/K)}\right\rvert = \begin{cases} 6 & D \notin K^2  \\ 3 & D \in K^2    \end{cases}.$$ But $\gal(L/K) \subset S_3$. This shows that $$\gal(L/K) = \begin{cases} S_3 & D \notin K^2  \\ A_3 & D \in K^2    \end{cases}.$$
 \end{enumerate}
 \end{exmp}
 
@@ -1651,10 +1651,10 @@ Furthermore, if $L \supset P \supset K$, then $P \supset K$ is a Galois extensio
 \begin{proof}
 Consider $K \subset P \subset L$ and $K \subset L^{\gal(L/P)} \subset L$. Then $L^{\gal(L/P)}\supset P$. From a theorem from two lectures ago, we have the following two results.
 \begin{enumerate}[label=(\alph*)]
-\item $[L:P] = \lvert{\gal(L/P)}\rvert$ for any $K \subset P \subset L$. 
-\item $[L: L^G] = \lvert{G}\rvert$ for any $G \leq \gal(L/K)$. 
+\item $[L:P] = \left\lvert{\gal(L/P)}\right\rvert$ for any $K \subset P \subset L$. 
+\item $[L: L^G] = \left\lvert{G}\right\rvert$ for any $G \leq \gal(L/K)$. 
 \end{enumerate}
-Therefore, $\left[K: L^{\gal(L/P)}\right]\cdot \left[L:P\right] = \left[L:P\right]$, so that $\left[L^{\gal(L/P)} : L\right]= 1$. Hence $L^{\gal(L/P)} = L$. Similarly, $\gal(L/L^G) \leq G$ satisfies $\lvert{\gal(L/L^G)}\rvert = \lvert{G}\rvert$, so that $\gal(L/L^G) = G$. 
+Therefore, $\left[K: L^{\gal(L/P)}\right]\cdot \left[L:P\right] = \left[L:P\right]$, so that $\left[L^{\gal(L/P)} : L\right]= 1$. Hence $L^{\gal(L/P)} = L$. Similarly, $\gal(L/L^G) \leq G$ satisfies $\left\lvert{\gal(L/L^G)}\right\rvert = \left\lvert{G}\right\rvert$, so that $\gal(L/L^G) = G$. 
 
 \medskip
 
@@ -1666,8 +1666,8 @@ For the second part  our theorem, note that any automorphism of $P/K$ will exten
 
 We compute
 \begin{align*}
-\lvert{\gal(L/P)}\rvert & = [L:P]
-\\ [P:K] & = \frac{[L:K]}{[L:P]} = \frac{\lvert{\gal(L/K)}\rvert}{\lvert{\gal(L/K)}\rvert}
+\left\lvert{\gal(L/P)}\right\rvert & = [L:P]
+\\ [P:K] & = \frac{[L:K]}{[L:P]} = \frac{\left\lvert{\gal(L/K)}\right\rvert}{\left\lvert{\gal(L/K)}\right\rvert}
 \\ [P:K] & = [\gal(L/K) : \gal(L/P)].
 \end{align*}
 Thus, $P \supset K$ is a Galois extension if and only if any element of $\gal(L/K)$ leaves $P$ invariant. But $P = L^{\gal(L/P)}$, and $P = P^{\gal(L/P)}$. Hence any $g \in \gal(L/P)$ satisfies $$g(P) = g(L^{\gal(L/P)}) = L^{g\gal(L/P)g^{-1}}.$$ It follows that $g(P) = P \iff g\gal(L/P)g^{-1} = \gal(L/P)$.
@@ -1728,7 +1728,7 @@ If $K$ is a field with characteristic $0$, $f(x) \in K[x]$ is irreducible, and $
 \begin{note} $ $
 \begin{enumerate}
 \item A generic polynomial equation over $K$ of $\deg \geq 5$ will not be solvable in radicals, since $\gal \cong S_n$.
-\item If $f(x) \in \Q[x]$ is irreducible of degree $5$, then $f$ will not be solvable in radicals as soon as $\gal(L/\Q) \in \{S_5, A_5\}$. Suppose $f \in \Q[x]$ is such a polynomial and let $\alpha_1, \ldots, \alpha_5$ be the roots of $f$. Note that $\gal(L/\Q) \subset S_5$. Since  $f$ is irreducible, it must be separable, which means that the $\alpha_i$ are pairwise distinct. Hence $5 \mid \lvert{\gal(L/\Q)}\rvert$. Therefore, $\gal(L/\Q)$ must contain an element of order $5$, so that $\gal(L/\Q)$ contains a $5$-cycle. If we can choose $f$ so that $\gal(L/\Q)$ contains a transposition, then $\gal(L/\Q) = S_5$.  
+\item If $f(x) \in \Q[x]$ is irreducible of degree $5$, then $f$ will not be solvable in radicals as soon as $\gal(L/\Q) \in \{S_5, A_5\}$. Suppose $f \in \Q[x]$ is such a polynomial and let $\alpha_1, \ldots, \alpha_5$ be the roots of $f$. Note that $\gal(L/\Q) \subset S_5$. Since  $f$ is irreducible, it must be separable, which means that the $\alpha_i$ are pairwise distinct. Hence $5 \mid \left\lvert{\gal(L/\Q)}\right\rvert$. Therefore, $\gal(L/\Q)$ must contain an element of order $5$, so that $\gal(L/\Q)$ contains a $5$-cycle. If we can choose $f$ so that $\gal(L/\Q)$ contains a transposition, then $\gal(L/\Q) = S_5$.  
 
 Choose $f$ so that it has exactly three real roots. In this case, complex conjugation will belong to $\gal(L/\Q)$, so that $\gal(L/\Q) = S_5$. Start with $x^5-16x = x(x-2)(x+2)(x^2 +4)$, which has exact three real roots. To make this irreducible, shift its graph to obtain the polynomial $f(x) = x^5 -16x +2$.
 \end{enumerate}
@@ -1943,7 +1943,7 @@ Now, suppose that $K \supsetneq \R$ is a finite field extension. If $[K : \R]$ i
 
 We want to prove the \textit{fundamental theorem of algebra}: that any $f(x) \in \C[x]$ has a root in $\C$. Note that if $c$ is a complex root of $f(x)\overline{f(x)} \in \R[x]$, then either $c$ or $\bar{c}$ is a root of $f(x)$.  Thus, it suffices to show that any polynomial over $\R$ has a root in $\C$.
 
-To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \lvert{\gal(L/\R)}\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$\left[L: \R\right] = \left[L: L^H\right] = \lvert{\gal(L/L^H)}\rvert = \lvert{H}\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
+To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \left\lvert{\gal(L/\R)}\right\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$\left[L: \R\right] = \left[L: L^H\right] = \left\lvert{\gal(L/L^H)}\right\rvert = \left\lvert{H}\right\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
 
 
 \begin{theorem}[Primitive element theorem]
@@ -2021,14 +2021,14 @@ Let $\{\lambda_1, \ldots, \lambda_n\}$ denote the set of roots of $f$. Let $f(x)
 Suppose that $p$ is prime and that $f(x) \in \Q[x]$ is monic and irreducible with $\deg{f} =p$. Suppose that $f$ has exactly two non-real roots in $\C$. Then $G_f = S_p$.
 \end{theorem}
 \begin{proof}
-Let $L$ be the splitting field for $f(x)$. Write $f(x) = \prod_{i=1}^p(x- x_i)$ with each $\lambda_i \in \C$. THen $\Q(\lambda_1, \ldots, \lambda_p) \subset \C$. We see that $$ \Q \subset \Q(\lambda_i)  \subset \Q(\lambda_1, \ldots, \lambda_p) \subset \C,$$ so that $[\Q(\lambda_i) : \Q] \mid [L : \Q]$.  Since $p \mid [L: \Q] = \lvert{G_f}\rvert \subset S_p$, it follows from Sylow that $G_p$ contains an element of order $p$, i.e., that $G_f$ contains a $p$-cycle. Also, the element in $G_f$ that switches the roots is the complex conjugate pair of a transposition.
+Let $L$ be the splitting field for $f(x)$. Write $f(x) = \prod_{i=1}^p(x- x_i)$ with each $\lambda_i \in \C$. THen $\Q(\lambda_1, \ldots, \lambda_p) \subset \C$. We see that $$ \Q \subset \Q(\lambda_i)  \subset \Q(\lambda_1, \ldots, \lambda_p) \subset \C,$$ so that $[\Q(\lambda_i) : \Q] \mid [L : \Q]$.  Since $p \mid [L: \Q] = \left\lvert{G_f}\right\rvert \subset S_p$, it follows from Sylow that $G_p$ contains an element of order $p$, i.e., that $G_f$ contains a $p$-cycle. Also, the element in $G_f$ that switches the roots is the complex conjugate pair of a transposition.
 \end{proof}
 
 \begin{theorem}[Brouwer]
 For any prime $p \geq 5$, there are infinitely many polynomials in $\Q[x]$ of degree $p$ with Galois group $S_p$.
 \end{theorem}
 \begin{proof}
-Let $k$ be an odd integer and let $0\leq m, n_1 \leq n_2 < \cdots < n_{k-2}$ be even integers. Consider $$g(x) = (x^2 +m)(x-n_1)(x-n_2) \cdots (x-n_{k-2}).$$ This polynomial has $\frac{k-3}{2}$ local maxima. Also, for each odd $h\in \Z$, $\lvert{g(h)}\rvert >2$. Hence if $c$ denotes a local maximum of $g$, then $g(c) >2$. This shows that if $f(x) = g(x) -2$, then there are 
+Let $k$ be an odd integer and let $0\leq m, n_1 \leq n_2 < \cdots < n_{k-2}$ be even integers. Consider $$g(x) = (x^2 +m)(x-n_1)(x-n_2) \cdots (x-n_{k-2}).$$ This polynomial has $\frac{k-3}{2}$ local maxima. Also, for each odd $h\in \Z$, $\left\lvert{g(h)}\right\rvert >2$. Hence if $c$ denotes a local maximum of $g$, then $g(c) >2$. This shows that if $f(x) = g(x) -2$, then there are 
 \begin{itemize}
 \item $\frac{k-3}{2}$ positive local maxima in $[n_1, n_{k-2}]$ and
 \item $\frac{k-3}{2}$ negative local maxima in $[n_1, n_{k-2}]$.

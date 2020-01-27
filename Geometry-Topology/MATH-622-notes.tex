@@ -245,7 +245,7 @@ These notes are based on Ron Donagi's lectures for the course ``Complex Algebrai
 
 \subsection{Lectures 1-4}
 
-These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously. The following problems give a taste of the initial concepts presented.
+These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously. The following three problems give a taste of the initial concepts presented.
 
 \medskip
 
@@ -323,7 +323,7 @@ First, let's review some basic concepts about functions of a single complex vari
 
 \begin{defn}
 Let $z_0\in \C$. A function $f = u+iv : U\subset \C \to \C$ is \textit{holomorphic} or \textit{analytic} if at least one of  the following equivalent conditions holds.
-\bi
+\be[label=(\roman*)]
 \item Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations, i.e., 
 \begin{align*}
 u_x & = v_y
@@ -334,7 +334,7 @@ u_x & = v_y
 \[f(w) = \frac{1}{2\pi i}\int_{\gamma}\frac{f(w)}{\eta -w}d{\eta}
 \] for any closed circular path $\gamma$ centered at $w$ in $U$. 
 \item $f$ has a power series representation on $U$.
-\ei
+\ee
 \end{defn}
 
 \smallskip
@@ -345,11 +345,11 @@ A bijective function $f: U \subset \C \to V \subset \C$ is \textit{biholomorphic
 
 \begin{fact}\label{singfacts} $ $
 \be[label = (\alph*)]
-\item{\textbf{(Maximum modulus principle)}} If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\lvert{f}\rvert$ has a local maximum, then $f$ is constant. 
+\item{\textbf{(Maximum modulus principle)}} If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\left\lvert{f}\right\rvert$ has a local maximum, then $f$ is constant. 
 \item{\textbf{(Liouville's theorem)}} Any bounded entire function is constant. 
-\item{\textbf{(Riemann extension theorem)}} If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \{z\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
+\item{\textbf{(Riemann extension theorem)}} If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \left\{z\right\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
 \item{\textbf{(Riemann mapping theorem)}} If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
-\item{\textbf{(Residue theorem)}} If $f: B_{\epsilon}(0)\setminus \{0\}$ is holomorphic, then $f$ can be expanded in a Laurent series
+\item{\textbf{(Residue theorem)}} If $f: B_{\epsilon}(0)\setminus \left\{0\right\}$ is holomorphic, then $f$ can be expanded in a Laurent series
 $\sum_{n={-\infty}}^{\infty}a_nz^n$ such that $a_{-1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
 \ee
 \end{fact}
@@ -360,31 +360,31 @@ Next, let's look at some basic concepts about functions of several complex varia
 
 \begin{defn}
 A function $f = u +iv: U\subset \C^n \to \C$ is \textit{holomorphic} if at least one of  the following equivalent conditions holds.
-\bi
+\be[label=(\roman*)]
 \item $f$ is holomorphic in each variable individually.
 \item  Both $u$ and $v$ are $C^1$, and $f$ satisfies the Cauchy-Riemann equations,
-\begin{align*}
-u_{x_i} & = v_{y_i}
-\\ u_{y_i} & = {-v_{x_i}}
-\end{align*}
+\begin{gather*}
+u_{x_i}  = v_{y_i}
+\\ u_{y_i}  = {-v_{x_i}}
+\end{gather*}
 for each $i=1, \ldots, n$.
 \item $\sum_{i=1}^n\frac{\partial{f}}{\partial{\bar{z}_i}} =0$.
 \item $f$ has a power series representation on $U$,
 \[
 \sum_{k_1=0}^{\infty}\cdots \sum_{k_n=0}^{\infty} a_{k_1, \ldots, k_n}z_1^{k_1}\cdots z_n^{k_n}.
 \]
-\ei
+\ee
 \end{defn}
 
 \begin{note}
 Statements (a), (b), and (c) of \cref{singfacts} generalize to functions of several variables, as does the Cauchy integral formula:
 \[
-f(z) = \frac{1}{(2\pi i)^n} \int_{\lvert{\eta_i - z_i}\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{(\eta_1 - z_1)\cdots (\eta_n - z_n)}d{\eta_1}\cdots d{\eta_n}
+f(z) = \frac{1}{(2\pi i)^n} \int_{\left\lvert{\eta_i - z_i}\right\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{(\eta_1 - z_1)\cdots (\eta_n - z_n)}d{\eta_1}\cdots d{\eta_n}
 \] where $\eta_i >0$ for each $i=1, \ldots, n$.
 \end{note}
 
 \begin{theorem}[Hartog]
-If $n>1$, then any holomorphic function $f: B_{\epsilon}(0)\setminus \{0\} \subset \C^n \to \C$ extends to a holomorphic function on $B_{\epsilon}(0)$.
+If $n>1$, then any holomorphic function $f: B_{\epsilon}(0)\setminus \left\{0\right\} \subset \C^n \to \C$ extends to a holomorphic function on $B_{\epsilon}(0)$.
 \end{theorem}
 
 \begin{defn} Let $X$ be a (topological) space. A \text{sheaf $F$ on $X$} is a presheaf on $X$ such that for any open $U\subset X$ and any open cover $\{U_i\}_{i\in J}$ of $U$, there is an exact sequence
@@ -446,10 +446,10 @@ A \textit{line bundle} is a vector bundle of rank $1$.
 
 \begin{defn}
 Let $X$ be a complex manifold.  A \textit{sheaf $F$ of $\O_X$-modules} is a sheaf on $X$ such that for any open set $U$ in $X$,
-\bi
+\be[label=(\roman*)]
 \item $F(U)$ is a module over $\O_X(U)$ and
 \item if $U \subset V \subset X$, then $\left(f\cdot a\right)\restriction_U = f\restriction_U\cdot a\restriction_U$.
-\ei
+\ee
 \end{defn}
 
 \begin{exmp}[Sheaf of sections]
@@ -512,7 +512,7 @@ Consider the case where $D = \pt$. Let $f \in \Gamma\left(U, \O_U\right)$ and le
 
 \medskip
 
-Alternatively, let $$\left(\O_X\left(D\right)\right)\left(U\right) = \{g : U \to \C  \mid g \text{ is meromorphic}, \ \overbrace{fg}^{\text{\tiny product}} \text{ is holomorphic}\}.$$
+Alternatively, let $$\left(\O_X\left(D\right)\right)\left(U\right) = \left\{g : U \to \C  \mid g \text{ is meromorphic}, \ \overbrace{fg}^{\text{\tiny product}} \text{ is holomorphic}\right\}.$$
 For example,
 let $X = \P^1$ and $D$ be a point $p$. Let $(x_0, x_1)$ denote local coordinates on $X$ near $p$. Let $g$ be meromorphic in these coordinates and let $f\left(x_0, x_1\right) = \frac{x_1}{x_0}$. Then $f{g}$ is holomorphic, i.e., $g$ has a pole of order at most one at $p$. 
 \begin{question} $ $
@@ -533,7 +533,7 @@ In fact, it can be shown that
 \bigskip
 
 In general, $D$ is defined locally, and thus so is $\O_U(D)$. Specifically,
-$\Gamma\left(U, \O_U\left(D\right)\right)$ consists of all holomorphic functions $f : U \setminus \supp\left(D\right) \to \C$ such that if $D = \sum m_iY_i$ and $Y_i \cap U = \{f_i =0\}$, then $g\prod_if_i^{m_i}$ is holomorphic in $U$.
+$\Gamma\left(U, \O_U\left(D\right)\right)$ consists of all holomorphic functions $f : U \setminus \supp\left(D\right) \to \C$ such that if $D = \sum m_iY_i$ and $Y_i \cap U = \left\{f_i =0\right\}$, then $g\prod_if_i^{m_i}$ is holomorphic in $U$.
 
 \begin{exmp}[Veronese embedding]
 Let $X = \P^1$ and $p$ be as before. 
@@ -550,7 +550,7 @@ x\mapsto \ker\left(\Gamma\left(X, L\right) \overset{\ev_x}{\longrightarrow} L_p\
 \]
 
 \begin{defn}
-The \textit{base locus of $L$} is $\BL\left(L\right) \equiv \{x  \in X \mid s(x) =0 \text{ for each } s\in \Gamma\left(X, L\right)\}$.
+The \textit{base locus of $L$} is $\BL\left(L\right) \equiv \left\{x  \in X \mid s(x) =0 \text{ for each } s\in \Gamma\left(X, L\right)\right\}$.
 \end{defn} 
 
 Note that we get a map $X \setminus \BL\left(L\right) \to \P\left(\Gamma\left(X, L\right)^{\vee}\right)$.
@@ -565,7 +565,7 @@ X\setminus\BL\left(V\right) \arrow[u, hook] \arrow[ru] &
 \end{tikzcd}.
 \]
 
-Let $X = \P^1$ and $p = \{x=0\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right) = \C\langle 1, x, x^2\rangle$, and
+Let $X = \P^1$ and $p = \left\{x=0\right\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right) = \C\langle 1, x, x^2\rangle$, and
 \[
 \begin{tikzcd}
 \P^1 \arrow[rd, "\varphi_V"', dashed] \arrow[r, "\varphi_{\O(2)}"] & \P^2 \arrow[d, "\rho", dashed] \\
@@ -579,7 +579,7 @@ Let $X = \P^1$ and $p = \{x=0\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right)
 
 \subsection{Lecture 7}
 
-Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\}$ and $\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\}$. Further, define $\left(L^1\right)^{-1}$ as the line bundle with transition functions $\{\left(g_1^{k{l}}\right)^{-1} : U_{k{l}} \to \C^{\ast}\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{-1} \cong \O_X$.
+Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\left\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\right\}$ and $\left\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\right\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\left\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\right\}$. Further, define $\left(L^1\right)^{-1}$ as the line bundle with transition functions $\left\{\left(g_1^{k{l}}\right)^{-1} : U_{k{l}} \to \C^{\ast}\right\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{-1} \cong \O_X$.
 
 \begin{defn}
 We say that a divisor $D = \sum_im_iY_i$ is \text{effective} if $m_i\geq 0$ for each $i$.
@@ -589,7 +589,7 @@ Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\
 
 \begin{exmp} Let $X = \P^1$.
 \be
-\item Let $x= \frac{x_1}{x_0}$ and $D =p \coloneqq \{x=0\}$. Then $V = \C\langle 1, x \rangle$, and the map $\varphi_V : \P^1 \to \P\left(V^{\vee}\right)$ is given by $c\mapsto y\coloneqq \frac{x}{1}$.
+\item Let $x= \frac{x_1}{x_0}$ and $D =p \coloneqq \left\{x=0\right\}$. Then $V = \C\langle 1, x \rangle$, and the map $\varphi_V : \P^1 \to \P\left(V^{\vee}\right)$ is given by $c\mapsto y\coloneqq \frac{x}{1}$.
 \item Let $D = m\left(\infty\right)$ with $m>0$. Then $V= \C\langle x_1, \ldots, x_m^m\rangle$, and the map $\varphi_{m{\infty}} : \P^1 \to \P^m$ is given by
 \begin{align*}
 \left(x_0, x_1\right) & \mapsto \left(x_0^m, x_0^{m-1}x_1, \ldots, x_0x_1^{m-1}, x_1^m\right)
@@ -602,7 +602,7 @@ Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\
 \begin{exmp}
 Let $X$ be an elliptic curve, i.e., a space of the form $\C/\Lambda$. Let $p$ be the image of $0$ and let $D = mp$. 
 \be
-\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{-1}\left(\infty\right) = \{0\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
+\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{-1}\left(\infty\right) = \left\{0\right\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
 \[
 \begin{tikzcd}
 X \arrow[r, dashed]                     & \P^0 \\
@@ -631,13 +631,13 @@ It follows that  $\BL\left(\O_X(D)\right) =p$.
 In general, if $H\subset \P^n$ is a hyperplane, then $\varphi_{\O\left(d{H}\right)} : \P^n \to \P^{{{d+n}\choose n} -1}$ is given by $$\left(x_0, \ldots, x_n\right) \mapsto \left(d\text{-th order homogenous polynomials}\right),$$  known as the $d$-th order Veronese embedding on $\P^n$.
 
 \begin{exmp}
-Let $X = \P^2$ with coordinates $\left(x,y,z\right)$. Let $H$ denote the hyperplane given by $z=0$ and let $D = 2{H}$. Then $ V= \{s\in \Gamma  \left(\O\left(2{H}\right)\right) \mid s\left(0,0,1\right) =0\}$, and
+Let $X = \P^2$ with coordinates $\left(x,y,z\right)$. Let $H$ denote the hyperplane given by $z=0$ and let $D = 2{H}$. Then $ V= \left\{s\in \Gamma  \left(\O\left(2{H}\right)\right) \mid s\left(0,0,1\right) =0\right\}$, and
 \[
 \begin{tikzcd}
 V \arrow[r, hook]                                                         & \Gamma\left(\O\left(2{H}\right)\right)                           \\
 {\C\langle x^2, xy, y^2, xz,yz\rangle} \arrow[r, hook] \arrow[u, "\cong"] & {\C\langle x^2, xy, y^2, xz, yz, z^2\rangle} \arrow[u, "\cong"']
 \end{tikzcd}
-\] commutes. Further, $\BL(V) = \{0\} = \left[0,0,1\right]$, and $\varphi_V$ is a map $\P^2 \setminus \{0\} \to \P^4$ but does not extend to $\P^2$. Indeed, we have that
+\] commutes. Further, $\BL(V) = \left\{0\right\} = \left[0,0,1\right]$, and $\varphi_V$ is a map $\P^2 \setminus \left\{0\right\} \to \P^4$ but does not extend to $\P^2$. Indeed, we have that
 \begin{align*}
 \lim_{\substack{\left(0, y, 1\right) \\ y\to 0}} \varphi_V  & = \lim_{y\to0}\left(0,0,y^2,0, y\right)= \net{\left(0,0,0,0,1\right)}{}
 \\ \lim_{\substack{\left(x, 0, 1\right) \\ x\to 0}} \varphi_V  & = \lim_{x\to0}\left(x^2,0,0,x, 0\right)= \left(0,0,0,1,0\right).
@@ -658,7 +658,7 @@ Recall our correspondence \eqref{eqn:corr}. We can add to it the class of all ma
 Let's turn now to some higher-dimensional examples.
 
 \begin{exmp}
-Let $X = \P^2$, $L = \O(2)$, and $V = \{s\in \Gamma\left(X, \O(2)\right) \mid \text{linearity condition}\}$. Then $\varphi_V : \P^2 \hookrightarrow \P^5$. Consider any homogenous polynomial $\sum a_{ijk}x^iy^jz^k$. Then our linearity condition may take any of the following forms. 
+Let $X = \P^2$, $L = \O(2)$, and $V = \left\{s\in \Gamma\left(X, \O(2)\right) \mid \text{linearity condition}\right\}$. Then $\varphi_V : \P^2 \hookrightarrow \P^5$. Consider any homogenous polynomial $\sum a_{ijk}x^iy^jz^k$. Then our linearity condition may take any of the following forms. 
 \bi
 \item $\sum a_{ijk}x^iy^jz^k =0$ where $a_{ijk}$ ranges over
 \[
@@ -738,7 +738,7 @@ Y \arrow[d, hook] \arrow[r, hook] & X \arrow[d, hook] \\
 \] where $c$ denotes the codimension of $Y$, then we can take $\bl_Y(X)$ to be the closure of $\bl_{\P^{n-c}}\left(\P^n \cap \left(X \setminus Y\right)\right)$.
 
 \begin{exmp}
-Consider $\P^3$ with coordinates $\left(x,y,z,w\right)$. We wish to resolve the cone $\{x^2 = y^2\} \subset \P^3$. Let $p = \{x=z=0\}$.
+Consider $\P^3$ with coordinates $\left(x,y,z,w\right)$. We wish to resolve the cone $\{x^2 = y^2\} \subset \P^3$. Let $p = \left\{x=z=0\right\}$.
 We have a commutative diagram
 \[
 \begin{tikzcd}
@@ -751,7 +751,7 @@ We have a commutative diagram
 \end{exmp}
 
 \begin{exmp}
-Consider the quadratic map $\varphi : \P^2 \to \P^2$ given by $\left(x,y,z\right) \mapsto \left(\frac{1}{x}, \frac{1}{y}, \frac{1}{z}\right) = \underbrace{\left(yz, xz, xy\right)}_{\left(u,v,w\right)}$. Let $$V = \{s\in \Gamma\left(\P^2, \O_{\P^2}(2)\right) \mid s(001) =0, \ s(010) = 0, \ s(100) =0\}, $$ which is isomorphic to $\Gamma\bigl({\underbrace{\J_{3 \text{ points}}}_{\mathclap{\text{ideal sheaf on 3 points}}}} \otimes \O(2)\bigr)$. The fact that $\varphi^{-1} = \varphi$ yields the following properties.
+Consider the quadratic map $\varphi : \P^2 \to \P^2$ given by $\left(x,y,z\right) \mapsto \left(\frac{1}{x}, \frac{1}{y}, \frac{1}{z}\right) = \underbrace{\left(yz, xz, xy\right)}_{\left(u,v,w\right)}$. Let $$V = \left\{s\in \Gamma\left(\P^2, \O_{\P^2}(2)\right) \mid s(001) =0, \ s(010) = 0, \ s(100) =0\right\}, $$ which is isomorphic to $\Gamma\bigl({\underbrace{\J_{3 \text{ points}}}_{\mathclap{\text{ideal sheaf on 3 points}}}} \otimes \O(2)\bigr)$. The fact that $\varphi^{-1} = \varphi$ yields the following properties.
 \bi
 \item The line $z=0$ collapses to the point $u=v=0$.
 \item The line $y=0$ collapses to the point $u=v=0$.
@@ -829,7 +829,7 @@ We have that
 \item $\Gamma \left(\P^n, \O(k)\right) = \begin{cases} \sym^k\left(V^{\vee}\right) & k\geq0 \\ 0 & k<0\end{cases}$.
 \ee
 
-Let $U_i = \{z \in \P^n \mid z_i \ne 0\}$ for each $i\in \{0, 1, \ldots, n\}$, so that $\P^n = \bigcup_{i=0}^n$. Let $Z_{ij} = \frac{z_j}{z_i}$, thereby endowing each $U_i$ with local coordinates. Let $s$ be a section of $\O$, so that $$s = \left(s_i \in \Gamma\left(U_i, \O\right)\right)_{i=0}^n.$$ Note that $Z_i$ defines a section on $U_j$ with $s_j = \frac{z_i}{z_j} = Z_{ji}$ for each $j=0, \ldots, n$. 
+Let $U_i = \left\{z \in \P^n \mid z_i \ne 0\right\}$ for each $i\in \left\{0, 1, \ldots, n\right\}$, so that $\P^n = \bigcup_{i=0}^n$. Let $Z_{ij} = \frac{z_j}{z_i}$, thereby endowing each $U_i$ with local coordinates. Let $s$ be a section of $\O$, so that $$s = \left(s_i \in \Gamma\left(U_i, \O\right)\right)_{i=0}^n.$$ Note that $Z_i$ defines a section on $U_j$ with $s_j = \frac{z_i}{z_j} = Z_{ji}$ for each $j=0, \ldots, n$. 
 \[
 \begin{tikzcd}
 s_j \arrow[r, equals] \arrow[d, equals]   & Z_{jk}\cdot s_k \arrow[d, equals]  \\
@@ -856,7 +856,7 @@ Map & $\pt$ & undefined & $\id$ & \begin{tabular}[c]{@{}c@{}}$\begin{cases} \tex
 \end{tabular}
 \end{table}
 
-Let $X$ be a complex $n$-manifold. Then $T_X$ consists of all local sections on an open set $U$ with coordinates, say, $z_1, \ldots, z_n$. The set $\{\frac{\partial}{\partial{z_i}}\}$ is a basis for this, with each section of the form $\sum_{i=1}^n f_i\frac{\partial}{\partial{z_i}}$ where each $f_i$ belongs to $\Gamma\left(U, \O\right)$. For any other basis $\{\frac{\partial}{\partial{w_i}}\}$, we have that 
+Let $X$ be a complex $n$-manifold. Then $T_X$ consists of all local sections on an open set $U$ with coordinates, say, $z_1, \ldots, z_n$. The set $\left\{\frac{\partial}{\partial{z_i}}\right\}$ is a basis for this, with each section of the form $\sum_{i=1}^n f_i\frac{\partial}{\partial{z_i}}$ where each $f_i$ belongs to $\Gamma\left(U, \O\right)$. For any other basis $\left\{\frac{\partial}{\partial{w_i}}\right\}$, we have that 
 \[
 \frac{\partial}{\partial{w_i}} = \sum\frac{\partial{z_j}}{\partial{w_i}}\frac{\partial}{\partial{z_j}}.
 \] Note that  $T_V \cong \O_V \otimes_{\C} V$. In general,  $\Omega_V^i \cong \O_V \otimes \bigwedge^i V^{\vee}$.
@@ -948,7 +948,7 @@ Suppose that $X\subset Y$ is a submanifold of codimension $1$. Then we have a sh
 $N_{X\mathbin{/}Y} \cong \O_Y\left(X\right)\bigr\rvert_X$.
 \end{lemma}
 
-In other words, if $L\in \pic(Y)$, $s\in \Gamma\left(Y, L\right)$, and $X = \{s=0\}$, then $N_{X\mathbin{/}Y} \cong L\bigr\rvert_X$.
+In other words, if $L\in \pic(Y)$, $s\in \Gamma\left(Y, L\right)$, and $X = \left\{s=0\right\}$, then $N_{X\mathbin{/}Y} \cong L\bigr\rvert_X$.
 
 \begin{theorem}[Adjunction formula]
 $K_X \cong \left(K_Y \otimes_{\O_Y} \O_Y(X)\right)\bigr\rvert_X$.
@@ -1053,10 +1053,10 @@ If the actual dimension is different from the expected dimension, then $\Gamma\l
 This is \textbf{unknown}. See the article \href{https://pdfs.semanticscholar.org/3db0/6dd64b62f15f04c9caa13dba2db7ca4d9fdd.pdf}{``Linear Systems of Plane Curves"} by Rick Miranda.
 \end{proof}
 
-Consider the map $\lvert{\O(d)}\rvert : \P^2 \hookrightarrow \P^{{{d+2}\choose 2} -1}$. We also have a map
+Consider the map $\left\lvert{\O(d)}\right\rvert : \P^2 \hookrightarrow \P^{{{d+2}\choose 2} -1}$. We also have a map
 \[
 \begin{tikzcd}[column sep = large]
-                                                    & \P^2 \arrow[r, "\lvert{\J_{\sum_{p_i}(d)}}\rvert", dashed] & \P^{\dim -1} \\
+                                                    & \P^2 \arrow[r, "\left\lvert{\J_{\sum_{p_i}(d)}}\right\rvert", dashed] & \P^{\dim -1} \\
 {\bl_{p_1, \ldots, p_n}\left(\P^2\right)} \arrow[r, equals] & \widetilde{\P^2} \arrow[u] \arrow[ru]                      &             
 \end{tikzcd}
 \]
@@ -1160,7 +1160,7 @@ Now, consider the  complexification of our tangent bundle, $T^{\C}{X} \equiv T{X
 \ee
 \end{prop}
 
-Define, formally, the complex coordinates $z_j = x_j + iy_j$. Note that $T^{\C}{X}$ has as basis $\{\frac{\partial}{\partial{z_j}}, \frac{\partial}{\partial{\bar{z}_j}}\}$ and that $T^{\ast{\C}}{X}$ has as basis $\{d{z_j}, d{\bar{z}_j}\}$ where $d{z_j} \equiv d{x_j} + id{y_j}$.
+Define, formally, the complex coordinates $z_j = x_j + iy_j$. Note that $T^{\C}{X}$ has as basis $\left\{\frac{\partial}{\partial{z_j}}, \frac{\partial}{\partial{\bar{z}_j}}\right\}$ and that $T^{\ast{\C}}{X}$ has as basis $\left\{d{z_j}, d{\bar{z}_j}\right\}$ where $d{z_j} \equiv d{x_j} + id{y_j}$.
 
 \begin{notation} $ $
 \be
@@ -1257,7 +1257,7 @@ h & = z-i{\omega}
 For each $z\in \C^n$, define the matrix $\left(h_{ij}\right)\left(z\right)$ by $$h_{ij}\left(z_1, \ldots, z_n\right) = h\left(\frac{\partial}{\partial{x_i}}, \frac{\partial}{\partial{x_j}}\right).$$ 
 
 \begin{prop}
-Let $I$ be an almost complex structure on $U\subset X$ and let $g$ be compatible with $I$. Then $d{\omega} =0$ if and only if for each $x\in X$, there exist a neighborhood  $U'$ of $x$ and a holomorphic map $f: U' \to U$ such that $f^{\ast}{g}$ \textit{oscialates the standard metric to the second order}, i.e., $\left(h_{ij}\right) = \id + O\left(\lvert{z}\rvert^2\right)$.
+Let $I$ be an almost complex structure on $U\subset X$ and let $g$ be compatible with $I$. Then $d{\omega} =0$ if and only if for each $x\in X$, there exist a neighborhood  $U'$ of $x$ and a holomorphic map $f: U' \to U$ such that $f^{\ast}{g}$ \textit{oscialates the standard metric to the second order}, i.e., $\left(h_{ij}\right) = \id + O\left(\left\lvert{z}\right\rvert^2\right)$.
 \end{prop}
 
 \begin{notation}
@@ -1300,10 +1300,10 @@ Let $V$ be a vector space over $\R$. A subset $C\subset V$ is a \textit{convex c
 \end{defn}
 
 \begin{corollary}
-Suppose that $X$ is compact. Then $\K_X$ is an open convex cone in the infinite-dimensional real vector space $S\coloneqq \{\omega \in \A^{(1,1)}\left(X\right) \cap \A^2\left(X\right) \mid d{\omega} =0\}$.
+Suppose that $X$ is compact. Then $\K_X$ is an open convex cone in the infinite-dimensional real vector space $S\coloneqq \left\{\omega \in \A^{(1,1)}\left(X\right) \cap \A^2\left(X\right) \mid d{\omega} =0\right\}$.
 \end{corollary}
 \begin{proof}[Idea]
-The fact that $\K_X$ is a convex cone follows from the fact that the set of all positive-definite matrices is a convex cone. It remains to show that $\K_X$ is open. Since $X$ is compact, it has a finite open cover $\{U_i\}$. The set $P_{U_i}\subset S$ of all  forms that are positive-definite on $U_i$ is open. Thus, $\bigcap_i P_{U_i} = \K_X$  is also open.
+The fact that $\K_X$ is a convex cone follows from the fact that the set of all positive-definite matrices is a convex cone. It remains to show that $\K_X$ is open. Since $X$ is compact, it has a finite open cover $\left\{U_i\right\}$. The set $P_{U_i}\subset S$ of all  forms that are positive-definite on $U_i$ is open. Thus, $\bigcap_i P_{U_i} = \K_X$  is also open.
 \end{proof}
 
 \begin{remark}
@@ -1325,12 +1325,12 @@ In general,  $f$ must be injective. For example, if $f: C \to \C$ is a double co
 
 \begin{exmp}\label{km2} $ $
 \be
-\item  Consider the open cover $\left\{U_i\right\}_{1\leq i \leq n}$ of $\P^n$ where $U_i \equiv \{z \in \P^n \mid z_i \ne 0\}$. Define $\varphi_i : U_i \overset{\cong}{\longrightarrow} \C^n$ by $$\left(z_0, \ldots, z_n\right) \mapsto \underbrace{\left(\frac{z_0}{z_i}, \ldots, \frac{z_{i-1}}{z_i}, \frac{z_{i+1}}{z_i}, \ldots, \frac{z_n}{z_i}\right)}_{\left(w_1, \ldots, w_n\right)}. $$ Then $\left\{\left(U_i, \varphi_i\right)\right\}$ is a holomorphic atlas on $\P^n$. For each $i$, let 
+\item  Consider the open cover $\left\{U_i\right\}_{1\leq i \leq n}$ of $\P^n$ where $U_i \equiv \left\{z \in \P^n \mid z_i \ne 0\right\}$. Define $\varphi_i : U_i \overset{\cong}{\longrightarrow} \C^n$ by $$\left(z_0, \ldots, z_n\right) \mapsto \underbrace{\left(\frac{z_0}{z_i}, \ldots, \frac{z_{i-1}}{z_i}, \frac{z_{i+1}}{z_i}, \ldots, \frac{z_n}{z_i}\right)}_{\left(w_1, \ldots, w_n\right)}. $$ Then $\left\{\left(U_i, \varphi_i\right)\right\}$ is a holomorphic atlas on $\P^n$. For each $i$, let 
 \[
-\omega_i =  \frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(\sum_{l=0}^n \lvert{\frac{z_l}{z_i}}\rvert^2\right)}
+\omega_i =  \frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(\sum_{l=0}^n \left\lvert{\frac{z_l}{z_i}}\right\rvert^2\right)}
 .\] By way of $\varphi_i$, this becomes
 \[
-\frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(1+ \sum_{k=1}^n \lvert{w_k}\rvert^2\right)}
+\frac{i}{2\pi}{\partial{\bar{\partial}}\log\left(1+ \sum_{k=1}^n \left\lvert{w_k}\right\rvert^2\right)}
 .\]
 \begin{exercise}
  Show that $\omega_i\restriction_{U_i \cap U_j} = \omega_j\restriction_{U_i \cap U_j}$.
@@ -1423,7 +1423,7 @@ The \textit{Lie algebra $\G_G$ of $G$} is the space of left-invariant vector fie
 Consider the commutative diagram
 \[
 \begin{tikzcd}
-\G_G \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), [{-},{-}]\right)} \arrow[d, "\ev_1"] \\
+\G_G \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), \left[{-},{-}\right]\right)} \arrow[d, "\ev_1"] \\
                                          & T_1(G)                                   
 \end{tikzcd}.
 \]
@@ -1444,7 +1444,7 @@ e^A  = \sum_{n=0}^{\infty} \frac{A^n }{n!}.
 \]
 \end{defn}
 
-This is well-defined. Indeed, letting $\|\cdot\|$ denote the operator norm, we see that $\frac{\|A^n\|}{n!}\leq \frac{\|A\|^n}{n!}$ on any bounded subset $S\subset \C^n$. But $\sum_{n=0}^{\infty}\frac{\|A\|^n}{n!} = e^{\|A\|}$ on $S$, and thus $e^A$ converges uniformly on $S$. Moreover, one can show that its limit must be invertible.
+This is well-defined. Indeed, letting $\left\lVert{\cdot}\right\rVert$ denote the operator norm, we see that $\frac{\left\lVert{A^n}\right\rVert}{n!}\leq \frac{\left\lVert{A^n}\right\rVert^n}{n!}$ on any bounded subset $S\subset \C^n$. But $\sum_{n=0}^{\infty}\frac{\left\lVert{A^n}\right\rVert^n}{n!} = e^{\left\lVert{A^n}\right\rVert}$ on $S$, and thus $e^A$ converges uniformly on $S$. Moreover, one can show that its limit must be invertible.
 
 \begin{exercise}
 Let $G= \SL_2\left(\C\right)$, which is complex Lie group. Show that $$\G_{G} = \left\{\begin{bmatrix} a & b \\ c & d \end{bmatrix} \in M_2\left(\C\right) \mid a+d =0\right\}.$$

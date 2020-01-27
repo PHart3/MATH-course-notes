@@ -150,6 +150,7 @@
 \DeclareMathOperator{\op}{op}
 \DeclareMathOperator{\fix}{Fix}
 \DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\cone}{cone}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\syl}{syl}
 \DeclareMathOperator{\Syl}{Syl}
@@ -188,6 +189,7 @@ We continue to look at low-dimensional $K$-theory, finishing our description of 
 \item $n$Lab.
 \item Charles Weibel's \textit{The $K$-book: an introduction to algebraic $K$-theory}, Chapters II and III.
 \item Eric M. Friedlander's \textit{An Introduction to $K$-theory}, Chapter 1.
+\item \url{http://people.math.harvard.edu/~lurie/281notes/Lecture3-Whitehead.pdf}.
 \end{itemize}
 \end{abstract}
 
@@ -196,7 +198,7 @@ We continue to look at low-dimensional $K$-theory, finishing our description of 
 \section{$K_0$ of a Waldhausen category}
 
 \begin{definition}
-Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $(\c, co)$ is a \textit{category with cofibrations} if the following conditions hold.
+Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $\left(\c, \co\right)$ is a \textit{category with cofibrations} if the following conditions hold.
 \begin{enumerate}
 \item (W0) Every isomorphism in $\c$ is a cofibration.
 \item (W1) There is a base point $0$ in $\c$ such that the unique morphism $0 \rightarrowtail A$ for every $A \in \ob \c$.
@@ -286,7 +288,7 @@ Apply the glueing axiom to see that $F\left(\faktor{A'}{A}\right) \to \faktor{C}
 \section{$K_1$ for rings}
 
 
-Let $R$ be a unital ring. Recall that direct limits in $\Mod_R$ always exist. Let $$K_1 = \GL(R)^{\ab}$$ where $\GL(R) \equiv\colim_n \GL(n, R)$.
+Let $R$ be a unital ring. Recall that direct limits in $\Mod_R$ always exist. Let $$K_1(R) = \GL(R)^{\ab}$$ where $\GL(R) \equiv\colim_{n \in \N} \GL(n, R)$.
 
 \begin{note}[Universal property of $K$]
 The universal property of $\ab: \mathbf{Grp} \to \Ab$ induces the universal property of $K_1$ that any homomorphism $f: \GL(R) \to H$ with $H$ abelian has $f = g \circ \pi$ for some unique $g: K_1(R) \to H$.
@@ -297,7 +299,7 @@ Any ring map $f: R \to S$ induces a natural map $\GL(R) \to \GL(S)$. Hence $K_1$
 \end{prop}
 
 
-Thanks to Whitehead, we know that the commutator subgroup $[\GL(R), \GL(R)]$ is equal to $E(R) = \bigcup_n E_n(R)$, the group of elementary matrices $E_{i, j}(r)$ where $r \in R$ and $i\ne j$. Thus, $K_1(R)$ can be viewed as the ``stabilized'' group of automorphisms of the trivial projective module modulo trivial automorphisms.
+Thanks to Whitehead, we know that the commutator subgroup $\left[\GL(R), \GL(R)\right]$ is equal to $E(R) = \bigcup_n E_n(R)$, the group of elementary matrices $E_{i, j}(r)$ where $r \in R$ and $i\ne j$. Thus, $K_1(R)$ can be viewed as the ``stabilized'' group of automorphisms of the trivial projective module modulo trivial automorphisms.
 
 
 \begin{exmp}
@@ -351,7 +353,7 @@ If $D = \H$, then $N_{\red}$ is the square of the usual norm. It induces an isom
 
 \medskip
 
-Let $R$ be a commutative Banach algebra over $\R$ or $\C$. Recall that $\GL_n(R)$ and $\SL_n(R)$ are topological groups as subspaces of $\R^{n^2}$. 
+Let $R$ be a commutative Banach algebra over $\mathbb{F} \in \left\{\R, \C\right\}$ (i.e., a Banach space equipped with a commutative bilinear multiplication map $m : R \times R \to R$ such that $\left\lVert{m(a,b)}\right\rVert \leq \left\lVert{a}\right\rVert\cdot \left\lVert{b}\right\rVert$). Recall that both $\GL_n(R)$ and $\SL_n(R)$ are topological groups as subspaces of $\R^{n^2}$. 
 
 \begin{prop}\label{prev}
 We have that $E_n(R)$ is the path component of the identity matrix $I_n$ for any $n\geq 2$.
@@ -377,8 +379,8 @@ By \cref{prev}, we know that $\faktor{\SL(R)}{E(R)} \cong \pi_0\SL(R)$, yielding
 \begin{exmp} $ $
 If $X$ is compact, then 
 \begin{align*}
-SK_1(\R^X) &\leftrightarrow [X, \SL(\R)] \cong [X, \SO]
-\\ SK_1(\C^X) &\leftrightarrow [X, \SL(\C)] \cong [X, \SU].
+SK_1(\R^X) &\leftrightarrow \left[X, \SL(\R)\right] \cong \left[X, \SO\right]
+\\ SK_1(\C^X) &\leftrightarrow \left[X, \SL(\C)\right] \cong \left[X, \SU\right].
 \end{align*}
 In particular, $SK_1(\R^{S^1}) \leftrightarrow \pi_1 \SO \cong C_2$.
 \end{exmp}
@@ -386,14 +388,14 @@ In particular, $SK_1(\R^{S^1}) \leftrightarrow \pi_1 \SO \cong C_2$.
 \smallskip
 
 
-Let $P$ be a finitely generated projective $R$-module. Each isomorphism $P \oplus Q \cong R^n$ induces a group map $$\aut(P) \to \aut(P) \oplus \aut(Q) \cong \aut(R^n) \cong \GL(n,R).$$ The group map $\aut(P) \to \GL(R)$ is independent of the choice of isomorphism up to inner automorphism of $\GL(R)$. Therefore, there is a well-defined homomorphism $\Phi: \aut(R) \to K_1(R)$.
+Let $P$ be a finitely generated projective $R$-module. Any choice of isomorphism $P \oplus Q \cong R^n$ induces a group map $$\aut(P) \to \aut(P) \oplus \aut(Q) \cong \aut(R^n) \cong \GL(n,R).$$ The group map $\aut(P) \to \GL(R)$ is independent of our choice of isomorphism up to inner automorphism of $\GL(R)$. Therefore, there is a well-defined homomorphism $\Phi: \aut(R) \to K_1(R)$.
 
 
 \begin{lemma}
 Suppose that $R$ is commutative and $T$ is an $R$-algebra. Then $K_1(T)$ has a natural module structure over $K_0(R)$.
 \end{lemma}
 \begin{proof}
-For any $P \in \P(R)$ and $m\in \N$, consider the homomorphism $\Phi : \aut(P \otimes T^m) \to K_1(R\otimes T).$ For any $\beta \in \GL_m(T)$, let $$[P] \cdot \beta = \Phi(1_P \otimes \beta).$$This action factors through $K_0(R)$ and $K_1(T)$, inducing an operation $K_0(R) \times K_1(T) \to K_1(R \otimes S)$. Now, since $T$ is an $R$-algebra, there is a ring map $R\otimes T \to T$. The induced composite $K_0(R) \times K_1(T) \to K_1(R \otimes T) \to K_1(T)$ is the desired module structure.
+For any $P \in \P(R)$ and $m\in \N$, consider the homomorphism $\Phi : \aut(P \otimes T^m) \to K_1(R\otimes T).$ For any $\beta \in \GL_m(T)$, let $$\left[P\right] \cdot \beta = \Phi(1_P \otimes \beta).$$This action factors through $K_0(R)$ and $K_1(T)$, inducing an operation $K_0(R) \times K_1(T) \to K_1(R \otimes S)$. Now, since $T$ is an $R$-algebra, there is a ring map $R\otimes T \to T$. The induced composite $K_0(R) \times K_1(T) \to K_1(R \otimes T) \to K_1(T)$ is the desired module structure.
 \end{proof}
 
 \medskip
@@ -404,24 +406,52 @@ As it turns out, $K_1(R)$ is completely determined by the category $\P(R)$. This
  if $R$ and $S$ are Morita equivalent, then $K_1(R) \cong K_1(R)$. 
 \end{theorem}
 
+\medskip
+
+
+For an application of $K_1$ to manifold theory, let $\pi$ be a finitely generated group. Define the \textit{Whitehead group} $\wh(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z\pi)$ given by $\left(g, \pm 1\right)\mapsto \begin{bmatrix} \pm g\end{bmatrix}$.
+
+\begin{definition} Suppose that $W$, $M$, and $N$ are compact manifolds (possibly smooth or piecewise-linear). Suppose that $M$ and $N$ are without boundary. Let $\dim(M)=\dim(N) =n$ and $\dim(W) =n+1$.
+\begin{enumerate}
+\item We say that $W$ is a \textit{cobordism of $M$ and $N$} if $\partial{W}\cong M \coprod N$.
+\item We say that $W$ is an \textit{$h$-cobordism of $M$ and $N$} if it is a cobordism of $M$ and $N$ and the inclusion maps $i_M : M \hookrightarrow \partial{W}$ and $i_N: N\hookrightarrow \partial{W}$ are homotopy equivalences.
+\end{enumerate}
+\end{definition}
+
+Let $R$ be a ring. A \textit{based chain complex over $R$} is a bounded chain complex
+\[
+\begin{tikzcd}
+\cdots \arrow[r] & F_{n+1} \arrow[r, "d_{n+1}"] & F_n \arrow[r, "d_n"] & F_{n-1} \arrow[r] & \cdots
+\end{tikzcd}
+\] of finitely generated free $R$-modules together with a choice $B_n$ of basis (ordered in a predetermined way) for each $F_n$. The \textit{Euler characteristic of $\left(F_{\ast}, d_n\right)$} is the finite sum
+\[
+\chi(F_{\ast}) \equiv \sum_{n}({-1})^n\left\lvert{B_n}\right\rvert.
+\] If $F_{\ast}$ is acyclic, then it is contractible, so that there is some map $h:F_{\ast} \to F_{\ast +1}$ such that $dh+hd =\id_{F_{\ast}}$. In this case, one can check that
+\[
+d+h : \bigoplus_nF_{2n} \to \bigoplus_nF_{2n+1}.
+\] is an isomorphism of free $R$-modules. If $\chi(F_{\ast}) =0$, then this yields an element $\underbrace{\rho(F_{\ast}) \coloneqq \left[d+h\right]}_{\textit{Reidemeister torsion}}$ of $\faktor{K_1(R)}{\left\{\pm 1\right\}}$, which is independent of our choice of null-homotopy $h$. 
+
 \smallskip
 
-Let $\pi$ be a finitely generated group. Define the \textit{first Whitehead group} $\wh_1(\pi)$ of $\pi$ as the cokernel of the map $\pi \times \{\pm 1\}\to K_1(\Z[\pi])$ given by $\left(g, \pm 1\right)\mapsto \left(\pm g\right)$. 
+Suppose that $f: X_{\ast} \to Y_{\ast}$ is a quasi-isomorphism of based chain complexes over $R$. Then $\cone(f)$ is an acyclic based chain complex over $R$. Further, if $\chi(X_{\ast}) = \chi(Y_{\ast})$, then $\chi(\cone(f)) =0$, in which case we may  define the \textit{torsion of $f$} as the element $\rho(\cone(f))$ of $\faktor{K_1(R)}{\left\{\pm 1\right\}}$.
 
-\begin{theorem}
-A homotopy equivalence of finite CW-complexes with fundamental group $\pi$ is a simple homotopy equivalence iff it vanishes under the so-called \textit{Whitehead torsion} $\tau$ (which is a certain function from continuous maps to $\wh_1(\pi)$).
+Now, suppose that $f: X \to Y$ is a homotopy equivalence of finite connected CW complexes. Since these are locally contractible, they admit respective universal covering spaces $\widetilde{X}$ and $\widetilde{Y}$. If $f$ is a cellular map, then it induces a map
+\[
+\lambda_f: C_{\ast}(\widetilde{X}; \Z) \to C_{\ast}(\widetilde{Y}; \Z)
+\] of cellular chain complexes, which must be a quasi-isomorphism since $f$ is assumed to be a homotopy equivalence. Note that $C_{\ast}(\widetilde{X}; \Z)$ and $C_{\ast}(\widetilde{Y}; \Z)$ may be viewed as based chain complexes over $\Z{\pi_1(Y)}$. In this case, the \textit{Whitehead torsion $\tau(f)$ of $f$} is the image of the torsion of $\lambda_f$ under the natural projection $\faktor{K_1(\Z{\pi_1(Y)})}{\left\{\pm 1\right\}} \twoheadrightarrow \wh(\Z{\pi_1(Y)})$.
+
+\begin{theorem}[$s$-cobordism]
+Suppose that $W$, $M$, and $N$ are compact manifolds and that $W$ is an $h$-cobordism of $M$ and $N$. If $\dim(M) \geq 5$, then $\left(W, M, N\right) \cong \left(M \times \left[0, 1\right], M \times 0, M \times 1\right)$ iff $\tau(i_M)$ vanishes.
 \end{theorem}
 
-\begin{theorem}[The $s$-cobordism theorem]
-Suppose that $W$, $M$, and $N$ are compact PL-manifolds and that $W$ is a cobordism of $M$ and $N$. If $\dim(M) \geq 5$, then $\left(W, M, N\right) \cong \left(M \times [0, 1], M \times 0, M \times 1\right)$ iff $\tau= 0$.
-\end{theorem}
-
-\begin{corollary}
-The generalized Poincar\'e conjecture.
+\begin{corollary}[Generalized Poincar\'e conjecture]
+Let $M$ be an $n$-manifold that is homotopy equivalent to $S^n$. If $n\geq 5$, then $M$ is homeomorphic to $S^n$.
 \end{corollary}
 
+\medskip
+
 \begin{definition}
-Let $I$ is an ideal in $R$. Define $\GL(I)$ as the kernel of the map $\GL(R) \to \GL\left(\faktor{R}{I}\right)$. Moreover, define $E(R, I)$ as the smallest normal subgroup of $E(R)$ that contains $E_{i, j}(x)$ for $r\in I$ and $i\ne j$.
+Let $I$ be an ideal in $R$. Define $\GL(I)$ as the kernel of the map $\GL(R) \to \GL\left(\faktor{R}{I}\right)$. Moreover, define $E(R, I)$ as the smallest normal subgroup of $E(R)$ that contains $E_{i, j}(r)$ for any $r\in I$ and $i\ne j$.
 \end{definition}
 
 \begin{prop}
@@ -449,7 +479,7 @@ We have an exact sequence
 
 \begin{definition}
 Let $n\geq 3$ and $R$ be a ring. The \textit{Steinberg group} $\st_n(R)$ is the group generated by the symbols $x_{ij}(r)$ with $1\leq i\ne j\leq n$ and $r\in R$ that satisfy the following relations.
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*)]
 \item $$x_{ij}(r)x_{ij}(s) = x_{ij}(r+s)$$
 \item 
 \[
@@ -464,7 +494,7 @@ x_{kj}(-sr) & j \ne k, \quad i=l
 
 \smallskip
 
-We have a natural group surjection $\phi_n : \st_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $\st_n(R) \hookrightarrow \st_{n+1}(R)$. Note that $\st(R)\coloneqq \colim_n \st_n(R)$ exists. The $\phi_n$ thus form a group epimorphism $\phi : \st(R) \to E(R)$.
+We have a natural group surjection $\phi_n : \st_n(R) \to E_n(R)$ given by $x_{ij}(r) \mapsto E_{ij}(r)$. Moreover, there is a group map $\st_n(R) \hookrightarrow \st_{n+1}(R)$. Since $\st(R)\coloneqq \colim_n \st_n(R)$ exists, the $\phi_n$  form a group epimorphism $\phi : \st(R) \to E(R)$.
 Let \begin{align*}
 K_2(n, R) &= \ker \phi_n
 \\K_2(R)  &= \ker \phi.
@@ -554,7 +584,7 @@ The proof is entirely computational. See III.6.1.1 (Weibel).
 \end{proof}
 
 \begin{prop}
-If $F \supset \Q(t)$, then $\lvert{K_2(F)}\rvert = \lvert{F}\rvert$.
+If $F \supset \Q(t)$, then $\left\lvert{K_2(F)}\right\rvert = \left\lvert{F}\right\rvert$.
 \end{prop}
 
 \end{document}

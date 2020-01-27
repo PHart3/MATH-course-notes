@@ -93,7 +93,7 @@
 }
 
 \newcommand{\A}{\mathfrak A}
-\newcommand{\C}{\mathbb C}
+\newcommand{\C}{\mathfrak C}
 \newcommand{\E}{\vec E}
 \newcommand{\CP}{\mathbb CP}
 \newcommand{\F}{\mathbb F}
@@ -265,23 +265,23 @@ We say that two sets $X$ and $Y$ are \textit{equipollent} if there exists a bije
 \end{definition}
 
 \begin{notation}
-If two sets $X$ and $Y$ are equipollent, then we shall write either $X \sim Y$ or $\lvert{X}\rvert = \lvert{Y}\rvert$.
+If two sets $X$ and $Y$ are equipollent, then we shall write either $X \sim Y$ or $\left\lvert{X}\right\rvert = \left\lvert{Y}\right\rvert$.
 \end{notation}
 
 \begin{note}
-Recall that the \textit{linear continuum} $(\R, <)$ is the unique ordered field in which every nonempty bounded (above) set has a supremum.  
+Recall that the \textit{linear continuum} $\left(\R, <\right)$ is the unique ordered field in which every nonempty bounded (above) set has a supremum.  
 \end{note}
 
 \begin{theorem}[Cantor]
 The set $\R$ is uncountable, i.e., $\R$ is not equipollent to $\N$ or to any finite set.
 \end{theorem}
 \begin{proof}
-It's obvious that $\R$ is not finite. Suppose, towards a contradiction, that $\R$ is countable. Enumerate $\R$ as $$\R = \left\{x_0, x_1, \ldots, x_n, \ldots\right\}.$$ Define the sequences $(a_n)_{n\in \N}$ and $(b_n)_{n\in \N}$ recursively as follows. Let $a_0 = x_0$ and $b_0 = x_{k_0}$ where $k_0$ denotes the least $k$ such that $a_0 < x_k$. For each $n\in \N$, let $a_{n+1}= x_{i_n}$ where $i_n$ denotes the least $i$ such that $a_n < x_i < b_n$ and let $b_{n+1} = x_{k_n}$ where $k_n$ denotes the least $k$ such that $a_{n+1} < x_k < b_n$. In terms of our enumeration of $\R$, we have that
+It's obvious that $\R$ is not finite. Suppose, towards a contradiction, that $\R$ is countable. Enumerate $\R$ as $$\R = \left\{x_0, x_1, \ldots, x_n, \ldots\right\}.$$ Define the sequences $\left(a_n\right)_{n\in \N}$ and $\left(b_n\right)_{n\in \N}$ recursively as follows. Let $a_0 = x_0$ and $b_0 = x_{k_0}$ where $k_0$ denotes the least $k$ such that $a_0 < x_k$. For each $n\in \N$, let $a_{n+1}= x_{i_n}$ where $i_n$ denotes the least $i$ such that $a_n < x_i < b_n$ and let $b_{n+1} = x_{k_n}$ where $k_n$ denotes the least $k$ such that $a_{n+1} < x_k < b_n$. In terms of our enumeration of $\R$, we have that
 \begin{align*}
   \R = \{& a_0, \ldots, b_0, \ldots, a_1, \ldots, b_1, \ldots, a_2, \ldots, b_2, \ldots, a_3, \ldots, b_4, \ldots\}
   \\ & a_0 < a_1 < a_2 < \cdots < a_k < \cdots < b_k < \cdots < b_2 < b_1 <b_0 .
 \end{align*} 
-Note that $A\coloneqq \{a_n \mid n\in \N\}$ is nonempty and bounded above by $b_0$. Hence $\sup(A)$ exists in $\R$, and it belongs to $\bigcap_{n\in \N} (a_n, b_n)$. This implies that for each $n\in \N$, $\sup(A)$ does not equal any $x_k$ that precedes $a_n$. But every $x_k$ other than $x_0$ precedes some $a_{n_k}$.
+Note that $A\coloneqq \{a_n \mid n\in \N\}$ is nonempty and bounded above by $b_0$. Hence $\sup(A)$ exists in $\R$, and it belongs to $\bigcap_{n\in \N} \left(a_n, b_n\right)$. This implies that for each $n\in \N$, $\sup(A)$ does not equal any $x_k$ that precedes $a_n$. But every $x_k$ other than $x_0$ precedes some $a_{n_k}$.
 It follows that $\sup(A) \ne x_n$ for any $n$. Thus, $\R \ne \{x_0, x_1, \ldots, x_n, \ldots\}$, a contradiction.
 \end{proof}
 
@@ -289,7 +289,7 @@ It follows that $\sup(A) \ne x_n$ for any $n$. Thus, $\R \ne \{x_0, x_1, \ldots,
 \begin{enumerate}
 \item Let $a, b \in \R$ with $a<b$. We call the set
 \begin{align*}
-& (a,b) \coloneqq \{x\in \R \mid a<x<b\}
+& \left(a,b\right) \coloneqq \{x\in \R \mid a<x<b\}
 \\ & \text{(resp. } [a,b]  \coloneqq \{x\in \R \mid a\leq x \leq b\}\text{)}
 \end{align*} an  \textit{open} (resp. \textit{closed}) \textit{interval (with endpoints $a$ and $b$)}.
 \item A set $X\subset \R$ is \textit{open in $\R$} if it equals a union of open intervals.
@@ -303,20 +303,20 @@ A set $X$ is open in $\R$ if and only if for any $x\in X$, there is some open in
 \end{note}
 
 \begin{prop}
-The set $\{(a,b) \mid a, b\in \Q \}$ of \textit{rational intervals} forms a countable basis of $\R$.
+The set $\left\{(a,b) \mid a, b\in \Q\right\}$ of \textit{rational intervals} forms a countable basis of $\R$.
 \end{prop}
 
 \begin{definition} Let $X\subset \R$ and $c\in \R$.
 \begin{enumerate}
-\item We say that $c$ is a \textit{limit point of $X$} if for any open interval $I$ with $I\ni c$, we have $(I\setminus \{c\}) \cap X \ne \emptyset$.
+\item We say that $c$ is a \textit{limit point of $X$} if for any open interval $I$ with $I\ni c$, we have $\left(I\setminus \{c\}\right) \cap X \ne \emptyset$.
 \item We say that $c$ is an \textit{isolated point of $X$} if $c\in X$ and $c$ is not a limit point of $X$.
 \end{enumerate}
 \end{definition}
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $X = \{0\} \cup \left[1, \frac{3}{2}\right) \cup \left(\frac{3}{2}, 2\right] \cup \{3\}$. Then the isolated points of $X$ are precisely $0$ and $3$. 
-\item Let $X = \{0\} \cup \left\{\frac{1}{n} \mid n \in \Z_{>0}\right\}$. Then the isolated points of $X$ are precisely $\frac{1}{n}$ for each $n\in \Z_{>0}$.
+\item Let $X = \left\{0\right\} \cup \left[1, \frac{3}{2}\right) \cup \left(\frac{3}{2}, 2\right] \cup \left\{3\right\}$. Then the isolated points of $X$ are precisely $0$ and $3$. 
+\item Let $X = \left\{0\right\} \cup \left\{\frac{1}{n} \mid n \in \Z_{>0}\right\}$. Then the isolated points of $X$ are precisely $\frac{1}{n}$ for each $n\in \Z_{>0}$.
 \end{enumerate}
 \end{exmp}
 
@@ -389,7 +389,7 @@ The following  properties are invariant under isomorphism.
  Let $\left(C, <\right)$ be a complete linear ordering  containing some countable dense subset $\left(P, <\right)$ such that $P \cong \Q$ . Then $C\cong \R$. 
 \end{theorem}
 \begin{proof} 
- By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $(q_n)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\{f^{-1}(q_n) \mid n \in \N\}$ to $r$.
+ By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $\left(q_n\right)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\{f^{-1}(q_n) \mid n \in \N\}$ to $r$.
 \end{proof}
 
 \smallskip
@@ -410,8 +410,8 @@ We have thus completed our construction of $\psi$.
 \subsection{Lecture 3}
 
 \begin{definition}
-Let  $\left(P, <\right)$ be any linear ordering. A \textit{Dedekind cut in $P$} is a pair $(A, B)$ of disjoint nonempty subsets of $P$ such that
-\begin{enumerate}[label=(\roman*)]
+Let  $\left(P, <\right)$ be any linear ordering. A \textit{Dedekind cut in $P$} is a pair $\left(A, B\right)$ of disjoint nonempty subsets of $P$ such that
+\begin{enumerate}[label=(\alph*)]
 \item $A \cup B = P$,
 \item $a<b$ for any $a\in A$ and $b \in B$, and
 \item $A$ does not contain an upper bound.
@@ -428,7 +428,9 @@ Let $\left(P, <\right)$ be a dense unbounded linearly ordered set. Then there ex
 \end{theorem}
 \begin{proof}
 Set $C$ equal to the set of all Dedekind cuts in $P$. Let $\left(A_1, B_1\right)\preceq \left(A_2, B_2\right)$ if $A_1\subset A_2$. It's easy to check that $\left(C, \prec\right)$ is  a linear ordering. Also, since $P$ is unbounded, so is $C$. If $T\coloneqq \{(A_s, B_s) \mid s\in S\}$ is any nonempty bounded subset of $C$, then $$\left(\bigcup_{s\in S} A_s, \bigcap_{s\in S} B_s\right) = \sup(T).$$ Thus, $C$ is complete. 
-\\ \\
+
+\smallskip
+
 Now, for each $p\in P$, let 
 \begin{align*}
 A_p & = \left\{x\in P \mid x<p\right\}
@@ -449,13 +451,13 @@ It suffices to show that $I$ has no isolated points. But this follows from the f
 \end{proof}
 
 \begin{notation}
-If $I$ is an interval, then $\lvert{I}\rvert$ will denote the length of $I$.
+If $I$ is an interval, then $\left\lvert{I}\right\rvert$ will denote the length of $I$.
 \end{notation}
 
 \begin{theorem}[Cantor's intersection theorem] Let $$I_0 \supset I_1 \supset I_2 \supset \cdots $$ be a descending chain of nonempty closed intervals.
 \begin{enumerate}
 \item $\bigcap_{n\in \N} I_n \ne \emptyset$.
-\item If $\lim_{n\to \infty} \lvert{I_n}\rvert =0$, then $\bigcap_{n\in \N} I_n$ consists of exactly one element. 
+\item If $\lim_{n\to \infty} \left\lvert{I_n}\right\rvert =0$, then $\bigcap_{n\in \N} I_n$ consists of exactly one element. 
 \end{enumerate}
 \end{theorem}
 
@@ -465,15 +467,15 @@ The \textit{Cantor set $\bm{\mathcal{C}}$} is the set of all real numbers of the
 \item Take the interval $$C_0 \coloneqq \left[0,1\right].$$
 \item Remove $\left(\frac{1}{3}, \frac{2}{3}\right)$ from $I_0$ to get $$C_1\coloneqq \left[0, \frac{1}{3}\right] \cup \left[\frac{2}{3}, 1\right].$$
 \item Remove $\left(\frac{1}{9}, \frac{2}{9}\right)$  and $\left(\frac{7}{9}, \frac{8}{9}\right)$ from $I_1$ to get $$C_2 \coloneqq \left[0, \frac{1}{9}\right] \cup \left[\frac{2}{9}, \frac{1}{3}\right] \cup \left[\frac{2}{3}, \frac{7}{9}\right] \cup \left[\frac{8}{9}, 1\right]      .$$
-\item Continue in this fashion to get a sequence of sets $(C_n)_{n\in \N}$. Then $$\bm{\mathcal{C}} = \bigcap_{n\in\N} C_n.$$
+\item Continue in this fashion to get a sequence of sets $\left(C_n\right)_{n\in \N}$. Then $$\bm{\mathcal{C}} = \bigcap_{n\in\N} C_n.$$
 \end{enumerate}$ $Note that $\bm{\mathcal{C}}$ is closed as the intersection of closed sets. Moreover, since we have a nested sequence $$C_0 \supset C_1 \supset C_2 \supset C_3 \supset \cdots, $$ Cantor's intersection theorem implies that $\bm{\mathcal{C}} $ is nonempty.
 \begin{claim}
 $\bm{\mathcal{C}}$ has no isolated points. 
 \end{claim}
 \begin{proof}
-Let $\epsilon >0$. Choose $n\in \N$ so large that $(\frac{1}{3})^n <\epsilon$. Let $x\in \bm{\mathcal{C}}$. Then $x\in C_n$, so that $x$ belongs to some closed interval of length $\frac{1}{3}^n$. Pick $y \ne x$ such that $y$ is an endpoint of this interval. Then $y\in \bm{\mathcal{C}}$, and $\lvert{y-x}\rvert < \epsilon$. This shows that any open interval around $x$ contains a point in $\bm{\mathcal{C}}$ other than $x$. Thus, $x$ is not an isolated point.
+Let $\epsilon >0$. Choose $n\in \N$ so large that $\left(\frac{1}{3}\right)^n <\epsilon$. Let $x\in \bm{\mathcal{C}}$. Then $x\in C_n$, so that $x$ belongs to some closed interval of length $\frac{1}{3}^n$. Pick $y \ne x$ such that $y$ is an endpoint of this interval. Then $y\in \bm{\mathcal{C}}$, and $\left\lvert{y-x}\right\rvert < \epsilon$. This shows that any open interval around $x$ contains a point in $\bm{\mathcal{C}}$ other than $x$. Thus, $x$ is not an isolated point.
 \end{proof}$ $
-\\We now see that $\bm{\mathcal{C}}$ is, in fact, perfect. Moreover, since there is a bijection from $\{0,2\}^{\N}$ onto $\bm{\mathcal{C}}$, we see that $\bm{\mathcal{C}} \sim 2^{\aleph_0}$. 
+\\We now see that $\bm{\mathcal{C}}$ is, in fact, perfect. Moreover, since there is a bijection from $\left\{0,2\right\}^{\N}$ onto $\bm{\mathcal{C}}$, we see that $\bm{\mathcal{C}} \sim 2^{\aleph_0}$. 
 \end{exmp}
 
 
@@ -484,12 +486,16 @@ Let $\epsilon >0$. Choose $n\in \N$ so large that $(\frac{1}{3})^n <\epsilon$. L
 \end{note}
 
 \begin{lemma}\label{PL''}
-If $C$ is a closed interval, $P$ is perfect, and $\lvert{C \cap P}\rvert >  2$, then for every $n \in \N$, there are closed intervals $C_1, C_2 \subset C$ each of length $\leq n^{-1}$ such that $\lvert{C_1 \cap P}\rvert > 2$, $\lvert{C_2 \cap P}\rvert > 2$, and $C_1 \cap C_2 =\emptyset$.
+If $C$ is a closed interval, $P$ is perfect, and $\left\lvert{C \cap P}\right\rvert >  2$, then for every $n \in \N$, there are closed intervals $C_1, C_2 \subset C$ each of length $\leq n^{-1}$ such that $\left\lvert{C_1 \cap P}\right\rvert > 2$, $\left\lvert{C_2 \cap P}\right\rvert > 2$, and $C_1 \cap C_2 =\emptyset$.
 \end{lemma}
 \begin{proof}
-By hypothesis, we can find a set $\{x,y, z\} \subset C \cap P$ of size three. There are two cases to consider. 
-\\ \\First, suppose that at least two of $x$, $y$, and $z$ belong to the \textit{interior $\Int(C)$} of $C$, say, $x$ and $y$. Choose $C_1\subset C$ and $C_2 \subset C$ such that  $\Int(C_1) \ni x $ and $\Int(C_2) \ni y$. We can also make them so small that $C_1 \cap C_2 =\emptyset$ and both are of length at most $n^{-1}$. Note that $\Int(C_1)$ and $\Int(C_2)$ contain at least two points other than $x$ and $y$, respectively, because $P$ has no isolated points. 
-\\ \\
+By hypothesis, we can find a set $\left\{x,y, z\right\} \subset C \cap P$ of size three. There are two cases to consider. 
+
+\smallskip
+First, suppose that at least two of $x$, $y$, and $z$ belong to the \textit{interior $\Int(C)$} of $C$, say, $x$ and $y$. Choose $C_1\subset C$ and $C_2 \subset C$ such that  $\Int(C_1) \ni x $ and $\Int(C_2) \ni y$. We can also make them so small that $C_1 \cap C_2 =\emptyset$ and both are of length at most $n^{-1}$. Note that $\Int(C_1)$ and $\Int(C_2)$ contain at least two points other than $x$ and $y$, respectively, because $P$ has no isolated points. 
+
+\smallskip
+
 Second, suppose that exactly one of $x$, $y$, and $z$ belongs to $\Int(C)$, say, $z$. Then there is some $w \ne z$ such that $w\in \Int(C)$ because $P$ has no isolated points. Assume, wlog, that $x<y$ and $w<z$. Choose $C_1\subset C$ and $C_2 \subset C$ of length at most $n^{-1}$ such that $C_1\cap C_2 = \emptyset$, $x\in C_1$, $w\in \Int(C_1)$, $y\in C_2$, and $z\in \Int(C_2)$. Then, as before, $\Int(C_1)$ and $\Int(C_2)$ contain other points than $w$ and $z$, respectively. 
 \end{proof}
 
@@ -497,23 +503,27 @@ Second, suppose that exactly one of $x$, $y$, and $z$ belongs to $\Int(C)$, say,
 If $P$ is a perfect set, then $P \sim \R$.
 \end{theorem}
 \begin{proof}
-Due to  the Cantor-Schr\"oder-Bernstein theorem, it suffices to exhibit an injection $\varphi : \{0,1\}^{\N} \to P$. We can view $ \{0,1\}^{\N}$ as the set of all infinite binary strings. Let $\{0,1\}^{\ast}$ denote the set of all (finite) binary strings including the empty string $\epsilon$. 
-\\ \\By induction on the length of string, we shall define a set of closed intervals $(I_w)_{w\in \{0,1\}^{\ast}}$ such that
+Due to  the Cantor-Schr\"oder-Bernstein theorem, it suffices to exhibit an injection $\varphi : \left\{0, 1\right\}^{\N} \to P$. We can view $ \left\{0, 1\right\}^{\N}$ as the set of all infinite binary strings. Let $\left\{0, 1\right\}^{\ast}$ denote the set of all (finite) binary strings including the empty string $\epsilon$. 
+
+\smallskip
+By induction on the length of string, we shall define a set of closed intervals $\left(I_w\right)_{w\in \left\{0, 1\right\}^{\ast}}$ such that
 \begin{itemize}
-\item $\lvert{I_w \cap P}\rvert >2$,
+\item $\left\lvert{I_w \cap P}\right\rvert >2$,
 \item $I_{w\sigma}\subset I_w$,
 \item $I_{w0} \cap I_{w1} = \emptyset$, and
-\item $\lvert{I_s}\rvert < \frac{1}{\lvert{w}\rvert+1}$.
+\item $\left\lvert{I_s}\right\rvert < \frac{1}{\left\lvert{w}\right\rvert+1}$.
 \end{itemize}
-where $\sigma \in \{0,1\}$. For the base case, there exists a closed interval $I_{\epsilon}$ such that $\lvert{I_{\epsilon}}\rvert < 1$ and $\lvert{I_{\epsilon}\cap P}\rvert >2$ since $P$ has no isolated points. In addition, by \cref{PL''}, we can find disjoint subintervals $I_1$ and $I_0$ each on length $< \frac{1}{2}$ such that $\lvert{I_1 \cap P}\rvert>2$ and $\lvert{I_0 \cap P}\rvert >2$. Moreover, the same lemma automatically completes our induction step. 
-\\ \\ Now, for each $f\in \{0,1\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \lvert{I_{\bar{f}(n)}}\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \{c_f\}$$ for some $c_f \in \R$. 
+where $\sigma \in \left\{0, 1\right\}$. For the base case, there exists a closed interval $I_{\epsilon}$ such that $\left\lvert{I_{\epsilon}}\right\rvert < 1$ and $\left\lvert{I_{\epsilon}\cap P}\right\rvert >2$ since $P$ has no isolated points. In addition, by \cref{PL''}, we can find disjoint subintervals $I_1$ and $I_0$ each on length $< \frac{1}{2}$ such that $\left\lvert{I_1 \cap P}\right\rvert>2$ and $\left\lvert{I_0 \cap P}\right\rvert >2$. Moreover, the same lemma automatically completes our induction step. 
+
+\smallskip
+ Now, for each $f\in \left\{0, 1\right\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \left\lvert{I_{\bar{f}(n)}}\right\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \{c_f\}$$ for some $c_f \in \R$. 
 \begin{claim}
 $c_f \in P$. 
 \end{claim}
 \begin{proof}
-For each $I_{\bar{f}(k)}$, there is some $x_k \in P \cap I_{\bar{f}(k)}$. Then $\lim_{n\to \infty} \lvert{x_n - c_f}\rvert = 0$, so that $x_n \to c_f$. Since $P$ is closed and $c_f$ is a limit point of $P$, it follows that $c_f \in P$. 
+For each $I_{\bar{f}(k)}$, there is some $x_k \in P \cap I_{\bar{f}(k)}$. Then $\lim_{n\to \infty} \left\lvert{x_n - c_f}\right\rvert = 0$, so that $x_n \to c_f$. Since $P$ is closed and $c_f$ is a limit point of $P$, it follows that $c_f \in P$. 
 \end{proof}$ $
-\\Therefore, we can let $\varphi(f) = c_f$. It remains to show that $\varphi$ is injective. Suppose that $f, g \in \{0,1\}^{\N}$ with $f \ne g$.  Let $m$ be the least $k \in \N$ such that $f(k) \ne g(k)$. Then $I_{\bar{f}(k)} \cap I_{\bar{g}(k)} = \emptyset$ by construction. Hence $$\bigcap_{n \in \N} I_{\bar{f}(n)} \cap \bigcap_{n \in \N} I_{\bar{g}(n)} = \emptyset .$$ This means that $\varphi(f) \ne \varphi(g)$.
+\\Therefore, we can let $\varphi(f) = c_f$. It remains to show that $\varphi$ is injective. Suppose that $f, g \in \left\{0, 1\right\}^{\N}$ with $f \ne g$.  Let $m$ be the least $k \in \N$ such that $f(k) \ne g(k)$. Then $I_{\bar{f}(k)} \cap I_{\bar{g}(k)} = \emptyset$ by construction. Hence $$\bigcap_{n \in \N} I_{\bar{f}(n)} \cap \bigcap_{n \in \N} I_{\bar{g}(n)} = \emptyset .$$ This means that $\varphi(f) \ne \varphi(g)$.
 \end{proof}
 
 \begin{corollary}
@@ -526,7 +536,7 @@ $\bm{\mathcal{C}} \sim \R$.
 Let $X\subset \R$. To define the \textit{(transfinite) iteration of the derivative of $X$} by recursion on the ordinals, let
 \begin{align*}
 X^0 & = X
-\\ X^{\alpha +1} & =  (X^{\alpha})'
+\\ X^{\alpha +1} & =  \left(X^{\alpha}\right)'
 \\ X^{\lambda} & = \bigcap_{\alpha < \lambda} X^{\alpha} \quad \text{when } \lambda >0 \text{ is a limit ordinal}.
 \end{align*} 
 If $X$ is closed, then the \textit{Cantor-Bendixson rank $\cb(X)$ of $X$} is the least ordinal $\alpha$ such that $X^{\alpha} = X^{\alpha +1}$.
@@ -536,7 +546,7 @@ If $X$ is closed, then the \textit{Cantor-Bendixson rank $\cb(X)$ of $X$} is the
 If $X\subset \R$, then $X'$ is closed. 
 \end{lemma}
 \begin{proof}
-We must show that $X'' \subset X'$. Let $x\in X''$. Then for any open interval $I$ around $x$, there is some $y \in (I \setminus \{x\}) \cap X'$. Since $y$ is a limit point of $X$, there exist an open subinterval $J \subset I$ around $y$ and a $z \in J \cap X$  such that $z\notin \{x,y\}$. Hence $x$ is a limit point of $X$, as required. 
+We must show that $X'' \subset X'$. Let $x\in X''$. Then for any open interval $I$ around $x$, there is some $y \in \left(I \setminus \{x\}\right) \cap X'$. Since $y$ is a limit point of $X$, there exist an open subinterval $J \subset I$ around $y$ and a $z \in J \cap X$  such that $z\notin \{x,y\}$. Hence $x$ is a limit point of $X$, as required. 
 \end{proof}
 
 \begin{corollary}
@@ -549,7 +559,9 @@ If $C$ is an uncountable closed set, then there exists a perfect set $P\subset C
 \end{theorem}
 \begin{proof}
 By \cref{closed}, we get a descending chain $$ C = C^0 \supset C^1 \supset C^2 \supset \cdots \supset C^{\alpha} \supset \cdots.    $$ There must be some ordinal $\tau$ such that $C^{\tau} = C^{\tau +1}$. Otherwise, $\alpha \ne \beta \implies C^{\beta} \ne C^{\alpha}$. In this case, there is a definable injection $F$ from the proper class of ordinals $\ord$ into the set $\P(C)$, which implies that $\im{F}$ is a set and thus that the image of the definable inverse $F^{-1} : \im{F} \to \ord$ is a set. But this is impossible since $\im{F^{-1}} = \ord$. Now, let $P = C^{\beta}$. Note that $P$ is perfect as long as it's nonempty. Since $C$ is uncountable, this holds as long as  $C \setminus P$ is at most countable.
-\\ \\ Enumerate the rational intervals $(J_n)_{n\in \N}$. We have that $$ C\setminus P = {\bigcup_{\alpha < \tau} C^{\alpha} \setminus (C^{\alpha})'}.    $$ Since the sets $C^{\alpha} \setminus (C^{\alpha})'$ are pairwise disjoint, for any $x\in C\setminus P$, there is some unique $\alpha_x$ such that $x$ is an isolated point of $C^{\alpha_x}$. Hence there is a least $k_x \in \N$ such that $J_{k_x} \cap C^{\alpha_x} = \{x\}$. If $y \in C \setminus P$ with $x\ne y$, then it's easy to check that $k_x \ne k_y$. Thus, the function $C\setminus P \to \N$ given by $x \mapsto k_x$ is an injection, which proves that $C\setminus P$ is at most countable. 
+
+\smallskip
+ Enumerate the rational intervals $\left(J_n\right)_{n\in \N}$. We have that $$ C\setminus P = {\bigcup_{\alpha < \tau} C^{\alpha} \setminus \left(C^{\alpha}\right)'}.    $$ Since the sets $C^{\alpha} \setminus \left(C^{\alpha}\right)'$ are pairwise disjoint, for any $x\in C\setminus P$, there is some unique $\alpha_x$ such that $x$ is an isolated point of $C^{\alpha_x}$. Hence there is a least $k_x \in \N$ such that $J_{k_x} \cap C^{\alpha_x} = \{x\}$. If $y \in C \setminus P$ with $x\ne y$, then it's easy to check that $k_x \ne k_y$. Thus, the function $C\setminus P \to \N$ given by $x \mapsto k_x$ is an injection, which proves that $C\setminus P$ is at most countable. 
 \end{proof}
 
 \begin{corollary}\label{LC'}
@@ -557,7 +569,7 @@ Any uncountable closed set is equipollent to $\R$.
 \end{corollary}
 
 \begin{remark}[Continuum Hypothesis] 
-Observe that any real number $r$ equals $\sup\{q\in \Q \mid q<r\}$. Thus, there exists a surjection $\R \to \P(\Q)$. Further, we have the inclusion $\bm{\mathcal{C}} \subset \R$. By the Cantor-Schr\"oder-Bernstein, it follows that $$\lvert{\R}\rvert =2^{\aleph_0}.$$ The \textit{continuum hypothesis} ($\mathsf{CH}$) asserts that every uncountable subset of $\R$ is equipollent to $\R$ (i.e., that   $\aleph_1 =2^{\aleph_0}$).
+Observe that any real number $r$ equals $\sup\{q\in \Q \mid q<r\}$. Thus, there exists a surjection $\R \to \P(\Q)$. Further, we have the inclusion $\bm{\mathcal{C}} \subset \R$. By the Cantor-Schr\"oder-Bernstein, it follows that $$\left\lvert{\R}\right\rvert =2^{\aleph_0}.$$ The \textit{continuum hypothesis} ($\mathsf{CH}$) asserts that every uncountable subset of $\R$ is equipollent to $\R$ (i.e., that   $\aleph_1 =2^{\aleph_0}$).
 
 Hilbert placed the resolution of $\mathsf{CH}$ first on his famous 1900 research agenda for mathematics in the twentieth century. W. Hugh Woodin, a prominent set theorist, has recently argued that $\mathsf{CH}$ is true. It's clear that every nonempty open set is equipollent to $\R$. Moreover, \cref{LC'} shows that any closed set is either finite, equipollent to $\N$, or equipollent to $\R$. Therefore, no closed or open subset of $\R$ is a counterexample to $\mathsf{CH}$. Our next result, however, shows that we \emph{cannot} confirm $\mathsf{CH}$ by showing that every uncountable subset of $\R$ contains a perfect set.
 \end{remark}
@@ -596,8 +608,8 @@ The \textit{language of set theory} is the language of first-order logic with eq
 Historically, there were three major paradoxes of naive set theory that pushed certain mathematicians of the twentieth century to axiomatize it in first-order logic. 
 \begin{enumerate}
 \item \textit{Burali-Forti:} The binary relation $\in$ is meant to be a well-ordering of the family of all ordinals $\ord$ (see \cref{ord-wo} below). Further, we have that $\alpha \in \ord \implies \alpha \subset \ord$. It follows that if $\ord$ is a set, then $\ord \in \ord$, which is a contradiction since $\in$ is a strict ordering.\footnote{This version of the paradox is anachronistic as it uses the definition of ordinals formulated by von Neumann in 1923. The original, equivalent version was published in 1897.} 
-\item \textit{Cantor:} In 1891, Cantor showed that if $X$ is a set, then $\lvert{X}\rvert < \lvert{\P(X)}\rvert$. Thus, if the universe $\mathcal{U}$ of all sets is a set, then $\lvert{U}\rvert < \lvert{\P(U)}\rvert \leq \lvert{U}\rvert$, a contradiction. 
-\item \textit{Russell:} Originally, Frege proposed the \textit{axiom schema of unrestricted comprehension}: If $P$ is a first-order property, then there exists a set of the form $\{x \mid P(x)\}$. In 1902, Russell found that unrestricted comprehension is false. Indeed,  it implies that $$S \coloneqq \{x \mid x \notin x\}$$ is a set. But, in this case, $S \in S  \iff S \notin S$, which is false. 
+\item \textit{Cantor:} In 1891, Cantor showed that if $X$ is a set, then $\left\lvert{X}\right\rvert < \left\lvert{\P(X)}\right\rvert$. Thus, if the universe $\mathcal{U}$ of all sets is a set, then $\left\lvert{U}\right\rvert < \left\lvert{\P(U)}\right\rvert \leq \left\lvert{U}\right\rvert$, a contradiction. 
+\item \textit{Russell:} Originally, Frege proposed the \textit{axiom schema of unrestricted comprehension}: If $P$ is a first-order property, then there exists a set of the form $\left\{x \mid P(x)\right\}$. In 1902, Russell found that unrestricted comprehension is false. Indeed,  it implies that $$S \coloneqq \left\{x \mid x \notin x\right\}$$ is a set. But, in this case, $S \in S  \iff S \notin S$, which is false. 
 \end{enumerate}
 Those mathematicians hoped that such an axiomatization would act as a consistent yet powerful enough foundation for the great advances being made in analysis, algebra, and geometry.
 \end{remark}
@@ -613,13 +625,13 @@ Those mathematicians hoped that such an axiomatization would act as a consistent
 \[
 \forall a \forall b \exists c \forall x(x \in c \leftrightarrow x=a \vee x=b).
 \]
-This asserts that for any two sets $a$ and $b$, the \textit{unordered pair} $\{a,b\}$ exists. 
+This asserts that for any two sets $a$ and $b$, the \textit{unordered pair} $\left\{a,b\right\}$ exists. 
 \item \textit{Union} ($\mathsf{Union}$):
 \[
 \forall X \exists Y \forall u(u \in Y \leftrightarrow \exists z(z \in X \wedge u \in z)).
 \]
 
-Let $X \cup Y \coloneqq \bigcup \{X, Y\}$ and $\{a,b,c\} \coloneqq \{a,b\} \cup \{c\}$.
+Let $X \cup Y \coloneqq \bigcup \left\{X, Y\right\}$ and $\left\{a,b,c\right\} \coloneqq \left\{a,b\right\} \cup \left\{c\right\}$.
 \item \textit{Power set}  ($\mathsf{PowerSet}$):
 \[
 \forall X \exists Y \forall u(u \in Y \leftrightarrow u \subset X)
@@ -633,7 +645,7 @@ for each formula $\varphi(u, p)$ (of the language of set theory with free variab
 \[\forall X \forall p_{1} \cdots \forall p_{n} \exists Y u\left(u \in Y \leftrightarrow u \in X \wedge \psi\left(u, p_{1}, \ldots, p_{n}\right)\right).\] 
 \item \textit{Infinity} ($\mathsf{Inf}$):
 \[
-\exists S(\exists x(x\in S\land\forall y(y\notin x)\land\forall z(z\in S\rightarrow\exists u(u\in S\land\forall w(w\in u\leftrightarrow u\in z\lor u=z)))).
+\exists S(\exists x(x\in S\land\forall y(y\notin x)\land\forall z(z\in S\rightarrow\exists u(u\in S\land\forall w(w\in u\leftrightarrow u\in z\lor u=z))))).
 \]
 This asserts the existence of an \textit{inductive set}. 
 \item \textit{Schema of replacement} ($\mathsf{Rep}$):
@@ -659,16 +671,16 @@ This asserts that if the class $F$ is a function and $\dom{F}$ is a set, then $\
 \begin{enumerate}
 \item The converse of $\mathsf{Ext}$ is an axiom of predicate logic, so that $X= Y$ if and only if $X$ and $Y$ consist of the same elements.
 \item By $\mathsf{Pair} + \mathsf{Union}$, any class consisting of finitely many sets is a set.
-\item The class of all sets is not a set. Otherwise, $\{x \mid x \notin x\}$ is a set by $\mathsf{Sep}$, in which case we get Russell's paradox. 
+\item The class of all sets is not a set. Otherwise, $\left\{x \mid x \notin x\right\}$ is a set by $\mathsf{Sep}$, in which case we get Russell's paradox. 
 \item $\mathsf{Sep}$ asserts that any subclass of a set is a set.
 \item $\mathsf{Rep}$ asserts that every nonempty set has an $\in$-minimal element.
-\item There is no infinite descending chain $x_0 \ni x_1 \ni x_2 \ni x_3 \ni \cdots $, for otherwise $\{x_n \mid n \in \N\}$ (which is a set by $\mathsf{Rep}$) violates $\mathsf{Reg}$. In particular, if $A$ is a set, then $A\notin A$.
+\item There is no infinite descending chain $x_0 \ni x_1 \ni x_2 \ni x_3 \ni \cdots $, for otherwise $\left\{x_n \mid n \in \N\right\}$ (which is a set by $\mathsf{Rep}$) violates $\mathsf{Reg}$. In particular, if $A$ is a set, then $A\notin A$.
 \end{enumerate} 
 \end{note}
  
 \begin{exmp}[The empty set and omega] $ $
 \begin{enumerate} 
-\item The sentence ${(\exists x)x=x}$ is an axiom of predicate logic. Hence there is at least one set $S$. By $\mathsf{Ext} +\mathsf{Sep}$, the empty set exists because it equals $\{x \mid x \ne x\}$, which is a subclass of $S$. 
+\item The sentence ${(\exists x)x=x}$ is an axiom of predicate logic. Hence there is at least one set $S$. By $\mathsf{Ext} +\mathsf{Sep}$, the empty set exists because it equals $\left\{x \mid x \ne x\right\}$, which is a subclass of $S$. 
 \item By $\mathsf{Inf}$, there exists a set containing the class $$\omega  \coloneqq \left\{\emptyset, \{\emptyset\},  \{ \emptyset, \{\emptyset\}\}, \ldots \right\}.$$ For any set $x$, let $\varphi(x)$ denote the (first-order) formula expressing that $x$ is inductive. But note that $$\omega = \left\{n \in S \mid \forall y(\varphi(y)\rightarrow n \in y)  \right\},$$ which is a set by $\mathsf{Sep}$, specifically, the smallest inductive set.
 \end{enumerate}
 \end{exmp} 
@@ -691,9 +703,10 @@ The \textit{von Neumann universe} $$V \coloneqq \bigcup_{\alpha \in \ord}V_{\alp
  \end{enumerate}
 \end{note}
 
- \begin{remark} 
+\medskip
+
 In 1908, Zermelo introduced the first six axioms of $\zf$ (along with the axiom of choice). For this reason, we shall denote the theory consisting of them by $\z$. In  1922, Fraenkel and Skolem together introduced the axiom schema of replacement to ensure that objects like $V_{\omega + \omega}$ counted as a set. Finally, in 1925, von Neumann  introduced the axiom of regularity to enable proofs by induction on so-called well-founded proper classes, such as $\ord$.
-\end{remark}
+
 
 \medskip
 
@@ -701,21 +714,21 @@ In $\zf$, we avoid each of the three paradoxes from \cref{paradox} by replacing 
 \begin{enumerate}
 \item The class of all ordinals (see \cref{B-F} below).
  \item The class of all sets.
- \item The class $\{x \mid x \notin x\}$.
+ \item The class $\left\{x \mid x \notin x\right\}$.
  \end{enumerate}
 
 
 \subsection{Lecture 7}
 
 \begin{definition}
-For any sets $x$ and $y$, the \textit{ordered pair $(x,y)$} is the set $\left\{\{x\}, \{x,y\}\right\}$, which exists by $\mathsf{Pair}$.
+For any sets $x$ and $y$, the \textit{ordered pair $\left(x,y\right)$} is the set $\left\{\{x\}, \{x,y\}\right\}$, which exists by $\mathsf{Pair}$.
 \end{definition}
 
 \begin{lemma}
- For any sets $X$ and $Y$, the Cartesian product $X \times Y \coloneqq \{(x,y) \mid x \in X \land y \in Y\}$ exists.
+ For any sets $X$ and $Y$, the Cartesian product $X \times Y \coloneqq \{\left(x,y\right) \mid x \in X \land y \in Y\}$ exists.
 \end{lemma}
 \begin{proof}
-If $x\in X$ and $y\in Y$, then $(x,y)$ is in $\P(\P(X \cup Y))$, which exists by $\mathsf{Union} + \mathsf{PowerSet}$. In particular,
+If $x\in X$ and $y\in Y$, then $\left(x,y\right)$ is in $\P(\P(X \cup Y))$, which exists by $\mathsf{Union} + \mathsf{PowerSet}$. In particular,
 \begin{align*}
 X \times Y = \{z \in \P(\P(X \cup Y)) \mid 
 \exists x_1 \exists x_2 (\exists y_1\in z)(\exists y_2\in z) &
@@ -729,7 +742,7 @@ which exists by $\mathsf{Sep}$.
 \begin{remark} $ $
 \begin{enumerate}
 \item Let $T$ denote the theory $\left(\zf \setminus \{\mathsf{Inf}\}\right)\cup \{\neg{\mathsf{Inf}}\}$. Note that $V_{\omega} \models T$. It is known that $T$ is bi-interpretable with $\mathsf{PA}$ (Peano arithmetic).  This means that there is some \textit{translation} $\tau$ from the language of $\mathsf{HF}$ to the the language of $\mathsf{PA}$ such that $\mathsf{HF} \vdash \varphi \implies \mathsf{PA} \vdash \varphi^{\tau}$.
-\item We can find some theory $T$ in the language of set theory such that $T \vdash [\exists \lambda(V_{\lambda}\models \zf)]$. But $T \ne \zf$, since G\"odel's second incompleteness theorem implies that $\zf$ cannot prove its own consistency. 
+\item We can find some theory $T$ in the language of set theory such that $T \vdash \exists \lambda(V_{\lambda}\models \zf)$. But $T \ne \zf$, since G\"odel's second incompleteness theorem implies that $\zf$ cannot prove its own consistency. 
 \end{enumerate}
 \end{remark}
 
@@ -737,13 +750,13 @@ which exists by $\mathsf{Sep}$.
 
 \begin{definition}  Let $R$ be a binary relation on a class $X$
 \be
-\item. For each $x\in X$, the \textit{extension of $x$} is $$\ext_R(x) = \{z\in X \mid zRx\}    .$$
+\item. For each $x\in X$, the \textit{extension of $x$} is $$\ext_R(x) = \left\{z\in X \mid zRx\right\}    .$$
 \item We say that $R$ is \textit{extensional} if $\ext_R(x) \ne \ext_R(y)$ for any distinct $x,y \in X$.
 \item We say that $R$ is \textit{well-founded} if 
- \bi
+ \be
  \item every nonempty subset of $X$ has an $R$-minimal element and
  \item $\ext_R(x)$ is a set for each $x\in X$ (i.e., $R$ is \textit{set-like}).
- \ei
+ \ee
  In this case, we also say that $X$ is \textit{well-founded (with respect to $R$)}. 
 \ee
  \end{definition}
@@ -753,7 +766,7 @@ Let $X$ be a well-founded class with respect to $R$. Then every non-empty subcla
 \end{prop}
 
 \begin{definition}
-Let $X$ be a class. A linear ordering $(X, <)$ is a \textit{well-ordering} if it is well-founded. If $X$ is a set, then we call it a \textit{well-ordered set} or \textit{woset}.
+Let $X$ be a class. A linear ordering $\left(X, <\right)$ is a \textit{well-ordering} if it is well-founded. If $X$ is a set, then we call it a \textit{well-ordered set} or \textit{woset}.
 \end{definition}
 
 \begin{exmp} $ $
@@ -764,25 +777,25 @@ Let $X$ be a class. A linear ordering $(X, <)$ is a \textit{well-ordering} if it
 \end{exmp}
 
 \begin{non-exmp}
-$\Q_{>0}$ with its usual order is not a woset. For example, the subset $\{\frac{1}{n} \mid n \in \Z_{>0}\}$ has no minimal element. 
+$\Q_{>0}$ with its usual order is not a woset. For example, the subset $\left\{\frac{1}{n} \mid n \in \Z_{>0}\right\}$ has no minimal element. 
 \end{non-exmp}
 
 \begin{lemma}\label{woprop}
 Let $\left(W, <\right)$ be a woset. If $f: W \to W$ is order-preserving, then $f(w) \geq w$ for each $w\in W$.
 \end{lemma}
 \begin{proof}
-Suppose, towards a contradiction, that the set $M \coloneqq \{w\in W \mid f(w) <w\}$ is nonempty. Let $m = \min(M)$. Then $f(f(m))< f(m) < m$, a contradiction. 
+Suppose, towards a contradiction, that the set $M \coloneqq \left\{w\in W \mid f(w) <w\right\}$ is nonempty. Let $m = \min(M)$. Then $f(f(m))< f(m) < m$, a contradiction. 
 \end{proof}
 
-\begin{corollary} Let $(W_1, <_1)$ and $(W_2, <_2)$ be two well-orderings. 
+\begin{corollary} Let $\left(W_1, <_1\right)$ and $\left(W_2, <_2\right)$ be two well-orderings. 
 \begin{enumerate}[label=(\arabic*)]
-\item The structure $(W_1, <_1)$ is \textit{rigid} in the sense that $\id_{W_1}$ is the only automorphism of it.
+\item The structure $\left(W_1, <_1\right)$ is \textit{rigid} in the sense that $\id_{W_1}$ is the only automorphism of it.
 \item Any isomorphism $\delta : W_1 \to W_2$ is unique. 
 \end{enumerate}
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}[label=(\arabic*)]
-\item Let $f: \left(W, <\right) \to (W,<)$ be an automorphism.  Let $x\in W$. By \cref{woprop}, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
+\item Let $f: \left(W, <\right) \to \left(W,<\right)$ be an automorphism.  Let $x\in W$. By \cref{woprop}, we see that $f(x)\geq x$ and $x = f^{-1}(f(x))\geq f(x)$. Hence $f(x) =x$.
 \item Suppose, towards a contradiction, that $\delta$ and $\psi$ are distinct isomorphisms $ W_1\to W_2$. Then $\psi^{-1} \circ \delta$ is an automorphism of $W_1$. But $\delta^{-1} \ne \psi^{-1}$, and thus $\psi^{-1} \circ \delta \ne \id_{W_1}$. This contradicts part (1). 
 \end{enumerate}
 \end{proof}
@@ -814,7 +827,7 @@ Let $\left(W, <\right)$ and $\left(Y, <'\right)$ be any two well-orderings.  The
 First, note that \cref{non-iso} implies that no two of (a), (b), and (c) can occur simultaneously. We must show that at least one occurs. Consider the set $$ f \coloneqq \left\{(w,y) \in W\times Y \mid W_w \cong Y_y\right\}  .$$ If $Y_y \cong Y_{y'}$, then $y = y'$ by \cref{non-iso}. Hence $f$ is a partial function. Moreover,  if $w,w'\in \dom{f}$ and $w<w'$ with $h : W_{w'} \overset{\cong}{\longrightarrow} Y_{f(w')}$, then $W_w \cong Y_{h(w)}$, so that $f(w) = h(w)<' f(w')$. It follows that $f$ is order-preserving. 
 There are three cases to consider.
 \begin{enumerate}[label=(\roman*)]
-\item Suppose that $\dom{f} \subsetneq W$. Let $m = \min(W \setminus \dom{f})$. If $Y \setminus \im{f} \ne \emptyset$, then $(m, n) \in f$ where $n = \min(Y \setminus \im{f})$, a contradiction. Hence $\im{f} = Y$. Then $f\restriction_{W_m} : W_m \to Y$ is an isomorphism. Thus, scenario (c) occurs.
+\item Suppose that $\dom{f} \subsetneq W$. Let $m = \min(W \setminus \dom{f})$. If $Y \setminus \im{f} \ne \emptyset$, then $\left(m, n\right) \in f$ where $n = \min(Y \setminus \im{f})$, a contradiction. Hence $\im{f} = Y$. Then $f\restriction_{W_m} : W_m \to Y$ is an isomorphism. Thus, scenario (c) occurs.
 \item Suppose that $\dom{f} = W$ but $\im{f} \subsetneq Y$. Then scenario (b) occurs.
 \item Suppose that $\dom{f} = W$ and $\im{f} = Y$. Then $f$ is an isomorphism, i.e., scenario (a) occurs.
 \end{enumerate}
@@ -829,7 +842,7 @@ A set $x$ is transitive if and only if $z \in y \in x \implies z\in x$. By Note 
 \end{note}
 
 \begin{definition}
-A set $x$ is an \textit{ordinal (number)}, written as $\od(x)$, if $x$ is transitive and $(x, \in)$ is a well ordering. 
+A set $x$ is an \textit{ordinal (number)}, written as $\od(x)$, if $x$ is transitive and $\left(x, \in\right)$ is a well ordering. 
 \end{definition}
 
 \begin{notation}
@@ -865,7 +878,7 @@ The set $\omega$ is  the smallest nonzero limit ordinal. Its elements are precis
 \begin{figure}[H]
 \centering
 \includegraphics[width=43mm]{ordinal-spiral.png}
-\caption{found at \url{https://commons.wikimedia.org/wiki/File:Omega-exp-omega-labeled.svg}}
+\caption{\url{https://commons.wikimedia.org/wiki/File:Omega-exp-omega-labeled.svg}}
 \end{figure}
 
 \subsection{Lecture 8}
@@ -875,16 +888,22 @@ Let $\alpha$ and $\beta$ be distinct ordinals. If $\alpha \subset \beta$, then $
 \end{lemma}
 \begin{proof}
 Suppose that $\alpha \subsetneq \beta$. Then $\beta \setminus \alpha \ne \emptyset$. Let $\gamma = \min\{x \mid x \in \beta \setminus \alpha\}$. We claim that $\alpha = \gamma$, in which case $\alpha \in \beta$. 
-\\ \\Let $x \in \alpha$. Since $(\beta, \in)$ is a linear ordering and $\gamma \in \beta$, it follows that either $\gamma \in x$, $x= \gamma$, or $x \in \gamma$. In either of the the first two cases, $\gamma \in \alpha$, which is impossible. Hence $x \in \gamma$. This shows that $\alpha \subset \gamma$.  
-\\ \\ Conversely, let $x \in \gamma$. Since $\gamma \subset \beta$, we get $x \in \beta$. By our choice of $\gamma$, it follows that $x \in \alpha$. Hence $\gamma \subset \alpha$.
+
+\smallskip
+Let $x \in \alpha$. Since $\left(\beta, \in\right)$ is a linear ordering and $\gamma \in \beta$, it follows that either $\gamma \in x$, $x= \gamma$, or $x \in \gamma$. In either of the the first two cases, $\gamma \in \alpha$, which is impossible. Hence $x \in \gamma$. This shows that $\alpha \subset \gamma$.  
+
+\smallskip
+ Conversely, let $x \in \gamma$. Since $\gamma \subset \beta$, we get $x \in \beta$. By our choice of $\gamma$, it follows that $x \in \alpha$. Hence $\gamma \subset \alpha$.
 \end{proof}
 
 \begin{lemma} \label{ord-wo}
-$(\ord, \in)$ is a well-ordered class.
+$\left(\ord, \in\right)$ is a well-ordered class.
 \end{lemma}
 \begin{proof}
 It is clear that $\in$ is set-like. Let $S \subset \ord$ be a nonempty subset. We must show that $S$ has a minimal element. Note that $\bigcap{S} \subset \alpha$ for every $\alpha \in S$. Therefore, $\left(\bigcap{S}, \in\right)$ is a  well-ordering as the restriction of a well-ordering. Now, suppose that $\beta \in \bigcap{S}$. Then $\beta \in \alpha$ for every $\alpha \in S$. By transitivity, for any $x\in \beta$, we have  $x \in \alpha$ for every $\alpha \in S$, so that $\beta \subset \bigcap{S}$. This implies that $\bigcap{S}$ is transitive. Hence $\bigcap{S}$ is an ordinal. By \cref{alt-def}, we see that $\bigcap{S}$ is minimal. 
-\\ \\
+
+\smallskip
+
 It remains to show that $\ord$ is linearly ordered. By \cref{alt-def}, it suffices to show that if $\alpha$ and $\beta$ are ordinals, then either $\alpha \subset \beta$ or $\beta \subset \alpha$. Suppose, towards a contradiction, that  both $\alpha \not \subset \beta$ and $\beta \not \subset \alpha$. Our last paragraph shows that $\alpha \cap \beta$ is an ordinal, which must be a proper subset both of $\alpha$ and of $\beta$. \Cref{alt-def} implies that $\alpha \cap \beta \in \alpha$ and $\alpha \cap \beta \in \beta$. Hence $\alpha \cap \beta \in \alpha \cap \beta$, a contradiction. 
 \end{proof}
 
@@ -896,14 +915,16 @@ If $S$ is a nonempty set of ordinals, then  $\bigcap{S} = \min(S)$.
 Let $\left(W, <\right)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to some ordinal. 
 \end{lemma}
 \begin{proof}
-\Cref{non-iso} together with \cref{ord-wo} proves that such a $Z(x)$ must be unique. Therefore, $$A\coloneqq \{Z(x) \mid x \in W\}$$ is a set by $\mathsf{Rep}$. Note that $(A, \in)$ is a well-ordering. To see that $A$ is transitive, let $v\in A$. Then $v = Z(y)$ for some $y\in W$. Let $x\in Z(y)$. Then $$ x \cong X_{g_y^{-1}(x)} \cong Z(g^{-1}_y(x))    $$ where $g_y : W_y \overset{\cong}{\longrightarrow} Z(y)$.  This implies that $x = Z(g^{-1}_y(x))$ since both $x$ and $Z(g^{-1}_y(x))$ are ordinals. Thus, $x \in A$, so that $v\subset A$.
-\\ \\
+\Cref{non-iso} together with \cref{ord-wo} proves that such a $Z(x)$ must be unique. Therefore, $$A\coloneqq \{Z(x) \mid x \in W\}$$ is a set by $\mathsf{Rep}$. Note that $\left(A, \in\right)$ is a well-ordering. To see that $A$ is transitive, let $v\in A$. Then $v = Z(y)$ for some $y\in W$. Let $x\in Z(y)$. Then $$ x \cong X_{g_y^{-1}(x)} \cong Z(g^{-1}_y(x))    $$ where $g_y : W_y \overset{\cong}{\longrightarrow} Z(y)$.  This implies that $x = Z(g^{-1}_y(x))$ since both $x$ and $Z(g^{-1}_y(x))$ are ordinals. Thus, $x \in A$, so that $v\subset A$.
+
+\smallskip
+
 Define $f : W \to A$ by $f(x) = Z(x)$. 
 \begin{claim} 
 Let $x,y\in W$. Then $x <y \implies Z(x) \subsetneq Z(y)$. 
 \end{claim}
 \begin{proof}
-Let $x<y$. Consider the isomorphism $g_y : W_y \to Z(y)$. We have that $$W_x = \{z\in W_y \mid  z < x\} = (W_y)_x.$$ Hence $g_y\restriction_{W_x}$ is an isomorphism from $W_x$ onto $Z(y)\restriction_{g_y(x)}$. It follows that $Z(y)\restriction_{g_y(x)} \cong Z(x)$, so that $$Z(x) = Z(y)\restriction_{g_y(x)} \subsetneq Z(y),$$ as desired. 
+Let $x<y$. Consider the isomorphism $g_y : W_y \to Z(y)$. We have that $$W_x = \{z\in W_y \mid  z < x\} = \left(W_y\right)_x.$$ Hence $g_y\restriction_{W_x}$ is an isomorphism from $W_x$ onto $Z(y)\restriction_{g_y(x)}$. It follows that $Z(y)\restriction_{g_y(x)} \cong Z(x)$, so that $$Z(x) = Z(y)\restriction_{g_y(x)} \subsetneq Z(y),$$ as desired. 
 \end{proof}
 By \cref{alt-def}, it follows that $f$ is order-preserving. Since $f$ is clearly surjective, it is an isomorphism.
 \end{proof}
@@ -917,7 +938,7 @@ For any woset $\left(W, <\right)$, there is a unique ordinal $\alpha$ such that 
 For any $x\in W$, there is some ordinal $Z(x)$ such that $W_x \cong Z(x)$.
 \end{claim}
 \begin{proof}
-Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $(W_m)_y = W_y \cong Z(y)$.  By \cref{PL}, this implies that $W_m$ is isomorphic to some ordinal, contrary to our choice of $m$.
+Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $\left(W_m\right)_y = W_y \cong Z(y)$.  By \cref{PL}, this implies that $W_m$ is isomorphic to some ordinal, contrary to our choice of $m$.
 \end{proof}It follows from \cref{PL} that $W \cong \alpha$ for some ordinal $\alpha$.
 \end{proof}
 
@@ -928,7 +949,7 @@ Suppose that $C$ is a class of ordinals. Suppose that
 \begin{enumerate}[label = (\alph*)]
 \item $0\in C$,
 \item $\alpha +1 \in C$ whenever $\alpha \in C$, and
-\item for any nonzero limit $\lambda$, $\lambda \in C$ whenever $\{\beta \mid \beta < \lambda \} \subset C$. 
+\item for any nonzero limit $\lambda$, $\lambda \in C$ whenever $\left\{\beta \mid \beta < \lambda\right\} \subset C$. 
 \end{enumerate}
 Then $C = \ord$. 
 \end{lemma}
@@ -941,7 +962,7 @@ We can replace the condition ``$\alpha +1 \in C$ whenever $\alpha \in C$" with t
 \end{note}
 
 \begin{theorem}[Transfinite recursion]
-Let $\mathsf{Seq}$ denote the class $\{ f : \alpha \to x \mid \alpha \in \ord \land x\in V\}$ of all \textit{transfinite sequences}. For any class functional relation $G:\mathsf{Seq} \to V$, there exists a unique class function $F: \ord \to V$ such that $$ F(\alpha) =G(F\restriction_{\alpha})    $$ for every $\alpha \in \ord$.
+Let $\mathsf{Seq}$ denote the class $\left\{ f : \alpha \to x \mid \alpha \in \ord \land x\in V\right\}$ of all \textit{transfinite sequences}. For any class functional relation $G:\mathsf{Seq} \to V$, there exists a unique class function $F: \ord \to V$ such that $$ F(\alpha) =G(F\restriction_{\alpha})    $$ for every $\alpha \in \ord$.
 \end{theorem}
 \begin{proof}
 We use transfinite induction to prove that there is a proper class $\langle f_{\alpha} \mid \alpha \in \ord \rangle$ (viewed as a sequence) such that for each $\alpha \in \ord$,  $f_{\alpha}$ is the unique function such that 
@@ -976,7 +997,9 @@ f_{\alpha}(\beta) & = f_{\beta +1}(\beta)
 This shows that $f_{\alpha}$ satisfies condition (ii). The fact that $f_{\alpha}$ is unique follows exactly as in our last case.
 \end{itemize}$ $This completes our induction. Now, define $F: \ord \to V$ by $\alpha \mapsto G(f_{\alpha})$. This is clearly a class function. Also, if $\alpha \in \ord$, then $F\restriction_{\alpha} = \{(\beta, F(\beta)) \mid \beta \in \alpha\}$ is a set by $\mathsf{Rep}$ because  each $F(\beta)$ is a set. Note that $\dom{f_{\alpha}} = \alpha = \dom{F\restriction_{\alpha}}$ and that for any $\beta \in \alpha$,
 $$  f_{\alpha}(\beta) = G(f_{\alpha}\restriction_{\beta}) =  G(f_{\beta})= F_{\alpha}(\beta)  .$$ Therefore, $f_{\alpha} = F\restriction_{\alpha}$, so that $F(\alpha) = G(F\restriction_{\alpha})$, as required. 
-\\ \\
+
+\smallskip
+
 Let $F' : \ord \to V$ also have $F'(\alpha) = G(F'\restriction_{\alpha})$. Using transfinite induction, it is easy to check that $F'(\alpha) = F(\alpha)$ for any ordinal $\alpha$. Thus, $F$ is unique. 
 \end{proof}
 
@@ -1021,26 +1044,26 @@ Every infinite cardinal is a nonzero limit ordinal.
 \begin{definition}
 Let $X$ and $Y$ be sets. 
 \begin{itemize}
-\item Let $\lvert{X}\rvert \leq \lvert{Y}\rvert$ if there is an injection from $X$ into $Y$. 
-\item Let $\lvert{X}\rvert<\lvert{Y}\rvert$ if $\lvert{X}\rvert \leq \lvert{Y}\rvert$ but $\lvert{Y}\rvert \not \leq \lvert{X}\rvert$.
+\item Let $\left\lvert{X}\right\rvert \leq \left\lvert{Y}\right\rvert$ if there is an injection from $X$ into $Y$. 
+\item Let $\left\lvert{X}\right\rvert<\left\lvert{Y}\right\rvert$ if $\left\lvert{X}\right\rvert \leq \left\lvert{Y}\right\rvert$ but $\left\lvert{Y}\right\rvert \not \leq \left\lvert{X}\right\rvert$.
 \end{itemize}
 \end{definition}
 
 \begin{theorem}[Cantor-Schr\"oder-Bernstein]\label{CSB}
-If $\lvert{X}\rvert\leq \lvert{Y}\rvert$ and $\lvert{Y}\rvert\leq \lvert{X}\rvert$, then $\lvert{X}\rvert = \lvert{Y}\rvert$.
+If $\left\lvert{X}\right\rvert\leq \left\lvert{Y}\right\rvert$ and $\left\lvert{Y}\right\rvert\leq \left\lvert{X}\right\rvert$, then $\left\lvert{X}\right\rvert = \left\lvert{Y}\right\rvert$.
 \end{theorem}
 
 
 \begin{theorem}[Cantor]
-$\lvert{X}\rvert < \lvert{\P(X)}\rvert$.
+$\left\lvert{X}\right\rvert < \left\lvert{\P(X)}\right\rvert$.
 \end{theorem}
 \begin{proof}
-It's clear that $\lvert{X}\rvert \leq \lvert{\P(X)}\rvert$. Let $f: X \to \P(X)$. Consider the set $$Z\coloneqq \{x\in X \mid x \notin f(x)    \} .$$ If $Z= f(y)$ for some $y\in X$, then $y\in Z \iff y\notin Z$, which is false. Thus, $Z\notin \im{f}$. This shows that there is no surjection (and hence no bijection) from $X$ onto $\P(X)$. By \cref{CSB}, it follows that   $\lvert{\P(X)}\rvert \not \leq \lvert{X}\rvert$, so that $\lvert{X}\rvert < \lvert{\P(X)}\rvert$.
+It's clear that $\left\lvert{X}\right\rvert \leq \left\lvert{\P(X)}\right\rvert$. Let $f: X \to \P(X)$. Consider the set $$Z\coloneqq \{x\in X \mid x \notin f(x)    \} .$$ If $Z= f(y)$ for some $y\in X$, then $y\in Z \iff y\notin Z$, which is false. Thus, $Z\notin \im{f}$. This shows that there is no surjection (and hence no bijection) from $X$ onto $\P(X)$. By \cref{CSB}, it follows that   $\left\lvert{\P(X)}\right\rvert \not \leq \left\lvert{X}\right\rvert$, so that $\left\lvert{X}\right\rvert < \left\lvert{\P(X)}\right\rvert$.
 \end{proof}
 
 
 \begin{remark}
-Recall that $\R \sim \P(\omega)$. The continuum hypothesis asserts that there is no set $X$ such that $\lvert{\omega}\rvert < \lvert{X}\rvert < \lvert{\P(\omega)}\rvert$.
+Recall that $\R \sim \P(\omega)$. The continuum hypothesis asserts that there is no set $X$ such that $\left\lvert{\omega}\right\rvert < \left\lvert{X}\right\rvert < \left\lvert{\P(\omega)}\right\rvert$.
 \end{remark}
 
 \begin{definition}
@@ -1052,8 +1075,10 @@ For any set $X$, let $H(X)$ denote the least ordinal $\alpha$  such that $\alpha
 For every cardinal $\kappa$, there is some cardinal $\lambda > \kappa$.
 \end{theorem}
 \begin{proof}
-Suppose that $H(\kappa)$ exists. Then $\kappa \sim \beta$ for some $ \beta \in H(\kappa) $, so that $\lvert{\kappa}\rvert \leq \lvert{H(\kappa)}\rvert$. But clearly  $\lvert{\kappa}\rvert \ne \lvert{H(\kappa)}\rvert$. Therefore, $\lvert{\kappa}\rvert < \lvert{H(\kappa)}\rvert$, which means that it suffices to show that $H(\kappa)$, in fact, exists.
-\\ \\ Note that the class $D$ of all well-orderings of $\kappa$ is a subclass of the set $\P(\kappa \times \kappa)$. Hence $D$ is a set by $\mathsf{Sep}$. If  $H(\kappa)$ does not exist, then we get an injective class function $F: \ord \to D$. In this case, $\im{F^{-1}} = \ord$ is a set by $\mathsf{Rep}$, a contradiction. Thus, $H(\kappa)$ exists. 
+Suppose that $H(\kappa)$ exists. Then $\kappa \sim \beta$ for some $ \beta \in H(\kappa) $, so that $\left\lvert{\kappa}\right\rvert \leq \left\lvert{H(\kappa)}\right\rvert$. But clearly  $\left\lvert{\kappa}\right\rvert \ne \left\lvert{H(\kappa)}\right\rvert$. Therefore, $\left\lvert{\kappa}\right\rvert < \left\lvert{H(\kappa)}\right\rvert$, which means that it suffices to show that $H(\kappa)$, in fact, exists.
+
+\smallskip
+ Note that the class $D$ of all well-orderings of $\kappa$ is a subclass of the set $\P(\kappa \times \kappa)$. Hence $D$ is a set by $\mathsf{Sep}$. If  $H(\kappa)$ does not exist, then we get an injective class function $F: \ord \to D$. In this case, $\im{F^{-1}} = \ord$ is a set by $\mathsf{Rep}$, a contradiction. Thus, $H(\kappa)$ exists. 
 \end{proof}
 
 \begin{note}
@@ -1085,7 +1110,7 @@ By transfinite recursion, define the sequence
 If $\lambda >0$ is a limit ordinal, then $\card(\aleph_{\lambda})$.
 \end{lemma}
 \begin{proof}
-Suppose, towards a contradiction, that there exist  an $x\in \aleph_{\lambda}$ and a bijection $f: x \to \aleph_{\lambda}$. Then $x\in \aleph_{\beta}$ for some successor $\beta \in \lambda$. It follows that $$\lvert{ \aleph_{\lambda}  }\rvert = \lvert{ x  }\rvert \leq \lvert{  \aleph_{\beta} }\rvert \leq \lvert{ \aleph_{\lambda}  }\rvert .$$ Hence $ \aleph_{\beta} \sim x$. But we know that $\aleph_{\beta} $ is a cardinal, a contradiction. 
+Suppose, towards a contradiction, that there exist  an $x\in \aleph_{\lambda}$ and a bijection $f: x \to \aleph_{\lambda}$. Then $x\in \aleph_{\beta}$ for some successor $\beta \in \lambda$. It follows that $$\left\lvert{ \aleph_{\lambda}  }\right\rvert = \left\lvert{ x  }\right\rvert \leq \left\lvert{  \aleph_{\beta} }\right\rvert \leq \left\lvert{ \aleph_{\lambda}  }\right\rvert .$$ Hence $ \aleph_{\beta} \sim x$. But we know that $\aleph_{\beta} $ is a cardinal, a contradiction. 
 \end{proof}
 
 \section{The axiom of choice}
@@ -1103,25 +1128,25 @@ Let $\zfc$ denote the theory $\zf + \ac$.
 For any set $x$, there is some cardinal $\lambda$ such that $x \sim \lambda$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{AW}
 $\ac \iff \mathsf{WOP}$.
 \end{theorem}
 
 \begin{definition}{$(\zfc)$}
-Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\lvert{X}\rvert \coloneqq \min\{\alpha \in \ord \mid \alpha \sim X\}.$$
+Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\left\lvert{X}\right\rvert \coloneqq \min\{\alpha \in \ord \mid \alpha \sim X\}.$$
 \end{definition}
 
 \begin{remark}\label{LR} $ $
 \begin{enumerate}
-\item One can show that $\zf \nvDash \underbrace{\forall X\forall Y(\lvert{X}\rvert \leq \lvert{Y}\rvert \vee \lvert{Y}\rvert \leq \lvert{X}\rvert)}_{\psi}$. In fact,  $\ac$ is equivalent to the sentence $\psi$. In particular, $\ac$ is independent of $\zf$.
-\item Let $\varphi$ denote the sentence ``Every surjection has a right inverse."  Then $\zf \nvDash \varphi$, whereas  $\zfc \models \varphi$. Since every right inverse is injective, the following assertion is also provable in $\zfc$: If there exists a surjection of $X$ onto $Y$, then $\lvert{Y}\rvert \leq \lvert{X}\rvert$. 
-\item We can, however, prove in $\zf$ that every injection has a left inverse and that every left inverse is surjective. Therefore, in $\zf$, if $\lvert{Y}\rvert \leq \lvert{X}\rvert$, then there is a surjection of $X$ onto $Y$. It follows that, in $\zfc$, $\lvert{Y}\rvert \leq \lvert{X}\rvert$ if and only if there is a surjection of $X$ onto $Y$.
+\item One can show that $\zf \nvDash \underbrace{\forall X\forall Y(\left\lvert{X}\right\rvert \leq \left\lvert{Y}\right\rvert \vee \left\lvert{Y}\right\rvert \leq \left\lvert{X}\right\rvert)}_{\psi}$. In fact,  $\ac$ is equivalent to the sentence $\psi$. In particular, $\ac$ is independent of $\zf$.
+\item Let $\varphi$ denote the sentence ``Every surjection has a right inverse."  Then $\zf \nvDash \varphi$, whereas  $\zfc \models \varphi$. Since every right inverse is injective, the following assertion is also provable in $\zfc$: If there exists a surjection of $X$ onto $Y$, then $\left\lvert{Y}\right\rvert \leq \left\lvert{X}\right\rvert$. 
+\item We can, however, prove in $\zf$ that every injection has a left inverse and that every left inverse is surjective. Therefore, in $\zf$, if $\left\lvert{Y}\right\rvert \leq \left\lvert{X}\right\rvert$, then there is a surjection of $X$ onto $Y$. It follows that, in $\zfc$, $\left\lvert{Y}\right\rvert \leq \left\lvert{X}\right\rvert$ if and only if there is a surjection of $X$ onto $Y$.
 \end{enumerate}
 \end{remark}
 
 \begin{note}[Linear ordering of cardinals]
 \begin{enumerate}
-\item Consider the binary relation $< $ on the class of all cardinal numbers where $\lvert{X}\rvert < \lvert{Y}\rvert$ if there is an injection from $X$ intro $Y$ but $\lvert{X}\rvert \ne \lvert{Y}\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
+\item Consider the binary relation $< $ on the class of all cardinal numbers where $\left\lvert{X}\right\rvert < \left\lvert{Y}\right\rvert$ if there is an injection from $X$ intro $Y$ but $\left\lvert{X}\right\rvert \ne \left\lvert{Y}\right\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
 \item In $\zfc$, if $\lambda$ is an infinite cardinal, then $\lambda = \aleph_{\alpha}$ for some ordinal $\alpha$. In this case, we get a transfinite enumeration of class of all cardinals
 \[
 0 < 1 < 2 < 3 < \cdots < \aleph_0 < \aleph_1 < \aleph_2 < \aleph_3 <  \cdots < \aleph_{\omega} < \cdots
@@ -1131,9 +1156,9 @@ Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\lver
 
 \begin{definition}[Cardinal arithmetic (in $\zfc$)] Let $\kappa$ and $\lambda$ be cardinals. Define cardinal addition, multiplication, and exponentiation, respectively, as follows.
 \begin{enumerate}
-\item $\kappa + \lambda = \lvert{\kappa \coprod \lambda}\rvert$.
-\item $\kappa \cdot \lambda = \lvert{\kappa \times \lambda}\rvert $.
-\item $\kappa^{\lambda} = \lvert{\{f \mid f : \lambda \to \kappa \}}\rvert$.
+\item $\kappa + \lambda = \left\lvert{\kappa \coprod \lambda}\right\rvert$.
+\item $\kappa \cdot \lambda = \left\lvert{\kappa \times \lambda}\right\rvert $.
+\item $\kappa^{\lambda} = \left\lvert{\{f \mid f : \lambda \to \kappa \}}\right\rvert$.
 \end{enumerate} 
 \end{definition}
 
@@ -1145,16 +1170,20 @@ For any ordinal $\alpha$,  the lexicographic ordering of $\alpha \times \alpha$ 
 $\aleph_{\alpha} \cdot \aleph_{\alpha} = \aleph_{\alpha}$ for any ordinal $\alpha$.
 \end{lemma}
 \begin{proof} 
-Consider the binary class relation $\lhd$ on $\ord \times \ord$ where $(\alpha, \beta)\lhd (\gamma, \delta)$ if at least one of the following conditions holds.
+Consider the binary class relation $\lhd$ on $\ord \times \ord$ where $\left(\alpha, \beta\right)\lhd \left(\gamma, \delta\right)$ if at least one of the following conditions holds.
 \begin{itemize}
 \item  $\max\{\alpha, \beta\} <\max\{\gamma, \delta\}$.
 \item $\max\{\alpha, \beta\} = \max\{\gamma, \delta\}$ and $\alpha < \delta$.
 \item $\max\{\alpha, \beta\} = \max\{\gamma, \delta\}$ and $\alpha =\delta$ and $\beta < \delta$. 
-\end{itemize}$ $It is straightforward to check that $\lhd$ is a well-ordering. Now, define the class function $\Gamma : \ord \times \ord \to \ord$ by $\gamma(\alpha, \beta) = \delta$ where $\delta$ is the unique ordinal isomorphic to the initial segment $(\ord \times \ord)_{(\alpha, \beta)}$. It is easy to see that $\Gamma$ is injective. Thus, it suffices to show that $$\Gamma(\omega_{\alpha} \times \omega_{\alpha}) = \omega_{\alpha}$$ for each ordinal $\alpha$. 
-\\ \\
-Note that for any $(n,m) \in \omega \times \omega$, $$ \Gamma(n,m) = 
+\end{itemize}$ $It is straightforward to check that $\lhd$ is a well-ordering. Now, define the class function $\Gamma : \ord \times \ord \to \ord$ by $\gamma(\alpha, \beta) = \delta$ where $\delta$ is the unique ordinal isomorphic to the initial segment $\left(\ord \times \ord\right)_{(\alpha, \beta)}$. It is easy to see that $\Gamma$ is injective. Thus, it suffices to show that $$\Gamma(\omega_{\alpha} \times \omega_{\alpha}) = \omega_{\alpha}$$ for each ordinal $\alpha$. 
+
+\smallskip
+
+Note that for any $\left(n,m\right) \in \omega \times \omega$, $$ \Gamma(n,m) = 
 m(n+1).$$ Hence $\omega =\Gamma(\omega \times \omega)$, as desired.  
-\\ \\ Suppose, towards a contradiction, that the class $E\coloneqq \{x >0 \mid \Gamma(\omega_{x} \times \omega_{x}) \ne \omega_{x}\}$ of ordinals is nonempty. Let $\beta = \min( E )$ . Then \hl{$\Gamma(\gamma, \delta) = \omega_{\beta}$} for some $\gamma, \delta \in \omega_{\beta}$. Since $\omega_{\beta}$ is a limit, we can find some $\eta \in \omega_{\beta}$ such that $\gamma,\delta \in \eta$. Note that $(\gamma, \delta) \in \eta \times \eta$. Since $\eta \times \eta = (\ord \times \ord)_{(0, \eta)}$, it follows that $$\Gamma(\eta \times \eta) \supset \underbrace{\Gamma(\{(x,y) \mid (x,y) \lhd (\gamma, \delta)\})}_{\text{transitive}} \supset \omega_{\beta}. $$ This implies that $\lvert{\aleph_{\beta}}\rvert \leq \lvert{\eta \times \eta}\rvert$. But $$\lvert{\eta \times \eta}\rvert=  \lvert{\lvert{\eta}\rvert \times \lvert{\eta}\rvert}\rvert = \lvert{\eta}\rvert < \aleph_{\beta}   ,$$ a contradiction. 
+
+\smallskip
+ Suppose, towards a contradiction, that the class $E\coloneqq \{x >0 \mid \Gamma(\omega_{x} \times \omega_{x}) \ne \omega_{x}\}$ of ordinals is nonempty. Let $\beta = \min( E )$ . Then \hl{$\Gamma(\gamma, \delta) = \omega_{\beta}$} for some $\gamma, \delta \in \omega_{\beta}$. Since $\omega_{\beta}$ is a limit, we can find some $\eta \in \omega_{\beta}$ such that $\gamma,\delta \in \eta$. Note that $\left(\gamma, \delta\right) \in \eta \times \eta$. Since $\eta \times \eta = \left(\ord \times \ord\right)_{(0, \eta)}$, it follows that $$\Gamma(\eta \times \eta) \supset \underbrace{\Gamma(\{\left(x,y\right) \mid \left(x,y\right) \lhd \left(\gamma, \delta\right)\})}_{\text{transitive}} \supset \omega_{\beta}. $$ This implies that $\left\lvert{\aleph_{\beta}}\right\rvert \leq \left\lvert{\eta \times \eta}\right\rvert$. But $$\left\lvert{\eta \times \eta}\right\rvert=  \left\lvert{\left\lvert{\eta}\right\rvert \times \left\lvert{\eta}\right\rvert}\right\rvert = \left\lvert{\eta}\right\rvert < \aleph_{\beta}   ,$$ a contradiction. 
 \end{proof}
 
 \begin{corollary}{$(\zfc)$}
@@ -1171,13 +1200,15 @@ We now prove a theorem stated in Lecture 10.
 
 \begin{proof}{\textbf{($\ac \iff \mathsf{WOP}$)}}$ $\\ 
 ($\Longleftarrow$) Let $I$ be any set and let $C\coloneqq \{A_i\}_{i\in I}$ be a collection of nonempty sets. By  $\mathsf{Union}$, we see that $\bigcup C$ is a set. By $\mathsf{WOP}$, there exists a well-ordering $<$ on $\bigcup C$. Note that each $A_i$ is a nonempty subset of $\bigcup C$. Thus, $A_i$ contains a least element $a_i$. Now, define $f: I \rightarrow \bigcup C$ by $f(i)=a_i$. As long as $f$ is well-defined, it is a choice function. To show that it is well-defined, it suffices to show that the $a_i$ are unique. Suppose that both $a_i$ and $b_i$ are minimal elements of $A_i$. Note  that $<$ is a linear ordering of $C$. Thus, either $a_i \leq b_i$ or $b_i\leq a_i$. But both are minimal, so that, in either case, $a_i=b_i$. This shows that $f$ is well-defined.
-\\ \\
+
+\smallskip
+
 ($\Longrightarrow$) Let $X$ be a set. Let $E = \P(X) \setminus \{\emptyset\}$, which is a collection of nonempty sets. By $\ac$, there is some choice function $f : E \to \bigcup{E}$.  By transfinite recursion, we can define a sequence $F : \ord \to V$ by 
-$$ F(\alpha) = f(X \setminus \{F(\beta) \mid \beta \in \alpha \})   .$$ Since $f$ is a choice function, we have that $F(\alpha) \notin \{F(\beta) \mid \beta \in \alpha\}$ whenever $\{F(\beta) \mid \beta \in \alpha\} \ne X$. Hence if there is no $\delta \in \ord$ such that $\{F(\gamma) \mid \gamma \in \delta\} =X$, then $F$ is injective. But, in this case, $\im{F^{-1}} = \ord$ is a set by $\mathsf{Rep}$, a contradiction. Therefore, there exists a least such $\delta$. Then $F\restriction_{\delta}$ is a bijection from $\delta$ onto $X$.
+$$ F(\alpha) = f(X \setminus \{F(\beta) \mid \beta \in \alpha \})   .$$ Since $f$ is a choice function, we have that $F(\alpha) \notin \{F(\beta) \mid \beta \in \alpha\}$ whenever $\left\{F(\beta) \mid \beta \in \alpha\right\} \ne X$. Hence if there is no $\delta \in \ord$ such that $\left\{F(\gamma) \mid \gamma \in \delta\right\} =X$, then $F$ is injective. But, in this case, $\im{F^{-1}} = \ord$ is a set by $\mathsf{Rep}$, a contradiction. Therefore, there exists a least such $\delta$. Then $F\restriction_{\delta}$ is a bijection from $\delta$ onto $X$.
 \end{proof}
 
 \begin{definition}
-Let $\left(P, <\right)$ be a partially ordered set. A \textit{chain in $P$} is a nonempty subset $X\subset P$ such that $(X, <\restriction_X)$ is a linear ordering. 
+Let $\left(P, <\right)$ be a partially ordered set. A \textit{chain in $P$} is a nonempty subset $X\subset P$ such that $\left(X, <\restriction_X\right)$ is a linear ordering. 
 \end{definition}
 
 \begin{definition}[Zorn's lemma ($\mathsf{Zorn}$)]
@@ -1187,14 +1218,16 @@ If $\left(P, <\right)$ is a nonempty poset and every chain in $P$ has an upper b
 \begin{lemma}
 $\mathsf{WOP} \implies \mathsf{Zorn}$.
 \end{lemma}
-\begin{proof} Let $(P, <_P)$ be a nonempty poset such that every chain in $P$ has an upper bound in $P$. By assumption, we have a bijection $f : \lambda \to P$ for some cardinal $\lambda$. We see that $\lambda >0$ for otherwise $P = \emptyset$. Note that $P = \{f(\delta) \mid \delta \in \lambda\}$. By transfinite recursion, define $F: \ord \to \lambda +1$ by
+\begin{proof} Let $\left(P, <_P\right)$ be a nonempty poset such that every chain in $P$ has an upper bound in $P$. By assumption, we have a bijection $f : \lambda \to P$ for some cardinal $\lambda$. We see that $\lambda >0$ for otherwise $P = \emptyset$. Note that $P = \{f(\delta) \mid \delta \in \lambda\}$. By transfinite recursion, define $F: \ord \to \lambda +1$ by
 \[
 F(\alpha) = \begin{cases}
 \min\{\gamma \in \lambda \mid \beta \in \alpha \rightarrow f(F(\beta)) <_P f(\gamma)\} &\{\gamma \in \lambda \mid \beta \in \alpha \rightarrow f(F(\beta)) <_P f(\gamma)\} \ne \emptyset
 \\ \lambda & \text{otherwise}
 \end{cases}.
 \]  Note that $\alpha_1 < \alpha _2 \implies F(\alpha_1) <_P F(\alpha_2)$ provided that $ F(\alpha_1),  F(\alpha_2) \in \lambda$, in which case $\im{F^{-1}}= \ord$ is a set by $\mathsf{Rep}$, a contradiction. 
-\\ \\Therefore, there is some smallest nonzero $\delta \in \ord$ such that $F(\delta) = \lambda$. This implies that $\{f(F(\beta)) \mid \beta \in \delta\}$ is a chain in $P$. If $\delta$ is a limit, then $P$ has no upper bound, a contradiction. Thus, $\delta = \eta + 1$ for some ordinal $\eta$. Suppose that $f(F(\eta))$ is not maximal in $P$. Then there is some least $\tau \in \lambda$ such that $f(F(\eta)) <_P f(\tau)$. But this means $$\lambda = F(\delta) = \tau \in \lambda,$$ a contradiction. It follows that $f(F(\eta))$ is a maximal element.  
+
+\smallskip
+Therefore, there is some smallest nonzero $\delta \in \ord$ such that $F(\delta) = \lambda$. This implies that $\left\{f(F(\beta)) \mid \beta \in \delta\right\}$ is a chain in $P$. If $\delta$ is a limit, then $P$ has no upper bound, a contradiction. Thus, $\delta = \eta + 1$ for some ordinal $\eta$. Suppose that $f(F(\eta))$ is not maximal in $P$. Then there is some least $\tau \in \lambda$ such that $f(F(\eta)) <_P f(\tau)$. But this means $$\lambda = F(\delta) = \tau \in \lambda,$$ a contradiction. It follows that $f(F(\eta))$ is a maximal element.  
 \end{proof}
 
 \begin{prop}
@@ -1206,7 +1239,7 @@ $\ac \iff \mathsf{WOP} \iff \mathsf{Zorn}$.
 \end{corollary}
 
 \begin{definition} Let $S$ be a set. Let $F$ be a subset of $\P(S)$. We say that $F$  is a \textit{filter on $S$} if
-\begin{enumerate}[label=(\roman*)]
+\begin{enumerate}[label=(\alph*)]
 \item $F\ne \emptyset$,
 \item $\emptyset \notin F$,
 \item if $X \in F$ and $X \subset Y$, then $Y \in F$, and
@@ -1220,13 +1253,13 @@ The \textit{Fr\'echet filter} on $S$ is the set of all cofinite sets in $S$.
 
 \begin{definition}  Let $F$ be a filter on $S$.
 \begin{enumerate}
-\item We say that $F$ is an \textit{ultrafilter} if for any $X \in \P(S)$, either $X \in F$ or $(S \setminus X) \in F$.
+\item We say that $F$ is an \textit{ultrafilter} if for any $X \in \P(S)$, either $X \in F$ or $\left(S \setminus X\right) \in F$.
 \item If $F$ is an ultrafilter, then we say that $F$ is \textit{nonprincipal} if it contains the Fr\'echet filter on $S$.
 \end{enumerate} 
 \end{definition}
 
 \begin{remark}
-Let $F$ be an ultrafilter on $S$. Define $\mu : \P(S) \to \{0,1\}$ by $$\mu(A) =\begin{cases} 1 & A \in F \\ 0 & A \notin F \end{cases} .$$ Then $\mu$ is a measure on $S$ so long as we substitute the condition of finite additivity for that of countable additivity.    
+Let $F$ be an ultrafilter on $S$. Define $\mu : \P(S) \to \left\{0, 1\right\}$ by $$\mu(A) =\begin{cases} 1 & A \in F \\ 0 & A \notin F \end{cases} .$$ Then $\mu$ is a measure on $S$ so long as we substitute the condition of finite additivity for that of countable additivity.    
 \end{remark}
 
 \begin{definition}
@@ -1244,12 +1277,12 @@ Take $H = \{W\subset S \mid$ there exist a $k\in \N$ and $Z_1, \ldots, Z_k \in G
 Every filter $E$ on $S$ can be extended to an ultrafilter.
 \end{theorem}
 \begin{proof}
-Let $\mathcal{F} = \{F \subset \P(S) \mid F \text{ is a filter on }S,\  F\supset E\}$. Then $(\mathcal{F}, \subset)$ is a poset with $E\in \mathcal{F}$. 
+Let $\mathcal{F} = \{F \subset \P(S) \mid F \text{ is a filter on }S,\  F\supset E\}$. Then $\left(\mathcal{F}, \subset\right)$ is a poset with $E\in \mathcal{F}$. 
 \begin{claim}
  A filter $F\subset \P(S)$ is an ultrafilter if and only if it is maximal in $\mathcal{F}$.
 \end{claim}
 \begin{proof}
-It is clear that if $F$ is an ultrafilter, then it is maximal. For the converse, suppose that $F$ is not an ultrafilter. Then there is some $X\in \P(S)$ such that both $X \notin F$ and $(S\setminus X) \notin F$. We must show that $F$ is not maximal in $\mathcal{F}$. 
+It is clear that if $F$ is an ultrafilter, then it is maximal. For the converse, suppose that $F$ is not an ultrafilter. Then there is some $X\in \P(S)$ such that both $X \notin F$ and $\left(S\setminus X\right) \notin F$. We must show that $F$ is not maximal in $\mathcal{F}$. 
 Note that for any $Y \in F$, the intersection $X \cap Y$ is nonempty. Therefore, $F \cup \{X\}$ has FIP. By our least lemma, $F \cup \{X\}$ can be extended to a filter $H$ on $S$. But $H \supsetneq F \supset E$, so that $F$ is not maximal in $\mathcal{F}$.
 \end{proof}
 Thus, it suffices to show that $\mathcal{F}$ has some maximal element. Let $C$ be a chain in $\mathcal{F}$. It is easy to check that $\bigcup{C}$ is an upper bound of $C$ in $\mathcal{F}$. It follows from $\mathsf{Zorn}$ that $\mathcal{F}$ has some maximal element. 
@@ -1261,7 +1294,7 @@ There exists a nonprincipal ultrafilter.
 
 \begin{definition} Let $\kappa$ be an infinite cardinal.
 \begin{enumerate}
-\item A filter $F\subset \P(S)$ is \textit{$\kappa$-complete} if every subset $X\subset F$ with $\lvert{X}\rvert < \kappa$ satisfies $\bigcap{X} \in F$.
+\item A filter $F\subset \P(S)$ is \textit{$\kappa$-complete} if every subset $X\subset F$ with $\left\lvert{X}\right\rvert < \kappa$ satisfies $\bigcap{X} \in F$.
 \item We say that $\kappa$ is \textit{measurable} if $\kappa > \omega$ and there exists a nonprincipal $\kappa$-complete ultrafilter on $\kappa$. 
 \end{enumerate}
 \end{definition}
@@ -1304,22 +1337,22 @@ Let $\alpha$ and $\beta$ be nonzero limit ordinals.
 \end{definition}
 
 \begin{prop} 
- If $\kappa$ is measurable, then $\kappa$ is strongly inaccessible and $\lvert{\{\lambda < \kappa \mid \lambda \text{ is inaccessible}\}}\rvert = \kappa$.
+ If $\kappa$ is measurable, then $\kappa$ is strongly inaccessible and $\left\lvert{\{\lambda < \kappa \mid \lambda \text{ is inaccessible}\}}\right\rvert = \kappa$.
 \end{prop}
 
 \begin{remark} $ $
 \begin{enumerate}
 \item $\zf \nvDash \aleph_1 \text{ is regular}$. In fact, in $\zf$, we can prove that there is some $f: \omega \to \aleph_1$ such that $\sup(\im{f}) = \aleph_1$, so that $\aleph_1 = \bigcup_{n \in \omega} f(n)$ even though each $f(n)$ is countable. 
 \item If $\kappa$ is a strongly inaccessible cardinal, then $V_{\kappa} \models \zfc$.
-\item  Let $\wi(\kappa)$ denote the statement that $\kappa$ is a weakly inaccessible cardinal. It is known that $$\zfc \nvDash \exists{\kappa}(\wi(\kappa)).$$ Moreover, if $\con(\zfc + \exists{\kappa}(\wi(\kappa)))$ where $\con(T)$ means that the theory $T$ is consistent, then $\con(\zfc + \wi(2^{\aleph_0}))$.     . 
+\item  Let $\wi(\kappa)$ denote the assertion that $\kappa$ is a weakly inaccessible cardinal. It is known that $$\zfc \nvDash \exists{\kappa}(\wi(\kappa)).$$ Moreover, if $\con(\zfc + \exists{\kappa}(\wi(\kappa)))$ where $\con(T)$ means that the theory $T$ is consistent, then $\con(\zfc + \wi(2^{\aleph_0}))$.     . 
 \end{enumerate}
 \end{remark}
 
 \begin{lemma}\label{card-prop}
-For any $X$, we have $\lvert{\bigcup{X}}\rvert \leq \lambda \cdot \kappa$ where $\lambda$ denotes $\lvert{X}\rvert $ and $\kappa$ denotes $\sup\{\lvert{y}\rvert : y\in x\}$.
+For any $X$, we have $\left\lvert{\bigcup{X}}\right\rvert \leq \lambda \cdot \kappa$ where $\lambda$ denotes $\left\lvert{X}\right\rvert $ and $\kappa$ denotes $\sup\{\left\lvert{y}\right\rvert : y\in x\}$.
 \end{lemma}
 \begin{proof}
-We can write $X=\{X_{\alpha} \mid \alpha <\lambda\}$. For each $\alpha <\lambda$, we have that $\kappa_{\alpha} \coloneqq \lvert{X_{\alpha}}\rvert \leq \kappa$. Therefore, we can also write $X_{\alpha} = \{x_{\alpha{\beta}} \mid \beta < \kappa_{\alpha}\}$. It follows that $$\bigcup{X} =\left\{ x_{\alpha{\beta}} \mid \alpha <\lambda, \ \beta < \kappa_{\alpha}\right\},   $$ which has cardinality at most $\lvert{\lambda \times \kappa}\rvert$.
+We can write $X=\{X_{\alpha} \mid \alpha <\lambda\}$. For each $\alpha <\lambda$, we have that $\kappa_{\alpha} \coloneqq \left\lvert{X_{\alpha}}\right\rvert \leq \kappa$. Therefore, we can also write $X_{\alpha} = \{x_{\alpha{\beta}} \mid \beta < \kappa_{\alpha}\}$. It follows that $$\bigcup{X} =\left\{ x_{\alpha{\beta}} \mid \alpha <\lambda, \ \beta < \kappa_{\alpha}\right\},   $$ which has cardinality at most $\left\lvert{\lambda \times \kappa}\right\rvert$.
 \end{proof}
 
 \begin{corollary}
@@ -1345,20 +1378,20 @@ Note that $\cf(\alpha)\leq \alpha$ for any $\alpha$ since $\id_{\alpha}$ is a co
 If $\lambda \leq \kappa$, then $\cf(\kappa^+) > \lambda$. 
 \end{claim}
 \begin{proof}
-Suppose, towards a contradiction, that $\cf(\kappa^+) \leq \lambda$ for some $\lambda \leq \kappa$. Then there is some $\eta \leq \lambda$ such that $$\kappa^+ = \bigcup{\left\{\alpha_i \mid i <\eta \right\}}$$ for some $\alpha_i \in \kappa^+$. Note that $\lvert{\alpha_i}\rvert \leq \kappa$ for each $i$ and that $\lvert{\eta}\rvert \leq \kappa$. By \cref{card-prop}, it follows $\kappa^+ \leq \kappa \cdot \kappa = \kappa$, a contradiction.  
+Suppose, towards a contradiction, that $\cf(\kappa^+) \leq \lambda$ for some $\lambda \leq \kappa$. Then there is some $\eta \leq \lambda$ such that $$\kappa^+ = \bigcup{\left\{\alpha_i \mid i <\eta \right\}}$$ for some $\alpha_i \in \kappa^+$. Note that $\left\lvert{\alpha_i}\right\rvert \leq \kappa$ for each $i$ and that $\left\lvert{\eta}\right\rvert \leq \kappa$. By \cref{card-prop}, it follows $\kappa^+ \leq \kappa \cdot \kappa = \kappa$, a contradiction.  
 \end{proof}But $\cf(\kappa^+)$ is a cardinal  by \cref{PL'}. Hence $\cf(\kappa^+) \geq \kappa^+$.
 \end{proof}
 
 
-\begin{definition} Let $I$ be a set. Consider any collection of sets $\{X_i\}_{i\in I}$ indexed by $I$.
+\begin{definition} Let $I$ be a set. Consider any collection of sets $\left\{X_i\right\}_{i\in I}$ indexed by $I$.
 The \textit{infinite sum of the $X_i$} is $\sum_{i\in I} X_i \coloneqq \coprod_{i\in I} X_i$. Let $\iota_i : X_i \to \sum_{i\in I} X_i $ denote the canonical inclusion. 
 \end{definition}
 
 \begin{theorem}[K\"onig]
-If $\lvert{X_i}\rvert < \lvert{Y_i}\rvert$ for each $i \in I$, then $\lvert{\sum_{i\in I} X_i}\rvert < \lvert{\prod_{i\in I} Y_i}\rvert$.
+If $\left\lvert{X_i}\right\rvert < \left\lvert{Y_i}\right\rvert$ for each $i \in I$, then $\left\lvert{\sum_{i\in I} X_i}\right\rvert < \left\lvert{\prod_{i\in I} Y_i}\right\rvert$.
 \end{theorem}
 \begin{proof}\footnote{The format of this proof is taken from \textit{nLab}'s article ``K\"onig's theorem" (as of 05/19).}
-We must show that $\lvert{\sum_{i\in I} X_i}\rvert \not \geq \lvert{\prod_{i\in I} Y_i}\rvert$. Suppose, to the contrary, that there is some surjection $f: \sum_{i\in I} X_i \to \prod_{i\in I} Y_i$. Since $\lvert{X_i}\rvert < \lvert{Y_i}\rvert$ for each $i\in I$ by hypothesis, the function $$f_i \coloneqq \pi_i \circ f \circ \iota_i: X_i \to Y_i$$ cannot be surjective where $\pi_i$ denotes the $i$-th projection map. For each $i$, we can thus choose some $y_i$ such that $y_i \notin \im{f_i}$. Since $f$ is surjective, there is some $x\in \sum_{i\in I} X_i $ such that $f(x) = (y_i)_{i\in I}$. But $x\in X_j$ for some $j\in I$, so that $y_j = f_j(x)$. This contradicts the fact that $y_j \notin \im{f_j}$. 
+We must show that $\left\lvert{\sum_{i\in I} X_i}\right\rvert \not \geq \left\lvert{\prod_{i\in I} Y_i}\right\rvert$. Suppose, to the contrary, that there is some surjection $f: \sum_{i\in I} X_i \to \prod_{i\in I} Y_i$. Since $\left\lvert{X_i}\right\rvert < \left\lvert{Y_i}\right\rvert$ for each $i\in I$ by hypothesis, the function $$f_i \coloneqq \pi_i \circ f \circ \iota_i: X_i \to Y_i$$ cannot be surjective where $\pi_i$ denotes the $i$-th projection map. For each $i$, we can thus choose some $y_i$ such that $y_i \notin \im{f_i}$. Since $f$ is surjective, there is some $x\in \sum_{i\in I} X_i $ such that $f(x) = \left(y_i\right)_{i\in I}$. But $x\in X_j$ for some $j\in I$, so that $y_j = f_j(x)$. This contradicts the fact that $y_j \notin \im{f_j}$. 
 \end{proof}
 
 \begin{corollary}
@@ -1367,10 +1400,10 @@ For any infinite cardinal $\kappa$, $\kappa< \cf(2^{\kappa})$.
 \begin{proof}
 Suppose, towards a contradiction, that there exist an $\eta \leq \kappa$ and a  sequence $\langle \alpha_i \mid i < \eta \rangle$ in $2^{\kappa}$ such that $$ \sup\{\alpha_i \mid i <\eta\} = 2^{\kappa}.$$ Then we get 
 \begin{align*}    
-2^{\kappa}  = (2^{\kappa})^{\kappa} 
-&  \geq  \lvert{ \prod_{i < \eta} 2^{\kappa}}\rvert 
-> \lvert{\sum_{i < \eta} \alpha_i}\rvert
-\\ & \geq \lvert{\sup\{\alpha_i \mid i <\eta\}}\rvert 
+2^{\kappa}  = \left(2^{\kappa}\right)^{\kappa} 
+&  \geq  \left\lvert{ \prod_{i < \eta} 2^{\kappa}}\right\rvert 
+> \left\lvert{\sum_{i < \eta} \alpha_i}\right\rvert
+\\ & \geq \left\lvert{\sup\{\alpha_i \mid i <\eta\}}\right\rvert 
 = 2^{\kappa}
 ,
 \end{align*}  a contradiction. 
@@ -1432,38 +1465,40 @@ A class $c$ is a set if and only if it is \textit{bounded in rank}, i.e., there 
 
 \begin{notation} $ $
 \bi
-\item For any language $\L$, we shall write $\bar{x}$ for a finite sequence of symbols $(x_1, \ldots, x_k)$ in $\L$.  
-\item For any set $A$, a symbol of the form $\bar{a}$ will refer to a finite sequence $(a_1, \ldots, a_k)$  in $A$. Abusing notation, we shall  write $\bar{a} \in A$ to express that the components of $\bar{a}$ belong to $A$. Also, we shall write $f(\bar{a})$ for the sequence $(f(a_1), \ldots, f(a_k))$.
+\item For any language $\L$, we shall write $\bar{x}$ for a finite sequence of symbols $\left(x_1, \ldots, x_k\right)$ in $\L$.  
+\item For any set $A$, a symbol of the form $\bar{a}$ will refer to a finite sequence $\left(a_1, \ldots, a_k\right)$  in $A$. Abusing notation, we shall  write $\bar{a} \in A$ to express that the components of $\bar{a}$ belong to $A$. Also, we shall write $f(\bar{a})$ for the sequence $\left(f(a_1), \ldots, f(a_k)\right)$.
 \ei
 \end{notation}
 
 \begin{definition}[Relativization]
-Let $(M, \in_M)$ consist of a class $M$ and the binary relation $\in$ on $M$ (i.e., $x \in_M y \iff x\in y$). In this case, we call $M$ a \textit{standard model (for the language of set theory)}. Let $\varphi(\bar{x})$ denote a formula of the language of set theory. The \textit{relativization $\varphi^M(\bar{x})$ of $\varphi$ to $M$} is the formula obtained inductively  by 
+Let $\left(M, \in_M\right)$ consist of a class $M$ and the binary relation $\in$ on $M$ (i.e., $x \in_M y \iff x\in y$). In this case, we call $M$ a \textit{standard model (for the language of set theory)}. Let $\varphi(\bar{x})$ denote a formula of the language of set theory. The \textit{relativization $\varphi^M(\bar{x})$ of $\varphi$ to $M$} is the formula obtained inductively  by 
 \be[label=(\alph*)]
 \item  fixing each atomic formula appearing in $\varphi$,
 \item preserving each logical connective  appearing in $\varphi$,
-\item translating each formula of the form $\exists x \psi$ appearing in $\varphi$ where $\psi$ is quantifier-free  to $(\exists x \in M )\psi^M$, and 
-\item similarly translating $\forall x \psi$  to $(\forall x \in M)\psi^M$.
-\ee Part (b) says that the operator $({-})^M$ commutes with all logical connectives. 
+\item translating each formula of the form $\exists x \psi$ appearing in $\varphi$ where $\psi$ is quantifier-free  to $\left(\exists x \in M \right)\psi^M$, and 
+\item similarly translating $\forall x \psi$  to $\left(\forall x \in M\right)\psi^M$.
+\ee Part (b) says that the operator $\left({-}\right)^M$ commutes with all logical connectives. 
 \end{definition}
 
-\begin{remark}
-For any particular $\varphi(\bar{x})$, the expression $$M \models \varphi(\bar{x})$$ (pronounced ``$M$ satisfies $\varphi$") will mean the same thing as $\varphi^M(\bar{x})$. Note, however, that unless $M$ is a set, we cannot formally define such a satisfaction relation $\models$ in $\zf$. Indeed, due to Tarski's undefinability theorem, if the existence of a satisfaction relation for $(V,\in)$ were provable in $\zf$, then $\zf$ could prove its own consistency, which is impossible. 
-\end{remark}
+\smallskip
+
+For any particular $\varphi(\bar{x})$, the expression $$M \models \varphi(\bar{x})$$ (pronounced ``$M$ satisfies $\varphi$") will mean the same thing as $\varphi^M(\bar{x})$. Note, however, that unless $M$ is a set, we cannot formally define such a satisfaction relation $\models$ in $\zf$. Indeed, due to Tarski's undefinability theorem, if the existence of a satisfaction relation for $\left(V,\in\right)$ were provable in $\zf$, then $\zf$ could prove its own consistency, which is impossible. 
+
+\smallskip
 
 \begin{definition}\label{D0}
 A formula $\theta(\bar{x})$ of the language of set theory is a \textit{$\Delta_0$-formula} (written as $\theta(\bar{x}) \in \Delta_0$) if
 \be[label=(\alph*)]
 \item it is quantifier-free, or
 \item it is of the form $\varphi \square \psi$ or $\neg{\varphi}$ where $\varphi, \psi \in \Delta_0$ and $\square$ denotes a logical connective, or
-\item it is of the form $(\exists x \in y)\varphi$ or $(\forall x \in y)\varphi$ where $\varphi \in \Delta_0$.
+\item it is of the form $\left(\exists x \in y\right)\varphi$ or $\left(\forall x \in y\right)\varphi$ where $\varphi \in \Delta_0$.
 \ee
 \end{definition}
 
 \begin{lemma}\label{d0abs}
  Let $\mathfrak{U}$ be a standard model. TFAE. 
 \be[label=(\roman*)]
-\item For any $\varphi(\bar{x}) \in \Delta_0$ and any $\bar{v} \in \mathfrak{U}$, $\mathfrak{U} \models \varphi[\bar{v}]$ iff $\varphi[\bar{v}]$.
+\item For any $\varphi(\bar{x}) \in \Delta_0$ and any $\bar{v} \in \mathfrak{U}$, $\mathfrak{U} \models \varphi\left[\bar{v}\right]$ iff $\varphi\left[\bar{v}\right]$.
 \item $\mathfrak{U}$ is transitive.
 \ee
 \end{lemma}
@@ -1473,15 +1508,17 @@ A formula $\theta(\bar{x})$ of the language of set theory is a \textit{$\Delta_0
 
 (ii)$\implies$(i):
 
-We proceed by induction on the complexity of $\varphi$. Our equivalence holds immediately when $\varphi$ is an atomic formula.  For our induction step, it suffices to consider just the logical symbols $\neg$, $\land$, and $\exists$. In either of the first two cases, our equivalence holds immediately by induction.  Finally, let $$\varphi(\bar{x}) = (\exists u \in y)\psi(u, y, \bar{z})$$ and suppose that our equivalence is true of $\psi(u, y, \bar{z})$. Suppose that $\mathfrak{U} \models \varphi(\bar{x})[\bar{v}]$. Then we have $$(\exists u\in \frak{U})(u \in y \land \psi^{\frak{U}}(u, y, \bar{z}))[\bar{v}].$$ By our IH, it follows that $(\exists u\in \frak{U})(u \in y \land \psi(u, y, \bar{z}))[\bar{v}]$, which implies that $(\exists u \in y) \psi(u, y, \bar{z})[\bar{v}]$, as desired. Conversely, suppose $\varphi(\bar{x})[\bar{v}]$ with witness $u$. Then $u\in y[\bar{v}]$.  Note that $y$ is free in $\varphi$, and thus $y[\bar{v}]$ belongs to $\frak{U}$ by hypothesis. Since $\frak{U}$ is transitive, it follows that $u\in \frak{U}$. Hence $u$ is a witness for $\varphi^{\frak{U}}$ as well. 
-\\ \\
+We proceed by induction on the complexity of $\varphi$. Our equivalence holds immediately when $\varphi$ is an atomic formula.  For our induction step, it suffices to consider just the logical symbols $\neg$, $\land$, and $\exists$. In either of the first two cases, our equivalence holds immediately by induction.  Finally, let $$\varphi(\bar{x}) = \left(\exists u \in y\right)\psi(u, y, \bar{z})$$ and suppose that our equivalence is true of $\psi(u, y, \bar{z})$. Suppose that $\mathfrak{U} \models \varphi(\bar{x})\left[\bar{v}\right]$. Then we have $$\left(\exists u\in \frak{U}\right)(u \in y \land \psi^{\frak{U}}(u, y, \bar{z}))\left[\bar{v}\right].$$ By our IH, it follows that $\left(\exists u\in \frak{U}\right)(u \in y \land \psi(u, y, \bar{z}))\left[\bar{v}\right]$, which implies that $\left(\exists u \in y\right) \psi(u, y, \bar{z})\left[\bar{v}\right]$, as desired. Conversely, suppose $\varphi(\bar{x})\left[\bar{v}\right]$ with witness $u$. Then $u\in y\left[\bar{v}\right]$.  Note that $y$ is free in $\varphi$, and thus $y\left[\bar{v}\right]$ belongs to $\frak{U}$ by hypothesis. Since $\frak{U}$ is transitive, it follows that $u\in \frak{U}$. Hence $u$ is a witness for $\varphi^{\frak{U}}$ as well. 
+
+\smallskip
+
 $\neg$(ii)$\implies \neg$(i): 
 
-Since $\frak{U}$ is not transitive, we can find some $y\in \mathfrak{U}$ and some $u\in y$ such that $u\notin \mathfrak{U}$. Consider the formula $$\psi(t) \coloneqq (\exists b \in t)(\forall c \in t)c=b,$$ which expresses that $t$ is a singleton. We see that $\psi \in \Delta_0$. But if $\psi(y)$, then $\frak{U} \models y = \emptyset$, so that $\frak{U} \nvDash \psi(y)$. This shows that $\mathfrak{U} \models \psi[\bar{v}]$ is \emph{not} equivalent to $\psi[\bar{v}]$.
+Since $\frak{U}$ is not transitive, we can find some $y\in \mathfrak{U}$ and some $u\in y$ such that $u\notin \mathfrak{U}$. Consider the formula $$\psi(t) \coloneqq \left(\exists b \in t\right)(\forall c \in t)c=b,$$ which expresses that $t$ is a singleton. We see that $\psi \in \Delta_0$. But if $\psi(y)$, then $\frak{U} \models y = \emptyset$, so that $\frak{U} \nvDash \psi(y)$. This shows that $\mathfrak{U} \models \psi\left[\bar{v}\right]$ is \emph{not} equivalent to $\psi\left[\bar{v}\right]$.
 \end{proof}
 
 \begin{exmp}
-Let $\kappa$ be a regular cardinal. Any element of the set $$\hc(\kappa) \coloneqq \left\{x : \lvert{\tc(x)}\rvert < \kappa\right\} $$ is said to have \textit{hereditary cardinality $<\kappa$}. Then $x \in \hc(\kappa)$ if and only if $x$ has cardinality $< \kappa$, every element of $x$ has cardinality $< \kappa$, every element of every element of $x$ has cardinality $< \kappa$, and so on. Note that $(\hc(\kappa), \in) $ is a transitive model for the language of set theory.  One can show that $\hc(\omega) = V_{\omega}$ and that 
+Let $\kappa$ be a regular cardinal. Any element of the set $$\hc(\kappa) \coloneqq \left\{x : \left\lvert{\tc(x)}\right\rvert < \kappa\right\} $$ is said to have \textit{hereditary cardinality $<\kappa$}. Then $x \in \hc(\kappa)$ if and only if $x$ has cardinality $< \kappa$, every element of $x$ has cardinality $< \kappa$, every element of every element of $x$ has cardinality $< \kappa$, and so on. Note that $\left(\hc(\kappa), \in\right) $ is a transitive model for the language of set theory.  One can show that $\hc(\omega) = V_{\omega}$ and that 
 \[ \label{eqn:si}
 \hc(\kappa) =V_{\kappa} \tag{$\star$}
 \]
@@ -1506,16 +1543,16 @@ It suffices to verify that $\zfc - \mathsf{Reg} \vdash \left(\zfc\right)^V \vdas
 \end{notation}
 
 \begin{lemma}\label{Vcard}
-Suppose that $\si(\kappa)$. Then $\lvert{V_{\alpha}}\rvert < \kappa$ for every $\alpha <\kappa$.
+Suppose that $\si(\kappa)$. Then $\left\lvert{V_{\alpha}}\right\rvert < \kappa$ for every $\alpha <\kappa$.
 \end{lemma}
 \begin{proof}
-Let us induct on $\alpha$. The base case is obvious. Suppose that $\lvert{V_{\alpha}}\rvert <\kappa$. Then 
+Let us induct on $\alpha$. The base case is obvious. Suppose that $\left\lvert{V_{\alpha}}\right\rvert <\kappa$. Then 
 \[
-\lvert{V_{\alpha +1}}\rvert = \lvert{\P(V_{\alpha})}\rvert = 2^{\lvert{V_{\alpha}}\rvert} <\kappa
-\] since $\kappa$ is a strong limit. Next, suppose that $\lambda <\kappa$ is a limit ordinal such that $\lvert{V_{\beta}}\rvert <\kappa$ for each $\beta < \lambda$. As the supremum of a set of cardinals is again a cardinal, we have that
+\left\lvert{V_{\alpha +1}}\right\rvert = \left\lvert{\P(V_{\alpha})}\right\rvert = 2^{\left\lvert{V_{\alpha}}\right\rvert} <\kappa
+\] since $\kappa$ is a strong limit. Next, suppose that $\lambda <\kappa$ is a limit ordinal such that $\left\lvert{V_{\beta}}\right\rvert <\kappa$ for each $\beta < \lambda$. As the supremum of a set of cardinals is again a cardinal, we have that
 \[
-\lvert{V_{\lambda}}\rvert = \lvert{\bigcup_{\beta < \lambda}V_{\beta}}\rvert = \sup_{\beta < \lambda}\lvert{V_{\beta}}\rvert.
-\] If this equals $\kappa$, then we have a cofinal map $\lambda \to \kappa$, contrary to the fact that $\kappa$ is regular. Hence $\lvert{V_{\lambda}}\rvert < \kappa$, as required.
+\left\lvert{V_{\lambda}}\right\rvert = \left\lvert{\bigcup_{\beta < \lambda}V_{\beta}}\right\rvert = \sup_{\beta < \lambda}\left\lvert{V_{\beta}}\right\rvert.
+\] If this equals $\kappa$, then we have a cofinal map $\lambda \to \kappa$, contrary to the fact that $\kappa$ is regular. Hence $\left\lvert{V_{\lambda}}\right\rvert < \kappa$, as required.
 \end{proof}
 
 \begin{prop}\label{abssi}
@@ -1533,7 +1570,7 @@ Suppose that $\kappa$ is the least $\lambda$ such that $\si(\lambda)$. Then
 \be[label=(\alph*)]
 \item It is easy to see that $V_{\kappa} \models \z + \mathsf{Reg}$. It remains to check that $V_{\kappa}$ satisfies both $\mathsf{Rep}$ and $\ac$.
 \bi
-\item $\underline{\mathsf{Rep}}:$  Suppose that $X\in V_{\kappa}$ and $F$ is a function $X \to V_{\kappa}$. We must show that $F(X) \in V_{\kappa}$. As $\kappa$ is a limit, we have that $X\in V_{\alpha}$ for some $\alpha < \kappa$. By \cref{Vcard}, it follows that $$\lvert{X}\rvert \leq \lvert{V_{\alpha}}\rvert < \kappa.$$ Let $\beta = \sup\{\rnk(F(y)) \mid y\in X\},$ so that $F(X)\in V_{\beta + 1}$. If $\beta = \kappa$, then the map $X \to \kappa$ defined by $y \mapsto \rnk(F(y))$ is cofinal. But this is impossible, because $\kappa$ is regular. Hence $\beta <\kappa$, and thus $F(X) \in V_{\kappa}$.
+\item $\underline{\mathsf{Rep}}:$  Suppose that $X\in V_{\kappa}$ and $F$ is a function $X \to V_{\kappa}$. We must show that $F(X) \in V_{\kappa}$. As $\kappa$ is a limit, we have that $X\in V_{\alpha}$ for some $\alpha < \kappa$. By \cref{Vcard}, it follows that $$\left\lvert{X}\right\rvert \leq \left\lvert{V_{\alpha}}\right\rvert < \kappa.$$ Let $\beta = \sup\{\rnk(F(y)) \mid y\in X\},$ so that $F(X)\in V_{\beta + 1}$. If $\beta = \kappa$, then the map $X \to \kappa$ defined by $y \mapsto \rnk(F(y))$ is cofinal. But this is impossible, because $\kappa$ is regular. Hence $\beta <\kappa$, and thus $F(X) \in V_{\kappa}$.
 
 \item $\underline{\ac}:$ Suppose that $X\in V_{\kappa}$ with each element of $X$ nonempty. There exists a choice function $F: X \to V$. Note that $F$ consists of ordered pairs $\left(x,y\right)$ where $x\in X$ and $y\in x$. Both of these belong to $V_{\alpha}$ where $\alpha \coloneqq \rnk(X) +1<\kappa$, and thus $\left(x,y\right)$ belongs to  $V_{\alpha+1}$. This implies that $\rnk(F) \leq \rnk(X)+2 <\kappa$ because $\kappa$ is a limit. This proves that $F\in V_{\kappa}$.
 \ei
@@ -1552,9 +1589,11 @@ $\zfc \nvDash \si$.
 If there exists an inaccessible cardinal, then we can find a model of $\zfc + \neg{\si}$ via \cref{sin}. Otherwise, we can take $V$ to be a model of $\zfc + \neg{\si}$.
 \end{proof}
 
-\begin{remark}
+\smallskip
+
 In light of part (a) of \cref{sin}, we have another way of proving \cref{sina}. Indeed, if $\zfc \models \si$, then $\zfc \models \left(V_{\kappa} \models \zfc\right)$ where $\kappa$ denotes the minimal strongly inaccessible cardinal according to $\zfc$. Such a situation, however, contradicts G\"odel's second incompleteness theorem (provided that $\zfc$ is consistent). 
-\end{remark}
+
+\smallskip
 
 \begin{corollary}
 $\con(\zfc) \implies \con(\zfc + \neg{\si})$.
@@ -1570,9 +1609,9 @@ Suppose that $\con(\zfc)$, so that there is some set model $\A$ of $\zfc$. If th
 \be 
 \item We say that $\B$ is an \textit{elementary submodel of $\A$} (written as $\B \preceq \A$) if $\B$ is a submodel of $\A$ such that for any first-order formula $\varphi(\bar{x})$ of $\L$ and any $\bar{b} \in \B$,
 \[
-\A \models \varphi[\bar{b}] \iff \B \models \varphi[\bar{b}]
+\A \models \varphi\left[\bar{b}\right] \iff \B \models \varphi\left[\bar{b}\right]
 .\]
-\item An embedding $f : \dom(A) \to \dom(B)$ (i.e., an isomorphism onto its image)  is an \textit{elementary embedding} if $f(\A) \preceq \B$. Equivalently, $f$ is an elementary embedding if $$ \A \models \varphi[\bar{a}] \iff  \B \models \varphi[f(\bar{a})]    $$ for any  first-order formula $\varphi(\bar{x})$ of $\L$ and any $\bar{a} \in \A$.
+\item An embedding $f : \dom(A) \to \dom(B)$ (i.e., an isomorphism onto its image)  is an \textit{elementary embedding} if $f(\A) \preceq \B$. Equivalently, $f$ is an elementary embedding if $$ \A \models \varphi\left[\bar{a}\right] \iff  \B \models \varphi[f(\bar{a})]    $$ for any  first-order formula $\varphi(\bar{x})$ of $\L$ and any $\bar{a} \in \A$.
 \ee
 \end{definition}
 
@@ -1584,10 +1623,10 @@ Then $B$ forms an elementary submodel of $\A$.
 
 \begin{theorem}[(Downward) L\"owenheim-Skolem (L-S)]\label{LS}
 Let $\L$ be a countable language. For any infinite set model $\A$ for $\L$ and any set $X\subset \dom(\A)$, we can use $\ac$ to find a set model $\B$ for $\L$ such that 
-\be
+\be[label=(\alph*)]
 \item $X\subset \dom(\B)$, 
 \item $\B \preceq \A$, and
-\item $\dom(\B)$ has cardinality at most $\lvert{X}\rvert \cdot \lvert{\L}\rvert \cdot \aleph_0$.
+\item $\dom(\B)$ has cardinality at most $\left\lvert{X}\right\rvert \cdot \left\lvert{\L}\right\rvert \cdot \aleph_0$.
 \ee 
 In particular, there is a countable $\L$-structure $\B$ such that $\B \preceq \A$.
 \end{theorem}
@@ -1598,8 +1637,12 @@ Consider  a class model $\left(A, E^A\right)$ of $\zf$, where $E^A$ is a (strict
 \end{lemma}
 \begin{proof}
 Suppose that $E^A$ is both well-founded and extensional. We can extend transfinite induction (and thus recursion) on $\ord$ to any well-founded class.  Thus, we can define $f : A \to V$ by $$ f(a) = \left\{f(b) \mid b \in A \land b{E^A}a\right\}    .$$ Let $x\in f(A)$, so that $x = \left\{f(y) \mid y \in A \land y{E^A}z\right\}$ for some $z\in A$. Hence any element of $x$ belongs to the image of $f$, which shows that $f(A)$ is a transitive class. 
-\\ \\ Now, we want to show that $f$ is an embedding. Let $a, b\in A$ with $a\ne b$. Suppose, towards a contradiction, that the class $$D\coloneqq \left\{z \in f(A) \mid (\exists a,b \in A)(a\ne b \land z = f(a) = f(b))\right\}$$ is nonempty. Choose $m \in D$ of least rank and let $a$ and $b$ witness that $m \in D$. Since $a\ne b$, we have $\ext_{E^A}(a) \ne \ext_{E^A}(b)$. Assume, wlog, that there is some $u \in \ext_{\E^A}(a) \setminus \ext_{E^A}(b)$.  Then $$f(u) \in f(a) =m = f(b),$$ and thus there is some $v \in \ext_{E^A}(b)$ such that $s\coloneqq f(u) = f(v)$.  Since $u \ne v$, we have $s \in D$. But $s\in m$, so that $\rnk(s) < \rnk(m)$, a contradiction. It follows that $f$ is injective. 
-\\ \\ It remains to show that $(x,y) \in E^A \iff f(x)\in f(y)$. The forward direction is obvious. For the backward direction, suppose that $f(x) \in f(y)$. Then $f(x) = f(c)$ for some $c{E^A}y$. Since $f$ is injective, we have $x=c$. Thus, $(x,y) \in E^A$. 
+
+\smallskip
+ Now, we want to show that $f$ is an embedding. Let $a, b\in A$ with $a\ne b$. Suppose, towards a contradiction, that the class $$D\coloneqq \left\{z \in f(A) \mid \left(\exists a,b \in A\right)(a\ne b \land z = f(a) = f(b))\right\}$$ is nonempty. Choose $m \in D$ of least rank and let $a$ and $b$ witness that $m \in D$. Since $a\ne b$, we have $\ext_{E^A}(a) \ne \ext_{E^A}(b)$. Assume, wlog, that there is some $u \in \ext_{\E^A}(a) \setminus \ext_{E^A}(b)$.  Then $$f(u) \in f(a) =m = f(b),$$ and thus there is some $v \in \ext_{E^A}(b)$ such that $s\coloneqq f(u) = f(v)$.  Since $u \ne v$, we have $s \in D$. But $s\in m$, so that $\rnk(s) < \rnk(m)$, a contradiction. It follows that $f$ is injective. 
+
+\smallskip
+ It remains to show that $\left(x,y\right) \in E^A \iff f(x)\in f(y)$. The forward direction is obvious. For the backward direction, suppose that $f(x) \in f(y)$. Then $f(x) = f(c)$ for some $c{E^A}y$. Since $f$ is injective, we have $x=c$. Thus, $\left(x,y\right) \in E^A$. 
 \end{proof}
 
 \begin{term}
@@ -1617,12 +1660,12 @@ In general, as a result of the compactness theorem, if an $\L$-structure $\left(
 Let $\varphi(x)$ denote the formula $$\exists f(f : \omega  \to  x \land f \text{ is a bijection})  ,  $$ where $\omega$ denotes the smallest infinite ordinal. Provided that $\zf$ has at least one well-founded set model $\A$,\footnote{This assumption is strictly stronger than the assumption that $\con(\zf)$ but is weaker than the assumption that $\exists \kappa(\si(\kappa))$.} there is a transitive set model $\B$ of $\zf$ such that $\B \nvDash \varphi$ but $\varphi$ holds in the universe of all sets.
 \end{theorem}
 \begin{proof}
-By \cref{LS}, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By Mostowski, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi(\kappa^{\B})}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi(\kappa^{\B})$ holds in the universe of all sets.
+By \cref{LS}, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By \cref{MC}, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi(\kappa^{\B})}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi(\kappa^{\B})$ holds in the universe of all sets.
 \end{proof}
 
 \subsection{Lecture 16}
 
-\begin{definition}[Absoluteness] Let $\varphi(\bar{x})$ be a formula of set theory. Suppose that $B$ is a class and that $A\subset B$. We say that $\varphi$ is \textit{absolute for $A$ and $B$}, written as $\abs(A,B, \varphi)$, if for every $\bar{a}\in A$, we have $$\varphi^A[\bar{a}] \leftrightarrow \varphi^B[\bar{a}].$$ When $B$ denotes the universe of all sets, we say that $\varphi$ is \textit{absolute for $A$}.
+\begin{definition}[Absoluteness] Let $\varphi(\bar{x})$ be a formula of set theory. Suppose that $B$ is a class and that $A\subset B$. We say that $\varphi$ is \textit{absolute for $A$ and $B$}, written as $\abs(A,B, \varphi)$, if for every $\bar{a}\in A$, we have $$\varphi^A\left[\bar{a}\right] \leftrightarrow \varphi^B\left[\bar{a}\right].$$ When $B$ denotes the universe of all sets, we say that $\varphi$ is \textit{absolute for $A$}.
 \end{definition}
 
 \begin{exmp}
@@ -1666,8 +1709,8 @@ By induction on the complexity $\varphi$, let us show that $$A\models \exists{y}
 
 \smallskip
 
-In this case, suppose that $A \models \psi[\bar{a},c, c']$ for some $c,c'\in A$. By our induction hypothesis, $B$ also must satisfy  $\psi[\bar{a},c, c']$. This means that $B\models \exists{y}\varphi(\bar{a},y)$, as required.
-Conversely, suppose that $B\models \psi[\bar{a}, d, d']$ for some $d,d'\in B$. Then $B\models \varphi[\bar{a}, d']$. By hypothesis, there is some $e\in A$ such that $B \models \varphi[\bar{a}, e]$. By our induction hypothesis, we have that $A \models \varphi[\bar{a}, \tilde{e}]$ for some $\tilde{e}\in A$. Thus, $A\models \exists{y}\varphi(\bar{a},y)$, as required.
+In this case, suppose that $A \models \psi\left[\bar{a},c, c'\right]$ for some $c,c'\in A$. By our induction hypothesis, $B$ also must satisfy  $\psi\left[\bar{a},c, c'\right]$. This means that $B\models \exists{y}\varphi(\bar{a},y)$, as required.
+Conversely, suppose that $B\models \psi\left[\bar{a}, d, d'\right]$ for some $d,d'\in B$. Then $B\models \varphi\left[\bar{a}, d'\right]$. By hypothesis, there is some $e\in A$ such that $B \models \varphi\left[\bar{a}, e\right]$. By our induction hypothesis, we have that $A \models \varphi\left[\bar{a}, \tilde{e}\right]$ for some $\tilde{e}\in A$. Thus, $A\models \exists{y}\varphi(\bar{a},y)$, as required.
 
 \end{proof}
 
@@ -1680,7 +1723,7 @@ For any set $M$ and any formulas $\varphi_1, \ldots, \varphi_k$, there exists a 
 Our next result is a strong version of \cref{RP} and is provable in $\zf$. For simplicity, we shall state it under the assumption that $k=1$.
 
 \begin{theorem}\label{RP'}
-For every formula $\varphi(\bar{x})$ and every ordinal $\alpha$, there is some limit ordinal $\beta > \alpha$ such that for any $\bar{b} \in V_{\beta}$, we have $\varphi^{V_{\beta}}[\bar{b}] \iff \varphi[\bar{b}]$.
+For every formula $\varphi(\bar{x})$ and every ordinal $\alpha$, there is some limit ordinal $\beta > \alpha$ such that for any $\bar{b} \in V_{\beta}$, we have $\varphi^{V_{\beta}}\left[\bar{b}\right] \iff \varphi\left[\bar{b}\right]$.
 \end{theorem}
 \begin{proof}
 Let us induct on the complexity of $\varphi$. The case where $\varphi$ is atomic is obvious, as is the case where $\varphi   = \varphi_1 \square \varphi_2$ where $\square \in \left\{\neg, \land\right\}$.   It remains to consider the case where $\varphi = \exists{z}\psi(z, x_1, \ldots, x_n)$. For each $n$-tuple $\bar{w}$, let 
@@ -1695,11 +1738,11 @@ Let $\alpha_i$ denote the least limit ordinal $\delta>\alpha $ such that $G(i) \
 \[
 \bigcup_{i\in \omega}V_{\alpha_i} = V_{\sup_{i \in \omega}\{\alpha_i\}},
 \]
-where $\sup_{i \in \omega}\{\alpha_i\}$ must be a limit ordinal greater than $\alpha$, which we take to be $\beta$. Note that for any $\bar{b}\in V_{\beta}$, there is some $m\in \N$ such that $b_1, \ldots, b_n \in V_{\alpha_m}$. If there exists a witness of $\varphi[\bar{b}]$ in $V$, then there exists one in $V_{\alpha_{m+1}}\subset V_{\beta}$ in light of \eqref{eqn:Gi}.  It follows that
+where $\sup_{i \in \omega}\{\alpha_i\}$ must be a limit ordinal greater than $\alpha$, which we take to be $\beta$. Note that for any $\bar{b}\in V_{\beta}$, there is some $m\in \N$ such that $b_1, \ldots, b_n \in V_{\alpha_m}$. If there exists a witness of $\varphi\left[\bar{b}\right]$ in $V$, then there exists one in $V_{\alpha_{m+1}}\subset V_{\beta}$ in light of \eqref{eqn:Gi}.  It follows that
 \begin{align*}
-V_{\beta} \models \varphi[\bar{b}] & \leftrightarrow \left(\exists{z\in V_{\beta}}\right)\psi^{V_{\beta}}[\bar{b}]
-\\ & \leftrightarrow  \left(\exists{z\in V_{\beta}}\right)\psi[\bar{b}] \tag{\text{IH}}
-\\ & \leftrightarrow  \exists{z}\psi[\bar{b}]
+V_{\beta} \models \varphi\left[\bar{b}\right] & \leftrightarrow \left(\exists{z\in V_{\beta}}\right)\psi^{V_{\beta}}\left[\bar{b}\right]
+\\ & \leftrightarrow  \left(\exists{z\in V_{\beta}}\right)\psi\left[\bar{b}\right] \tag{\text{IH}}
+\\ & \leftrightarrow  \exists{z}\psi\left[\bar{b}\right]
 ,
 \end{align*} as desired.
 
@@ -1729,11 +1772,11 @@ The following notion generalizes the rank hierarchy $V$.
 
 \begin{definition}
 A \textit{cumulative hierarchy} is a sequence of sets $\left\{W_{\alpha}\right\}_{\alpha \in \ord}$ such that
-\bi
-\item $W_0 =\emptyset$,
-\item $W_{\alpha} \subset W_{\alpha +1}\subset \P(W_{\alpha})$, and
-\item $W_{\lambda} = \bigcup_{\beta < \lambda} W_{\beta}$ for limit $\lambda$.
-\ei 
+\begin{align*}
+ & W_0 =\emptyset
+\\ W_{\alpha}& \subset  W_{\alpha +1}\subset \P(W_{\alpha})
+\\  W_{\lambda} & = \bigcup_{\beta < \lambda} W_{\beta},\ \quad \lambda \text{ limit}.
+\end{align*} 
 \end{definition}
 
 Note that each stage $W_{\alpha}$ is transitive and satisfies $W_{\alpha}\subset V_{\alpha}$.
@@ -1748,13 +1791,13 @@ Our proof of \cref{RP'} is easily adapted to \emph{any} cumulative hierarchy.
 
 Let $\left(A, E^A\right)$ be a set model. Recall that a set $x$ is \textit{definable with parameters} over an $\L$-structure $\left(A, E^A\right)$ if there exist a formula $\varphi(y, \bar{z})$ of $\L$ and a finite sequence $\bar{b}\in A$ such that 
 \[
-x = \left\{a\in A \mid A \models \varphi[a, \bar{b}]\right\}.
+x = \left\{a\in A \mid A \models \varphi\left[a, \bar{b}\right]\right\}.
 \]
 
 Let $\Def(A)$ denote the set consisting of all sets definable with parameters over $\left(A, E^A\right)$.
 
 \begin{note}
-Let $\kappa = \lvert{A}\rvert$. We have that $$\lvert{\Def(A)}\rvert \leq \lvert{\bigcup_{n\in \omega}A^n}\rvert = \kappa <2^{\kappa}.$$ Therefore, $\Def(A) \subsetneq \P(A)$.
+Let $\kappa = \left\lvert{A}\right\rvert$. We have that $$\left\lvert{\Def(A)}\right\rvert \leq \left\lvert{\bigcup_{n\in \omega}A^n}\right\rvert = \kappa <2^{\kappa}.$$ Therefore, $\Def(A) \subsetneq \P(A)$.
 \end{note}
 
 \smallskip
@@ -1770,7 +1813,7 @@ L_0 & = \emptyset
 \begin{note} $ $
 \be
 \item Any ordinal $\alpha$ is an element of $L_{\alpha+1}$.
-\item $\lvert{L_{\aleph_1} \cap \P(\omega)}\rvert =\aleph_1$.
+\item $\left\lvert{L_{\aleph_1} \cap \P(\omega)}\right\rvert =\aleph_1$.
 \ee
 \end{note}
 
@@ -1815,6 +1858,28 @@ Note that $\tau$ is $\Delta_0$ and that ``$R \text{ is a relation on }A$" is a $
 
 \subsection{Lecture 19}
 
+At this point, our goal is to show that ``$x\in L_{\alpha}$" is $\Delta_1^{\zf}$.
+
+\begin{theorem}[L\'evy]
+Suppose that $\kappa$ is an uncountable cardinal and that $\varphi(x, \bar{y})$ is a $\Sigma_1^{\zf}$ formula. Let $$\bar{a} \in \mathrm{H}(\kappa) \coloneqq \left\{x \mid \hc(x)<\kappa\right\}.$$ If $\exists{x}\varphi(x, \bar{a})$, then $\left(\exists{x \in \mathrm{H}(\kappa)}\right)\varphi(x, \bar{a})$.
+\end{theorem}
+\begin{proof}
+We may assume, wlog, that $\varphi$ is $\Sigma_0^{\zf}$. Indeed, we have that $\zf \vdash \varphi \leftrightarrow \exists{v}\psi$ for some $\Sigma_0^{\zf}$ formula $\psi$. Then for any set $v'$, the formula
+\[
+\theta \coloneqq \left(\exists{x\in v'}\right)\left(\exists{v\in v'}\right)\psi
+\] is also $\Sigma_0^{\zf}$, and $\zf \vdash \exists{x}\varphi \leftrightarrow \exists{v'}\theta$. Take $\left\{x,v\right\}$ as the set $v'$ witnessing this equivalence. If  our theorem holds for any $\Sigma_0^{\zf}$ formula, then this yields another equivalence
+\[
+\left(\exists{x \in \mathrm{H}(\kappa)}\right)\varphi \leftrightarrow \left(\exists{v' \in \mathrm{H}(\kappa)}\right)\theta
+\] in $\zf$ since $\kappa >\omega$ by assumption. In this case, our theorem holds for any $\Sigma_1^{\zf}$ formula holds.
+
+\smallskip
+
+Now, let $x_0$ witness $\exists{x}\varphi(x, \bar{a})$ where $\varphi$ is $\Sigma_0^{\zf}$. Let $X = \tc(\bar{a})$ and $\lvert{X}\rvert = \lambda$ where $\omega \leq \lambda <\kappa$. Thanks to \cref{RP'}, there is an ordinal $\alpha >\lambda $ such that $\bar{a}\in V_{\alpha}$ and $V_{\alpha} \models \exists{x}\varphi(x,\bar{a})$. Then $X\subset V_{\alpha}$, and we may  apply \cref{LS} to obtain an elementary submodel $\B$ of $V_{\alpha}$ such that $X \subset \dom(\B)$ and $\left\lvert{\B}\right\rvert \leq \lambda$. Since $\B$ is a set in $\zfc$, \cref{MC} yields a transitive set model $\left(\C, \in\right)$ along with an isomorphism
+\[
+\pi : \B \overset{\cong}{\longrightarrow} \C
+\] such that $\pi(d) =d$ whenever $d \in X$. Then $\pi$ fixes each component of $\bar{a}$, so that $\C \models \varphi(\pi(x_0), \bar{a})$.  Further, since $\pi(x_0)$ belongs to the transitive set $\dom(\C)$, we have that $\tc(\pi(x_0)) \subset \C$. Therefore, $\hc(\pi(x_0)) \leq \left\lvert{\C}\right\rvert \leq \lambda$. Since $\varphi$ is $\Sigma_0^{\zf}$, it is absolute for all transitive models, which completes our proof.
+\end{proof}
+
 \subsection{Lecture 20}
 
 \subsection{Lecture 21}
@@ -1822,60 +1887,86 @@ Note that $\tau$ is $\Delta_0$ and that ``$R \text{ is a relation on }A$" is a $
 \subsection{Lecture 22}
 
 \subsection{Lecture 23}
+%Discussion of Problems 1 and 4 (Homework 2).
+
+Let us pause our discussion of the constructible universe to review some solutions to Homework 2.
+
+\begin{problem}[Owain's Problem.]
+Let $\mathsf{POTCBC}$ denote the assertion that powers of two can be counted, i.e., for every cardinal $\kappa$, there is a cardinal $\lambda$ such that $2^{\kappa} \sim \lambda$. Prove that $$\zf \vdash \mathsf{POTCBC} \rightarrow \mathsf{WOP}.$$
+\end{problem}
+\begin{solution}
+Recall that $\P(x)\sim 2^x$. Let $\alpha$ be an ordinal. It's clear that in $\zf$ we can prove that $\alpha \sim \kappa'$ for some cardinal $\kappa '$. Hence $\P(\alpha)$ can be counted. Let us show by induction that any set $x\in V$ can be well-ordered. From this it will follow that there is a least ordinal $\epsilon$ equivalent to $x$, so that $\left\lvert{x}\right\rvert=\epsilon$, as desired.
+
+\smallskip
+
+Of course, the empty set can be well-ordered. Now ,suppose that $\beta= \alpha +1$ and $V_\alpha \sim \delta$ for some ordinal $\delta$. Then $V_\beta= \P(V_\alpha) \sim \P(\delta)$, which can be counted thanks to $\mathsf{POTCBC}$.  In particular, $V_\beta$  be well-ordered. Next, assume that $\beta$ is a limit ordinal and that for every $\alpha < \beta$, there is some well-order $<_{\alpha}$ on $V_{\alpha}$.  For any $a, b\in V_\beta$, let $a< b$ iff $\left(\rnk(a) < \rnk(b)\right)$ or $\left(\rnk(a)=\rnk(b) \text{ and } a<_{\rnk(a)} b\right)$. Then $\left(V_{\beta}, <\right)$ is  a total ordering. To see that it's well-founded, let $X\subset V_{\beta}$ be nonempty. For any $\alpha <\beta$, if there is some $z\in X$ with $\rnk(z)=\alpha$, then there is some $<_{\alpha}$-minimal set $z_{\alpha} \in X$.  Let $Z\coloneqq \left\{z_\alpha :\alpha <\beta\right\}$ be the set of such minimal sets in $X$ where we remove $z_{\epsilon}$ if there is no set of rank $\epsilon$ in $X$. Then since $\ord$ is well-ordered, we have some $<$-minimal element of $Z$, as desired.  
+
+\smallskip
+
+ Since $V$ is transitive and any restriction of a well-ordering is a well-ordering, it follows that $x$ can be well-ordered.
+\end{solution}
 
 \subsection{Lecture 24}
+%Discussion of Problem 4 (Homework 2). Return to $L$.
+
+\begin{comment}
+\begin{problem}[Homework 2.4.]
+
+Prove in $\zfc$ that if there is some $\alpha \in \ord$ such that $V_\alpha \models \zfc$, then $\cf(\beta)=\omega$ where $\beta$ equals the least such $\alpha$.
+\end{problem}
+\begin{solution}
+First of all, thanks to \cref{AW}, we see that $\ac$ implies that $\left\lvert{x}\right\rvert \in V$ for any set $x \in V$. 
+
+\smallskip
+
+Suppose, toward a contradiction, that $\cf(\beta)>\omega$. Note that $\beta \setminus \omega$ is uncountable and that $\left\lvert{V_{\beta}}\right\rvert\geq \aleph_0$.   
+Apply \cref{LS} to get an elementary submodel $E_0 \preceq V_{\beta}$ such that $\left\lvert{E_0}\right\rvert=\left\lvert{V_{\omega}}\right\rvert$. Then there is some least $b_0 < \beta$ such that $E_0\subset V_{b_0}$. Apply \cref{LS} again to get an elementary submodel $V_{b_0}\subset E_1 \preceq V_{\beta}$ such that $\left\lvert{E_1}\right\rvert=\left\lvert{V_{b_0}}\right\rvert<\left\lvert{V_{\beta}}\right\rvert$. We can find some least $b_1<\beta$ such that $V_{b_1}\supset E_1$. Continuing like this via finite induction, we get a sequence $$E_0\subset V_{b_0}\subset E_1 \subset V_{b_1}\subset E_2 \subset \cdots $$ with $E_i\preceq V_{\beta}$ for  each $i\in \N$. Then $\bigcup_n E_n = \bigcup_n V_{b_n} = V_{\sup\{b_n\}}$. Since $E_i \models \zfc$ for each $i$, it follows that $V_{\sup\{b_n\}} \models \zfc$.
+But $\cf(\beta)>\omega$, and thus $\sup\{b_n\} < \beta$, contrary to our choice of $\beta$.
+\end{solution}
+\end{comment}
 
 \subsection{Lecture 25}
 
 \subsection{Lecture 26}
 
 \subsection{Lecture 27}
-%Discussion of Homework 2, Problems 1 and 4.
+
+
+\section{Large cardinals}
 
 \subsection{Lecture 28}
-%Further discussion of Homework 2, Problem 4. Return to $L$.
 
 \subsection{Lecture 29}
 
 \subsection{Lecture 30}
+%Homework 3 assigned before Lecture 30.
 
 \subsection{Lecture 31}
 
 \subsection{Lecture 32}
 
-\section{Large cardinals}
-
 \subsection{Lecture 33}
 
 \subsection{Lecture 34}
-%Homework 3 assigned before Lecture 34.
 
 \subsection{Lecture 35}
 
 \subsection{Lecture 36}
 
-\subsection{Lecture 37}
-
-\subsection{Lecture 38}
-
-\subsection{Lecture 39}
-
-\subsection{Lecture 40}
-
 \begin{remark}
-Cohen proved that $$\con(\zf) \implies \con(\zfc + \neg{\mathsf{CH}}),$$ thereby proving that $\mathsf{CH}$ (as well as $\mathsf{GCH}$) is independent of $\zfc$.  In fact, assuming that $\zf$ is consistent, we have not only that $\zfc + (2^{\aleph_0} = \aleph_{\alpha +1})$ is consistent for any $\alpha$ but also that $\zfc + (2^{\aleph_0} = \aleph_{\lambda})$ is consistent for any $\lambda$ with $\cf(\lambda) > \omega$.
+Cohen proved that $$\con(\zf) \implies \con(\zfc + \neg{\mathsf{CH}}),$$ thereby proving that $\mathsf{CH}$ (as well as $\mathsf{GCH}$) is independent of $\zfc$.  In fact, assuming that $\zf$ is consistent, we have not only that $\zfc + \left(2^{\aleph_0} = \aleph_{\alpha +1}\right)$ is consistent for any $\alpha$ but also that $\zfc + \left(2^{\aleph_0} = \aleph_{\lambda}\right)$ is consistent for any $\lambda$ with $\cf(\lambda) > \omega$.
 \end{remark}
 
-\subsection{Lecture 41}
+\section{Homework 3 solutions}
 
-\textit{Discussion of Homework 3 solutions.}
+\subsection{Lecture 37}
 
 \begin{problem}[The hierarchy of constructible sets.]
 
-Prove in $\zf + \VL$ that for any $\alpha < \aleph_1$, there is some $\alpha < \beta < \aleph_1$ such that for any $x\subset \omega$, if $x\in L_{\beta+1}$, then $x\in L_{\beta}$.
+Prove in $\zf + \VL$ that for any ordinal $\alpha < \aleph_1$, there is some ordinal $\alpha < \beta < \aleph_1$ such that for any $x\subset \omega$, if $x\in L_{\beta+1}$, then $x\in L_{\beta}$.
 \end{problem}
 \begin{solution}
-Recall that $\zf+ \VL \models \ac$, so that \cref{LS} holds. We know that $\P(\omega)\subset L_{\omega_1}$. Note that no $\theta < \omega_1$ satisfies $\P(\omega)\subset L_{\theta}$ because $\lvert{L_{\theta}}\rvert<\aleph_1$.
+Recall that $\zf+ \VL \models \ac$, so that \cref{LS} holds. We know that $\P(\omega)\subset L_{\omega_1}$. Note that no ordinal $\theta < \omega_1$ satisfies $\P(\omega)\subset L_{\theta}$ because $\left\lvert{L_{\theta}}\right\rvert<\aleph_1$.
 
 \smallskip
 
@@ -1887,12 +1978,8 @@ The formula $x=\delta$ is absolute for $L_{\omega_2}$ for any ordinal $\delta < 
 By elementary equivalence there is some ordinal $\beta' \in L_{\chi}$ such that $\P(\omega)^{L_{\chi}}\subset L_{\beta'}$. Let $\beta$ be the least such $\beta '$, so that by elementary equivalence we have that $\alpha <\beta$. As $L_\chi$ is countable and transitive, it follows that $\alpha < \beta < \aleph_1$. Also, since $\chi$ is a limit, we know that $L_{\beta+1}\in L_{\chi}$, thereby completing our proof.
 \end{solution}
 
-\subsection{Lecture 42}
+\subsection{Lecture 38}
 
-\textit{Discussion of Homework 3 solutions.}
-
-\subsection{Lecture 43}
-
-\textit{Discussion of Homework 3 solutions.}
+\subsection{Lecture 39}
 
 \end{document}

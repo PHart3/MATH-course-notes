@@ -283,7 +283,7 @@ Note that  the general linear group $\GL(n, \F)$ is an open subset of $M(n, \F)$
 \begin{exmp} $ $
 \begin{enumerate}[label=(\arabic*)]
 \item Let $U\subset \R^n$ be open and $F: U \to \R^m$ be continuous. Let $\Gamma(F)$ denote the graph of $F$ and $\pi_1\restriction_{\Gamma(F)}$ be the restriction of the projection map $(x, y)\mapsto x$. This is a homeomorphism $\Gamma(F) \overset{\cong}{\longrightarrow} U$ with inverse given by $x \mapsto \left(x, f(x)\right)$. Hence $\left( \Gamma(F), \pi_1 \restriction_\Gamma(F)\right)$ is a smooth atlas on $\Gamma(F)$.
-\item For each $i \in \left\{1, 2, \ldots, n+1\right\}$, let $U_i^+ \coloneqq  \left\{ \x \in \R^{n+1}: x_i >0\right\}$. Define $U_i^-$ similarly, so that the $U_i^{\pm}$ cover the $n$-sphere $$\S^n \coloneqq \left\{\x \in \R^{n+1} : \lvert{\x}\rvert = 1\right\}. $$ Define the map $f: B_1(0)\subset \R^n \to \R$ by $f(\u) = \sqrt{1 - \lvert{\u}\rvert^2}$. Define $x_i: B_1(0) \to \R$ by $f(x_1, \ldots, \hat{x}_i, \ldots x_n)$.  Then $\Gamma(x_i) = U_i^+ \cap \S^n$, and $\Gamma({-x_i}) = U_i^- \cap \S^n$. Thanks to (1), these graphs with their corresponding projections form a smooth structure on $\S^n$.
+\item For each $i \in \left\{1, 2, \ldots, n+1\right\}$, let $U_i^+ \coloneqq  \left\{ \x \in \R^{n+1}: x_i >0\right\}$. Define $U_i^-$ similarly, so that the $U_i^{\pm}$ cover the $n$-sphere $$\S^n \coloneqq \left\{\x \in \R^{n+1} : \left\lvert{\x}\right\rvert = 1\right\}. $$ Define the map $f: B_1(0)\subset \R^n \to \R$ by $f(\u) = \sqrt{1 - \left\lvert{\u}\right\rvert^2}$. Define $x_i: B_1(0) \to \R$ by $f(x_1, \ldots, \hat{x}_i, \ldots x_n)$.  Then $\Gamma(x_i) = U_i^+ \cap \S^n$, and $\Gamma({-x_i}) = U_i^- \cap \S^n$. Thanks to (1), these graphs with their corresponding projections form a smooth structure on $\S^n$.
 \item 
 Let $f: \underset{\text{open}}U\subset \R^m \to \R$ be smooth. For each $c \in \R$, let $M_c\coloneqq f^{-1}(c)$. Assume that the total derivative $\nabla f(a)$ is nonzero for each $a \in M_c$.  Then $f_{x_i}(a) \ne 0$ for some $1 \leq i \leq m$. By the implicit function theorem, there is some smooth function $F: \R^{m-1} \to \R$ given by $x_i = F(x_1, \ldots, \hat{x}_i, \ldots, x_m)$ on some neighborhood $U_a\subset \R^m$ of $a$ such that $f^{-1}(c) \cap U_a$ equals the graph of $F$.  This means that the open sets $f^{-1}(c) \cap U_a$ together with their graph coordinates define a smooth atlas on $M_c$.
 \end{enumerate}
@@ -408,7 +408,7 @@ This defines an equivalence relation $\approx$ between smooth manifolds. Thanks 
 \begin{exmp} $ $
 \begin{enumerate}
 \item $\left(\R, \id\right) \approx \left(\R, x\mapsto x^{\frac{1}{3}}\right)$ via the mapping $ x \mapsto x^3$.
-\item $F: \B^n \to \R^n$ given by $F(x) = \frac{x}{\sqrt{1-\lvert{x}\rvert^2}}$ is a diffeomorphism with inverse $G(y) = \frac{y}{\sqrt{1+\lvert{y}\rvert^2}}$.
+\item $F: \B^n \to \R^n$ given by $F(x) = \frac{x}{\sqrt{1-\left\lvert{x}\right\rvert^2}}$ is a diffeomorphism with inverse $G(y) = \frac{y}{\sqrt{1+\left\lvert{y}\right\rvert^2}}$.
 \item  $\faktor{\S^n}{\sim} \approx \RP^n$.
 \item If $M$ is a smooth manifold and $(U, \varphi)$ is a chart, then $\varphi: U \to \varphi(U)$ is a diffeomorphism.
 \end{enumerate}
@@ -438,7 +438,7 @@ f(t) = \begin{cases}
 e^{-\frac{1}{t}} & t>0
 \\ 0 & \text{otherwise}
 \end{cases}
-\] is smooth. Now define $h: \R \to \R$ by $h(t) = \frac{f(r_2-t)}{f(r_2-t)+ f(t-r_1)}$. Finally, define $H: \R^n \to \R$ by $H(x) = h(\lvert{x}\rvert)$.
+\] is smooth. Now define $h: \R \to \R$ by $h(t) = \frac{f(r_2-t)}{f(r_2-t)+ f(t-r_1)}$. Finally, define $H: \R^n \to \R$ by $H(x) = h(\left\lvert{x}\right\rvert)$.
 \end{proof}
 
 \subsection{Lecture 4}
@@ -973,7 +973,7 @@ Let $S= F^{-1}(c)$. Note that  the subspace of full-rank matrices is open due to
 \end{proof}
 
 \begin{exmp}
-$\S^n$ is a regular level set of the smooth function $\x\mapsto \lvert{\x}\rvert^2$.
+$\S^n$ is a regular level set of the smooth function $\x\mapsto \left\lvert{\x}\right\rvert^2$.
 \end{exmp}
 
 \begin{theorem}[Sard]\label{sard}
@@ -1697,7 +1697,7 @@ Let $M^n$ be a smooth manifold. Define the \textit{alternating bundle of rank $k
 A smooth section of $\bigwedge^k(M)$ is called a \textit{(differential) $k$-form}.
 \end{definition}
 
-Let both $\Omega^k(M)$ and $A^k(M)$ stand for the infinite-dimensional vector space of differential $k$-forms on the manifold $M$. We also have a graded associative algebra $\left(\Omega^{\ast}(M), \wedge \right)$ over $\R$.  
+Let both $\Omega^k(M)$ and $\mathcal{A}^k(M)$ stand for the infinite-dimensional vector space of differential $k$-forms on the manifold $M$. We also have a graded associative algebra $\left(\Omega^{\ast}(M), \wedge \right)$ over $\R$.  
 
 
 \medskip
@@ -1791,7 +1791,7 @@ d{\omega}\equiv \sum_{j<i}\left(\frac{\partial \omega_{i}}{\partial x^{j}}-\frac
 \subsection{Lecture 20}
 
 
-Let $\omega \in A^k(M)$ with local coordinate representation $\omega_I dx^I$. The \textit{exterior derivative} of $\omega$ is the $\left(k+1\right)$-form $$d\omega \equiv d \omega_I \wedge dx^I.$$ We refer to the operation $d : A^k(M) \to A^{k+1}(M)$ as \textit{exterior differentiation}.
+Let $\omega \in \mathcal{A}^k(M)$ with local coordinate representation $\omega_I dx^I$. The \textit{exterior derivative} of $\omega$ is the $\left(k+1\right)$-form $$d\omega \equiv d \omega_I \wedge dx^I.$$ We refer to the operation $d : \mathcal{A}^k(M) \to \mathcal{A}^{k+1}(M)$ as \textit{exterior differentiation}.
 
 
 \begin{note}
@@ -1802,10 +1802,10 @@ $d \omega = \sum_I\sum_j\frac{\partial}{\partial{x^j}}\omega_I dx^j \wedge dx^I.
 If we view $\Omega^k : \mathbf{Diff}^{\op} \to \mathbf{Vec}_{\R}$ as the functor sending each smooth map $f$ to the pullback $f^{\ast}$, then the exterior derivative becomes a natural transformation $\Omega^k \Rightarrow \Omega^{k+1}$.  
 \end{aside}
 
-\begin{definition} Let $\omega \in A^k(M)$.
+\begin{definition} Let $\omega \in \mathcal{A}^k(M)$.
 \begin{enumerate}
 \item We say that $\omega$ is \textit{closed} if $d \omega = 0$.
-\item We say that $\omega$ is \textit{exact} if $\omega = d \eta$ for some $\eta \in A^{k-1}(M)$.
+\item We say that $\omega$ is \textit{exact} if $\omega = d \eta$ for some $\eta \in \mathcal{A}^{k-1}(M)$.
 \end{enumerate}
 \end{definition}
 
@@ -1877,7 +1877,7 @@ It is \emph{not} the case, however, that any closed form is exact. Let $M=  \R^2
 
 
 \begin{theorem}[Unique differentiation]\label{UD}
-The exterior derivative is the unique linear map $\bar{d} : A^k(M) \to A^{k+1}$ such that
+The exterior derivative is the unique linear map $\bar{d} : \mathcal{A}^k(M) \to \mathcal{A}^{k+1}$ such that
 \begin{enumerate}[label=(\roman*)]
 \item $\bar{d}( \omega \wedge \eta) = \bar{d} \omega \wedge \eta + ({-1})^k\omega \wedge \bar{d} \eta$,
 \item $\bar{d}{f}(X)= X{f}$ for any $f\in C^{\infty}(M)$, and 
@@ -1887,7 +1887,7 @@ The exterior derivative is the unique linear map $\bar{d} : A^k(M) \to A^{k+1}$ 
 
 \medskip
 
-For example, consider the linear map $\bar{d} : A^k(M) \to A^{k+1}(M)$ given by  
+For example, consider the linear map $\bar{d} : \mathcal{A}^k(M) \to \mathcal{A}^{k+1}(M)$ given by  
 \begin{align*} 
 \bar{d}{\omega}\left(X_1, \ldots, X_{k+1}\right)  = 
 &\sum_{i=1}^{n+1}(-1)^{k+1} X_{i}\left(w\left(X_{1}, \ldots, \widehat{X}_{i}, \ldots, X_{k+1}\right)\right)\\
@@ -1907,7 +1907,7 @@ Let $V$ be a finite-dimensional vector space. For each vector $v\in V$, define \
 
 \smallskip
  
- Extend interior multiplication as follows. For each $X \in \vf(M)$ and $\omega \in A^k(M)$, define the $(k-1)$-form $X \intprodl \omega$ by $p\mapsto  X_p \intprodl \omega_p$.
+ Extend interior multiplication as follows. For each $X \in \vf(M)$ and $\omega \in \mathcal{A}^k(M)$, define the $(k-1)$-form $X \intprodl \omega$ by $p\mapsto  X_p \intprodl \omega_p$.
 
 
 \subsection{Lecture 21}
@@ -1946,7 +1946,7 @@ Conversely, any orientation on $M$ gives rise to a nowhere vanishing $n$-form on
 
 ($\Longrightarrow$)
 
-Let $\omega \in A^n(M)$ be nowhere vanishing. For each $p \in M$, we see that $\omega_p$ defines an orientation $O_M^p$ on $M$ by declaring that $[e_1, \ldots, e_n] \in  O_M^p$ if and only if $\omega_p(e_1, \ldots, e_n) >0$. It remains to show that if $p\in M$, then we can find some chart $U_p$ around $p$ and some local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$ such that $\omega_q(E_1\bigr\rvert_q, \ldots, E_n\bigr\rvert_q) >0$ for every $q \in U_p$. To see this, pick any $U_p$ and local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$. Write $\omega = fdE^1 \wedge \cdots \wedge dE^n$ locally for some smooth function $f: U_p \to \R$. Since $\omega$ is nowhere vanishing, it follows that $$\omega(E_1, \ldots, E_n) = f \ne 0.$$ Since $f$ is continuous and $M$ connected, we see that $f>0$ or $f<0$. We may assume that $f>0$ for otherwise we can choose $\left({-E_1}, \ldots, {-E_n}\right)_p$ instead. 
+Let $\omega \in \mathcal{A}^n(M)$ be nowhere vanishing. For each $p \in M$, we see that $\omega_p$ defines an orientation $O_M^p$ on $M$ by declaring that $[e_1, \ldots, e_n] \in  O_M^p$ if and only if $\omega_p(e_1, \ldots, e_n) >0$. It remains to show that if $p\in M$, then we can find some chart $U_p$ around $p$ and some local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$ such that $\omega_q(E_1\bigr\rvert_q, \ldots, E_n\bigr\rvert_q) >0$ for every $q \in U_p$. To see this, pick any $U_p$ and local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$. Write $\omega = fdE^1 \wedge \cdots \wedge dE^n$ locally for some smooth function $f: U_p \to \R$. Since $\omega$ is nowhere vanishing, it follows that $$\omega(E_1, \ldots, E_n) = f \ne 0.$$ Since $f$ is continuous and $M$ connected, we see that $f>0$ or $f<0$. We may assume that $f>0$ for otherwise we can choose $\left({-E_1}, \ldots, {-E_n}\right)_p$ instead. 
 
 \medskip
 
@@ -2042,7 +2042,7 @@ In other words, \cref{forms} makes sense.
 
 A \textit{singular $k$-cell on $M^n$} is a smooth map $\sigma : \left[0,1\right]^k \to M$.
 Note that $0$-cells are precisely points in $M$ and $1$-cells are precisely smooth curves in $M$.
-Let $\omega \in A^k(M)$ and $\sigma$ be a singular $k$-cell on $M$. Define $$ \int_{\sigma} \omega = \int_{\left[0,1\right]^k}\sigma^{\ast}\omega  .$$
+Let $\omega \in \mathcal{A}^k(M)$ and $\sigma$ be a singular $k$-cell on $M$. Define $$ \int_{\sigma} \omega = \int_{\left[0,1\right]^k}\sigma^{\ast}\omega  .$$
 
 
 \begin{prop}\label{preserve}
@@ -2076,7 +2076,7 @@ Show that if $\sigma$ is any singular $k$-chain, then ${\partial{\sigma}}$ is cl
 \end{exercise}
 
 \begin{theorem}[Stokes's theorem for chains]\label{chains}
-Let $\sigma$ be a $k$-chain and $\omega \in A^{k-1}(M)$. Then $$\int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega.$$
+Let $\sigma$ be a $k$-chain and $\omega \in \mathcal{A}^{k-1}(M)$. Then $$\int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega.$$
 \end{theorem}
 \begin{proof}
 For now, assume that $M= \R^k$ and $\sigma = I^k$. As the smooth structure on $\R^k$ is global, we may write $\omega = fdx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k$ for some distinguished $1\leq i \leq k$ and some smooth function $f: \R^k \to \R$. We compute 
@@ -2109,7 +2109,7 @@ The FTC occurs precisely when $\sigma = I^1$ and $\omega = f$. This shows that \
 
 \subsection{Lecture 23}
 
-Let $M$ be an orientable manifold. Let $\omega \in A^n(M)$. Let $\sigma_1$ and $\sigma_2$ be singular $n$-cells on $M$ that can be extended to diffeomorphisms on (open) neighborhoods of $\left[0,1\right]^n$. Suppose that both are orientation-preserving. 
+Let $M$ be an orientable manifold. Let $\omega \in \mathcal{A}^n(M)$. Let $\sigma_1$ and $\sigma_2$ be singular $n$-cells on $M$ that can be extended to diffeomorphisms on (open) neighborhoods of $\left[0,1\right]^n$. Suppose that both are orientation-preserving. 
 
 \begin{lemma}\label{orient}
 If $\supp \omega \subset  \sigma_1(\left[0,1\right]^n) \cap \sigma_2(\left[0,1\right]^n)$, then $\int_{\sigma_1} \omega = \int_{\sigma_2} \omega$.
@@ -2123,12 +2123,12 @@ Since $\supp \omega \subset  \sigma_1(\left[0,1\right]^n) \cap \sigma_2(\left[0,
 
 \medskip
 
- Let $\omega \in A^n(M)$. Let $\sigma$ be an orientation-preserving singular $n$-cell on $M$. If $\supp \omega \subset \sigma(\left[0,1\right]^n)$, then \cref{orient} allows us to define $$\int_M \omega = \int_{\sigma} \omega.$$
+ Let $\omega \in \mathcal{A}^n(M)$. Let $\sigma$ be an orientation-preserving singular $n$-cell on $M$. If $\supp \omega \subset \sigma(\left[0,1\right]^n)$, then \cref{orient} allows us to define $$\int_M \omega = \int_{\sigma} \omega.$$
 
 \smallskip
 
 
- In general, there exists an open cover $(U_{\alpha})$ of $M$ such that $U_{\alpha} \subset \sigma_{\alpha}(\left[0,1\right]^n)$ for each $\alpha$ where $\sigma_{\alpha}$ is some orientation-preserving singular $n$-cell on $M$. Find a partition of unity $(\varphi_{\alpha})$ subordinate to this cover. Note that each $\varphi_{\alpha} \omega$ belongs to  $A^n(M)$ and is supported in $U_{\alpha}$. If $\omega$ is compactly supported, then $\supp \omega$ intersects at most finitely many $\supp \varphi_{\alpha}$. In this case, we define $$\int_M \omega = \sum_{\alpha}  \int_M \varphi_{\alpha} \omega,$$ which is finite. 
+ In general, there exists an open cover $(U_{\alpha})$ of $M$ such that $U_{\alpha} \subset \sigma_{\alpha}(\left[0,1\right]^n)$ for each $\alpha$ where $\sigma_{\alpha}$ is some orientation-preserving singular $n$-cell on $M$. Find a partition of unity $(\varphi_{\alpha})$ subordinate to this cover. Note that each $\varphi_{\alpha} \omega$ belongs to  $\mathcal{A}^n(M)$ and is supported in $U_{\alpha}$. If $\omega$ is compactly supported, then $\supp \omega$ intersects at most finitely many $\supp \varphi_{\alpha}$. In this case, we define $$\int_M \omega = \sum_{\alpha}  \int_M \varphi_{\alpha} \omega,$$ which is finite. 
 It remains to check that this definition makes sense.
 
 \begin{lemma}
@@ -2150,7 +2150,7 @@ If $\omega$ is not assumed to be compact, then $\int_M \omega$ may be infinite b
 \end{note}
 
 \begin{theorem}[Stokes]\label{stokes}
-Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in A^{n-1}(M)$, then $$ \int_M d\omega = \int_{\partial{M}} \omega  .$$
+Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in \mathcal{A}^{n-1}(M)$, then $$ \int_M d\omega = \int_{\partial{M}} \omega  .$$
 \end{theorem}
 \begin{proof} There are three cases to consider.
 
@@ -2185,8 +2185,8 @@ Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in A^{n-1
 
 Given a smooth manifold $M^n$ and integer $k\geq 1$, consider the vector spaces
 \begin{align*}
-  Z^k(M) &  \coloneqq \left\{\omega \in A^k(M) : d\omega =0\right\}
- \\  B^k(M) & \coloneqq \left\{ d\eta : \eta \in A^{k-1}(M\right)\}.
+  Z^k(M) &  \coloneqq \left\{\omega \in \mathcal{A}^k(M) : d\omega =0\right\}
+ \\  B^k(M) & \coloneqq \left\{ d\eta : \eta \in \mathcal{A}^{k-1}(M\right)\}.
  \end{align*}
 
  Since $B^k(M) \subset Z^k(M)$, we may form the quotient space $$ H_{\dr}^k(M) \coloneqq  \faktor{Z^k(M)}{B^k(M)},$$ called the \textit{$k$-th de Rham cohomology group of $M$}.
@@ -2240,7 +2240,7 @@ The generalization of this result to any positive integer $k$ proceeds as follow
 \medskip
 
 
-We have the decomposition $$T_{(p,t)}M \times \left[0,1\right] = \ker d\pi\bigr\rvert_{(p,t)} \oplus \ker d\pi_M\bigr\rvert_{(p,t)}$$ where $\pi: M \times \left[0,1\right]\to \left[0,1\right]$ denotes projection. Then any $1$-form $\omega$ on $M \times \left[0,1\right]$ may be written uniquely as $\omega = \omega_1 + \omega_2$ such that $\omega_i(v_1 + v_2) = \omega(v_i)$ for each $i=1, 2$. Hence there is some unique map $f : M \times \left[0,1\right] \to \R$ such that $\omega_2 = f dt$. In general, one can show that if $\omega$ is a $k$-form on $M \times \left[0,1\right]$, then we can write $\omega$ uniquely as $$\omega = \omega_1 + (dt \wedge \eta)$$ where $\omega_1(v_1, \ldots, v_k) =0$ if some $v_i$ belongs to $\ker d\pi_M\bigr\rvert_{(p,t)}$ and $\eta$ is a $(k-1)$-form with the analogous property.
+We have the decomposition $$T_{(p,t)}M \times \left[0,1\right] = \ker d\pi\bigr\rvert_{(p,t)} \oplus \ker d\pi_M\bigr\rvert_{(p,t)}$$ where $\pi: M \times \left[0,1\right]\to \left[0,1\right]$ denotes projection. Then any $1$-form $\omega$ on $M \times \left[0,1\right]$ may be written uniquely as $\omega = \omega_1 + \omega_2$ such that $\omega_i(v_1 + v_2) = \omega(v_i)$ for each $i=1, 2$. Hence there is some unique map $f : M \times \left[0,1\right] \to \R$ such that $\omega_2 = f dt$. In general, one can show that if $\omega$ is a $k$-form on $M \times \left[0,1\right]$, then we can write $\omega$ uniquely as $$\omega = \omega_1 + \left(dt \wedge \eta\right)$$ where $\omega_1(v_1, \ldots, v_k) =0$ if some $v_i$ belongs to $\ker d\pi_M\bigr\rvert_{(p,t)}$ and $\eta$ is a $(k-1)$-form with the analogous property.
 \begin{lemma}\label{exact}
 Define the $(k-1)$-form $I\omega$ on $M$ by $$I \omega \bigr\rvert_p(v_1, \ldots, v_{k-1}) = \int_0^1 \eta(p, t)\left(d\iota_t\bigr\rvert_{(p,t)}(v_1), \ldots, d\iota_t\bigr\rvert_{(p,t)}(v_{k-1})\right)dt   .$$ Then $\iota^{\ast}_1\omega  - \iota^{\ast}_0 \omega = d(I\omega) + I(d\omega)$. In particular, $\iota^{\ast}_1\omega  - \iota^{\ast}_0 \omega$ is exact whenever $d\omega =0$.
 \end{lemma}
@@ -2271,10 +2271,10 @@ $\S^n$ is not contractible.
 \end{exmp}
 
 \begin{theorem}\label{isom}
-If $M$ is a (connected) orientable $n$-manifold, then we have an isomorphism $$\underbrace{H_c^n(M)}_{\text{compactly supported}} \overset{\cong}{\longrightarrow} \R,\ \quad [\omega] \mapsto \int_M \omega.$$
+If $M$ is a (connected) orientable $n$-manifold, then we have an isomorphism $$\underbrace{H_c^n(M)}_{\text{compactly supported}} \overset{\cong}{\longrightarrow} \R,\ \quad \left[\omega\right] \mapsto \int_M \omega.$$
 \end{theorem}
 \begin{proof}
-Assume that this statement holds when $M = \R^n$. There is some compactly supported orientation form $\omega$ on $M$ such that $\int_M \omega \ne 0$ and $\supp \omega \subset \underset{\text{open}}{U}\subset M$ . Let $\omega'$ be a compactly supported $n$-form on $M$. Pick a partition of unity $(\varphi_{\alpha})$ on $M$. Then $\omega' =\varphi_1\omega' +\cdots + \varphi_k \omega'$, Thus, we may assume  that $\supp \omega' \subset V$ where $V \approx \R^n$. We want to show that $\omega' =c\omega + d\eta$ for some $c\in \R$ and some $\eta \in A^{n-1}(M)$. Since $M$ is connected, there is some sequence $$U=V_1, V_2, \ldots, V_r=V$$ of open sets such that $V_i\approx \R^n$ and $V_i\cap V_{i+1} \ne \emptyset$ for each $i=1, \ldots, r-1$. We can find a family $\left\{\omega_i\right\}_{1\leq i \leq r-1}$ of forms on $M$ such $\int_M \omega_i \ne 0$ and $\supp \omega_i \subset V_i \cap V_{i+1}$.  It follows that 
+Assume that this statement holds when $M = \R^n$. There is some compactly supported orientation form $\omega$ on $M$ such that $\int_M \omega \ne 0$ and $\supp \omega \subset \underset{\text{open}}{U}\subset M$ . Let $\omega'$ be a compactly supported $n$-form on $M$. Pick a partition of unity $(\varphi_{\alpha})$ on $M$. Then $\omega' =\varphi_1\omega' +\cdots + \varphi_k \omega'$, Thus, we may assume  that $\supp \omega' \subset V$ where $V \approx \R^n$. We want to show that $\omega' =c\omega + d\eta$ for some $c\in \R$ and some $\eta \in \mathcal{A}^{n-1}(M)$. Since $M$ is connected, there is some sequence $$U=V_1, V_2, \ldots, V_r=V$$ of open sets such that $V_i\approx \R^n$ and $V_i\cap V_{i+1} \ne \emptyset$ for each $i=1, \ldots, r-1$. We can find a family $\left\{\omega_i\right\}_{1\leq i \leq r-1}$ of forms on $M$ such $\int_M \omega_i \ne 0$ and $\supp \omega_i \subset V_i \cap V_{i+1}$.  It follows that 
 \begin{gather*}
  \omega_1  = c_1\omega + d\eta_1
 \\ \omega_2  = c_2\omega_1+ d\eta_2

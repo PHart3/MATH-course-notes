@@ -193,7 +193,7 @@ For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-the
 
 \smallskip
 
-Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \lvert{w{\c}}\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \lvert{w{\c}}\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, thereby making $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the \textit{algebraic $K$-theory spectrum} of $\c$.
+Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c)$ of $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \left\lvert{w{\c}}\right\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \left\lvert{w{\c}}\right\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, thereby making $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the \textit{algebraic $K$-theory spectrum} of $\c$.
 
 
 \begin{definition}
@@ -417,7 +417,7 @@ such that $X^k_{i,j} \cong \faktor{X_j^k}{X_i^k}$ for every $i\leq j\leq q$ and 
 
 
 \begin{lemma}
-There is a natural map $N_{\bullet} w{\c} \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma \lvert{w{\c}}\rvert\to \lvert{w S_{\bullet} \c}\rvert$ of classifying spaces.
+There is a natural map $N_{\bullet} w{\c} \land \Delta_{\bullet}^1 \to N_{\bullet} w S_{\bullet} \c$, which automatically induces a based map $\sigma : \Sigma \left\lvert{w{\c}}\right\rvert\to \left\lvert{w S_{\bullet} \c}\right\rvert$ of classifying spaces.
 \end{lemma}
 \begin{proof}
 We can treat $N_{\bullet} w S_{\bullet} \c$ as the simplicial set $[q] \mapsto N_{\bullet} w S_q \c$. This defines a right skeletal structure on $N_{\bullet} w S_{\bullet} \c$. 
@@ -431,23 +431,23 @@ Therefore, $I$ must equal $$N_{\bullet} w{\c}  \land \Delta_{\bullet}^1  = \frac
 \end{proof}
 
 \begin{note}
-The axiom (W3) implies that $w{\c}$ is closed under coproducts, making $\lvert{wS_{\bullet} \c}\rvert$ into an $H$-space via the map $$\coprod: \lvert{wS_{\bullet} \c}\rvert \times \lvert{wS_{\bullet} \c}\rvert \cong \lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\rvert\to \lvert{wS_{\bullet} \c}\rvert.$$
+The axiom (W3) implies that $w{\c}$ is closed under coproducts, making $\left\lvert{wS_{\bullet} \c}\right\rvert$ into an $H$-space via the map $$\coprod: \left\lvert{wS_{\bullet} \c}\right\rvert \times \left\lvert{wS_{\bullet} \c}\right\rvert \cong \left\lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\right\rvert\to \left\lvert{wS_{\bullet} \c}\right\rvert.$$
 \end{note}
 
 \begin{definition}
-Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \lvert{ N_{\bullet} wS_{\bullet} \c}\rvert.$$ 
+Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \left\lvert{ N_{\bullet} wS_{\bullet} \c}\right\rvert.$$ 
 \end{definition}
 
-Then we have a right adjoint $\iota: \lvert{w{\c}}\rvert \to K(\c, w)$ to the based map $\sigma$.
+Then we have a right adjoint $\iota: \left\lvert{w{\c}}\right\rvert \to K(\c, w)$ to the based map $\sigma$.
 
 \medskip
 
  Moreover,
-let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor. Let $$K(F) = \Omega\lvert{wS_{\bullet}F}\rvert : K(\c, w) \to K(\d, w).$$ This is the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
+let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor. Let $$K(F) = \Omega\left\lvert{wS_{\bullet}F}\right\rvert : K(\c, w) \to K(\d, w).$$ This is the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 
 \medskip
 
-Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $\lvert{iS_{\bullet}\a}\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
+Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $\left\lvert{iS_{\bullet}\a}\right\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
 
 
 \begin{exmp}
@@ -455,11 +455,11 @@ Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(
 \end{exmp}
 
 \begin{exmp}
-Assume that $\c$is a small Waldhausen category where $w{\c}$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $\lvert{s_{\bullet} \c}\rvert \hookrightarrow \lvert{iS_{\bullet} \c}\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
+Assume that $\c$is a small Waldhausen category where $w{\c}$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $\left\lvert{s_{\bullet} \c}\right\rvert \hookrightarrow \left\lvert{iS_{\bullet} \c}\right\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
 \end{exmp}
 
 \begin{remark}
-Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $\lvert{w S_{\bullet} \c}\rvert$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
+Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$, it follows that the classifying space $\left\lvert{w S_{\bullet} \c}\right\rvert$ is connected. Therefore, we preserve any homotopical information when passing to the loop space.
 \end{remark}
 
 \begin{definition}
@@ -467,7 +467,7 @@ The \textit{$i$-th algebraic $K$-group} is $K_i(\c, w) \equiv \pi_iK(\c, w)$ for
 \end{definition}
 
 \begin{prop}\label{P4}
-$\pi_1\lvert{w S_{\bullet} \c}\rvert \cong K_0(\c, w)$.
+$\pi_1\left\lvert{w S_{\bullet} \c}\right\rvert \cong K_0(\c, w)$.
 \end{prop}
 
 \begin{lemma}\label{L8}
@@ -478,11 +478,11 @@ The group $K_0(\c, w)$ is generated by all elements $\left[X\right]$ such that
 \end{itemize}
 \end{lemma}
 \begin{proof}
-In light of \cref{P4}, it suffices to compute $\pi_1\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$ based at the $(0,0)$-bisimplex $\ast$. For this, just notice the CW structure of $\lvert{N_{\bullet}w S_{\bullet} \c}\rvert$,  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
+In light of \cref{P4}, it suffices to compute $\pi_1\left\lvert{N_{\bullet}w S_{\bullet} \c}\right\rvert$ based at the $(0,0)$-bisimplex $\ast$. For this, just notice the CW structure of $\left\lvert{N_{\bullet}w S_{\bullet} \c}\right\rvert$,  with $1$-cells the $(0,1)$-bisimplices and $2$-cells the $(0,2)$-bisimplices $X' \rightarrowtail X \twoheadrightarrow X''$ and the $(1,1)$-bisimplices $X \overset{\sim}{\longrightarrow} Y$, which are attached to the $1$-cells $X$ and $Y$. Any cell of dimension $n>2$ is irrelevant to computing $\pi_1$.
 \end{proof}
 
 
-As a result, we obtain functors $$K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$$ known as the \textit{algebraic $K$-group functors}. Indeed, thanks to \cref{P4}, we know that $$K_i(\c, w) = \pi_{i+1}\lvert{w S_{\bullet} \c}\rvert,$$ which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then \cref{L8} implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
+As a result, we obtain functors $$K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$$ known as the \textit{algebraic $K$-group functors}. Indeed, thanks to \cref{P4}, we know that $$K_i(\c, w) = \pi_{i+1}\left\lvert{w S_{\bullet} \c}\right\rvert,$$ which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then \cref{L8} implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
 
 
 \begin{exmp}

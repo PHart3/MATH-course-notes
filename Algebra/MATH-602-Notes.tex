@@ -313,7 +313,7 @@ Consider a group action $\theta: G \to \aut(S)$.
 \end{proof}
 
 \begin{corollary}
-If $G$ is finite, then $\lvert{\orb_{\theta}(x)}\rvert = \frac{ \lvert{G}\rvert}{\lvert{\stab_{\theta}(x)}\rvert}$.
+If $G$ is finite, then $\left\lvert{\orb_{\theta}(x)}\right\rvert = \frac{ \left\lvert{G}\right\rvert}{\left\lvert{\stab_{\theta}(x)}\right\rvert}$.
 \end{corollary}
 
 \medskip
@@ -448,7 +448,7 @@ If $\theta$ is simple, then for any $x \in S$, the mapping $f: G \to S$ given by
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Consider the action $\rho: S^1 \to \aut(\C)$ given by $\theta \mapsto \rho_{\theta}\coloneqq \left(z \mapsto e^{i\theta}z\right).$ Then $$\rho_{\theta} = \begin{bmatrix} \cos(\theta) & {-\sin{\theta}} \\ \sin{\theta} & \cos{\theta} \end{bmatrix}$$ for each $\theta$.  Note that $\orb_{\rho}(0) = \{0\}$ and $\orb_{\theta}(z) = \left\{w \mid \lvert{w}\rvert = \lvert{z}\rvert\right\}$. Therefore,  $S^1 \diagdown \R^2 = \R_{\geq 0}$, which induces a map $\C \to \R_{\geq 0}$ given by $z \mapsto \lvert{z}\rvert$.
+\item Consider the action $\rho: S^1 \to \aut(\C)$ given by $\theta \mapsto \rho_{\theta}\coloneqq \left(z \mapsto e^{i\theta}z\right).$ Then $$\rho_{\theta} = \begin{bmatrix} \cos(\theta) & {-\sin{\theta}} \\ \sin{\theta} & \cos{\theta} \end{bmatrix}$$ for each $\theta$.  Note that $\orb_{\rho}(0) = \{0\}$ and $\orb_{\theta}(z) = \left\{w \mid \left\lvert{w}\right\rvert = \left\lvert{z}\right\rvert\right\}$. Therefore,  $S^1 \diagdown \R^2 = \R_{\geq 0}$, which induces a map $\C \to \R_{\geq 0}$ given by $z \mapsto \left\lvert{z}\right\rvert$.
 \item Let $H \leq G$. Consider the restriction $\ell\restriction_H : H \to \aut(G)$ of the \textit{left translation} action $\ell$ of $G$ on itself. Then $H \diagdown G$ equals the set of right cosets of $H$ in $G$. 
 \item The orbits of the conjugation action of $G$ on itself are precisely  the conjugacy classes of $G$. 
 \end{enumerate}
@@ -521,11 +521,11 @@ such that each $\theta_{\omega}$ is isomorphic to the left translation action of
 \end{corollary}
 
 \begin{corollary}[Orbit-stabilizer]
-Let $G$ be  finite  and $\theta : G \to \aut(S)$ be an action. Then $$ \lvert{\orb_{\theta}(x)}\rvert = \frac{\lvert{G}\rvert}{\lvert{\stab_{\theta}(x)}\rvert}     $$ for any $x\in S$. 
+Let $G$ be  finite  and $\theta : G \to \aut(S)$ be an action. Then $$ \left\lvert{\orb_{\theta}(x)}\right\rvert = \frac{\left\lvert{G}\right\rvert}{\left\lvert{\stab_{\theta}(x)}\right\rvert}     $$ for any $x\in S$. 
 \end{corollary}
 
 \begin{corollary}[Class equation]
-If $G$ is finite, then $$\lvert{G}\rvert = \lvert{Z(G)}\rvert + \sum_{{\substack{C \text{ conj. class} \\ \lvert{C}\rvert >1}}} \lvert{C}\rvert     .$$
+If $G$ is finite, then $$\left\lvert{G}\right\rvert = \left\lvert{Z(G)}\right\rvert + \sum_{{\substack{C \text{ conj. class} \\ \left\lvert{C}\right\rvert >1}}} \left\lvert{C}\right\rvert     .$$
 \end{corollary}
 
 \begin{exercise}{Suppose that $H \leq G$.}
@@ -537,33 +537,33 @@ If $G$ is finite, then $$\lvert{G}\rvert = \lvert{Z(G)}\rvert + \sum_{{\substack
 
 \subsection{Lecture 4}
 
-\begin{corollary} If $G$ is finite and $H\leq G$ with $[G:H] =p$ where $p$ is the least prime dividing $\lvert{G}\rvert$, then $H\unlhd G$.
+\begin{corollary} If $G$ is finite and $H\leq G$ with $[G:H] =p$ where $p$ is the least prime dividing $\left\lvert{G}\right\rvert$, then $H\unlhd G$.
 \end{corollary}
 \begin{proof}
-Consider the left translation action $\ell : G \to \aut(G/H)$. Let $\omega$ be any orbit of the restricted action $\ell\restriction_H$, so that $\lvert{\omega}\rvert = \frac{\lvert{H}\rvert}{\lvert{\stab}\rvert}$. Since $\lvert{\omega}\rvert \mid \lvert{H}\rvert$, it follows that $\lvert{\omega}\rvert=1$ or $\lvert{\omega}\rvert \geq p$. But $[G:H] = p$, and there is already an orbit of size $1$. This implies that there are exactly $p$ orbits of size $1$. Thus, $\ell\restriction_H$ is trivial, which means that $H \unlhd G$.
+Consider the left translation action $\ell : G \to \aut(G/H)$. Let $\omega$ be any orbit of the restricted action $\ell\restriction_H$, so that $\left\lvert{\omega}\right\rvert = \frac{\left\lvert{H}\right\rvert}{\left\lvert{\stab}\right\rvert}$. Since $\left\lvert{\omega}\right\rvert \mid \left\lvert{H}\right\rvert$, it follows that $\left\lvert{\omega}\right\rvert=1$ or $\left\lvert{\omega}\right\rvert \geq p$. But $[G:H] = p$, and there is already an orbit of size $1$. This implies that there are exactly $p$ orbits of size $1$. Thus, $\ell\restriction_H$ is trivial, which means that $H \unlhd G$.
 \end{proof}
 
 \smallskip
 
 If $G$ and $S$ are finite and $\theta : G \to \aut(S)$ is an action, then for each $g\in G$, consider the subset $\fix(g) \subset S$ consisting of all elements $s$ such that $g \cdot s = s$.
 
-\begin{exercise}[Burnside's lemma]   Check that $$\lvert{G \diagdown S}\rvert = \frac{1}{\lvert{G}\rvert} \sum_g \lvert{\fix(g)}\rvert.$$ For a hint, consider $\left\{(g,x): g \cdot x=x\right\} \subset G \times S$.
+\begin{exercise}[Burnside's lemma]   Check that $$\left\lvert{G \diagdown S}\right\rvert = \frac{1}{\left\lvert{G}\right\rvert} \sum_g \left\lvert{\fix(g)}\right\rvert.$$ For a hint, consider $\left\{(g,x): g \cdot x=x\right\} \subset G \times S$.
 \end{exercise}
  
 \begin{definition}
-Let $p$ be a prime. A finite group $G$ is a \textit{$p$-group} if $\lvert{G}\rvert = p^k$ for some $k \geq 0$. 
+Let $p$ be a prime. A finite group $G$ is a \textit{$p$-group} if $\left\lvert{G}\right\rvert = p^k$ for some $k \geq 0$. 
 \end{definition}
 
 \begin{prop}  $ $
 \begin{enumerate}
-\item If $\lvert{G}\rvert = p$ and $p$ is prime, then $G$ is isomorphic to the cyclic group $C_p$ of order $p$.
+\item If $\left\lvert{G}\right\rvert = p$ and $p$ is prime, then $G$ is isomorphic to the cyclic group $C_p$ of order $p$.
 \item Every $p$-group has nontrivial center.
 \end{enumerate}
 \end{prop}
 \begin{proof} $ $
 \begin{enumerate}
-\item Choose an element $x\in G$ such that $x\ne e$. Note that $\lvert{\langle x\rangle}\rvert \mid \lvert{G}\rvert =p$. Hence $\lvert{\langle x\rangle}\rvert = p$ since $p$ is prime. This means that $\langle x\rangle = G$.
-\item The class equation implies that $\lvert{Z(G)}\rvert \equiv 0 \mod p$. But $Z(G)$ contains at least the identity element, so that $\lvert{Z(G)}\rvert>0$. It follows that $\lvert{Z(G)}\rvert\geq p$.
+\item Choose an element $x\in G$ such that $x\ne e$. Note that $\left\lvert{\langle x\rangle}\right\rvert \mid \left\lvert{G}\right\rvert =p$. Hence $\left\lvert{\langle x\rangle}\right\rvert = p$ since $p$ is prime. This means that $\langle x\rangle = G$.
+\item The class equation implies that $\left\lvert{Z(G)}\right\rvert \equiv 0 \mod p$. But $Z(G)$ contains at least the identity element, so that $\left\lvert{Z(G)}\right\rvert>0$. It follows that $\left\lvert{Z(G)}\right\rvert\geq p$.
 \end{enumerate}
 \end{proof}
 
@@ -793,9 +793,9 @@ $$ \underbrace{\begin{bmatrix} 1 \\ 1  \end{bmatrix}}_{   \ell_1 }
   \]
  commutes. Let $X= \begin{bmatrix} 0 & 4 \\ 1 & 0  \end{bmatrix}$ and $Y= \begin{bmatrix} 0 & 4 \\ 1 & 4  \end{bmatrix}$. Then a few straightforward computations show that 
  \begin{gather*}
- \lvert{\phi(\pi(X))}\rvert = 2
- \\  \lvert{\phi(\pi(Y))}\rvert = 3
- \\ \lvert{\phi(\pi(XY))}\rvert =5.
+ \left\lvert{\phi(\pi(X))}\right\rvert = 2
+ \\  \left\lvert{\phi(\pi(Y))}\right\rvert = 3
+ \\ \left\lvert{\phi(\pi(XY))}\right\rvert =5.
  \end{gather*}
  It is a fact of elementary group theory that $$A_5 = \langle x, y \mid x^2 = y^3 = (xy)^5 = e \rangle.$$ From this we see that the restriction $\phi \restriction_{\langle \pi(X), \pi(Y) \rangle} : \langle \pi(X), \pi(Y) \rangle \to A_5$ is a surjective homomorphism.  Since $\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)}$ has order $60$, it follows that $$\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} =  \langle \pi(X), \pi(Y) \rangle    \cong A_5,$$ as desired.
 \end{aside}
@@ -838,10 +838,10 @@ For all groups of the form $\pi_1(X)$ with $X$ a K\"ahler manifold, we have the 
 \bigskip
 
 \begin{exmp}
-If $\lvert{G}\rvert =p^2$ with $p$ prime, then $G$ is abelian.
+If $\left\lvert{G}\right\rvert =p^2$ with $p$ prime, then $G$ is abelian.
 \end{exmp}
 \begin{proof}
-Note that $G$ has nontrivial center as a result of the class equation. If $\lvert{Z(G)}\rvert =p^2$, then $Z(G) = G$, as desired. Suppose that $\lvert{Z(G)}\rvert =p$. 
+Note that $G$ has nontrivial center as a result of the class equation. If $\left\lvert{Z(G)}\right\rvert =p^2$, then $Z(G) = G$, as desired. Suppose that $\left\lvert{Z(G)}\right\rvert =p$. 
 \begin{claim}
 For any group $H$, if the quotient group $\faktor{H}{Z(H)}$ is cyclic $\langle \left[a\right]\rangle$, then $H$ is abelian. 
 \end{claim}
@@ -859,7 +859,7 @@ As the group  $\faktor{G}{Z(G)}$ has order $p$, it is cyclic. Thus, $G$ is abeli
 \end{proof}
 
 \begin{exercise}
-Suppose, again, that $\lvert{G}\rvert =p^2$ with $p$ prime. Show that $G$  is isomorphic to either $C_p \times C_p$ or $C_{p^2}$.
+Suppose, again, that $\left\lvert{G}\right\rvert =p^2$ with $p$ prime. Show that $G$  is isomorphic to either $C_p \times C_p$ or $C_{p^2}$.
 \end{exercise}
 
 \section{Sylow theorems}
@@ -867,12 +867,12 @@ Suppose, again, that $\lvert{G}\rvert =p^2$ with $p$ prime. Show that $G$  is is
 \begin{definition}
 Let $G$ be a group with 
 \begin{itemize}
-\item $\lvert{G}\rvert= p^km$,
+\item $\left\lvert{G}\right\rvert= p^km$,
 \item  $p$ prime, $k\geq 1$, 
 \item $m\geq 1$, and 
 \item $\left(p,m\right) =1$. 
 \end{itemize}
-Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $\lvert{H}\rvert = p^k$.
+Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $\left\lvert{H}\right\rvert = p^k$.
 \end{definition}
 
 \begin{notation} $ $
@@ -885,20 +885,20 @@ Then $H \leq G$ is called a \textit{$p$-Sylow subgroup of $G$} if $\lvert{H}\rve
 \smallskip
 
 \begin{theorem}[Weak Sylow-I]\label{ws1}
-Every finite group $G$ with $\lvert{G}\rvert = p^{\beta}m$ contains a $p$-Sylow subgroup.
+Every finite group $G$ with $\left\lvert{G}\right\rvert = p^{\beta}m$ contains a $p$-Sylow subgroup.
 \end{theorem}
 \begin{proof}
-Proceed by induction on $\lvert{G}\rvert$. We can write $G$ as the union of conjugacy classes $$Z(G) \coprod_{x\notin Z(G)} C(x).$$ We have three cases to consider.
+Proceed by induction on $\left\lvert{G}\right\rvert$. We can write $G$ as the union of conjugacy classes $$Z(G) \coprod_{x\notin Z(G)} C(x).$$ We have three cases to consider.
 
 \smallskip
 
- \underline{Case 1:} Let $x\in G$ such that $\lvert{C(x)}\rvert>1$ and $p\nmid \lvert{C(x)}\rvert$. But since $\lvert{C(x)}\rvert\lvert{Z_G(x)}\rvert =\lvert{G}\rvert$, we see that $\lvert{C(x)}\rvert \mid m$ and $p^{\beta}\mid \lvert{Z_G(x)}\rvert< \lvert{G}\rvert$. By induction, $Z_G(x)$ and thus $G$ contain a $p$-Sylow subgroup.
+ \underline{Case 1:} Let $x\in G$ such that $\left\lvert{C(x)}\right\rvert>1$ and $p\nmid \left\lvert{C(x)}\right\rvert$. But since $\left\lvert{C(x)}\right\rvert\left\lvert{Z_G(x)}\right\rvert =\left\lvert{G}\right\rvert$, we see that $\left\lvert{C(x)}\right\rvert \mid m$ and $p^{\beta}\mid \left\lvert{Z_G(x)}\right\rvert< \left\lvert{G}\right\rvert$. By induction, $Z_G(x)$ and thus $G$ contain a $p$-Sylow subgroup.
 
 \medskip
 
  \underline{Case 2:}
- Suppose that for any $x\in G$, if $\lvert{C(x)}\rvert >1$, then $p\mid \lvert{C(x)}\rvert$. Then $p\mid Z(G)$. Write $\lvert{Z(G)}\rvert = p^{\alpha}n$ with $1\leq \alpha\leq \beta$ and $(n, p)=1$. If $\alpha = \beta$, then we're done by induction, so assume that $\alpha <
- \beta$. Since $\lvert{Z(G)}\rvert < G$, by induction we have some $H\leq Z(G)$ with $\lvert{H}\rvert = p^{\alpha}$. This is normal in $G$, and $\lvert{\faktor{G}{H}}\rvert = p^{\beta - \alpha}\frac{m}{n} < \lvert{G}\rvert$. Hence there is some $p$-Sylow subgroup $S\leq \faktor{G}{H}$.  Let $S'\coloneqq q^{-1}(S)$, the pullback of $S$ under the natural projection $q: G\twoheadrightarrow \faktor{G}{H}$.  Then $\faktor{S'}{H} =S$, which implies that $p^{\beta}= \lvert{S'}\rvert$. 
+ Suppose that for any $x\in G$, if $\left\lvert{C(x)}\right\rvert >1$, then $p\mid \left\lvert{C(x)}\right\rvert$. Then $p\mid Z(G)$. Write $\left\lvert{Z(G)}\right\rvert = p^{\alpha}n$ with $1\leq \alpha\leq \beta$ and $(n, p)=1$. If $\alpha = \beta$, then we're done by induction, so assume that $\alpha <
+ \beta$. Since $\left\lvert{Z(G)}\right\rvert < G$, by induction we have some $H\leq Z(G)$ with $\left\lvert{H}\right\rvert = p^{\alpha}$. This is normal in $G$, and $\left\lvert{\faktor{G}{H}}\right\rvert = p^{\beta - \alpha}\frac{m}{n} < \left\lvert{G}\right\rvert$. Hence there is some $p$-Sylow subgroup $S\leq \faktor{G}{H}$.  Let $S'\coloneqq q^{-1}(S)$, the pullback of $S$ under the natural projection $q: G\twoheadrightarrow \faktor{G}{H}$.  Then $\faktor{S'}{H} =S$, which implies that $p^{\beta}= \left\lvert{S'}\right\rvert$. 
 
 \medskip
 
@@ -910,7 +910,7 @@ Proceed by induction on $\lvert{G}\rvert$. We can write $G$ as the union of conj
 
 \smallskip
 
-We have another proof of \cref{ws1}. Let $\lvert{G}\rvert = p^{\beta}m$ with $(p, m) =1$. Let $$ S = \left\{A\subset G : \lvert{A}\rvert = p^{\beta}\right\}.$$ We see that $G$ acts on $S$ by left translation and that $\lvert{S}\rvert = {p^{\beta}m \choose p^{\beta}}$, which is coprime to $p$. Therefore, there is some orbit $\Omega_x$ such that $p \nmid  \lvert{\Omega_x}\rvert$. Since $\lvert{\Omega_x}\rvert \lvert{\stab_G(x)}\rvert = \lvert{G}\rvert$, we must have that $p^{\beta} \mid \lvert{\stab_G(x)}\rvert$. Note that $\stab_G(x)$ acts on $A$ by left translation. As this action is free, each orbit must have cardinality equal to $\lvert{\stab_G(x)}\rvert$ and thus be divisible by $p^{\beta} =\lvert{A}\rvert$. This implies that $A$ is the only orbit, and thus $\lvert{A}\rvert = \stab_G(x)$.
+We have another proof of \cref{ws1}. Let $\left\lvert{G}\right\rvert = p^{\beta}m$ with $(p, m) =1$. Let $$ S = \left\{A\subset G : \left\lvert{A}\right\rvert = p^{\beta}\right\}.$$ We see that $G$ acts on $S$ by left translation and that $\left\lvert{S}\right\rvert = {p^{\beta}m \choose p^{\beta}}$, which is coprime to $p$. Therefore, there is some orbit $\Omega_x$ such that $p \nmid  \left\lvert{\Omega_x}\right\rvert$. Since $\left\lvert{\Omega_x}\right\rvert \left\lvert{\stab_G(x)}\right\rvert = \left\lvert{G}\right\rvert$, we must have that $p^{\beta} \mid \left\lvert{\stab_G(x)}\right\rvert$. Note that $\stab_G(x)$ acts on $A$ by left translation. As this action is free, each orbit must have cardinality equal to $\left\lvert{\stab_G(x)}\right\rvert$ and thus be divisible by $p^{\beta} =\left\lvert{A}\right\rvert$. This implies that $A$ is the only orbit, and thus $\left\lvert{A}\right\rvert = \stab_G(x)$.
 
 
 
@@ -920,7 +920,7 @@ Use the fact that every $p$-group is nilpotent to prove that any finite group co
 
 \subsection{Lecture 7}
 
-\begin{theorem}[Sylow-II] Let $G$ have $\lvert{G}\rvert= p^{\beta}m$ as before.
+\begin{theorem}[Sylow-II] Let $G$ have $\left\lvert{G}\right\rvert= p^{\beta}m$ as before.
 \begin{enumerate}
 \item Every $p$-subgroup of $G$ is contained in some $p$-Sylow subgroup.
 \item Any two $p$-Sylow subgroups of $G$ are conjugate.
@@ -929,8 +929,8 @@ Use the fact that every $p$-group is nilpotent to prove that any finite group co
 
 \begin{proof} $ $
 \begin{enumerate}
-\item Let $H\leq G$ be a $p$-subgroup and $S\leq G$ a $p$-Sylow subgroup.  Let $H$ act by left translation on the coset space $\faktor{G}{S}$. We have $\faktor{G}{S} = \coprod$ ($H$-orbits), where each $H$-orbit has cardinality dividing $\lvert{H}\rvert$. If $\mathds{O}$ is a nontrivial orbit, then $p\mid \lvert{\mathds{O}}\rvert$, so that if every orbit is nontrivial, then $p\mid \lvert{\faktor{G}{S}}\rvert =m$, a contradiction. Thus, there is some orbit $\mathds{O} = \left\{gS\right\}$. Since $hgS = gS$ for every $h\in H$, we have $g^{-1}Hg\subset S$, i.e., $H\leq gSg^{-1}$. Note that $\lvert{gSg^{-1}}\rvert=\lvert{S}\rvert$.
-\item We just have showed that $H\leq gSg^{-1}$ for some $g\in G$. Hence if $\lvert{H}\rvert = p^{\beta}$, then $H=gSg^{-1}$.
+\item Let $H\leq G$ be a $p$-subgroup and $S\leq G$ a $p$-Sylow subgroup.  Let $H$ act by left translation on the coset space $\faktor{G}{S}$. We have $\faktor{G}{S} = \coprod$ ($H$-orbits), where each $H$-orbit has cardinality dividing $\left\lvert{H}\right\rvert$. If $\mathds{O}$ is a nontrivial orbit, then $p\mid \left\lvert{\mathds{O}}\right\rvert$, so that if every orbit is nontrivial, then $p\mid \left\lvert{\faktor{G}{S}}\right\rvert =m$, a contradiction. Thus, there is some orbit $\mathds{O} = \left\{gS\right\}$. Since $hgS = gS$ for every $h\in H$, we have $g^{-1}Hg\subset S$, i.e., $H\leq gSg^{-1}$. Note that $\left\lvert{gSg^{-1}}\right\rvert=\left\lvert{S}\right\rvert$.
+\item We just have showed that $H\leq gSg^{-1}$ for some $g\in G$. Hence if $\left\lvert{H}\right\rvert = p^{\beta}$, then $H=gSg^{-1}$.
 \end{enumerate}
 \end{proof}
 
@@ -945,21 +945,21 @@ Let $S\in \Syl_p(G)$. Then $N_G(N_G(S)) = N_G(S)$.
 \begin{proof}
 We know that $N_G(S) \subset N_G(N_G(S))$. Since $N_G(S)$ is the maximal subgroup $H$ of $G$ such that $S\unlhd H$, it suffices to show that $S\unlhd N_G(N_G(S))$.
 
-Pick any $p$-Sylow subgroup $H$ of $N_G(N_G(S))$. If $h\in H$, then $\lvert{h}\rvert =p^K$ for some $K\geq 0$. Consider $\bar{h} \in \faktor{N_G(N_G(S))}{N_G(S)}$, so that $\lvert{\bar{h}}\rvert$ is also a $p$-power. Observe that $$\left[N_G(N_G(S)): N_G(S)\right]\mid \left[G: N_G(S)\right] \mid \left[G:S\right]=m.$$ Therefore, $\lvert{\bar{h}}\rvert =1$, so that $h \in N_G(S)$. It follows that $H \subset N_G(S)$. Since $H$ and $S$ are both $p$-Sylow subgroups of $N_G(S)$, we know that $H = nSn^{-1} = S$ for some $n\in N_G(S)$. Thus, $S$ is the unique $p$-Sylow subgroup of $N_G(N_G(S))$, hence is normal in $N_G(N_G(S))$.
+Pick any $p$-Sylow subgroup $H$ of $N_G(N_G(S))$. If $h\in H$, then $\left\lvert{h}\right\rvert =p^K$ for some $K\geq 0$. Consider $\bar{h} \in \faktor{N_G(N_G(S))}{N_G(S)}$, so that $\left\lvert{\bar{h}}\right\rvert$ is also a $p$-power. Observe that $$\left[N_G(N_G(S)): N_G(S)\right]\mid \left[G: N_G(S)\right] \mid \left[G:S\right]=m.$$ Therefore, $\left\lvert{\bar{h}}\right\rvert =1$, so that $h \in N_G(S)$. It follows that $H \subset N_G(S)$. Since $H$ and $S$ are both $p$-Sylow subgroups of $N_G(S)$, we know that $H = nSn^{-1} = S$ for some $n\in N_G(S)$. Thus, $S$ is the unique $p$-Sylow subgroup of $N_G(N_G(S))$, hence is normal in $N_G(N_G(S))$.
 \end{proof}
 
-\begin{exercise} Let $G$ have $\lvert{G}\rvert=p^{\beta}$ and $H\leq G$ have $\lvert{H}\rvert=p^{\alpha}$ where $\alpha < \beta$. 
+\begin{exercise} Let $G$ have $\left\lvert{G}\right\rvert=p^{\beta}$ and $H\leq G$ have $\left\lvert{H}\right\rvert=p^{\alpha}$ where $\alpha < \beta$. 
 \begin{enumerate}
 \item Let $H$ act by left translation on $\faktor{G}{H}$. Prove that this action has a fixed point other than $eH$.
 \item Show that $H < N_G(H)$.
-\item Show that there is some $\tilde{H} \leq G$ such that $\lvert{\tilde{H}}\rvert =p^{\alpha+1}$ and $H \leq \tilde{H} \leq G$.
+\item Show that there is some $\tilde{H} \leq G$ such that $\left\lvert{\tilde{H}}\right\rvert =p^{\alpha+1}$ and $H \leq \tilde{H} \leq G$.
 \end{enumerate}
 \end{exercise}
 
 \smallskip
 
 \begin{theorem}[Sylow-III]
-Suppose that $\lvert{G}\rvert= p^{\beta}m$ as before.
+Suppose that $\left\lvert{G}\right\rvert= p^{\beta}m$ as before.
 \begin{enumerate}[label=(\arabic*)]
 \item $n_p(G) \mid m$.
 \item $n_p(G) \equiv 1 \mod p$.
@@ -968,8 +968,8 @@ Suppose that $\lvert{G}\rvert= p^{\beta}m$ as before.
 
 \begin{proof} $ $
 \begin{enumerate}
-\item Notice that $G$ acts transitively on $\Syl_p(G)$ by conjugation, so that $n_p(G) \mid \lvert{G}\rvert$ by the orbit-stabilizer theorem. But (2) shows that $n_p(G)$ and $p$ are coprime. Therefore, $n_p(G) \mid m$.
-\item The conjugation action of $G$ on itself induces a transitive action of $G$ on $\Syl_p(G)$. Note that if $T \in \Syl_p(G)$, then $\stab_T(G) = N_G(T)$. Now restrict the action to a chosen $p$-Sylow subgroup $S$. We have  that $$\Syl_p(G) = \coprod{\left(\text{fixed points}\right)}\sqcup \coprod{\left(\text{nontrivial }S\text{-orbits}\right)}.$$ This implies that if there is exactly one fixed point (namely $S$), then $$n_p(G) \equiv 1 \mod p.$$ To this end, suppose that $H$ is a fixed point. Then both $H$ and $S$  are $p$-Sylow subgroups of $N_G(H)$ since $\lvert{N_G(H)}\rvert \mid \lvert{G}\rvert$. Thus, they are conjugate. Hence $H=S$.
+\item Notice that $G$ acts transitively on $\Syl_p(G)$ by conjugation, so that $n_p(G) \mid \left\lvert{G}\right\rvert$ by the orbit-stabilizer theorem. But (2) shows that $n_p(G)$ and $p$ are coprime. Therefore, $n_p(G) \mid m$.
+\item The conjugation action of $G$ on itself induces a transitive action of $G$ on $\Syl_p(G)$. Note that if $T \in \Syl_p(G)$, then $\stab_T(G) = N_G(T)$. Now restrict the action to a chosen $p$-Sylow subgroup $S$. We have  that $$\Syl_p(G) = \coprod{\left(\text{fixed points}\right)}\sqcup \coprod{\left(\text{nontrivial }S\text{-orbits}\right)}.$$ This implies that if there is exactly one fixed point (namely $S$), then $$n_p(G) \equiv 1 \mod p.$$ To this end, suppose that $H$ is a fixed point. Then both $H$ and $S$  are $p$-Sylow subgroups of $N_G(H)$ since $\left\lvert{N_G(H)}\right\rvert \mid \left\lvert{G}\right\rvert$. Thus, they are conjugate. Hence $H=S$.
 \end{enumerate}
 \end{proof}
 
@@ -978,7 +978,7 @@ Let $S\in \Syl_p(G)$. The number of $p$-Sylow subgroups of $G$ is precisely $\le
 \end{note}
 
 \begin{corollary}
-If $\lvert{G}\rvert = pq$ with $p$ and $q$ primes such that $p<q$ and $q \not \equiv 1 \mod p$, then $G\cong C_{pq}$. 
+If $\left\lvert{G}\right\rvert = pq$ with $p$ and $q$ primes such that $p<q$ and $q \not \equiv 1 \mod p$, then $G\cong C_{pq}$. 
 \end{corollary}
 \begin{proof}
 It suffices to show that $n_p(G) =n_q(G)=1$ for in this case $G$ is isomorphic to the direct product its $p$-Sylow subgroup and its $q$-Sylow subgroup. Note that $n_q(G)\mid p$ and $n_q(G) \equiv 1 \mod q$. Hence $n_q(G) = 1 + qk$ for some $k\in \Z_{\geq 0}$. But $n_q(G) \leq p <q$, so that $k=0$. This proves that $n_q(G)=1$.
@@ -992,9 +992,9 @@ Likewise, we have that $n_p(G)\mid q$ and $n_p(G) \equiv 1 \mod p$. Since $q \no
 Every group $G$ of order $45$ is abelian.
 \end{exmp}
 \begin{proof}
-We have that $\lvert{G}\rvert = 3^25$.  Thus, $n_3(G) \in \left\{1, 5\right\}$ with $n_3(G) \equiv 1\mod 3$. This implies that $n_3(G) = 1$. Further, $n_5(G) \in \left\{1, 3, 9\right\}$ with $n_5(G) \equiv 1 \mod 5$. This implies that $n_5(G) =1$. Hence there are two normal subgroups $F, H\leq G$ such that $\lvert{F}\rvert =9$ and $\lvert{H}\rvert =5$. But $H \cap F$ must be trivial, and thus $G\cong H \times F$. This means that $G \cong C_5 \times F$. But recall that any group of order $9$ is cyclic or isomorphic to $C_3 \times C_3$. Hence $F$ is abelian, and so is $G$. 
+We have that $\left\lvert{G}\right\rvert = 3^25$.  Thus, $n_3(G) \in \left\{1, 5\right\}$ with $n_3(G) \equiv 1\mod 3$. This implies that $n_3(G) = 1$. Further, $n_5(G) \in \left\{1, 3, 9\right\}$ with $n_5(G) \equiv 1 \mod 5$. This implies that $n_5(G) =1$. Hence there are two normal subgroups $F, H\leq G$ such that $\left\lvert{F}\right\rvert =9$ and $\left\lvert{H}\right\rvert =5$. But $H \cap F$ must be trivial, and thus $G\cong H \times F$. This means that $G \cong C_5 \times F$. But recall that any group of order $9$ is cyclic or isomorphic to $C_3 \times C_3$. Hence $F$ is abelian, and so is $G$. 
 
-Alternatively, we can define an isomorphism $\psi: H \times F \to G$ by $\left(h,f\right) \mapsto hf$. Indeed, as both $H$ and $F$ are normal in $G$, they commute with each other, making $\psi$ a homomorphism. As $\lvert{FH}\rvert = 45$, we see that $FH=G$, so that $\psi$ is surjective. If $hf =e_G$, then $h= f^{-1}$, in which case $h\in F \cap H$. Such an element must be trivial, which implies that $\ker{\psi}$ is trivial, i.e., that $\psi$ is injective. Thus, $\psi$ is an isomorphism.
+Alternatively, we can define an isomorphism $\psi: H \times F \to G$ by $\left(h,f\right) \mapsto hf$. Indeed, as both $H$ and $F$ are normal in $G$, they commute with each other, making $\psi$ a homomorphism. As $\left\lvert{FH}\right\rvert = 45$, we see that $FH=G$, so that $\psi$ is surjective. If $hf =e_G$, then $h= f^{-1}$, in which case $h\in F \cap H$. Such an element must be trivial, which implies that $\ker{\psi}$ is trivial, i.e., that $\psi$ is injective. Thus, $\psi$ is an isomorphism.
 \end{proof}
 
 \subsection{Lecture 8}
@@ -1048,7 +1048,7 @@ A group $G$ is \textit{simple} if it has no nontrivial proper normal subgroup.
 \begin{enumerate}
 \item An abelian group is simple if and only if it has prime $p$ order.
 \item A $p$-group is simple if and only if it has order $p$.
-\item If $\lvert{G}\rvert = pq$, then $G$ is not simple.
+\item If $\left\lvert{G}\right\rvert = pq$, then $G$ is not simple.
 \end{enumerate}
 \end{exmp}
 
@@ -1068,7 +1068,7 @@ If $G$ is simple, then we're done. So assume otherwise. Let $n\in \N$ be maximal
 \end{proof}
 \item $\Z$ has no composition series, since no nontrivial subgroup of $\Z$ is simple.
 \item Every $p$-group has a composition series where each factor is $\faktor{\Z}{p}$.
-\item Let $\lvert{G}\rvert= pq$ with $p$ and $q$ distinct primes. Let $G_1$ be the unique $q$-Sylow subgroup of $G$. Then $G > G_1 > \left\{e\right\}$ is a composition series for $G$.
+\item Let $\left\lvert{G}\right\rvert= pq$ with $p$ and $q$ distinct primes. Let $G_1$ be the unique $q$-Sylow subgroup of $G$. Then $G > G_1 > \left\{e\right\}$ is a composition series for $G$.
 \end{enumerate}
 \end{exmp}
 
@@ -1076,7 +1076,7 @@ If $G$ is simple, then we're done. So assume otherwise. Let $n\in \N$ be maximal
 $A_5$ is simple.
 \end{prop}
 \begin{proof}
-Suppose that $N \unlhd A_5$ is nontrivial. Let $\sigma \in N$ be nontrivial. We may assume that $\lvert{\sigma}\rvert =p$ for some prime $p$. Then $\sigma$ can be decomposed into disjoint cycles each of length $p$.
+Suppose that $N \unlhd A_5$ is nontrivial. Let $\sigma \in N$ be nontrivial. We may assume that $\left\lvert{\sigma}\right\rvert =p$ for some prime $p$. Then $\sigma$ can be decomposed into disjoint cycles each of length $p$.
 \begin{claim}
 If $\sigma \in A_n \subset S_n$ and in the decomposition of $\sigma$ we have either
 \begin{enumerate}[label=(\roman*)]
@@ -1098,7 +1098,7 @@ We have three cases to consider. First, if $p=2$, then $\sigma$ is the product o
 \bigskip
 
 
-Now, if $\lvert{G}\rvert = pq$ with $p$ and $q$ distinct primes, then we have a sequence $$\faktor{\Z}{q} \overset{i}{\hookrightarrow} F \overset{\pi}{\twoheadrightarrow} \faktor{\Z}{p}$$ of group maps such that $\im(i) = \ker{\pi}$. 
+Now, if $\left\lvert{G}\right\rvert = pq$ with $p$ and $q$ distinct primes, then we have a sequence $$\faktor{\Z}{q} \overset{i}{\hookrightarrow} F \overset{\pi}{\twoheadrightarrow} \faktor{\Z}{p}$$ of group maps such that $\im(i) = \ker{\pi}$. 
 
 \begin{question}
 What data do we need to reconstruct $G$ from $\faktor{\Z}{p}$ and $\faktor{\Z}{q}$?
@@ -1142,7 +1142,7 @@ A group extension $1 \to H  \overset{i}{\longrightarrow} G \overset{q}{\longrigh
 \end{definition}
 
 \begin{exmp}
-Let $\lvert{G}\rvert= pq$. Then $1 \to \faktor{Z}{q} \to G \to \faktor{Z}{p}$ is split.
+Let $\left\lvert{G}\right\rvert= pq$. Then $1 \to \faktor{Z}{q} \to G \to \faktor{Z}{p}$ is split.
 \end{exmp}
 
 \medskip
@@ -1176,7 +1176,7 @@ Let $G$ be a group and $\left\{G_1, \ldots, G_k\right\}$ be a collection of subg
 \begin{enumerate}
 \item $\C^{\ast} \cong S^1 \times \R$ via the mapping $z \mapsto \left(e^{i\theta}, r\right)$. Note also the extension \[
 	\begin{tikzcd}
-	1\rar & S^1\rar["i" above] & \C^{\ast}\rar["\lvert{\cdot}\rvert" above] & \R_{>0}\rar & 1. \\
+	1\rar & S^1\rar["i" above] & \C^{\ast}\rar["\left\lvert{\cdot}\right\rvert" above] & \R_{>0}\rar & 1. \\
 	\end{tikzcd}
 \]
 \item $\GL_n^{+}(\R) \cong \SL_n(\R) \times \R_{>0}$ via $A\mapsto \left(\frac{A}{\sqrt[n]{\det A}}, \det A\right)$.
@@ -1261,7 +1261,7 @@ commutes.
 \begin{exmp} $ $
 \begin{enumerate}
 \item $S_n \cong C_2 \ltimes_{\alpha} A_n$ where $\alpha(1) \equiv \conj_{(1 \; 2)}$.
-\item  If $\lvert{G}\rvert = pq$ with $q>p$, then $G \cong \faktor{\Z}{p} \ltimes_{\alpha} \faktor{\Z}{q}$. By Sylow,  if $q\not \equiv 1 \mod p$, then $\alpha$ must be trivial. 
+\item  If $\left\lvert{G}\right\rvert = pq$ with $q>p$, then $G \cong \faktor{\Z}{p} \ltimes_{\alpha} \faktor{\Z}{q}$. By Sylow,  if $q\not \equiv 1 \mod p$, then $\alpha$ must be trivial. 
 \end{enumerate}
 \end{exmp}
 
@@ -1591,7 +1591,7 @@ Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensio
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Since $Z(S_3) =\left\{e\right\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\lvert{\aut(S_3)}\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
+\item Since $Z(S_3) =\left\{e\right\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\left\lvert{\aut(S_3)}\right\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
 \item If $G$ is abelian, then $\aut(G)= \out(G)$.
 \end{enumerate}
 \end{exmp}
@@ -1901,7 +1901,7 @@ simplices into a topological space.
  Also, recall the \textit{standard $n$-simplex} $$\Delta^n = \left\{(t_0, \ldots, t_n) \in \R^{n+1} : t_i \geq 0, \ \sum_{i=0}^n t_i =1\right\}.$$ In this case, we send a morphism $f : [m] \to [n]$ to the map $$\Delta_f : \R^{m+1} \to \R^{n+1}, \ \quad e_i \mapsto e_{f(i)},$$ which is linear over $\R$. We see that $\Delta_f(\Delta^m) \subset \Delta^n$, where $\Delta_f(\Delta^m)$ is either a face of $\Delta^n$ or the entire simplex $\Delta^n$. Note that $\Delta^{(-)}$ is a covariant functor $\varDelta \to \mathbf{Set}$, hence not a simplicial set in the strict sense. 
 
 
-Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete topology. Define the \textit{geometric realization of $X_{\bullet}$} as the space $$\lvert{X_{\bullet}}\rvert \equiv \coprod_{m\geq 0} \faktor{(X_m \times \Delta^m)}{\sim}$$ where $X_n \times \Delta^n \ni \left(x, y\right)\sim \left(x', y'\right) \in X_m \times \Delta^m$ if $X(f)(y') = y$ and $\Delta_f(x) = x'$ for some morphism $f: [n] \to [m]$.  
+Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete topology. Define the \textit{geometric realization of $X_{\bullet}$} as the space $$\left\lvert{X_{\bullet}}\right\rvert \equiv \coprod_{m\geq 0} \faktor{(X_m \times \Delta^m)}{\sim}$$ where $X_n \times \Delta^n \ni \left(x, y\right)\sim \left(x', y'\right) \in X_m \times \Delta^m$ if $X(f)(y') = y$ and $\Delta_f(x) = x'$ for some morphism $f: [n] \to [m]$.  
 \item  We have the category of  \textit{correspondences} $\mathbf{Corr}$ with objects all sets and morphisms all binary relations. Given any two binary relations $u\subset X\times Y$ and $v \subset Y \times Z$, let
  $$v \circ u = \left\{(x, y) \in X \times Z : \left(\exists b \in Y\right)\left((x, b) \in u \text{ and }(b, y) \in v\right)\right\}.$$ Then the identity morphisms are precisely the diagonal maps.
 \item Let $\left(I, \leq \right)$ be a partially ordered set. Then we have the \textit{order category $I$ associated to $\leq$} with $\ob(I) \equiv I$ and for any $x,y\in I$,
@@ -1973,8 +1973,8 @@ Let $\mathbf{Ring}$ denote the category of (unital) rings. Then the forgetful fu
 
 Alternatively, say that an $n$-simplex  $x\in X_n$ is \textit{nondegenerate} if it is \emph{not} of the form $x =s_i(y)$ where $1\leq i \leq n-1$ and $y\in X_{n-1}$ and let $X_n^{\nd}$ denote the subset of all nondegenerate $n$-simplices.  Define $(S)_{\bullet}$ as the unique simplicial set such that $$S_n^{\nd} = \begin{cases}
 S & n =0 \\ \emptyset & n > 0 \end{cases}.$$ Then
- $\lvert{(S)_{\bullet}}\rvert$ is homotopy equivalent to $S$ equipped with the discrete topology. 
-\item The geometric realization functor $\lvert{\cdot}\rvert : \mathbf{sSet} \to \mathbf{Top}$.
+ $\left\lvert{(S)_{\bullet}}\right\rvert$ is homotopy equivalent to $S$ equipped with the discrete topology. 
+\item The geometric realization functor $\left\lvert{\cdot}\right\rvert : \mathbf{sSet} \to \mathbf{Top}$.
 \item Define the \textit{singular chains functor $\Sing_{\bullet} : \mathbf{Top} \to \mathbf{sSet}$} by
 \begin{gather*}
  \Sing_n(X) \equiv \left\{\phi \mid \underset{\text{continuous}}{\phi  : \Delta^n \to X}\right\} \quad \ \quad \left(f: [m] \to [n]\right) \mapsto \left(\Sing_f(X) : \phi \mapsto \phi \circ \Delta_f\right)
@@ -2395,15 +2395,15 @@ Conversely, if $\left(L, R, \epsilon, \eta\right)$ satisfies $\eta \circ \epsilo
 \end{prop}
 
 \begin{exmp}
- Let $\lvert{\cdot}\rvert : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it is right adjoint to the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, \lvert{G}\rvert)$ for any set $S$ and group $G$. That is, for any function $f: S \to \lvert{G}\rvert$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
+ Let $\left\lvert{\cdot}\right\rvert : \mathbf{Grp} \to \mathbf{Set}$ denote the forgetful functor. Then it is right adjoint to the free group functor $\Fr : \mathbf{Set} \to \mathbf{Grp}$. This means that $\Hom(\Fr(S), G) \cong \Hom(S, \left\lvert{G}\right\rvert)$ for any set $S$ and group $G$. That is, for any function $f: S \to \left\lvert{G}\right\rvert$, there is a unique homomorphism $\phi : \Fr(S) \to G$ such that $\phi \restriction_S = f$, where we embed $S \hookrightarrow \coprod_{s\in S} G_s$ in $\mathbf{Set}$ by $s\mapsto \underbrace{1_{G_s}}_{\text{generator}}$.
  \end{exmp}
 \begin{proof}
 \begin{align*}
  \Hom(\Fr(S), G) & = \Hom\left(\coprod_S \Z, G\right) 
  \\ & \cong  \prod_{s\in S} \Hom(\Z, G) 
- \\ & \cong \prod_s \Hom\left(\{1\}, \lvert{G}\rvert\right)
- \\ &  \cong \Hom\left(\coprod_s \{1\}, \lvert{G}\rvert\right) 
- \\ & \cong  \Hom\left(S, \lvert{G}\rvert\right).
+ \\ & \cong \prod_s \Hom\left(\{1\}, \left\lvert{G}\right\rvert\right)
+ \\ &  \cong \Hom\left(\coprod_s \{1\}, \left\lvert{G}\right\rvert\right) 
+ \\ & \cong  \Hom\left(S, \left\lvert{G}\right\rvert\right).
  \end{align*}
 \end{proof}
 
@@ -2496,25 +2496,25 @@ Assume that $\Fr(S) \cong \Fr(T)$. We see that
 \end{align*}
  But then $\Fun^{\fs}(S, C_2)$ and  $\Fun^{\fs}(T, C_2)$ are isomorphic as $C_2$-vector spaces, so that $S \cong T$ as bases. 
 \begin{remark}\label{CH} There is another proof of \cref{l14} provided that we restrict our set-theoretic universe. Specifically,
-the adjunction $\left(\Fr, \lvert - \rvert\right)$ yields  
+the adjunction $\left(\Fr, \left\lvert - \right\rvert\right)$ yields  
 \begin{align*}
 \mathcal{P}(T) & \cong \Hom_{\mathbf{Set}}(T, C_2)
 \\ &  \cong \Hom_{\mathbf{Grp}}(\Fr(T), C_2)
 \\ & \cong \Hom_{\mathbf{Grp}}(\Fr(S), C_2)
 \\ & \cong \Hom_{\mathbf{Set}}(S, C_2)
 \\ & \cong \mathcal{P}(S).\end{align*}
-If we assume the continuum hypothesis, then $S \cong T$ for otherwise $\lvert{S} <\lvert{T}\rvert <\lvert{\P(T)}\rvert = \lvert{\P(S)}\rvert$, a contradiction.
+If we assume the continuum hypothesis, then $S \cong T$ for otherwise $\left\lvert{S}\right\rvert <\left\lvert{T}\right\rvert <\left\lvert{\P(T)}\right\rvert = \left\lvert{\P(S)}\right\rvert$, a contradiction.
 \end{remark}
 \end{proof}
 
 \subsection{Lecture 24}
 
 
-For any group $G$, we have $$\Hom_{\mathbf{Grp}}(\Fr(\lvert{G}\rvert), G) \cong \Hom_{\mathbf{Set}}(\lvert{G}\rvert, \lvert{G}\rvert)\ni \id_{\lvert{G}\rvert}.$$ Thus, there is a unique group map $\phi : \Fr(\lvert{G}\rvert) \to G$ such that $\phi \restriction_{\lvert{G}\rvert} = \id_{\lvert{G}\rvert}$. This implies that $\phi$ is surjective, so that $G$ is the quotient of a free group.
+For any group $G$, we have $$\Hom_{\mathbf{Grp}}(\Fr(\left\lvert{G}\right\rvert), G) \cong \Hom_{\mathbf{Set}}(\left\lvert{G}\right\rvert, \left\lvert{G}\right\rvert)\ni \id_{\left\lvert{G}\right\rvert}.$$ Thus, there is a unique group map $\phi : \Fr(\left\lvert{G}\right\rvert) \to G$ such that $\phi \restriction_{\left\lvert{G}\right\rvert} = \id_{\left\lvert{G}\right\rvert}$. This implies that $\phi$ is surjective, so that $G$ is the quotient of a free group.
 
 
 \begin{definition}
-We say that a group $G$ is \textit{generated by a subset $S\subset G$} if the homomorphism $$\phi \circ \Fr(i):\Fr(S) \to \Fr(\lvert{G}\rvert) \to G$$ is surjective where $i: S \to \lvert{G}\rvert$ denotes inclusion.
+We say that a group $G$ is \textit{generated by a subset $S\subset G$} if the homomorphism $$\phi \circ \Fr(i):\Fr(S) \to \Fr(\left\lvert{G}\right\rvert) \to G$$ is surjective where $i: S \to \left\lvert{G}\right\rvert$ denotes inclusion.
 \end{definition}
 
 \begin{note}
@@ -2582,22 +2582,22 @@ Any $f\in A[S]$ has the form $\sum_{\xi \in \supp(f)} f(\xi)\delta_{\xi}$. Let $
 
 \begin{prop} $ $
 \begin{enumerate}
-\item The polynomial functor $A[-]: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to the forgetful functor  $\lvert{-}\rvert: \mathbf{CommRing}^A \to \mathbf{Set}$.
+\item The polynomial functor $A[-]: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to the forgetful functor  $\left\lvert{-}\right\rvert: \mathbf{CommRing}^A \to \mathbf{Set}$.
 \begin{proof}
-We want a natural bijection $\Hom_{\mathbf{CommRing}^A}(A[S], B) \cong \Hom_{\mathbf{Set}}(S, \lvert{B}\rvert)$ for any ring $B$ and any set $S$.  Given a commutative diagram 
+We want a natural bijection $\Hom_{\mathbf{CommRing}^A}(A[S], B) \cong \Hom_{\mathbf{Set}}(S, \left\lvert{B}\right\rvert)$ for any ring $B$ and any set $S$.  Given a commutative diagram 
 \[
 \begin{tikzcd}
 {A[S]} \arrow[r, "\theta"] & B \\
 A \arrow[u, hook] \arrow[ru, "i"'] & 
 \end{tikzcd}
-\] of ring maps, define the set map $\hat{\theta} : S \to \lvert{B}\rvert$ by $s\mapsto \theta(t_s)$. Conversely, given a set map $\phi : S\to \lvert{B}\rvert$, define the ring map $\hat{\phi} : A[S] \to B$ by $$ \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)}  \mapsto \sum_{\xi \in \supp(f)} i(f(\xi))\prod_{s\in \supp(\xi)}\phi(t_s)^{\xi(s)}  .$$
+\] of ring maps, define the set map $\hat{\theta} : S \to \left\lvert{B}\right\rvert$ by $s\mapsto \theta(t_s)$. Conversely, given a set map $\phi : S\to \left\lvert{B}\right\rvert$, define the ring map $\hat{\phi} : A[S] \to B$ by $$ \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)}  \mapsto \sum_{\xi \in \supp(f)} i(f(\xi))\prod_{s\in \supp(\xi)}\phi(t_s)^{\xi(s)}  .$$
 \end{proof}
 \item Any set inclusion $T \subset S$ incudes a ring monomorphism $A[T] \hookrightarrow A[S]$.
 \end{enumerate}
 \end{prop}
 
 \begin{exercise}
-Apply the Yoneda lemma to the adjoint pair $(A[-], \lvert - \rvert)$ to prove that $$A[S]\cong A[T][S\setminus T].$$
+Apply the Yoneda lemma to the adjoint pair $(A[-], \left\lvert - \right\rvert)$ to prove that $$A[S]\cong A[T][S\setminus T].$$
 \end{exercise}
 
 \medskip
@@ -2687,9 +2687,9 @@ See \cref{CH}.
 
 Let $R$ be a ring and $S$ be a set. For any object $B$ in $\mathbf{Ring}^R$, consider the collection of set maps
 \[
-\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\lvert{B}\rvert)\coloneqq \left\{\phi: S \rightarrow B: \phi(s)(\xi)=\xi \cdot \phi(s), \forall{s} \in S, \forall{\xi} \in \operatorname{im}(R \rightarrow B)\right\}. 
+\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{B}\right\rvert)\coloneqq \left\{\phi: S \rightarrow B: \phi(s)(\xi)=\xi \cdot \phi(s), \forall{s} \in S, \forall{\xi} \in \operatorname{im}(R \rightarrow B)\right\}. 
 \]
-This induces a functor $\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\lvert{-}\rvert) : \mathbf{Ring}^R \to \mathbf{Set}$, which has a left adjoint $R\langle{-}\rangle : \mathbf{Set} \to \mathbf{Ring}^R$.
+This induces a functor $\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{-}\right\rvert) : \mathbf{Ring}^R \to \mathbf{Set}$, which has a left adjoint $R\langle{-}\rangle : \mathbf{Set} \to \mathbf{Ring}^R$.
 
 
 \section{Noetherian and Artinian modules}
@@ -2991,16 +2991,16 @@ Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be 
 \end{definition}
 
 \begin{theorem}[Hilbert's theorem on invariants]
-Let $k$ be a field, $G$ a finite group, and $A$ a finitely generated $k$-algebra equipped with a $G$-action. If $\left(\lvert{G}\rvert, \Char(k)\right)=1$, then $$A^G\coloneqq  \{ a \in A: \forall g \in G.g\cdot a =a\}$$ is a finitely generated $k$-subalgebra. 
+Let $k$ be a field, $G$ a finite group, and $A$ a finitely generated $k$-algebra equipped with a $G$-action. If $\left(\left\lvert{G}\right\rvert, \Char(k)\right)=1$, then $$A^G\coloneqq  \{ a \in A: \forall g \in G.g\cdot a =a\}$$ is a finitely generated $k$-subalgebra. 
 \end{theorem}
 \begin{proof}
-Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\lvert{G}\rvert$ is coprime to $\Char(k)$, we know that $\lvert{G}\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\lvert{G}\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A[x].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\{g\cdot a\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G[x]$. 
+Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\left\lvert{G}\right\rvert$ is coprime to $\Char(k)$, we know that $\left\lvert{G}\right\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\left\lvert{G}\right\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A[x].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\{g\cdot a\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G[x]$. 
 \begin{definition}
 Let $P(x)$ be a polynomial of degree $k$ with roots $x_1, \ldots, x_k$. If $n\in \N$, then define the \textit{n-th Newton sum} as $P_n \equiv x_1^n + \cdots + x_k^n$.
 \end{definition}
-It is known that any elementary symmetric polynomial can be expressed in terms of Newton sums. In our case, we can express each coefficient of $\chi_a(x)$ in terms of $S(a), S(a^2) , \ldots, S\left(a^{\lvert{G}\rvert}\right)$.
+It is known that any elementary symmetric polynomial can be expressed in terms of Newton sums. In our case, we can express each coefficient of $\chi_a(x)$ in terms of $S(a), S(a^2) , \ldots, S\left(a^{\left\lvert{G}\right\rvert}\right)$.
 
-Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S\left(u_i^k\right)\right\}_{i=1, \ldots, m,\ k=1, \ldots, \lvert{G}\rvert}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{\lvert{G}\rvert}$ can be written as a $B$-combination of the elements $1, u_i, \ldots, u_i^{\lvert{G}\rvert-1}$.\reversemarginpar{\marginpar{\small{Why can it be written like this?}}} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where $0\leq \alpha_i <\lvert{G}\rvert$. We thus have $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha},\ \quad \alpha_i < \lvert{G}\rvert,\ \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $$a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha}).$$ As  $\alpha_i<\lvert{G}\rvert$,  the set $\left\{S(u^{\alpha})\right\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
+Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S\left(u_i^k\right)\right\}_{i=1, \ldots, m,\ k=1, \ldots, \left\lvert{G}\right\rvert}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{\left\lvert{G}\right\rvert}$ can be written as a $B$-combination of the elements $1, u_i, \ldots, u_i^{\left\lvert{G}\right\rvert-1}$.\reversemarginpar{\marginpar{\small{Why can it be written like this?}}} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where $0\leq \alpha_i <\left\lvert{G}\right\rvert$. We thus have $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha},\ \quad \alpha_i < \left\lvert{G}\right\rvert,\ \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $$a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha}).$$ As  $\alpha_i<\left\lvert{G}\right\rvert$,  the set $\left\{S(u^{\alpha})\right\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
 \end{proof}
 
 \section{Projective and injective modules}
@@ -3144,7 +3144,7 @@ An $R$-module $M$ is projective  if and only if it is a direct summand of a free
 $(\Longleftarrow)$
 
 
-To begin, suppose that $M$ is free. Then $$M \cong \coprod_{\lambda \in \Lambda} R.$$  Pick a basis $(m_{\lambda})$ for $M$. Let $X \overset{q}{\longrightarrow}  X'' \to 0$ be an exact sequence of $R$-modules. Let $\phi : M \to X''$ be a homomorphism. For each $\lambda$, find some lift $x_{\lambda}\in X$ of $\phi(m_{\lambda})$. Then the assignment $\lambda \mapsto x_{\lambda}$ determines a set-theoretic function $x : \Lambda \to \lvert{X}\rvert$. By adjointness, there is some $\psi \in \Hom_{R{-}\mathbf{Mod}}(\coprod_{\lambda} R, X)$ such that $\psi(m_{\lambda}) = x_{\lambda}$. Explicitly, if $a \in M$, then $a = \sum_{\lambda}a_{\lambda}m_{\lambda}$ where $a_{\lambda}\in R$. Then $\psi(a) = \sum_{\lambda} a_{\lambda}x_{\lambda}$. This implies that $q(\psi(a)) = \sum_{\lambda} a_{\lambda}\phi(m_{\lambda}) = \phi(a)$. It follows that \[
+To begin, suppose that $M$ is free. Then $$M \cong \coprod_{\lambda \in \Lambda} R.$$  Pick a basis $(m_{\lambda})$ for $M$. Let $X \overset{q}{\longrightarrow}  X'' \to 0$ be an exact sequence of $R$-modules. Let $\phi : M \to X''$ be a homomorphism. For each $\lambda$, find some lift $x_{\lambda}\in X$ of $\phi(m_{\lambda})$. Then the assignment $\lambda \mapsto x_{\lambda}$ determines a set-theoretic function $x : \Lambda \to \left\lvert{X}\right\rvert$. By adjointness, there is some $\psi \in \Hom_{R{-}\mathbf{Mod}}(\coprod_{\lambda} R, X)$ such that $\psi(m_{\lambda}) = x_{\lambda}$. Explicitly, if $a \in M$, then $a = \sum_{\lambda}a_{\lambda}m_{\lambda}$ where $a_{\lambda}\in R$. Then $\psi(a) = \sum_{\lambda} a_{\lambda}x_{\lambda}$. This implies that $q(\psi(a)) = \sum_{\lambda} a_{\lambda}\phi(m_{\lambda}) = \phi(a)$. It follows that \[
 \begin{tikzcd}
 M \arrow[rd, "\phi"] \arrow[d, "\psi"'] &  &  \\
 X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0

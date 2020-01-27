@@ -693,7 +693,7 @@ Any locally trivial map $p: E \to B$ is a fibration whenever $B$ is a cell compl
 Prove that the Hopf fibration is locally trivial.
 \end{exercise}
 \begin{proof}
-For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\{(z_0, z_1) \in S^3 \mid z_k \ne 0\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left([z_0, z_1], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \vert{(z_0, z_1)}\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
+For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\{(z_0, z_1) \in S^3 \mid z_k \ne 0\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left([z_0, z_1], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
 \end{proof}
 
 \subsection{Lecture 4}
@@ -1324,10 +1324,10 @@ Let $G = \{\pm 1\}$.  Then any principal $G$-bundle over $X$ is a two-fold cover
 
 \smallskip
 
- For example, let $\{U_i\}$ denote the usual open covering of $\RP^n = \faktor{S^n}{G}$. Let $\pi : S^n \to \RP^n$ denote the projection map. We have that $\pi^{-1} \left(U_i\right) \cong U_i \times G$. Indeed,  define $h_i : \pi^{-1} \left(U_i\right) \to  U_i \times G$ by $$\left(x_0, \ldots, x_n\right) \mapsto \left(\left[x_0, \ldots, x_n\right], \frac{x_i}{\lvert{x_i}\rvert}\right),$$ the inverse of which is  given by 
+ For example, let $\{U_i\}$ denote the usual open covering of $\RP^n = \faktor{S^n}{G}$. Let $\pi : S^n \to \RP^n$ denote the projection map. We have that $\pi^{-1} \left(U_i\right) \cong U_i \times G$. Indeed,  define $h_i : \pi^{-1} \left(U_i\right) \to  U_i \times G$ by $$\left(x_0, \ldots, x_n\right) \mapsto \left(\left[x_0, \ldots, x_n\right], \frac{x_i}{\left\lvert{x_i}\right\rvert}\right),$$ the inverse of which is  given by 
  \begin{align*}
  \left(y_0, \ldots y_n\right) & \mapsfrom \left(\left[x_0, \ldots, x_n\right], \epsilon \right) 
- \\ y_k & \equiv \epsilon x_k\cdot \frac{\lvert{x_i}\rvert}{x_i}.
+ \\ y_k & \equiv \epsilon x_k\cdot \frac{\left\lvert{x_i}\right\rvert}{x_i}.
  \end{align*}
  Note that any transition function $h_{ji} : U_i \cap U_j \to G$ is given by $h_{ji}(x) = {-}1$.
 \end{exmp}
@@ -1343,7 +1343,7 @@ Let $w_1 \in H^1\left(\RP^n; \Z_2\right) \cong \Z_2$ be nonzero. Let $p_1 : E \t
 \subsection{Lecture 10}
 
 \begin{exmp}
-Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex lines in $\C^{n+1}$. Let $G = S^1$. Then $G$ acts on $\C^{n+1}$ by $g\cdot \left(z_0, \ldots, z_n\right) = \left(gz_0, \ldots, gz_n\right)$. We have that $\CP^n \cong \faktor{S^{2n+1}}{\sim}$ where $z\sim \zeta\cdot z$ for any $\zeta \in S^1$. Consider the projection map $\pi : S^{2n+1} \twoheadrightarrow \CP^n$. For each $i\in \{0, \ldots, n\}$, let $H_i = \{z\in \CP^n \mid z_i =0\} \cong \CP^{n-1}$ and let $U_i = \CP^n \setminus H_i$. Then the $U_i$ form an open cover of $\CP^n$.  Define $h_i : \pi^{-1}\left(U_i\right) \to U_i \times S^1$ by $\left(z_0, \ldots, z_n\right) \mapsto \left(\left[z_0, \ldots, z_n\right], \frac{z_i}{\lvert{z_i}\rvert}\right)$. 
+Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex lines in $\C^{n+1}$. Let $G = S^1$. Then $G$ acts on $\C^{n+1}$ by $g\cdot \left(z_0, \ldots, z_n\right) = \left(gz_0, \ldots, gz_n\right)$. We have that $\CP^n \cong \faktor{S^{2n+1}}{\sim}$ where $z\sim \zeta\cdot z$ for any $\zeta \in S^1$. Consider the projection map $\pi : S^{2n+1} \twoheadrightarrow \CP^n$. For each $i\in \{0, \ldots, n\}$, let $H_i = \{z\in \CP^n \mid z_i =0\} \cong \CP^{n-1}$ and let $U_i = \CP^n \setminus H_i$. Then the $U_i$ form an open cover of $\CP^n$.  Define $h_i : \pi^{-1}\left(U_i\right) \to U_i \times S^1$ by $\left(z_0, \ldots, z_n\right) \mapsto \left(\left[z_0, \ldots, z_n\right], \frac{z_i}{\left\lvert{z_i}\right\rvert}\right)$. 
 
 \begin{exercise} $ $
 \be
@@ -1356,13 +1356,13 @@ Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex l
 \item It is obvious that $h_i$ is continuous. Define $g_i : U_i \times S^1 \to \pi^{-1}\left(U_i\right)$ by 
 \begin{align*}
 \left(\left[z_0, \ldots, z_n\right], \epsilon \right) &  \mapsto \left(y_0, \ldots, y_n\right)
-\\ y_k & \equiv \epsilon{z_k}\cdot \frac{\lvert{z_i}\rvert}{z_i}, \ k =0, \ldots, n.
+\\ y_k & \equiv \epsilon{z_k}\cdot \frac{\left\lvert{z_i}\right\rvert}{z_i}, \ k =0, \ldots, n.
 \end{align*}
 It is easy to check that this is well-defined and that $g_i$ is the inverse of $h_i$. It remains to show that $g_i$ is continuous. Consider the quotient map  $q\coloneqq \pi \times \id_{S^1}: S^{2n+1} \times S^1 \to \CP^n \times S^1$. Let $\widetilde{U}_i = \{z \in S^{2n+1} \mid z_i \ne 0\}$. Note that $g_i \circ q\restriction_{\widetilde{U}_i \times S^1}$ is clearly continuous. But $\widetilde{U}_i \times S^1$ is both open in $S^{2n+1} \times S^1$ and saturated with respect to $q$. Hence $\restriction_{\widetilde{U}_i \times S^1}$ is a quotient map, so that $g_i$ is continuous.  
 \item Note that 
 \[
-h_i \circ h_j^{-1}\left(\left[z_0, \ldots, z_n\right], \epsilon\right) = \left(\left[z_0, \ldots, z_n\right], \epsilon  \frac{\lvert{z_j}\rvert}{z_j} \cdot \frac{z_i}{\lvert{z_i}\rvert}\right)
-\] for any $\left[z_0, \ldots, z_n\right] \in U_i \cap U_j$. This implies that $$h_{ij}\left(\left[z_0, \ldots, z_n\right]\right) = \frac{\lvert{z_j}\rvert}{z_j} \cdot \frac{z_i}{\lvert{z_i}\rvert}.$$
+h_i \circ h_j^{-1}\left(\left[z_0, \ldots, z_n\right], \epsilon\right) = \left(\left[z_0, \ldots, z_n\right], \epsilon  \frac{\left\lvert{z_j}\right\rvert}{z_j} \cdot \frac{z_i}{\left\lvert{z_i}\right\rvert}\right)
+\] for any $\left[z_0, \ldots, z_n\right] \in U_i \cap U_j$. This implies that $$h_{ij}\left(\left[z_0, \ldots, z_n\right]\right) = \frac{\left\lvert{z_j}\right\rvert}{z_j} \cdot \frac{z_i}{\left\lvert{z_i}\right\rvert}.$$
 \ee
 \end{proof}
 
@@ -1517,7 +1517,7 @@ If $G$ is a Lie group and $H$ is a closed subgroup of $G$, then the natural proj
 The \textit{orthogonal group $\Or\left(n, \R\right)$} is the group of $n\times n$ real matrices $A$ such that $AA^t = A^tA = I_n$, equivalently, $Av \bullet Aw = v\bullet w$ for any $v,w\in \R^n$. We call such an $A$ \textit{orthogonal}.
 \end{defn}
 
-In particular, if $A$ is orthogonal, then $\|Av\| = \|v\|$ for any $v\in \R^n$.
+In particular, if $A$ is orthogonal, then $\left\lVert{Av}\right\rVert = \left\lVert{v}\right\rVert$ for any $v\in \R^n$.
 
 \begin{exmp}
 The orthogonal group $\Or\left(n, \R\right)$ is a closed subgroup of $\GL\left(n, \R\right)$ because  $\Or\left(n, \R\right)= f^{-1}\left(I_n\right)$ where $f: \GL\left(n, \R\right) \to \GL\left(n, \R\right)$ is given by $X \mapsto XX^t$. Let $\gamma : \GL\left(n, \R\right) \to \Or\left(n, \R\right)$ denote the map given by the Gram-Schmidt procedure. Let $i : \Or\left(n, \R\right) \to \GL\left(n, \R\right)$ denote the inclusion map. Then $\gamma$ and $i$ are homotopy inverses of each other, so that 
@@ -2025,7 +2025,7 @@ $H^n(X;\Z) \cong \frac{\ker{\delta^{n+1}}}{\im{\delta^n}}$.
 \end{theorem}
 
 \begin{exmp}
-$H^{\ast}(\CP^n; \Z) \cong \faktor{\Z[x]}{\left(x^{n+1}\right)}$ with $\underset{\text{dim.}}{\lvert{x}\rvert} =2$.
+$H^{\ast}(\CP^n; \Z) \cong \faktor{\Z[x]}{\left(x^{n+1}\right)}$ with $\underset{\text{dim.}}{\left\lvert{x}\right\rvert} =2$.
 \end{exmp}
 
 \begin{theorem}[Poincar\'e duality]

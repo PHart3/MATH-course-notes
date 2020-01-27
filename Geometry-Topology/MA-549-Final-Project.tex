@@ -28,23 +28,23 @@
 \usepackage[capitalise]{cleveref} 
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{example}[definition]{Example}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}[definition]{Example}
 \newtheorem{non-exmp}[definition]{Non-example}
 \newtheorem{note}[definition]{Note}
 
 \theoremstyle{theorem}
 \newtheorem{theorem}[definition]{Theorem}
 \newtheorem{lemma}[definition]{Lemma}
-\newtheorem{prop}[definition]{Proposition}
 \newtheorem{cor}[definition]{Corollary}
+\newtheorem{prop}[definition]{Proposition}
+\newtheorem{conj}[definition]{Conjecture}
 \newtheorem*{claim}{Claim}
 \newtheorem{exercise}[definition]{Exercise}
 
 \theoremstyle{remark}
 \newtheorem{remark}[definition]{Remark}
 \newtheorem*{todo}{To do}
-\newtheorem*{question}{Question}
 \newtheorem*{conv}{Convention}
 \newtheorem*{aside}{Aside}
 \newtheorem*{notation}{Notation}
@@ -152,13 +152,13 @@ This project briefly describes the isometries of $\C^2$. In particular, it class
 
 \section{Isometries of $\C^2$ over $\R$}
 
-If $M$ is a metric space, then let $\Isom(M)$ denote the set of all isometries of $M$. For now, let $\left(\C^2, \| \cdot \|\right)$ denote the normed vector space $\C^2$ over $\R$ where $\|\cdot\| : \C^2\to \left[0,\infty\right)$ is given by  $$\|(z,w) \|=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\|\cdot\|$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T: \C^2 \to \R^4$ given by 
+If $M$ is a metric space, then let $\Isom(M)$ denote the set of all isometries of $M$. For now, let $\left(\C^2,  \left\lVert{\cdot}\right\rVert\right)$ denote the normed vector space $\C^2$ over $\R$ where $ \left\lVert{\cdot}\right\rVert : \C^2\to \left[0,\infty\right)$ is given by  $$ \left\lVert{(z,w)}\right\rVert=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\ \left\lVert{\cdot}\right\rVert$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T: \C^2 \to \R^4$ given by 
 \[ \label{eqn:T}
 \left(a+bi, a'+b'i\right)\mapsto \left(a,a',b,b'\right)
 \tag{$\ast$}.\] 
 
 
-	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $\|T(\v)\|=\|\v\|$ and $T$ is linear, we see that $$d(\v, \x)=\|\v-\x\|=\|T(\v) -T(\x) \|=d'(T(\v), T(\x))$$ for any $\v, \x \in \C^2.$ Likewise, we see that $$d(T^{-1}(\y), T^{-1}(\z))=\|T^{-1}(\y)-T^{-1}(\z)\|=\|\y-\z\|=d'(\y,\z)$$ for any $\y, \z \in \R^4$.
+	Endow $\C^2$ and $\R^4$ with the standard Euclidean metrics $d$ and $d'$, respectively. Since $ \left\lVert{T(\v)}\right\rVert= \left\lVert{\v}\right\rVert$ and $T$ is linear, we see that $$d(\v, \x)= \left\lVert{\v-\x}\right\rVert= \left\lVert{T(\v) -T(\x)}\right\rVert=d'(T(\v), T(\x))$$ for any $\v, \x \in \C^2.$ Likewise, we see that $$d(T^{-1}(\y), T^{-1}(\z))= \left\lVert{T^{-1}(\y)-T^{-1}(\z)}\right\rVert= \left\lVert{\y-\z}\right\rVert=d'(\y,\z)$$ for any $\y, \z \in \R^4$.
 Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Isom(\C^2) \overset{\cong}{\longrightarrow} \Isom(\R^4)$, provided that both $\Isom(\C^2)$ and $\Isom(\R^4)$ are, in fact, groups under composition. Certainly they are closed under composition and contain the identity map. Also, every isometry $f$ of a given metric space $\left(X, \rho\right)$ must be injective. Indeed, if $x\ne y$ but $f(x)=f(y)$, then $\rho(x,y)\ne 0 = \rho(f(x),f(y))$, which is impossible. Since the inverse of $f$ must also be an isometry, it just remains to show that $f$ is surjective in order to prove that the two are groups. This is the content of \cref{c12} below. 
 
 \medskip
@@ -199,7 +199,7 @@ The symbol $\bullet$ will denote the Euclidean inner product.
 
 \begin{cor}\label{c2}
 
-If $X\in \M^4(\R)$ is orthogonal, then $\lvert{\det(X)}\rvert=1$.
+If $X\in \M^4(\R)$ is orthogonal, then $\left\lvert{\det(X)}\right\rvert=1$.
 \end{cor}
 
 \begin{proof}
@@ -214,9 +214,9 @@ If $X\in \M^4(\R)$ is orthogonal, then $X\in \ORT(4)$.
 \begin{proof}
  By \cref{preip}, $X$ preserves the inner product, which implies that 
  \begin{align*}
- \|X\v -X\w \|^2&=\|X\v \|^2-2X\v\bullet X\w+\|X\w \|^2
- \\ & = \|\v \|^2-2\v\bullet \w+\|\w \|^2
- \\ & =\|\v-\w \|^2
+ \ \left\lVert{X\v -X\w}\right\rVert^2&= \left\lVert{X\v}\right\rVert^2-2X\v\bullet X\w+ \left\lVert{X\w}\right\rVert^2
+ \\ & =  \left\lVert{\v}\right\rVert^2-2\v\bullet \w+ \left\lVert{\w}\right\rVert^2
+ \\ & = \left\lVert{\v-\w}\right\rVert^2
  \end{align*} for any $\v, \w\in \R^4$. Thus, $d'(X\v, X\w)=d'(\v, \w)$, and $X\in \ORT(4)$. 
 
 \end{proof}
@@ -233,15 +233,15 @@ Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We
 Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we have $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
 \end{theorem}
 \begin{proof}
- By \cref{l1}, we have that $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $\|\x-\y \|^2=\|g(\x)-g(\y) \|^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $\|g(\v)\|=\v$ for any $\v\in \R^4$.
+ By \cref{l1}, we have that $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $ \left\lVert{\x-\y}\right\rVert^2= \left\lVert{g(\x)-g(\y)}\right\rVert^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $ \left\lVert{g(\v)}\right\rVert=\v$ for any $\v\in \R^4$.
 We can apply the additivity of the inner product to get  
 \begin{align*}
-\| g(\v) \|^2+\|g(\w) \|^2-2\langle g(\v), g(\w)\rangle & =\langle g(\v)-g(\w), g(\v)-g(\w)\rangle 
+ \left\lVert{g(\v)}\right\rVert^2+ \left\lVert{g(\w)}\right\rVert^2-2\langle g(\v), g(\w)\rangle & =\langle g(\v)-g(\w), g(\v)-g(\w)\rangle 
 \\ & =\langle \v-\w, \v-\w\rangle
-\\ & =\|\v \|^2+\|\w \|^2-2\langle \v, \w\rangle.
+\\ & = \left\lVert{\v}\right\rVert^2+ \left\lVert{\w}\right\rVert^2-2\langle \v, \w\rangle.
 \end{align*}  We can cancel terms to find that $g$ preserves the inner product. Note that our proof of this fact actually applies to any element of $\ORT(4)$.
 
-Now, it follows that $\|g(\e_i)\|^2=\|\e_i \|^2=1$ for each $i=1,2,3,4$, so that $\|g(\e_i)\|=1$. Similarly,  we can deduce that  $\langle g(\e_i),g(\e_j)\rangle = 0$ if $i\ne j$. Thus, $\{g(\e_i)\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
+Now, it follows that $ \left\lVert{g(\e_i)}\right\rVert^2= \left\lVert{\e_i}\right\rVert^2=1$ for each $i=1,2,3,4$, so that $ \left\lVert{g(\e_i)}\right\rVert=1$. Similarly,  we can deduce that  $\langle g(\e_i),g(\e_j)\rangle = 0$ if $i\ne j$. Thus, $\{g(\e_i)\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
 
 Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
 
@@ -312,7 +312,7 @@ The following are equivalent.
 \end{cor}
 
 \begin{proof}
-First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group because the complex modulus is multiplicative and $|z|=1\implies \lvert{z^{-1}}\rvert=\frac{\lvert{\bar{z}}\rvert}{\lvert{z}\rvert^2}=1$. Next, consider $\U(2)$. It suffices to verify closure. If $A,B\in \U(2)$, then $$(AB)^\ast(AB)=B^\ast A^\ast AB=B^\ast B=I,$$ and thus  $AB\in \U(2)$.
+First, note that $\U(1)=\left\{z\in \C:|z|=1\right\}=S^1$, which is a group because the complex modulus is multiplicative and $|z|=1\implies \left\lvert{z^{-1}}\right\rvert=\frac{\left\lvert{\bar{z}}\right\rvert}{\left\lvert{z}\right\rvert^2}=1$. Next, consider $\U(2)$. It suffices to verify closure. If $A,B\in \U(2)$, then $$(AB)^\ast(AB)=B^\ast A^\ast AB=B^\ast B=I,$$ and thus  $AB\in \U(2)$.
 \end{proof}
 
 \smallskip
@@ -323,11 +323,11 @@ let $A\coloneqq\begin{bmatrix} 1 & 0 \\  0 & -1\end{bmatrix}$ and $B\coloneqq\be
 
 
 \begin{cor}\label{unitnorm}
-Every $2\times 2$ unitary matrix $X$ has $\lvert{\det(X)}\rvert=1$, where $\lvert{\cdot}\rvert$ denote the complex modulus.   
+Every $2\times 2$ unitary matrix $X$ has $\left\lvert{\det(X)}\right\rvert=1$, where $\left\lvert{\cdot}\right\rvert$ denote the complex modulus.   
 \end{cor}
 
 \begin{proof}
-We have that $1=\det(I)=\det(XX^\ast)= \det(X)\det(X^\ast)=\det(X)\overline{\det(X)}=\lvert{\det(X)}\rvert$.
+We have that $1=\det(I)=\det(XX^\ast)= \det(X)\det(X^\ast)=\det(X)\overline{\det(X)}=\left\lvert{\det(X)}\right\rvert$.
 \end{proof}
 
 \medskip
@@ -340,7 +340,7 @@ Also, note that
 \\ & =\det \left(\begin{bmatrix} A +iB& {-B} \\ 0 & A-iB \end{bmatrix} \right)
 \\ & =\det(A+iB)\det(A-iB)
 \\ &= \det(A)^2 + \det(B)^2
-\\ & =\lvert{\det(M)}\rvert^2=1
+\\ & =\left\lvert{\det(M)}\right\rvert^2=1
 .
 \end{align*} Therefore, $F$ is well-defined. 
 To verify that $F$ is a homomorphism, note that if $N=C+Di$, then $MN=(AC{-B}D)+(AD+BC)i$. In this case $$F(MN)= \begin{bmatrix} A C{-BD} & {-A}D{-BC} \\ AD+BC & AC{-B}D\end{bmatrix}=\begin{bmatrix} A & {-B} \\ B & A\end{bmatrix}\begin{bmatrix} C & -D \\ D & C\end{bmatrix}=F(M)F(N).$$
@@ -368,7 +368,7 @@ H(Rx, Ry)=H(x,y) & \iff \overline{Rx}^TRy=\bar{x}^Ty
 Let us look now at the complex analogue of $\SO(4)$. The map $D:\U(2)\to \U(1)$ given by $D(X)=\det(X)$ is well-defined by \cref{unitnorm}. As $\det$ is multiplicative, it is also a homomorphism. For any $e^{i\theta}\in \C$, we see that $M\coloneqq\begin{bmatrix}e^{i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix}\in \U(2)$ and $D(M)=e^{i\theta}$, which means that $D$ is surjective. Now note that $$\ker D=K\coloneqq\left\{X\in \U(2) :\det(X)=1\right\}.$$ This yields an isomorphism $\U(2)/K\cong \U(1)$ in the category $\mathbf{Grp}$ of groups. 
 
 Let $\SU(2)\coloneqq \ker(D)$. Then $\SU(2)$ consists precisely of those $2\times 2$ unitary matrices which are orientation-preserving.
-Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Since $\det(W)=1$, we find that $W^{-1}=\begin{bmatrix} d & {-b} \\ {-c} & a \end{bmatrix}$. Since $W^\ast= W^{-1}$, it follows that $d=\bar{a}$ and ${-\bar{b}} ={c}$. Therefore, $\det(W)=\|(a,c)\|^2=a\bar{a}+c\bar{c}=1$, and $W=\begin{bmatrix} a & c\\ {-\bar{c}} & \bar{a} \end{bmatrix}$. Conversely, the column vectors of such a matrix are orthonormal. Hence $$\SU(2)= \left\{X\in \M^2(\C): X=  \begin{bmatrix} x & {y}\\ {-\bar{y}} & \bar{x} \end{bmatrix} \text{ with } x\bar{x}+y\bar{y}=1\right\}.$$
+Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Since $\det(W)=1$, we find that $W^{-1}=\begin{bmatrix} d & {-b} \\ {-c} & a \end{bmatrix}$. Since $W^\ast= W^{-1}$, it follows that $d=\bar{a}$ and ${-\bar{b}} ={c}$. Therefore, $\det(W)= \left\lVert{(a,c)}\right\rVert^2=a\bar{a}+c\bar{c}=1$, and $W=\begin{bmatrix} a & c\\ {-\bar{c}} & \bar{a} \end{bmatrix}$. Conversely, the column vectors of such a matrix are orthonormal. Hence $$\SU(2)= \left\{X\in \M^2(\C): X=  \begin{bmatrix} x & {y}\\ {-\bar{y}} & \bar{x} \end{bmatrix} \text{ with } x\bar{x}+y\bar{y}=1\right\}.$$
 
 \begin{theorem}\label{u2iso}
  $\U(2)\cong \left(\SU(2)\times \U(1)\right)/\Z_2$ in $\mathbf{Grp}$.
@@ -405,7 +405,7 @@ Let us turn our attention to providing the groups
 \end{itemize}
 with \emph{topological} characterizations, having treated them only as algebraic objects thus far. The first four of these groups are topological spaces as subsets of normed vector spaces. The last group, $\Isom(\R^4)$, has the metric topology induced by
 \[
-d(f,g) \equiv \max\{ \lvert{f(x)-g(x)}\rvert : x \in \R^4,\ \lvert{x}\rvert \leq 1\},
+d(f,g) \equiv \max\{ \left\lvert{f(x)-g(x)}\right\rvert : x \in \R^4,\ \left\lvert{x}\right\rvert \leq 1\},
 \]  which is a modest generalization of the metric induced by the familiar operator norm in the theory of finite-dimensional vector spaces.
 \begin{remark}
 All five groups are actually Lie groups.
@@ -445,10 +445,10 @@ For any quaternions $x,y$, we have $\overline{xy}=\bar{y}\bar{x}$.
 
 \smallskip
 
-Recall that by definition $\lvert{x}\rvert=\sqrt{x\bar{x}}$.
+Recall that by definition $\left\lvert{x}\right\rvert=\sqrt{x\bar{x}}$.
 
 \begin{cor}\label{mult}
-$\lvert{xy}\rvert=\lvert{x}\rvert \lvert{y}\rvert$.
+$\left\lvert{xy}\right\rvert=\left\lvert{x}\right\rvert \left\lvert{y}\right\rvert$.
 \end{cor}
  
 
@@ -457,7 +457,7 @@ $\SO(4) \cong S^3\times \SO(3)$ in $\mathbf{Top}$.
 \end{theorem}
 
 \begin{proof}
-Formally, we can identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $\lvert{aq}\rvert=\lvert{a}\rvert\lvert{q}\rvert=\lvert{a}\rvert$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we see that $$\lvert{a-b}\rvert=\lvert{\alpha_q(a-b)}\rvert=\lvert{aq-bq}\rvert,$$ so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
+Formally, we can identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $\left\lvert{aq}\right\rvert=\left\lvert{a}\right\rvert\left\lvert{q}\right\rvert=\left\lvert{a}\right\rvert$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we see that $$\left\lvert{a-b}\right\rvert=\left\lvert{\alpha_q(a-b)}\right\rvert=\left\lvert{aq-bq}\right\rvert,$$ so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
 
 \smallskip
 
