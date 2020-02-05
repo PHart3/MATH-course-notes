@@ -216,7 +216,7 @@ We see that $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and tha
 
 
 \begin{definition}
-A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w{\c}$ of morphisms called \textit{weak equivalences (w.e.)} such that every isomorphism in $\c$ is a w.e. and the following ``Gluing axiom'' holds.
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w{\c}$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a weak equivalence and the following ``Gluing axiom'' holds.
 \begin{enumerate}
 \item (W3) For any diagram
 \[
@@ -224,12 +224,12 @@ A \textit{Waldhausen category} $\c$ is a category with cofibrations together wit
 C \arrow[d, "\sim"'] & A \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & B \arrow[d, "\sim"'] \\
 C' & A' \arrow[r, tail] \arrow[l] & B'
 \end{tikzcd}, \]
-the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a w.e.
+the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a weak equivalence.
 \end{enumerate}
 \end{definition}
 
 \begin{definition}
-A Waldhausen category $(\c, w)$ is \textit{saturated} if whenever $fg$ makes sense and is a w.e., then $f$ is a w.e. iff $g$ is. 
+A Waldhausen category $(\c, w)$ is \textit{saturated} if whenever $fg$ makes sense and is a weak equivalence, then $f$ is a weak equivalence iff $g$ is. 
 \end{definition}
 
 \smallskip
@@ -249,11 +249,11 @@ commutes. This is pointed at $\ast \rightarrowtail \ast \twoheadrightarrow \ast$
 \end{definition}
 
 \begin{definition}
-Suppose an arbitrary triple $(f', f, f'')$ as above has the property that whenever $f'$ and $f''$ are w.e., then so is $f$. In this case, we say $\c$ is \textit{extensional} or \textit{closed under extensions}.
+Suppose an arbitrary triple $(f', f, f'')$ as above has the property that whenever $f'$ and $f''$ are weak equivalences, then so is $f$. In this case, we say $\c$ is \textit{extensional} or \textit{closed under extensions}.
 \end{definition}
 
 
-Say that the morphism $\left(f', f, f''\right)$ is a cofibration if $f'$, $f''$, and $Y' \cup_{X'} X \to Y$ are cofibrations in $\c$. Say that  the same triple is a weak equivalence if $f'$, $f$, and $f''$ are w.e. in $\c$. This makes $S_2 \c$ into a Waldhausen category.
+Say that the morphism $\left(f', f, f''\right)$ is a cofibration if $f'$, $f''$, and $Y' \cup_{X'} X \to Y$ are cofibrations in $\c$. Say that  the same triple is a weak equivalence if $f'$, $f$, and $f''$ are weak equivalences in $\c$. This makes $S_2 \c$ into a Waldhausen category.
 
 
 \begin{definition}
@@ -371,11 +371,11 @@ These form a functor $W: \Ar[q] \to \c$. If $i < j < k$, then we have $W_{i,j} \
 \end{proof}
 
 \begin{definition}
-Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Let $w S_q\c \subset S_q \c$ consist of the morphisms $f: X \overset{\sim}{\longrightarrow} Y$ of $\Ar[q]$-shaped diagrams such that the component $f_{0, j} : X_{0, j} \to Y_{0, j}$ is a w.e. in $\c$ for each $1\leq j \leq q$.
+Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Let $w S_q\c \subset S_q \c$ consist of the morphisms $f: X \overset{\sim}{\longrightarrow} Y$ of $\Ar[q]$-shaped diagrams such that the component $f_{0, j} : X_{0, j} \to Y_{0, j}$ is a weak equivalence in $\c$ for each $1\leq j \leq q$.
 \end{definition}
 
 \begin{prop}
-Let $f$ be a w.e. in $S_q \c$.  Each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a w.e. in $\c$.
+Let $f$ be a weak equivalence in $S_q \c$.  Each component $f_{i, j}: X_{i, j} \to Y_{i, j}$ is a weak equivalence in $\c$.
 \end{prop}
 \begin{proof}
 Apply the Gluing axiom to the diagram
@@ -447,15 +447,15 @@ let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor.
 
 \medskip
 
-Recall that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and w.e. the isomorphisms. Waldhausen showed that $\left\lvert{iS_{\bullet}\a}\right\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
+Note that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and weak equivalences the isomorphisms. Waldhausen showed that $\left\lvert{iS_{\bullet}\a}\right\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
 
 
 \begin{exmp}
-Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(R) = K(\P(R), i)$$ where the w.e. $i$ are precisely the injective $R$-linear maps with projective cokernel and the cofibrations are precisely the $R$-linear maps.
+Let $R$ be a ring. Define the \textit{algebraic $K$-theory space of $R$} as $$K(R) = K(\P(R), i)$$ where the weak equivalences are precisely the injective $R$-linear maps with projective cokernel and the cofibrations are precisely the $R$-linear maps.
 \end{exmp}
 
 \begin{exmp}
-Assume that $\c$is a small Waldhausen category where $w{\c}$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion $\left\lvert{s_{\bullet} \c}\right\rvert \hookrightarrow \left\lvert{iS_{\bullet} \c}\right\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
+Assume that $\c$is a small Waldhausen category where $w{\c}$ consists of the isomorphisms in $\c$. If $s_n\c$ denotes the set of objects of $S_n \c$, then we get a simplicial set $s_{\bullet} \c$. Waldhausen showed that the inclusion map $\left\lvert{s_{\bullet} \c}\right\rvert \hookrightarrow \left\lvert{iS_{\bullet} \c}\right\rvert$ is a homotopy equivalence. This makes $\Omega |s_{\bullet} \c|$ into a so-called simplicial model for $K(\c, w)$.
 \end{exmp}
 
 \begin{remark}
@@ -474,7 +474,7 @@ $\pi_1\left\lvert{w S_{\bullet} \c}\right\rvert \cong K_0(\c, w)$.
 The group $K_0(\c, w)$ is generated by all elements $\left[X\right]$ such that 
 \begin{itemize}
 \item $\left[X'\right] + \left[X''\right] = \left[X\right]$ for every cofiber sequence $X' \rightarrowtail X \twoheadrightarrow X''$ and
-\item  $\left[X\right] = \left[Y\right]$ for every w.e. $X \overset{\sim}{\longrightarrow} Y$.
+\item  $\left[X\right] = \left[Y\right]$ for every weak equivalence $X \overset{\sim}{\longrightarrow} Y$.
 \end{itemize}
 \end{lemma}
 \begin{proof}
@@ -486,7 +486,7 @@ As a result, we obtain functors $$K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \t
 
 
 \begin{exmp}
-Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained  by attaching at least one cell to $X$ so that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and w.e. in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. 
+Let $X$ be a CW complex and $\mathcal{R}(X)$ denote the category of CW complexes $Y$  obtained  by attaching at least one cell to $X$ so that $X$ is a retract of $Y$. Equip this with cofibrations in the form of cellular inclusions fixing $X$ and weak equivalence in the form of homotopy equivalences. This makes $\mathcal{R}(X)$ into a Waldhausen category. 
 
 \smallskip
 If $\mathcal{R}_f(X)$ denotes the subcategory of those $Y$ obtained by attaching finitely many cells, then we denote  $K(\mathcal{R}_f(X))$ by $A(X)$.

@@ -345,11 +345,11 @@ A bijective function $f: U \subset \C \to V \subset \C$ is \textit{biholomorphic
 
 \begin{fact}\label{singfacts} $ $
 \be[label = (\alph*)]
-\item{\textbf{(Maximum modulus principle)}} If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\left\lvert{f}\right\rvert$ has a local maximum, then $f$ is constant. 
-\item{\textbf{(Liouville's theorem)}} Any bounded entire function is constant. 
-\item{\textbf{(Riemann extension theorem)}} If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \left\{z\right\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
-\item{\textbf{(Riemann mapping theorem)}} If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
-\item{\textbf{(Residue theorem)}} If $f: B_{\epsilon}(0)\setminus \left\{0\right\}$ is holomorphic, then $f$ can be expanded in a Laurent series
+\item{\textbf{Maximum modulus principle.}} If $U\subset \C$ is a domain, $f: U \to \C$ is holomorphic, and $\left\lvert{f}\right\rvert$ has a local maximum, then $f$ is constant. 
+\item{\textbf{Liouville's theorem.}} Any bounded entire function is constant. 
+\item{\textbf{Riemann extension theorem.}} If $\epsilon >0$ and $f: B_{\epsilon}(z) \setminus \left\{z\right\} \subset \C \to \C$ is bounded and holomorphic, then $f$ can be extended to a holomorphic function on $B_{\epsilon}(z)$.
+\item{\textbf{Riemann mapping theorem.}} If $U\subsetneq \C$ is simply connected and open, then $U\approx B_1(0)$. 
+\item{\textbf{Residue theorem.}} If $f: B_{\epsilon}(0)\setminus \left\{0\right\}$ is holomorphic, then $f$ can be expanded in a Laurent series
 $\sum_{n={-\infty}}^{\infty}a_nz^n$ such that $a_{-1} = \frac{1}{2\pi i}\oint f(z)d{z}$.
 \ee
 \end{fact}
@@ -379,7 +379,7 @@ for each $i=1, \ldots, n$.
 \begin{note}
 Statements (a), (b), and (c) of \cref{singfacts} generalize to functions of several variables, as does the Cauchy integral formula:
 \[
-f(z) = \frac{1}{(2\pi i)^n} \int_{\left\lvert{\eta_i - z_i}\right\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{(\eta_1 - z_1)\cdots (\eta_n - z_n)}d{\eta_1}\cdots d{\eta_n}
+f(z) = \frac{1}{(2\pi i)^n} \int_{\left\lvert{\eta_i - z_i}\right\rvert = \epsilon_i} \frac{f(\eta_1, \ldots, \eta_n)}{\left(\eta_1 - z_1\right)\cdots \left(\eta_n - z_n\right)}d{\eta_1}\cdots d{\eta_n}
 \] where $\eta_i >0$ for each $i=1, \ldots, n$.
 \end{note}
 
@@ -387,7 +387,7 @@ f(z) = \frac{1}{(2\pi i)^n} \int_{\left\lvert{\eta_i - z_i}\right\rvert = \epsil
 If $n>1$, then any holomorphic function $f: B_{\epsilon}(0)\setminus \left\{0\right\} \subset \C^n \to \C$ extends to a holomorphic function on $B_{\epsilon}(0)$.
 \end{theorem}
 
-\begin{defn} Let $X$ be a (topological) space. A \text{sheaf $F$ on $X$} is a presheaf on $X$ such that for any open $U\subset X$ and any open cover $\{U_i\}_{i\in J}$ of $U$, there is an exact sequence
+\begin{defn} Let $X$ be a (topological) space. A \text{sheaf $F$ on $X$} is a presheaf on $X$ such that for any open $U\subset X$ and any open cover $\left\{U_i\right\}_{i\in J}$ of $U$, there is an exact sequence
 \[
 \begin{tikzcd}
 0 \arrow[r] & F(U) \arrow[r] & F(U_i) \arrow[r] & F(U_{ij})
@@ -466,7 +466,7 @@ Since any vector bundle is locally trivial, we see that $\L_J$ is \textit{locall
 commutes. In other words, $\L_J$ is locally isomorphic to $\left(\O_X\right)^{\oplus{\rnk(J)}}$.
 
 \begin{defn} 
-A sheaf $F$ on a complex manifold $X$ is \textit{invertible} if there exist an open cover $\{U_i\}$ of $X$ and a family of holomorphic isomorphisms $\varphi_i : \O_{U_i} \to \L_J\restriction_{U_i}$.
+A sheaf $F$ on a complex manifold $X$ is \textit{invertible} if there exist an open cover $\left\{U_i\right\}$ of $X$ and a family of holomorphic isomorphisms $\varphi_i : \O_{U_i} \to \L_J\restriction_{U_i}$.
 \end{defn}
 
 \begin{exmp} 
@@ -579,7 +579,7 @@ Let $X = \P^1$ and $p = \left\{x=0\right\}$. Then $V \subset \Gamma\left(\P^1, \
 
 \subsection{Lecture 7}
 
-Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\left\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\right\}$ and $\left\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\right\}$, respectively. We can take a refinement $\{U_{i} \cap U_k\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\left\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\right\}$. Further, define $\left(L^1\right)^{-1}$ as the line bundle with transition functions $\left\{\left(g_1^{k{l}}\right)^{-1} : U_{k{l}} \to \C^{\ast}\right\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{-1} \cong \O_X$.
+Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\left\{g_1^{k{l}} : U_{k{l}} \to \C^{\ast}\right\}$ and $\left\{g_2^{i{j}} : U_{i{j}} \to \C^{\ast}\right\}$, respectively. We can take a refinement $\left\{U_{i} \cap U_k\right\}$ where both $L_1$ and $L_2$ are trivial.  Define $L^1 \otimes L^2$ as the line bundle with transition functions $\left\{g_1^{k{l}}g_2^{i{j}} : U_{ij} \cap U_{k{l}} \to \C^{\ast}\right\}$. Further, define $\left(L^1\right)^{-1}$ as the line bundle with transition functions $\left\{\left(g_1^{k{l}}\right)^{-1} : U_{k{l}} \to \C^{\ast}\right\}$. Note that, locally, $L^1 \otimes \left(L^1\right)^{-1} \cong \O_X$.
 
 \begin{defn}
 We say that a divisor $D = \sum_im_iY_i$ is \text{effective} if $m_i\geq 0$ for each $i$.
@@ -595,7 +595,7 @@ Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\
 \left(x_0, x_1\right) & \mapsto \left(x_0^m, x_0^{m-1}x_1, \ldots, x_0x_1^{m-1}, x_1^m\right)
 \\ x \ & \mapsto \  \left(1, x, \ldots, x^m\right).
 \end{align*}
-\item Let $D = p_1 + \cdots + p_m$ where $p_i = \left[1:t_i\right]$. Let $x = \frac{x_1}{x_0}$, so that $\infty$ is given by $x_0 =0$. Then $V = \C\langle \underbrace{1, \frac{1}{x-t_1}, \ldots, \frac{1}{x-t_m}}_{a_0, \frac{a_1}{x-t_1}, \ldots, \frac{a_m}{x-t_m}}\rangle$. This can be viewed as the space of all regular meromorphic functions on open subsets of $\P^1$ having poles of order at most $m$. The image of $\varphi : \P^1 \to \P^m$ is precisely the hyperplane $\{a_0 =0\}$.
+\item Let $D = p_1 + \cdots + p_m$ where $p_i = \left[1:t_i\right]$. Let $x = \frac{x_1}{x_0}$, so that $\infty$ is given by $x_0 =0$. Then $V = \C\langle \underbrace{1, \frac{1}{x-t_1}, \ldots, \frac{1}{x-t_m}}_{a_0, \frac{a_1}{x-t_1}, \ldots, \frac{a_m}{x-t_m}}\rangle$. This can be viewed as the space of all regular meromorphic functions on open subsets of $\P^1$ having poles of order at most $m$. The image of $\varphi : \P^1 \to \P^m$ is precisely the hyperplane $\left\{a_0 =0\right\}$.
 \ee
 \end{exmp}
 
@@ -738,7 +738,7 @@ Y \arrow[d, hook] \arrow[r, hook] & X \arrow[d, hook] \\
 \] where $c$ denotes the codimension of $Y$, then we can take $\bl_Y(X)$ to be the closure of $\bl_{\P^{n-c}}\left(\P^n \cap \left(X \setminus Y\right)\right)$.
 
 \begin{exmp}
-Consider $\P^3$ with coordinates $\left(x,y,z,w\right)$. We wish to resolve the cone $\{x^2 = y^2\} \subset \P^3$. Let $p = \left\{x=z=0\right\}$.
+Consider $\P^3$ with coordinates $\left(x,y,z,w\right)$. We wish to resolve the cone $\left\{x^2 = y^2\right\} \subset \P^3$. Let $p = \left\{x=z=0\right\}$.
 We have a commutative diagram
 \[
 \begin{tikzcd}
@@ -810,7 +810,7 @@ Suppose that $C$ is a smooth curve and that $\dim{X} < 2$. Then $\varphi : C \se
 Let $X$ be a complex manifold. The \textit{Picard group $\pic(X)$ of $X$} is the group of all isomorphism classes of line bundles over $X$ under $\otimes$.
 \end{defn}
 
-Let $n\in \N$ and consider the family of line bundles $\{\O(k) \mid k \in \Z\}$ over $\P^n$.
+Let $n\in \N$ and consider the family of line bundles $\left\{\O(k) \mid k \in \Z\right\}$ over $\P^n$.
 
 \begin{prop}
 $\pic\left(\P^n\right) \cong \Z$ with generator $\O(1)$. 
@@ -1257,7 +1257,7 @@ h & = z-i{\omega}
 For each $z\in \C^n$, define the matrix $\left(h_{ij}\right)\left(z\right)$ by $$h_{ij}\left(z_1, \ldots, z_n\right) = h\left(\frac{\partial}{\partial{x_i}}, \frac{\partial}{\partial{x_j}}\right).$$ 
 
 \begin{prop}
-Let $I$ be an almost complex structure on $U\subset X$ and let $g$ be compatible with $I$. Then $d{\omega} =0$ if and only if for each $x\in X$, there exist a neighborhood  $U'$ of $x$ and a holomorphic map $f: U' \to U$ such that $f^{\ast}{g}$ \textit{oscialates the standard metric to the second order}, i.e., $\left(h_{ij}\right) = \id + O\left(\left\lvert{z}\right\rvert^2\right)$.
+Let $I$ be an almost complex structure on $U\subset X$ and let $g$ be compatible with $I$. Then $d{\omega} =0$ if and only if for each $x\in X$, there exist a neighborhood  $U'$ of $x$ and a holomorphic map $f: U' \to U$ such that $f^{\ast}{g}$ \textit{oscillates the standard metric to the second order}, i.e., $\left(h_{ij}\right) = \id + O\left(\left\lvert{z}\right\rvert^2\right)$.
 \end{prop}
 
 \begin{notation}
@@ -1282,7 +1282,7 @@ Let $\left(X, I, g, \omega\right)$ be a K\"ahler structure with $\dim{X} =n$.
 
 \begin{note} $ $
 \be
-\item In coordinates in which $h\approx \id$, we have that $\ast{d{x^I}} = d{x^{\partial}}$ where $\partial \coloneqq I^{\C}$ ??.
+\item In coordinates for which $h\approx \id$, we have that $\ast{d{x^I}} = d{x^{\partial}}$ where $\partial \coloneqq I^{\C}$ ??.
 \item $\Lambda$ is $\O$-linear.
 \ee
 \end{note}
@@ -1320,7 +1320,7 @@ It turns out that $S \cong H^2\left(X, \R\right)$.
 
 \begin{note}
 Let $f: X \to Y$ be holomorphic and let $\omega$ be a K\"ahler form on $Y$. It is \emph{not} necessarily true that $f^{\ast}{\omega}$ is K\"ahler on $X$. For example, if $f(x) = \pt$ for all $x\in X$, then $f^{\ast}{\omega}$ is the zero form and thus not positive. 
-In general,  $f$ must be injective. For example, if $f: C \to \C$ is a double cover where $C$ is a Riemann surface, then $C$ inherits a K\"ahler form only outside the  \textit{ramification of $f$}, i.e., the set $$\{c\in C \mid \text{there is no neighborhood } U \text{ of  } c \text{ such that } f\restriction_U \text{ is injective}\}.$$ This is precisely the set of points at which $d{f}$ is nonzero.
+In general,  $f$ must be injective. For example, if $f: C \to \C$ is a double cover where $C$ is a Riemann surface, then $C$ inherits a K\"ahler form only outside the  \textit{ramification of $f$}, i.e., the set $$\left\{c\in C \mid \text{there is no neighborhood } U \text{ of  } c \text{ such that } f\restriction_U \text{ is injective}\right\}.$$ This is precisely the set of points at which $d{f}$ is nonzero.
 \end{note}
 
 \begin{exmp}\label{km2} $ $

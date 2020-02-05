@@ -458,7 +458,7 @@ If $\theta$ is simple, then for any $x \in S$, the mapping $f: G \to S$ given by
 \begin{enumerate}
 
 \item Show that if $\sigma, \tau \in S_n$, then they are conjugate in $S_n$  if and only if $\sigma$ and $\tau$ have the same type of cyclic decomposition.
-\item Show that there is a natural bijection between ${S_n}\diagdown_{\conj}{S_n}$ and the set of unordered partitions of $\{1, \ldots, n\}$.
+\item Show that there is a natural bijection between ${S_n}\diagdown_{\conj}{S_n}$ and the set of unordered partitions of $\left\{1, \ldots, n\right\}$.
 \end{enumerate}
 \end{exercise}
 
@@ -483,7 +483,7 @@ Note that  $\theta \cong \psi$ if and only if there exist intertwiners $f_1 : S 
 \begin{exmp} $ $
 \begin{enumerate}
 \item If $\theta: G \to \aut(S)$ is simply transitive and $x \in S$, then $f_x: G \to S$ defined by $g \mapsto \theta(g)(x)$ intertwines $\theta$ and left translation on $G$. Therefore, every $G$-torsor action is non-canonically isomorphic to left translation on $G$.
-\item Moreover, if $H \leq G$, then left translation by $G$ on the coset space $\{gH\}$ is well-defined and is transitive. We can extend this to prove that left translations by $G$ on a coset space characterize transitive actions up to isomorphism.
+\item Moreover, if $H \leq G$, then left translation by $G$ on the coset space $\left\{gH\right\}$ is well-defined and is transitive. We can extend this to prove that left translations by $G$ on a coset space characterize transitive actions up to isomorphism.
 \end{enumerate}
 \end{exmp}
 
@@ -1341,7 +1341,7 @@ An endomorphism $\phi$ of $G$ is \textit{normal} if $\phi \circ \conj_x = \conj_
 \item The inverse of a normal automorphism is also normal.
 \item Normal endomorphisms preserve normal subgroups.
 \item If $\phi$ and $\psi$ are normal, then $\phi + \psi$ is normal, where $\phi + \psi$ is given by $g\mapsto \phi(g)\psi(g)$.
-\item If $G = G_1 \times \cdots \times G_k$ and $p_i$ and $f_i$ denote projection and inclusion, respectively, then each each $f_ip_i$ is normal. Moreover, for any $\{a_1, \ldots, a_r\} \subset \{1, \ldots, k\}$, we have that $\sum_{j=1}^r f_{a_j}p_{a_j}$ is normal.
+\item If $G = G_1 \times \cdots \times G_k$ and $p_i$ and $f_i$ denote projection and inclusion, respectively, then each each $f_ip_i$ is normal. Moreover, for any $\left\{a_1, \ldots, a_r\right\} \subset \left\{1, \ldots, k\right\}$, we have that $\sum_{j=1}^r f_{a_j}p_{a_j}$ is normal.
 \end{enumerate}
 \end{lemma}
 \begin{prop}
@@ -1525,11 +1525,11 @@ A filtration $F^{\bullet}G$ is called \textit{non-repetitious} if $F^i \ne F^{i+
 \end{definition}
 
 \begin{definition}
-We say that $\{R^iG\}_{i=1}^t$ is a \textit{refinement} of $\{F^iG\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to [t]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
+We say that $\left\{R^iG\right\}_{i=1}^t$ is a \textit{refinement} of $\left\{F^iG\right\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to [t]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
 \end{definition}
 
 \begin{theorem}[Schreier refinement]\label{schr}
-Suppose that $\{F^iG\}_{i=0}^s$ and $\{T^jG\}_{j=0}^t$ are filtrations on $G$. Then we can find respective refinements $\widetilde{F}^{\bullet}G$ and $\widetilde{T}^{\bullet}G$ which are equivalent to our original filtrations. Further, if the two original filtrations are non-repetitious, then we can choose the refinements to be non-repetitious as well. 
+Suppose that $\left\{F^iG\right\}_{i=0}^s$ and $\left\{T^jG\right\}_{j=0}^t$ are filtrations on $G$. Then we can find respective refinements $\widetilde{F}^{\bullet}G$ and $\widetilde{T}^{\bullet}G$ which are equivalent to our original filtrations. Further, if the two original filtrations are non-repetitious, then we can choose the refinements to be non-repetitious as well. 
 \end{theorem}
 \begin{proof}
 Suppose that $F^{\bullet}$ and $T^{\bullet}$ are non-repetitious. Let $\widetilde{F}_{i-1}^{(j)} =  \left(F^{i-1}\cap T^j\right) \cdot F^i$. Then for any $q\leq i \leq s$, we get a filtration $$F^{i-1} = F^{i-1}\cdot F^i =\widetilde{F}_{i-1}^{(0)}\geq \widetilde{F}_{i-1}^{(1)}\geq \cdots \geq \widetilde{F}_{i-1}^{(t)} = F^i.$$ Thus, the $\widetilde{F}_{i-1}^{(j)}$ define a refinement of $F^{\bullet}G$. 
@@ -1695,7 +1695,7 @@ We call $G_{\phi^{\ast}\xi}\coloneqq  G\times_{K}L$ together with the induced ma
 
 Consider the action $\beta \circ q : G \to \aut(B)$. This induces a group map $i \times \psi : A \to G \ltimes_{\beta \circ q} B$ given by $a \mapsto \left(a, \psi(a)\right)$.
 \begin{claim}
-The map $i \times \psi$ is injective with $\overbrace{\im(i \times \psi)}^{A} \unlhd G \ltimes_{\beta \circ q} B$. Moreover, $A \leq \ker(G\ltimes_{\beta \circ q} B \twoheadrightarrow K)$.
+The map $i \times \psi$ is injective, and $$\overbrace{\im(i \times \psi)}^{A} \unlhd G \ltimes_{\beta \circ q} B.$$ Moreover, $A \leq \ker(G\ltimes_{\beta \circ q} B \twoheadrightarrow K)$.
 \end{claim}
 \begin{proof}
 Injectivity follows from the fact that $i$ is injective. Recall that the group law on $G \ltimes_{\beta \circ q} B$ is given by $$(g_1, b_1)(g_2, b_2) = \left(g_1g_2, b_1(\beta \circ q(g_1)(b_2))\right).$$ To see that $A$ is normal, we compute
@@ -1898,10 +1898,10 @@ When $\c$ is small, we see that $\left(\mor{\c}, \circ\right)$ is a partially de
 \item Recall the functor category $\mathbf{sSet} \coloneqq \Fun(\varDelta^{\op}, \mathbf{Set})$ of simplicial sets (cf. \cref{funct} below). We can view simplicial sets as books that record the combinatorics of gluing
 simplices into a topological space. 
 
- Also, recall the \textit{standard $n$-simplex} $$\Delta^n = \left\{(t_0, \ldots, t_n) \in \R^{n+1} : t_i \geq 0, \ \sum_{i=0}^n t_i =1\right\}.$$ In this case, we send a morphism $f : [m] \to [n]$ to the map $$\Delta_f : \R^{m+1} \to \R^{n+1}, \ \quad e_i \mapsto e_{f(i)},$$ which is linear over $\R$. We see that $\Delta_f(\Delta^m) \subset \Delta^n$, where $\Delta_f(\Delta^m)$ is either a face of $\Delta^n$ or the entire simplex $\Delta^n$. Note that $\Delta^{(-)}$ is a covariant functor $\varDelta \to \mathbf{Set}$, hence not a simplicial set in the strict sense. 
+ Also, recall the \textit{standard $n$-simplex} $$\Delta^n = \left\{(t_0, \ldots, t_n) \in \R^{n+1} : t_i \geq 0, \ \sum_{i=0}^n t_i =1\right\}.$$ In this case, we send a morphism $f : [m] \to [n]$ to the map $$\Delta_f : \R^{m+1} \to \R^{n+1}, \ \quad e_i \mapsto e_{f(i)},$$ which is linear over $\R$. We see that $\Delta_f(\Delta^m) \subset \Delta^n$, where $\Delta_f(\Delta^m)$ is either a face of $\Delta^n$ or the entire simplex $\Delta^n$. Note that $\Delta^{(-)}$ is a covariant functor $\varDelta \to \mathbf{Set}$, hence a \textit{cosimplicial set}. 
 
 
-Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete topology. Define the \textit{geometric realization of $X_{\bullet}$} as the space $$\left\lvert{X_{\bullet}}\right\rvert \equiv \coprod_{m\geq 0} \faktor{(X_m \times \Delta^m)}{\sim}$$ where $X_n \times \Delta^n \ni \left(x, y\right)\sim \left(x', y'\right) \in X_m \times \Delta^m$ if $X(f)(y') = y$ and $\Delta_f(x) = x'$ for some morphism $f: [n] \to [m]$.  
+Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete topology. Define the \textit{geometric realization of $X_{\bullet}$} as the space $$\left\lvert{X_{\bullet}}\right\rvert \equiv \faktor{\coprod_{m\geq 0}{\left(X_m \times \Delta^m\right)}}{\sim}$$ where $X_n \times \Delta^n \ni \left(x, y\right)\sim \left(x', y'\right) \in X_m \times \Delta^m$ if $X(f)(y') = y$ and $\Delta_f(x) = x'$ for some morphism $f: [n] \to [m]$.  
 \item  We have the category of  \textit{correspondences} $\mathbf{Corr}$ with objects all sets and morphisms all binary relations. Given any two binary relations $u\subset X\times Y$ and $v \subset Y \times Z$, let
  $$v \circ u = \left\{(x, y) \in X \times Z : \left(\exists b \in Y\right)\left((x, b) \in u \text{ and }(b, y) \in v\right)\right\}.$$ Then the identity morphisms are precisely the diagonal maps.
 \item Let $\left(I, \leq \right)$ be a partially ordered set. Then we have the \textit{order category $I$ associated to $\leq$} with $\ob(I) \equiv I$ and for any $x,y\in I$,
@@ -1918,6 +1918,10 @@ Given a simplicial set $X_{\bullet}$, endow each set $X_n$ with the discrete top
 \item Let $G$ be a group. Then the \textit{classifying category $B{G}$ of $G$} is the category with a single object $\ast$ and $\Hom_{B{G}}(\ast, \ast) \equiv G$. Composition here is given by the group law of $G$, and the identity morphism is precisely $e_G$. 
 
 Note that $B\left(G^{\op}\right) =\left(BG\right)^{\op}$.
+
+\begin{aside}
+Suppose that $G$ is a discrete group. Then the geometric realization $\left\lvert{N(B{G})}\right\rvert$ of the nerve  of $B{G}$ is homotopy equivalent to the classifying space for principal $G$-bundles.
+\end{aside}
 \end{enumerate}
 \end{exmp}
 
@@ -2232,9 +2236,9 @@ $\left([0,1], M\right)$ is the terminal object in $\c$.
 \end{enumerate}
 \end{definition}
 
- By the Yoneda lemma, if $P$ is the product of $\{A_{\alpha}\}$, then there is some $\xi \coloneqq \left\{\pr_{\alpha} : P \to A_{\alpha}\right\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(P, A_{\alpha})$ such that $$\eta^{\xi}_B : h_P = \Hom_{\c}(B, P) \to \prod_{\alpha}\Hom_{\c} (B, A_{\alpha}), \  \quad f \mapsto \left\{\pr_{\alpha} \circ f\right\}_{\alpha}$$ is a natural bijection in $B \in \ob \c$. This gives an isomorphism of set-valued presheaves $h_P \cong \Hom_{\c}(-, A_{\alpha})$. Let $$\prod_{\alpha} A_{\alpha} \coloneqq  P.$$ Then we have a natural bijection $\Hom_{\c}(B, \prod_{\alpha} A_{\alpha}) \cong \prod_{\alpha} \Hom_{\c}(B, A_{\alpha})$ in $B$.
+ By the Yoneda lemma, if $P$ is the product of $\left\{A_{\alpha}\right\}$, then there is some $\xi \coloneqq \left\{\pr_{\alpha} : P \to A_{\alpha}\right\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(P, A_{\alpha})$ such that $$\eta^{\xi}_B : h_P = \Hom_{\c}(B, P) \to \prod_{\alpha}\Hom_{\c} (B, A_{\alpha}), \  \quad f \mapsto \left\{\pr_{\alpha} \circ f\right\}_{\alpha}$$ is a natural bijection in $B \in \ob \c$. This gives an isomorphism of set-valued presheaves $h_P \cong \Hom_{\c}(-, A_{\alpha})$. Let $$\prod_{\alpha} A_{\alpha} \coloneqq  P.$$ Then we have a natural bijection $\Hom_{\c}(B, \prod_{\alpha} A_{\alpha}) \cong \prod_{\alpha} \Hom_{\c}(B, A_{\alpha})$ in $B$.
 
- Likewise, if $Q$ is the coproduct of $\{A_{\alpha}\}$, then by viewing the coproduct functor as a presheaf on $\c^{\op}$ we get some $\xi\coloneqq  \left\{i_{\alpha} : A_{\alpha} \to Q\right\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(A_{\alpha}, Q)$ such that $$\Hom_{\c} (Q, B) \overset{\cong}{\longrightarrow} \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B), \ \quad f \mapsto \left\{f \circ i_{\alpha}\right\}_{\alpha}$$ for each $B\in \ob \c$. Let $$\coprod_{\alpha} A_{\alpha} \coloneqq  Q.$$ Then $\Hom_{\c}\left(\coprod_{\alpha} A_{\alpha}, B\right) \cong \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B)$ for each $B$.
+ Likewise, if $Q$ is the coproduct of $\left\{A_{\alpha}\right\}$, then by viewing the coproduct functor as a presheaf on $\c^{\op}$ we get some $\xi\coloneqq  \left\{i_{\alpha} : A_{\alpha} \to Q\right\}_{\alpha} \in \prod_{\alpha}\Hom_{\c}(A_{\alpha}, Q)$ such that $$\Hom_{\c} (Q, B) \overset{\cong}{\longrightarrow} \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B), \ \quad f \mapsto \left\{f \circ i_{\alpha}\right\}_{\alpha}$$ for each $B\in \ob \c$. Let $$\coprod_{\alpha} A_{\alpha} \coloneqq  Q.$$ Then $\Hom_{\c}\left(\coprod_{\alpha} A_{\alpha}, B\right) \cong \prod_{\alpha}\Hom_{\c}(A_{\alpha}, B)$ for each $B$.
  
  \begin{notation}
  The symbol $\bigoplus$ may be used in place of $\coprod$.
@@ -2253,7 +2257,7 @@ N \arrow[r, "\lambda(x)"] & N
 \end{tikzcd}
 \] commutes.
 
-Let $\left\{\left(A_{\alpha}, \rho_{\alpha}\right)\right\}_{\alpha \in I}$ be a collection of $R$-modules. If we endow the Cartesian product $\prod_{\alpha} A_{\alpha}$ with the componentwise module structure inherited from the $A_{\alpha}$, then it becomes the product of $\{A_{\alpha}\}$ in $\mathbf{Mod}_R$. Specifically, the underlying group law and zero element are given by 
+Let $\left\{\left(A_{\alpha}, \rho_{\alpha}\right)\right\}_{\alpha \in I}$ be a collection of $R$-modules. If we endow the Cartesian product $\prod_{\alpha} A_{\alpha}$ with the componentwise module structure inherited from the $A_{\alpha}$, then it becomes the product of $\left\{A_{\alpha}\right\}$ in $\mathbf{Mod}_R$. Specifically, the underlying group law and zero element are given by 
 \begin{align*}
 \left(a_{\alpha}\right)_{\alpha \in I} + \left(b_{\alpha}\right)_{\alpha \in I} & \equiv \left(a_{\alpha} + b_{\alpha}\right)_{\alpha \in I}
 \\  0&  \equiv \left(0\right)_{\alpha \in I}
@@ -2262,7 +2266,7 @@ Let $\left\{\left(A_{\alpha}, \rho_{\alpha}\right)\right\}_{\alpha \in I}$ be a 
 \left(\prod_{\alpha} \rho_{\alpha}\right)(x)\left(\left(a_{\alpha}\right)\right)=\left(\rho_{\alpha}(x)\left(a_{\alpha}\right)\right), \quad x\in R
 .\] 
 
-Moreover, the coproduct (or direct sum) of $\{A_{\alpha}\}$ is defined as the submodule of the product consisting of all tuples $(a_{\alpha})$ such that $a_{\alpha} \ne 0$ for at most finitely many $\alpha \in I$. This means that the product and coproduct coincide when $I$ is finite.
+Moreover, the coproduct (or direct sum) of $\left\{A_{\alpha}\right\}$ is defined as the submodule of the product consisting of all tuples $(a_{\alpha})$ such that $a_{\alpha} \ne 0$ for at most finitely many $\alpha \in I$. This means that the product and coproduct coincide when $I$ is finite.
 
 \begin{exercise} $ $
 \begin{enumerate}
@@ -2563,7 +2567,7 @@ $\deg(p_1 + p_2) \leq \max(\deg p_1, \deg p_2)$.
 
 
 Let $S$ be a set. Note that $\Fun^{\fs}(S, \Z_{\geq 0})$ is an additive monoid because $\Z$ is one. We can view its elements as finite subsets of $S$ where each element of $S$ is ``colored" by a nonnegative integer. Alternatively, we can view its elements as monomials in elements of $S$. For any $s\in S$, define $t_s : S \to \Z_{\geq 0}$ by $$x \mapsto \begin{cases} 0 & s \ne x \\ 1 & s =x \end{cases}.$$ Then for any $\xi \in \Fun^{\fs}(S, \Z_{\geq 0})$, we have that $$\xi = \prod_{s\in S}t_s^{\xi(s)} =\prod_{s\in \supp(\xi)}t_s^{\xi(s)},$$
-Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial ring over $A$ on $\{t_s\}_{s\in S}$} as $$A[S] \equiv \Fun^{\fs}(\Fun^{\fs}(S, \Z_{\geq 0}), A)$$ equipped with the operations
+Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial ring over $A$ on $\left\{t_s\right\}_{s\in S}$} as $$A[S] \equiv \Fun^{\fs}(\Fun^{\fs}(S, \Z_{\geq 0}), A)$$ equipped with the operations
 \begin{align*}
 (f+g)(\xi) & \equiv f(\xi) +g(\xi)
 \\ (f\cdot g)(\xi) & \equiv \mathop{\sum_{\mu, \nu}}_{\mu \cdot \nu = \xi} f(\mu) \cdot g(\nu).
@@ -2861,7 +2865,7 @@ There is some $m\in \coprod_{s\in S}R$ such that $\alpha(m) = x-\theta(y)$. Henc
 \end{prop}
 
 \begin{lemma}
-Let $\{M_{\lambda}\}_{\lambda\in \Lambda}$ be a set of $R$-modules. Without loss of generality, assume that each $M_{\lambda}$ is nontrivial. If $P$ denotes any of the three finiteness properties, then $\coprod_{\lambda \in \Lambda} M$ has $P$  if and only if each $M_{\lambda}$ has $P$ and $\Lambda$ is finite.
+Let $\left\{M_{\lambda}\right\}_{\lambda\in \Lambda}$ be a set of $R$-modules. Without loss of generality, assume that each $M_{\lambda}$ is nontrivial. If $P$ denotes any of the three finiteness properties, then $\coprod_{\lambda \in \Lambda} M$ has $P$  if and only if each $M_{\lambda}$ has $P$ and $\Lambda$ is finite.
 \end{lemma}
 \begin{proof} $ $
 \smallskip
@@ -2870,7 +2874,7 @@ Let $\{M_{\lambda}\}_{\lambda\in \Lambda}$ be a set of $R$-modules. Without loss
 
  Suppose that $\coprod_{\lambda} M_{\lambda}$ has $P$. Each projection $\pi_{\lambda}$ onto $M_{\lambda}$ is a surjection, and $P$ is preserved by quotients. Hence each $M_{\lambda}$ has $P$. Now, suppose, toward a contradiction, that $\Lambda$ is infinite. We have three cases to consider.
 \begin{enumerate}[label=(\alph*)]
-\item Suppose that $\coprod_{\lambda} M_{\lambda}$ is Noetherian. By the countable axiom of choice, find some countably infinite subset $\{\lambda_n\}\subset \Lambda.$ But this yields an infinite chain $$M_{\lambda_1} \subsetneq M_{\lambda_1} \coprod M_{\lambda_2} \subsetneq \cdots \subset \coprod_{\lambda} M_{\lambda},$$ a contradiction.
+\item Suppose that $\coprod_{\lambda} M_{\lambda}$ is Noetherian. By the countable axiom of choice, find some countably infinite subset $\left\{\lambda_n\right\}\subset \Lambda.$ But this yields an infinite chain $$M_{\lambda_1} \subsetneq M_{\lambda_1} \coprod M_{\lambda_2} \subsetneq \cdots \subset \coprod_{\lambda} M_{\lambda},$$ a contradiction.
 \item For the Artinian case, use a similar argument to (a).
 \item Suppose that $\coprod_{\lambda} M_{\lambda}$ is finitely generated. We have a surjection $$\phi: \coprod_{i=1}^n R \twoheadrightarrow \coprod_{\lambda} M_{\lambda}$$ for some integer $n$. For each $1\leq i\leq n$, let $x_i = \phi(0, \ldots, \underbrace{1}_{i\text{-th spot}}, \ldots, 0),$ so that $x_i = (x_{i_{\lambda}})_{\lambda \in \Lambda}$. Let $$\Lambda^0 = \left\{\lambda \in \Lambda : \exists i\left(x_{i_\lambda}\ne 0\right)\right\} .$$ Note that $\Lambda^0$ is finite, which means that there is some $\mu \in \Lambda \setminus \Lambda^0$.  Then the composite $$\pi_{\mu} \circ \phi$$ is precisely the trivial morphism. But it is also a surjection as the composite of surjections, a contradiction. 
 \end{enumerate}
@@ -2994,7 +2998,7 @@ Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be 
 Let $k$ be a field, $G$ a finite group, and $A$ a finitely generated $k$-algebra equipped with a $G$-action. If $\left(\left\lvert{G}\right\rvert, \Char(k)\right)=1$, then $$A^G\coloneqq  \{ a \in A: \forall g \in G.g\cdot a =a\}$$ is a finitely generated $k$-subalgebra. 
 \end{theorem}
 \begin{proof}
-Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\left\lvert{G}\right\rvert$ is coprime to $\Char(k)$, we know that $\left\lvert{G}\right\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\left\lvert{G}\right\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A[x].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\{g\cdot a\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G[x]$. 
+Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\left\lvert{G}\right\rvert$ is coprime to $\Char(k)$, we know that $\left\lvert{G}\right\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\left\lvert{G}\right\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A[x].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\left\{g\cdot a\right\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G[x]$. 
 \begin{definition}
 Let $P(x)$ be a polynomial of degree $k$ with roots $x_1, \ldots, x_k$. If $n\in \N$, then define the \textit{n-th Newton sum} as $P_n \equiv x_1^n + \cdots + x_k^n$.
 \end{definition}
@@ -3144,7 +3148,7 @@ An $R$-module $M$ is projective  if and only if it is a direct summand of a free
 $(\Longleftarrow)$
 
 
-To begin, suppose that $M$ is free. Then $$M \cong \coprod_{\lambda \in \Lambda} R.$$  Pick a basis $(m_{\lambda})$ for $M$. Let $X \overset{q}{\longrightarrow}  X'' \to 0$ be an exact sequence of $R$-modules. Let $\phi : M \to X''$ be a homomorphism. For each $\lambda$, find some lift $x_{\lambda}\in X$ of $\phi(m_{\lambda})$. Then the assignment $\lambda \mapsto x_{\lambda}$ determines a set-theoretic function $x : \Lambda \to \left\lvert{X}\right\rvert$. By adjointness, there is some $\psi \in \Hom_{R{-}\mathbf{Mod}}(\coprod_{\lambda} R, X)$ such that $\psi(m_{\lambda}) = x_{\lambda}$. Explicitly, if $a \in M$, then $a = \sum_{\lambda}a_{\lambda}m_{\lambda}$ where $a_{\lambda}\in R$. Then $\psi(a) = \sum_{\lambda} a_{\lambda}x_{\lambda}$. This implies that $q(\psi(a)) = \sum_{\lambda} a_{\lambda}\phi(m_{\lambda}) = \phi(a)$. It follows that \[
+To begin, suppose that $M$ is free. Then $$M \cong \coprod_{\lambda \in \Lambda} R.$$  Pick a basis $(m_{\lambda})$ for $M$. Let $X \overset{q}{\longrightarrow}  X'' \to 0$ be an exact sequence of $R$-modules. Let $\phi : M \to X''$ be a homomorphism. For each $\lambda$, find some lift $x_{\lambda}\in X$ of $\phi(m_{\lambda})$. Then the assignment $\lambda \mapsto x_{\lambda}$ determines a set-theoretic function $x : \Lambda \to \left\lvert{X}\right\rvert$. By adjointness, there is some $\psi \in \Hom_{R{-}\mathbf{Mod}}\left(\coprod_{\lambda} R, X\right)$ such that $\psi(m_{\lambda}) = x_{\lambda}$. Explicitly, if $a \in M$, then $a = \sum_{\lambda}a_{\lambda}m_{\lambda}$ where $a_{\lambda}\in R$. Then $\psi(a) = \sum_{\lambda} a_{\lambda}x_{\lambda}$. This implies that $q(\psi(a)) = \sum_{\lambda} a_{\lambda}\phi(m_{\lambda}) = \phi(a)$. It follows that \[
 \begin{tikzcd}
 M \arrow[rd, "\phi"] \arrow[d, "\psi"'] &  &  \\
 X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
@@ -3203,7 +3207,7 @@ Any short exact sequence of $R$-modules $0 \to M \to X \to X'' \to 0$ with $M$ i
 \end{corollary}
 
 \begin{corollary}
-If $\{M_{\lambda}\}$ is a collection of $R$-modules, then $\coprod_{\lambda} M_{\lambda}$ is projective  if and only if each $M_{\lambda}$ is projective. 
+If $\left\{M_{\lambda}\right\}$ is a collection of $R$-modules, then $\coprod_{\lambda} M_{\lambda}$ is projective  if and only if each $M_{\lambda}$ is projective. 
 \end{corollary}
 \begin{proof} $ $
 
@@ -3211,7 +3215,7 @@ If $\{M_{\lambda}\}$ is a collection of $R$-modules, then $\coprod_{\lambda} M_{
 
 $(\Longleftarrow)$ 
 
-As each $M_{\lambda}$ is projective, we know that $\Hom_R(M_{\lambda}, -)$ is an exact functor. This implies that the functor $\Hom_R(\coprod_{\lambda} M_{\lambda}, {-}) \cong \prod_{\lambda} \Hom_R(M_{\lambda}, -)$ is exact as well.
+As each $M_{\lambda}$ is projective, we know that $\Hom_R(M_{\lambda}, -)$ is an exact functor. This implies that the functor $\Hom_R\left(\coprod_{\lambda} M_{\lambda}, {-}\right) \cong \prod_{\lambda} \Hom_R(M_{\lambda}, -)$ is exact as well.
 
 \medskip
 
@@ -3222,7 +3226,7 @@ As $\coprod_{\lambda} M_{\lambda}$ is projective, there is some $R$-module $N$ s
 \end{proof}
 
 \begin{corollary}
-If $\{M_{\lambda}\}$ is a collection of $R$-modules, then $\prod_{\lambda} M_{\lambda}$ is injective  if and only if each $M_{\lambda}$ is injective. 
+If $\left\{M_{\lambda}\right\}$ is a collection of $R$-modules, then $\prod_{\lambda} M_{\lambda}$ is injective  if and only if each $M_{\lambda}$ is injective. 
 \end{corollary}
 
 \smallskip
@@ -3252,12 +3256,12 @@ Let \[
  & \Q &  \\
 0 \arrow[r] & X' \arrow[r, "i"', hook] \arrow[u, "\phi"] & X
 \end{tikzcd}
-\] be an injectivity diagram. The set $$\left\{ (A, \xi) : X' \subset \underbrace{A}_{\text{abelian}} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \right\}$$ is nonempty and partially ordered  by $\leq$ where $(A_1, \xi_1) \leq (A_2, \xi_2)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn's lemma, there is some maximal element $(A, \xi)$. If $A = X$, then we are done. Suppose, toward a contradiction, that $A \subsetneq X$, i.e., there is some $x\in X \setminus A$. Let $\tilde{A} = \langle A, x\rangle \subset X$. 
+\] be an injectivity diagram. The set $$\left\{ (A, \xi) : X' \subset \underset{\text{abelian}}{A} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \right\}$$ is nonempty and partially ordered  by $\leq$ where $\left(A_1, \xi_1\right) \leq \left(A_2, \xi_2\right)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn's lemma, there is some maximal element $\left(A, \xi\right)$. If $A = X$, then we are done. Suppose, toward a contradiction, that $A \subsetneq X$, i.e., there is some $x\in X \setminus A$. Let $\tilde{A} = \langle A, x\rangle \subset X$. 
 
-We can extend $\xi : A \to \Q$ to a homomorphism $\tilde{\xi} : \tilde{A} \to \Q$ by deciding where to send $x$. Indeed, if $nx \notin A$ for every nonzero integer $n$, then set $\tilde{\xi}(x) = 0$. If there is some $n\in \Z \setminus \{0\}$ such that $nx \in A$, then $\{n \in \Z : nx \in A\}$ is an ideal in $\Z$ and thus equals $(n_0)$ for some integer $n_0 >0$. In this case, set $\tilde{\xi}(x) = \frac{\xi(n_0x)}{n_0} \in \Q$. 
+We can extend $\xi : A \to \Q$ to a homomorphism $\tilde{\xi} : \tilde{A} \to \Q$ by deciding where to send $x$. Indeed, if $nx \notin A$ for every nonzero integer $n$, then set $\tilde{\xi}(x) = 0$. If there is some $n\in \Z \setminus \{0\}$ such that $nx \in A$, then $\left\{n \in \Z : nx \in A\right\}$ is an ideal in $\Z$ and thus equals $(n_0)$ for some integer $n_0 >0$. In this case, set $\tilde{\xi}(x) = \frac{\xi(n_0x)}{n_0} \in \Q$. 
 
 For each $\tilde{a} \in \tilde{A}$, write $\tilde{a} = a + mx$ for some $a\in A$ and some $m\in \Z$. Let $$\tilde{\xi}(\tilde{a}) = \xi(a) + m\tilde{\xi}(x).$$
-We claim that $\tilde{\xi}$ is well-defined. If $\{n \in \Z : nx \in A\} = (0)$, then $\tilde{\xi}(x) =0$ and $\tilde{\xi}(\tilde{a}) = \xi(a)$, where $a$ is uniquely determined from $\tilde{a}$.  If $\{n \in \Z : nx \in A\} = (n_0)$, then $\tilde{\xi}(\tilde{a}) = \xi(a) + \frac{m\xi(n_0x)}{n_0}$. If $\tilde{a} = b + kx$, then $a-b = (k-m)x $. If this equals $0$, then we're done.
+We claim that $\tilde{\xi}$ is well-defined. If $\left\{n \in \Z : nx \in A\right\} = (0)$, then $\tilde{\xi}(x) =0$ and $\tilde{\xi}(\tilde{a}) = \xi(a)$, where $a$ is uniquely determined from $\tilde{a}$.  If $\left\{n \in \Z : nx \in A\right\} = \left(n_0\right)$, then $\tilde{\xi}(\tilde{a}) = \xi(a) + \frac{m\xi(n_0x)}{n_0}$. If $\tilde{a} = b + kx$, then $a-b = \left(k-m\right)x $. If this equals $0$, then we're done.
 Otherwise, $k-m = dn_0$ for some integer $d\ne 0$.  Then 
 \begin{align*} 
  0 & = \xi(a-b) - \xi((k-m)x) = \xi(a) - \xi(b) - \xi(dn_0x) 
@@ -3266,7 +3270,7 @@ Otherwise, $k-m = dn_0$ for some integer $d\ne 0$.  Then
 \\ & = \tilde{\xi}(a+mx) - \tilde{\xi}(b+kx).
 \end{align*}
 This confirms that $\tilde{\xi}$ is well-defined. Thus,
-we have shown that $(\tilde{A}, \tilde{\xi}) > (A, \xi)$, a contradiction. 
+we have shown that $\left(\tilde{A}, \tilde{\xi}\right) > \left(A, \xi\right)$, a contradiction. 
 \end{proof}
 \begin{corollary}
 Any divisible abelian group is injective.

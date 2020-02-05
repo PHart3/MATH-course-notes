@@ -1266,24 +1266,24 @@ Let $F$ be an ultrafilter on $S$. Define $\mu : \P(S) \to \left\{0, 1\right\}$ b
 A subset $G\subset \P(S)$ has the \textit{finite intersection property} (FIP) if $$Z_1, \ldots, Z_k \in G \implies Z_1 \cap \cdots \cap Z_k \ne \emptyset.$$
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{FIP}
 If $G\subset \P(S)$ has FIP, then there is some filter $H$ on $S$ such that $H\supset G$.
 \end{lemma}
 \begin{proof}
-Take $H = \{W\subset S \mid$ there exist a $k\in \N$ and $Z_1, \ldots, Z_k \in G$ such that $Z_1 \cap \cdots \cap Z_k \subset W\}$.
+Take $H = \left\{W\subset S \mid \text{ there exist a } k\in \N \text{ and } Z_1, \ldots, Z_k \in G\text{ such that } Z_1 \cap \cdots \cap Z_k \subset W\right\}$.
 \end{proof}
 
 \begin{theorem}
 Every filter $E$ on $S$ can be extended to an ultrafilter.
 \end{theorem}
 \begin{proof}
-Let $\mathcal{F} = \{F \subset \P(S) \mid F \text{ is a filter on }S,\  F\supset E\}$. Then $\left(\mathcal{F}, \subset\right)$ is a poset with $E\in \mathcal{F}$. 
+Let $\mathcal{F} = \left\{F \subset \P(S) \mid F \text{ is a filter on }S,\  F\supset E\right\}$. Then $\left(\mathcal{F}, \subset\right)$ is a poset with $E\in \mathcal{F}$. 
 \begin{claim}
  A filter $F\subset \P(S)$ is an ultrafilter if and only if it is maximal in $\mathcal{F}$.
 \end{claim}
 \begin{proof}
 It is clear that if $F$ is an ultrafilter, then it is maximal. For the converse, suppose that $F$ is not an ultrafilter. Then there is some $X\in \P(S)$ such that both $X \notin F$ and $\left(S\setminus X\right) \notin F$. We must show that $F$ is not maximal in $\mathcal{F}$. 
-Note that for any $Y \in F$, the intersection $X \cap Y$ is nonempty. Therefore, $F \cup \{X\}$ has FIP. By our least lemma, $F \cup \{X\}$ can be extended to a filter $H$ on $S$. But $H \supsetneq F \supset E$, so that $F$ is not maximal in $\mathcal{F}$.
+Note that for any $Y \in F$, the intersection $X \cap Y$ is nonempty. Therefore, $F \cup \left\{X\right\}$ has FIP. By \cref{FIP}, $F \cup \left\{X\right\}$ can be extended to a filter $H$ on $S$. But $H \supsetneq F \supset E$, so that $F$ is not maximal in $\mathcal{F}$.
 \end{proof}
 Thus, it suffices to show that $\mathcal{F}$ has some maximal element. Let $C$ be a chain in $\mathcal{F}$. It is easy to check that $\bigcup{C}$ is an upper bound of $C$ in $\mathcal{F}$. It follows from $\mathsf{Zorn}$ that $\mathcal{F}$ has some maximal element. 
 \end{proof}
@@ -1352,7 +1352,7 @@ Let $\alpha$ and $\beta$ be nonzero limit ordinals.
 For any $X$, we have $\left\lvert{\bigcup{X}}\right\rvert \leq \lambda \cdot \kappa$ where $\lambda$ denotes $\left\lvert{X}\right\rvert $ and $\kappa$ denotes $\sup\{\left\lvert{y}\right\rvert : y\in x\}$.
 \end{lemma}
 \begin{proof}
-We can write $X=\{X_{\alpha} \mid \alpha <\lambda\}$. For each $\alpha <\lambda$, we have that $\kappa_{\alpha} \coloneqq \left\lvert{X_{\alpha}}\right\rvert \leq \kappa$. Therefore, we can also write $X_{\alpha} = \{x_{\alpha{\beta}} \mid \beta < \kappa_{\alpha}\}$. It follows that $$\bigcup{X} =\left\{ x_{\alpha{\beta}} \mid \alpha <\lambda, \ \beta < \kappa_{\alpha}\right\},   $$ which has cardinality at most $\left\lvert{\lambda \times \kappa}\right\rvert$.
+We can write $X=\left\{X_{\alpha} \mid \alpha <\lambda\right\}$. For each $\alpha <\lambda$, we have that $\kappa_{\alpha} \coloneqq \left\lvert{X_{\alpha}}\right\rvert \leq \kappa$. Therefore, we can also write $X_{\alpha} = \left\{x_{\alpha{\beta}} \mid \beta < \kappa_{\alpha}\right\}$. It follows that $$\bigcup{X} =\left\{ x_{\alpha{\beta}} \mid \alpha <\lambda, \ \beta < \kappa_{\alpha}\right\},   $$ which has cardinality at most $\left\lvert{\lambda \times \kappa}\right\rvert$.
 \end{proof}
 
 \begin{corollary}
@@ -1438,14 +1438,14 @@ x_0 & = x
 \end{definition}
 
 \begin{note}
-For any $x$, $\tc(x)$ is the smallest transitive set containing $x$, i.e., $$\tc(x) = \bigcap{\{y\supset x \mid y \text{ is a transitive set}\}}.$$
+For any $x$, $\tc(x)$ is the smallest transitive set containing $x$, i.e., $$\tc(x) = \bigcap{\left\{y\supset x \mid y \text{ is a transitive set}\right\}}.$$
 \end{note}
 
 \begin{lemma}[Regularity for classes]\label{reg}
 Let $C$ be a nonempty class. Then there is some $x\in C$ such that if $y\in C$, then $y \notin x$. In other words, $C$ has some $\in$-minimal element.
 \end{lemma}
 \begin{proof}
-By assumption, there is some $u\in C$. Let $e = \{ x\in C \mid x \in \tc(u)\}$, which is a set by $\mathsf{Sep}$. If $e = \emptyset$, then there is no element of $C \cap u$, in which case $u$ is minimal in $C$. If $e\ne \emptyset$, then there is some $\in$-minimal element $m$ of $e$. In this case, no element $n$ of $m$ can belong to $C$. For otherwise $n\in m\subset \tc(u)$ and $n \in C$, so that $n \in e$, contrary to our choice of $m$. It follows that $m$ is minimal in $C$.
+By assumption, there is some $u\in C$. Let $e = \left\{ x\in C \mid x \in \tc(u)\right\}$, which is a set by $\mathsf{Sep}$. If $e = \emptyset$, then there is no element of $C \cap u$, in which case $u$ is minimal in $C$. If $e\ne \emptyset$, then there is some $\in$-minimal element $m$ of $e$. In this case, no element $n$ of $m$ can belong to $C$. For otherwise $n\in m\subset \tc(u)$ and $n \in C$, so that $n \in e$, contrary to our choice of $m$. It follows that $m$ is minimal in $C$.
 \end{proof}
 
 \begin{definition}

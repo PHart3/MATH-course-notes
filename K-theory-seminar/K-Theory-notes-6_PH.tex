@@ -2,7 +2,6 @@
 \usepackage[margin=1.2in]{geometry}
 \usepackage{graphicx}
  \usepackage{enumitem}
- \usepackage{stmaryrd}
  \usepackage{bm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -17,6 +16,8 @@
 \usepackage{ dsfont }
 \usepackage{mathrsfs}
 \usepackage{hyperref}
+\usepackage{extpfeil}
+\usepackage{scrextend}
 \hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
@@ -233,11 +234,14 @@ Recall that $\left\lvert{wS_{\bullet} \c}\right\rvert$ is an $H$-space via the m
 \[ \label{eqn:HS} \coprod: \left\lvert{wS_{\bullet} \c}\right\rvert \times \left\lvert{wS_{\bullet} \c}\right\rvert \cong \left\lvert{wS_{\bullet} \c \times  wS_{\bullet} \c}\right\rvert\to \left\lvert{wS_{\bullet} \c}\right\rvert.
 \tag{$\star$}\] This produces an $H$-space structure $\left(K(\c), +\right)$.
 
+\newextarrow{\xbigtoto}{{20}{20}{20}{20}}
+   {\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
+
 \begin{theorem}[Additivity]\label{add}
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$. Hence $$F_{\ast} = F_{\ast}' + F_{\ast}''$$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
-As $S_2{\c}$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2{\c}  \underset{s \coprod q}{\overset{t}{\rightrightarrows}} \c$$ are the same. \Cref{ext} implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2{\c})$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
+As $S_2{\c}$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2{\c} \xbigtoto[s \coprod q]{t} \c$$ are the same. \Cref{ext} implies that $K(\coprod): K(\c) \times K(\c) \to K(S_2{\c})$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
 \end{proof}
 
 \begin{definition}
@@ -270,9 +274,9 @@ Moreover, $T$ must satisfy the following axioms.
 \begin{enumerate}[label=(\arabic*)]
 \item $T$ sends every initial morphism $\ast \to A$ to $A$ for any $A \in \ob \c$.
 \item $j_1 \coprod j_2 : A \coprod B \rightarrowtail T(f)$ is a cofibration for any $f: A \to B$.
-\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are w.e. in $\c$, then so is $T(f) \to T(f').$
+\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are weak equivalences in $\c$, then so is $T(f) \to T(f').$
 \item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom (2) is a cofibration in $\c$.
-\item {(Cylinder axiom)} The map $p: T(f) \to B$ is a w.e. in $\c$.
+\item {(Cylinder axiom)} The map $p: T(f) \to B$ is a weak equivalence in $\c$.
 \end{enumerate}
 
 \smallskip
@@ -299,7 +303,7 @@ Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcatego
 \smallskip
 
 
-Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of all $A$ such that $\ast \to A$ belongs to $w(\c)$.\reversemarginpar{\marginpar{\small{Are the initial morphisms the only w.e.?}}}
+Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of all $A$ such that $\ast \to A$ belongs to $w(\c)$.\reversemarginpar{\marginpar{\small{Are the initial morphisms the only weak equivalences?}}}
 
 \begin{theorem}[Waldhausen localization]\label{local}
 The sequence $$ K(\c^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
@@ -331,7 +335,7 @@ vS_{\bullet}C^w \arrow[r] & vS_{\bullet}C \arrow[r] \arrow[d] & v_{(-)}\co w_{(-
 
 \smallskip
 
-Now, let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^{\bo}(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^{\bo}(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those admitting a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the w.e. are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
+Now, let $\a$ be an exact category embedded in an abelian category $\b$ and let $\ch^{\bo}(\a)$ denote the category of bounded chain complexes in $\a$. One can verify that $\ch^{\bo}(\a)$ is Waldhausen where the cofibrations $A_{\bullet} \rightarrowtail B_{\bullet}$ are precisely the degree-wise admissible monomorphisms (i.e., those admitting a short exact sequence $A_n \to B_n \to \faktor{B_n}{A_n}$ in $\a$ for each $n$) and the weak equivalences are precisely the chain maps which are quasi-isomorphisms of complexes in $\ch(\b)$.
 
 \medskip
 
@@ -342,7 +346,7 @@ Let $\a$ be an exact category closed under kernels of surjections. Then the exac
 \end{theorem}
 
 \begin{definition}
-Let $F: \a \to \b$ be an exact functor between \emph{Waldhausen} categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there exist a map $a : A \to A'$ in $\a$ and a w.e. $b' : F(A') \simeq B$ in $\b$ such that
+Let $F: \a \to \b$ be an exact functor between \emph{Waldhausen} categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there exist a map $a : A \to A'$ in $\a$ and a weak equivalence $b' : F(A') \simeq B$ in $\b$ such that
 \[
 \begin{tikzcd}
 F(A') \arrow[r, "\sim", dashed] & B \\
@@ -352,14 +356,14 @@ F(A) \arrow[u, "F(a)", dashed] \arrow[ru, "b"] &
 commutes.
 \end{definition}
 
-This means that $F$ has the approximate lifting property just in case we can always lift to  a w.e.
+This means that $F$ has the approximate lifting property just in case we can always lift it to  a weak equivalence.
 
 \begin{prop}\label{pp}
 Let $F: \a \to \b$ be an exact functor between Waldhausen categories with the following properties.
 \begin{enumerate}
 \item $F$ satisfies the approximate lifting property.
 \item $\a$ admits a cylinder functor.
-\item A morphism $f$ in $\a$ is a w.e. iff $F(f)$ is a w.e. in $\b$.
+\item A morphism $f$ in $\a$ is a weak equivalence iff $F(f)$ is a weak equivalence in $\b$.
 \end{enumerate}
 Then $wF : w{\a} \to w{\b}$ is a homotopy equivalence.
 \end{prop}

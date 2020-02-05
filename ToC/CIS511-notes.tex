@@ -308,7 +308,7 @@ Every regular expression induces a $\DFA$, and vice versa. Thus, they have equal
 
 
 \begin{definition}
-A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(Q, \Sigma, q_0, \delta, Q_F)$ of the sort \eqref{eqn:auto} except that $\delta : Q\times \Sigma \to \P(Q)$.
+A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $\left(Q, \Sigma, q_0, \delta, Q_F\right)$ of the sort \eqref{eqn:auto} except that $\delta : Q\times \Sigma \to \P(Q)$.
 \end{definition}
 
 \begin{exmp} Set $\Sigma = \left\{0,1\right\}$ and $M =$
@@ -336,7 +336,7 @@ A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $(
 \subsection{Lecture 2}
 
 
-Let $\delta$ denote a transition function for the $\NFA$ $N$. Define the \textit{multi-step transition function} $$\hat{\delta} : Q\times \Sigma^{\ast} \to \P(Q)$$ inductively as follows.
+Let $\delta$ denote a transition function for the $\NFA$ $N$. Define the \textit{multi-step transition function} $$\hat{\delta} : Q\times \Sigma^{\ast} \to \P(Q)$$ inductively by
 \begin{align*}
  \hat{\delta}(q, \epsilon) & = \{q\}
 \\  \hat{\delta} (q, x) & = \bigcup_{\gamma \in \hat{\delta}(q, y)}\delta(\gamma, \sigma) \quad \quad x = y\sigma, \ y \in \Sigma^{\ast}, \ \sigma \in \Sigma.
@@ -389,7 +389,7 @@ Let $L\subset \{0, 1\}^{\ast}$ consist of those strings $x$ such that $``1010"$ 
 
 \begin{definition} $ $
 \begin{enumerate}
-\item An $\NFA$ is called an \textit{$\epsilon{-}\NFA$} if its transition function is of the form $\delta: Q\times (\Sigma \cup \{\epsilon\}) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
+\item An $\NFA$ is called an \textit{$\epsilon{-}\NFA$} if its transition function is of the form $\delta: Q\times \left(\Sigma \cup \{\epsilon\}\right) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
 \item  Let $q$ be a state. The \textit{$\epsilon$-closure of $q$} is the set of states that can be reached from $q$ by taking finitely many $\epsilon$-transitions. 
 \end{enumerate}
 \end{definition}
@@ -559,7 +559,7 @@ Every finite automaton may be viewed as a Turing machine $M$ with the following 
 
 
 \begin{remark}
-Adding a stay option $S$ to the set $\{L, R\}$ would not increase a Turing machine's computational power.
+Adding a stay option $S$ to the set $\left\{L, R\right\}$ would not increase a Turing machine's computational power.
 \end{remark}
 
 \begin{definition}
@@ -664,7 +664,7 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 
 \medskip
 
- Tape 1 always contains the input string $w$ and nothing else. Tape 2 contains just the string on the tape of the current node. Setting $m = \max\{ \left\lvert{A}\right\rvert : A \in \im{\delta} \}$, tape 3 contains a string over $\{1, \ldots, m\}$ that corresponds to the ``address" of the current node. 
+ Tape 1 always contains the input string $w$ and nothing else. Tape 2 contains just the string on the tape of the current node. Setting $m = \max\{ \left\lvert{A}\right\rvert : A \in \im{\delta} \}$, tape 3 contains a string over $\left\{1, \ldots, m\right\}$ that corresponds to the ``address" of the current node. 
 
 \medskip
 
@@ -720,7 +720,7 @@ Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\la
 
 
 \begin{lemma}
-Let $A_{\TM}$ denote the language $\{ \langle M, w \rangle \mid M$ accepts $w\}$. Then $A_{\TM}$ is recursively enumerable.
+Let $A_{\TM}$ denote the language $\left\{ \langle M, w \rangle \mid M \text{ accepts }w\right\}$. Then $A_{\TM}$ is recursively enumerable.
 \end{lemma}
 \begin{proof}
 Simply observe that $L(U_{\TM}) = A_{\TM}$.
@@ -732,7 +732,7 @@ $A_{\TM}$ is undecidable.
 \begin{proof}
 Suppose, toward a contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
 \begin{enumerate}[label=(\alph*)]
-\item Given a binary string $x$, run $M$ on $(\langle M_x \rangle, \langle M_x \rangle)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
+\item Given a binary string $x$, run $M$ on $\left(\langle M_x \rangle, \langle M_x \rangle \right)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
 \item Let $N$ reject when $M$ accepts and $N$ accept when $M$ rejects.
 \end{enumerate}
 
@@ -757,8 +757,8 @@ Find some $M_1$ and $M_2$ such that $L = L(M_1)$ and $\overline{L} = L(M_2)$. Co
     {$T=1$}\;
     \While{the current state is a non-halting state}
       {
-        run $U_{\TM}$ on $(\langle M_1 \rangle, w) $ for $T$ steps\;
-        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $(\langle M_2 \rangle, w)$ for $T$ steps \;
+        run $U_{\TM}$ on $\left(\langle M_1 \rangle, w\right) $ for $T$ steps\;
+        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $\left(\langle M_2 \rangle, w\right)$ for $T$ steps \;
         \eIf{$U_{\TM}$ accepts}{reject}{$T$\texttt{ += }1}
       }  }
       \caption{pseudocode describing $M$}
@@ -800,7 +800,7 @@ Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \l
 \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
-    {run $U_{\TM}$ on $(\langle M \rangle, x)$}\;
+    {run $U_{\TM}$ on $\left(\langle M \rangle, x\right)$}\;
      \eIf{$U_{\TM}$ accepts}{accept}{
      \While{true}{pass}
      } 
@@ -809,7 +809,7 @@ Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \l
 
 \smallskip
 
-Then we get a suitable function given by $(\langle M \rangle , w) \mapsto (\langle M' \rangle, w)$.
+Then we get a suitable function given by $\left(\langle M \rangle , w\right) \mapsto \left(\langle M' \rangle, w\right)$.
 \end{proof}
 
 
@@ -937,7 +937,11 @@ We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of
 
 \smallskip
 
-Let  $$\mathsf{NTIME}(t(n)) = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O(t(n))\text{ steps}\right\}.$$ Let $\mathbf{NP} = \bigcup_{k \geq 0} \mathsf{NTIME}(n^k)$.
+Let  
+\begin{gather*}
+\mathsf{NTIME}(t(n)) = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O(t(n))\text{ steps}\right\} \\ 
+\mathbf{NP} = \bigcup_{k \geq 0} \mathsf{NTIME}(n^k).
+\end{gather*} 
 
 \begin{prop}
 $\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}(2^{O(t(n))})$.
@@ -952,7 +956,7 @@ Let $\mathsf{CNF\text{-}SAT} = \left\{\langle \varphi \rangle : \varphi \text{ i
 \subsection{Lecture 10}
 
 \begin{lemma}
-A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c_1} \land V(x,y) = 1 \text{ where } V \text{ runs in time }\left\lvert{x\cdot y}\right\rvert^{c_2}\right\}.$$ In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
+A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c_1} \land V\left(x,y\right) = 1 \text{ where } V \text{ runs in time }\left\lvert{x\cdot y}\right\rvert^{c_2}\right\}.$$ In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
 \end{lemma}
 \begin{proof} $ $
 
@@ -961,7 +965,7 @@ A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\T
 \smallskip
 
 There is some $\NDTM$ $M$ running in polynomial time such that $L(M) = L$. Say that $M$ runs in time $n^c$. The sequence of choices along any branch of $M$ can be represented by a binary string of length $n^c$.
-Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \left\{0,1\right\}^{n^c}$ and executing $M$ on $x$ with choice of branch given by $y$. Then $V$ runs in polynomial time, and $x\in L \iff V(x,y) =1$ for some $y$.
+Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \left\{0,1\right\}^{n^c}$ and executing $M$ on $x$ with choice of branch given by $y$. Then $V$ runs in polynomial time, and $x\in L \iff V\left(x,y\right) =1$ for some $y$.
 
 \medskip
 
@@ -970,7 +974,7 @@ Define $V$ as the algorithm taking inputs $x$ and $y$ with $y\in  \left\{0,1\rig
 
 \smallskip
 
-Given an input $x$, define a $\NDTM$ $M$ that first guesses a witness $y$ in a separate tape and then runs $V$ on $(x,y)$ in polynomial time. 
+Given an input $x$, define a $\NDTM$ $M$ that first guesses a witness $y$ in a separate tape and then runs $V$ on $\left(x,y\right)$ in polynomial time. 
 \end{proof}
 
 \begin{note}
@@ -1044,7 +1048,7 @@ We want to encode a given configuration of $M$, which we may assume uses at most
 Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \langle C \rangle : \exists x. C(x) = 1\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V(x,y) =1 \land (x\notin L \implies \forall y. V(x,y)=0).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C(x,y) = V(x,y)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V(x,y)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
+If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V\left(x,y\right) =1 \land (x\notin L \implies \forall y. V\left(x,y\right)=0).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C\left(x,y\right) = V\left(x,y\right)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V\left(x,y\right)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
 \end{proof}
 
 \subsection{Lecture 12}
@@ -1086,7 +1090,7 @@ $$
 \begin{proof}
 We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and let $$\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m.$$ For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \langle G_{\varphi}, m\rangle$ defines a suitable reduction. 
 \end{proof}
-\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $(x,y) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \left\{ \langle G, k\rangle \mid G\text{ has a vertex cover of size at most }k\right\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
+\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $\left(x,y\right) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \left\{ \langle G, k\rangle \mid G\text{ has a vertex cover of size at most }k\right\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
 \begin{proof}
 Let $G$ be a graph with an independent set $S$ with $\left\lvert{S}\right\rvert\geq k$.  Then $V \setminus S$ is a vertex cover of $G$. Conversely, if $G$ has a vertex cover $K$ of size at most $\left\lvert{V}\right\rvert - k$, then $V \setminus K$ is an independent set of size at least $k$ in $G$. Thus, the algorithm $\langle G, k \rangle \mapsto \langle G, \left\lvert{V}\right\rvert - k\rangle$ defines a suitable reduction.  
 \end{proof}
@@ -1102,7 +1106,7 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 \begin{definition} Let $G=\left(V, E\right)$ be a graph
 \begin{enumerate}
 \item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}= \left\{\langle G, k \rangle \mid G \text{ has a clique of size at least }k\right\}.$$
-\item The graph $\overline{G} = (V, E')$ where $E' \equiv \left\{(x,y) \mid (x,y) \notin E\right\}$ is the  \textit{complement graph of $G$}.
+\item The graph $\overline{G} = (V, E')$ where $E' \equiv \left\{\left(x,y\right) \mid \left(x,y\right) \notin E\right\}$ is the  \textit{complement graph of $G$}.
 \end{enumerate}
 \end{definition}
 
@@ -1139,10 +1143,10 @@ Let $\mathsf{Steiner{-}tree} = \left\{\langle G, C, W \rangle \mid C\text{ has a
 It's clear that $\mathsf{Steiner{-}tree} $ belongs to  $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = \left(V, E\right)$ be a graph with a vertex cover $S$ of size $k$. 
  Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
 \begin{enumerate}[label=(\alph*)]
-\item Let $([u], [v])\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
-\item If $(u,v) \in E$, then let $\left([u], [u,v]\right), \left([u, v], [v]\right) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
-\item If $(v,w) \in E$ and $u,v,w$ are pairwise distinct, then let $\left([u], [v,w]\right) \in E'$ and and set $w'([u], [v,w]) = 2$.
-\item Finally, for any $(u,v), (w,z) \in E$, let $\left([u,v], [w,z]\right)\in E'$  with weight $$w'([u,v], [w,z])\equiv \begin{cases} 2 & (u,v) \text{ and } (w,z) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
+\item Let $\left([u], [v]\right)\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
+\item If $\left(u,v\right) \in E$, then let $\left([u], [u,v]\right), \left([u, v], [v]\right) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
+\item If $\left(v,w\right) \in E$ and $u,v,w$ are pairwise distinct, then let $\left([u], [v,w]\right) \in E'$ and and set $w'([u], [v,w]) = 2$.
+\item Finally, for any $\left(u,v\right), \left(w,z\right) \in E$, let $\left([u,v], [w,z]\right)\in E'$  with weight $$w'([u,v], [w,z])\equiv \begin{cases} 2 & \left(u,v\right) \text{ and } \left(w,z\right) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
 \end{enumerate}
 Set $C = \left\{ [u,v] : (u,v) \in E\right\}$. Also, set $W= \left\lvert{E}\right\rvert+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
 \begin{claim}
@@ -1152,8 +1156,8 @@ $G'$ has a Steiner tree containing $C$ with weight at most $\left\lvert{E}\right
 Let $S = \{v_1, \ldots, v_k\}$. Let 
 \begin{align*}
 S' & = \left\{[v_1], \ldots, [v_k], \ \bigcup_{(u,v) \in E}[u,v]\right\}
-\\ E_{S'} & = \left\{ (x,y)\in E' \mid w'(x,y)=1 \text{ and } x,y\in S'\right\}.
-\end{align*} Since $S$ is a vertex cover, we see that $(S', E_{S'})$ is a connected subgraph of $G'$ that contains $C$ and has weight $\left\lvert{E}\right\rvert+k -1$.
+\\ E_{S'} & = \left\{ \left(x,y\right)\in E' \mid w'\left(x,y\right)=1 \text{ and } x,y\in S'\right\}.
+\end{align*} Since $S$ is a vertex cover, we see that $\left(S', E_{S'}\right)$ is a connected subgraph of $G'$ that contains $C$ and has weight $\left\lvert{E}\right\rvert+k -1$.
 \end{proof}
 \begin{claim}
 If $C$ has a a Steiner tree $T$ of total weight $W \leq \left\lvert{E}\right\rvert +k -1$, then $G$ has a vertex cover of size $k$. 
@@ -1165,7 +1169,7 @@ Alter $T$ as follows.
 \item Replace any edge of weight $2$ between $[u,v]$ and $[v,w]$ with the edges $\left([u,v], [v]\right)$ and $\left([v], [v,w]\right)$.
 \item Replace any edge of weight $3$ between $[u,v]$ and $[w,z]$ with the edges $\left([u,v], [v]\right)$, $\left([v], [w]\right)$, and $\left([w], [w,z]\right)$.
 \end{itemize}
-The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $\left\lvert{E}\right\rvert + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $\left\lvert{E}\right\rvert +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $[v]$ such that $\left\lvert{R}\right\rvert\leq k$. If $(x,y)\in E$, then $[x,y]$ is connected to some $[v_0]$ by edges of weight $1$. This means that $[x]$ or $[y]$ belongs to $T'$, so that $[x]$ or $[y]$ belongs to $R$. This shows that $R$ is a vertex cover for $G$.
+The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $\left\lvert{E}\right\rvert + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $\left\lvert{E}\right\rvert +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $[v]$ such that $\left\lvert{R}\right\rvert\leq k$. If $\left(x,y\right)\in E$, then $[x,y]$ is connected to some $[v_0]$ by edges of weight $1$. This means that $[x]$ or $[y]$ belongs to $T'$, so that $[x]$ or $[y]$ belongs to $R$. This shows that $R$ is a vertex cover for $G$.
 \end{proof}
 \end{proof}
 
@@ -1177,7 +1181,7 @@ Any undirected  weighted (connected) graph can be endowed with a metric by takin
 Let $\mathsf{SUBSET{-}SUM} = \left\{\langle a_1, \ldots, a_k, t\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $\left\lvert{V}\right\rvert = n$ and $\left\lvert{E}\right\rvert= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq \left\lvert{E}\right\rvert-1$ and  $(u,v) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
+It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $\left\lvert{V}\right\rvert = n$ and $\left\lvert{E}\right\rvert= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq \left\lvert{E}\right\rvert-1$ and  $\left(u,v\right) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
 
 \medskip
 
@@ -1186,12 +1190,12 @@ It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \maths
 Suppose that there are subsets $U\subset V$ and $T\subset E$ such that $$t= \sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}.$$ Then $U$ is a vertex cover for $G$ of size at most $k$.
 \end{claim}
 \begin{proof}
-Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $\left\lvert{U}\right\rvert\leq k$. Note that, in base-4, each of the first $m$ digits of $t$ equals $2$. Thus, for each $(u,v) \in E$, at least two of $a_u$, $a_v$, and $b_{(u,v)}$ contribute to the summation $$\sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}.$$ This implies that at least one of $u$ and $v$ belongs to $U$. Hence $U$ is a vertex cover for $G$.
+Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $\left\lvert{U}\right\rvert\leq k$. Note that, in base-4, each of the first $m$ digits of $t$ equals $2$. Thus, for each $\left(u,v\right) \in E$, at least two of $a_u$, $a_v$, and $b_{(u,v)}$ contribute to the summation $$\sum_{u\in U}a_u +\sum_{(u,v) \in T} b_{(u,v)}.$$ This implies that at least one of $u$ and $v$ belongs to $U$. Hence $U$ is a vertex cover for $G$.
 \end{proof}
 \end{proof}
 
 \begin{remark}
-Using dynamic programming, one can show that there is a poly$(k, t)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\langle a_1, \ldots, a_k, t\rangle$ is on the order of \hl{$k\log{t}$}.
+Using dynamic programming, one can show that there is a poly$\left(k, t\right)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\langle a_1, \ldots, a_k, t\rangle$ is on the order of \hl{$k\log{t}$}.
 \end{remark}
 
 \subsection{Lecture 14}
@@ -1353,7 +1357,7 @@ It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{
 \end{proof}
 
 \begin{prop}
-A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{\left\lvert{\text{(first input)}}\right\rvert})$ space and $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V(x,y) = 1\right\}.$$ .
+A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{\left\lvert{\text{(first input)}}\right\rvert})$ space and $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V\left(x,y\right) = 1\right\}.$$ .
 \end{prop}
 
 \subsection{Lecture 17}
@@ -1701,7 +1705,7 @@ The set of all functions $A \to B$ is a pairwise independent set of size $\left\
 \end{exmp}
 
 \begin{exmp}
-Let $q= 2^n$. For each $(s,t) \in \F_q \times \F_q$, define $h_{s,t} : \F_q \to \F_q$ by $h_{s,t}(a) = a \cdot s +t$. If $x,y, x', y' \in \F_q$ with $x \ne x'$, then the system of equations \begin{align*} 
+Let $q= 2^n$. For each $\left(s,t\right) \in \F_q \times \F_q$, define $h_{s,t} : \F_q \to \F_q$ by $h_{s,t}(a) = a \cdot s +t$. If $x,y, x', y' \in \F_q$ with $x \ne x'$, then the system of equations \begin{align*} 
 sx + t & = y \\ sx' +t & = y'
 \end{align*} 
 is satisfied $\iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix} \begin{bmatrix} s \\ t    \end{bmatrix} = \begin{bmatrix} y \\ y' \end{bmatrix} \iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix}^{-1} \begin{bmatrix} y \\ y' \end{bmatrix}  = \begin{bmatrix} s \\ t    \end{bmatrix} $. Therefore, $$\mathbb{P}_{(s,t)\in_R \F_q\times \F_q}\left[h_{s,t}(x) = y \land h_{s,t}(x') = y'\right] = \frac{1}{q^2},$$ which proves that $h_{s,t}$ is a hash function.
@@ -1733,7 +1737,7 @@ To do this, choose $l\in \N$ such that $2^{l-2} \leq K \leq 2^{l-1}$ and $\left\
 
 
 \fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{
-Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then send $(h,y)$ to $P$. Next, have $P$ send $x \in_R \left\{0,1\right\}^m$ to $V$.  Finally, have $V$ accept if and only if $x\in S$ and $h(x) =y$. 
+Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then send $\left(h,y\right)$ to $P$. Next, have $P$ send $x \in_R \left\{0,1\right\}^m$ to $V$.  Finally, have $V$ accept if and only if $x\in S$ and $h(x) =y$. 
 }}
 
 \begin{caseof}
@@ -1760,7 +1764,7 @@ Let $n\in \N$ and choose a prime $2^{10n}\leq p\leq 2^{20n}$. Let  $\varphi(x_1,
 For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \left\{0,1\right\}^{n-i}} \tilde{\varphi}(a_1, \ldots, a_i, x) \mod p.$$ 
 
 \begin{lemma}[Sum-check protocol]\label{SCP}
-For any $K\in \N$, there exists an efficient interactive protocol $(V, P)$ such that 
+For any $K\in \N$, there exists an efficient interactive protocol $\left(V, P\right)$ such that 
 \begin{itemize}
 \item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\langle \varphi, p \rangle$ with probability $1$ and
 \item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq (1-\frac{d}{p})^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
@@ -1771,7 +1775,7 @@ For any $K\in \N$, there exists an efficient interactive protocol $(V, P)$ such 
 \subsection{Lecture 26}
 
 \begin{proof} 
-First, we construct $(V, P)$ as follows. 
+First, we construct $\left(V, P\right)$ as follows. 
 \begin{enumerate}
 \item $\underline{V}:$ If $n=1$, then compute $\tilde{\varphi}(0) + \tilde{\varphi}(1)$. If this equals $K$, then \textit{accept}. Otherwise, \textit{reject}. 
 
@@ -1781,7 +1785,7 @@ If $n>1$, then let $$h_1(x_1) = \sum_{x_2, \ldots, x_n \in \left\{0,1\right\}} \
 
 Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
 \end{enumerate}
-Next, we must verify the correctness of $(V,P)$. If $K = \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
+Next, we must verify the correctness of $\left(V,P\right)$. If $K = \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
 
 \medskip
 
@@ -1796,7 +1800,7 @@ The language of all unsatisfiable 3cnf formulas is $\mathbf{co{-}NP}$-complete.
 $\mathbf{co{-}NP} \subset \mathbf{IP}$.
 \end{corollary}
 \begin{proof}
-We can modify our interactive protocol in \cref{SCP} so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $(V, P)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. Thanks to \cref{LP}, we are done. 
+We can modify our interactive protocol in \cref{SCP} so that its first round has $P$ send a large enough prime $p$ to $V$. As a result, we can remove $p$ from the input of $\left(V, P\right)$. Notice that $\varphi$ is unsatisfiable if and only if $\sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0$. This, in turn, is true if and only if  $$ \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) =0 \mod p$$ since  $0\leq \sum_{x\in \left\{0,1\right\}^n} \tilde{\varphi}(x_1, \ldots, x_n) \leq 2^n$. Thanks to \cref{LP}, we are done. 
 \end{proof}
 
 \begin{theorem}

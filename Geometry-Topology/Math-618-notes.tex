@@ -379,7 +379,7 @@ $\partial_n{\partial_{n+1}} = 0$, and $H_n(X) \cong \faktor{\ker{\partial_n}}{\i
 \end{theorem}
 
 \begin{exmp}
-Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regular value $x \in S^n$. There is some neighborhood $U$ of $x$ such that $f^{-1}(U) = U_1 \cup \cdots \cup U_n$ for some $n$. Using the inverse function theorem and the compactness of $S^n$, it follows that $f^{-1}$ is of the form $\{x_1, \ldots, x_n\}$. Note that the differential $(d{f})_{x_i} : S^n_{x_i} \to S^n_x$ satisfies $\det{(d{f})_{x_i}} - \pm 1$. In fact, $$\deg(f) = \sum_{i=1}^n \det{(d{f})_{x_i}}.$$
+Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regular value $x \in S^n$. There is some neighborhood $U$ of $x$ such that $f^{-1}(U) = U_1 \cup \cdots \cup U_n$ for some $n$. Using the inverse function theorem and the compactness of $S^n$, it follows that $f^{-1}$ is of the form $\left\{x_1, \ldots, x_n\right\}$. Note that the differential $(d{f})_{x_i} : S^n_{x_i} \to S^n_x$ satisfies $\det{(d{f})_{x_i}} - \pm 1$. In fact, $$\deg(f) = \sum_{i=1}^n \det{(d{f})_{x_i}}.$$
 \end{exmp}
 
 \begin{exercise}\label{reg}
@@ -693,7 +693,7 @@ Any locally trivial map $p: E \to B$ is a fibration whenever $B$ is a cell compl
 Prove that the Hopf fibration is locally trivial.
 \end{exercise}
 \begin{proof}
-For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\{(z_0, z_1) \in S^3 \mid z_k \ne 0\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left([z_0, z_1], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
+For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\left\{\left(z_0, z_1\right) \in S^3 \mid z_k \ne 0\right\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left(\left[z_0, z_1\right], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
 \end{proof}
 
 \subsection{Lecture 4}
@@ -884,7 +884,7 @@ A \textit{topological group} $G$ is a group such that both multiplication $G \ti
 \item An \textit{atlas for the structure of a (fiber) bundle with group $G$ and fiber $F$ on a map $p: E \to B$} consists of 
 \be
 \item a family $(U_{\alpha}, h_{\alpha})_{\alpha \in A}$ where each $U_{\alpha}$ is open and each $h_{\alpha}$ is a homeomorphism $p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ and
-\item  a family of continuous \textit{transition functions} $\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to G\}_{\alpha, \beta \in A}$ 
+\item  a family of continuous \textit{transition functions} $\left\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to G\right\}_{\alpha, \beta \in A}$ 
 \ee such that
 \be[label= \roman*]
 \item $B = \bigcup_{\alpha \in A} U_{\alpha}$,
@@ -911,17 +911,17 @@ Let $(U, \varphi)$ be any coordinate chart for $M$ with coordinate functions $(x
 
 \smallskip
 
-It remains to describe the transition functions $\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to \GL(n, \R)\}$ for $T{M}$. Note that 
+It remains to describe the transition functions $\left\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to \GL(n, \R)\right\}$ for $T{M}$. Note that 
 \[
 \begin{tikzcd}
 U_{\alpha{\beta}}\times \R^n \arrow[rd, "\pi_1"'] & \pi^{-1}(U_{\alpha{\beta}}) \arrow[l, "h_{\alpha}"'] \arrow[r, "h_{\beta}"] \arrow[d, "\pi"] & U_{\beta{\alpha}}\times \R^n \arrow[ld, "\pi_1"] \\
                                                   & U_{\alpha{\beta}}                                                                              &                                                 
 \end{tikzcd}
 \] 
-commutes. In particular, $\pi_1 \circ h_{\beta} \circ h_{\alpha}^{-1} = \pi_1$, which implies that $ h_{\beta} \circ h_{\alpha}^{-1}(u,v) =\left(u, f(u,v)\right) $ for some smooth map $f: U_{\alpha{\beta}} \times \R^n \to \R^n$. This must be a linear isomorphism when restricted to $\{u\}\times \R^n$ for any $u\in U_{\alpha{\beta}}$, which is uniquely determined by an element $h_{\beta{\alpha}}(u)$ of $\GL(n, \R)$ (provided that we have fixed a basis of $\R^n$). Hence $$ h_{\beta} \circ h_{\alpha}^{-1}(u,v) =\left(u, h_{\beta{\alpha}}(u) v\right) .$$ Since the map $h_{\beta{\alpha}} :U_{\alpha{\beta}} \to \GL(n, \R)$ is continuous, our proof is complete.
+commutes. In particular, $\pi_1 \circ h_{\beta} \circ h_{\alpha}^{-1} = \pi_1$, which implies that $ h_{\beta} \circ h_{\alpha}^{-1}(u,v) =\left(u, f(u,v)\right) $ for some smooth map $f: U_{\alpha{\beta}} \times \R^n \to \R^n$. This must be a linear isomorphism when restricted to $\left\{u\right\}\times \R^n$ for any $u\in U_{\alpha{\beta}}$, which is uniquely determined by an element $h_{\beta{\alpha}}(u)$ of $\GL(n, \R)$ (provided that we have fixed a basis of $\R^n$). Hence $$ h_{\beta} \circ h_{\alpha}^{-1}(u,v) =\left(u, h_{\beta{\alpha}}(u) v\right) .$$ Since the map $h_{\beta{\alpha}} :U_{\alpha{\beta}} \to \GL(n, \R)$ is continuous, our proof is complete.
 \end{proof}
 
-\item Let $p: E \to B$ be any bundle with group $\{e\}$. Then $p$ is the trivial bundle, i.e., is isomorphic to the projection map. \begin{proof}
+\item Let $p: E \to B$ be any bundle with group $\left\{e\right\}$. Then $p$ is the trivial bundle, i.e., is isomorphic to the projection map. \begin{proof}
 We have that $h_{\beta} = h_{\alpha}$ on $p^{-1}(U_{\alpha} \cap U_{\beta}) = p^{-1}(U_{\alpha})\cap p^{-1}(U_{\beta})$, so that $h \equiv \bigcup_{\alpha \in A}h_{\alpha}$ is a well-defined homeomorphism $E \cong B \times F$.
 \end{proof}
 \ee 
@@ -941,7 +941,7 @@ The bottom row is given by $\left(u, f\right) \mapsto \left(u, h_{\beta{\alpha}}
  It follows that $$h_{\gamma{\beta}}(u)  h_{\beta{\alpha}}(u) = h_{\gamma{\alpha}}(u)$$ for each $u\in U$. This property is known as the \textit{cocycle condition}.
 
 \begin{theorem}
-Let $G$ be a topological group acting on a space $F$. Suppose that $\{U_{\alpha}\}$ is an open cover of $B$ and $\{h_{\beta{\alpha}} : U_{\alpha}\cap U_{\beta} \to G\}$ is a family of continuous functions satisfying the cocycle condition. Then there exists a bundle $p: E \to B$ with group $G$, fiber $F$, and transition functions  $h_{\beta{\alpha}}$.
+Let $G$ be a topological group acting on a space $F$. Suppose that $\left\{U_{\alpha}\right\}$ is an open cover of $B$ and $\left\{h_{\beta{\alpha}} : U_{\alpha}\cap U_{\beta} \to G\right\}$ is a family of continuous functions satisfying the cocycle condition. Then there exists a bundle $p: E \to B$ with group $G$, fiber $F$, and transition functions  $h_{\beta{\alpha}}$.
 \end{theorem}
 \begin{proof}[Proof sketch]
 Let $E = \faktor{\coprod_{\alpha}{U_{\alpha} \times F}}{\sim}$ where $\left(u, f\right)_{\alpha} \sim \left(u, h_{\beta{\alpha}}
@@ -975,7 +975,7 @@ Let  $\left\{\left(U_{\alpha}, h_{\alpha}\right)\right\}$ be a bundle structure 
 g^{\ast}{E} \arrow[d, "g^{\ast}{p}"'] \arrow[r] & E \arrow[d, "p"] \\
 X \arrow[r, "g"']                               & B               
 \end{tikzcd}
-.\] Define $h'_{\beta{\alpha}}: g^{-1}(U_{\alpha}) \cap g^{-1}(U_{\beta}) \to G$ as the composite $h_{\beta{\alpha}} \circ g$ restricted to  $g^{-1}(U_{\alpha} \cap U_{\beta})$. Show that the family $\{h'_{\beta{\alpha}}\}$ induces a bundle structure on $g^{\ast}{p}$.
+.\] Define $h'_{\beta{\alpha}}: g^{-1}(U_{\alpha}) \cap g^{-1}(U_{\beta}) \to G$ as the composite $h_{\beta{\alpha}} \circ g$ restricted to  $g^{-1}(U_{\alpha} \cap U_{\beta})$. Show that the family $\left\{h'_{\beta{\alpha}}\right\}$ induces a bundle structure on $g^{\ast}{p}$.
 \end{exercise}
 
 \begin{theorem}\label{factors}
@@ -999,7 +999,7 @@ where $\tau(e) = \left(p_1(e), \hat{g}(e)\right)$ for any $e\in E_1$.
 \subsection{Lecture 7}
 
 \begin{note}\label{trnote}
-If $\{h_{\beta{\alpha}}:U_{\alpha}\cap U_{\beta}\to G\}$ is a family of transition functions, then
+If $\left\{h_{\beta{\alpha}}:U_{\alpha}\cap U_{\beta}\to G\right\}$ is a family of transition functions, then
 \[
 h_{\alpha{\beta}}(x) = \left(h_{\beta{\alpha}}(x)\right)^{-1}
 \] for any $x\in U_{\alpha}\cap U_{\beta}$. In particular, $h_{\alpha{\alpha}}(x) = \left(h_{\alpha{\alpha}}(x)\right)^{-1}$.
@@ -1324,7 +1324,7 @@ Let $G = \{\pm 1\}$.  Then any principal $G$-bundle over $X$ is a two-fold cover
 
 \smallskip
 
- For example, let $\{U_i\}$ denote the usual open covering of $\RP^n = \faktor{S^n}{G}$. Let $\pi : S^n \to \RP^n$ denote the projection map. We have that $\pi^{-1} \left(U_i\right) \cong U_i \times G$. Indeed,  define $h_i : \pi^{-1} \left(U_i\right) \to  U_i \times G$ by $$\left(x_0, \ldots, x_n\right) \mapsto \left(\left[x_0, \ldots, x_n\right], \frac{x_i}{\left\lvert{x_i}\right\rvert}\right),$$ the inverse of which is  given by 
+ For example, let $\left\{U_i\right\}$ denote the usual open covering of $\RP^n = \faktor{S^n}{G}$. Let $\pi : S^n \to \RP^n$ denote the projection map. We have that $\pi^{-1} \left(U_i\right) \cong U_i \times G$. Indeed,  define $h_i : \pi^{-1} \left(U_i\right) \to  U_i \times G$ by $$\left(x_0, \ldots, x_n\right) \mapsto \left(\left[x_0, \ldots, x_n\right], \frac{x_i}{\left\lvert{x_i}\right\rvert}\right),$$ the inverse of which is  given by 
  \begin{align*}
  \left(y_0, \ldots y_n\right) & \mapsfrom \left(\left[x_0, \ldots, x_n\right], \epsilon \right) 
  \\ y_k & \equiv \epsilon x_k\cdot \frac{\left\lvert{x_i}\right\rvert}{x_i}.

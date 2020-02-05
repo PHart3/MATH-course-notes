@@ -236,14 +236,14 @@ These notes are based on Jonathan Block's lectures for the course ``Geometric An
 \begin{enumerate}
 \item $\R^n \not \cong \R^m$ when $n \ne m$.
 \item $``X" \not \cong ``Y"$ since removing the intersection point of the letter $``X" $ produces four components whereas removing the intersection point of $``Y"$ produces three.
-\item $\{a, b\} \not \cong \{a,b, c\}$.
-\item {(Alexander horned sphere)} Let $X$ denote the limit of the following iterative construction starting with the unit ball $D^3$. 
+\item $\left\{a, b\right\} \not \cong \left\{a,b, c\right\}$.
+\item Let $X$ denote the limit of the following iterative construction starting with the unit ball $D^3$. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=40mm]{Hatcher-HornedSphere.png}
 \caption{copied from Hatcher (171) \label{overflow}}
 \end{figure}
-It turns out that $X \cong D^3$, so that $\partial{X} \cong S^2$. (Yet, the exterior of $X$ is not simply connected, unlike the exterior of $D^3$ in $\R^3$.)
+This is known as the \textit{Alexander horned sphere}. It turns out that $X \cong D^3$, so that $\partial{X} \cong S^2$. (Yet, the exterior of $X$ is not simply connected, unlike the exterior of $D^3$ in $\R^3$.)
 \end{enumerate}
 \end{exmp}
 
@@ -291,10 +291,10 @@ If $X$ is a CW-complex, then any function $f: X \to Y$ is continuous if and only
 
 \begin{exmp} The following are CW-complexes.
 \begin{enumerate}
-\item Any singleton $\{p\}$.
+\item Any singleton $\left\{p\right\}$.
 \item Any $n$-sphere $S^n$.
 
-$S^0 = \{\pm 1\}$.
+$S^0 = \left\{\pm 1\right\}$.
 
 Construct $S^1$ by adding semi-circles (i.e., $1$-cells) above and below $S^0$.
 
@@ -425,7 +425,7 @@ Two spaces $X$ and $Y$ are \textit{homotopy equivalent $(\simeq)$} if there are 
 \end{definition}
 
 \begin{definition}
-A space is \textit{contractible} if it is homotopy equivalent to $\{\ast \}$.
+A space is \textit{contractible} if it is homotopy equivalent to $\left\{\ast \right\}$.
 \end{definition}
 
 Equivalently, a space $X$ is contractible if $\id_X$ is \textit{nullhomotopic}, i.e., homotopic to the constant map at $c$ for some $c\in X$.
@@ -434,10 +434,10 @@ Equivalently, a space $X$ is contractible if $\id_X$ is \textit{nullhomotopic}, 
 Homotopy equivalence of maps is an equivalence relation.
 \end{lemma}
 \begin{proof}
-Both reflexivity and symmetry are obvious. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$. Define $$H(x,t) = \begin{cases}
+Both reflexivity and symmetry are obvious. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$. Let $$H(x,t) = \begin{cases}
 F(x, 2t) & 0 \leq t \leq \frac{1}{2}
 \\ G(x, 2t-1) & \frac{1}{2} \leq t \leq 1
-\end{cases}.$$ Then $H : f \simeq h$, as required. 
+\end{cases}.$$ Then $H$ is a homotopy $f \simeq h$.
 \end{proof}
 
 \begin{prop}
@@ -486,8 +486,8 @@ Given any space $X$, define the \textit{cone of $X$} as $$C(X) = \faktor{X\times
 $C(X)$ is contractible.
 \end{lemma}
 \begin{proof}
-Define $H((x,t), s) = \begin{cases} \left(x, (1-s)t\right) & t\ne 1 \\ (x,1) & t=1
-\end{cases}.$
+The map $H((x,t), s) \equiv \begin{cases} \left(x, (1-s)t\right) & t\ne 1 \\ (x,1) & t=1
+\end{cases}$ is a null-homotopy.
 \end{proof}
 
 \begin{definition}
@@ -512,7 +512,7 @@ $\cyl(f) \simeq Y$.
 \end{lemma}
 \begin{proof}
 Define $$f: \cyl(f) \to Y, \quad (x,t) \mapsto f(x) \quad y \mapsto y$$ and
-$$ g: Y \to \cyl(f), \quad y \mapsto y . $$ We see that $f\circ g = \mathbb{1}_Y$.
+$$ g: Y \to \cyl(f), \quad y \mapsto y . $$ Then $f\circ g = \mathbb{1}_Y$.
 \begin{exercise}
 Prove that $g\circ f \simeq \mathbb{1}_{\cyl(f)}$.
 \end{exercise}
@@ -544,7 +544,7 @@ X\times \{0\} \arrow[rr, hook] \arrow[rd, "f"] &  & X\times I \arrow[ld, dashed]
  & Y &  \\
 A\times \{0\} \arrow[uu, hook] \arrow[rr, hook] &  & A\times I \arrow[uu, hook] \arrow[lu, "H"']
 \end{tikzcd}
-\] of spaces where $H$ is a given homotopy from $f \restriction_{A}$ to another map. The inclusion $\iota : A \to X$ is called a \textit{cofibration} if $(X, A)$ satisfies HEP.
+\] of spaces where $H$ is a given homotopy from $f \restriction_{A}$ to another map. The inclusion $\iota : A \to X$ is called a \textit{cofibration} if $\left(X, A\right)$ satisfies HEP.
 \end{definition}
 
 \subsection{Lecture 3}
@@ -827,7 +827,7 @@ Let $z_0\in Z$.
 \begin{claim} There exist a neighborhood $U_{z_0}\subset Z$ and a lift $\widetilde{F}$ of $F\restriction_{U_{z_0}\times I}$ such that $p \circ \widetilde{F} = F$ on $U_{z_0}\times I$.
 \end{claim}
 \begin{proof}
-For any $(z_0, t) \in Z \times I$, note that $F(z_0, t)$ has some neighborhood $V_{z_0,t}$ such that $$p^{-1}(V_{z_0, t}) = \coprod_{\alpha} V_{z_0,t, \alpha}$$ with $p: V_{z_0, t, \alpha} \to V_{z_0, t}$ a homeomorphism. Thus, $F^{-1}(V_{z_0, t})$ contains some set of the form $\overbrace{U_{z_0, t}}^{\text{nbhd of } z_0} \times \left(a_t, b_t\right)$, so that $F(U_{z_0, t}  \times (a_t, b_t)) \subset V_{z_0, t} $. This makes $\left\{\left(a_t, b_t\right)\right\}_{t\in I}$ an open cover of $I$. As $I$ is compact, there is some $k\in \N$ such that $\{(a_{t_i}, b_{t_i})\}_{i=1, \ldots, k}$  cover $I$. Set $$U_{z_0} = \bigcap_{1\leq i \leq k} U_{z_0, t_i},$$ which must be  open and contain $z_0$. We obtain a sequence $$ 0= t_0 < t_1 < \cdots < t_n =1 $$ such that $F(U_{z_0} \times [t_i, t_{i+1}])$ is contained in an evenly covered set of $X$. 
+For any $(z_0, t) \in Z \times I$, note that $F(z_0, t)$ has some neighborhood $V_{z_0,t}$ such that $$p^{-1}(V_{z_0, t}) = \coprod_{\alpha} V_{z_0,t, \alpha}$$ with $p: V_{z_0, t, \alpha} \to V_{z_0, t}$ a homeomorphism. Thus, $F^{-1}(V_{z_0, t})$ contains some set of the form $\overbrace{U_{z_0, t}}^{\text{nbhd of } z_0} \times \left(a_t, b_t\right)$, so that $F(U_{z_0, t}  \times (a_t, b_t)) \subset V_{z_0, t} $. This makes $\left\{\left(a_t, b_t\right)\right\}_{t\in I}$ an open cover of $I$. As $I$ is compact, there is some $k\in \N$ such that $\left\{(a_{t_i}, b_{t_i})\right\}_{i=1, \ldots, k}$  cover $I$. Set $$U_{z_0} = \bigcap_{1\leq i \leq k} U_{z_0, t_i},$$ which must be  open and contain $z_0$. We obtain a sequence $$ 0= t_0 < t_1 < \cdots < t_n =1 $$ such that $F(U_{z_0} \times [t_i, t_{i+1}])$ is contained in an evenly covered set of $X$. 
 Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0}) =\coprod_j \widetilde{U}_{z_0, 0, j} \subset Y$, say, $j_0$. Define $\widetilde{F} : U_{z_0} \times [0, t_1] \to \widetilde{U}_{z_0, 0, j_0}$ as the composite $p^{-1}_{j_0} \circ F \restriction_{U_{z_0} \times [0, t_1]}$ where $p_{j_0} : \widetilde{U}_{z_0, 0, j_0} \to U_{z_0, 0}$ is some homeomorphism.
 
 \medskip
@@ -837,7 +837,7 @@ Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0})
  It remains to verify that such a lift is unique. For now, assume that $Z= \ast$. Suppose that $\widetilde{F}$ and $\widetilde{F}'$ are two lifts of $F: I \to X$ such that $\widetilde{F}(0) = \widetilde{F}'(0)$. Assume inductively that $\widetilde{F} = \widetilde{F}'$ on $[0,t_i]$. Since both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are connected and $\widetilde{F}(t_i) = \widetilde{F}'(t_i)$, there is a single sheet over $U_{i-1}$ in which both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are contained. Since $p$ is injective on this sheet and $p\circ \widetilde{F} = p \circ \widetilde{F}'$, it follows that $\widetilde{F} = \widetilde{F}'$ on $[t_i, t_{i+1}]$. We are done with our induction.
 
 
- As a result, the  lifts  $\{F \restriction_{U_{z} \times [0, t_1]}\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\{z\} \times I$.
+ As a result, the  lifts  $\left\{F \restriction_{U_{z} \times [0, t_1]}\right\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\left\{z\right\} \times I$.
 \end{proof}
 
 \begin{corollary}
@@ -863,7 +863,7 @@ This implies that if $0\leq t\leq 1$, then $p_t(x) = z^n +t(a_1z^{n-1} + a_2 + \
 
 
 
-Let $\{G_{\alpha}\}$ be any collection of objects of $\mathbf{Grp}$. Recall that the \textit{free product $\ast_{\alpha} G_{\alpha}$ of the $G_{\alpha}$} is the unique object satisfying the following universal property.   For any collection of maps $(\varphi_{\alpha}: G_{\alpha} \to H)$ where $H$ is a group, there exists a unique map $\ast \varphi_{\alpha}$ such that
+Let $\left\{G_{\alpha}\right\}$ be any collection of objects of $\mathbf{Grp}$. Recall that the \textit{free product $\ast_{\alpha} G_{\alpha}$ of the $G_{\alpha}$} is the unique object satisfying the following universal property.   For any collection of maps $(\varphi_{\alpha}: G_{\alpha} \to H)$ where $H$ is a group, there exists a unique map $\ast \varphi_{\alpha}$ such that
 \[
 \begin{tikzcd}
 \ast G_{\alpha} \arrow[r, "\ast \varphi_{\alpha}"] & H \\
@@ -975,13 +975,13 @@ We have that $S^3 \cong ST_1 \cup_T ST_2$ where $ST_1$ and $ST_2$ denote solid t
 \medskip
 
 \begin{definition}
-Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\{\L_{\alpha}\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $\ell$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $\left(U, \varphi\right)$ around $p$ such that $\varphi(\L_{\alpha} \cap U) \subset \R^{\ell}$ for each $\alpha$.
+Let $M^n$ be a manifold. A \textit{foliation of $M$} is a collection $\left\{\L_{\alpha}\right\}_{\alpha \in A}$ of immersed submanifolds of fixed dimension $\ell$, called \textit{leaves}, such that $M = \coprod_{\alpha \in A}\L_{\alpha}$ and for each $p\in M$, there is some smooth chart $\left(U, \varphi\right)$ around $p$ such that $\varphi(\L_{\alpha} \cap U) \subset \R^{\ell}$ for each $\alpha$.
 \end{definition}
 
 \begin{exmp} $ $
 \begin{enumerate}
 \item The collection of circles $\left\{ \{q\} \times S^1\right\}_{q\in S^1}$ forms a foliation of the torus. 
-\item For each $\theta \in \R$, define the curve in the torus $\gamma_{\theta}(t) = \left(e^{it}, e^{i(\alpha t + \theta)}\right)$. Then the collection of curves $\{\im{\gamma_{\theta}}\}_{\theta \in \R}$ forms another foliation of the torus. If $\theta \in \Q$, then each curve is an embedded circle. Otherwise, it is dense in the torus. 
+\item For each $\theta \in \R$, define the curve in the torus $\gamma_{\theta}(t) = \left(e^{it}, e^{i(\alpha t + \theta)}\right)$. Then the collection of curves $\left\{\im{\gamma_{\theta}}\right\}_{\theta \in \R}$ forms another foliation of the torus. If $\theta \in \Q$, then each curve is an embedded circle. Otherwise, it is dense in the torus. 
 \end{enumerate}
 \end{exmp}
 
@@ -1041,8 +1041,8 @@ Then  we can write $$\R^3 \setminus K = A \cup B_1 \cup \cdots \cup B_n \cup C.$
 Let $G_1 = \langle g_1, \ldots, g_n \mid w_1, \ldots, w_m \rangle$ and $G_2 = \langle h_1, \ldots, h_k \mid u_1, \ldots, u_l \rangle$.
 It is known that the following two problems are algorithmically undecidable.
 \begin{enumerate}[label=(\alph*)]
-\item{(Isomorphism problem)} Is $G_1 \cong G_2$?
-\item {(Word problem)} Given a word $w$ over $\left\{g_1, \ldots, g_n\right\}$, is $w=e$? 
+\item{\textit{Isomorphism problem.}} Is $G_1 \cong G_2$?
+\item {\textit{Word problem.}} Given a word $w$ over $\left\{g_1, \ldots, g_n\right\}$, is $w=e$? 
 \end{enumerate}
 \end{remark}
 
@@ -1706,7 +1706,7 @@ A based space $(X,x_0)$ is \textit{nondegenerate} if the pair $\left(X, \{x_0\}\
 \end{definition}
 
 \begin{corollary}
-Let $\{(X_{\alpha}, x_{\alpha})\}_{\alpha}$ be a set of nondegenerate bases spaces. Then $\widetilde{H}_{\ast}\left(\bigvee_{\alpha} X_{\alpha}\right) \cong \bigoplus_{\alpha} \widetilde{H}_{\ast}(X_{\alpha}).$
+Let $\left\{(X_{\alpha}, x_{\alpha})\right\}_{\alpha}$ be a set of nondegenerate bases spaces. Then $\widetilde{H}_{\ast}\left(\bigvee_{\alpha} X_{\alpha}\right) \cong \bigoplus_{\alpha} \widetilde{H}_{\ast}(X_{\alpha}).$
 \end{corollary}
 \begin{proof}
 Note that $\bigvee_{\alpha} X_{\alpha} = \faktor{\coprod_{\alpha}X_{\alpha}}{\coprod_{\alpha} \{x_{\alpha}\}}$. Now apply \cref{c12} together with the fact that the functor $H_{\ast}({-}, {-}): \mathbf{Top}\times \mathbf{Top} \to \mathbf{Ab}$ preserves coproducts. 
@@ -2571,7 +2571,7 @@ Let $R= \Z/2$. Then there is exactly one choice of generator of $ H_n(X, X \setm
 
 
 
-Let $\left(C_{\ast}, \partial\right)$ be a chain complex of free abelian groups and $G$ be an abelian group. Let $$C_G^n \coloneqq  \Hom_{\Z}(C_n, G).$$ Define the \textit{coboundary map} $\delta : C_G^n \to C_G^{n+1}$ by $(\varphi : C_n \to G) \mapsto (c\mapsto \varphi(\partial{c}))$. Then $\delta^2 =0$. so that we get a \textit{cochain complex}
+Let $\left(C_{\ast}, \partial\right)$ be a chain complex of free abelian groups and $G$ be an abelian group. Let $$C_G^n \coloneqq  \Hom_{\Z}(C_n, G).$$ Define the \textit{coboundary map} $\delta : C_G^n \to C_G^{n+1}$ by $\left(\varphi : C_n \to G\right) \mapsto \left(c\mapsto \varphi(\partial{c})\right)$. Then $\delta^2 =0$, from which get a \textit{cochain complex}
 \[
 \begin{tikzcd}
 C_G^0 \arrow[r, "\delta"] & C_G^1 \arrow[r, "\delta"] & C_G^2 \arrow[r, "\delta"] & \cdots \arrow[r, "\delta"] & C_G^k \arrow[r, "\delta"] & C_G^{k+1} \arrow[r, "\delta"] & \cdots
@@ -2609,7 +2609,7 @@ There exists a non-canonical split short exact sequence $$\begin{tikzcd}
 \item  {\textbf{(Reduced cohomology)}} Define the map $f : G \to C^n(X; G)$ by $g \mapsto c_g$ where $c_g$ denotes the constant map at $g$. Let $\widetilde{C}^{\ast}(X; G) \coloneqq  \coker{f}$, thereby defining $\widetilde{H}^{\ast}(X; G)$.
 
 Then $\widetilde{H}^n(X; G) = H^n(X; G)$ when $n>0$. Note that $C^0(X; G)$ is precisely the group of functions $X \to G$. For any function $\varphi : X \to G$, we have that $\delta{\varphi}(\sigma) = \varphi(\sigma(1)) - \varphi(\sigma(0))$ for any $\sigma \in \sing_1(X)$. This shows that $\varphi$ is a cocycle if and only if it is constant on each path component of $X$. Thus, $$H^0(X; G) \cong \prod_{\pi_0(X)} G.$$ It follows that $\widetilde{H}^0(X; G)$ is precisely the group of all functions $X \to G$ constant on each path component of $X$ modulo the group of globally constant functions $X \to G$.
-\item  {\textbf{(Relative cohomology)}} Let $(X, A)$ be a pair.  Note that $C_n(X,A)$ is isomorphic to the free abelian group with basis $\{\varphi : \Delta^n \to X \mid \im{\varphi} \subset X \setminus A\}$. Applying $\Hom({-}, G)$ to the short exact sequence $\eta: 0 \to C_n(A) \to C_n(X) \to C_n(X,A) \to 0$ yields the sequence $$ 0 \from C^n(A; G) \from C^n(X; G) \from C^n(X, A; G) \from 0  .$$ This is exact because $\eta$ splits. Thus, $$ C^n(X, A; G) \cong \{\varphi : \sing_n(X) \to G \mid \sigma : \Delta^n \to A \implies \varphi(\sigma) = 0\}.$$
+\item  {\textbf{(Relative cohomology)}} Let $(X, A)$ be a pair.  Note that $C_n(X,A)$ is isomorphic to the free abelian group with basis $\left\{\varphi : \Delta^n \to X \mid \im{\varphi} \subset X \setminus A\right\}$. Applying $\Hom({-}, G)$ to the short exact sequence $\eta: 0 \to C_n(A) \to C_n(X) \to C_n(X,A) \to 0$ yields the sequence $$ 0 \from C^n(A; G) \from C^n(X; G) \from C^n(X, A; G) \from 0  .$$ This is exact because $\eta$ splits. Thus, $$ C^n(X, A; G) \cong \{\varphi : \sing_n(X) \to G \mid \sigma : \Delta^n \to A \implies \varphi(\sigma) = 0\}.$$
 \end{enumerate}
 \end{note}
 
@@ -3008,21 +3008,21 @@ Let $G_{\alpha}$ be an abelian group for each $\alpha \in I$. Suppose that for a
 \item $f_{\alpha{\alpha}} = \1_{G_{\alpha}}$ for any $\alpha \in I$ and 
 \item $f_{\beta{\gamma}}\circ f_{\alpha{\beta}} = f_{\alpha{\gamma}}$ when $\alpha \leq \beta \leq \gamma$. 
 \end{enumerate}
-Then $\{G_{\alpha}, f_{\alpha{\beta}}\}$ is called a \textit{directed system} of groups. 
-\item Suppose that $\{G_{\alpha},  f_{\alpha{\beta}}\}$ is a directed system of groups. The \textit{direct limit} group is $$\varinjlim G_{\alpha} \equiv \faktor{\bigoplus_{\alpha \in I}G_{\alpha}}{N}$$ where $N$ is the subgroup generated by all elements of the form $a-f_{\alpha{\beta}}(a)$ with $a\in G_{\alpha}$. 
+Then $\left\{G_{\alpha}, f_{\alpha{\beta}}\right\}$ is called a \textit{directed system} of groups. 
+\item Suppose that $\left\{G_{\alpha},  f_{\alpha{\beta}}\right\}$ is a directed system of groups. The \textit{direct limit} group is $$\varinjlim G_{\alpha} \equiv \faktor{\bigoplus_{\alpha \in I}G_{\alpha}}{N}$$ where $N$ is the subgroup generated by all elements of the form $a-f_{\alpha{\beta}}(a)$ with $a\in G_{\alpha}$. 
 
 Equivalently, $\varinjlim G_{\alpha}$ has as its underlying set $\faktor{\coprod_{\alpha \in I} G_{\alpha}}{\sim}$ where $x_{\alpha} \simeq x_{\beta}$ if there exists $\gamma \in I$ such that $\alpha, \beta \leq \gamma$ and $f_{\alpha}{\beta}(x_{\alpha}) = f_{\beta{\gamma}}(x_{\beta})$. We equip this with the group structure $$[x_{\alpha}] +[x_{\beta}] = \left[f_{\alpha{\gamma}}(x_{\alpha}) + f_{\beta{\gamma}}(x_{\beta})\right]$$ where $\alpha, \beta \leq \gamma$. (This is well-defined because $I$ is a poset by hypothesis.)
 \end{enumerate}
 \end{definition}
 
 \begin{aside}
-Let $\mathbf{Ab}^I$ denote the category of directed systems (viewed as functors $I \to \mathbf{Ab}$), so that a morphism in $\mathbf{Ab}^I$ is precisely a collection of homomorphisms $\{w_{\alpha}\}: \{G_{\alpha}, f_{\alpha{\beta}}\} \to \{H_{\alpha}, g_{\alpha{\beta}}\}$ such that the square 
+Let $\mathbf{Ab}^I$ denote the category of directed systems (viewed as functors $I \to \mathbf{Ab}$), so that a morphism in $\mathbf{Ab}^I$ is precisely a collection of homomorphisms $\left\{w_{\alpha}\}: \{G_{\alpha}, f_{\alpha{\beta}}\} \to \{H_{\alpha}, g_{\alpha{\beta}}\right\}$ such that the square 
 \[ \begin{tikzcd}
 G_{\alpha} \arrow[d, "w_{\alpha}"'] \arrow[r, "f_{\alpha{\beta}}"] & G_{\beta} \arrow[d, "w_{\beta}"] \\
 H_{\alpha} \arrow[r, "g_{\alpha{\beta}}"']                         & H_{\beta}                       
 \end{tikzcd}
 \] commutes for any $\alpha \leq \beta$. Let $a_{\alpha} : G_{\alpha} \to \varinjlim G_{\alpha}$ and $b_{\alpha} : H_{\alpha} \to \varinjlim H_{\alpha}$ denote the canonical maps. Then, by the universal property of colimits, the maps $b_{\alpha} \circ w_{\alpha} : G_{\alpha} \to  \varinjlim H_{\alpha}$ induce a unique map $w:  \varinjlim G_{\alpha} \to  \varinjlim H_{\alpha}$ such that $w \circ a_{\alpha} = b_{\alpha} \circ w_{\alpha}$.
-The functor $\varinjlim : \mathbf{Ab}^I \to \mathbf{Ab}$ sends any morphism $\{w_{\alpha}\}$ to $w$.
+The functor $\varinjlim : \mathbf{Ab}^I \to \mathbf{Ab}$ sends any morphism $\left\{w_{\alpha}\right\}$ to $w$.
 \end{aside}
 
 \smallskip
@@ -3323,7 +3323,7 @@ The rows of $\underline{\check{C}^{\bullet}(\U; \Omega^{\bullet})}$ are exact.
 \end{lemma}
 \begin{proof}
 It is clear that  $\delta{\epsilon}=0$. Since $\delta^2 = 0$, it just remains to check that $\ker{\delta} \subset \im{\delta}$ and $\ker{\delta} \subset \im{\epsilon}$.  Let $\omega \in \prod_{\alpha_0 \ldots \alpha_p} \Omega^q(U_{\alpha_0 \ldots \alpha_p})$ such that $\omega \in \ker{\delta}$. Then $\left(\delta{\omega}\right)_{\alpha \alpha_0 \ldots \alpha_p} =\omega_{\alpha_0 \ldots \alpha_p} + \sum_{i=0}^p ({-1})^{i+1} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p} = 0, $ so that $$\omega_{\alpha_0 \ldots \alpha_p}  =  \sum_{i=0}^p ({-1})^{i} \omega_{\alpha \alpha_0\ldots \hat{\alpha}_i\ldots \alpha_p}   .$$ 
-Now, choose a partition of unity $\{\lambda_{\alpha}\}$ subordinate to $\U$. Define $s{\omega} \in \prod_{\alpha_0 \ldots \alpha_{p-1}} \Omega^q(U_{\alpha_0 \ldots \alpha_{p-1}})$ by $$\left(s{\omega}\right)_{\alpha_0 \ldots \alpha_{p-1}} = \sum_{\alpha} \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \alpha_{p-1}}   .$$ We have that
+Now, choose a partition of unity $\left\{\lambda_{\alpha}\right\}$ subordinate to $\U$. Define $s{\omega} \in \prod_{\alpha_0 \ldots \alpha_{p-1}} \Omega^q(U_{\alpha_0 \ldots \alpha_{p-1}})$ by $$\left(s{\omega}\right)_{\alpha_0 \ldots \alpha_{p-1}} = \sum_{\alpha} \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \alpha_{p-1}}   .$$ We have that
 \begin{align*}
 \left(\delta{s\omega}\right)_{\alpha_0 \ldots \alpha_p}  & = \sum_{i=0}^p ({-1})^i \left(s\omega\right)_{\alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
 \\ &  = \sum_{i=0}^p \sum_{\alpha} ({-1})^i \lambda_{\alpha} \omega_{\alpha \alpha_0 \ldots \hat{\alpha}_i \ldots \alpha_p}
@@ -3535,7 +3535,7 @@ There are \textit{enough injectives} in $R^{\op}{-}\mathbf{Mod}$, i.e., any obje
 There are enough injectives in $\mathbf{Sh}_{X}$. 
 \end{prop}
 \begin{proof}
-If $\{I_x\}_{x\in X}$ denotes a family of abelian groups , then define $\underline{I}(U) = \prod_{x\in U} I_x$ and $\Hom_{\mathbf{Sh}}(F, \underline{I}) = \prod_{x\in X} \Hom(F_x, I_x)$. As a result, if $I_x$ is injective (i.e., divisible), then $I$ will be injective. Given any sheaf $F$, choose $I_x$ injective such that $F_x \hookrightarrow I_x$. By doing this, we can form an injective object $I$ so that $0 \to F \to I$ is exact. 
+If $\left\{I_x\right\}_{x\in X}$ denotes a family of abelian groups , then define $\underline{I}(U) = \prod_{x\in U} I_x$ and $\Hom_{\mathbf{Sh}}(F, \underline{I}) = \prod_{x\in X} \Hom(F_x, I_x)$. As a result, if $I_x$ is injective (i.e., divisible), then $I$ will be injective. Given any sheaf $F$, choose $I_x$ injective such that $F_x \hookrightarrow I_x$. By doing this, we can form an injective object $I$ so that $0 \to F \to I$ is exact. 
 \end{proof}
 
 \begin{definition}
@@ -3954,7 +3954,7 @@ T{N} \to T{M}\restriction_N \to \faktor{T{M}\restriction_N}{T{N}}
 
 \begin{exercise} Let $\pi: E \to X$ be a smooth vector bundle.
 \begin{enumerate}
-\item  Let $\left\{U_{\alpha}\right\}$ be an open cover of $X$ and $\{g_{\alpha{\beta}}\}$  a collection of transition functions. Show that $C^{\infty}(X; E) \cong \left\{ s_{\alpha} : U_{\alpha} \to \R^k \mid g_{\alpha{\beta}} s_{\beta} = s_{\alpha}\right\}$.
+\item  Let $\left\{U_{\alpha}\right\}$ be an open cover of $X$ and $\left\{g_{\alpha{\beta}}\right\}$  a collection of transition functions. Show that $C^{\infty}(X; E) \cong \left\{ s_{\alpha} : U_{\alpha} \to \R^k \mid g_{\alpha{\beta}} s_{\beta} = s_{\alpha}\right\}$.
 \item Consider $\CP^n$. There exists a rank one \textit{tautological bundle $ \gamma \overset{\pi}{\longrightarrow} \CP^n$}, also known as the \textit{complex line bundle}. We have that $$\CP^n \equiv \faktor{\C^{n+1}\setminus \{0\}}{\C^{\times}} = \left(\text{lines through }\vec{0} \text{ in }\C^{n+1}\right).$$ If $\ell \subset \C^{n+1}$ is such a line, then let $\alpha_l = \ell$. Compute $g_{01} : U_{01} \to \C^{\times} = \GL_1(\C)$. It should look like $z^{-1}$.
 \item Consider the bundle $\gamma^{\ast}$ on $\mathcal{O}(n)$, where the transition function is precisely $z^n$. Show that meromorphic functions on $\CP^1$ correspond to algebraic sections of $\mathcal{O}(n)$, which are precisely homogenous polynomials of degree $n$.
 \end{enumerate}
@@ -3966,7 +3966,7 @@ We want to differentiate sections of a vector bundle. Let $s : X \to E$ be a sec
 
 On a trivial bundle, connections exist. Indeed, given $X \times V$ and $s : X \to V$, we see that $\nabla_0(s) = ds \in \Omega^1(X) \otimes V$. More generally, if $\omega \in \omega^1(X) \otimes \ed(V)$, then $\nabla_0 + w$ is also a connection.
 
-On e general vector bundle $ \pi : E \to X$, take a local trivialization $E \restriction_{U_{\alpha}} \to U_{\alpha} \times \R^k$ and put a connection $\nabla_{\alpha}$ on $E \restriction_{U_{\alpha}}$. Let $\{\lambda_{\alpha}\}$ be a patron of unity subordinate to the $U_{\alpha}$. Set $\nabla = \sum_{\alpha} \lambda_{\alpha}\nabla_{\alpha}$. Thus, connections always exist. 
+On e general vector bundle $ \pi : E \to X$, take a local trivialization $E \restriction_{U_{\alpha}} \to U_{\alpha} \times \R^k$ and put a connection $\nabla_{\alpha}$ on $E \restriction_{U_{\alpha}}$. Let $\left\{\lambda_{\alpha}\right\}$ be a patron of unity subordinate to the $U_{\alpha}$. Set $\nabla = \sum_{\alpha} \lambda_{\alpha}\nabla_{\alpha}$. Thus, connections always exist. 
 
 Let $\pi : E^{k/\R} \to X$ be a vector bundle with a connection $\nabla$. Let $x,y \in X$ and let $p(t)$ be a path from $x$ to $y$. Let $e(t)$ be a section of $E$ along $p(t)$. We say that $e(t)$ is \textit{covariantly constant} or \textit{parallel} if $$\nabla_{\overset{\circ}{p}(t)}e(t) = 0.$$ Consider $E_x \ni e_0$. The we have a first-order ODE with initial condition $e(0) = e_0$ and $\nabla_{\overset{\circ}{p}(t)}e(t) =0$. By Picard, there exists a unique solution $e(t)$. Thus, we have defined a map given by $h(p)(e_0) = e(1)$, so that $h(p) : E_x \to E_y$ is linear. We call $h$ the \textit{holonomy map}. We get $$  \nabla_v{s}(x) = \lim_{t \to 0} \frac{h(p_t)^{-1}s(p(t)) 0s(x)}{t}  $$ where $p$ is any path with $p'(0) = v$.
 
