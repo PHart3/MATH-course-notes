@@ -247,7 +247,6 @@ M\coloneqq \left(Q, \Sigma, q_0, \delta, Q_F\right)  \tag{$\alpha$}
 \] where  $\left\lvert{Q}\right\rvert = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
 
 In other words, an automaton $M$ is a $\DFA$ if
-
 \begin{enumerate}[label=(\alph*)]
 \item $M$ has a finite number of states $Q$,
 \item $M$ has a unique \textit{starting state $q_0$},
@@ -256,9 +255,18 @@ In other words, an automaton $M$ is a $\DFA$ if
 \item certain states $Q_F$ are designated as \textit{final states}.
 \end{enumerate}
 
+\begin{aside}
+For each alphabet $\Sigma$, we have a category $\mathbf{Aut}_{\Sigma}$ whose objects are precisely $\DFA$'s in $\Sigma$ and  whose morphisms $ \left(Q, \Sigma, q_0, \delta, Q_F\right)  \to  \left(Q', \Sigma, q_0', \delta', Q_F'\right) $, called \textit{simulations}, are precisely functions $f: Q_M \to Q_N$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $f(q_0) = q_0'$,
+\item $f(\delta(q, \sigma)) = \delta'(f(q), \sigma)$, and
+\item $f(Q_F) \subset Q_F'$.
+\end{enumerate}.
+\end{aside}
+
 \medskip
 
-Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For each $1\leq i\leq n$, let $$q_i(x) =\delta(q_{i-1}(x), x_i).$$ If $x= \epsilon$, then $n=0$, so that $q_0(x) = q_0$ as well. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
+Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For each $1\leq i\leq n$, let $$q_i(x) =\delta(q_{i-1}(x), x_i).$$ If $x= \epsilon$, then $n=0$, from which we recover the equation $q_0(x) = q_0$. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
 
 
 \begin{notation}
@@ -491,10 +499,12 @@ There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automat
 \begin{enumerate}[label=(\alph*)]
 \item $\left\lvert{y}\right\rvert >0$,
 \item $\left\lvert{wy}\right\rvert\leq n_0$, and
-\item if $i\geq 0$, then $wy^iz \in L$ where $y^i \coloneqq \underbrace{y\cdots y}_{i \text{ times}}$.
+\item if $i\geq 0$, then $wy^iz \in L$ where $y^i \coloneqq \underbrace{y\cdots y}_{i \text{ copies}}$.
 \end{enumerate}
-In this case, we call the minimal such $n_0$ the \textit{pumping length of $L$}.
 \end{lemma}
+\begin{term}
+In this case, we call the minimal such $n_0$ the \textit{pumping length} of $L$.
+\end{term}
 \begin{proof}
 By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such that $L = L(M)$. Let $n_0 = \left\lvert{Q}\right\rvert$. Let $x\in L$ such that $\left\lvert{x}\right\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Consider the three strings 
 \begin{gather*}
@@ -513,17 +523,51 @@ where $\left\lvert{x}\right\rvert = m$. It is straightforward to verify that the
 
 \begin{exmp} Let $n_0\geq 0$ be an integer. Suppose that $x=wyz$ with $\left\lvert{y}\right\rvert >0$ and $\left\lvert{wy}\right\rvert\leq n_0$.
 \begin{enumerate}
-\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x= 1^{2^{n_0+1}}$.  Note that $$\left\lvert{wy^iz}\right\rvert = \left\lvert{wyz}\right\rvert + (i-1)\left\lvert{y}\right\rvert = 2^{n_0+1} + (i-1)\left\lvert{y}\right\rvert.$$ Hence if $i=2$, then $\left\lvert{wy^i z}\right\rvert = 2^{n_0+1} +\left\lvert{y}\right\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < \left\lvert{wy^i z}\right\rvert$ as well. Therefore, $L$ is not a regular language. 
+\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x= 1^{2^{n_0+1}}$.  Note that $$\left\lvert{wy^iz}\right\rvert = \left\lvert{wyz}\right\rvert + (i-1)\left\lvert{y}\right\rvert = 2^{n_0+1} + (i-1)\left\lvert{y}\right\rvert.$$ Hence if $i=2$, then $\left\lvert{wy^i z}\right\rvert = 2^{n_0+1} +\left\lvert{y}\right\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < \left\lvert{wy^i z}\right\rvert$ as well. Therefore, $L$ is \emph{not} a regular language. 
 \item Let $L = \left\{ ww : w \in \left\{0,1\right\}^{\ast}\right\}$. Let $x= 0^{n_0}10^{n_0}1$. If $\left\lvert{y}\right\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is \emph{not} a regular language. 
 \end{enumerate}
 \end{exmp}
 
-\begin{aside}
+\medskip
+
 Let $D$ be a $\DFA$ with $\left\lvert{Q_D}\right\rvert =n$. Then $D$ recognizes an infinite language if and only if it accepts some string $s$ such that $n\leq \left\lvert{s}\right\rvert \leq 2n$.
-\end{aside}
+
+Indeed, the ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ is infinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle $c$ of states  such that $c \cap p \ne \emptyset$. Note that $\left\lvert{c}\right\rvert \leq n$ and $\left\lvert{p}\right\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
+
+\medskip
+
+
+\begin{aside}
+Let $M$ be a $\DFA$ in the alphabet $\Sigma$. Consider the following two equivalence relations on $\Sigma^{\ast}$.
+\begin{itemize}
+\item Let $x\sim_M y$ if $M$ ends at the same state on inputs $x$ and $y$. 
+\item Let $x\sim_{L(M)} y$ if $xz \in L(M) \iff yz \in L(M)$ for every $z\in \Sigma^{\ast}$.
+
+In this case, we say that $x$ and $y$ are \textit{indistinguishable} by $L(M)$.
+\end{itemize}
+Note that $\sim_M$ is a \textit{refinement} of $\sim_{L(M)}$ in the sense that every equivalence class of $\sim_M$ is contained in an equivalence class of $\sim_{L(M)}$. This means that there at most as many equivalence classes of $\sim_{L(M)}$ as there are of $\sim_M$, and thus the number of equivalence classes of $\sim_{L(M)}$ is at most $\left\lvert{Q_M}\right\rvert <\infty$.
+
+\smallskip
+
+We say that a $\DFA$ recognizing a language $L\subset \Sigma^{\ast}$ is \textit{minimal} if it has at most as many states as any other such $\DFA$.
+\begin{theorem}[Myhill-Nerode]
+There exists a unique (up to isomorphism) minimal $\DFA$  recognizing $L(M)$.
+\end{theorem}
 \begin{proof}
-The ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ belongs tofinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle of states $c$ such that $c \cap p \ne \emptyset$. Note that $\left\lvert{c}\right\rvert \leq n$ and $\left\lvert{p}\right\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
+Let $M' = \left(Q', \Sigma, q_0', \delta', Q_F'\right)$ where
+\begin{itemize}
+\item $Q' \equiv \left\{\left[x\right]_{\sim_{L(M)}} \mid x\in \Sigma^{\ast}\right\}$,
+\item $q_0' \equiv \left[\epsilon\right]$,
+\item $\delta'(\left[x\right], \sigma) \equiv \left[x\sigma\right]$, and 
+\item $Q_F' \equiv \left\{\left[y\right] \mid y \in L(M)\right\}$.
+\end{itemize}
+Note that $M'$ ends at state $\left[x\right]$ on input $x$, where $\left[x\right]\in Q_F'$ if and only if $x\in L(M)$. Therefore, $L(M') = L(M)$. 
+
+To see that $M'$ is minimal, suppose that $N$ is another $\DFA$  recognizing $L(M)$. Then the number of equivalence classes of $\sim_N$ is at least the number of equivalence class of $\sim_{L(N)} = \sim_{L(M)}$, i.e., the cardinality of $Q'$. But  the number of equivalence classes of $\sim_N$ is at most $\left\lvert{Q_N}\right\rvert$. Hence $\left\lvert{Q_N}\right\rvert \geq \left\lvert{Q'}\right\rvert$, as desired.
+
+It remains to show that $M'$ is unique. Let $D\coloneqq \left(Q_D, \Sigma, r_0, \delta_D, R_F\right)$ be another minimal $\DFA$ recognizing $L(M)$. Enumerate the states of $D$ by $q_1, \ldots, q_n$. For each integer $1\leq i \leq n$, let $$A_i = \left\{w\in \Sigma^{\ast} \mid \delta_D(r_0, w) =q_i  \right\}.$$ Note that $\bigcup_{1\leq i \leq n}A_i = \Sigma^{\ast}$. For each $A_i$, there exists a state $S_i \in Q'$ such that $A_i = S_i$. Then the map $D \to M'$ given by $q_i \mapsto S(i)$ is an isomorphism in $\mathbf{Aut}_{\Sigma}$.
 \end{proof}
+\end{aside}
 
 \section{Computability theory}
 
@@ -531,8 +575,8 @@ The ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, sup
 A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$$ where $\Gamma \supset \Sigma$ is finite such that 
 \begin{enumerate}[label=(\roman*)]
 \item there is some \textit{null character} $\bot \in \Gamma \setminus \Sigma$,
-\item $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, 
-\item and $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. 
+\item $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, and 
+\item $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. 
 \end{enumerate}
 We call $\Sigma$ the \textit{input alphabet}, $\Gamma$ the \textit{tape alphabet}, $Q_F$ the set of \textit{accepting states}, and $Q_R$ the set of \textit{rejecting states}.
 \end{definition}
@@ -575,8 +619,8 @@ We call this an \textit{accepting configuration} if $q \in Q_F$ and a \textit{re
 \begin{definition}
 Let $a,b,c\in \Gamma$ and $u,v\in \Gamma^{\ast}$. Let $p,q\in Q$. We say that the configuration $C_1$ \textit{yields} the configuration $C_2$ in the following cases:
 \begin{enumerate}[label=(\alph*)]
-\item $uapbv$ yields $uqacv$ when $\delta(p,b) = (q, c, L)$.
-\item $uapbv$ yields $uacqv$ when $\delta(p, b) = (q, c, R)$. 
+\item $uapbv$ yields $uqacv$ when $\delta(p,b) = \left(q, c, L\right)$.
+\item $uapbv$ yields $uacqv$ when $\delta(p, b) = \left(q, c, R\right)$. 
 \end{enumerate}
 In this case, we write $C_1 \vdash C_2$.
 \end{definition}
@@ -586,8 +630,8 @@ In this case, we write $C_1 \vdash C_2$.
 We say that the $\TM$ $M$ \textit{accepts} the input $w$ if 
 \begin{enumerate}[label=(\roman*)]
 \item there is some sequence $C_1, \ldots, C_k$ of configurations such that $C_1$ is $\bot q_0w$, 
-\item each $C_i$ yields $C_{i+1}$ (in which case we write $C_1 \specialvdash{}{*} C_k $), 
-\item and $C_k$ is an accepting configuration. 
+\item each $C_i$ yields $C_{i+1}$ (in which case we write $C_1 \specialvdash{}{*} C_k$), and
+\item $C_k$ is an accepting configuration. 
 \end{enumerate}
 We define the \textit{language of the $\TM$ $M$} as $$L(M) \equiv \left\{x \in \Sigma^{\ast}: M \text{ accepts } x \right\}.$$
 
@@ -956,8 +1000,11 @@ Let $\mathsf{CNF\text{-}SAT} = \left\{\langle \varphi \rangle : \varphi \text{ i
 \subsection{Lecture 10}
 
 \begin{lemma}
-A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c_1} \land V\left(x,y\right) = 1 \text{ where } V \text{ runs in time }\left\lvert{x\cdot y}\right\rvert^{c_2}\right\}.$$ In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
+A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\TM$ $V(\cdot, \cdot)$ and constants $c_1, c_2 >0$ such that $$L = \left\{ x \mid \exists y\left(\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c_1} \land V\left(x,y\right) = 1 \text{ where } V \text{ runs in time }\left\lvert{x\cdot y}\right\rvert^{c_2}\right)\right\}.$$ 
 \end{lemma}
+\begin{term}
+In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
+\end{term}
 \begin{proof} $ $
 
 ($\Longrightarrow$) 
@@ -1045,10 +1092,10 @@ We want to encode a given configuration of $M$, which we may assume uses at most
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
-Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \langle C \rangle : \exists x. C(x) = 1\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
+Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \langle C \rangle : \exists x\left(C(x) = 1\right)\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\forall x\in L.\exists y\in \Sigma^{\ast}.\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V\left(x,y\right) =1 \land (x\notin L \implies \forall y. V\left(x,y\right)=0).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C\left(x,y\right) = V\left(x,y\right)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x(\cdot)$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V\left(x,y\right)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x(\cdot) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
+If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\left(\forall x\in L\right)\left(\exists y\in \Sigma^{\ast}\right)\left(\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V\left(x,y\right) =1 \land \left(x\notin L \implies \forall y\left(V\left(x,y\right)=0\right)\right)\right).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C\left(x,y\right) = V\left(x,y\right)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x({\cdot})$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V\left(x,y\right)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x({\cdot}) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
 \end{proof}
 
 \subsection{Lecture 12}
@@ -1322,7 +1369,7 @@ The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by ou
 \begin{exmp} $ $
 \begin{enumerate}
 \item Let $\Sigma_2{-}\mathsf{SAT} = \left\{\varphi \text{ Boolean} \mid \forall \bar{x} \exists \bar{y}(\varphi(\bar{x}, \bar{y}) = 1)\right\}$. It is unclear that this (or its complement) belongs to $\NP$. 
-\item Let $\mathsf{TQBF{-}SAT} = \left\{ \varphi(\overline{x_1}, \ldots, \overline{x_n}) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} (\varphi(\overline{x_1}, \ldots, \overline{x_n}) = 1), \ Q_i \in \{\forall, \exists\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
+\item Let $\mathsf{TQBF{-}SAT} = \left\{ \varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} \left(\varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) = 1\right), \ Q_i \in \left\{\forall, \exists\right\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
 \begin{proof}
 Construct an algorithm $T(\varphi)$ as follows. 
 \begin{itemize}
@@ -1350,8 +1397,8 @@ Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lve
 
  We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
 \begin{align*}
-\varphi_{c_1, c_2, i} & \leftrightarrow \exists c(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1})
-\\ & \leftrightarrow \exists c \forall D^1 \forall D^2((D^1 = c_1 \land D^2 = c) \vee (D^1 = c) \land (D^2 = c_2)) \implies \varphi_{D^1, D^2, i-1}.
+\varphi_{c_1, c_2, i} & \leftrightarrow \exists c\left(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1}\right)
+\\ & \leftrightarrow \exists c \forall D^1 \forall D^2\left(\left(D^1 = c_1 \land D^2 = c\right) \vee \left(D^1 = c\right) \land \left(D^2 = c_2\right)\right) \implies \varphi_{D^1, D^2, i-1}.
 \end{align*}
 It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{\varphi_{c_1, c_2, i-1}}\right\rvert +O(S(n))$, so that $\left\lvert{\hat{\varphi}}\right\rvert \leq O(S(n)^2)$, as desired.
 \end{proof}
@@ -1546,13 +1593,13 @@ Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \texti
 \begin{enumerate}
 \item Let $\mathbf{RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}[M(x,r)=1] \geq \frac{2}{3}$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}[M(x,r)=0] = 1$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=1\right] \geq \frac{2}{3}$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=0\right] = 1$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
 \item Let $\mathbf{co{-}RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
-\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}[M(x,r)=1]= 1$ and
-\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}[M(x,r)=0] \geq \frac{2}{3}$
+\item for any $x\in L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=1\right]= 1$ and
+\item for any $x\notin L$, $\mathbb{P}_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=0\right] \geq \frac{2}{3}$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
 \end{enumerate}
 Let $\mathbf{ZPP} = \mathbf{RP} \cap \mathbf{co{-}RP}$.
@@ -1589,8 +1636,8 @@ $\mathbf{BPP} \subset \mathbf{EXP}$.
 
 \begin{definition}[Polynomial hierarchy]  $ $
 \begin{enumerate}
-\item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \left\{0,1\right\}^{p_1(\left\lvert{x}\right\rvert)} \forall \overline{x_2} \in  \left\{0,1\right\}^{p_2(\left\lvert{x}\right\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\left\lvert{x}\right\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
-\item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \left\{0,1\right\}^{p_1(\left\lvert{x}\right\rvert)} \exists \overline{x_2} \in  \left\{0,1\right\}^{p_2(\left\lvert{x}\right\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\left\lvert{x}\right\rvert)}(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1).$$  
+\item For any $i \in \N$, $\Sigma_p^i$ is the class of languages $L$ for which there exist a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \exists \overline{x_1}\in \left\{0,1\right\}^{p_1(\left\lvert{x}\right\rvert)} \forall \overline{x_2} \in  \left\{0,1\right\}^{p_2(\left\lvert{x}\right\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\left\lvert{x}\right\rvert)}\left(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1\right).$$  
+\item For any $i \in \N$, $\Pi_p^i$ is the class of languages $L$ for which there exists a polynomial-time computable predicate $P$ and polynomials $p_1({\cdot}), \ldots, p_i({\cdot})$ such that $$x \in L \iff \forall \overline{x_1}\in \left\{0,1\right\}^{p_1(\left\lvert{x}\right\rvert)} \exists \overline{x_2} \in  \left\{0,1\right\}^{p_2(\left\lvert{x}\right\rvert)}\cdots \exists /\forall \overline{x_i}\in \left\{0,1\right\}^{p_i(\left\lvert{x}\right\rvert)}\left(P(x, \overline{x_1}, \ldots, \overline{x_i}) =1\right).$$  
 \end{enumerate}
 The \textit{polynomial hierarchy} is the set of languages $\mathbf{PH} \coloneqq \bigcup_{i\in \N}\Sigma_p^i$.
 \end{definition}
@@ -1621,7 +1668,7 @@ We see that $\mathsf{MAX{-}CLIQUE} \in \Sigma^2_p$ because it is defined by the 
 If $k>0$ and $\Sigma_p^k = \Pi^k_p$, then $\Sigma^{k+1}_p = \Sigma^k_p$.
 \end{lemma}
 \begin{proof}
-For simplicity, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some formula $$\varphi(x)\coloneqq \exists{\overline{y_1}}\forall{\overline{y_2}}(P(x, \overline{y_1}, \overline{y_2}))$$ defines $L$. But, by assumption, $\varphi(x)$ is equivalent to some formula  $ \exists{\overline{y_1}}\exists{\overline{y_2}}(P'(x, \overline{y_1}, \overline{y_2}))$.
+For simplicity, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some formula $$\varphi(x)\coloneqq \exists{\overline{y_1}}\forall{\overline{y_2}}\left(P\left(x, \overline{y_1}, \overline{y_2}\right)\right)$$ defines $L$. But, by assumption, $\varphi(x)$ is equivalent to some formula  $ \exists{\overline{y_1}}\exists{\overline{y_2}}\left(P'\left(x, \overline{y_1}, \overline{y_2}\right)\right)$.
 \end{proof}
 
 \begin{theorem}[Sipser-G\'acs]
@@ -1630,7 +1677,7 @@ $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \begin{proof}
 Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\mathbb{P}_{r \in_R \left\{0,1\right\}^{\text{poly}(n)}}\left[A(x,r) = \chi_L(x)\right] \geq \frac{2}{3}$ where $n$ denotes $\left\lvert{x}\right\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\mathbb{P}_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\mathbb{P}[A'(x, \overline{r}) = \chi_L(x)] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
 \begin{claim}
-$x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\right\}^m \forall \overline{z} \in \left\{0,1\right\}^m \bigvee_{j=1}^m A'(x, \overline{y_j} \oplus \overline{z})=1$.
+$x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\right\}^m \forall \overline{z} \in \left\{0,1\right\}^m \bigvee_{j=1}^m A'\left(x, \overline{y_j} \oplus \overline{z}\right)=1$.
 \end{claim}
 \begin{proof} $ $
 
@@ -1638,7 +1685,7 @@ $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\righ
 
 \smallskip
 
-Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] <1   .$$ Note that $\mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\bigwedge_{j=1}^m  A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right] \leq \frac{1}{(100m^2)^m}$ for any $\overline{z} \in \left\{0,1\right\}^m$. Therefore, $$      \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}}  \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'(\overline{x}, \overline{y_j} \oplus \overline{z}) \ne 1 \right ]   \leq \frac{2^m}{(100m^2)^m} <1.$$
+Suppose that $x \in L$. It suffices to show that $$   \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'\left(\overline{x}, \overline{y_j} \oplus \overline{z}\right) \ne 1 \right] <1   .$$ Note that $\mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}} \left[\bigwedge_{j=1}^m  A'\left(\overline{x}, \overline{y_j} \oplus \overline{z}\right) \ne 1 \right] \leq \frac{1}{\left(100m^2\right)^m}$ for any $\overline{z} \in \left\{0,1\right\}^m$. Therefore, $$      \mathbb{P}_{\overline{y_1}, \ldots, \overline{y_m}}  \left[\exists \overline{z} \in \left\{0,1\right\}^m \bigwedge_{j=1}^m A'\left(\overline{x}, \overline{y_j} \oplus \overline{z}\right) \ne 1 \right ]   \leq \frac{2^m}{(100m^2)^m} <1.$$
 
 \medskip
 
@@ -1663,16 +1710,20 @@ Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_
 \item (completeness) if $x\in L$, then there exists a prover $P$ such that $\langle V, P\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction and $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
 \item (soundness) if $x\notin L$, then for any prover $P$ such that $\langle V, P\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction, $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
 \end{enumerate}
-\item Let $\mathbf{IP} \coloneqq \bigcup_{k\in \N}\mathsf{IP}[n^k]$.
+\item Let $\mathbf{IP} \coloneqq \bigcup_{k\in \N}\mathsf{IP}\left[n^k\right]$.
 \end{enumerate}
 \end{definition}
+
+\smallskip
+
+Recall that two graphs $\left(V, E\right)$ and $\left(V', E'\right)$ are \textit{isomorphic} if there is a bijection $f: V \to V'$ such that $\left(x,y\right) \in E \iff \left(f(x), f(y)\right)\in E'$.
 
 \begin{exmp}
 Let $\mathsf{NIP}=  \left\{ \langle G_1, G_2 \rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
 \[
-\begin{array}{l}{V : \text { Pick } i \in\{1,2\} \text { uniformly randomly. Randomly permute the vertices of } G_{i} \text { to get a  new isomorphic graph } H .} \\ {\text {\quad \quad Send } H \text { to } P .} \\ {P : \text { If } H \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
+\begin{array}{l}{V : \text { Pick } i \in \left\{1,2\right\} \text { uniformly randomly. Randomly permute the vertices of } G_{i} \text { to get a  new isomorphic graph } H .} \\ {\text {\quad \quad Send } H \text { to } P .} \\ {P : \text { If } H \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_j \text{ denote the selected graph. Send } j \text { to } V \text {. }} \\
-{V : \text { Pick } i' \in\{1,2\} \text { uniformly randomly. Randomly permute the vertices of } G_{i'} \text { to get a new isomorphic graph } H' .} \\ { \text {\quad \quad Send } H' \text { to } P .} \\ {P : \text { If } H' \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
+{V : \text { Pick } i' \in \left\{1,2\right\} \text { uniformly randomly. Randomly permute the vertices of } G_{i'} \text { to get a new isomorphic graph } H' .} \\ { \text {\quad \quad Send } H' \text { to } P .} \\ {P : \text { If } H' \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_{j'} \text{ denote the selected graph. Send } j' \text { to } V \text {. }}
 \\ {V : \text { Accept if both } i=j \text{ and } i' =j'. \text { Reject otherwise. }}\end{array}
 \] 
@@ -1700,15 +1751,15 @@ $\mathsf{PSPACE} = \mathbf{IP}$.
 Let $A$ and $B$ be sets of size $2^n$ and $2^k$, respectively. A set of functions $\H\coloneqq \left\{h_1, \ldots, h_t\right\}$ from $A$ to $B$ is \textit{pairwise independent} if for any distinct $x, x' \in A$ and any $y, y' \in B$, $$  \mathbb{P}_{h \in_R \H}\left[h(x) = y \land h(x') = y'\right] = \frac{1}{2^{2k}}  = \frac{1}{\left\lvert{B}\right\rvert^2}.$$ An element of such a set is called a \textit{(pairwise independent) hash function}.
 \end{definition}
 
-\begin{exmp}
-The set of all functions $A \to B$ is a pairwise independent set of size $\left\lvert{B}\right\rvert^{\left\lvert{A}\right\rvert}$. 
-\end{exmp}
-
-\begin{exmp}
+\begin{exmp} $ $
+\begin{enumerate}
+\item The set of all functions $A \to B$ is a pairwise independent set of size $\left\lvert{B}\right\rvert^{\left\lvert{A}\right\rvert}$. 
+\item
 Let $q= 2^n$. For each $\left(s,t\right) \in \F_q \times \F_q$, define $h_{s,t} : \F_q \to \F_q$ by $h_{s,t}(a) = a \cdot s +t$. If $x,y, x', y' \in \F_q$ with $x \ne x'$, then the system of equations \begin{align*} 
 sx + t & = y \\ sx' +t & = y'
 \end{align*} 
 is satisfied $\iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix} \begin{bmatrix} s \\ t    \end{bmatrix} = \begin{bmatrix} y \\ y' \end{bmatrix} \iff  \begin{bmatrix}  x & 1 \\ x' & 1   \end{bmatrix}^{-1} \begin{bmatrix} y \\ y' \end{bmatrix}  = \begin{bmatrix} s \\ t    \end{bmatrix} $. Therefore, $$\mathbb{P}_{(s,t)\in_R \F_q\times \F_q}\left[h_{s,t}(x) = y \land h_{s,t}(x') = y'\right] = \frac{1}{q^2},$$ which proves that $h_{s,t}$ is a hash function.
+\end{enumerate}
 \end{exmp}
 
 \subsection{Lecture 24}
@@ -1741,10 +1792,10 @@ Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then se
 }}
 
 \begin{caseof}
-\case{Suppose that $\left\lvert{S}\right\rvert \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\left\lvert{K}\right\rvert}{2^l}$, then $$ \mathbb{P}_{h \in_R \H}[\exists x \in S, \ h(x) = y] \leq \frac{\left\lvert{S}\right\rvert}{2^l} \leq  \frac{\left\lvert{K}\right\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
+\case{Suppose that $\left\lvert{S}\right\rvert \leq \frac{K}{2}$.}{If $x \in S$, then $\mathbb{P}_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\left\lvert{K}\right\rvert}{2^l}$, then $$ \mathbb{P}_{h \in_R \H}\left[\left(\exists x \in S\right)\left(h(x) = y\right)\right] \leq \frac{\left\lvert{S}\right\rvert}{2^l} \leq  \frac{\left\lvert{K}\right\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
 \case{Suppose that $\left\lvert{S}\right\rvert \geq K$.} {We compute 
 \begin{align*}
-\mathbb{P}_{h \in \H}[\exists x \in S, \ h(x) =y] & \geq \sum_{x \in S} \mathbb{P}[h(x) = y] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \mathbb{P}[h(x) = y \land h(x') = y]  
+\mathbb{P}_{h \in \H}\left[\left(\exists x \in S\right)\left(h(x) = y\right)\right] & \geq \sum_{x \in S} \mathbb{P}\left[h(x) = y\right] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \mathbb{P}\left[h(x) = y \land h(x') = y\right]  
 \\ & \geq \frac{\left\lvert{S}\right\rvert}{2^l} - \underbrace{\frac{\left\lvert{S}\right\rvert(\left\lvert{S}\right\rvert-1)}{2}}_{\left\lvert{S}\right\rvert \choose 2}\cdot \frac{1}{2^{2l}}
 \\ & = \frac{\left\lvert{S}\right\rvert}{2^l} \left(  1- \frac{\left\lvert{S}\right\rvert -1}{2} \cdot \frac{1}{2^l}    \right)
 \\ & \geq \frac{\left\lvert{S}\right\rvert}{2^l} \left(  1 - \frac{\left\lvert{S}\right\rvert}{2 \cdot 2^l}    \right)
@@ -1767,7 +1818,7 @@ For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \
 For any $K\in \N$, there exists an efficient interactive protocol $\left(V, P\right)$ such that 
 \begin{itemize}
 \item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\langle \varphi, p \rangle$ with probability $1$ and
-\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq (1-\frac{d}{p})^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
+\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq \left(1-\frac{d}{p}\right)^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
 \end{itemize}
 \end{lemma}
 
