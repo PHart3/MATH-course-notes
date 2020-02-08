@@ -1110,7 +1110,7 @@ By \cref{deriv}, it suffices to show that $\left[X, Y\right]$ is a derivation. L
  \\ & = fXYg + YgXf + gXYf + YfXg 
  \\ & - fYXg - XgYf - gYXf - XfYg 
  \\ & = fXYg + gXYf - fYXg - gYXf 
- \\ & = f[X,Y]g + g[X,Y]f
+ \\ & = f\left[X,Y\right]g + g\left[X,Y\right]f
 .\end{align*}
 \end{proof}
 
@@ -1546,8 +1546,8 @@ Let $\left(U, x^i\right)$ be local coordinates for $M$. Then any $A \in \T_k^{\e
 \begin{exmp}\label{exab}
 Let $\sigma = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}$, $X = X^k \frac{\partial}{\partial{x^k}}$, and $w = w_{\ell}dx^{\ell}$. Then 
 \begin{align*}
-\sigma(X, w) & = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}(X^k \frac{\partial}{\partial{x^k}}, w_{\ell}dx^{\ell}) 
-\\ & = \delta_j^i dx^j (X^k \frac{\partial}{\partial{x^k}}) \frac{\partial}{\partial{x^i}} w_{\ell}dx^{\ell} 
+\sigma(X, w) & = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}\left(X^k \frac{\partial}{\partial{x^k}}, w_{\ell}dx^{\ell}\right) 
+\\ & = \delta_j^i dx^j\left(X^k \frac{\partial}{\partial{x^k}}\right) \frac{\partial}{\partial{x^i}} w_{\ell}dx^{\ell} 
 \\ & = \delta_j^i \delta_k^j X^k w_{\ell}\delta_i^{\ell} 
 \\ & = w_kX^k
 \\ & = w(X).
@@ -1575,7 +1575,7 @@ Notice that the smooth function $\hat{\sigma}_p$ induced by $\sigma$ of \cref{ex
 \medskip
 
 \begin{note}
-The Lie bracket is \emph{not} multilinear over $C^{\infty}(M)$, for $$[fX + gY, Z] = f\left[X, Y\right] + g[Y, Z]-Z(f)X -Z(g)Y.$$
+The Lie bracket is \emph{not} multilinear over $C^{\infty}(M)$, for $$\left[fX + gY, Z\right] = f\left[X, Y\right] + g[Y, Z]-Z(f)X -Z(g)Y.$$
 \end{note}
 
 \medskip
@@ -1602,7 +1602,7 @@ The  expression $\bigwedge^k(V)$ will denote the subspace of $T^k(V)$ consisting
 \end{notation}
 
 \begin{definition}
-Given $T\in T^k(V)$, the \textit{alternation $\Alt(T)$ of $T$} is the multilinear map defined by $$ (V_1, \ldots, V_k) \mapsto \frac{1}{k!} \sum_{\sigma \in S_k} \sgn(\sigma) T\left(V_{\sigma(1)}, \ldots, V_{\sigma(k)}\right).$$
+Given $T\in T^k(V)$, the \textit{alternation $\Alt(T)$ of $T$} is the multilinear map defined by $$ \left(V_1, \ldots, V_k\right) \mapsto \frac{1}{k!} \sum_{\sigma \in S_k} \sgn(\sigma) T\left(V_{\sigma(1)}, \ldots, V_{\sigma(k)}\right).$$
 \end{definition}
 
 \begin{exmp}\label{spec} $ $
@@ -2512,7 +2512,7 @@ Let $N\subset M$ be a nonempty submanifold and $$D \coloneqq \coprod_{p\in M}D_p
 \end{definition}
 
 \begin{definition}
-We say that a distribution $D$ is \textit{involutive} if $[X,Y]\in D$ whenever $X,Y \in D$. 
+We say that a distribution $D$ is \textit{involutive} if $\left[X,Y\right]\in D$ whenever $X,Y \in D$. 
 \end{definition}
 
 \begin{prop}

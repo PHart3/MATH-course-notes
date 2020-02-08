@@ -335,24 +335,24 @@ Note that, on the one hand, $ {\N^{\ast} + \left(\Z \cdot \kappa\right)}$ cannot
 {\N^{\ast} + \left(\Z \cdot \kappa\right)} \not\cong {\N^{\ast} +  \left(\Z \cdot \left(\Q +\kappa\right)\right)}.
 \]
 \begin{definition}
-Suppose that $\L$ is a finite language without function symbols. Let $\D$ and $\E$ be two $\L$-structures. Let $n\in \omega$. The \textit{Ehrenfeucht-Fra\"{\i}ss\'e  game $G_n(\D, \E)$ of length $n$ on $\D$ and $\E$} is a game of perfect information played as follows.
+Suppose that $\L$ is a finite language without function symbols. Let $\D$ and $\E$ be two $\L$-structures. Let $n\in \omega$. The \textit{Ehrenfeucht-Fra\"{\i}ss\'e  game $\ef_n(\D, \E)$ of length $n$ on $\D$ and $\E$} is a game of perfect information played as follows.
 \begin{enumerate}[label=(\alph*)]
 \item There are exactly two players, the \textit{spoiler} and the \textit{duplicator}.
 \item There are exactly $n$ rounds.
 \item The spoiler begins round $k\leq n$ by picking an element of either $\dom(\D)$ or $\dom(\E)$. Next, the duplicator picks an element of the other domain.
-\item This yields two sequences $\left(d_1, \ldots, d_n\right)$ and $\left(e_1, \ldots, e_n\right)$ such that $d_i\in \dom(\D)$ and $e_i\in \dom(\E)$ for each $i=1, \ldots, n$.  If the mapping $d_i \mapsto e_i$ defines an isomorphism of finite substructures, then we say that the duplicator has won $G_n(\D, \E)$. Otherwise, we say that the spoiler has won.
+\item This yields two sequences $\left(d_1, \ldots, d_n\right)$ and $\left(e_1, \ldots, e_n\right)$ such that $d_i\in \dom(\D)$ and $e_i\in \dom(\E)$ for each $i=1, \ldots, n$.  If the mapping $d_i \mapsto e_i$ defines an isomorphism of finite substructures, then we say that the duplicator has won $\ef_n(\D, \E)$. Otherwise, we say that the spoiler has won.
 \end{enumerate}
 \end{definition}
 
 \begin{theorem}[Fra\"{\i}ss\'e]\label{EF}
-The duplicator has a winning strategy in $G_n(\D, \E)$ for each $n\in \omega$ if and only if $\D \equiv \E$.
+The duplicator has a winning strategy in $\ef_n(\D, \E)$ for each $n\in \omega$ if and only if $\D \equiv \E$.
 \end{theorem}
 
 \begin{claim}
 Suppose that $\left(\E, <\right)$ is a discrete linear ordering with a minimal element but no maximal element. Then $\E \equiv \N^{\ast}$.
 \end{claim}
 \begin{proof}[Proof sketch]
-Consider the Ehrenfeucht-Fra\"{\i}ss\'e  game $G_n(\E, \N^{\ast})$ of length $n\in \omega$ on $\E$ and $\N^{\ast}$. The duplicator has a winning strategy in $G_n(\E, \N^{\ast})$ by adhering to the following rules.
+Consider the Ehrenfeucht-Fra\"{\i}ss\'e  game $\ef_n(\E, \N^{\ast})$. The duplicator has a winning strategy in $\ef_n(\E, \N^{\ast})$ by adhering to the following rules.
 \begin{enumerate}[label=(\roman*)]
 \item If, in round $m$, the spoiler chooses an element of one of the structures that is connected to a previously chosen element or the minimal element by a path of successors of length $k<\infty$, then choose the corresponding element of the other structure in round $m$.
 \item Otherwise, make sure that any chosen element of $\dom(\N^{\ast})$ is always separated by at least $n+1$ elements from any previously chosen element of $\dom(\N^{\ast})$ while preserving the required order of your choices. 
