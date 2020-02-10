@@ -259,7 +259,7 @@ Suppose, toward a contradiction, that there is a sentence $\varphi$ in the langu
 \end{align*}
 in our new language.
 
-Let $F$ be any finite subset of $\Gamma$. Since both $\theta\left[\D, \bar{a}\right]$ and $\neg{\theta\left[\D, \bar{a}\right]}$ are infinite, we can find an expansion of $\D$ that satisfies $F$ by interpreting $\bar{e}$ as $\bar{a}$ and both $c$ and $d$ as members of large enough equivalence classes. By the compactness theorem, it follows that there is some model $\C$ of $\Gamma$, which must be infinite. Let $\C'$ denote the reduct of $\C$ to the language of $\D$. Thanks to the L\"owenheim-Skolem theorem, we may assume that $\dom(\C')$ is countable. Thus, the equivalence classes $\left[c^{\C}\right]$ and $\left[d^{\C}\right]$ are countable. Note that $e_i^{\C} \notin \left[c^{\C}\right] \cup \left[d^{\C}\right]$ for each $1\leq i \leq n$. Therefore, there is an automorphism of $\C'$ sending $c^{\C}$ to $d^{\C}$ and fixing each $e_i^{\C}$. But this contradicts the fact that $\C' \models \theta\left[c^{\C}, \bar{e}^{\C}\right] \land \neg{\theta\left[d^{\C}, \bar{e}^{\C}\right]}$.
+Let $F$ be any finite subset of $\Gamma$. Since both $\theta\left[\D, \bar{a}\right]$ and $\neg{\theta\left[\D, \bar{a}\right]}$ are infinite by assumption, we can find an expansion of $\D$ that satisfies $F$ by interpreting $\bar{e}$ as $\bar{a}$ and both $c$ and $d$ as members of large enough equivalence classes. By the compactness theorem, it follows that there is some model $\C$ of $\Gamma$, which must be infinite. Let $\C'$ denote the reduct of $\C$ to the language of $\D$. Thanks to the L\"owenheim-Skolem theorem, we may assume that $\dom(\C')$ is countable. Thus, the equivalence classes $\left[c^{\C}\right]$ and $\left[d^{\C}\right]$ are countable. Note that $e_i^{\C} \notin \left[c^{\C}\right] \cup \left[d^{\C}\right]$ for each $1\leq i \leq n$. Therefore, there is an automorphism of $\C'$ sending $c^{\C}$ to $d^{\C}$ and fixing each $e_i^{\C}$. But this contradicts the fact that $\C' \models \theta\left[c^{\C}, \bar{e}^{\C}\right] \land \neg{\theta\left[d^{\C}, \bar{e}^{\C}\right]}$.
 \ee
 \end{solution}
 
@@ -374,10 +374,10 @@ Note that any set definable over $\N^{\ast}$ is $0$-definable  because any natur
 \[
 \begin{cases}
  ``n \text{ is less than any other element}" & n=0
-\\``\text{there are exactly }n-1\text{ elements between }0\text{ and }n"  & n>1
+\\``\text{there are exactly }n-1\text{ elements between $0$ (the minimal element) and }n"  & n>1
 \end{cases}.
 \]
-Suppose, toward a contradiction, that there exist a formula $\theta(y)$ such that $\theta\left[\N^{\ast}\right]$ is both infinite and coinfinite. Consider, again, the theory \eqref{eqn:st1}. Let $$T' = T \cup \left\{\theta(c_0), \neg{\theta(c_1)}\right\}.$$ Since both $\theta\left[\N^{\ast}\right]$ and $\neg{\theta\left[\N^{\ast}\right]}$ are infinite, we can find an expansion of $\N^{\ast}$ that satisfies any finite subset of $T'$, By the compactness theorem together with the L\"owenheim-Skolem theorem, we thus can find a countable model $\D$ of $T'$ and take its reduct $\C$ to the language of $\N^{\ast}$. Note that $\left(\dom(\C), < \right)$ is a countable linear ordering with an  infinite descending and ascending chain $\chi$ on which both $c_0^{\D}$ and $c_1^{\D}$ lie. Moreover, this ordering is discrete in the sense of \eqref{eqn:disc}.
+Suppose, toward a contradiction, that there exist a formula $\theta(y)$ such that $\theta\left[\N^{\ast}\right]$ is both infinite and coinfinite. Consider, again, the theory \eqref{eqn:st1}. Let $$T' = T \cup \left\{\theta(c_0), \neg{\theta(c_1)}\right\}.$$ Since both $\theta\left[\N^{\ast}\right]$ and $\neg{\theta\left[\N^{\ast}\right]}$ are infinite by assumption, we can find an expansion of $\N^{\ast}$ that satisfies any finite subset of $T'$, By the compactness theorem together with the L\"owenheim-Skolem theorem, we thus can find a countable model $\D$ of $T'$ and take its reduct $\C$ to the language of $\N^{\ast}$. Note that $\left(\dom(\C), < \right)$ is a countable linear ordering with an  infinite descending and ascending chain $\chi$ on which both $c_0^{\D}$ and $c_1^{\D}$ lie. Moreover, this ordering is discrete in the sense of \eqref{eqn:disc}.
 Therefore, we may assume that $\chi$ has the form
 \[
  \cdots < x_{m-1} < x_m < x_{m+1} < \cdots
