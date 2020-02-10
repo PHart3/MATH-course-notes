@@ -197,39 +197,7 @@ Let $\c$ be a Waldhausen category. Our goal is to construct the $K$-theory $K(\c
 
 
 \begin{definition}
-Let $\c$ be a category equipped with a subcategory $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $\left(\c, \co{\c}\right)$ is a \textit{category with cofibrations} if the following conditions hold.
-\begin{enumerate}
-\item (W0) Every isomorphism in $\c$ is a cofibration.
-\item (W1) There is a base point $\ast$ in $\c$ such that the unique morphism $\ast \rightarrowtail A$ is a cofibration for any $A \in \ob \c$.
-\item (W2) We have a \textit{cobase change}
-\[
-\begin{tikzcd}
-A \arrow[d] \arrow[r, tail] & B \arrow[d, dotted] \\
-C \arrow[r, dotted, tail] & B \cup_A C
-\end{tikzcd}.
-\]
-\end{enumerate}
-\end{definition}
-
-
-We see that $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A \ast$ along $A \to \ast$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofiber sequence}.
-
-
-\begin{definition}
-A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w{\c}$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a weak equivalence and the following ``Gluing axiom'' holds.
-\begin{enumerate}
-\item (W3) For any diagram
-\[
-\begin{tikzcd}
-C \arrow[d, "\sim"'] & A \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & B \arrow[d, "\sim"'] \\
-C' & A' \arrow[r, tail] \arrow[l] & B'
-\end{tikzcd}, \]
-the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a weak equivalence.
-\end{enumerate}
-\end{definition}
-
-\begin{definition}
-A Waldhausen category $(\c, w)$ is \textit{saturated} if whenever $fg$ makes sense and is a weak equivalence, then $f$ is a weak equivalence iff $g$ is. 
+A Waldhausen category $\left(\c, w\right)$ is \textit{saturated} if whenever a composite $fg$ is a weak equivalence, $f$ is a weak equivalence iff $g$ is. 
 \end{definition}
 
 \smallskip
@@ -447,7 +415,7 @@ let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor.
 
 \medskip
 
-Note that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and weak equivalences the isomorphisms. Waldhausen showed that $\left\lvert{iS_{\bullet}\a}\right\rvert$ (where $i$ denotes the iso. category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
+Note that any exact category $\a$ is a Waldhausen category with cofibrations the admissible exact sequences and weak equivalences the isomorphisms. Waldhausen showed that $\left\lvert{i{S_{\bullet}\a}}\right\rvert$ (where $i({-})$ denotes the isomorphism category) and $BQ\a$ are homotopy equivalent. Therefore, our current definition of higher algebraic $K$-theory agrees with Quillen's.
 
 
 \begin{exmp}

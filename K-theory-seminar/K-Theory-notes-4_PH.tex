@@ -198,35 +198,38 @@ We continue to look at low-dimensional $K$-theory, finishing our description of 
 \section{$K_0$ of a Waldhausen category}
 
 \begin{definition}
-Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $\left(\c, \co\right)$ is a \textit{category with cofibrations} if the following conditions hold.
-\begin{enumerate}
-\item (W0) Every isomorphism in $\c$ is a cofibration.
-\item (W1) There is a base point $0$ in $\c$ such that the unique morphism $0 \rightarrowtail A$ for every $A \in \ob \c$.
-\item (W2) We have
+Let $\c$ be a category equipped with a ``subcategory'' $\co{\c}$ of morphisms called \textit{cofibrations}. The pair $\left(\c, \co\right)$ is a \textit{category with cofibrations $\rightarrowtail$} if the following conditions hold.
+\begin{itemize}
+\item[\textbf{W0.}] Every isomorphism in $\c$ is a cofibration.
+\item[\textbf{W1.}] There is a zero object $\ast$ in $\c$ such that the unique morphism $\ast \rightarrowtail A$ is a cofibration for any $A \in \ob \c$.
+\item[\textbf{W2.}] $\c$ has all pushouts of the form
 \[
 \begin{tikzcd}
 A \arrow[d] \arrow[r, tail] & B \arrow[d, dotted] \\
 C \arrow[r, dotted, tail] & B \cup_A C
 \end{tikzcd}.
 \]
-\end{enumerate}
+\begin{term}
+The map $B \to B\cup_{A} C$ is known as the \textit{cobase change} of $A \to C$ along $A \rightarrowtail B$.
+ \end{term}
+\end{itemize}
 \end{definition}
 
 
-Note that $B \coprod C$ always exists as the pushout $B \cup_0 C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as $B \cup_A 0$ along $A \to 0$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofibration sequence}.
+Note that the coproduct $B \coprod C$ always exists as the pushout $B \cup_{\ast} C$ and that the cokernel of any $i : A \rightarrowtail B$ exists as the pushout $B \cup_A \ast$ along the unique map $A \to \ast$. We call $A \rightarrowtail  B \twoheadrightarrow \faktor{B}{A}$ a \textit{cofiber sequence}.
 
 
 \begin{definition}
-A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w(\c)$ of morphisms called \textit{weak equivalences} such that every isomorphism in $\c$ is a weak equivalence and the following ``glueing axiom'' holds.
-\begin{enumerate}
-\item (W3) For any diagram
+A \textit{Waldhausen category} $\c$ is a category with cofibrations together with a subcategory $w(\c)$ of morphisms called \textit{weak equivalences $\overset{\sim}{\longrightarrow}$} such that every isomorphism in $\c$ is a weak equivalence and the following ``gluing axiom'' holds.
+\begin{itemize}
+\item[\textbf{W3.}] For any commutative diagram of the form
 \[
 \begin{tikzcd}
 C \arrow[d, "\sim"'] & A \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & B \arrow[d, "\sim"'] \\
 C' & A' \arrow[r, tail] \arrow[l] & B'
 \end{tikzcd}, \]
 the induced map $B \cup_A C \to  B' \cup_{A'} C'$ is a weak equivalence.
-\end{enumerate}
+\end{itemize}
 \end{definition}
 
 \begin{definition}
@@ -255,29 +258,28 @@ Let $\mathcal{R}_f(\ast)$ denote the category of finite CW complexes. Here, cofi
 Suppose that $\c$ and $\d$ are Waldhausen categories. A functor $F: \c \to \d$ is \textit{exact} if
 \begin{enumerate}[label=(\alph*)] 
 \item it preserves base points, cofibrations, and weak equivalences and 
-\item for any $A \rightarrowtail B$, $FB \cup_{FA} FC \to F(B\cup_A C)$ is an isomorphism. 
+\item for any $A \rightarrowtail B$, the map $FB \cup_{FA} FC \to F(B\cup_A C)$ is an isomorphism. 
 \end{enumerate}
 \end{definition}
 
-Note that $F$ induces a group map $K_0(F) :K_0(\c) \to K_0(\d)$.
+In this case, $F$ induces a group map $K_0(F) :K_0(\c) \to K_0(\d)$.
 
 \begin{theorem}
 Let $F : \a \to \b$ be an exact functor. Assume the following.
 \begin{enumerate}[label=(\arabic*)]
 \item A morphism $f$ is a weak equivalence iff $F(f)$ is a weak equivalence.
-\item For any morphism $b : FA \to B$ in $\b$, there is some $a: A \rightarrowtail A'$ in $\a$ and a weak equivalence $b' : FA' \overset{\sim}{\longrightarrow} B$ in $\b$ such that $b = b' \circ F(a)$. Moreover, we may choose $a$ to be a weak equivalence whenever $b$ is a weak equivalence.
+\item For any morphism $b : FA \to B$ in $\b$, there is some cofibration $a: A \rightarrowtail A'$ in $\a$ along with a weak equivalence $b' : FA' \overset{\sim}{\longrightarrow} B$ in $\b$ such that $b = b' \circ F(a)$. Moreover, we may choose $a$ to be a weak equivalence whenever $b$ is a weak equivalence.
 \end{enumerate}
 Then $F$ induces an isomorphism $K_0(\a) \cong K_0(\b)$.
 \end{theorem}
 \begin{proof}
-Apply condition (2) to any $0 \rightarrowtail B$ to get $FA' \overset{\sim}{\longrightarrow} B$. If this is a weak equivalence, then there is some $A \overset{\sim}{\longrightarrow} A'$. Hence there is a bijection between the set $W$ of weak-equivalence classes of objects of $\a$ and that in $\b$. 
-\medskip
+Apply condition (2) to any map $\ast \rightarrowtail B$ to get $FA' \overset{\sim}{\longrightarrow} B$. If this is a weak equivalence, then there is some $A \overset{\sim}{\longrightarrow} A'$. Hence there is a bijection between the set $W$ of weak-equivalence classes of objects of $\a$ and that in $\b$. 
 
  The group $K_0(\b)$ is given by the free abelian group $\Z[W]$ modulo the relation $$[C] = [B] + \left[\faktor{C}{B}\right].$$ Let $FA \overset{\sim}{\longrightarrow}  B$. Then applying condition (2) yields the diagram
 \[
 \begin{tikzcd}
-0 \arrow[d, no head] \arrow[d, no head] & FA \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & FA' \arrow[d, "\sim"'] \\
-0 & B \arrow[r, tail] \arrow[l] & C
+\ast \arrow[d, no head] \arrow[d, no head] & FA \arrow[d, "\sim"'] \arrow[r, tail] \arrow[l] & FA' \arrow[d, "\sim"'] \\
+\ast & B \arrow[r, tail] \arrow[l] & C
 \end{tikzcd}.
 \]
 Apply the glueing axiom to see that $F\left(\faktor{A'}{A}\right) \to \faktor{C}{B}$ is a weak equivalence. Hence $[C] = [B] + \left[\faktor{C}{B}\right]$
