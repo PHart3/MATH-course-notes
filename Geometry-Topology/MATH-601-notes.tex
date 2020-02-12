@@ -384,7 +384,7 @@ A map $f: X \to Y$ of CW-complexes is a \textit{cellular map} if $f(X^n)\subset 
 
 \bigskip
 
-At this point, let us review a some basic concepts from homotopy theory.
+At this point, let us review a some basic concepts from homotopy theory. We may denote the unit interval $\left[0,1\right]$ by $I$.
 
 \begin{definition}
 Let $f,g: X \to Y$ be maps. A \textit{homotopy from $f$ to $g$} is a map $H: X \times I \to Y$ such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$ for each $x\in X$. We say that $f$ is \textit{homotopic to $g$}, written as $f\simeq g$.
@@ -520,7 +520,7 @@ Prove that $g\circ f \simeq \mathbb{1}_{\cyl(f)}$.
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Consider the following subspace of $\R^2$, called the comb space.
+\item Consider the following subspace of $\R_{\geq 0} \times \R_{\geq 0}$.
 \[
 \begin{tikzpicture}[scale=3]
   \draw (0,0)--(1.2,0)--(1.2,1.2)--(0,1.2)--cycle;
@@ -531,20 +531,20 @@ Prove that $g\circ f \simeq \mathbb{1}_{\cyl(f)}$.
    \draw[color=red, thin]  (1/\x,0)--(1/\x,1);
   \fill[color=red]  (1/20,0)--(1/20,1)--(0,1)--(0,0)--cycle;
 \end{tikzpicture}
-\] This deformation retracts onto $(0,0)$ but not onto $(0,1)$. 
+\] This is called the \textit{comb space}. It deformation retracts onto $\left(0,0\right)$ but not onto $\left(0,1\right)$. 
 \item Let $X$ denote the comb space. Rotate $X$ clockwise by $180$ degrees to obtain the space $A$. Set $Y = X \cup A$ and note that $A$ is closed in $Y$. Then both $A$ and $\faktor{Y}{A}$ are contractible, but $Y$ is not.
 \end{enumerate}
 \end{exmp}
 
 \begin{definition}
-Let the pair $(X, A)$ consist of a space $X$ and a subspace $A \subset X$. We say that $(X, A)$ has the \textit{homotopy extension property (HEP)} if we can fill the commutative diagram
+Let the pair $\left(X, A\right)$ consist of a space $X$ and a subspace $A \subset X$. We say that $(X, A)$ has the \textit{homotopy extension property (HEP)} if we can fill the commutative diagram
 \[
 \begin{tikzcd}
 X\times \{0\} \arrow[rr, hook] \arrow[rd, "f"] &  & X\times I \arrow[ld, dashed] \\
  & Y &  \\
 A\times \{0\} \arrow[uu, hook] \arrow[rr, hook] &  & A\times I \arrow[uu, hook] \arrow[lu, "H"']
 \end{tikzcd}
-\] of spaces where $H$ is a given homotopy from $f \restriction_{A}$ to another map. The inclusion $\iota : A \to X$ is called a \textit{cofibration} if $\left(X, A\right)$ satisfies HEP.
+\] of spaces where $H$ is a given homotopy from $f \restriction_{A}$ to another map. The inclusion $\iota : A \to X$ is called a \textit{(Hurewicz) cofibration} if $\left(X, A\right)$ satisfies HEP.
 \end{definition}
 
 \subsection{Lecture 3}
@@ -1268,8 +1268,33 @@ We have that $\Gamma \cong \pi_1(X)$ where $X\coloneqq  \bigvee_{\alpha} S_{\alp
 
 \section{Homology} 
 
-The \textit{standard $k$-simplex} is the set $$  \Delta^k \equiv \left\{(t_0, \ldots, t_k) \mid \sum t_i = 1, \ t_i \geq 0 \right\} = \left\{(x_1, \ldots, x_n) \mid 0\leq x_1 \leq x_2 \leq \cdots \leq x_k \leq 1 \right\} .$$
-For each $i=0, \ldots, k+1$, define the \textit{face map} $\partial^i : \Delta^k \to \Delta^{k+1}$ by $(t_0, \ldots, t_k) \mapsto (t_0, \ldots, t_{i-1}, 0, t_i, \ldots, t_k)$.
+The \textit{standard $k$-simplex} is the set $$  \Delta^k \equiv \left\{\left(t_0, \ldots, t_k\right) \mid \sum t_i = 1, \ t_i \geq 0 \right\} = \left\{\left(x_1, \ldots, x_n\right) \mid 0\leq x_1 \leq x_2 \leq \cdots \leq x_k \leq 1 \right\} .$$
+
+\[
+\begin{tikzpicture}[line join = round, line cap = round]
+
+\coordinate [label=above:3] (3) at (0,{sqrt(2)},0);
+\coordinate [label=left:2] (2) at ({-.5*sqrt(3)},0,-.5);
+\coordinate [label=below:1] (1) at (0,0,1);
+\coordinate [label=right:0] (0) at ({.5*sqrt(3)},0,-.5);
+
+\begin{scope}[decoration={markings,mark=at position 0.5 with {\arrow{to}}}]
+\draw[densely dotted] (0)--(2);
+\draw[fill=lightgray,fill opacity=.5] (1)--(0)--(3)--cycle;
+\draw[fill=gray,fill opacity=.5] (2)--(1)--(3)--cycle;
+\draw (1)--(0);
+\draw (1)--(2);
+\draw (2)--(3);
+\draw (1)--(3);
+\draw (0)--(3);
+\end{scope}
+
+\end{tikzpicture}
+\]
+
+For each $i=0, \ldots, k+1$, define the \textit{face map} $\partial^i : \Delta^k \to \Delta^{k+1}$ by $\left(t_0, \ldots, t_k\right) \mapsto \left(t_0, \ldots, t_{i-1}, 0, t_i, \ldots, t_k\right)$.
+
+
 
 \begin{definition} 
  An \textit{(abstract) simplicial complex} is a set $K$ together with a collection of finite subsets $\Sigma \subset P(K)$ such that if $\sigma \in \Sigma$ and $\tau \subset \sigma$, then $\tau \in \Sigma$. 
@@ -1294,7 +1319,7 @@ Show that $\partial^2 =0$.
 \end{exercise}
 
 \begin{exmp}
-$v_0v_1v_2 \overset{\partial_2}{\longmapsto}  v_1 v_2 - v_0v_2 + v_0v_1  \overset{\partial_1}{\longmapsto} v_2 - v_1 -(v_2 - v_0) + v_1 - v_0 =0 .$
+$v_0v_1v_2 \overset{\partial_2}{\longmapsto}  v_1 v_2 - v_0v_2 + v_0v_1  \overset{\partial_1}{\longmapsto} v_2 - v_1 -\left(v_2 - v_0\right) + v_1 - v_0 =0 .$
 \end{exmp}
 
 \begin{definition}
@@ -1308,7 +1333,7 @@ The category of simplicial complexes $\Delta$ has as morphisms functions $f: \le
 
 
 \begin{definition}
-A \textit{subcomplex of $K$} is a subset $L \subset K$ such that inclusion is a simplicial map.
+A \textit{subcomplex of $K$} is a subset $L \subset K$ such that inclusion into $K$ is a simplicial map.
 \end{definition}
 
 \begin{exmp}
@@ -1317,11 +1342,11 @@ If $\left(K, \Sigma_K\right)$ is a simplicial complex, then $K$ together with $K
 
 \smallskip
 
-If $K$ is a simplicial complex, then define $\left\lvert{K}\right\rvert$ as the set $$\left\{\alpha : K \to I \mid \sum_{v\in K} \alpha(v)=1 \land \{v \mid \alpha(v) \ne 0\} \in \Sigma_K\right\}.$$ Let $\left\lvert{K}\right\rvert_d$ denote this set endowed with the topology induced by the metric given by $$d(\alpha, \beta) = \sqrt{\sum_{v\in K} \left\lvert{\alpha(v) -\beta(v)}\right\rvert^2} .$$
+If $K$ is a simplicial complex, then define $\left\lvert{K}\right\rvert$ as the set $$\left\{\alpha : K \to I \mid \sum_{v\in K} \alpha(v)=1 \land \left\{v \mid \alpha(v) \ne 0\right\} \in \Sigma_K\right\}.$$ Let $\left\lvert{K}\right\rvert_d$ denote this set endowed with the topology induced by the metric given by $$d(\alpha, \beta) = \sqrt{\sum_{v\in K} \left\lvert{\alpha(v) -\beta(v)}\right\rvert^2} .$$
 
 
 \begin{exmp}
-Let  $K= \{0, 1, \ldots, n\}$ and let $\Sigma$ consist of all finite subsets of $K$. Then $$\left\lvert{K}\right\rvert_d = \left\{ (\alpha(0), \ldots, \alpha(n)) \mid \alpha(0) + \cdots + \alpha(n) = 1\right\} \cong_{\mathbf{Set}} \Delta^n,$$ which recovers the Euclidean metric. 
+Let  $K= \{0, 1, \ldots, n\}$ and let $\Sigma$ consist of all finite subsets of $K$. Then $$\left\lvert{K}\right\rvert_d = \left\{ \left(\alpha(0), \ldots, \alpha(n)\right) \mid \alpha(0) + \cdots + \alpha(n) = 1\right\} \cong_{\mathbf{Set}} \Delta^n,$$ which recovers the Euclidean metric. 
 \end{exmp}
 
 \begin{note} $ $
@@ -1358,7 +1383,7 @@ B_0 & B_1 \arrow[l, "\partial'_1"] & B_2 \arrow[l, "\partial'_2"] & B_3 \arrow[l
 \begin{definition} $ $
 \begin{enumerate}
 \item Given a chain complex $\left(A, \partial\right)$, define its \textit{$i$-th homology group} as $$ H_i(A, \partial) \equiv \faktor{Z(A_i)}{B(A_i)} $$ where $\underbrace{Z_i \coloneqq  \ker{\partial_{i}}}_{\textit{cycles}}$ and $\underbrace{B_i \coloneqq  \im{\partial_{i+1}}}_{\textit{boundaries}}$. 
-\item Any morphism $f: (A, \partial) \to (B, \partial ')$ induces a map $H_q(f) : H_q(A) \to H_q(B)$. We say that $f$ is a \textit{quasi-isomorphism} if $H_q(f)$ is an isomorphism for each $q$. 
+\item Any morphism $f: \left(A, \partial\right) \to \left(B, \partial '\right)$ induces a map $H_q(f) : H_q(A) \to H_q(B)$. We say that $f$ is a \textit{quasi-isomorphism} if $H_q(f)$ is an isomorphism for each $q$. 
 \end{enumerate}
 \end{definition}
 

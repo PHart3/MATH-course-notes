@@ -420,11 +420,11 @@ Let  $\left(P, <\right)$ be any linear ordering. A \textit{Dedekind cut in $P$} 
 
 \begin{theorem}
 Let $\left(P, <\right)$ be a dense unbounded linearly ordered set. Then there exist a linear ordering $\left(P', <'\right)$ isomorphic to $\left(P, <\right)$ and a complete unbounded linearly ordered set $\left(C, \prec\right)$ such that
-\begin{itemize}
+\begin{enumerate}[label=(\alph*)]
 \item $P' \subset C$,
 \item $<'$ equals $\prec$ restricted to $P'$, and
 \item $P'$ is dense in $C$.
-\end{itemize}
+\end{enumerate}
 \end{theorem}
 \begin{proof}
 Set $C$ equal to the set of all Dedekind cuts in $P$. Let $\left(A_1, B_1\right)\preceq \left(A_2, B_2\right)$ if $A_1\subset A_2$. It's easy to check that $\left(C, \prec\right)$ is  a linear ordering. Also, since $P$ is unbounded, so is $C$. If $T\coloneqq \{(A_s, B_s) \mid s\in S\}$ is any nonempty bounded subset of $C$, then $$\left(\bigcup_{s\in S} A_s, \bigcap_{s\in S} B_s\right) = \sup(T).$$ Thus, $C$ is complete. 
@@ -506,6 +506,7 @@ If $P$ is a perfect set, then $P \sim \R$.
 Due to  the Cantor-Schr\"oder-Bernstein theorem, it suffices to exhibit an injection $\varphi : \left\{0, 1\right\}^{\N} \to P$. We can view $ \left\{0, 1\right\}^{\N}$ as the set of all infinite binary strings. Let $\left\{0, 1\right\}^{\ast}$ denote the set of all (finite) binary strings including the empty string $\epsilon$. 
 
 \smallskip
+
 By induction on the length of string, we shall define a set of closed intervals $\left(I_w\right)_{w\in \left\{0, 1\right\}^{\ast}}$ such that
 \begin{itemize}
 \item $\left\lvert{I_w \cap P}\right\rvert >2$,
@@ -516,6 +517,7 @@ By induction on the length of string, we shall define a set of closed intervals 
 where $\sigma \in \left\{0, 1\right\}$. For the base case, there exists a closed interval $I_{\epsilon}$ such that $\left\lvert{I_{\epsilon}}\right\rvert < 1$ and $\left\lvert{I_{\epsilon}\cap P}\right\rvert >2$ since $P$ has no isolated points. In addition, by \cref{PL''}, we can find disjoint subintervals $I_1$ and $I_0$ each on length $< \frac{1}{2}$ such that $\left\lvert{I_1 \cap P}\right\rvert>2$ and $\left\lvert{I_0 \cap P}\right\rvert >2$. Moreover, the same lemma automatically completes our induction step. 
 
 \smallskip
+
  Now, for each $f\in \left\{0, 1\right\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \left\lvert{I_{\bar{f}(n)}}\right\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \{c_f\}$$ for some $c_f \in \R$. 
 \begin{claim}
 $c_f \in P$. 
@@ -1043,10 +1045,10 @@ Every infinite cardinal is a nonzero limit ordinal.
 
 \begin{definition}
 Let $X$ and $Y$ be sets. 
-\begin{itemize}
+\begin{enumerate}
 \item Let $\left\lvert{X}\right\rvert \leq \left\lvert{Y}\right\rvert$ if there is an injection from $X$ into $Y$. 
 \item Let $\left\lvert{X}\right\rvert<\left\lvert{Y}\right\rvert$ if $\left\lvert{X}\right\rvert \leq \left\lvert{Y}\right\rvert$ but $\left\lvert{Y}\right\rvert \not \leq \left\lvert{X}\right\rvert$.
-\end{itemize}
+\end{enumerate}
 \end{definition}
 
 \begin{theorem}[Cantor-Schr\"oder-Bernstein]\label{CSB}
@@ -1326,14 +1328,14 @@ Let $\alpha$ and $\beta$ be nonzero limit ordinals.
 
 
 \begin{definition} Let $\kappa$ be a cardinal.
-\begin{itemize}
+\begin{enumerate}
 \item $\kappa$ is \textit{regular} if $\cf(\kappa) = \kappa$.
 \item $\kappa$ is \textit{singular} if it is not regular.
 \item $\kappa$ is a \textit{limit (cardinal)} if $\lambda <\kappa \implies \lambda^+ < \kappa$.
 \item $\kappa$ is a \textit{strong limit (cardinal)} if $\lambda < \kappa \implies 2^{\lambda} < \kappa$.
 \item $\kappa$ is \textit{weakly inaccessible}  if it is an uncountable  regular limit.
 \item $\kappa$ is \textit{(strongly) inaccessible} if it is an uncountable regular strong limit.
-\end{itemize} 
+\end{enumerate} 
 \end{definition}
 
 \begin{prop} 
