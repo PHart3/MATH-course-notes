@@ -161,9 +161,11 @@
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{$K$-theory seminar}
-\assignment{Talk \#3}
+\class{$K$-theory reading seminar}
+\assignment{UPenn}
 \duedate{September 26, 2018}
+
+%Talk #3
 
 \begin{document}
 
@@ -214,7 +216,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ which satisfies $f(\det(A)) = \det(\GL_n(f)(A))$. Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det(\GL_n(f)(A)).$$ Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
@@ -270,7 +272,7 @@ commutes.
 Usually, it is useful to make our notion of \textit{sameness} between categories weaker than \textit{isomorphism}.
 
 \begin{definition}
-A functor $F: \c \to \d$ is an $\textit{equivalence}$ if there is a functor $G: \d \to \c$, called the \textit{quasi-inverse of $F$}, such that $F \circ G \cong \id_{\c}$ and $G \circ F \cong \id_{\d}$. In this case, we say that $F$ and $G$ are \textit{equivalent categories}. Moreover, we say that a property of $\c$ is \textit{categorical} if it is invariant under such equivalence.
+A functor $F: \c \to \d$ is an $\textit{equivalence}$ if there is a functor $G: \d \to \c$, called the \textit{quasi-inverse of $F$}, such that $F \circ G \cong \id_{\c}$ and $G \circ F \cong \id_{\d}$. In this case, we say that $F$ and $G$ are \textit{equivalent categories}. Moreover, we say that a property of $\c$ is \textit{categorical} if it is invariant under categorical equivalence.
 \end{definition}
 
 \begin{exmp}
@@ -375,7 +377,7 @@ The forgetful functor $U: \mathbf{Top} \to \mathbf{Set}$ has a left adjoint that
 \medskip
 
 \begin{definition}
-A subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor is a right adjoint and is \textit{coreflective} if the inclusion functor is a left adjoint. 
+A subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor has a left adjoint and is \textit{coreflective} if the inclusion functor has a right adjoint. 
 \end{definition}
 
 \begin{exmp} $ $

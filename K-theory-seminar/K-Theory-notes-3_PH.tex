@@ -172,9 +172,11 @@
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{$K$-theory seminar}
-\assignment{Talk \#9}
+\class{$K$-theory reading seminar}
+\assignment{UPenn}
 \duedate{October 19, 2018}
+
+%Talk #9
 
 \begin{document}
 
@@ -201,8 +203,8 @@ The forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab
 The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto \left[x\right]\coloneqq \left[x, 0\right]$ is injective iff $C$ is a cancellation monoid.
 \end{prop}
 
-\begin{lemma}[Universal property of the $K$] $ $
-Let $B$ be an abelian group and $f: A \to B$ a monoid homomorphism. Then we have 
+\begin{lemma}[Universal property of $K({-})$] 
+Let $B$ be an abelian group and $f: A \to B$ be a monoid homomorphism. Then we have a commutative diagram 
 \[
 \begin{tikzcd}[column sep=large]
 A \arrow[rd, "f"] \arrow[d, hook] &  \\
@@ -350,8 +352,9 @@ If $I\subset R$ is nilpotent, then it's not hard to show that $\P\left(\faktor{R
 \begin{definition}
 Let $R$ be a commutative ring. The \textit{rank} of a finitely generated projective $R$-module $P$ at a prime ideal $\frak{p}$ is the function $$\rk: \spec(R) \to \N,\  \quad \frak{p} \mapsto \dim_{R_{\frak{p}}} (P \otimes R_{\frak{p}}).$$
 \end{definition}
+
 \begin{prop} The rank of a finitely generated projective module is
-\begin{enumerate}
+\begin{enumerate}[label=(\alph*)]
 \item continuous and
 \item a semiring homomorphism.
 \end{enumerate}
@@ -436,15 +439,15 @@ Our results thus far can be extended to symmetric monodical categories because t
 A \textit{symmetric monoidal category} $S$ is equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and the property that $e$ acts as an identity. These four isomorphisms must also satisfy certain coherence properties.
 \end{definition}
 
-\begin{exmp} The following are examples of symmetric monoidal category	.
+\begin{exmp} The following are examples of a symmetric monoidal category.	.
 \begin{enumerate}
-\item $k$-vector spaces with $\otimes_k$.
+\item Any $k$-vector space where $\square \coloneqq \otimes_k$.
 \item Any category with finite coproducts where $s \square t\coloneqq s \amalg t$.
 \item The category of pointed topological spaces where $s \square t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
 \end{enumerate} 
 \end{exmp}
 
-Suppose that the class of isomorphism classes of objects of a category $S$ is a set and denote it by $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. In this case, we define the \textit{Grothendieck group} of $S$ as $K_0(S)$.
+Suppose that the class of isomorphism classes of objects of a category $S$ is a set and denote it by $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. In this case, we define the \textit{Grothendieck group of $S$} as $K_0(S)$.
 
 \section{Topological $K$-theory}
 
@@ -546,7 +549,7 @@ Let $p: E \to X$ be a vector bundle such that $X$ is paracompact.
 \end{enumerate}
 \end{theorem}
 
-It follows that $$\Z \leq \left[X, \Z\right] \leq K_{\topp}(X).$$
+We now can deduce that $$\Z \leq \left[X, \Z\right] \leq K_{\topp}(X).$$
 
 \medskip
 

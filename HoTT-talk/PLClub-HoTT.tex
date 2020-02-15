@@ -312,7 +312,7 @@ Given a dependent type $D: \prod_{\{x,y:A\}}\left(\id_A(x,y) \to \mathbf{Type}\r
 Let $A: \mathbf{Type}$ and $x,y: A$. Then there is some function $\mathsf{sym}:(x\leadsto y) \to (y \leadsto x)$ such that $\mathsf{sym} (\refl_x) \equiv \refl_x$ for each $x:A$. Let $p^{{-}1} \coloneqq \mathsf{sym}(p)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}(x\leadsto y) \to \mathbf{Type}$ by the judgment $$D(x,y,p) \equiv y \leadsto x .$$ By our construction of $\id$, we have the function $$d\coloneqq \lambda x. \refl_x : \prod_{x:A}D(x,x,\refl_x).$$ By induction, we obtain an extension $J$ of $d$ such that $J(D, d, x, y, p) : y \leadsto x$ for every $p: x \leadsto y$. Choosing $J(D, d,x,y,p)$ to be $\mathsf{inv}(p) $ completes the proof.
+Define $D: \prod_{x,y:A}(x\leadsto y) \to \mathbf{Type}$ by the judgment $$D(x,y,p) \equiv y \leadsto x .$$ By our construction of $\id$, we have the function $$d\coloneqq \lambda x. \refl_x : \prod_{x:A}D(x,x,\refl_x).$$ By induction, we obtain an extension $J$ of $d$ such that $J(D, d, x, y, p) : y \leadsto x$ for every $p: x \leadsto y$. Choosing $J(D, d,x,y,p)$ to be $\mathsf{inv}(p) $ completes our proof.
 \end{proof}
 
 \begin{lemma}
@@ -344,14 +344,14 @@ Our next result shows that if two terms of type $A$ are propositionally equal an
 Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$. Then there exists a function $\mathsf{transport}(p) : P(x) \to P(y)$ such that $\mathsf{transport}(\refl_x)(u) \equiv u$ for any $u: P(x)$. Let $p \cdot u \coloneqq \mathsf{transport}(p)(u)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}\left((x\leadsto y) \to \type\right)$ by  $D(x,y,p) \equiv \left(P(x) \to P(y)\right)$. We have the function $d\coloneqq \lambda x.\idmap_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
+Define $D: \prod_{x,y:A}\left(\left(x\leadsto y\right) \to \type\right)$ by  $D(x,y,p) \equiv \left(P(x) \to P(y)\right)$. We have the function $d\coloneqq \lambda x.\idmap_{P(x)} :\prod_{x:A}D(x,x,\refl_x)$. By induction, we get a section $J$ of $D$ that extends $d$ and produces terms $J(D,d,p) :P(x) \to P(y)$ for each $p: x\leadsto y$. Finally, define $\mathsf{transport}(p) \equiv J(D,d,p)$.
 \end{proof}
 
 \begin{lemma}\label{LL}
 Let $f: \prod_{x:A}P(x)$ and $p: x\leadsto_A y$. Then there is some path $f(p):p \cdot f(x) \leadsto_{P(y)} f(y)$.
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}\left((x\leadsto y) \to \type\right)$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d\coloneqq \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes the proof.
+Define $D: \prod_{x,y:A}\left((x\leadsto y) \to \type\right)$ by  $D(x,y,p) \equiv p\cdot f(x) \leadsto f(y)$. Then $$D(x,y,\refl_x) \equiv \refl_x \cdot f(x) \leadsto f(x) \equiv f(x) \leadsto f(x).$$ We thus obtain the term $$ d\coloneqq \lambda x.\refl_{f(x)}: \prod_{x:A}D(x,x,\refl_x).$$ Applying induction finishes our proof.
 \end{proof}
 
 \begin{corollary}
@@ -366,10 +366,10 @@ This means that $f$ is continuous in a certain sense.
 \smallskip
 
 \begin{lemma}[Path lifting]
-Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$ and that $u: P(x)$. Then there is some path $$p_{\Sigma}(u) : (x, u) \leadsto_{\sum_{x:A}P(x)} (y, p\cdot u).$$
+Let $P$ be a dependent type over $A$. Suppose that $p: x\leadsto_A y$ and that $u: P(x)$. Then there is some path $$p_{\Sigma}(u) : \left(x, u\right) \leadsto_{\sum_{x:A}P(x)}\left(y, p\cdot u\right).$$
 \end{lemma}
 \begin{proof}
-Define $D: \prod_{x,y:A}\left( (x\leadsto y) \to \type\right)$ by  $$D(x,y,p) \equiv \prod_{u:P(x)} (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod_{u:P(x)}, (x,u) \leadsto (x,u)$. But then $$ d\coloneqq\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
+Define $D: \prod_{x,y:A}\left( \left(x\leadsto y\right) \to \type\right)$ by  $$D(x,y,p) \equiv \prod_{u:P(x)} (x,u) \leadsto (y, p\cdot u).$$ Since $\refl_x \cdot u \equiv u$ for any $u: P(x)$, we have that $D(x, x, \refl_x) \equiv \prod_{u:P(x)}, (x,u) \leadsto (x,u)$. But then $$ d\coloneqq\lambda x\lambda u. \refl_{(x,u)} : \prod_{x:A} D(x,x, \refl_x) .$$ By induction, we obtain some path $p_{\Sigma}(u) : (x,u)\leadsto (y, p \cdot u)$ for each $p: x\leadsto y$.
 \end{proof}
 
 As fiber bundles from topology possess the homotopy lifting property,  \cref{LL} encourages us to interpret the dependent sum $\sum_{x:A}P(x)$ as a fiber bundle over $A$.
@@ -411,7 +411,7 @@ f(x) \arrow[u, "f(p)", squiggly] \arrow[r, "H(x)"', squiggly] & g(x) \arrow[u, "
 \] commutes.
 \end{lemma}
 \begin{proof}
-Use path induction.
+This is a straightforward application of path induction.
 \end{proof}
 
 \bigskip
@@ -465,14 +465,14 @@ Let $A$ be a type with $a:A$. Define the dependent type $\mathsf{Y}(a)$ over $A$
 If $p: x \leadsto_A y$, then $\underbrace{p \cdot p}_{\text{w.r.t. } \mathsf{Y}(y)} \leadsto_{y \leadsto y} \refl_y$ is inhabited.
 \end{lemma}
 \begin{proof}
-Use path induction.
+This is another straightforward application of path induction.
 \end{proof}
 
 \begin{exmp}
 For any type $A$, the identity map $A \to A$ is an equivalence.
 \end{exmp}
 \begin{proof}
-We must show that $\hfiber(\idmap_A, a)$ is contractible for each $a: A$. Let $p: x \leadsto_A a$, so that $(x,p)$ is a canonical inhabitant of  $\hfiber(\idmap_A, a)$. By the path lifting lemma, we know that $p_{\Sigma}(p) : (x,p)  \leadsto (a, p \cdot p)$. \Cref{PL} implies that there exists a term of type $p \cdot p \leadsto_{a\leadsto a} \refl_a$. Hence $(x, p)\leadsto \left(a, \refl_a\right)$ is inhabited, making $(a, \refl_a)$ the center of contraction.
+We must show that $\hfiber(\idmap_A, a)$ is contractible for each $a: A$. Let $p: x \leadsto_A a$, so that $(x,p)$ is a canonical inhabitant of  $\hfiber(\idmap_A, a)$. By the path lifting lemma, we know that $p_{\Sigma}(p) : \left(x,p\right)  \leadsto \left(a, p \cdot p\right)$. \Cref{PL} implies that there exists a term of type $p \cdot p \leadsto_{a\leadsto a} \refl_a$. Hence $(x, p)\leadsto \left(a, \refl_a\right)$ is inhabited, making $(a, \refl_a)$ the center of contraction.
 \end{proof}
 
 \begin{corollary}
@@ -527,7 +527,7 @@ Let $P$ be a dependent type over $A$ and $R : \prod_{x:A}\left(P(x) \to \type\ri
 
 \smallskip
 
-Let $P$ and $Q$ be dependent spaces over $A$. Suppose that $\tau : \prod(x:A), P(x) \to Q(x)$. Define $\Sigma_A\tau : \sum_{x:A}P(x) \to \sum_{x:A} Q(x)$ by $\lambda w. (\pr_1 w, \tau(\pr_1w)(\pr_2w))$.
+Let $P$ and $Q$ be dependent spaces over $A$. Suppose that $\tau : \prod(x:A), P(x) \to Q(x)$. Define the term $\Sigma_A\tau : \sum_{x:A}P(x) \to \sum_{x:A} Q(x)$ by $\lambda w. (\pr_1 w, \tau(\pr_1w)(\pr_2w))$.
 
 
 \begin{theorem}[Voevodsky]

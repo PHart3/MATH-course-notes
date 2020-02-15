@@ -10,7 +10,8 @@
 \usepackage{amsmath,amsthm}
 \usepackage{tikz}
 \usepackage{mathtools}
-
+\usepackage{bm}
+\usepackage{lmodern}
 \usepackage{ dsfont }
 \usepackage{stackengine}
 \usepackage{mathrsfs}
@@ -52,6 +53,17 @@
 \newtheorem*{background}{Background}
 \newtheorem*{further}{Further reading}
 \newtheorem*{sources}{Sources}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
 
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
@@ -140,7 +152,8 @@
 
 % info for header block in upper right hand corner
 \name{Perry Hart}
-\class{August 10, 2017}
+\class{Boston University}
+\assignment{August 10, 2017}
 
 \begin{document}
 
@@ -227,9 +240,9 @@ An invertible linear operator $T$ on a finite-dimensional vector space is \texti
 
 Soon we shall prove that $\ORT(4)\subset \GL(4,\R)$. Therefore, it makes sense to introduce the group $$\SO(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0 \text{ and is orientation-preserving}\right\}.$$
 
-Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We are now ready to establish a so-called \textit{TRF-decomposition} of $\Isom(\R^4)$. 
+Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We are now ready to establish one of our main results.
 
-\begin{theorem}\label{t1}
+\begin{theorem}[TRF-decomposition]\label{t1}
 Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $(a,b,c,d)\mapsto (a,b,c,-d)$. Let $A\in \Isom(\R^4)$. Then we have $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
 \end{theorem}
 \begin{proof}
