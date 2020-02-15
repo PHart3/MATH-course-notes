@@ -361,7 +361,7 @@ An $R$-module $M$ is a \textit{componentwise free module} if we have $R = \prod_
 Note that $M$ must be projective in this case.
 
 \begin{lemma}\label{L6}
-Let $R$ be commutative. The monoid $L$ of finitely generated componentwise free $R$-modules has is isomorphic to $\left[\spec(R), \N\right]$.
+Let $R$ be a commutative ring. The monoid $L$ of finitely generated componentwise free $R$-modules is isomorphic to $\left[\spec(R), \N\right]$.
 \end{lemma}
 \begin{proof}
 Let $f: \spec(R) \to \N$ be continuous. By some point-set topology, we see that $\im f$ is finite, say $\left\{n_1, \ldots, n_c\right\}$. It's also possible to write $R= R_1 \times \cdots \times R_c$. Then $R^f \coloneqq R_1^{n_1} \times \cdots \times R_c^{n_c}$ is a finitely generated componentwise free $R$-module. Moreover, $f \mapsto R^f$ has inverse $\rk$ restricted to componentwise free modules.
@@ -440,7 +440,11 @@ Suppose that the class of isomorphism classes of objects of a category $S$ is a 
 \section{Topological $K$-theory}
 
 \begin{definition}
-Let $f: F \to X$ and $g: G \to X$ be vector bundles. The \textit{Whitney sum} of $f$ and $g$ is the vector bundle $F \oplus G$ on $X$ whose fiber at $x \in X$ is $F_x \oplus G_x$.  The \textit{tensor product bundle} $F \otimes G$ is defined similarly.
+Let $f: F \to X$ and $g: G \to X$ be vector bundles. 
+\begin{enumerate}
+\item The \textit{Whitney sum} of $f$ and $g$ is the vector bundle $F \oplus G$ on $X$ whose fiber at $x \in X$ is precisely $F_x \oplus G_x$.  
+\item The \textit{tensor product bundle} $F \otimes G$ is defined similarly.
+\end{enumerate}
 \end{definition}
 
 \begin{definition}
@@ -475,7 +479,7 @@ Note that these are commutative rings with identity.
 
 \medskip
 
-Both $KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Recall the pullback $f^{\ast}E = \left\{(y, e) \in Y \times E : f(y) = \phi(e)\right\}$ of $E$ in $\mathbf{Top}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the appropriate restriction of the projection map $\pi : Y \times E \to Y$. The assignment $\phi \mapsto f^{\ast}(\phi)$ defines a morphism  $\vect_{\F}(X) \to \vect_{\F}(Y)$ of monoids. In turn, the universal property of $K$ induces a unique morphism $f^{\ast}: K_{\topp}(X) \to K_{\topp}(Y)$.
+Both $KU(-)$ and $KO(-)$ define contravariant functors $\mathbf{Top} \to \Ab$. Let $f: Y \to X$ be a map of spaces and $\phi : E \to X$ be a vector bundle. Recall the pullback $f^{\ast}E = \left\{\left(y, e\right) \in Y \times E : f(y) = \phi(e)\right\}$ of $E$ in $\mathbf{Top}$.  Define the vector bundle $f^{\ast}(\phi) : f^{\ast}E \to Y$ as the appropriate restriction of the projection map $\pi : Y \times E \to Y$. The assignment $\phi \mapsto f^{\ast}(\phi)$ defines a morphism  $\vect_{\F}(X) \to \vect_{\F}(Y)$ of monoids. In turn, the universal property of $K$ induces a unique morphism $f^{\ast}: K_{\topp}(X) \to K_{\topp}(Y)$.
 
 
 \begin{lemma}
@@ -503,12 +507,14 @@ KO(S^2) & \cong \Z \times C_2
 
 
 \begin{definition}
-The \textit{dimension} of bundle $E$ over $X$ is the continuous homomorphism $\widehat{\dim}(E) : X \to \N$ given by $x \mapsto \dim(E_x)$.
+The \textit{dimension} of a vector bundle $E$ over $X$ is the continuous homomorphism $\widehat{\dim}(E) : X \to \N$ given by $x \mapsto \dim(E_x)$.
 \end{definition}
 
 \begin{definition}
-A vector bundle $p: E \to X$ is a \textit{componentwise trivial bundle} if we can write $X =\coprod X_i$ such that each $X_i$ is a component of $X$ and $p\restriction_{p^{{-1}}(X_i)}$ is trivial. 
+A vector bundle $p: E \to X$ is a \textit{componentwise trivial bundle} if  $X =\coprod_{i\in S} X_i$ where $S$ is a set, each $X_i$ is a clopen component of $X$, and $p\restriction_{p^{{-1}}(X_i)}$ is trivial.
+In this case, if $S$ is finite, then we say that $E$ has \textit{finite type}.
 \end{definition}
+
 \begin{lemma}
 The submonoid of componentwise trivial bundles over $X$ is isomorphic to $\left[X, \N\right]$.
 \end{lemma}
@@ -517,8 +523,19 @@ Send a given map $f: X \to \N$ to $T^f \coloneqq \coprod_{i \in \N}\left(f^{{-1}
 \end{proof}
 
 
-Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $[X, \N]$, respectively.  When $X$ is compact, these are cofinal in $\vect_{\F}(X)$ by the subbundle theorem (proven using Riemannian geometry), yielding the relations $$\Z \leq [X, \Z] \leq K_{\topp}(X).$$
+Thus, the submonoid  of trivial bundles and the submonoid of componentwise trivial bundles are naturally isomorphic to $\N$ and $\left[X, \N\right]$, respectively.  When $X$ is compact, these are cofinal in $\vect_{\F}(X)$ thanks to the following theorem (proven using Riemannian geometry). 
 
+\begin{theorem}[Subbundle]
+Let $p: E \to X$ be a vector bundle such that $X$ is paracompact.
+\begin{enumerate}[label=(\alph*)]
+\item For any subbundle $F$ of $E$, there is a subbundle $F^{\perp}$ of $E$ such that $E \cong F \oplus F^{\perp}$.
+\item $E$ has finite type if and only if there is another bundle $E'$ such that $E\oplus E'$ is trvial.
+\end{enumerate}
+\end{theorem}
+
+It follows that $$\Z \leq \left[X, \Z\right] \leq K_{\topp}(X).$$
+
+\medskip
 
 \begin{note} $ $
 \begin{enumerate}
@@ -532,7 +549,9 @@ Thus, the sub-monoid  of trivial bundles and the sub-monoid of componentwise tri
 \end{enumerate}
 \end{note}
 
-To state a nice early connection between algebraic and topological $K$-theory, let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any vector bundle $p: E \to X$ over $\F$, set $$\Gamma(X, E) = \left\{s: X \to E : p \circ s = \id_X\right\},$$ the vector space of global sections of $E$.
+\medskip
+
+Finally, to state a nice early connection between algebraic and topological $K$-theory, let $X$ be a compact Hausdorff space and $\mathcal C(X, \F)$ denote the ring of continuous functions $X \to \F$. For any vector bundle $p: E \to X$ over $\F$, set $$\Gamma(X, E) = \left\{s: X \to E : p \circ s = \id_X\right\},$$ the vector space of global sections of $E$.
 
 \begin{theorem}[Swan]\label{swan}
 The map $E \mapsto \Gamma(X, E)$ induces isomorphisms $KO(X) \cong K_0(\mathcal C(X, \R))$ and $KU(X) \cong K_0( \mathcal C(X, \C))$.

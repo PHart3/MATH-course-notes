@@ -1338,6 +1338,16 @@ Let $\alpha$ and $\beta$ be nonzero limit ordinals.
 \end{enumerate} 
 \end{definition}
 
+\begin{note}
+We can prove in $\zfc$ than any infinite successor cardinal $\kappa^+$ is regular. Indeed, since $\kappa^+$ is a limit ordinal, the identity function $\kappa^+ \to \kappa^+$ is cofinal in $\kappa^+$. If $\alpha < \kappa^+$ and $f : \alpha \to \kappa^+$ is a function, then $\left\lvert{f(\eta)}\right\rvert \leq \kappa$ for any $\eta < \alpha$. In this case, we thus have that
+\begin{align*}
+\left\lvert{\sup(\im(f))}\right\rvert & = \left\lvert{\bigcup_{\eta < \alpha}f(\eta)}\right\rvert
+\\ & \leq \left\lvert{\alpha}\right\rvert \cdot \sup\left\{\left\lvert{f(\eta)}\right\rvert \mid \eta < \alpha\right\}
+\\ & \leq \kappa \cdot \kappa
+\\ & = \kappa
+.\end{align*} This proves that  $f$ is \emph{not} cofinal in $\kappa^+$, so that $\cf(\kappa^+) = \kappa^+$.
+\end{note}
+
 \begin{prop} 
  If $\kappa$ is measurable, then $\kappa$ is strongly inaccessible and $\left\lvert{\{\lambda < \kappa \mid \lambda \text{ is inaccessible}\}}\right\rvert = \kappa$.
 \end{prop}

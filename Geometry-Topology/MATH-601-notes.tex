@@ -1590,17 +1590,17 @@ Given a pair $(X,A)$ with $A\subset X$, define its \textit{relative homology} as
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Consider the pair $\left(\R, \left[0,3\right]\right)$. Let $\sigma : \Delta^1 \to [0,3]\subset \R$. Then $\partial{\sigma} = [3] -[0]$, so that $[0] = [3]$ in $C_0(\R, [0,3])$.
-\item Consider the pair $\left(\R, \R \setminus (0,1)\right)$. Choose $[x_0] \in C_0(A)$ and $[x_1] \in C_0((0,1))$. Let $\sigma : \Delta^1 \overset{\cong}{\longrightarrow} \left[x_1, 1\right]$. Then $\partial{\sigma} = [1] -[x_1]$. As $[1]\in C_0(A)$, we see that $[x_1] = \partial{\sigma}$ in $C_0(\R, \R\setminus (0,1))$.
+\item Consider the pair $\left(\R, \left[0,3\right]\right)$. Let $\sigma : \Delta^1 \to [0,3]\subset \R$. Then $\partial{\sigma} = \left[3\right] -\left[0\right]$, so that $\left[0\right] = \left[3\right]$ in $C_0(\R, \left[0,3\right])$.
+\item Consider the pair $\left(\R, \R \setminus \left(0,1\right)\right)$. Choose $\left[x_0\right] \in C_0(A)$ and $\left[x_1\right] \in C_0((0,1))$. Let $\sigma : \Delta^1 \overset{\cong}{\longrightarrow} \left[x_1, 1\right]$. Then $\partial{\sigma} = \left[1\right] -\left[x_1\right]$. As $\left[1\right]\in C_0(A)$, we see that $\left[x_1\right] = \partial{\sigma}$ in $C_0(\R, \R\setminus \left(0,1\right))$.
 \end{enumerate}
 \end{exmp}
 
 \begin{definition}
-We say that a pair $(X, A)$ is \textit{good} if there is some neighborhood $U\subset X$ of $A$ such that $U$ deformation retracts onto $A$.
+We say that a pair $\left(X, A\right)$ is \textit{good} if there is some neighborhood $U\subset X$ of $A$ such that $U$ deformation retracts onto $A$.
 \end{definition}
 
 \begin{theorem}
-If $(X,A)$ is a good pair, then $H_{\ast}(X,A) \cong \widetilde{H}_{\ast}(X/A)$.
+If $\left(X,A\right)$ is a good pair, then $H_{\ast}(X,A) \cong \widetilde{H}_{\ast}(X/A)$.
 \end{theorem}
 
 \begin{exmp}
@@ -1615,7 +1615,7 @@ $H_{\ast}(D^n, S^{n-1}) \cong \widetilde{H}_{\ast}(S^n)$.
 \end{lemma}
 \begin{proof} $ $
 \begin{enumerate} 
-\item Consider $x\in X$ as a vertex. For any vertex $y\in X$, there is some path $c: x\leadsto y$. Note that $c \in C_1(X)$ and that $\partial{c}= y-x$. Hence $[y]= [x]$ in $H_0(X)$. This shows that $H_0(X) \cong \langle [x] \rangle \cong \Z$.
+\item Consider $x\in X$ as a vertex. For any vertex $y\in X$, there is some path $c: x\leadsto y$. Note that $c \in C_1(X)$ and that $\partial{c}= y-x$. Hence $\left[y\right]= \left[x\right]$ in $H_0(X)$. This shows that $H_0(X) \cong \langle \left[x\right] \rangle \cong \Z$.
 \item Let $[x]$ generate $H_0(X)$ and let $y\in Y$. We can find a path $i(y) \leadsto x$. Hence $x-i(y)\in B_0(X)$, so that $[x] =[i(y)]= i_{\ast}([y])$. This shows that $i_{\ast}$ is surjective.
 \end{enumerate}
 \end{proof}
@@ -1645,7 +1645,7 @@ Let $c\in C_k$ such that $\partial{c} = 0$. By exactness, there exists $b\in B_k
 \item Show that $\partial : H_k(C) \to H_{k-1}(A)$ by $c\mapsto a$ is a well-defined homomorphism. 
 \begin{proof} Suppose that $j(b') = c$. Then $b -b' \in \ker{j} = \im{i}$, so that $i(u) = b-b'$ for some $u \in A_k$. Then 
 \begin{align*}
-&  i(a)-\partial{b'} \\
+  i(a)-\partial{b'}
 & = \partial{b} -\partial{b'}
 \\ & = \partial{b - b'}
 \\ & =\partial{i}u
