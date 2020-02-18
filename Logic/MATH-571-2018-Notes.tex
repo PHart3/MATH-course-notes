@@ -257,7 +257,7 @@ These notes, which are unfinished, are based on Scott Weinstein's ``Topics in Lo
 Throughout this section, we shall  work tacitly in $\zfc$.
 
 \begin{notation}
-$\N \coloneqq \{0,1,2, \ldots \}$.
+$\N \coloneqq \left\{0,1,2, \ldots \right\}$.
 \end{notation}
 
 \begin{definition}
@@ -303,7 +303,7 @@ A set $X$ is open in $\R$ if and only if for any $x\in X$, there is some open in
 \end{note}
 
 \begin{prop}
-The set $\left\{(a,b) \mid a, b\in \Q\right\}$ of \textit{rational intervals} forms a countable basis of $\R$.
+The set $\left\{\left(a,b\right) \mid a, b\in \Q\right\}$ of \textit{rational intervals} forms a countable basis of $\R$.
 \end{prop}
 
 \begin{definition} Let $X\subset \R$ and $c\in \R$.
@@ -389,7 +389,7 @@ The following  properties are invariant under isomorphism.
  Let $\left(C, <\right)$ be a complete linear ordering  containing some countable dense subset $\left(P, <\right)$ such that $P \cong \Q$ . Then $C\cong \R$. 
 \end{theorem}
 \begin{proof} 
- By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $\left(q_n\right)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\{f^{-1}(q_n) \mid n \in \N\}$ to $r$.
+ By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $\left(q_n\right)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\left\{f^{-1}(q_n) \mid n \in \N\right\}$ to $r$.
 \end{proof}
 
 \smallskip
@@ -518,7 +518,7 @@ where $\sigma \in \left\{0, 1\right\}$. For the base case, there exists a closed
 
 \smallskip
 
- Now, for each $f\in \left\{0, 1\right\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \left\lvert{I_{\bar{f}(n)}}\right\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \{c_f\}$$ for some $c_f \in \R$. 
+ Now, for each $f\in \left\{0, 1\right\}^{\N}$ and $n\in \N$, let $\bar{f}(n) = f(0)f(1)\cdots f(n)  $. Note that $$I_{\bar{f}(0)}\supset  I_{\bar{f}(1)} \supset I_{\bar{f}(2)} \supset \cdots $$  is a descending chain of nonempty closed intervals with $\lim_{n\to \infty} \left\lvert{I_{\bar{f}(n)}}\right\rvert =0$. It follows by  Cantor's intersection theorem  that $$\bigcap_{n \in \N} I_{\bar{f}(n)} = \left\{c_f\right\}$$ for some $c_f \in \R$. 
 \begin{claim}
 $c_f \in P$. 
 \end{claim}
@@ -563,7 +563,7 @@ If $C$ is an uncountable closed set, then there exists a perfect set $P\subset C
 By \cref{closed}, we get a descending chain $$ C = C^0 \supset C^1 \supset C^2 \supset \cdots \supset C^{\alpha} \supset \cdots.    $$ There must be some ordinal $\tau$ such that $C^{\tau} = C^{\tau +1}$. Otherwise, $\alpha \ne \beta \implies C^{\beta} \ne C^{\alpha}$. In this case, there is a definable injection $F$ from the proper class of ordinals $\ord$ into the set $\P(C)$, which implies that $\im{F}$ is a set and thus that the image of the definable inverse $F^{-1} : \im{F} \to \ord$ is a set. But this is impossible since $\im{F^{-1}} = \ord$. Now, let $P = C^{\beta}$. Note that $P$ is perfect as long as it's nonempty. Since $C$ is uncountable, this holds as long as  $C \setminus P$ is at most countable.
 
 \smallskip
- Enumerate the rational intervals $\left(J_n\right)_{n\in \N}$. We have that $$ C\setminus P = {\bigcup_{\alpha < \tau} C^{\alpha} \setminus \left(C^{\alpha}\right)'}.    $$ Since the sets $C^{\alpha} \setminus \left(C^{\alpha}\right)'$ are pairwise disjoint, for any $x\in C\setminus P$, there is some unique $\alpha_x$ such that $x$ is an isolated point of $C^{\alpha_x}$. Hence there is a least $k_x \in \N$ such that $J_{k_x} \cap C^{\alpha_x} = \{x\}$. If $y \in C \setminus P$ with $x\ne y$, then it's easy to check that $k_x \ne k_y$. Thus, the function $C\setminus P \to \N$ given by $x \mapsto k_x$ is an injection, which proves that $C\setminus P$ is at most countable. 
+ Enumerate the rational intervals $\left(J_n\right)_{n\in \N}$. We have that $$ C\setminus P = {\bigcup_{\alpha < \tau} C^{\alpha} \setminus \left(C^{\alpha}\right)'}.    $$ Since the sets $C^{\alpha} \setminus \left(C^{\alpha}\right)'$ are pairwise disjoint, for any $x\in C\setminus P$, there is some unique $\alpha_x$ such that $x$ is an isolated point of $C^{\alpha_x}$. Hence there is a least $k_x \in \N$ such that $J_{k_x} \cap C^{\alpha_x} = \left\{x\right\}$. If $y \in C \setminus P$ with $x\ne y$, then it's easy to check that $k_x \ne k_y$. Thus, the function $C\setminus P \to \N$ given by $x \mapsto k_x$ is an injection, which proves that $C\setminus P$ is at most countable. 
 \end{proof}
 
 \begin{corollary}\label{LC'}
@@ -666,7 +666,7 @@ This asserts that if the class $F$ is a function and $\dom{F}$ is a set, then $\
 \end{definition}
  
 \begin{definition}
- A \textit{class} is a collection (used informally) of sets that is definable (with parameters in the language of set theory).  Any set $S$ can be written as the class $S = \{x \mid x \in S\}$. Any class that is not a set is called a \textit{proper class}.
+ A \textit{class} is a collection (used informally) of sets that is definable (with parameters in the language of set theory).  Any set $S$ can be written as the class $S = \left\{x \mid x \in S\right\}$. Any class that is not a set is called a \textit{proper class}.
 \end{definition} 
  
  \begin{note} $ $
@@ -926,7 +926,7 @@ Define $f : W \to A$ by $f(x) = Z(x)$.
 Let $x,y\in W$. Then $x <y \implies Z(x) \subsetneq Z(y)$. 
 \end{claim}
 \begin{proof}
-Let $x<y$. Consider the isomorphism $g_y : W_y \to Z(y)$. We have that $$W_x = \{z\in W_y \mid  z < x\} = \left(W_y\right)_x.$$ Hence $g_y\restriction_{W_x}$ is an isomorphism from $W_x$ onto $Z(y)\restriction_{g_y(x)}$. It follows that $Z(y)\restriction_{g_y(x)} \cong Z(x)$, so that $$Z(x) = Z(y)\restriction_{g_y(x)} \subsetneq Z(y),$$ as desired. 
+Let $x<y$. Consider the isomorphism $g_y : W_y \to Z(y)$. We have that $$W_x = \left\{z\in W_y \mid  z < x\right\} = \left(W_y\right)_x.$$ Hence $g_y\restriction_{W_x}$ is an isomorphism from $W_x$ onto $Z(y)\restriction_{g_y(x)}$. It follows that $Z(y)\restriction_{g_y(x)} \cong Z(x)$, so that $$Z(x) = Z(y)\restriction_{g_y(x)} \subsetneq Z(y),$$ as desired. 
 \end{proof}
 By \cref{alt-def}, it follows that $f$ is order-preserving. Since $f$ is clearly surjective, it is an isomorphism.
 \end{proof}
@@ -997,7 +997,7 @@ f_{\alpha}(\beta) & = f_{\beta +1}(\beta)
 \\ & = G(f_{\alpha}\restriction_{\beta}).
 \end{align*}
 This shows that $f_{\alpha}$ satisfies condition (ii). The fact that $f_{\alpha}$ is unique follows exactly as in our last case.
-\end{itemize}$ $This completes our induction. Now, define $F: \ord \to V$ by $\alpha \mapsto G(f_{\alpha})$. This is clearly a class function. Also, if $\alpha \in \ord$, then $F\restriction_{\alpha} = \{(\beta, F(\beta)) \mid \beta \in \alpha\}$ is a set by $\mathsf{Rep}$ because  each $F(\beta)$ is a set. Note that $\dom{f_{\alpha}} = \alpha = \dom{F\restriction_{\alpha}}$ and that for any $\beta \in \alpha$,
+\end{itemize}$ $This completes our induction. Now, define $F: \ord \to V$ by $\alpha \mapsto G(f_{\alpha})$. This is clearly a class function. Also, if $\alpha \in \ord$, then $F\restriction_{\alpha} = \left\{(\beta, F(\beta)) \mid \beta \in \alpha\right\}$ is a set by $\mathsf{Rep}$ because  each $F(\beta)$ is a set. Note that $\dom{f_{\alpha}} = \alpha = \dom{F\restriction_{\alpha}}$ and that for any $\beta \in \alpha$,
 $$  f_{\alpha}(\beta) = G(f_{\alpha}\restriction_{\beta}) =  G(f_{\beta})= F_{\alpha}(\beta)  .$$ Therefore, $f_{\alpha} = F\restriction_{\alpha}$, so that $F(\alpha) = G(F\restriction_{\alpha})$, as required. 
 
 \smallskip
@@ -1118,7 +1118,7 @@ Suppose, towards a contradiction, that there exist  an $x\in \aleph_{\lambda}$ a
 \section{The axiom of choice}
 
 \begin{definition}[The axiom of choice ($\ac$)]
-Let $I$ be a set and $C = \{A_i  \}_{i\in I}$ where each $A_i$ is nonempty. Then there is a function $f : I \to \bigcup{C}$ such that $f(i) \in A_i$ for each $i\in I$. (Such an $f$ is called a \textit{choice function}.)
+Let $I$ be a set and $C = \left\{A_i  \right\}_{i\in I}$ where each $A_i$ is nonempty. Then there is a function $f : I \to \bigcup{C}$ such that $f(i) \in A_i$ for each $i\in I$. (Such an $f$ is called a \textit{choice function}.)
 \end{definition}
 
 
@@ -1220,7 +1220,7 @@ If $\left(P, <\right)$ is a nonempty poset and every chain in $P$ has an upper b
 \begin{lemma}
 $\mathsf{WOP} \implies \mathsf{Zorn}$.
 \end{lemma}
-\begin{proof} Let $\left(P, <_P\right)$ be a nonempty poset such that every chain in $P$ has an upper bound in $P$. By assumption, we have a bijection $f : \lambda \to P$ for some cardinal $\lambda$. We see that $\lambda >0$ for otherwise $P = \emptyset$. Note that $P = \{f(\delta) \mid \delta \in \lambda\}$. By transfinite recursion, define $F: \ord \to \lambda +1$ by
+\begin{proof} Let $\left(P, <_P\right)$ be a nonempty poset such that every chain in $P$ has an upper bound in $P$. By assumption, we have a bijection $f : \lambda \to P$ for some cardinal $\lambda$. We see that $\lambda >0$ for otherwise $P = \emptyset$. Note that $P = \left\{f(\delta) \mid \delta \in \lambda\right\}$. By transfinite recursion, define $F: \ord \to \lambda +1$ by
 \[
 F(\alpha) = \begin{cases}
 \min\{\gamma \in \lambda \mid \beta \in \alpha \rightarrow f(F(\beta)) <_P f(\gamma)\} &\{\gamma \in \lambda \mid \beta \in \alpha \rightarrow f(F(\beta)) <_P f(\gamma)\} \ne \emptyset
@@ -1402,7 +1402,7 @@ The \textit{infinite sum of the $X_i$} is $\sum_{i\in I} X_i \coloneqq \coprod_{
 \begin{theorem}[K\"onig]
 If $\left\lvert{X_i}\right\rvert < \left\lvert{Y_i}\right\rvert$ for each $i \in I$, then $\left\lvert{\sum_{i\in I} X_i}\right\rvert < \left\lvert{\prod_{i\in I} Y_i}\right\rvert$.
 \end{theorem}
-\begin{proof}\footnote{The format of this proof is taken from \textit{nLab}'s article ``K\"onig's theorem" (as of 05/19).}
+\begin{proof}
 We must show that $\left\lvert{\sum_{i\in I} X_i}\right\rvert \not \geq \left\lvert{\prod_{i\in I} Y_i}\right\rvert$. Suppose, to the contrary, that there is some surjection $f: \sum_{i\in I} X_i \to \prod_{i\in I} Y_i$. Since $\left\lvert{X_i}\right\rvert < \left\lvert{Y_i}\right\rvert$ for each $i\in I$ by hypothesis, the function $$f_i \coloneqq \pi_i \circ f \circ \iota_i: X_i \to Y_i$$ cannot be surjective where $\pi_i$ denotes the $i$-th projection map. For each $i$, we can thus choose some $y_i$ such that $y_i \notin \im{f_i}$. Since $f$ is surjective, there is some $x\in \sum_{i\in I} X_i $ such that $f(x) = \left(y_i\right)_{i\in I}$. But $x\in X_j$ for some $j\in I$, so that $y_j = f_j(x)$. This contradicts the fact that $y_j \notin \im{f_j}$. 
 \end{proof}
 
@@ -1430,7 +1430,7 @@ Suppose, towards a contradiction, that there exist an $\eta \leq \kappa$ and a  
 For any ordinal $\alpha$, $V_{\alpha}$ is transitive and $V_{\beta} \subset V_{\alpha}$ for every $\beta \leq \alpha$. 
 \end{lemma}
 \begin{proof}
-Note that if a set $x$ is transitive, then  $\P(x)$ is transitive and $x\subset \P(x)$. In light of this, it's easy to use transfinite induction to complete the proof.
+Note that if a set $x$ is transitive, then  $\P(x)$ is transitive and $x\subset \P(x)$. In light of this, it's easy to use transfinite induction to complete our proof.
 \end{proof}
 
 \begin{corollary}

@@ -226,9 +226,20 @@ These notes are based on Anindya De's ``Theory of Computation'' lectures at UPen
 \begin{definition} $ $
 \begin{enumerate}
 \item An \textit{alphabet} is a nonempty finite set of characters, e.g., $\Sigma \coloneqq \left\{0,1\right\}$. 
-\item A \textit{string} is a finite ordered sequence of elements from a given alphabet $\Sigma$. The empty sequence $\epsilon$ is allowed.
-\item Let $\Sigma^{\ast}$ denote the set of all finite-length strings over $\Sigma$. Any subset of $\Sigma^{\ast}$ is called a \textit{(formal) language}.
+\item A \textit{string} is a finite ordered sequence of elements from a given alphabet $\Sigma$. 
+
+The empty sequence $\epsilon$ is allowed.
 \end{enumerate}
+\end{definition}
+
+\begin{notation}
+Let $\Sigma^{\ast}$ denote the set of all finite-length strings over $\Sigma$. 
+\end{notation}
+
+We can define a total order called the \textit{string order} on $\Sigma^{\ast}$ by extending the  lexicographic order on the set of all strings over $\Sigma$ of length $n$ so that any string of length $n_1$ is strictly less than any string of length $n_2$ whenever $n_1<n_2$.
+
+\begin{definition}[Formal language]
+Any subset of $\Sigma^{\ast}$ is called a \textit{(formal) language}.
 \end{definition}
 
 \begin{exmp}
@@ -267,7 +278,7 @@ For each alphabet $\Sigma$, we have a category $\mathbf{Aut}_{\Sigma}$ whose obj
 
 \medskip
 
-Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Set $q_0(x) = q_0$. For each $1\leq i\leq n$, let $$q_i(x) =\delta(q_{i-1}(x), x_i).$$ If $x= \epsilon$, then $n=0$, from which we recover the equation $q_0(x) = q_0$. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
+Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Let $q_0(x) = q_0$, and for each $1\leq i\leq n$, let $$q_i(x) =\delta(q_{i-1}(x), x_i).$$ If $x= \epsilon$, then $n=0$, from which we recover the equation $q_0(x) = q_0$. We say that $x$ is \textit{accepted by $M$} if $q_n(x) \in Q_F$. 
 
 
 \begin{notation}
@@ -334,11 +345,11 @@ A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $\
 \end{tikzpicture}.
 \] If $x= 0100$, then
 \begin{align*} 
-& q_0(x) = \{q_0\}
-\\ & q_1(x) = \{q_0\}
-\\ & q_2(x) = \{q_0, q_1\}
-\\ & q_3(x) = \{q_0, q_2\}
-\\ & q_4(x) = \{q_0, q_2\}.
+& q_0(x) = \left\{q_0\right\}
+\\ & q_1(x) = \left\{q_0\right\}
+\\ & q_2(x) = \left\{q_0, q_1\right\}
+\\ & q_3(x) = \left\{q_0, q_2\right\}
+\\ & q_4(x) = \left\{q_0, q_2\right\}.
 \end{align*}
 \end{exmp}
 
@@ -347,7 +358,7 @@ A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $\
 
 Let $\delta$ denote a transition function for the $\NFA$ $N$. Define the \textit{multi-step transition function} $$\hat{\delta} : Q\times \Sigma^{\ast} \to \P(Q)$$ inductively by
 \begin{align*}
- \hat{\delta}(q, \epsilon) & = \{q\}
+ \hat{\delta}(q, \epsilon) & = \left\{q\right\}
 \\  \hat{\delta} (q, x) & = \bigcup_{\gamma \in \hat{\delta}(q, y)}\delta(\gamma, \sigma) \quad \quad x = y\sigma, \ y \in \Sigma^{\ast}, \ \sigma \in \Sigma.
 \end{align*}
 
@@ -373,7 +384,7 @@ Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\
 For any $\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} \equiv \{q_0\}$, $\delta_M (Q', \sigma) \equiv \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \equiv \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}$. For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \{q_0\}$, we are done.
+Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} \equiv \{q_0\}$, $\delta_M (Q', \sigma) \equiv \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \equiv \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}$. For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \left\{q_0\right\}$, we are done.
 \end{proof}
 
 \begin{exmp}
@@ -448,7 +459,7 @@ If $L$ is finite or cofinite, then it is regular.
 
 \medskip
 
-Now, let $L$ be any language. Let $L^k \coloneqq \underbrace{L\cdot L \cdots L}_{k \text{ times}}$ for each integer $k\geq 1$. Moreover, let $L^0 = \{\epsilon\}$ (which is regular). Then let $$L^{\ast} = \bigcup_{k\geq 0} L^k.$$
+Now, let $L$ be any language. Let $L^k \coloneqq \underbrace{L\cdot L \cdots L}_{k \text{ times}}$ for each integer $k\geq 1$. Moreover, let $L^0 = \left\{\epsilon\right\}$ (which is regular). Then let $$L^{\ast} = \bigcup_{k\geq 0} L^k.$$
 
 \medskip
 
@@ -491,7 +502,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 
 \smallskip
 
-There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}$. Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
+There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $$\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}.$$ Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
 
 
 \subsection{Lecture 4}
@@ -630,7 +641,7 @@ In this case, we write $C_1 \vdash C_2$.
 
 We say that the $\TM$ $M$ \textit{accepts} the input $w$ if 
 \begin{enumerate}[label=(\roman*)]
-\item there is some sequence $C_1, \ldots, C_k$ of configurations such that $C_1$ is $\bot q_0w$, 
+\item there is some sequence $C_1, \ldots, C_k$ of configurations where $C_1$ is precisely  $\bot q_0w$, 
 \item each $C_i$ yields $C_{i+1}$ (in which case we write $C_1 \specialvdash{}{*} C_k$), and
 \item $C_k$ is an accepting configuration. 
 \end{enumerate}
@@ -651,7 +662,7 @@ Every decidable language is recursively enumerable.
 
 \begin{exmp}
 By the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is \emph{not} regular.  But $L$ is decidable. Indeed,
-set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \{\bot, +, \times\}$. Define the $\TM$ $M$ as follows.
+set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \left\{\bot, +, \times\right\}$. Define the $\TM$ $M$ as follows.
 \[
 \begin{tikzpicture}[shorten >=1pt,node distance=6cm,on grid,auto] 
    \node[state,initial] (q_0)   {$q_0$}; 
@@ -690,7 +701,7 @@ A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine 
 For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k(T^2)$ steps of a single-tape $\TM$.
 \end{theorem}
 \begin{proof}
-Write $M= \left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$. Let $$ \{\#\} \bigcup_{\gamma \in \Gamma} \{\gamma, \dot{\gamma} \}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
+Write $M= \left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$. Let $$ \left\{\#\right\} \bigcup_{\gamma \in \Gamma} \left\{\gamma, \dot{\gamma} \right\}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
 \end{proof}
 
 \begin{exmp}
@@ -835,7 +846,7 @@ In this way, $L'$ is at least as ``hard" as $L$.
 \subsection{Lecture 8}
 
 \begin{exmp}[Halting problem]
-Let $A_{\text{HALT}} = \{\langle M, w \rangle \mid M$ halts on $w\}$. Then $A_{\text{HALT}}$ is undecidable.
+Let $A_{\text{HALT}} = \left\{\langle M, w \rangle \mid M \text{ halts on }w\right\}$. Then $A_{\text{HALT}}$ is undecidable.
 \end{exmp}
 \begin{proof}
 Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\text{HALT}}$. To do this, we want to design a computable function that maps any $\langle M, w \rangle$ to another $\langle M' \rangle, w'$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
@@ -1221,16 +1232,16 @@ It's clear that $\mathsf{Steiner{-}tree} $ belongs to  $\NP$. To show that it is
 \item Let $\left([u], [v]\right)\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
 \item If $\left(u,v\right) \in E$, then let $\left([u], [u,v]\right), \left([u, v], [v]\right) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
 \item If $\left(v,w\right) \in E$ and $u,v,w$ are pairwise distinct, then let $\left([u], [v,w]\right) \in E'$ and and set $w'([u], [v,w]) = 2$.
-\item Finally, for any $\left(u,v\right), \left(w,z\right) \in E$, let $\left([u,v], [w,z]\right)\in E'$  with weight $$w'([u,v], [w,z])\equiv \begin{cases} 2 & \left(u,v\right) \text{ and } \left(w,z\right) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
+\item Finally, for any $\left(u,v\right), \left(w,z\right) \in E$, let $\left(\left[u,v\right], \left[w,z\right]\right)\in E'$  with weight $$w'(\left[u,v\right], \left[w,z\right])\equiv \begin{cases} 2 & \left(u,v\right) \text{ and } \left(w,z\right) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
 \end{enumerate}
-Set $C = \left\{ [u,v] : (u,v) \in E\right\}$. Also, set $W= \left\lvert{E}\right\rvert+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
+Set $C = \left\{ \left[u,v\right] : \left(u,v\right) \in E\right\}$. Also, set $W= \left\lvert{E}\right\rvert+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
 \begin{claim}
 $G'$ has a Steiner tree containing $C$ with weight at most $\left\lvert{E}\right\rvert + k -1$.
 \end{claim}
 \begin{proof}
-Let $S = \{v_1, \ldots, v_k\}$. Let 
+Let $S = \left\{v_1, \ldots, v_k\right\}$. Let 
 \begin{align*}
-S' & = \left\{[v_1], \ldots, [v_k], \ \bigcup_{(u,v) \in E}[u,v]\right\}
+S' & = \left\{\left[v_1\right], \ldots, \left[v_k\right], \ \bigcup_{\left(u,v\right) \in E}[u,v]\right\}
 \\ E_{S'} & = \left\{ \left(x,y\right)\in E' \mid w'\left(x,y\right)=1 \text{ and } x,y\in S'\right\}.
 \end{align*} Since $S$ is a vertex cover, we see that $\left(S', E_{S'}\right)$ is a connected subgraph of $G'$ that contains $C$ and has weight $\left\lvert{E}\right\rvert+k -1$.
 \end{proof}
@@ -1440,7 +1451,7 @@ A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and
 \begin{definition} $ $
 \begin{enumerate}
 \item
-Let $M$ be a $\TM$ consisting of one read-only input tape, one work tape, and one write-only, single-axis output tape such that $M$'s work tape uses $O(\log{n})$ space. We call $M$ a \textit{log space transducer}.
+Let $M$ be a $\TM$ consisting of one read-only input tape, one work tape, and one write-only, single-axis output tape such that $M$'s work tape uses $O(\log{n})$ space. We call such an $M$ a \textit{log space transducer}.
 \item Let $A$ and $B$ be languages. We say that $A$ is \textit{log space reducible to $B$}, written as $A\leq_l B$, if there is some log space transducer $M: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ such that $x \in A \iff M(x) \in B$. 
 \item A language $L$ is \textit{$\mathbf{NL}$-complete} if it belongs to $\mathbf{NL}$ and $L' \leq_l L$ for any $L' \in \mathbf{NL}$.
 \end{enumerate}
