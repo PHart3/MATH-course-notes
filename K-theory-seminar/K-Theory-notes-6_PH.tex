@@ -215,7 +215,7 @@ Let $\eta :\ A \rightarrowtail B \twoheadrightarrow C$ be an object in $S_2{\c}$
 Since defining a cofiber sequence of exact functors $\b \to \c$ is equivalent to defining an exact functor $\b \to S_2{\c}$, we may restrict our attention to $s \rightarrowtail t \twoheadrightarrow q$ when proving assertions about a given cofiber sequence of exact functors $\b \to \c$. (We say that $S_2{\c}$ is \textit{universal} in this sense.)
 
 \begin{theorem}[Extension]\label{ext}
-The exact functor $(s, q) : S_2{\c} \to \c \times \c$ induces  a homotopy equivalence $K(S_2{\c}) \simeq K(\c) \times K(\c)$. The functor $\coprod : \left(A, B\right) \to \left(A \rightarrowtail A \coprod B \twoheadrightarrow  B\right)$ is a homotopy inverse.
+The exact functor $\left(s, q\right) : S_2{\c} \to \c \times \c$ induces  a homotopy equivalence $K(S_2{\c}) \simeq K(\c) \times K(\c)$. The functor $\coprod : \left(A, B\right) \to \left(A \rightarrowtail A \coprod B \twoheadrightarrow  B\right)$ is a homotopy inverse.
 \end{theorem}
 \begin{proof}[Proof sketch]
 Let $\c^w_m$ denote the category of $m$-length sequences of weak equivalences. For each $n$, define $s_n\c^w_m$ as the commutative diagram
@@ -227,7 +227,7 @@ X_1^1 \arrow[d, "\sim"'] \arrow[r, tail] & X_2^1 \arrow[r, tail] \arrow[d, "\sim
  X_1^m \arrow[r, tail] & X_2^m \arrow[r, tail] & \cdots \arrow[r, tail] & X_n^m
 \end{tikzcd}
 .\]
-This is naturally isomorphic to an $(m, n)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2{\c} \to \c$ induce a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, thereby completing our proof.
+This is naturally isomorphic to an $\left(m, n\right)$-bisimplex in $N_{\bullet}w S_{\bullet}\c$, which is thus isomorphic to the bisimplicial set $s_{\bullet}\c^w_{(-)}$. One can show that the source $s$ and quotient $q$ functors  $S_2{\c} \to \c$ induce a homotopy equivalence $s \times q : s_{\bullet}S_2(\c^w_m) \to s_{\bullet}\c^w_m \times s_{\bullet}\c^w_m$ for each $m$. Thus, we get a homotopy equivalence  $$s_{\bullet}S_2(\c^w_{(-)}) \simeq s_{\bullet}\c^w_{(-)} \times s_{\bullet}\c^w_{(-)}$$ between bisimplicial sets. But we already have that $s_{\bullet}\c^w_{(-)} \cong N_{\bullet}w S_{\bullet}\c$, thereby completing our proof.
 \end{proof}
 
 \bigskip
@@ -276,8 +276,8 @@ Moreover, $T$ must satisfy the following axioms.
 \begin{enumerate}[label=(\arabic*)]
 \item $T$ sends every initial morphism $\ast \to A$ to $A$ for any $A \in \ob \c$.
 \item $j_1 \coprod j_2 : A \coprod B \rightarrowtail T(f)$ is a cofibration for any $f: A \to B$.
-\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are weak equivalences in $\c$, then so is $T(f) \to T(f').$
-\item Given a morphism $(a,b) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom (2) is a cofibration in $\c$.
+\item Given a morphism $\left(a,b\right) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are weak equivalences in $\c$, then so is $T(f) \to T(f').$
+\item Given a morphism $\left(a,b\right) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom (2) is a cofibration in $\c$.
 \item {(\textit{Cylinder axiom})} The map $p: T(f) \to B$ is a weak equivalence in $\c$.
 \end{enumerate}
 
@@ -305,7 +305,7 @@ Let $\c$ be a category with cofibrations. Equip it with two Waldhausen subcatego
 \smallskip
 
 
-Let $\c^w$ denote the Waldhausen subcategory of $(\c, v)$ consisting of all $A$ such that $\ast \to A$ belongs to $w(\c)$.\reversemarginpar{\marginpar{\small{Are the initial morphisms the only weak equivalences?}}}
+Let $\c^w$ denote the Waldhausen subcategory of $\left(\c, v\right)$ consisting of all $A$ such that $\ast \to A$ belongs to $w(\c)$.\reversemarginpar{\marginpar{\small{Are the initial morphisms the only weak equivalences?}}}
 
 \begin{theorem}[Waldhausen localization]\label{local}
 The sequence $$ K(\c^w) \to K(\c, v) \to K(\c, w) $$ is a homotopy fibration sequence.
@@ -394,7 +394,7 @@ Let $\a$ be an abelian category. One can show that the inclusions $\ch^{\bo}(\a)
 \section{$K$-theory spectrum}
 
 \begin{definition}
- A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $(X_n)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $\left(\Sigma_{n}\times \Sigma_{k}\right)$-equivariant for any $n,k\geq 0$, where $S^k \equiv \underbrace{S^1 \land \cdots \land S^1}_{k\text{ times}}$. 
+ A \textit{symmetric spectrum} $\X$ in topological spaces in a sequence of based $\Sigma_n$-spaces $\left(X_n\right)$ endowed with structure maps $\sigma : X_n \land S^1 \to X_{n+1}$ such that $\sigma^k : X_n \land S^k \to X_{n+k}$ is $\left(\Sigma_{n}\times \Sigma_{k}\right)$-equivariant for any $n,k\geq 0$, where $S^k \equiv \underbrace{S^1 \land \cdots \land S^1}_{k\text{ times}}$. 
  
  \smallskip
  
@@ -409,10 +409,10 @@ commutes. Let $\Sp^{\Sigma}$ denote the category of symmetric spectra in topolog
 \end{definition}
 
 \begin{definition}
-Let $(\c,w{\c})$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$\left(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c\right).$$ In multidegree $\left(q_1, \ldots, q_n\right)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
+Let $\left(\c,w{\c}\right)$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bullet}$-construction} on $\c$ is the $n$-multisimplicial Waldhausen category $$\left(S_{\bullet}\cdots S_{\bullet}\c, wS_{\bullet} \cdots S_{\bullet} \c\right).$$ In multidegree $\left(q_1, \ldots, q_n\right)$, it has as objects the diagrams  $X: \Ar[q_1] \times \cdots \times \Ar[q_n] \to \c$ such that
 \begin{enumerate}[label=(\roman*)]
 \item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ when $i_k = j_k$ for some $1\leq k \leq n$ and
-\item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q_t]$.
+\item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $\left(n-1\right)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $\left[q_t\right]$.
 \end{enumerate}
 \end{definition}
 
@@ -420,9 +420,9 @@ Let $(\c,w{\c})$ be a Waldhausen category. The \textit{external $n$-fold $S_{\bu
 Let $\left(\c,w{\c}\right)$ be a Waldhausen category. The \textit{internal $n$-fold $S_{\bullet}$-construction} on $\c$ is the simplicial Waldhausen category $$\left(S_{\bullet}^{(n)}\c, wS_{\bullet}^{(n)} \c\right).$$ It has as $q$-simplices the functor categories $\left(S_q \cdots S_q \c, wS_q \cdots S_q \c\right)$ whose objects are precisely the $\left(\Ar[q]\right)^n$-shaped diagrams  $X: \left(\Ar[q]\right)^n\to \c$ such that
 \begin{enumerate}[label=(\roman*)]
 \item $X((i_1, j_1), \ldots, (i_n, j_n)) = \ast$ when $i_k = j_k$ for some $1\leq k \leq n$.
-\item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $(n-1)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $[q]$.
+\item $X(\ldots, (i_t, j_t), \ldots) \rightarrowtail X(\ldots, (i_t, k_t), \ldots) \twoheadrightarrow X(\ldots, (j_t, k_t), \ldots)$ is a cofiber sequence  in the $\left(n-1\right)$-fold iterated $S_{\bullet}$-construction for any $i_t \leq j_t \leq k_t$ in $\left[q\right]$.
 \end{enumerate}
-Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by the relation $(\pi \cdot X)(\ldots, (i_t, j_t), \ldots) = X(\ldots, (i_{\pi^{{-1}}(t)}, j_{\pi^{{-1}}(t)}), \ldots)$.
+Note that $\Sigma_n$ acts on $S_{\bullet}^{(n)}\c$ by the relation $\left(\pi \cdot X\right)\left(\ldots, \left(i_t, j_t\right), \ldots\right) = X(\ldots, (i_{\pi^{{-1}}(t)}, j_{\pi^{{-1}}(t)}), \ldots)$.
 \end{definition}
 
 \medskip

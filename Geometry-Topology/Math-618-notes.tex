@@ -342,7 +342,7 @@ A cell complex $X$ is \textit{regular} if every characteristic map $D_i^n \to X$
 \begin{defn}
 Given a family of functors $\left\{H_n : \mathbf{Top}^2 \to \mathbf{Ab}\right\}_{n\in \N}$ where $\mathbf{Top}^2$ denotes the category of (topological) pairs, we say that $H_i$ is a \textit{homology functor} if  each of the following properties holds.
 \be
-\item (LES) For any pair $(X, A)$ of space, there is a natural long exact sequence
+\item (LES) For any pair $\left(X, A\right)$ of space, there is a natural long exact sequence
 \[
 \begin{tikzcd}
 \cdots \arrow[r] & H_i(A)  \arrow[r] & H_i(X) \arrow[r] & {H_i(X, A)} \arrow[r, "\partial"] & H_{i-1}(A) \arrow[r] & \cdots
@@ -379,7 +379,7 @@ $\partial_n{\partial_{n+1}} = 0$, and $H_n(X) \cong \faktor{\ker{\partial_n}}{\i
 \end{theorem}
 
 \begin{exmp}
-Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regular value $x \in S^n$. There is some neighborhood $U$ of $x$ such that $f^{-1}(U) = U_1 \cup \cdots \cup U_n$ for some $n$. Using the inverse function theorem and the compactness of $S^n$, it follows that $f^{-1}$ is of the form $\left\{x_1, \ldots, x_n\right\}$. Note that the differential $(d{f})_{x_i} : S^n_{x_i} \to S^n_x$ satisfies $\det{(d{f})_{x_i}} - \pm 1$. In fact, $$\deg(f) = \sum_{i=1}^n \det{(d{f})_{x_i}}.$$
+Suppose that $f: S^n \to S^n$ is smooth. By Sard's theorem, we can find a regular value $x \in S^n$. There is some neighborhood $U$ of $x$ such that $f^{-1}(U) = U_1 \cup \cdots \cup U_n$ for some $n$. Using the inverse function theorem and the compactness of $S^n$, it follows that $f^{-1}$ is of the form $\left\{x_1, \ldots, x_n\right\}$. Note that the differential $\left(d{f}\right)_{x_i} : S^n_{x_i} \to S^n_x$ satisfies $\det{(d{f})_{x_i}} - \pm 1$. In fact, $$\deg(f) = \sum_{i=1}^n \det{(d{f})_{x_i}}.$$
 \end{exmp}
 
 \begin{exercise}\label{reg}
@@ -402,17 +402,17 @@ It is easy to see that $A^{n+1}$ is homotopy equivalent to $X^{n+1}$. Moreover, 
 \subsection{Lecture 2}
 
 \begin{exmp}[Real projective space]
-Recall that $\RP^n = \faktor{S^n}{x \sim {-}x}$. Then $\RP^n = \RP^{n-1} \cup_{\pi_{n-1}} D^n$ where $\pi_{n-1} : S^{n-1} \to \RP^{n-1}$ denotes the canonical projection. Thus, $\RP^n$ is an $n$-dimension cell complex with $(\RP^n)^m = \RP^m$ for each integer $0\leq m\leq n$.
+Recall that $\RP^n = \faktor{S^n}{x \sim {-}x}$. Then $\RP^n = \RP^{n-1} \cup_{\pi_{n-1}} D^n$ where $\pi_{n-1} : S^{n-1} \to \RP^{n-1}$ denotes the canonical projection. Thus, $\RP^n$ is an $n$-dimension cell complex with $\left(\RP^n\right)^m = \RP^m$ for each integer $0\leq m\leq n$.
 
 \medskip
 
-Now, for each $0\leq m \leq n$, we have that $C_m(\RP^n) \cong \Z$ with generator $[D^m]$. To determine $\partial[D^m]\in C_{m-1}(\RP^m)$, we must find the degree of the map
+Now, for each $0\leq m \leq n$, we have that $C_m(\RP^n) \cong \Z$ with generator $\left[D^m\right]$. To determine $\partial[D^m]\in C_{m-1}(\RP^m)$, we must find the degree of the map
 \[
 \begin{tikzcd}
 S^{m-1} \arrow[rrrr, "\varphi"', bend right] \arrow[r] & \RP^{m-1} \arrow[r, two heads] & \faktor{\RP^{m-1}}{\RP^{m-1}} \arrow[r, equals] & \faktor{D^{m-1}}{\partial{D^{m-1}}} \arrow[r, equals] & S^{m-1}
 \end{tikzcd}
 \]
-Assume, for simplicity, that $m=2$. Choose a regular value $p\in S^{1}$ so that $\varphi^{-1}(p) = \{N, S\}$. Let $\varphi_T$ and $\varphi_B$ denote the restrictions of $\varphi$ to the top and bottom components of $S^1 \setminus \{({-}1, 0), (1,0)\}$, respectively. Note that both of these are homeomorphisms and thus have degrees equal to $\pm 1$. If $a: S^{m-1} \to S^{m-1}$ denotes the antipodal map, we have that $\varphi_B \circ a= \varphi_T$. Hence $(d{\varphi})_S \circ (d{a})_N = (d{\varphi})_N$.  Since $\deg(a) = \det(d{a}) = ({-}1)^m$, it follows that $$\deg(\varphi) = \begin{cases} \pm 2 & m  \text{ even} \\ 0 & m \text{ odd} \end{cases}.$$
+Assume, for simplicity, that $m=2$. Choose a regular value $p\in S^{1}$ so that $\varphi^{-1}(p) = \left\{N, S\right\}$. Let $\varphi_T$ and $\varphi_B$ denote the restrictions of $\varphi$ to the top and bottom components of $S^1 \setminus \{({-1}, 0), (1,0)\}$, respectively. Note that both of these are homeomorphisms and thus have degrees equal to $\pm 1$. If $a: S^{m-1} \to S^{m-1}$ denotes the antipodal map, we have that $\varphi_B \circ a= \varphi_T$. Hence $\left(d{\varphi}\right)_S \circ (d{a})_N = \left(d{\varphi}\right)_N$.  Since $\deg(a) = \det(d{a}) = \left({-1}\right)^m$, it follows that $$\deg(\varphi) = \begin{cases} \pm 2 & m  \text{ even} \\ 0 & m \text{ odd} \end{cases}.$$
 Thus, we get a chain complex
 \[
 \begin{tikzcd}
@@ -435,14 +435,14 @@ Next, let's introduce some fundamental concepts from homotopy theory.
 
 \begin{defn} Let $M(X, Y)$ denote the set of maps $X \to Y$. 
 \be
-\item For any compact $C \subset X$ and open $U \subset Y$, let $$N(C, U) = \{f : X \to Y \mid f(C) \subset U \}  .$$ The \textit{compact-open topology on $M(X, Y)$} consists of all unions of finite intersections of subsets of the form $N(C, U)$. Under this topology, $M(X,Y)$ is called a \textit{mapping space}. 
-\item The \textit{$n$-th loop space} of a pointed space $(X, x)$ is $$\Omega^{n-1}(X, x) \coloneqq M((D^{n-1}, \partial{D^{n-1}}), (X, x)),$$  which is a subset of $M(D^{n-1}, X)$.
+\item For any compact $C \subset X$ and open $U \subset Y$, let $$N(C, U) = \left\{f : X \to Y \mid f(C) \subset U \right\}  .$$ The \textit{compact-open topology on $M(X, Y)$} consists of all unions of finite intersections of subsets of the form $N(C, U)$. Under this topology, $M(X,Y)$ is called a \textit{mapping space}. 
+\item The \textit{$n$-th loop space} of a pointed space $\left(X, x\right)$ is $$\Omega^{n-1}(X, x) \coloneqq M((D^{n-1}, \partial{D^{n-1}}), (X, x)),$$  which is a subset of $M(D^{n-1}, X)$.
 \ee 
 \end{defn}
 
 
 \begin{defn}[Higher homotopy groups]
-If $n \geq 2$, then the \textit{$n$-th homotopy group} of $(X, x)$ is $$\pi_n(X,x) \coloneqq \pi_1(\Omega^{n-1}{X}, e_x).$$
+If $n \geq 2$, then the \textit{$n$-th homotopy group} of $\left(X, x\right)$ is $$\pi_n(X,x) \coloneqq \pi_1(\Omega^{n-1}{X}, e_x).$$
 \end{defn}
 
 Recall that $\pi_1({-})$ is a functor $\mathbf{Top}_{\ast} \to \mathbf{Grp}$. Also, $\Omega^{n-1}({-})$ is a functor $\mathbf{Top}_{\ast}  \to \mathbf{Top} $ defined on morphisms $f: (X, x) \to (Y, y)$ by post-composition with $f$.
@@ -460,7 +460,7 @@ In particular, we have a composite
 
 \[
 M(([0,1], \{0,1\}), (M((D^{n-1}, \partial), (X,x)), e_x)) \hookrightarrow M([0,1], M(D^{n-1}, X)) \overset{\cong}{\longrightarrow} M([0,1] \times D^{n-1}, X),
-\] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $\left(I^n, \partial\right) \to \left(X,x\right)$ under the operation $[f] \ast [g] = [f \ast g]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
+\] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $\left(I^n, \partial\right) \to \left(X,x\right)$ under the operation $\left[f\right] \ast \left[g\right] = \left[f \ast g\right]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
       f(2t_1, t_2, \ldots, t_n) & 0\leq t_1 \leq \frac{1}{2}
       \\ f(2t_1-1, t_2, \ldots, t_n) & \frac{1}{2} \leq t\leq 1
 \end{cases}    .$$ 
@@ -545,7 +545,7 @@ A map $f : X \to Y$ of path connected spaces is a \textit{weak homotopy equivale
 \subsection{Lecture 3}
 
 \begin{defn}
-If $x\in A \subset X$, then the \textit{$n$-th relative homotopy group $\pi_n(X, A, x)$} consists of all homotopy classes of maps $(D^n, S^{n-1}, x_0) \to (X, A, x)$. 
+If $x\in A \subset X$, then the \textit{$n$-th relative homotopy group $\pi_n(X, A, x)$} consists of all homotopy classes of maps $\left(D^n, S^{n-1}, x_0\right) \to \left(X, A, x\right)$. 
 \end{defn}
 
 We see that  $$M((D^n, S^{n-1}, x), (X, A, x_0)) \cong M((I^n, I^{n-1} \times \{1\}, \underbrace{\partial{I^n} \setminus \Int(I^{n-1} \times \{1\})}_{\partial_0{I^n}}), (X, A, x_0))$$ by considering the homeomorphism $\left(I^n/\partial_0{I^n}, \partial{I^n}/\partial_0{I^n}\right) \cong \left(D^n, S^{n-1}\right)$. Therefore, $\pi_n(X, A, x)$ can be viewed as consisting of all homotopy classes of maps $\left(I^n, \partial{I^n}, \partial_0{I^n}\right) \to \left(X, A, x\right)$.
@@ -622,14 +622,14 @@ Let $f: (I^n, \partial{I^n}) \to (B, b)$. To prove that $p_{\ast}$ is surjective
 \partial_0{I^n} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
 {I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G"] &                       &                   & B               
 \end{tikzcd}
-\] commutes, for in this case $[p \circ G'] = [f]$. Since $p$ is a fibration, there is some $G$ such that
+\] commutes, for in this case $\left[p \circ G'\right] = \left[f\right]$. Since $p$ is a fibration, there is some $G$ such that
 \[
 \begin{tikzcd}
 I^{n-1} \times \{0\} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
 {I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G'"] &                       &                   & B               
 \end{tikzcd}
 \] 
-commutes. But $(I^n, \partial_0{I^n}) \cong (I^n, I^{n-1} \times \{0\})$, and thus such a $G'$ is enough. 
+commutes. But $\left(I^n, \partial_0{I^n}\right) \cong \left(I^n, I^{n-1} \times \left\{0\right\}\right)$, and thus such a $G'$ is enough. 
 \end{proof}
 
 \begin{corollary}\label{exhtpy}
@@ -658,7 +658,7 @@ X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & B \times F \arrow[d, 
 \item Let $A \subset X$ be a subcomplex. The map $\varphi : M(X, Y) \to M(A, Y)$ defined by $f \mapsto f\restriction_A$ is a fibration. 
 \item Define the \textit{Hopf fibration} as the quotient map
 \[
-S^3 = \{(z_1, z_2) \in \C^2 \mid z_1\overline{z_1} + z_2\overline{z_2} =1\} \twoheadrightarrow \faktor{S^3}{x \sim {-}x} = \CP^1 =S^2.
+S^3 = \left\{\left(z_1, z_2\right) \in \C^2 \mid z_1\overline{z_1} + z_2\overline{z_2} =1\right\} \twoheadrightarrow \faktor{S^3}{x \sim {-}x} = \CP^1 =S^2.
 \]
 \ee
 \end{exmp}
@@ -693,7 +693,7 @@ Any locally trivial map $p: E \to B$ is a fibration whenever $B$ is a cell compl
 Prove that the Hopf fibration is locally trivial.
 \end{exercise}
 \begin{proof}
-For each $k \in \{0,1\}$, let $U_k = \{[z_0, z_1] \in \CP^1 \mid z_k \ne 0\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\left\{\left(z_0, z_1\right) \in S^3 \mid z_k \ne 0\right\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$(z_0, z_1) \mapsto \left(\left[z_0, z_1\right], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
+For each $k \in \{0,1\}$, let $U_k = \left\{\left[z_0, z_1\right] \in \CP^1 \mid z_k \ne 0\right\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\left\{\left(z_0, z_1\right) \in S^3 \mid z_k \ne 0\right\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$\left(z_0, z_1\right) \mapsto \left(\left[z_0, z_1\right], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
 \end{proof}
 
 \subsection{Lecture 4}
@@ -756,7 +756,7 @@ Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi
 Let $x\in X$. Consider the  loop space $\Omega(X, x) \equiv M((S^1, \pt), (X, x))$. Prove that $\pi_n(\Omega{X})\cong \pi_{n+1}(X)$.
 \end{exercise}
 \begin{proof}
-Consider the \textit{path space $P{X} \equiv \{\gamma : [0,1] \to X \mid \gamma(0) =x\}$ of $(X,x)$}, equipped with the compact-open topology. We claim that $P{X}$ is contractible. Indeed, define $K: P{X} \times [0,1] \to P{X}$ by $$(\gamma, t) \mapsto \left(s \mapsto \gamma(s(1-t))\right).$$ Then $K$ is a homotopy from $\id_{P{X}}$ to the constant map at the constant path at $x$.
+Consider the \textit{path space $P{X} \equiv \left\{\gamma : [0,1] \to X \mid \gamma(0) =x\right\}$ of $\left(X,x\right)$}, equipped with the compact-open topology. We claim that $P{X}$ is contractible. Indeed, define $K: P{X} \times [0,1] \to P{X}$ by $$\left(\gamma, t\right) \mapsto \left(s \mapsto \gamma(s(1-t))\right).$$ Then $K$ is a homotopy from $\id_{P{X}}$ to the constant map at the constant path at $x$.
 
 \medskip
 
@@ -766,13 +766,13 @@ Define the map $p : P{X} \to X$ by $\gamma \mapsto \gamma(1)$. Then $p^{-1}(x) =
 Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
 {Y\times [0,1]} \arrow[r, "f"']                    & X                  
 \end{tikzcd}
-\] commutes. Define $H: Y \times [0,1] \to P{X}$ by $(y, t) \mapsto  H(y,t)$ where 
+\] commutes. Define $H: Y \times [0,1] \to P{X}$ by $\left(y, t\right) \mapsto  H(y,t)$ where 
 \[
 H(y, t)(s) = \begin{cases} 
 \hat{f}(y)\left((1+t)s\right) & 0\leq s\leq \frac{1}{1+t}
 \\ f(y, (1+t)s -1) & \frac{1}{1+t}\leq s \leq 1
 \end{cases}.
-\] We see that $H$ is continuous when viewed as a function of $(y,t,s)$ and thus is continuous. It is easy to check that 
+\] We see that $H$ is continuous when viewed as a function of $\left(y,t,s\right)$ and thus is continuous. It is easy to check that 
 \[
 \begin{tikzcd}
 Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
@@ -794,7 +794,7 @@ If $p$ is locally trivial, then so is $f^{\ast}{p}$.
 Let $a \in X$. Since $p$ is locally trivial by assumption, we can find a neighborhood $U$ of $f(a)$ in $B$ and a homeomorphism $\varphi : p^{-1}(U) \to U \times F$. Observe that 
 \[
 (f^{\ast}{p})^{-1}(f^{-1}(U)) = \left\{(x,e) \mid f(x) = p(e), \ f(x) \in U\right\} \subset f^{-1}(U) \times p^{-1}(U).
-\] Further, we have a map $\psi : f^{-1}(U) \to p^{-1}(U) \to f^{-1}(U) \times F$ given by $(x,e) \mapsto (x, \pi_F(\varphi(e)))$. Define $\lambda : f^{-1}(U) \times F \to (f^{\ast}{p})^{-1}(f^{-1}(U))$ by $(x,y) \mapsto (x, \varphi^{-1}(f(x), y))$. Using the fact that 
+\] Further, we have a map $\psi : f^{-1}(U) \to p^{-1}(U) \to f^{-1}(U) \times F$ given by $\left(x,e\right) \mapsto \left(x, \pi_F(\varphi(e))\right)$. Define $\lambda : f^{-1}(U) \times F \to (f^{\ast}{p})^{-1}(f^{-1}(U))$ by $\left(x,y\right) \mapsto \left(x, \varphi^{-1}(f(x), y)\right)$. Using the fact that 
 \[
 \begin{tikzcd}
 p^{-1}(U) \arrow[r, "\varphi"] \arrow[rd, "p"'] & U\times F \arrow[d, "\pi_U"] \\
@@ -865,7 +865,7 @@ h^{-1}(\tilde{J}) \arrow[r, "\psi"] \arrow[d, "h"'] & \tilde{J}\times F \arrow[d
 \end{tikzcd}
 \] commutes and that $\gamma \coloneqq \left(\left(w \times \id_F\right) \circ \psi\right)$ agrees with $\varphi$ on $K\times \left\{a_k\right\}$. Hence we may take $\varphi \cup \gamma$ as our desired trivialization.
 \end{proof}
-As a result, we may assume that $h$ is trivial on its entire domain, i.e., that $h$ is the projection $$\left(D^n \times \left[0,1\right]\right) \times F \twoheadrightarrow D^n \times \left[0,1\right].$$ Moreover, by induction, we can find a right inverse $\sigma : X^{n-1} \times \left[0,1\right] \to D^n \times \left[0,1\right]$ of $h : Z \to X^{n-1} \times \left[0,1\right]$ that extends $\sigma_0\restriction_{X^{n-1}\times \left\{0\right\}}$. But $X^{n-1}$ consists of all $\left(n-1\right)$-dimensional faces of the $n$-cube, and thus we have a map $$\tau \equiv \sigma \restriction_{\partial{I^n} \times \left[0,1\right]} : S^{n-1} \times  \left[0,1\right]   \to  \left(D^n \times \left[0,1\right]\right) \times F,$$ which has the form $\left(x,t\right) \mapsto \left(x,t,\tilde{\tau}(x,t)\right)$. Further, $\sigma_0$ has the form $(x,0) \mapsto \left(x,0, \tilde{\sigma}_0(x,0)\right)$. Therefore, our desired map $\sigma :  D^n \times \left[0,1\right] \to \left(D^n \times \left[0,1\right]\right) \times F $  is given by 
+As a result, we may assume that $h$ is trivial on its entire domain, i.e., that $h$ is the projection $$\left(D^n \times \left[0,1\right]\right) \times F \twoheadrightarrow D^n \times \left[0,1\right].$$ Moreover, by induction, we can find a right inverse $\sigma : X^{n-1} \times \left[0,1\right] \to D^n \times \left[0,1\right]$ of $h : Z \to X^{n-1} \times \left[0,1\right]$ that extends $\sigma_0\restriction_{X^{n-1}\times \left\{0\right\}}$. But $X^{n-1}$ consists of all $\left(n-1\right)$-dimensional faces of the $n$-cube, and thus we have a map $$\tau \equiv \sigma \restriction_{\partial{I^n} \times \left[0,1\right]} : S^{n-1} \times  \left[0,1\right]   \to  \left(D^n \times \left[0,1\right]\right) \times F,$$ which has the form $\left(x,t\right) \mapsto \left(x,t,\tilde{\tau}(x,t)\right)$. Further, $\sigma_0$ has the form $\left(x,0\right) \mapsto \left(x,0, \tilde{\sigma}_0(x,0)\right)$. Therefore, our desired map $\sigma :  D^n \times \left[0,1\right] \to \left(D^n \times \left[0,1\right]\right) \times F $  is given by 
 \[
 \sigma(x,t) = \left(x,t, \left(\tilde{\sigma}_0 \cup \tilde{\tau}\right)(r(x,t))\right).
 \]
@@ -883,13 +883,13 @@ A \textit{topological group} $G$ is a group such that both multiplication $G \ti
 \item A \textit{fiber $F$ of $G$} is a space equipped with a faithful (i.e., injective) group action $\rho : G \to \homeo(F) \subset M(F, F)$. 
 \item An \textit{atlas for the structure of a (fiber) bundle with group $G$ and fiber $F$ on a map $p: E \to B$} consists of 
 \be
-\item a family $(U_{\alpha}, h_{\alpha})_{\alpha \in A}$ where each $U_{\alpha}$ is open and each $h_{\alpha}$ is a homeomorphism $p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ and
+\item a family $\left(U_{\alpha}, h_{\alpha}\right)_{\alpha \in A}$ where each $U_{\alpha}$ is open and each $h_{\alpha}$ is a homeomorphism $p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ and
 \item  a family of continuous \textit{transition functions} $\left\{h_{\beta{\alpha}} : U_{\alpha} \cap U_{\beta} \to G\right\}_{\alpha, \beta \in A}$ 
 \ee such that
 \be[label= \roman*]
 \item $B = \bigcup_{\alpha \in A} U_{\alpha}$,
 \item $\pi_{U_{\alpha}} \circ h_{\alpha} = p\restriction_{p^{-1}(U_{\alpha})}$, and
-\item  $x\in U_{\alpha} \cap U_{\beta} \implies h_{\beta} \circ h_{\alpha}^{-1}(x,f) = (x, h_{\beta{\alpha}}(x)\cdot f)$
+\item  $x\in U_{\alpha} \cap U_{\beta} \implies h_{\beta} \circ h_{\alpha}^{-1}(x,f) = \left(x, h_{\beta{\alpha}}(x)\cdot f\right)$
 \ee
 \item Two atlases are \textit{compatible} if their union is an atlas. 
 \item A \textit{bundle structure on $B$} is a maximal atlas on $p$. 
@@ -904,7 +904,7 @@ If $B$ is equipped with a bundle structure, then we say that $p$ is a (fiber) bu
 \be
 \item The tangent bundle $\pi : TM \to M$ of a smooth $n$-manifold $M$ is a bundle with group $\GL(n, \R)$.
 \begin{proof}
-Let $(U, \varphi)$ be any coordinate chart for $M$ with coordinate functions $(x^i)$. Define $h: \pi^{-1}(U) \to U \times \R^n$ by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(p, \left(v^1, \ldots, v^n\right)\right).$$ It is clear that $\pi_{U}(h(p)) = \pi(c)$ for any $c\in \pi^{-1}(U)$. To see that $h$ is a homeomorphism, note that the composite $\left(\varphi \times \id_{\R^n}\right) \circ h : \pi^{-1}(U) \to \varphi(U) \times \R^n$ is given by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(x^1(p), \ldots, x^n(p), v^1, \ldots, v^n\right),$$ the inverse of which is given by $\left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto v^i\frac{\partial}{\partial{x^i}}\left(\varphi^{-1}(x)\right)$. Therefore,  $\left(\varphi \times \id_{\R^n}\right) \circ h$ is given locally by 
+Let $\left(U, \varphi\right)$ be any coordinate chart for $M$ with coordinate functions $\left(x^i\right)$. Define $h: \pi^{-1}(U) \to U \times \R^n$ by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(p, \left(v^1, \ldots, v^n\right)\right).$$ It is clear that $\pi_{U}(h(p)) = \pi(c)$ for any $c\in \pi^{-1}(U)$. To see that $h$ is a homeomorphism, note that the composite $\left(\varphi \times \id_{\R^n}\right) \circ h : \pi^{-1}(U) \to \varphi(U) \times \R^n$ is given by $$v^i\frac{\partial}{\partial{x^i}}\left(p\right) \mapsto \left(x^1(p), \ldots, x^n(p), v^1, \ldots, v^n\right),$$ the inverse of which is given by $\left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto v^i\frac{\partial}{\partial{x^i}}\left(\varphi^{-1}(x)\right)$. Therefore,  $\left(\varphi \times \id_{\R^n}\right) \circ h$ is given locally by 
 \[
 \left(x^1, \ldots, x^n, v^1, \ldots, v^n\right) \mapsto \left(\tilde{x}^1(x), \ldots, \tilde{x}^n(x), \frac{\partial{\tilde{x}^1}}{\partial{x^j}}(x)v^j, \ldots, \frac{\partial{\tilde{x}^n}}{\partial{x^j}}(x)v^j\right),
 \] which is smooth. Thus, $h$ is a diffeomorphism as the composite of two diffeomorphisms. In particular, $h$ is a homeomorphism. 
@@ -1023,7 +1023,7 @@ Note that
 \left(U_{\alpha}\cap U_{\beta}\right)\times F \arrow[rd] & p_1^{-1}(U_{\alpha}\cap U_{\beta}) \arrow[u, "\hat{g}"] \arrow[d] \arrow[l, "k_{\beta}"'] & \left(U_{\alpha}\cap U_{\beta}\right)\times F \arrow[l, "k_{\alpha}^{-1}"'] \arrow[ld] \\
                                                          & U_{\alpha}\cap U_{\beta}                                                                    &                                                                                         
 \end{tikzcd}
-\] commutes.  We have that $h_{\beta} \circ \hat{g} \circ k_{\alpha}^{-1}(x,f) = (x, \lambda_{\beta{\alpha}}(x)\cdot f)$. Thus, if  $h_{\alpha}(e) = (x,f)$, then $h_{\alpha}\left(\hat{g}(e)\right) = (x, \lambda_{\alpha{\alpha}}(x) \cdot d).$ Let $$\left(\hat{g}\right)^{-1}(e) = k_{\alpha}^{-1}\left(x, \lambda_{\alpha{\alpha}}(x)^{-1}\cdot f\right)$$ where $(x,f) = h_{\alpha}(e)$. If this is well-defined on $E_2$ (??), then it indeed equals the inverse of $\hat{g}$.  Moreover, by \cref{trnote}, it is easy to check that $d_{\alpha'{\beta'}}(x)^{-1}$ satisfies \eqref{eq:mapcycle}, and thus it can be shown that $\left(\hat{g}\right)^{-1}$ is a bundle map.
+\] commutes.  We have that $h_{\beta} \circ \hat{g} \circ k_{\alpha}^{-1}(x,f) = \left(x, \lambda_{\beta{\alpha}}(x)\cdot f\right)$. Thus, if  $h_{\alpha}(e) = \left(x,f\right)$, then $h_{\alpha}\left(\hat{g}(e)\right) = \left(x, \lambda_{\alpha{\alpha}}(x) \cdot d\right).$ Let $$\left(\hat{g}\right)^{-1}(e) = k_{\alpha}^{-1}\left(x, \lambda_{\alpha{\alpha}}(x)^{-1}\cdot f\right)$$ where $\left(x,f\right) = h_{\alpha}(e)$. If this is well-defined on $E_2$ (??), then it indeed equals the inverse of $\hat{g}$.  Moreover, by \cref{trnote}, it is easy to check that $d_{\alpha'{\beta'}}(x)^{-1}$ satisfies \eqref{eq:mapcycle}, and thus it can be shown that $\left(\hat{g}\right)^{-1}$ is a bundle map.
 
 \end{proof}
 
@@ -1041,7 +1041,7 @@ U_{\alpha}                             &
 commutes. Define the free action $E \times G \to E$ by
 \[
 e\cdot g = h_{\alpha}^{-1}\left(h_{\alpha}(e)\cdot g\right).
-\] where $p(e) \in U_{\alpha}$ and $(u,h) \cdot g \equiv \left(u, hg\right)$. This is well-defined because it does not depend on our choice of $\alpha$. Indeed, suppose that $p(e)$ also belongs to $U_{\beta}$. We have that $h_{\alpha}(e) =\left(p(e), h\right)$ and $h_{\beta}(e) = \left(p(e), h'\right)$ for some $h, h' \in G$. Then $e\cdot g = h_{\alpha}^{-1}\left(p(e), hg\right)$, and we must show that this equals $h_{\beta}^{-1}\left(p(e), h'g\right)$.  Note that $h_{\beta}\left(e\cdot g\right) = \left(p(e), h_{\beta{\alpha}}(p(e))hg\right)$.  But $$\left(p(e), h_{\beta{\alpha}}(p(e))h\right)  =  h_{\beta}\left(h_{\alpha}^{-1}\left(p(e), h\right)\right) = \left(p(e), h'\right),$$ 
+\] where $p(e) \in U_{\alpha}$ and $\left(u,h\right) \cdot g \equiv \left(u, hg\right)$. This is well-defined because it does not depend on our choice of $\alpha$. Indeed, suppose that $p(e)$ also belongs to $U_{\beta}$. We have that $h_{\alpha}(e) =\left(p(e), h\right)$ and $h_{\beta}(e) = \left(p(e), h'\right)$ for some $h, h' \in G$. Then $e\cdot g = h_{\alpha}^{-1}\left(p(e), hg\right)$, and we must show that this equals $h_{\beta}^{-1}\left(p(e), h'g\right)$.  Note that $h_{\beta}\left(e\cdot g\right) = \left(p(e), h_{\beta{\alpha}}(p(e))hg\right)$.  But $$\left(p(e), h_{\beta{\alpha}}(p(e))h\right)  =  h_{\beta}\left(h_{\alpha}^{-1}\left(p(e), h\right)\right) = \left(p(e), h'\right),$$ 
 so that $h_{\beta{\alpha}}(p(e))h = h'$, and thus $h_{\beta}\left(e\cdot g\right) = \left(p(e), h'g\right)$, as desired.
 
 \begin{note}\label{quot}
@@ -1215,7 +1215,7 @@ Every bundle $p$ over $X\times I$ is isomorphic to $\left(p\restriction_{p^{-1}\
 \end{corollary}
 
 \begin{exmp}
-Consider $S^1 \subset \R^2$ with center the origin. Let $p: E \to S^1$ be a bundle with group $G$ and fiber $F$. Cover $S^1$ with the open intervals $I_1 \coloneqq S^1\setminus \{{-}1\}$ and $I_2 \coloneqq S^1\setminus \{1\}$. We may assume that $F= p^{-1}\left({-}1\right)$. Then $E = E_1 \cup E_2$ where $ E_i \cong I_i \times F$ via, say, $\varphi_i$ for each $i=1,2$. By \cref{restiso}, we see that $$\varphi_1\restriction_{\varphi_1^{-1}\left(\{1\} \times F\right)} = \varphi_2\restriction_{\varphi_2^{-1}\left(\{{-}1\} \times F\right)}= \id_F.$$ Moreover, the transition function $\varphi_2^{-1} \circ \varphi_1\restriction_{p^{-1}\left(1\right)} : F \to F$ is given by multiplication by some $g\in G$. Hence the map $G \to \B\left(S^1, G, F\right)$ is surjective. In fact, it can be shown that this maps descends to an isomorphism
+Consider $S^1 \subset \R^2$ with center the origin. Let $p: E \to S^1$ be a bundle with group $G$ and fiber $F$. Cover $S^1$ with the open intervals $I_1 \coloneqq S^1\setminus \{{-1}\}$ and $I_2 \coloneqq S^1\setminus \{1\}$. We may assume that $F= p^{-1}\left({-1}\right)$. Then $E = E_1 \cup E_2$ where $ E_i \cong I_i \times F$ via, say, $\varphi_i$ for each $i=1,2$. By \cref{restiso}, we see that $$\varphi_1\restriction_{\varphi_1^{-1}\left(\{1\} \times F\right)} = \varphi_2\restriction_{\varphi_2^{-1}\left(\{{-1}\} \times F\right)}= \id_F.$$ Moreover, the transition function $\varphi_2^{-1} \circ \varphi_1\restriction_{p^{-1}\left(1\right)} : F \to F$ is given by multiplication by some $g\in G$. Hence the map $G \to \B\left(S^1, G, F\right)$ is surjective. In fact, it can be shown that this maps descends to an isomorphism
 $$\pi_0\left(G\right) \cong \faktor{G}{G_0} \overset{\cong}{\longrightarrow} \B\left(S^1, G, F\right)$$ 
 where $G_0$ denotes the connected component of $e_G$. 
 
@@ -1320,7 +1320,7 @@ f^{\ast}{p}\cup g^{\ast}{p} \arrow[rd] &                                        
 \end{defn}
 
 \begin{exmp}
-Let $G = \{\pm 1\}$.  Then any principal $G$-bundle over $X$ is a two-fold covering space of $X$, i.e., a subgroup of index two in $\pi\left(X\right)$, i.e., a nontrivial homomorphism $\pi_1{X} \to G$.
+Let $G = \left\{\pm 1\right\}$.  Then any principal $G$-bundle over $X$ is a two-fold covering space of $X$, i.e., a subgroup of index two in $\pi\left(X\right)$, i.e., a nontrivial homomorphism $\pi_1{X} \to G$.
 
 \smallskip
 
@@ -1329,7 +1329,7 @@ Let $G = \{\pm 1\}$.  Then any principal $G$-bundle over $X$ is a two-fold cover
  \left(y_0, \ldots y_n\right) & \mapsfrom \left(\left[x_0, \ldots, x_n\right], \epsilon \right) 
  \\ y_k & \equiv \epsilon x_k\cdot \frac{\left\lvert{x_i}\right\rvert}{x_i}.
  \end{align*}
- Note that any transition function $h_{ji} : U_i \cap U_j \to G$ is given by $h_{ji}(x) = {-}1$.
+ Note that any transition function $h_{ji} : U_i \cap U_j \to G$ is given by $h_{ji}(x) = {-1}$.
 \end{exmp}
 
 Using the fact that $\pi_1$ is the abelianization of $H_1$ along with the universal coefficient theorem for cohomology, one can prove the following.
@@ -1343,7 +1343,7 @@ Let $w_1 \in H^1\left(\RP^n; \Z_2\right) \cong \Z_2$ be nonzero. Let $p_1 : E \t
 \subsection{Lecture 10}
 
 \begin{exmp}
-Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex lines in $\C^{n+1}$. Let $G = S^1$. Then $G$ acts on $\C^{n+1}$ by $g\cdot \left(z_0, \ldots, z_n\right) = \left(gz_0, \ldots, gz_n\right)$. We have that $\CP^n \cong \faktor{S^{2n+1}}{\sim}$ where $z\sim \zeta\cdot z$ for any $\zeta \in S^1$. Consider the projection map $\pi : S^{2n+1} \twoheadrightarrow \CP^n$. For each $i\in \{0, \ldots, n\}$, let $H_i = \{z\in \CP^n \mid z_i =0\} \cong \CP^{n-1}$ and let $U_i = \CP^n \setminus H_i$. Then the $U_i$ form an open cover of $\CP^n$.  Define $h_i : \pi^{-1}\left(U_i\right) \to U_i \times S^1$ by $\left(z_0, \ldots, z_n\right) \mapsto \left(\left[z_0, \ldots, z_n\right], \frac{z_i}{\left\lvert{z_i}\right\rvert}\right)$. 
+Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex lines in $\C^{n+1}$. Let $G = S^1$. Then $G$ acts on $\C^{n+1}$ by $g\cdot \left(z_0, \ldots, z_n\right) = \left(gz_0, \ldots, gz_n\right)$. We have that $\CP^n \cong \faktor{S^{2n+1}}{\sim}$ where $z\sim \zeta\cdot z$ for any $\zeta \in S^1$. Consider the projection map $\pi : S^{2n+1} \twoheadrightarrow \CP^n$. For each $i\in \{0, \ldots, n\}$, let $H_i = \left\{z\in \CP^n \mid z_i =0\right\} \cong \CP^{n-1}$ and let $U_i = \CP^n \setminus H_i$. Then the $U_i$ form an open cover of $\CP^n$.  Define $h_i : \pi^{-1}\left(U_i\right) \to U_i \times S^1$ by $\left(z_0, \ldots, z_n\right) \mapsto \left(\left[z_0, \ldots, z_n\right], \frac{z_i}{\left\lvert{z_i}\right\rvert}\right)$. 
 
 \begin{exercise} $ $
 \be
@@ -1358,7 +1358,7 @@ Let $n\in \N$. Recall that $\CP^n$, by definition, consists of all the complex l
 \left(\left[z_0, \ldots, z_n\right], \epsilon \right) &  \mapsto \left(y_0, \ldots, y_n\right)
 \\ y_k & \equiv \epsilon{z_k}\cdot \frac{\left\lvert{z_i}\right\rvert}{z_i}, \ k =0, \ldots, n.
 \end{align*}
-It is easy to check that this is well-defined and that $g_i$ is the inverse of $h_i$. It remains to show that $g_i$ is continuous. Consider the quotient map  $q\coloneqq \pi \times \id_{S^1}: S^{2n+1} \times S^1 \to \CP^n \times S^1$. Let $\widetilde{U}_i = \{z \in S^{2n+1} \mid z_i \ne 0\}$. Note that $g_i \circ q\restriction_{\widetilde{U}_i \times S^1}$ is clearly continuous. But $\widetilde{U}_i \times S^1$ is both open in $S^{2n+1} \times S^1$ and saturated with respect to $q$. Hence $\restriction_{\widetilde{U}_i \times S^1}$ is a quotient map, so that $g_i$ is continuous.  
+It is easy to check that this is well-defined and that $g_i$ is the inverse of $h_i$. It remains to show that $g_i$ is continuous. Consider the quotient map  $q\coloneqq \pi \times \id_{S^1}: S^{2n+1} \times S^1 \to \CP^n \times S^1$. Let $\widetilde{U}_i = \left\{z \in S^{2n+1} \mid z_i \ne 0\right\}$. Note that $g_i \circ q\restriction_{\widetilde{U}_i \times S^1}$ is clearly continuous. But $\widetilde{U}_i \times S^1$ is both open in $S^{2n+1} \times S^1$ and saturated with respect to $q$. Hence $\restriction_{\widetilde{U}_i \times S^1}$ is a quotient map, so that $g_i$ is continuous.  
 \item Note that 
 \[
 h_i \circ h_j^{-1}\left(\left[z_0, \ldots, z_n\right], \epsilon\right) = \left(\left[z_0, \ldots, z_n\right], \epsilon  \frac{\left\lvert{z_j}\right\rvert}{z_j} \cdot \frac{z_i}{\left\lvert{z_i}\right\rvert}\right)
@@ -2108,7 +2108,7 @@ H^p(B) \arrow[r, equals] \arrow[rrrrr, "\pi^{\ast}", bend right] & {E_2^{p,0}} \
 
 Let $X$ be a cell complex. Recall the \textit{cup product} operation $H^i(X) \times H^j(X) \overset{\smile }{\longrightarrow} H^{i+j}(X)$ on cohomology, which is both bilinear and \textit{anti-commutative} in the sense that
 \[
-x \smile y = ({-1})^{ij}y \smile x.
+x \smile y = \left({-1}\right)^{ij}y \smile x.
 \]
 
 Consider the constant map $C_0(X) \to \Z$ given by $D^0 \mapsto 1$, which corresponds to an element $\mathbf{1}$ of $H^0(X)$ via \cref{cohomiso}. We have that

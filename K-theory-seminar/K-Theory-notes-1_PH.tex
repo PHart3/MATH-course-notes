@@ -216,7 +216,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det(\GL_n(f)(A)).$$ Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
@@ -325,7 +325,7 @@ Both \cref{e1} and \cref{e2} are logically equivalent to the axiom of choice, as
 \smallskip
 
 A functor of the form $\c \times \c' \to \d$ is called a \textit{bifunctor}.
-In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $(X, X') \to \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : (X, X') \to (Y, Y')$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
+In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $\left(X, X'\right) \to \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : (X, X') \to (Y, Y')$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
 
 
 
@@ -382,7 +382,7 @@ A subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor ha
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item The full subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ is reflexive as the inclusion functor is right adjoint to $(-)^{\ab}$.
+\item The full subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ is reflexive as the inclusion functor is right adjoint to $\left(-\right)^{\ab}$.
 \item
 Let $\mathbf{Ab}_T\subset \mathbf{Ab}$ denote the subcategory of torsion groups. This is coreflective as the inclusion functor is right adjoint to the functor sending an abelian group to its torsion subgroup.
 \end{enumerate}

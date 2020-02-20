@@ -197,7 +197,7 @@ The forgetful functor $U: \Ab \to \Cmon$ admits a left adjoint $K: \Cmon \to \Ab
 
 \medskip
 
- Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $(a_1, b_1) \sim (a_2, b_2)$ if $$a_1 + b_2 +k = b_1 + a_2 +k$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $(a_1, b_1) \sim' (a_2, b_2)$ if $$\left(a_1 + k_1, b_1 + k_1\right) = \left(a_2 +k_2, b_2 + k_2\right)$$ for some $\left(k_1, k_2\right) \in C\times C$. Now set $K(C) = \left(S, +\right)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Our definition of ${\sim'}$ makes it clear that $\left[a_1, b_1\right]^{{-1}} = \left[b_1, a_1\right]$.
+ Consider $S\coloneqq \faktor{C \times C}{\sim}$ where $\left(a_1, b_1\right) \sim \left(a_2, b_2\right)$ if $$a_1 + b_2 +k = b_1 + a_2 +k$$ for some $k\in C$. Note that $\sim = {\sim'}$ where $\left(a_1, b_1\right) \sim' \left(a_2, b_2\right)$ if $$\left(a_1 + k_1, b_1 + k_1\right) = \left(a_2 +k_2, b_2 + k_2\right)$$ for some $\left(k_1, k_2\right) \in C\times C$. Now set $K(C) = \left(S, +\right)$, where $+$ is inherited from $C$ and acts componentwise on equivalence classes. Our definition of ${\sim'}$ makes it clear that $\left[a_1, b_1\right]^{{-1}} = \left[b_1, a_1\right]$.
 
 \begin{prop}
 The inclusion $C \hookrightarrow K(C)$ given by $x \mapsto \left[x\right]\coloneqq \left[x, 0\right]$ is injective iff $C$ is a cancellation monoid.
@@ -229,7 +229,7 @@ A submonoid $L$ of $C$ is \textit{cofinal} if for any $c\in C$, there is some $c
 \item Any element of $K(C)$ can be written as $\left[m\right]-\left[n\right]$ for some $m, n\in  C$.
 \item $K(L) \leq K(C)$.
 \item Any element of $K(C)$ can be written as $\left[m\right] - \left[l\right]$ for some $m\in C$ and $l\in L$.
-\item If $[m] = [m']$, then $m + l = m' +l$ for some $l\in L$.
+\item If $\left[m\right] = \left[m'\right]$, then $m + l = m' +l$ for some $l\in L$.
 \end{enumerate}
 \end{prop}
 
@@ -309,7 +309,7 @@ The map $f: \N \to \P(R)$ defined by $n \mapsto R^n$ induces a homomorphism $\ph
 
 
 \begin{exmp}
-Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $[R]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by \cref{L4}. Letting $K= \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups
+Suppose that $R$ is commutative. There is a ring homomorphism $R\to F$ with $F$ a field. Then the induced map $K_0(R) \to K_0(F) \cong \Z$ sends $\left[R\right]$ to $1$. Also, the map $\phi : \Z \to K_0(R)$ is injective by \cref{L4}. Letting $K= \ker(K_0(R) \to \Z)$, we get a split exact sequence of abelian groups
 \[
 \begin{tikzcd}
 1 \arrow[r] & K \arrow[r] & K_0(R) \arrow[r] & \mathbb Z \arrow[r] & 1

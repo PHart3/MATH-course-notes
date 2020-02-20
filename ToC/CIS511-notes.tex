@@ -518,7 +518,7 @@ There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automat
 In this case, we call the minimal such $n_0$ the \textit{pumping length} of $L$.
 \end{term}
 \begin{proof}
-By assumption, there is some $\DFA$ $M = (Q, \Sigma, \delta, q_0, Q_F)$ such that $L = L(M)$. Let $n_0 = \left\lvert{Q}\right\rvert$. Let $x\in L$ such that $\left\lvert{x}\right\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Consider the three strings 
+By assumption, there is some $\DFA$ $M = \left(Q, \Sigma, \delta, q_0, Q_F\right)$ such that $L = L(M)$. Let $n_0 = \left\lvert{Q}\right\rvert$. Let $x\in L$ such that $\left\lvert{x}\right\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Consider the three strings 
 \begin{gather*}
 w\coloneqq x_1\cdots x_i 
 \\  y\coloneqq  x_{i+1}\cdots x_j 
@@ -1192,7 +1192,7 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 \begin{definition} Let $G=\left(V, E\right)$ be a graph
 \begin{enumerate}
 \item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}= \left\{\langle G, k \rangle \mid G \text{ has a clique of size at least }k\right\}.$$
-\item The graph $\overline{G} = (V, E')$ where $E' \equiv \left\{\left(x,y\right) \mid \left(x,y\right) \notin E\right\}$ is the  \textit{complement graph of $G$}.
+\item The graph $\overline{G} = \left(V, E'\right)$ where $E' \equiv \left\{\left(x,y\right) \mid \left(x,y\right) \notin E\right\}$ is the  \textit{complement graph of $G$}.
 \end{enumerate}
 \end{definition}
 
@@ -1227,11 +1227,11 @@ Let $\mathsf{Steiner{-}tree} = \left\{\langle G, C, W \rangle \mid C\text{ has a
 \end{exmp}
 \begin{proof}
 It's clear that $\mathsf{Steiner{-}tree} $ belongs to  $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = \left(V, E\right)$ be a graph with a vertex cover $S$ of size $k$. 
- Let $$V' = \bigcup_{v \in V} [v] \bigcup_{(u,v) \in E}[u,v].$$ Build $E'$ as follows. 
+ Let $$V' = \bigcup_{v \in V} \left[v\right] \bigcup_{(u,v) \in E}\left[u,v\right].$$ Build $E'$ as follows. 
 \begin{enumerate}[label=(\alph*)]
-\item Let $\left([u], [v]\right)\in E'$ for any $u,v \in V$ and set $w'([u], [v])=1$. 
-\item If $\left(u,v\right) \in E$, then let $\left([u], [u,v]\right), \left([u, v], [v]\right) \in E'$ and set $w'([u], [u,v]) = w'([u,v], [v]) =1$. 
-\item If $\left(v,w\right) \in E$ and $u,v,w$ are pairwise distinct, then let $\left([u], [v,w]\right) \in E'$ and and set $w'([u], [v,w]) = 2$.
+\item Let $\left(\left[u\right], \left[v\right]\right)\in E'$ for any $u,v \in V$ and set $w'(\left[u\right], \left[v\right])=1$. 
+\item If $\left(u,v\right) \in E$, then let $\left(\left[u\right], \left[u,v\right]\right), \left(\left[u,v\right], \left[v\right]\right) \in E'$ and set $w'(\left[u\right], \left[u,v\right]) = w'(\left[u,v\right], \left[v\right]) =1$. 
+\item If $\left(v,w\right) \in E$ and $u,v,w$ are pairwise distinct, then let $\left(\left[u\right], \left[v,w\right]\right) \in E'$ and and set $w'(\left[u\right], \left[v,w\right]) = 2$.
 \item Finally, for any $\left(u,v\right), \left(w,z\right) \in E$, let $\left(\left[u,v\right], \left[w,z\right]\right)\in E'$  with weight $$w'(\left[u,v\right], \left[w,z\right])\equiv \begin{cases} 2 & \left(u,v\right) \text{ and } \left(w,z\right) \text{ share a vertex} \\ 3 & \text{otherwise} \end{cases}.$$ 
 \end{enumerate}
 Set $C = \left\{ \left[u,v\right] : \left(u,v\right) \in E\right\}$. Also, set $W= \left\lvert{E}\right\rvert+ k -1$. Let $G' = \left(V', E', w'\right)$. Note that we have constructed $G'$ in polynomial time.
@@ -1241,7 +1241,7 @@ $G'$ has a Steiner tree containing $C$ with weight at most $\left\lvert{E}\right
 \begin{proof}
 Let $S = \left\{v_1, \ldots, v_k\right\}$. Let 
 \begin{align*}
-S' & = \left\{\left[v_1\right], \ldots, \left[v_k\right], \ \bigcup_{\left(u,v\right) \in E}[u,v]\right\}
+S' & = \left\{\left[v_1\right], \ldots, \left[v_k\right], \ \bigcup_{\left(u,v\right) \in E}\left[u,v\right]\right\}
 \\ E_{S'} & = \left\{ \left(x,y\right)\in E' \mid w'\left(x,y\right)=1 \text{ and } x,y\in S'\right\}.
 \end{align*} Since $S$ is a vertex cover, we see that $\left(S', E_{S'}\right)$ is a connected subgraph of $G'$ that contains $C$ and has weight $\left\lvert{E}\right\rvert+k -1$.
 \end{proof}
@@ -1251,11 +1251,11 @@ If $C$ has a a Steiner tree $T$ of total weight $W \leq \left\lvert{E}\right\rve
 \begin{proof}
 Alter $T$ as follows.
 \begin{itemize}
-\item Replace any edge of weight $2$ between $[w]$ and $[u,v]$ with the edges $\left([w], [u]\right)$ and $\left([u], [u,v]\right)$.
-\item Replace any edge of weight $2$ between $[u,v]$ and $[v,w]$ with the edges $\left([u,v], [v]\right)$ and $\left([v], [v,w]\right)$.
-\item Replace any edge of weight $3$ between $[u,v]$ and $[w,z]$ with the edges $\left([u,v], [v]\right)$, $\left([v], [w]\right)$, and $\left([w], [w,z]\right)$.
+\item Replace any edge of weight $2$ between $\left[w\right]$ and $\left[u,v\right]$ with the edges $\left(\left[w\right], \left[u\right]\right)$ and $\left(\left[u\right], \left[u,v\right]\right)$.
+\item Replace any edge of weight $2$ between $\left[u,v\right]$ and $\left[v,w\right]$ with the edges $\left(\left[u,v\right], \left[v\right]\right)$ and $\left(\left[v\right], \left[v,w\right]\right)$.
+\item Replace any edge of weight $3$ between $\left[u,v\right]$ and $\left[w,z\right]$ with the edges $\left(\left[u,v\right], \left[v\right]\right)$, $\left(\left[v\right], \left[w\right]\right)$, and $\left(\left[w\right], \left[w,z\right]\right)$.
 \end{itemize}
-The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $\left\lvert{E}\right\rvert + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $\left\lvert{E}\right\rvert +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $[v]$ such that $\left\lvert{R}\right\rvert\leq k$. If $\left(x,y\right)\in E$, then $[x,y]$ is connected to some $[v_0]$ by edges of weight $1$. This means that $[x]$ or $[y]$ belongs to $T'$, so that $[x]$ or $[y]$ belongs to $R$. This shows that $R$ is a vertex cover for $G$.
+The resultant graph $T'$ is connected and contains $C$. Note that $T'$ has weight at most $\left\lvert{E}\right\rvert + k -1$ where each edge of $T'$ has weight $1$. This implies that $T'$ spans at most $\left\lvert{E}\right\rvert +k$ vertices. Since $T'$ contains $C$, it follows that $T'$ contains a set $R$ of vertices of the form $\left[v\right]$ such that $\left\lvert{R}\right\rvert\leq k$. If $\left(x,y\right)\in E$, then $\left[x,y\right]$ is connected to some $\left[v_0\right]$ by edges of weight $1$. This means that $\left[x\right]$ or $\left[y\right]$ belongs to $T'$, so that $\left[x\right]$ or $\left[y\right]$ belongs to $R$. This shows that $R$ is a vertex cover for $G$.
 \end{proof}
 \end{proof}
 
@@ -1586,7 +1586,7 @@ Let $M= \left(m_{i,j}\right)$ be the $n\times n$ matrix with $$m_{i,j} \equiv \b
 
 \medskip
 
-Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}[Z] = \mu$. 
+Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}\left[z\right] = \mu$. 
 
 \begin{lemma}[Chernoff bound]
 $\mathbb{P}\left[\left\lvert{Z - \mu}\right\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}$ for any $t\in (0,1)$.

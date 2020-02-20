@@ -242,7 +242,7 @@ We write $a\equiv b :A$ to express that $a$ and $b$ are \textit{definitionally e
 \begin{enumerate}
 \item \underline{${\prod}$-Introduction:} If $ b: B(x)$ for any $x: A$, then $\lambda x. b : \prod_{x : A} B(x)$.
 \item \underline{${\prod}$-Elimination:} If $f:  \prod_{x : A} B(x)$ and $a: A$, then $f(a) : B(a)$.
-\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $(\lambda x.b)(a) \equiv b[x\coloneqq a]: B(a)$.
+\item \underline{${\prod}$-Computation:} If $ b: B(x)$ for any $x : A$ and $a: A$, then $\left(\lambda x.b\right)(a) \equiv b[x\coloneqq a]: B(a)$.
 \item \underline{${\prod}$-Uniqueness:} If $f: \prod_{x:A} B(x)$, then $f \equiv \lambda x. f(x) : \prod_{x:A} B(x)$.
 \end{enumerate}
 Note that the ordinary function type $A \to B$ is a special case of the dependent product type. Intuitively, a dependent product type is like a set-theoretic choice function. 
@@ -250,7 +250,7 @@ Note that the ordinary function type $A \to B$ is a special case of the dependen
 
 We form the \textit{dependent sum type $\sum_{x:A} B(x)$} according to the following three inference rules.
 \begin{enumerate}
-\item \underline{${\sum}$-Introduction:} If $a: A$ and $b: B(a)$, then $(a, b) : \sum_{x: A} B(x)$.
+\item \underline{${\sum}$-Introduction:} If $a: A$ and $b: B(a)$, then $\left(a, b\right) : \sum_{x: A} B(x)$.
 \item \underline{${\sum}$-Elimination:} Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
 \item \underline{${\sum}$-Computation:}  Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
 \end{enumerate}
@@ -472,7 +472,7 @@ This is another straightforward application of path induction.
 For any type $A$, the identity map $A \to A$ is an equivalence.
 \end{exmp}
 \begin{proof}
-We must show that $\hfiber(\idmap_A, a)$ is contractible for each $a: A$. Let $p: x \leadsto_A a$, so that $(x,p)$ is a canonical inhabitant of  $\hfiber(\idmap_A, a)$. By the path lifting lemma, we know that $p_{\Sigma}(p) : \left(x,p\right)  \leadsto \left(a, p \cdot p\right)$. \Cref{PL} implies that there exists a term of type $p \cdot p \leadsto_{a\leadsto a} \refl_a$. Hence $(x, p)\leadsto \left(a, \refl_a\right)$ is inhabited, making $(a, \refl_a)$ the center of contraction.
+We must show that $\hfiber(\idmap_A, a)$ is contractible for each $a: A$. Let $p: x \leadsto_A a$, so that $\left(x,p\right)$ is a canonical inhabitant of  $\hfiber(\idmap_A, a)$. By the path lifting lemma, we know that $p_{\Sigma}(p) : \left(x,p\right)  \leadsto \left(a, p \cdot p\right)$. \Cref{PL} implies that there exists a term of type $p \cdot p \leadsto_{a\leadsto a} \refl_a$. Hence $\left(x, p\right)\leadsto \left(a, \refl_a\right)$ is inhabited, making $\left(a, \refl_a\right)$ the center of contraction.
 \end{proof}
 
 \begin{corollary}

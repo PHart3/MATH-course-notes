@@ -173,6 +173,7 @@
 \DeclareMathOperator{\norm}{N}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\prim}{Prim}
 \DeclareMathOperator{\ext}{Ext}
 \DeclareMathOperator{\stab}{Stab}
 \DeclareMathOperator{\orb}{Orb}
@@ -263,13 +264,13 @@ Let
  &  & M \\
 0 \arrow[r] & X' \arrow[ru, "\varphi"] \arrow[r] & X
 \end{tikzcd} \] 
-be an injectivity diagram of $R$-modules and define $$S = \left\{(A, \xi) \mid X' \subset A \subset X, \ \xi : A \to M, \ \xi \restriction_{X'} = \varphi\right\} . $$ By Zorn's lemma, there is some maximal element $(N, \psi)$ of $S$. Suppose, toward a contradiction, that $X \ne N$. Pick any $x\in X \setminus N$. We have the ideal $$\frak{a} \coloneqq  \left\{a \in R : ax \in N\right\}$$ in $R$. Define the $R$-module morphism $\theta : \frak{a} \to M$ by $a \mapsto \psi(ax)$. By hypothesis, we get the following commutative diagram.
+be an injectivity diagram of $R$-modules and define $$S = \left\{(A, \xi) \mid X' \subset A \subset X, \ \xi : A \to M, \ \xi \restriction_{X'} = \varphi\right\} . $$ By Zorn's lemma, there is some maximal element $\left(N, \psi\right)$ of $S$. Suppose, toward a contradiction, that $X \ne N$. Pick any $x\in X \setminus N$. We have the ideal $$\frak{a} \coloneqq  \left\{a \in R : ax \in N\right\}$$ in $R$. Define the $R$-module morphism $\theta : \frak{a} \to M$ by $a \mapsto \psi(ax)$. By hypothesis, we get the following commutative diagram.
 \[
 \begin{tikzcd}
  &  & M \\
 0 \arrow[r] & \frak{a} \arrow[ru, "\theta"] \arrow[r, hook] & R \arrow[u, "\tilde{\theta}"', dashed]
 \end{tikzcd}
-\] Define the $R$-submodule $\widetilde{N} = \langle N, x\rangle$. We can write any $z\in \widetilde{N}$ as $z = y + ax$ for some $y\in N$ and some $a\in R$. Define $\tilde{\psi} : \widetilde{N} \to M$ by $y+ax \mapsto \psi(y) + \tilde{\theta}(a)$. To see that this is well-defined, let $y+ax = y'+a'x$. Then $(y-y') = (a'-a)x$, so that $$\psi(y-y') = \psi((a'-a)x) = \tilde{\theta}(a'-a) = \tilde{\theta}(a') - \tilde{\theta}(a) . $$
+\] Define the $R$-submodule $\widetilde{N} = \langle N, x\rangle$. We can write any $z\in \widetilde{N}$ as $z = y + ax$ for some $y\in N$ and some $a\in R$. Define $\tilde{\psi} : \widetilde{N} \to M$ by $y+ax \mapsto \psi(y) + \tilde{\theta}(a)$. To see that this is well-defined, let $y+ax = y'+a'x$. Then $\left(y-y'\right) = \left(a'-a\right)x$, so that $$\psi(y-y') = \psi(\left(a'-a\right)x) = \tilde{\theta}\left(a'-a\right) = \tilde{\theta}(a') - \tilde{\theta}(a) . $$
 This implies that $\tilde{\psi}$ is a well-defined homomorphism. But then $\left(\widetilde{N}, \tilde{\psi}\right)> \left(N, \psi\right)$, a contradiction.  
 \end{proof}
 
@@ -301,7 +302,7 @@ But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``F
 0 \arrow[r] & \frak{a} \arrow[r] \arrow[ru, "\varphi"] & R \arrow[u, "\psi", dashed]
 \end{tikzcd}.
 \]
-where $\frak{a}$ is an ideal in $R$. We have that $\frak{a} = (a)$. Therefore, the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}} \to 0$$ is isomorphic to $0 \to R \overset{\mult_a}{\longrightarrow} R \to \faktor{R}{\frak{a}}\to 0$. Since $M$ is divisible, we know that $M \overset{\mult_a}{\longrightarrow} M \to 0$ is exact.  Apply $\Hom_R(-, M)$ to get the sequence $$\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M) \to 0,$$ which is isomorphic $M \overset{\mult_a}{\longrightarrow} M \to 0$. This shows that $\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M)$ is surjective. It follows that $\varphi$ can be lifted to some $\psi : R \to M$.
+where $\frak{a}$ is an ideal in $R$. We have that $\frak{a} = \left(a\right)$. Therefore, the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}} \to 0$$ is isomorphic to $0 \to R \overset{\mult_a}{\longrightarrow} R \to \faktor{R}{\frak{a}}\to 0$. Since $M$ is divisible, we know that $M \overset{\mult_a}{\longrightarrow} M \to 0$ is exact.  Apply $\Hom_R(-, M)$ to get the sequence $$\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M) \to 0,$$ which is isomorphic $M \overset{\mult_a}{\longrightarrow} M \to 0$. This shows that $\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M)$ is surjective. It follows that $\varphi$ can be lifted to some $\psi : R \to M$.
 \end{enumerate}
 \end{proof}
 
@@ -351,11 +352,11 @@ We need to show that if $a\in A$ is nonzero, then we can find some homomorphism 
 \end{tikzcd}
 \] commutes. This means that $\psi(a) \ne 0$, as required.
 
-\underline{Case 2:} If $(a)$ has infinite order, then define $\varphi : (a) \to \faktor{\Q}{\Z}$ by $a \mapsto \frac{1}{2}$ and apply a similar argument to Case 1.
+\underline{Case 2:} If $\left(a\right)$ has infinite order, then define $\varphi : \left(a\right) \to \faktor{\Q}{\Z}$ by $a \mapsto \frac{1}{2}$ and apply a similar argument to Case 1.
 \end{proof}
 
 
-The duality functor $(-)^D$ extends to a functor $ (-)^D: R^{\op}{-}\mathbf{Mod} \to R {-}\mathbf{Mod}^{\op}$ that is compatible with forgetting the module structure. Indeed, if $M$ is a left module over $R^{\op}$, then its module structure is given by a collection of maps $\left\{\mult_a : M \to M \mid a\in R\right\}$. Note that $$ \mult_a \circ \mult_b = \mult_{a \cdot_{R^{\op}} b} =  \mult_{b \cdot_{R} a}   .$$ For each $a\in R$, let $\underline{\mult}_a(\varphi) = \varphi \circ {\mult}_a$. Then the abelian group $M^D$ has an $R$-module structure given by $ \underline{\mult}_a: M^D \to M^D$, which clearly satisfies $$\underline{\mult}_{ab} = \underline{\mult}_a \circ\underline{\mult}_b.$$
+The duality functor $\left(-\right)^D$ extends to a functor $ \left(-\right)^D: R^{\op}{-}\mathbf{Mod} \to R {-}\mathbf{Mod}^{\op}$ that is compatible with forgetting the module structure. Indeed, if $M$ is a left module over $R^{\op}$, then its module structure is given by a collection of maps $\left\{\mult_a : M \to M \mid a\in R\right\}$. Note that $$ \mult_a \circ \mult_b = \mult_{a \cdot_{R^{\op}} b} =  \mult_{b \cdot_{R} a}   .$$ For each $a\in R$, let $\underline{\mult}_a(\varphi) = \varphi \circ {\mult}_a$. Then the abelian group $M^D$ has an $R$-module structure given by $ \underline{\mult}_a: M^D \to M^D$, which clearly satisfies $$\underline{\mult}_{ab} = \underline{\mult}_a \circ\underline{\mult}_b.$$
 
 
 \begin{lemma}\label{l1}
@@ -368,7 +369,7 @@ Suppose that $M$ is a projective $R^{\op}$-module and consider the injectivity d
  &  & M^D \\
 0 \arrow[r] & X' \arrow[r] \arrow[ru, "\varphi"] & X
 \end{tikzcd}
-\] of $R$-modules. We want to lift $\varphi : X' \to M^D$ to a map $\psi : X \to M^D$.  Apply $(-)^D$ to get a commutative diagram
+\] of $R$-modules. We want to lift $\varphi : X' \to M^D$ to a map $\psi : X \to M^D$.  Apply $\left(-\right)^D$ to get a commutative diagram
 \[
 \begin{tikzcd}
  &  & M^{DD} \arrow[ld, "\varphi^D"'] \\
@@ -386,7 +387,7 @@ M \arrow[rd, "\epsilon_M \circ \varphi^D"] &  &  \\
 X^D \arrow[r] & (X')^D \arrow[r] & 0
 \end{tikzcd}
 \]
-By assumption, we may fill this diagram with some map $\psi : M \to X^D$. This induces the map $\psi^D : X^{DD} \to M^D$. Note that $(\epsilon_M)^D \circ \varphi^{DD} = \psi^D \circ i^{DD}$ where $i : X' \hookrightarrow X$. But $i^{DD}\restriction_{X'} =i$ and $\varphi^{DD}\restriction_{X'} = \varphi$, so that $$\psi^D \circ i = (\epsilon_M)^D \circ  \varphi = \varphi$$ on $X'$. It follows that
+By assumption, we may fill this diagram with some map $\psi : M \to X^D$. This induces the map $\psi^D : X^{DD} \to M^D$. Note that $\left(\epsilon_M\right)^D \circ \varphi^{DD} = \psi^D \circ i^{DD}$ where $i : X' \hookrightarrow X$. But $i^{DD}\restriction_{X'} =i$ and $\varphi^{DD}\restriction_{X'} = \varphi$, so that $$\psi^D \circ i = \left(\epsilon_M\right)^D \circ  \varphi = \varphi$$ on $X'$. It follows that
 \[
 \begin{tikzcd}
  &  & M^D \\
@@ -418,7 +419,7 @@ This follows from the fact that any two projective resolutions are chain homotop
 \end{enumerate}                                                                                                \end{lemma}
 \begin{proof}
 Let $$\cdots \overset{\partial_1}{\longrightarrow} P^1 \overset{\partial_0}{\longrightarrow} P^0  \overset{\epsilon}{\longrightarrow} M \to 0$$ be a projective resolution and
-let $$(\xi) : 0 \to N \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} M \to 0$$ be a short exact sequence of $R$-modules.
+let $$\left(\xi\right) : 0 \to N \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} M \to 0$$ be a short exact sequence of $R$-modules.
 Note that $\Hom_R(P^k, -)$ is exact for each $k\geq 0$. Therefore, the sequence $$ 0 \to \Hom_R(P^k, N) \overset{f_k}{\longrightarrow} \Hom_R(P^k, T) \overset{g_k}{\longrightarrow} \Hom_R(P^k, M) \to 0   $$ is exact where $f_k \coloneqq  f\circ (-)$ and $g_k \coloneqq  g \circ (-)$. Letting $d_i \coloneqq  (-)\circ \partial_i$, we get \textit{short exact sequences of complexes} constituting the columns of 
 \[
 \begin{tikzcd}
@@ -428,13 +429,13 @@ Note that $\Hom_R(P^k, -)$ is exact for each $k\geq 0$. Therefore, the sequence 
 \end{tikzcd}
 .\]
 By definition, $\ext_R^i(M, N) = \overbrace{\faktor{\ker{d_i}}{\im{d_{i-1}}}}^{\text{for the first column}}$. Since $\Hom_R(-, M)$ is left-exact and $P^1 \overset{\partial_1}{\longrightarrow} P^0 \overset{\epsilon}{\longrightarrow} M$ is exact, we also have the exact sequence $$ 0 \to \Hom_R(M, M) \overset{(-) \circ \epsilon}{\longrightarrow} \Hom_R(P^0, M) \overset{d_0}{\longrightarrow} \Hom_R(P^1, M) .  $$ 
-Let $\psi \in \Hom_R(P^0, M)$ satisfy $d_0(\psi) =0$. Then $\psi = \varphi \circ \epsilon$ for some unique map $\varphi : M\to M$. Since $g_0$ is surjective, there exists $\alpha \in \Hom_R(P^0, T)$ such that $g_0(\alpha) = \psi = \varphi \circ \epsilon $. This implies that $$g_1(d_0(\alpha)) = d_0(g_0(\alpha)) = d_0(\psi) =0.$$ It follows that $d_0(\alpha) \in \ker{g_1} = \im{f_1}$, so that $d_0(\alpha) = f_1(\beta)$ for some $\beta : P^1 \to N$. Since $f_2(d_1(\beta))=d_1(f_1(\beta))= d_1(d_0(\alpha)) = 0$, the fact that $f_2$ is injective means that $d_1(\beta) =0$. Hence $\beta \in \ker{d_1}$, and $[\beta] \in \ext^1_R(M, N)$ 
+Let $\psi \in \Hom_R(P^0, M)$ satisfy $d_0(\psi) =0$. Then $\psi = \varphi \circ \epsilon$ for some unique map $\varphi : M\to M$. Since $g_0$ is surjective, there exists $\alpha \in \Hom_R(P^0, T)$ such that $g_0(\alpha) = \psi = \varphi \circ \epsilon $. This implies that $$g_1(d_0(\alpha)) = d_0(g_0(\alpha)) = d_0(\psi) =0.$$ It follows that $d_0(\alpha) \in \ker{g_1} = \im{f_1}$, so that $d_0(\alpha) = f_1(\beta)$ for some $\beta : P^1 \to N$. Since $f_2(d_1(\beta))=d_1(f_1(\beta))= d_1(d_0(\alpha)) = 0$, the fact that $f_2$ is injective means that $d_1(\beta) =0$. Hence $\beta \in \ker{d_1}$, and $\left[\beta\right] \in \ext^1_R(M, N)$ 
 \begin{exercise}
-Show that $\psi \mapsto [\beta]$ is well-defined, i.e., that $[\beta]$ is independent of $\alpha$. 
+Show that $\psi \mapsto \left[\beta\right]$ is well-defined, i.e., that $\left[\beta\right]$ is independent of $\alpha$. 
 \end{exercise} 
 This defines a map of abelian groups $\delta_{\xi}: \Hom_R(M, M) \to \ext^1_R(M, N)$ given by $\varphi \mapsto [\beta]$. Now, define the homomorphism $$e: \ext_R(M, N) \to \ext^1_R(M , N), \quad (\xi) \mapsto \delta_{\xi}(\id_M).$$
 
-Apply $\Hom_R(M, -)$ to $(\xi)$ to get the exact sequence 
+Apply $\Hom_R(M, -)$ to $\left(\xi\right)$ to get the exact sequence 
 \[
 0 \to \Hom_R(M, N) \to \Hom_R(M, T) \to \Hom_R(M, M\
 )  . 
@@ -443,7 +444,7 @@ Apply $\Hom_R(M, -)$ to $(\xi)$ to get the exact sequence
 We can extend this sequence to a long exact sequence of abelian groups $$0 \to \Hom_R(M, N) \to \Hom_R(M, T) \to \Hom_R(M, M)  \overset{\delta_{\xi}}{\longrightarrow} \ext^1_R(M, N) \to \ext^1_R(M, T) \to \ext^1_R(M, M).$$
 \end{claim}
 \begin{exercise}
-Show that if $(\xi)$ is split, then $\delta_{\xi}(\id_M) =0$.
+Show that if $\left(\xi\right)$ is split, then $\delta_{\xi}(\id_M) =0$.
 \end{exercise} 
 This implies that  $e$ is injective.\reversemarginpar\marginpar{\small{How is it that $e$ is injective?}} We need to show that it is surjective as well. Suppose that $\gamma \in \ext_R^1(M, N)$ and let $I_{\bullet}$ be an injective resolution of $N$. Apply $\Hom_R(M, -)$ to $I_{\bullet}$ to get $$0 \to \Hom_R(M, N) \overset{\nu}{\longrightarrow} \Hom_R(M, I_0) \overset{d_0}{\longrightarrow} \Hom_R(M, I_1) \overset{d_1}{\longrightarrow} \cdots   $$ (where we have abused the notation $d_i$). 
 By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note that $f: M \to \ker{\partial_1} = \im{\partial_0}$, giving 
@@ -493,7 +494,7 @@ Let
 \\  \vdots
 \\  a_m \coloneqq  (a_{21}, \ldots, a_{mn}).
 \end{gather*} be relations of $x_1, \ldots, x_n$ with coefficients in $R$.
-Let $(z_1, \ldots, z_m)\in N^m$. If $A$ denotes the matrix $\left(a_{ij}\right)$, then $y= A^tz \in N^n$ is a relation with coefficients in $N$.
+Let $\left(z_1, \ldots, z_m\right)\in N^m$. If $A$ denotes the matrix $\left(a_{ij}\right)$, then $y= A^tz \in N^n$ is a relation with coefficients in $N$.
 
 
 \begin{definition}
@@ -507,13 +508,13 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 
 ($\Longrightarrow$) 
 
-We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)\mapsto \sum_{i=1}^na_ix_i$. Then $$\underbrace{\ker{\varphi}}_{K}= \left\{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n) \text{ is a relation of the }x_i\text{'s in }R\right\}.$$ We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R (-)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = (N\text{-relations}) = N\otimes_R K$.
+We have a module homomorphism $\varphi : R^n \to M$ given by $\left(a_1, \ldots, a_n\right)\mapsto \sum_{i=1}^na_ix_i$. Then $$\underbrace{\ker{\varphi}}_{K}= \left\{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n) \text{ is a relation of the }x_i\text{'s in }R\right\}.$$ We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R (-)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = \left(N\text{-relations}\right) = N\otimes_R K$.
 
 \medskip
 
 ($\Longleftarrow$)
 
- Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $(y_1, \ldots, y_n)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $(a_i^j) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $$0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right).$$ As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
+ Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $\left(y_1, \ldots, y_n\right)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $\left(a_i^j\right) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $$0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right).$$ As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
  \begin{align*}
  \sum_{i=1}^n y_i \otimes z_i & = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i 
  \\ & = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) 
@@ -534,7 +535,7 @@ We have a module homomorphism $\varphi : R^n \to M$ given by $(a_1, \ldots, a_n)
 
 \subsection{Lecture 4}
 
-Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $$B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B).$$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $(R_x, h)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some  map $\underline{\varphi} : R_x \to B$.
+Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $$B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B).$$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $\left(R_x, h\right)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some  map $\underline{\varphi} : R_x \to B$.
 
 In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make the \textit{multiplicative closure $\cl(S)$ of $S$} invertible.
 
@@ -542,9 +543,9 @@ In general, we can consider a set $S$ of nonzero elements and ask for a universa
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
 \end{definition}
 
-Given a multiplicatively closed subset $S \subset R$, we want to find a universal way of inverting every element of $S$. Equivalently, find a ring representing $\Phi_S$. Equivalently, we want to find a pair $(S^{-1}R, h)$ where  $h: R\to S^{-1}R$ such that $h(S) \subset (S^{-1}R)^{\times}$ and any $\varphi : R \to B$ with $\varphi(S) \subset B^{\times}$ has $\varphi = \underline{\varphi} \circ h$ for some unique map $ \underline{\varphi} : R \to B$.  We call the pair $(S^{-1}R, h)$ the \textit{localization of $R$ along $S$}.
+Given a multiplicatively closed subset $S \subset R$, we want to find a universal way of inverting every element of $S$. Equivalently, find a ring representing $\Phi_S$. Equivalently, we want to find a pair $\left(S^{-1}R, h\right)$ where  $h: R\to S^{-1}R$ such that $h(S) \subset (S^{-1}R)^{\times}$ and any $\varphi : R \to B$ with $\varphi(S) \subset B^{\times}$ has $\varphi = \underline{\varphi} \circ h$ for some unique map $ \underline{\varphi} : R \to B$.  We call the pair $\left(S^{-1}R, h\right)$ the \textit{localization of $R$ along $S$}.
 
-Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. Consider the set $(R \times S, \sim)$ where $(a, s) \sim (b,t)$ if $u(at-bs) =0$ for some $u\in S$. Set $S^{-1}R \coloneqq  \faktor{R\times S}{\sim}$. Let $\frac{a}{s} \coloneqq  [(a,s)]$. Define $$\frac{a}{s} + \frac{b}{t} = \frac{at+bs}{st}$$ and $$\frac{a}{s}\cdot \frac{b}{t} = \frac{ab}{st}.$$ Then $S^{-1}R$ becomes a ring with unity $\frac{1}{1}$. Also, we see that $h: R \to S^{-1}R$ given by $a\mapsto \frac{a}{1}$ is a ring homomorphism. Given a map $\varphi: R \to B$ such that $\im{\varphi} \subset B^{\times}$, we have a well-defined map of rings $\underline{\varphi} : S^{-1}R \to B$ given by $\frac{a}{s} \mapsto \varphi(a) \varphi(s)^{-1}$, which satisfies $\underline{\varphi} \circ h = \varphi$. 
+Formally adjoin to $R$ fractions with numerator in $R$ and denominator in $S$. Consider the set $\left(R \times S, \sim\right)$ where $\left(a, s\right) \sim \left(b,t\right)$ if $u(at-bs) =0$ for some $u\in S$. Set $S^{-1}R \coloneqq  \faktor{R\times S}{\sim}$. Let $\frac{a}{s} \coloneqq  [(a,s)]$. Define $$\frac{a}{s} + \frac{b}{t} = \frac{at+bs}{st}$$ and $$\frac{a}{s}\cdot \frac{b}{t} = \frac{ab}{st}.$$ Then $S^{-1}R$ becomes a ring with unity $\frac{1}{1}$. Also, we see that $h: R \to S^{-1}R$ given by $a\mapsto \frac{a}{1}$ is a ring homomorphism. Given a map $\varphi: R \to B$ such that $\im{\varphi} \subset B^{\times}$, we have a well-defined map of rings $\underline{\varphi} : S^{-1}R \to B$ given by $\frac{a}{s} \mapsto \varphi(a) \varphi(s)^{-1}$, which satisfies $\underline{\varphi} \circ h = \varphi$. 
 
 
 \begin{exmp}
@@ -560,7 +561,7 @@ Here are some natural choices for $S$.
 
 If $A$ is an integral domain and we take any multiplicatively closed subset $S\subset A$, then $\Frac(A)\coloneqq  \left(A \setminus \{0\}\right)^{-1}A$ is a field and $h : A \to \left(A \setminus \{0\}\right)^{-1}A$ is injective. For now, let $S$ denote the set of non zero-divisors.  If $\frac{a}{b} \in \Frac(A)$ is nonzero, then $\frac{a}{b} \ne \frac{0}{1}$, i.e., $a\cdot 1$ is not a zero divisor, so that $a\ne 0$ and thus $\frac{b}{a} \in \Frac(A)$. This shows that $\Frac(A)$ is a field. Moreover, if $a\in A$ satisfies $h(a) = \frac{a}{1} = 0\in \Frac(A)$, then $\frac{a}{1}= \frac{0}{1} \implies a\cdot 1$ is a zero divisor. Hence $a=0$, and $h$ is injective. 
 
-If $S$ is generic, then $S^{-1}A \subset \Frac(A)$ since $S^{-1}A$ equals the subring generated by $A\cong h(A)$ and $S^{-1} = \left\{\frac{1}{s}\mid s\in S\right\}$. In this case, $(S^{-1}A, h)$ represents the functor $\Phi : \mathbf{Field} \to \mathbf{Set}$ given by $k \mapsto \{\varphi : A \to k \mid \varphi$ is injective.$\}$. This means that for any ring map $\varphi: A \to B$ with $\varphi(S) \subset B^{\times}$, there is some unique map $\psi$ such that $\psi \circ h = \varphi$.
+If $S$ is generic, then $S^{-1}A \subset \Frac(A)$ since $S^{-1}A$ equals the subring generated by $A\cong h(A)$ and $S^{-1} = \left\{\frac{1}{s}\mid s\in S\right\}$. In this case, $\left(S^{-1}A, h\right)$ represents the functor $\Phi : \mathbf{Field} \to \mathbf{Set}$ given by $k \mapsto \{\varphi : A \to k \mid \varphi$ is injective.$\}$. This means that for any ring map $\varphi: A \to B$ with $\varphi(S) \subset B^{\times}$, there is some unique map $\psi$ such that $\psi \circ h = \varphi$.
 
 
 \subsection{Lecture 5}
@@ -569,13 +570,13 @@ If $S$ is generic, then $S^{-1}A \subset \Frac(A)$ since $S^{-1}A$ equals the su
 \begin{enumerate}
 \item If  $S = \left\{1, x, x^2, \ldots \right\}$ with $x$ not nilpotent, then $S^{-1}A = A_f \equiv \left\{\frac{a}{f^n} : n\geq 0, \ a \in A\right\} $.
 \item If $S \subset A^{\times}$, then $h: A \to S^{-1}A$ is an isomorphism. 
-\item If $A$ is any ring and $S\subset A$ denotes the set of all non-zero divisors, then $\Frac(A) = S^{-1}A$ is called the \textit{fraction ring of $A$}. If $A$ is an integral domain, then $\Frac(A)$ is a field (called the \textit{field of fractions of $A$}) and $H : A \to \Frac(A)$ is injective. In this case, $(\Frac(A), h)$ represents the functor $F_A : \mathbf{Field} \to \mathbf{Set}$ given by $K \mapsto \left\{\varphi: A \to K \mid \varphi \text{ monomorphism}\right\}$. 
+\item If $A$ is any ring and $S\subset A$ denotes the set of all non-zero divisors, then $\Frac(A) = S^{-1}A$ is called the \textit{fraction ring of $A$}. If $A$ is an integral domain, then $\Frac(A)$ is a field (called the \textit{field of fractions of $A$}) and $H : A \to \Frac(A)$ is injective. In this case, $\left(\Frac(A), h\right)$ represents the functor $F_A : \mathbf{Field} \to \mathbf{Set}$ given by $K \mapsto \left\{\varphi: A \to K \mid \varphi \text{ monomorphism}\right\}$. 
 \end{enumerate}
 \end{exmp}
 
 \medskip
 
-Let $A$ be a commutative ring and $S \subset A$ be multiplicatively closed. Let $M$ be an $A$-module. Define the equivalence relation $(M \times S, \sim)$ where $(m, s) \sim (n, t)$ if $u(tm - sn) = 0$ for some $u\in S$. Define the $A$-module $S^{-1}M = \faktor{M \times S}{\sim}$ where $\frac{m}{s} + \frac{n}{t} \coloneqq  \frac{tm + sn}{st}$. Define the module homomorphism $h_M : M \to S^{-1}M$ by $m \mapsto \left[(m,1)\right]$.  Let $\frac{m}{s}$ denote the equivalence class $\left[(m,s)\right]$.
+Let $A$ be a commutative ring and $S \subset A$ be multiplicatively closed. Let $M$ be an $A$-module. Define the equivalence relation $\left(M \times S, \sim\right)$ where $\left(m, s\right) \sim \left(n, t\right)$ if $u(tm - sn) = 0$ for some $u\in S$. Define the $A$-module $S^{-1}M = \faktor{M \times S}{\sim}$ where $\frac{m}{s} + \frac{n}{t} \coloneqq  \frac{tm + sn}{st}$. Define the module homomorphism $h_M : M \to S^{-1}M$ by $m \mapsto \left[(m,1)\right]$.  Let $\frac{m}{s}$ denote the equivalence class $\left[(m,s)\right]$.
 
 Moreover, $S^{-1}M$ is naturally a module over $S^{-1}A$ via the action $\frac{a}{s} \cdot \frac{m}{t} \coloneqq  \frac{a\cdot m}{st}$. This makes $h_M$ a module over $h: A \to S^{-1}A$ in  that for any $a\in A$ and $m\in M$, we have that $h_M(a\cdot m) = h(a) \cdot h_M(m)$.
 
@@ -598,7 +599,7 @@ $S^{-1}(-) \cong h_{\bullet}$.
 
 \smallskip
 
-Naively, we could have tried to define fractions in $A$ by  $(a,s) \sim_n (b,t)$ if $(at-bs =0)$. But this is not in general an equivalence relation, for it is not transitive. Indeed, set $A = \faktor{\C[x,y]}{(xy)}$ and $S = \left\{1, x, x^2, \ldots\right\}$. Consider the localization $A_x$. Note that $(y,1) \not \sim_n (0,1)$ but that $(y,1) \sim_n (0,x)$ and $(0,x) \sim_n (0,1)$.
+Naively, we could have tried to define fractions in $A$ by  $\left(a,s\right) \sim_n \left(b,t\right)$ if $\left(at-bs =0\right)$. But this is not in general an equivalence relation, for it is not transitive. Indeed, set $A = \faktor{\C[x,y]}{(xy)}$ and $S = \left\{1, x, x^2, \ldots\right\}$. Consider the localization $A_x$. Note that $\left(y,1\right) \not \sim_n \left(0,1\right)$ but that $\left(y,1\right) \sim_n \left(0,x\right)$ and $\left(0,x\right) \sim_n \left(0,1\right)$.
 
 \begin{note}
 We have that $A_x = \C[x,x^{-1}]$, which is a field, and that $h: A \to A_x$ is given by $$\underbrace{\left[f(x,y)\right]}_{\left[p(x) +yq(y)\right]} \mapsto p(x),$$ which is non-injective.
@@ -615,7 +616,7 @@ We have that $A_x = \C[x,x^{-1}]$, which is a field, and that $h: A \to A_x$ is 
 $S^{-1}(-)$ is an exact functor.
 \end{corollary}
 \begin{proof}
-Let $M \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} N$ be an exact sequence of $A$-modules. We want to show that $$S^{-1}M \overset{S^{-1}f}{\longrightarrow} S^{-1}T \overset{S^{-1}g}{\longrightarrow} S^{-1}N$$ is exact as well. Let $\frac{x}{s} \in S^{-1}T$ with $(S^{-1}g)\left(\frac{x}{s}\right) = 0$. This implies that $\frac{g(x)}{s} = \frac{0}{1}$, so that $ug(x) = 0$ for some $u\in S$. But since $g$ is a morphism, we know that $0 = ug(x) = g(ux)$. This means that $f(y) = ux$ for some $y\in M$. Then $\frac{y}{us}\in S^{-1}M$ such that $(S^{-1}f)\left(\frac{y}{us}\right) = \frac{f(y)}{us} = \frac{ux}{us} = \frac{x}{s}$.
+Let $M \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} N$ be an exact sequence of $A$-modules. We want to show that $$S^{-1}M \overset{S^{-1}f}{\longrightarrow} S^{-1}T \overset{S^{-1}g}{\longrightarrow} S^{-1}N$$ is exact as well. Let $\frac{x}{s} \in S^{-1}T$ with $\left(S^{-1}g\right)\left(\frac{x}{s}\right) = 0$. This implies that $\frac{g(x)}{s} = \frac{0}{1}$, so that $ug(x) = 0$ for some $u\in S$. But since $g$ is a morphism, we know that $0 = ug(x) = g(ux)$. This means that $f(y) = ux$ for some $y\in M$. Then $\frac{y}{us}\in S^{-1}M$ such that $\left(S^{-1}f\right)\left(\frac{y}{us}\right) = \frac{f(y)}{us} = \frac{ux}{us} = \frac{x}{s}$.
 \end{proof}
 
 \smallskip
@@ -628,10 +629,10 @@ Suppose that $f\in A$ is not nilpotent. We can compute $A_f$ explicitly as follo
 \mathrel{\reflectbox{\rotatebox[origin=c]{270}{$\in$}}}}
 
 \begin{claim}
-$\ker{\alpha} = (fx-1)$.
+$\ker{\alpha} = \left(fx-1\right)$.
 \end{claim}
 \begin{proof}
-Note that $xf-1\in \ker{\alpha}$. Also, note that  $$ \exists n\geq 0 \text{ s.t. } f^ng\left(\frac{1}{f}\right)=0 \iff  \alpha(g) = 0 \iff  g\left(\frac{1}{f}\right) = 0 \text{ in } A_f.$$ Without loss of generality, we may assume that $n\geq \deg{g}$. Thus, $f^ng(x)$ is a polynomial of $fx$ with coefficients in $A$, so that there is some $G(y) \in A[y]$ such that $G(fx) = f^ng(x)$. Then $$g\in \ker{\alpha} \iff \exists G(y) \in A[y] \text{ s.t. } G(fx) = f^ng(x) \land G(1) =0.$$ But then $G(y) = (y-1)h(y)$ where $h(y) \in A[y]$. This implies that $$g(x) \in \ker{\alpha} \iff \exists n\geq 0 \text{ s.t. } f^ng(x) \in (xf -1).$$ But $f, fx-1 \in A[x]$ are relatively prime since $1= fx + (fx-1)(-1)$.  Hence $1^n = (fx + (fx-1)(-1))^n = f^n x^n + (fx-1)s(x)$ for some $s(x) \in A[x]$. Multiply by $g(x)$ to get $$  g(x) = \underbrace{f^ng(x)}_{\overset{\invin}{(xf-1)}} + \underbrace{(fx -1)s(x)g(x)}_{\overset{\invin}{(xf-1)}}  .$$ Therefore, $g(x) \in (xf-1)$, and $(xf-1)=  \ker{\alpha}$. 
+Note that $xf-1\in \ker{\alpha}$. Also, note that  $$ \exists n\geq 0 \text{ s.t. } f^ng\left(\frac{1}{f}\right)=0 \iff  \alpha(g) = 0 \iff  g\left(\frac{1}{f}\right) = 0 \text{ in } A_f.$$ Without loss of generality, we may assume that $n\geq \deg{g}$. Thus, $f^ng(x)$ is a polynomial of $fx$ with coefficients in $A$, so that there is some $G(y) \in A[y]$ such that $G(fx) = f^ng(x)$. Then $$g\in \ker{\alpha} \iff \exists G(y) \in A[y] \text{ s.t. } G(fx) = f^ng(x) \land G(1) =0.$$ But then $G(y) = \left(y-1\right)h(y)$ where $h(y) \in A[y]$. This implies that $$g(x) \in \ker{\alpha} \iff \exists n\geq 0 \text{ s.t. } f^ng(x) \in (xf -1).$$ But $f, fx-1 \in A[x]$ are relatively prime since $1= fx + \left(fx-1\right)({-1})$.  Hence $1^n = \left(fx + \left(fx-1\right)({-1})\right)^n = f^n x^n + (fx-1)s(x)$ for some $s(x) \in A[x]$. Multiply by $g(x)$ to get $$  g(x) = \underbrace{f^ng(x)}_{\overset{\invin}{\left(xf-1\right)}} + \underbrace{(fx -1)s(x)g(x)}_{\overset{\invin}{\left(xf-1\right)}}  .$$ Therefore, $g(x) \in \left(xf-1\right)$, and $\left(xf-1\right)=  \ker{\alpha}$. 
 \end{proof}
 
 Suppose that $\varphi : A \to B$ is a map of commutative rings. Then we can transport the ideals along $\varphi$ as follows. 
@@ -644,7 +645,7 @@ Given an ideal $\frak{a} \unlhd A$, the \textit{extension of $\frak{a}$ along $\
 \end{enumerate}
 \end{definition}
 
-Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively closed. Recall the localization morphism $h: A \to S^{-1}A$. We want to study $(-)^e$ and $(-)^c$ along $h$. 
+Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively closed. Recall the localization morphism $h: A \to S^{-1}A$. We want to study $\left(-\right)^e$ and $\left(-\right)^c$ along $h$. 
 
 \begin{prop} $ $
 \begin{enumerate}
@@ -652,11 +653,11 @@ Suppose that $A$ is a commutative ring and that $S\subset A$ is multiplicatively
 \begin{proof}
 By definition, $\frak{a}^e = h(\frak{a}) \cdot S^{-1}A = \left\{ \sum_{i} \frac{b_i}{t_i}\frac{a_i}{s_i} \mid a_i \in \frak{a}, \ b_i \in A, \ s_i, t_i \in S\right\}$. Since $a_ib_i \in \frak{a}$ and $s_it_i \in S$, our proof is complete.
 \end{proof}
-\item If $\frak{a} \unlhd A$, then $\frak{a}^e = (1) \iff \frak{a} \cap S \ne \emptyset$. 
+\item If $\frak{a} \unlhd A$, then $\frak{a}^e = \left(1\right) \iff \frak{a} \cap S \ne \emptyset$. 
 \begin{proof}
-Note that $(S^{-1}A)^{\times}$ consists of every fraction $\frac{a}{s}$ for which we can find some fraction $\frac{b}{t}$ such that $\frac{a}{s}\frac{b}{t} =1$. Therefore, we must have some element $u\in S$ such that $u(ab-st) = 0 \iff \exists \beta \in A \text{ s.t. } \beta a \in S$. Thus, $(S^{-1}A)^{\times} = \left\{\frac{a}{s} \mid \exists \beta \in A \text{ s.t. } \beta a \in S\right\}$. But then 
+Note that $\left(S^{-1}A\right)^{\times}$ consists of every fraction $\frac{a}{s}$ for which we can find some fraction $\frac{b}{t}$ such that $\frac{a}{s}\frac{b}{t} =1$. Therefore, we must have some element $u\in S$ such that $u(ab-st) = 0 \iff \exists \beta \in A \text{ s.t. } \beta a \in S$. Thus, $\left(S^{-1}A\right)^{\times} = \left\{\frac{a}{s} \mid \exists \beta \in A \text{ s.t. } \beta a \in S\right\}$. But then 
 \begin{align*}
-\frak{a}^e = (1) & \iff \frak{a}^e  \text{ contains some unit }
+\frak{a}^e = \left(1\right) & \iff \frak{a}^e  \text{ contains some unit }
 \\ &  \iff \left(\exists \frac{a}{s} \in \frak{a}^e\right)\left(\exists \beta \in A\right)\left(\beta \cdot a \in S\right)
 \\ &  \iff \beta \cdot a \in S\cap \frak{a}.
 \end{align*}
@@ -677,10 +678,10 @@ If $\frac{a}{s} \in I$, then $a\in h^{-1}(I)$ because $h^{-1}(I) = \left\{ r\in 
 \end{proof}
 \item If $\frak{a} \unlhd A$, then $\frak{a}^{ec} = \left\{r\in A  \mid \exists s \in S \text{ s.t. } sr \in \frak{a}\right\}$. 
 \begin{proof}
-Suppose that $a\in \frak{a}^{ec}$. Then $\frac{a}{1} = h(a) \in  \frak{a}^e$, so that $\left(\exists b \in \frak{a}\right)\left(\exists s \in S\right)\left(\frac{a}{1} = \frac{b}{s}\right)$. This implies that $\exists u \in S$ such that $u(sa - b) =0$. Hence $(us)a = b$, and $\frak{a}^{ec} \subset \left\{r\in A  \mid \exists s \in S \text{ s.t. } sr \in \frak{a}\right\}$.  If $r\in A$ satisfies $rs \in \frak{a}$ for some $s\in S$, then $\frac{r}{1} = \frac{rs}{s} \in \frak{a}^e$ and thus $r \in \frak{a}^{ec}$. 
+Suppose that $a\in \frak{a}^{ec}$. Then $\frac{a}{1} = h(a) \in  \frak{a}^e$, so that $\left(\exists b \in \frak{a}\right)\left(\exists s \in S\right)\left(\frac{a}{1} = \frac{b}{s}\right)$. This implies that $\exists u \in S$ such that $u(sa - b) =0$. Hence $\left(us\right)a = b$, and $\frak{a}^{ec} \subset \left\{r\in A  \mid \exists s \in S \text{ s.t. } sr \in \frak{a}\right\}$.  If $r\in A$ satisfies $rs \in \frak{a}$ for some $s\in S$, then $\frac{r}{1} = \frac{rs}{s} \in \frak{a}^e$ and thus $r \in \frak{a}^{ec}$. 
 \end{proof}
 \item $\frak{a} \unlhd A$ is contracted (i.e., $\frak{a} = I^c$ for some $I \unlhd S^{-1}A$) if and only if $\frak{a} = \frak{a}^{ec}$ if and only if $[s] \in \faktor{A}{\frak{a}}$ is not a zero divisor for any $s\in S$.
-\item The map $(-)^e$ induces a bijection $$(-)^e : \left\{\frak{a} \unlhd A \mid \frak{a} \text{ is a contraction of some ideal} \right\} \to \left\{I \mid I \unlhd S^{-1}A\right\}$$ that preserves inclusions of ideals.
+\item The map $\left(-\right)^e$ induces a bijection $$\left(-\right)^e : \left\{\frak{a} \unlhd A \mid \frak{a} \text{ is a contraction of some ideal} \right\} \to \left\{I \mid I \unlhd S^{-1}A\right\}$$ that preserves inclusions of ideals.
 \end{enumerate}
 \end{prop}
 
@@ -743,14 +744,14 @@ Let $A$ be a ring. We call $A$ a \textit{local ring} if any of the following equ
 \item $A \setminus A^{\times}$ is an ideal.
 \item If $\frak{m}$ is maximal and $x\in \frak{m}$, then $1+x \in A^{\times}$. 
 \end{enumerate}
-If $A$ is a ring and $\p$ a prime ideal, we will denote the localization $(A\setminus \p)^{-1}A $ by $A_{\p}$. 
+If $A$ is a ring and $\p$ a prime ideal, we will denote the localization $\left(A\setminus \p\right)^{-1}A $ by $A_{\p}$. 
 \end{definition}
 
 \begin{prop}
  If $\p$ is prime, then $A_{\p}$ is a local ring with unique maximal ideal $\p^e$.
 \end{prop}
 \begin{proof}
-Let $S = A \setminus \p$. Then $A_{\p} = S^{-1}A$. Suppose that $I \unlhd A_{\p} = S^{-1}A$  such that $I \ne (1)$. But any ideal in $S^{-1}A$ is of the form $I = \frak{a}^e$ for some ideal $\frak{a}$ in $A$. Since $(1) \ne I = \frak{a}^e$, it follows that $\frak{a} \cap S = \emptyset$. Therefore, $\frak{a} = A \setminus S = \p$, so that $I= \frak{a}^e \subset \p^e$. Hence every nontrivial ideal in $A_{\p}$ is contained in $\p^e$, implying that $\p^e$ is the unique maximal ideal. 
+Let $S = A \setminus \p$. Then $A_{\p} = S^{-1}A$. Suppose that $I \unlhd A_{\p} = S^{-1}A$  such that $I \ne (1)$. But any ideal in $S^{-1}A$ is of the form $I = \frak{a}^e$ for some ideal $\frak{a}$ in $A$. Since $\left(1\right) \ne I = \frak{a}^e$, it follows that $\frak{a} \cap S = \emptyset$. Therefore, $\frak{a} = A \setminus S = \p$, so that $I= \frak{a}^e \subset \p^e$. Hence every nontrivial ideal in $A_{\p}$ is contained in $\p^e$, implying that $\p^e$ is the unique maximal ideal. 
 \end{proof}
 
 \begin{corollary}
@@ -855,7 +856,7 @@ This geometric way of packaging information about $A$ and all of its prime ideal
 $X$ is quasi-compact, meaning that any open cover $\left\{U_{\alpha}\right\}$ of $X$ admits some finite subcover. 
 \end{lemma}
 \begin{proof}
-Let $X = \bigcup_{\alpha} U_{\alpha}$. The principal opens generate the Zariski topology, so that for any $\alpha$, we can find a cover $U_{\alpha} = \bigcup_{\beta} X_{f_{\alpha}^{\beta}}$ where $f_{\alpha}^{\beta}\in A$. Then $X = \bigcup_{\alpha, \beta} X_{f_{\alpha}^{\beta}}$, so that $$\emptyset = \bigcap_{\alpha, \beta}(\underbrace{X - X_{f_{\alpha}^{\beta}}}_{V({f_{\alpha}^{\beta}})}).$$ But $\emptyset = \bigcap_{\alpha, \beta} V({f_{\alpha}^{\beta}})= V(\{ {f_{\alpha}^{\beta}} \}_{\alpha, \beta})$. Hence $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$ is not contained in a ny prime ideal, so that $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle =A$, hence $1\in \langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$. We can find a collection of elements $\left\{a_{\alpha}^{\beta} \right\}_{\alpha, \beta}$ where $a_{\alpha}^{\beta} \in A$ such that $1= \sum_{\alpha, \beta} a_{\alpha}^{\beta} f_{\alpha}^{\beta}$ and at most finitely many $a_{\alpha}^{\beta}$ are nonzero. Thus, there is sequence $(\alpha_1, \beta_1), \ldots, (\alpha,_k , \beta_k)$ with $$\langle f_{\alpha_1}^{\beta_1}, \ldots, f_{\alpha_k}^{\beta_k} \rangle = \langle 1 \rangle = A.$$ Hence $V(f_{\alpha_1}^{\beta_1}) \cap \cdots \cap V(f_{\alpha_k}^{\beta_k}) = \emptyset$, and $X = X_{f_{\alpha_1}^{\beta_1}} \cup \cdots \cup X_{f_{\alpha_k}^{\beta_k}}$. But $X_{f_{\alpha_i}^{\beta_i}} \in U_{\alpha_i}$ for each $i=1, \ldots, k$. Therefore, $X= U_{\alpha_1} \cup \cdots \cup U_{\alpha_k}$.
+Let $X = \bigcup_{\alpha} U_{\alpha}$. The principal opens generate the Zariski topology, so that for any $\alpha$, we can find a cover $U_{\alpha} = \bigcup_{\beta} X_{f_{\alpha}^{\beta}}$ where $f_{\alpha}^{\beta}\in A$. Then $X = \bigcup_{\alpha, \beta} X_{f_{\alpha}^{\beta}}$, so that $$\emptyset = \bigcap_{\alpha, \beta}(\underbrace{X - X_{f_{\alpha}^{\beta}}}_{V({f_{\alpha}^{\beta}})}).$$ But $\emptyset = \bigcap_{\alpha, \beta} V({f_{\alpha}^{\beta}})= V(\{ {f_{\alpha}^{\beta}} \}_{\alpha, \beta})$. Hence $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$ is not contained in a ny prime ideal, so that $\langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle =A$, hence $1\in \langle ({f_{\alpha}^{\beta}})_{\alpha, \beta} \rangle$. We can find a collection of elements $\left\{a_{\alpha}^{\beta} \right\}_{\alpha, \beta}$ where $a_{\alpha}^{\beta} \in A$ such that $1= \sum_{\alpha, \beta} a_{\alpha}^{\beta} f_{\alpha}^{\beta}$ and at most finitely many $a_{\alpha}^{\beta}$ are nonzero. Thus, there is sequence $\left(\alpha_1, \beta_1\right), \ldots, \left(\alpha,_k , \beta_k\right)$ with $$\langle f_{\alpha_1}^{\beta_1}, \ldots, f_{\alpha_k}^{\beta_k} \rangle = \langle 1 \rangle = A.$$ Hence $V(f_{\alpha_1}^{\beta_1}) \cap \cdots \cap V(f_{\alpha_k}^{\beta_k}) = \emptyset$, and $X = X_{f_{\alpha_1}^{\beta_1}} \cup \cdots \cup X_{f_{\alpha_k}^{\beta_k}}$. But $X_{f_{\alpha_i}^{\beta_i}} \in U_{\alpha_i}$ for each $i=1, \ldots, k$. Therefore, $X= U_{\alpha_1} \cup \cdots \cup U_{\alpha_k}$.
 \end{proof}
 
 \begin{exmp}
@@ -881,7 +882,7 @@ Let $A$ be  a commutative ring and $M$ an $A$-module. Then $M$ defines a subset 
 \begin{enumerate}
 \item $\supp(M) \subset V(\ann(M))$ where $\ann(M) \equiv \{a\in A \mid a\cdot m = 0$ for each $m\in M\}$. 
 \begin{proof}
-Let $\frak{b} \in \supp(M)$. Then $M_{\frak{b}} \ne (0)$. We need to show that $\ann(M) \subset \frak{b}$.  Suppose that there is some $a\in \ann(M)$ with $a\notin \frak{b}$. Let $x\in M_{\frak{b}}$. Then $x= \frac{m}{s}$ where $m\in M$ and $s\notin \frak{b}$. We compute $\frac{a}{1} \cdot \frac{m}{s} = \frac{am}{s} = 0$ in $M_{\frak{b}}$. Since $a\notin \frak{b}$, it follows that $\frac{a}{1}$ is invertible in $A_{\frak{b}}$, i.e, $\frac{1}{a} \in A_{\frak{b}}$. Hence $\frac{m}{s} = \frac{1}{a}\left(\frac{a}{1}\frac{m}{s}\right) = 0$ in $M_{\frak{b}}$, so that $M_{\frak{b}} = (0)$, a contradiction.  
+Let $\frak{b} \in \supp(M)$. Then $M_{\frak{b}} \ne (0)$. We need to show that $\ann(M) \subset \frak{b}$.  Suppose that there is some $a\in \ann(M)$ with $a\notin \frak{b}$. Let $x\in M_{\frak{b}}$. Then $x= \frac{m}{s}$ where $m\in M$ and $s\notin \frak{b}$. We compute $\frac{a}{1} \cdot \frac{m}{s} = \frac{am}{s} = 0$ in $M_{\frak{b}}$. Since $a\notin \frak{b}$, it follows that $\frac{a}{1}$ is invertible in $A_{\frak{b}}$, i.e, $\frac{1}{a} \in A_{\frak{b}}$. Hence $\frac{m}{s} = \frac{1}{a}\left(\frac{a}{1}\frac{m}{s}\right) = 0$ in $M_{\frak{b}}$, so that $M_{\frak{b}} = \left(0\right)$, a contradiction.  
 \end{proof}
 \item If $M$ is finitely generated, then  $\supp(M) \supset V(\ann(M))$.
 \begin{proof}
@@ -893,14 +894,14 @@ Let $\frak{b} \in V(\ann(M))$ and $\frak{b} \supset \ann(M)$. We want to show th
 \subsection{Lecture 9}
 
 \begin{prop}
-$M= (0)$ $\iff$ $\supp(M) = \emptyset$ $\iff$ $\supp(M) \cap \Max(A) = \emptyset$.
+$M= \left(0\right)$ $\iff$ $\supp(M) = \emptyset$ $\iff$ $\supp(M) \cap \Max(A) = \emptyset$.
 \end{prop}
 \begin{proof}
-It's clear that $M = \emptyset \implies \supp(M) = (0) \implies \supp(M) \cap \Max(A) = \emptyset$. Hence it suffices to show that  $$\supp(M) \cap \Max(A) = \emptyset \implies M= (0).$$ 
+It's clear that $M = \emptyset \implies \supp(M) = \left(0\right) \implies \supp(M) \cap \Max(A) = \emptyset$. Hence it suffices to show that  $$\supp(M) \cap \Max(A) = \emptyset \implies M= \left(0\right).$$ 
 
-On the one hand, if $M$ is finitely generated, then $\supp(M) = V(\ann(M))$, so that $\supp(M)$ must contain any maximal idea that contains $\ann(M) \unlhd A$. Thus, the assumption that $\supp(M) \cap \Max(A) = \emptyset$ implies that $\ann(A)$ is not contained in any maximal ideal, meaning that $\ann(M) = A$. This means that $M= (0)$. 
+On the one hand, if $M$ is finitely generated, then $\supp(M) = V(\ann(M))$, so that $\supp(M)$ must contain any maximal idea that contains $\ann(M) \unlhd A$. Thus, the assumption that $\supp(M) \cap \Max(A) = \emptyset$ implies that $\ann(A)$ is not contained in any maximal ideal, meaning that $\ann(M) = A$. This means that $M= \left(0\right)$. 
 
-On the other hand, if $M$ is arbitrary, then $M = \colim_{\alpha} N_{\alpha}$ with each $N_{\alpha} \subset M$ finitely generated. But then $M_{\frak{a}} = \colim_{\alpha} (N_{\alpha})_{\frak{a}}$ because localization is exact.  Since each $N_{\alpha} = (0)$, it follows that $\colim_{\alpha} N_{\alpha} =0$ as well. 
+On the other hand, if $M$ is arbitrary, then $M = \colim_{\alpha} N_{\alpha}$ with each $N_{\alpha} \subset M$ finitely generated. But then $M_{\frak{a}} = \colim_{\alpha} (N_{\alpha})_{\frak{a}}$ because localization is exact.  Since each $N_{\alpha} = \left(0\right)$, it follows that $\colim_{\alpha} N_{\alpha} =0$ as well. 
 \end{proof}
 
 
@@ -917,7 +918,7 @@ Suppose that $\Pi$ is a property of $A$-modules or of morphisms of $A$-modules. 
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item $M = (0)$ holds locally if and only if it holds globally. 
+\item $M = \left(0\right)$ holds locally if and only if it holds globally. 
 \item $M \to T \to N$ is exact locally if and only if it's exact globally. 
 \end{enumerate}
 \end{exmp}
@@ -934,7 +935,7 @@ Suppose that $\Pi$ is a property of $A$-modules or of morphisms of $A$-modules. 
 The fact that (a) $\implies$ (b) $\implies$ (c) $\implies$ (d) is obvious. To see that (c) $\implies$ (a), suppose that $M$ is an $A$-module such that $M_{\frak{a}}$ is flat  as an $A_{\frak{a}}$-module. 
 Suppose that $0 \to X \to Y$ is an exact sequence of $A$-modules. Let $K = \ker( X \otimes_A M \to Y \otimes_A M)$. We want to show that $K=0$.   
 
-Localizing $0 \to K \to X \otimes_A M \to Y \otimes_A M$ along $\frak{a}$ gives an exact sequence $0 \to K_{\frak{a}} \to X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}} \to Y_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}$, where we have used the fact that $(X \otimes_A M)_{\frak{a}} = X \otimes_A M_{\frak{a}} = X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}$. But $M_{\frak{a}}$ is flat over $A_{\frak{a}}$. Hence if we tensor the exact sequence $0 \to X_{\frak{a}} \to Y_{\frak{a}}$ with $M_{\frak{a}}$ over $A_{\frak{a}}$, then it will remain exact. This implies that $\ker(X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}} \to Y_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}) =0$, so that $K_{\frak{a}} = 0$ for each $\frak{a}$. It follows that $\supp(K) = \emptyset$, which implies that $K= (0)$. 
+Localizing $0 \to K \to X \otimes_A M \to Y \otimes_A M$ along $\frak{a}$ gives an exact sequence $0 \to K_{\frak{a}} \to X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}} \to Y_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}$, where we have used the fact that $\left(X \otimes_A M\right)_{\frak{a}} = X \otimes_A M_{\frak{a}} = X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}$. But $M_{\frak{a}}$ is flat over $A_{\frak{a}}$. Hence if we tensor the exact sequence $0 \to X_{\frak{a}} \to Y_{\frak{a}}$ with $M_{\frak{a}}$ over $A_{\frak{a}}$, then it will remain exact. This implies that $\ker(X_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}} \to Y_{\frak{a}} \otimes_{A_{\frak{a}}} M_{\frak{a}}) =0$, so that $K_{\frak{a}} = 0$ for each $\frak{a}$. It follows that $\supp(K) = \emptyset$, which implies that $K= \left(0\right)$. 
 \end{proof}
 
 \begin{definition}
@@ -942,24 +943,24 @@ If $A$ is commutative ring, then the \textit{Jacobson radical of $A$} is the ide
 \end{definition}
 
 \begin{lemma}[Nakayama]\label{Nak}
-If $A$ is a commutative ring and $M$ is a finitely generated $A$-module with $\Jac(A) \cdot M = M$, then $M= (0)$.
+If $A$ is a commutative ring and $M$ is a finitely generated $A$-module with $\Jac(A) \cdot M = M$, then $M= \left(0\right)$.
 \end{lemma}
 \begin{proof}
-Let $M$ be finitely generated over $A$. Choose some finite set of generators $m_1, \ldots, m_t$ of $M$ of minimal cardinality. If $M\ne (0)$, then $t>0$. Then $m_t \in M = \Jac(A)\cdot M$. Thus there are $a_1, \ldots, a_t \in \Jac(A)$ such that $m_t = \sum_{i=1}^t a_im_i$. Then $$(1-a_t)m_t = \sum_{i=1}^{t-1} a_im_i.$$ But $a_t \in \Jac(A)$, meaning that $m_t$ belongs to every maximal ideal. Then $1-a_t$ cannot be in any maximal ideal. Hence $1-a_t$ is a unit in $A$. Let $u\in A$ such that $u(1-a_t) = 1$. Then $m_t = \sum_{i=1}^{t-1} a_iu m_i$. This contradicts that $t$ is minimal.
+Let $M$ be finitely generated over $A$. Choose some finite set of generators $m_1, \ldots, m_t$ of $M$ of minimal cardinality. If $M\ne (0)$, then $t>0$. Then $m_t \in M = \Jac(A)\cdot M$. Thus there are $a_1, \ldots, a_t \in \Jac(A)$ such that $m_t = \sum_{i=1}^t a_im_i$. Then $$\left(1-a_t\right)m_t = \sum_{i=1}^{t-1} a_im_i.$$ But $a_t \in \Jac(A)$, meaning that $m_t$ belongs to every maximal ideal. Then $1-a_t$ cannot be in any maximal ideal. Hence $1-a_t$ is a unit in $A$. Let $u\in A$ such that $u(1-a_t) = 1$. Then $m_t = \sum_{i=1}^{t-1} a_iu m_i$. This contradicts that $t$ is minimal.
 \end{proof}
 
 \begin{corollary}[Classical Nakayama]
-Suppose $A$ is a local ring with maximal ideal $\frak{a}_A$. Let $M$ be a finitely generated $A$-module such that $\frak{a}_AM = M$. Then $M= (0)$. 
+Suppose $A$ is a local ring with maximal ideal $\frak{a}_A$. Let $M$ be a finitely generated $A$-module such that $\frak{a}_AM = M$. Then $M= \left(0\right)$. 
 \end{corollary}
 
 \begin{prop} $ $
 \begin{enumerate}
-\item If $A$ is a commutative ring,  then the functor $(-) \otimes \faktor{A}{\Jac(A)} : A{-}\mathbf{Mod^{fg}} \to \faktor{A}{\Jac(A)} - \mathbf{Mod^{fg}}$ is faithful.  
+\item If $A$ is a commutative ring,  then the functor $\left(-\right) \otimes \faktor{A}{\Jac(A)} : A{-}\mathbf{Mod^{fg}} \to \faktor{A}{\Jac(A)} - \mathbf{Mod^{fg}}$ is faithful.  
 \item If $M$ is a finitely generated $A$-module and $m_1, \ldots, m_t \in M$ are such that their images $\bar{m}_1, \ldots, \bar{m}_t \in \faktor{M}{\Jac(A) \cdot M}$ generate the module $\faktor{M}{\Jac(A)\cdot M}$, then they generate $M$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
-If $N = \langle m_1, \ldots, m_t \rangle \subset M$, then $\overline{M/N} = (0)$ since $\overline{M/N} = \overline{M}/\overline{N}$. But then $M \setminus N = 0$ by \cref{Nak}. 
+If $N = \langle m_1, \ldots, m_t \rangle \subset M$, then $\overline{M/N} = \left(0\right)$ since $\overline{M/N} = \overline{M}/\overline{N}$. But then $M \setminus N = 0$ by \cref{Nak}. 
 \end{proof}
 
 \begin{prop}
@@ -978,7 +979,7 @@ Let $A$ be a local ring and $M$ an $A$-module. Assume that one of the following 
 Then $M$ is free $\iff$ $M$ is projective $\iff$ $M$ is flat.
 \end{theorem}
 \begin{proof}
-We only need to show that if $M$ is flat, then $M$ is free. Suppose that $M$ is flat and finitely presentable. We want to show that $M$ is free. Let $0 \to K \to A^t \to M \to 0$ be a finite presentation  where $K$ is finitely generated. Since $M$ being flat implies that $(-) \otimes k_A$ is exact, we have that $$\eta : 0 \to K \otimes_A k_A \to k_A^t \to M \otimes_A k_A \to 0$$ is exact. Indeed, if $0 \to N' \to N \to N'' \to 0$ is a short exact sequence of $A$-modules and $N^n$ is flat, then for every $A$-module, the sequence $$0 \to N' \otimes M \to N \otimes M \to N'' \otimes M \to 0$$ is exact. To see this, choose a presentation $0 \to K \to F \to M \to 0$, where $F$ is free. Then we get a commutative diagram
+We only need to show that if $M$ is flat, then $M$ is free. Suppose that $M$ is flat and finitely presentable. We want to show that $M$ is free. Let $0 \to K \to A^t \to M \to 0$ be a finite presentation  where $K$ is finitely generated. Since $M$ being flat implies that $\left(-\right) \otimes k_A$ is exact, we have that $$\eta : 0 \to K \otimes_A k_A \to k_A^t \to M \otimes_A k_A \to 0$$ is exact. Indeed, if $0 \to N' \to N \to N'' \to 0$ is a short exact sequence of $A$-modules and $N^n$ is flat, then for every $A$-module, the sequence $$0 \to N' \otimes M \to N \otimes M \to N'' \otimes M \to 0$$ is exact. To see this, choose a presentation $0 \to K \to F \to M \to 0$, where $F$ is free. Then we get a commutative diagram
 \[
 \begin{tikzcd}
  & 0 \arrow[r] \arrow[d] & K \arrow[r] \arrow[d] & N'' \arrow[d] \\
@@ -1035,7 +1036,7 @@ Recall that $K[x]$ is a Euclidean domain, in particular, a PID.
 Let $A$ be a PID and $u\in A$ be nonzero. TFAE.
 \begin{enumerate}[label=(\alph*)]
 \item $\faktor{A}{(u)}$ is a field.
-\item $(u)$ is prime.
+\item $\left(u\right)$ is prime.
 \item$u$ is simple.
 \end{enumerate}
 \end{lemma}
@@ -1048,7 +1049,7 @@ The fact that (b) and (c) are equivalent is obvious.
 
 \medskip
 
- Conversely, if $u\in A$ is simple, then for any $x\in A\setminus (u)$ we have that $(x,u) = (1)$ since $x$ and $u$ are coprime. This means that we can find $a,b\in A$ such that $ax + bu =1$. Then $[x]\cdot[a] = [1]$. Hence $[x]$ is a unit, so that $\faktor{A}{(u)}$ is a field. 
+ Conversely, if $u\in A$ is simple, then for any $x\in A\setminus (u)$ we have that $\left(x,u\right) = \left(1\right)$ since $x$ and $u$ are coprime. This means that we can find $a,b\in A$ such that $ax + bu =1$. Then $[x]\cdot[a] = [1]$. Hence $[x]$ is a unit, so that $\faktor{A}{(u)}$ is a field. 
 \end{proof}$ $From this our theorem follows immediately. 
 \end{proof}
 
@@ -1068,7 +1069,7 @@ We say that field extension $L \supset K$ is \textit{simple} if it is isomorphic
 \begin{exmp} $ $
 \begin{enumerate}
 \item $\C = \R[i] = \faktor{\R[x]}{(x^2 +1)}$.
-\item If $K$ is any field and $a\in K$ is not a square, then $x^2 -a$ is irreducible and we get a simple field extension $K[\sqrt{a}] \coloneqq \faktor{K[t]}{(t^2 -a)}$.
+\item If $K$ is any field and $a\in K$ is not a square, then $x^2 -a$ is irreducible and we get a simple field extension $K\left[\sqrt{a}\right] \coloneqq \faktor{K[t]}{(t^2 -a)}$.
 \end{enumerate}
 \end{exmp}
 
@@ -1107,16 +1108,16 @@ A finite field extension of $\Q$ is called a \textit{number field}.
 
 \smallskip
 
- Fix a prime $p>0$. Let $\epsilon_p = e^{\frac{2\pi i}{p}} \in \C$. Then $\Q(\epsilon_p) \supset \Q$ is a finite extension because $\epsilon_p$ is annihilated by the polynomial $x^p-1$. It is called the \textit{$p$-th cyclotomic field}. Note that $x^p-1$ is not minimal since we can factor out $(x-1)$. We claim that $\frac{x^p-1}{x-1}$ is the minimal polynomial, so that $[\Q(\epsilon_p) : \Q] =p-1$. This will hold if we can prove that $\frac{x^p-1}{x-1}$ is irreducible in $\Q[x]$.
+ Fix a prime $p>0$. Let $\epsilon_p = e^{\frac{2\pi i}{p}} \in \C$. Then $\Q(\epsilon_p) \supset \Q$ is a finite extension because $\epsilon_p$ is annihilated by the polynomial $x^p-1$. It is called the \textit{$p$-th cyclotomic field}. Note that $x^p-1$ is not minimal since we can factor out $\left(x-1\right)$. We claim that $\frac{x^p-1}{x-1}$ is the minimal polynomial, so that $\left[\Q(\epsilon_p) : \Q\right] =p-1$. This will hold if we can prove that $\frac{x^p-1}{x-1}$ is irreducible in $\Q[x]$.
  
 \begin{lemma}[Gauss]
 If $f(x) \in \Z[x]$ is irreducible, then it is irreducible in $\Q[x]$.
 \end{lemma}
 \begin{proof}
-Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(x) \in \Z[x]$ and the coefficients  of $Np$ are pairwise coprime. Suppose that $f(x) \in \Z[x]$ is irreducible in $\Z[x]$. Suppose, towards a contradiction, that  there are $g(x), h(x)\in \Q[x]$ non-units such that $f(x) = g(x)h(x)$. Then $g(x)$ and $h(x)$ are $\Q$-proportional to some $\tilde{g}(x)$ and $\tilde{h}(x)$, respectively, over $\Z$ with each having pairwise coprime coefficients. Thus, $f(x) = \lambda \tilde{g}(x)\tilde{h}(x)$ for some $\lambda \in \Q^{\times}$. Let $\lambda = \frac{a}{b}$ with $(a,b)=1$. If $b \ne \pm 1$, then there is some $p>0$ where $p \mid b$ and $pf = a \tilde{g}\tilde{h}$. We have that $bf, a \tilde{g}, \tilde{h} \in \Z[x]$. We can reduce $\mod p$ to get $[bf]_p = [a]_p[\tilde{g}]_p[\tilde{h}]_p$ But $f(x) \in \Z[x]$, so that $[bf]_p  = [b]_p[f]_p =0$.Hence $[a]_p[\tilde{g}]_p[\tilde{h}]_p =0$ in $(\Z/p)[x]$, so that one of $[a]_p$, $[\tilde{g}]_p$, and $[\tilde{h}_p]$ must be $0$. But $(a,b) =1$, so that $[a]_p \ne 0$. Since each of $\tilde{g}$ and $\tilde{h}$ has coprime coefficients, we have that $[\tilde{g}]_p \ne 0$ and $[\tilde{h}]_p \ne 0$, a contradiction. 
+Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(x) \in \Z[x]$ and the coefficients  of $Np$ are pairwise coprime. Suppose that $f(x) \in \Z[x]$ is irreducible in $\Z[x]$. Suppose, towards a contradiction, that  there are $g(x), h(x)\in \Q[x]$ non-units such that $f(x) = g(x)h(x)$. Then $g(x)$ and $h(x)$ are $\Q$-proportional to some $\tilde{g}(x)$ and $\tilde{h}(x)$, respectively, over $\Z$ with each having pairwise coprime coefficients. Thus, $f(x) = \lambda \tilde{g}(x)\tilde{h}(x)$ for some $\lambda \in \Q^{\times}$. Let $\lambda = \frac{a}{b}$ with $\left(a,b\right)=1$. If $b \ne \pm 1$, then there is some $p>0$ where $p \mid b$ and $pf = a \tilde{g}\tilde{h}$. We have that $bf, a \tilde{g}, \tilde{h} \in \Z[x]$. We can reduce $\mod p$ to get $[bf]_p = [a]_p[\tilde{g}]_p[\tilde{h}]_p$ But $f(x) \in \Z[x]$, so that $[bf]_p  = [b]_p[f]_p =0$.Hence $[a]_p[\tilde{g}]_p[\tilde{h}]_p =0$ in $\left(\Z/p\right)[x]$, so that one of $[a]_p$, $\left[\tilde{g}\right]_p$, and $\left[\tilde{h}_p\right]$ must be $0$. But $\left(a,b\right) =1$, so that $[a]_p \ne 0$. Since each of $\tilde{g}$ and $\tilde{h}$ has coprime coefficients, we have that $\left[\tilde{g}\right]_p \ne 0$ and $\left[\tilde{h}\right]_p \ne 0$, a contradiction. 
 \end{proof}
 
-Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x) (x-1) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = [(x-1)^p]_p$, so that $[f]_p[(x-1)]_p = ([x-1]_p)^p$ and $[f]_p = [(x-1)]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = \left([(x-1)]_p\right)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
+Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x)\left(x-1\right) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = \left[\left(x-1\right)^p\right]_p$, so that $[f]_p[(x-1)]_p = \left(\left[x-1\right]_p\right)^p$ and $[f]_p = \left[\left(x-1\right)\right]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = \left([(x-1)]_p\right)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
 
 \smallskip
 
@@ -1211,8 +1212,8 @@ Describe all splitting fields of polynomials of degree $2$.
 Suppose that $K$ is a field of characteristic $\ne 2$. Let $f(x) = x^3 + a_2x^2 + a_1x + a_0 \in K[x]$. Let $L$ be a splitting field for $f$. What can $L$ be? This depends on the splitting behavior of $f$ over $K$
 \begin{enumerate}[label=(\Alph*)]
 \item Suppose that $f$ has all of its roots in $K$. Then $L = K$, and $[L:K]=1$.
-\item Suppose that $f$ has exactly one root in $K$ Then $f(x) = (x-\alpha)g(x)$ with $\alpha \in K$ and $g(x)$ a quadratic irreducible in $K[x]$. Consider $L = \faktor{K[x]}{(g)}$. Then $[L: K]=2$, and $g$ has a root in $L$. This implies that $g$ has all of its roots in $L$. Hence $L$ is the splitting field for $f$. 
-\item Suppose that $f$ has no roots in $K$. Then $f$ is irreducible in $K[x]$. Let $K_1 = \faktor{K[x]}{(f)}$, which is a simple extension of degree $3$. Note that $f$ has a root $\alpha_1$ in $K_1$. Thus, $K_1 = K[\alpha_1]$. Consider $f(x) = (x -\alpha_1)g(x)$ with $g \in K_1[x]$ and $\deg{g} =2$. There are two sub-cases to consider.
+\item Suppose that $f$ has exactly one root in $K$ Then $f(x) = \left(x-\alpha\right)g(x)$ with $\alpha \in K$ and $g(x)$ a quadratic irreducible in $K[x]$. Consider $L = \faktor{K[x]}{(g)}$. Then $[L: K]=2$, and $g$ has a root in $L$. This implies that $g$ has all of its roots in $L$. Hence $L$ is the splitting field for $f$. 
+\item Suppose that $f$ has no roots in $K$. Then $f$ is irreducible in $K[x]$. Let $K_1 = \faktor{K[x]}{(f)}$, which is a simple extension of degree $3$. Note that $f$ has a root $\alpha_1$ in $K_1$. Thus, $K_1 = K[\alpha_1]$. Consider $f(x) = \left(x -\alpha_1\right)g(x)$ with $g \in K_1[x]$ and $\deg{g} =2$. There are two sub-cases to consider.
 \begin{enumerate}
 \item Suppose that $g$ has two roots in $K_1$. Then $L= K_1$, so that $[L:K] =3$.
 \item Suppose that $f$ is irreducible in $K_1$. Then $L= K_2 = \faktor{K_1[x]}{(g)}$, so that $[L:K] =6$.
@@ -1224,18 +1225,18 @@ We conclude that if $L$ is the splitting field for $f$, then $[L:K] \in \{1, 2, 
 
 
 How can we compute $[L:K]$ from the coefficients of $f$?
-We have that $f(x) = (x- \alpha_1)(x-\alpha_2)(x-\alpha_3)$ in $L[x]$. Look at $\disc(f)\coloneqq  (\alpha_1 - \alpha_2)^2(\alpha_1 - \alpha_3)^2(\alpha_2 - \alpha_3)^2 \in L$. This is a symmetric function in $\alpha_1, \alpha_2, \alpha_3$. Hence it is expressible in terms of $a_2, a_1, a_0$. Note that $$\disc(f) = a_1^2a_2^2 -4a_2^2a_0 -4a_1^3 + 18 a_0a_1a_2 - 27a_0^2.$$
+We have that $f(x) = \left(x- \alpha_1\right)\left(x-\alpha_2\right)\left(x-\alpha_3\right)$ in $L[x]$. Look at $\disc(f)\coloneqq  (\alpha_1 - \alpha_2)^2(\alpha_1 - \alpha_3)^2(\alpha_2 - \alpha_3)^2 \in L$. This is a symmetric function in $\alpha_1, \alpha_2, \alpha_3$. Hence it is expressible in terms of $a_2, a_1, a_0$. Note that $$\disc(f) = a_1^2a_2^2 -4a_2^2a_0 -4a_1^3 + 18 a_0a_1a_2 - 27a_0^2.$$
 
 \begin{prop}
 Suppose that $f$ has no roots in $K$. Then $[L:K] = 3 \iff \disc{f} \in K^2$.
 \end{prop}
 \begin{proof}
-We know that $f$ is irreducible over $K$. Hence $K_1 = \faktor{K[x]}{(f)}$ is an extension of degree $3$ in which $f$ has a root $\alpha_1$. Note that $\disc(f) \notin K^2 \iff \disc(f) \notin K_1^2$. The ($\Longleftarrow$) direction is obvious. For the reverse direction, suppose, towards a contradiction, that $\disc(f) \notin K^2$ but $\disc(f) \in K_1^2$. This means that $\left[K[\sqrt{\disc(f)}] :K\right] = 2$ and $K\subset K[\sqrt{\disc(f)}] \subset K_1$. Thus, $3 = [K_1 : K] = \left[K[\sqrt{\disc(f)}] : K\right] \cdot \left[K_1 : K[\sqrt{\disc(f)}]\right] = 2 \cdot 1$, a contradiction. 
+We know that $f$ is irreducible over $K$. Hence $K_1 = \faktor{K[x]}{(f)}$ is an extension of degree $3$ in which $f$ has a root $\alpha_1$. Note that $\disc(f) \notin K^2 \iff \disc(f) \notin K_1^2$. The ($\Longleftarrow$) direction is obvious. For the reverse direction, suppose, towards a contradiction, that $\disc(f) \notin K^2$ but $\disc(f) \in K_1^2$. This means that $\left[K\left[\sqrt{\disc(f)}\right] :K\right] = 2$ and $K\subset K\left[\sqrt{\disc(f)}\right] \subset K_1$. Thus, $3 = [K_1 : K] = \left[K\left[\sqrt{\disc(f)}\right] : K\right] \cdot \left[K_1 : K\left[\sqrt{\disc(f)}\right]\right] = 2 \cdot 1$, a contradiction. 
 
 \medskip
 
 
-Now, $\disc(f) \in K_1^2 \iff (\alpha_1 - \alpha_2) ( \alpha_1 - \alpha_3)(\alpha_2 - \alpha_3) \in K_1$. This implies that $\alpha_2 - \alpha_3 \in K_1$. Indeed, $f\in K_1[x]$ satisfies $f(x) = (x-\alpha_1)g(x)$, and $\alpha_2, \alpha_3 \in L$ are roots of $g$. Therefore, we have in $L$ that $g(\alpha_1) = (\alpha_1 - \alpha_2)(\alpha_1 - \alpha_3) \in L$. But $g\in K_1[x]$ and $\alpha_1 \in K_1$, so that $g(\alpha_1) \in K_1$. It follows that $\alpha_2 - \alpha_3 \in K_1$. Hence $\disc(f) \in K_1^2 \iff \alpha_2 - \alpha_1 \in K_1$. But $-\alpha_2 -\alpha_3$ is a coefficient of $g$ in $K_1$. Therefore, $\alpha_2, \alpha_3 \in K_1$. 
+Now, $\disc(f) \in K_1^2 \iff (\alpha_1 - \alpha_2) ( \alpha_1 - \alpha_3)(\alpha_2 - \alpha_3) \in K_1$. This implies that $\alpha_2 - \alpha_3 \in K_1$. Indeed, $f\in K_1[x]$ satisfies $f(x) = \left(x-\alpha_1\right)g(x)$, and $\alpha_2, \alpha_3 \in L$ are roots of $g$. Therefore, we have in $L$ that $g(\alpha_1) = \left(\alpha_1 - \alpha_2\right)\left(\alpha_1 - \alpha_3\right) \in L$. But $g\in K_1[x]$ and $\alpha_1 \in K_1$, so that $g(\alpha_1) \in K_1$. It follows that $\alpha_2 - \alpha_3 \in K_1$. Hence $\disc(f) \in K_1^2 \iff \alpha_2 - \alpha_1 \in K_1$. But $-\alpha_2 -\alpha_3$ is a coefficient of $g$ in $K_1$. Therefore, $\alpha_2, \alpha_3 \in K_1$. 
 \end{proof}
 \end{exmp}
 
@@ -1265,9 +1266,9 @@ We first prove uniqueness. If $F$ is a finite field with $q\coloneqq p^n$ elemen
 If $A$ is any commutative ring, then $A[x]$ has a natural derivation. There exists a unique map $\frac{d}{dx} : A[x] \to A[x]$ such that $\frac{d}{dx}(a) = 0$ for any $a\in A$, $\frac{d}{dx}(x) =1$, and $\frac{d}{dx}$ satisfies the Leibniz rule, i.e., $\frac{d}{dx}(fg) = \frac{df}{dx}g + f\frac{dg}{dx}$. Note that $\frac{d}{dx}$ is given by $\frac{d}{dx}(a_nx^n  + a_{n-1}x^{n-1} + \cdots + a_0) = na_n + (n-1)a^{n-1}x^{n-2} + \cdots + 0$. Then $\frac{d}{dx}$ is an $A$-module homomorphism. If $A \subset B$ is a subring, then we get compatible derivations $\frac{d}{dx} \hookrightarrow A[x] \subset B[x] \hookleftarrow \frac{d}{dx}$. 
 \end{note}
 
-Returning to our proof, consider $f(x) = x^q -x$. Then since $F \supset \F_p$ is the splitting field for $f(x)$, it follows that $f(x) = \prod_{i=1}^q (x-c_i)$ where $c_i \in F$. How many distinct roots does $f(x)$ have in $F$? If $f(x)$ has a repeated root, then we can write $f(x) = (x-c)^2g(x)$ in $F[x]$. This implies that $\frac{df}{dx}(x) = 2(x-c)g + (x-c)^2 \frac{dg}{dx}$ will also have $c$ has a root. But $\frac{df}{dx} = qx^{q-1} -1 = {-1}$ in $\F_p[x]\subset F[x]$. But in this case $\frac{df}{dx}$ has no roots. Thus, $f(x)$ has no repeated roots in $F$, so that $\left\lvert{F}\right\rvert \geq q$.
+Returning to our proof, consider $f(x) = x^q -x$. Then since $F \supset \F_p$ is the splitting field for $f(x)$, it follows that $f(x) = \prod_{i=1}^q (x-c_i)$ where $c_i \in F$. How many distinct roots does $f(x)$ have in $F$? If $f(x)$ has a repeated root, then we can write $f(x) = \left(x-c\right)^2g(x)$ in $F[x]$. This implies that $\frac{df}{dx}(x) = 2(x-c)g + (x-c)^2 \frac{dg}{dx}$ will also have $c$ has a root. But $\frac{df}{dx} = qx^{q-1} -1 = {-1}$ in $\F_p[x]\subset F[x]$. But in this case $\frac{df}{dx}$ has no roots. Thus, $f(x)$ has no repeated roots in $F$, so that $\left\lvert{F}\right\rvert \geq q$.
 
-Now consider $R_f\coloneqq  \{c \in F \mid f(c) = 0\}$. Note that $\F_p \subset R_f \subset F$ and that  $R_f = \{c\in F \mid \varphi^n(c) = c\}$ where $\varphi$ denotes the Frobenius map. But since $\varphi$ is a field automorphism of $F$, so is $\varphi^n$. Hence the fixed points of $\varphi^n$ form a subfield. This means that $R_f$ is a subfield, hence a splitting field for $f$. Thus, $R_f \cong F$. 
+Now consider $R_f\coloneqq  \{c \in F \mid f(c) = 0\}$. Note that $\F_p \subset R_f \subset F$ and that  $R_f = \left\{c\in F \mid \varphi^n(c) = c\right\}$ where $\varphi$ denotes the Frobenius map. But since $\varphi$ is a field automorphism of $F$, so is $\varphi^n$. Hence the fixed points of $\varphi^n$ form a subfield. This means that $R_f$ is a subfield, hence a splitting field for $f$. Thus, $R_f \cong F$. 
 \end{proof}
 
 \subsection{Lecture 13}
@@ -1322,11 +1323,11 @@ If $\varphi \in \aut(\F_q/\F_p)$, then $\varphi^n = \id$. Thus, it suffices to s
 There is a bijection $\left(\text{subfields of } \F_q\right) \cong_{\mathbf{Set}} \left(\text{subgroups of } \aut(\F_q)\right)$.
 \end{prop}
 \begin{proof}
-Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We have that $\left\lvert{F}\right\rvert \mid \left\lvert{\F_q}\right\rvert =p^n$, so that $\left\lvert{F}\right\rvert \leq p^d$ for some $d\leq n$. Since $\F_q \supset F$, we have that $\F_q$ is a vector space over $F$. If $\left[\F_q : F\right] = r$, then $\F_q \cong F^{\oplus r}$ as $F$-vector spaces. Note that $$p^n = \left\lvert{\F_q}\right\rvert = \left\lvert{F}\right\rvert^r = (p^d)^r = p^{dr},$$ which implies that $d \mid n$.
+Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We have that $\left\lvert{F}\right\rvert \mid \left\lvert{\F_q}\right\rvert =p^n$, so that $\left\lvert{F}\right\rvert \leq p^d$ for some $d\leq n$. Since $\F_q \supset F$, we have that $\F_q$ is a vector space over $F$. If $\left[\F_q : F\right] = r$, then $\F_q \cong F^{\oplus r}$ as $F$-vector spaces. Note that $$p^n = \left\lvert{\F_q}\right\rvert = \left\lvert{F}\right\rvert^r = \left(p^d\right)^r = p^{dr},$$ which implies that $d \mid n$.
 
 \medskip
 
- Since $F$ is a finite field, it follows that $F^{\times}$ is cyclic of order $p^d -1$. Hence any $a\in F\subset \F_q$ satisfies $a^{p^d} =a$. But if $ d\mid n$, then $x^q -x = x^{p^n} -x = (x^{p^d} -x)g(x)$ because $p^n -1 = p^{dr}-1 = (p^d)^r -1 = (p^d -1)m$ so that $x^{q-1}-1 = (x^{p^d -1} -1) g(x)$. But $\F_q$ is the splitting field for $x^q-x$, and all roots of this are distinct. Thus, there are exactly $p^d$ roots of $x^q-x$ that are the distinct roots of $x^{p^d}-x$. Therefore, $$F = \F_{p^d} = \left(\text{subfield of } \F_q \text{ that is the splitting field for } x^{p^d} -x\right)= \left(\text{fixed subfield of } \varphi^d\right).$$ Hence $F$ is the fixed point subgroup of $\langle \varphi^d\rangle \unlhd \aut(\F_q)$.
+ Since $F$ is a finite field, it follows that $F^{\times}$ is cyclic of order $p^d -1$. Hence any $a\in F\subset \F_q$ satisfies $a^{p^d} =a$. But if $ d\mid n$, then $x^q -x = x^{p^n} -x = \left(x^{p^d} -x\right)g(x)$ because $p^n -1 = p^{dr}-1 = \left(p^d\right)^r -1 = \left(p^d -1\right)m$ so that $x^{q-1}-1 = \left(x^{p^d -1} -1\right) g(x)$. But $\F_q$ is the splitting field for $x^q-x$, and all roots of this are distinct. Thus, there are exactly $p^d$ roots of $x^q-x$ that are the distinct roots of $x^{p^d}-x$. Therefore, $$F = \F_{p^d} = \left(\text{subfield of } \F_q \text{ that is the splitting field for } x^{p^d} -x\right)= \left(\text{fixed subfield of } \varphi^d\right).$$ Hence $F$ is the fixed point subgroup of $\langle \varphi^d\rangle \unlhd \aut(\F_q)$.
 
 \medskip
 
@@ -1345,7 +1346,7 @@ Let $F \subset \F_q$ be a subfield, so that $\F_p \subset F \subset \F_q$. We ha
 \begin{enumerate}
 \item Let $\F_q^{\times} = \langle \theta \rangle$. Then $\F_q =\F_p(\theta)$, meaning that $\theta$ is a \textit{primitive element} for the extension $\F_q \supset \F_p$. Further, if $h$ denotes the minimal polynomial of $\theta$ over $\F_p$, then $\F_q$ is the splitting field for $h$.
 \begin{proof}
-Every nonzero element of $\F_q$ is a power of $\theta$. Hence $\F_q = \F_p(\theta)$. Now, note that $\deg{h} = n$ because $[\F_q : \F_p]=n$. Write $h(x) = x^n +a_{n-1}x^{n-1}+\cdots + a_0$ where each $a_i \in \F_p$. If we view $h$ over $\F_q$, then $\varphi(a_i) = a_i$ due to Fermat's little theorem. Hence $\varphi(h(x)) = h(\varphi(x))$ for any $x\in \F_q$, meaning that $\varphi(c)$ is a root of $h$ whenever $c$ is a root. Thus, we get $n$ roots of $h$. $$ \theta, \ \theta^p, \ \theta^{p^2}, \ldots, \theta^{p^{n-1}}   $$ If $K$ is the splitting field for $h$, then $\F_p \subset K \subset \F_q$. But $[K :\F_p] = n = [\F_q: \F_p]$, so that $K = \F_q$.
+Every nonzero element of $\F_q$ is a power of $\theta$. Hence $\F_q = \F_p(\theta)$. Now, note that $\deg{h} = n$ because $\left[\F_q : \F_p\right]=n$. Write $h(x) = x^n +a_{n-1}x^{n-1}+\cdots + a_0$ where each $a_i \in \F_p$. If we view $h$ over $\F_q$, then $\varphi(a_i) = a_i$ due to Fermat's little theorem. Hence $\varphi(h(x)) = h(\varphi(x))$ for any $x\in \F_q$, meaning that $\varphi(c)$ is a root of $h$ whenever $c$ is a root. Thus, we get $n$ roots of $h$. $$ \theta, \ \theta^p, \ \theta^{p^2}, \ldots, \theta^{p^{n-1}}   $$ If $K$ is the splitting field for $h$, then $\F_p \subset K \subset \F_q$. But $[K :\F_p] = n = [\F_q: \F_p]$, so that $K = \F_q$.
 \end{proof}
 \item Let $m\geq 0$ be any integer and $q=p^n$. Then there is some irreducible polynomial over $\F_q$ of degree $m$
 \begin{proof}
@@ -1367,11 +1368,11 @@ Define the \textit{M\"{o}bius function $\mu : \Z_{>0} \to \{{-1}, 0, 1\}$} by $$
 \begin{prop} $ $
 \begin{enumerate}
 \item $\mu(k) \ne 0$ for some $k$.
-\item $\mu(nm) = \mu(n) \mu(m)$ when $(n,m) = 1$.
+\item $\mu(nm) = \mu(n) \mu(m)$ when $\left(n,m\right) = 1$.
 \item $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$ (This completely characterizes the M\"{o}bius function.)
 \end{enumerate}
 \end{prop}
-\begin{proof} Let $n>0$ be an integer and write $p_1^{k_1}\cdots p_k^{r_k}$ where the prime $p_i$ are pairwise distinct. Let $n_0 = p_1\cdots p_k$. Then $\sum_{d\mid n}\mu(d) =\sum_{d\mid n_0} \mu(d)$. If $d\mid n_0$, then $d= p_{i_1}\cdots p_{i_s}$, so that $\mu(d) = ({-1})^s$. By the binomial theorem, it follows that \begin{align*} \sum_{d\mid n_0}\mu(d) & = \sum_{s=0}^k {k\choose s}({-1})^2\\ & = (1-1)^k=\begin{cases} 1 & k=0 \\ 0 & k>0 \end{cases}  . \end{align*}
+\begin{proof} Let $n>0$ be an integer and write $p_1^{k_1}\cdots p_k^{r_k}$ where the prime $p_i$ are pairwise distinct. Let $n_0 = p_1\cdots p_k$. Then $\sum_{d\mid n}\mu(d) =\sum_{d\mid n_0} \mu(d)$. If $d\mid n_0$, then $d= p_{i_1}\cdots p_{i_s}$, so that $\mu(d) = \left({-1}\right)^s$. By the binomial theorem, it follows that \begin{align*} \sum_{d\mid n_0}\mu(d) & = \sum_{s=0}^k {k\choose s}({-1})^2\\ & = \left(1-1\right)^k=\begin{cases} 1 & k=0 \\ 0 & k>0 \end{cases}  . \end{align*}
 Thus, $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
 \end{proof}
 
@@ -1427,9 +1428,9 @@ Let $n_0 = p_1 \cdots p_k$. Then
 
 
 
-Let $p(x)= x^n -1 \in \Q[x]$ with $n>0$. Let $\Gamma_n$ be the splitting field for $p(x)$. We know that $\Gamma_n = \Q(\zeta_n)$, where $\zeta_n$ denotes a primitive $n$-th root of unity in $\C$. Let the set $\text{Prim}_n$ consist of all the primitive $n$-th roots of unity. 
+Let $p(x)= x^n -1 \in \Q[x]$ with $n>0$. Let $\Gamma_n$ be the splitting field for $p(x)$. We know that $\Gamma_n = \Q(\zeta_n)$, where $\zeta_n$ denotes a primitive $n$-th root of unity in $\C$. Let the set $\prim_n$ consist of all the primitive $n$-th roots of unity. 
 
-We have that $\mu_n = \{1, \zeta_n, \zeta_n^2, \ldots, \zeta_n^{n-1}\} =\coprod_{d\mid n} \text{Prim}_d$. Define the \textit{$d$-th cyclotomic polynomial} as $$\Phi_d(x) = \prod_{\alpha \in \text{Prim}_d}(x-\alpha).$$ 
+We have that $\mu_n = \left\{1, \zeta_n, \zeta_n^2, \ldots, \zeta_n^{n-1}\right\} =\coprod_{d\mid n} \prim_d$. Define the \textit{$d$-th cyclotomic polynomial} as $$\Phi_d(x) = \prod_{\alpha \in \prim_d}(x-\alpha).$$ 
 For example,
 \begin{align*}
 \Phi_1 & = x-1
@@ -1449,7 +1450,7 @@ Moreover, since $\deg{\Phi_n}= \varphi(n)$, it follows that $\left[\Gamma_n : \Q
 
 Let $q= p^n$. Let $\psi_d(q) = \#\{p(x)$ irreducible over $\F_q \mid \deg{p(x)} =d \}$. If $f(x) \in \F_q[x]$ is irreducible, then $F = \faktor{\F_q[x]}{(f)}$ is a finite field. Thus, $\#F = g^d = p^{nd}$, so that $F$ is the splitting field for $x^{p^{nd}}-x$ over $\F_p$. Also, $F$ is just the set of roots of $x^{p^{nd}}-x$.  By construction, the polynomial $f(x) \in \F_q[x]$ has a root over $F$, and $x^{p^{nd}}-x \in \F_q[x]$ has a root in $F$. 
 
-Since $f(x)$ is irreducible in $\F_q[x]$, we see that $\left(f, x^{p^{nd}}-x\right) \in \{1,f\}$ in $\F_q[x]$. But if $(f, x^{p^{nd}}-x)=1$, then $1 = a(x)f(x) + b(x)(x^{p^{nd}}-x)$.  with $a, b\in \F_q[x]$. If we write this as an equation in $F[x]$, then evaluating on $\alpha \in F$ a common root of $f(x)$ and $x^{p^{nd}}-x$ will give us a contradiction. Hence $f(x) \mid x^{p^{nd}}-x$ in $\F_q[x]$. Since all roots of $x^{p^{nd}}-x$ are pairwise distinct, we see that any irreducible monic polynomial of degree $d$ over $\F_q$ appears exactly once in the decomposition of $x^{p^{nd}}-x$ into irreducibles. Note that if $m =dr$, then $$x^{q^d}-x \mid \underbrace{x^{q^m} -x}_{\text{distinct roots}},$$ and thus every irreducible monic polynomial over $\F_q$ of degree dividing $m$ appears exactly once in the irreducible decomposition of $x^{q^m}-x$. 
+Since $f(x)$ is irreducible in $\F_q[x]$, we see that $\left(f, x^{p^{nd}}-x\right) \in \{1,f\}$ in $\F_q[x]$. But if $\left(f, x^{p^{nd}}-x\right)=1$, then $1 = a(x)f(x) + b(x)(x^{p^{nd}}-x)$.  with $a, b\in \F_q[x]$. If we write this as an equation in $F[x]$, then evaluating on $\alpha \in F$ a common root of $f(x)$ and $x^{p^{nd}}-x$ will give us a contradiction. Hence $f(x) \mid x^{p^{nd}}-x$ in $\F_q[x]$. Since all roots of $x^{p^{nd}}-x$ are pairwise distinct, we see that any irreducible monic polynomial of degree $d$ over $\F_q$ appears exactly once in the decomposition of $x^{p^{nd}}-x$ into irreducibles. Note that if $m =dr$, then $$x^{q^d}-x \mid \underbrace{x^{q^m} -x}_{\text{distinct roots}},$$ and thus every irreducible monic polynomial over $\F_q$ of degree dividing $m$ appears exactly once in the irreducible decomposition of $x^{q^m}-x$. 
 
 For each $d\geq 1$, let $f_{d,1}, f_{d,2}, \ldots, f_{d, \psi_d(q)}$ be irreducible monic polynomials over $\F_q$ of degree $d$. Then for any $m\geq 1$, we get
 \begin{align*}
@@ -1490,7 +1491,7 @@ Conversely, let $L^G =K$.  Take $\alpha \in L$ and let $\orb_G(\alpha) = \left\{
 
 Apply part (b) to $P = K$ and $Q=L$. In this case, (b) implies that if $L^G=K$, then $\left\lvert{\gal(L/K)}\right\rvert = [L:K]=n$. Thus, we must show that $G = \gal(L/K)$.
 
-Let $\varphi \in \gal(L/K)$. Recall that $f(x)$ is the minimal polynomial of $\alpha$ over $K$. Note that $\varphi(x)$ is a root of $f^{\varphi}(x)$. Indeed, since $\varphi_K = \id_K$, we have that $f^{\varphi}(x) = f(x)$. Hence $\varphi(\alpha) \in \orb_G(\alpha)$, so that there exists $g\in G$ such that $\varphi(\alpha) = g(\alpha)$. If $L$ is a finite field, then we can take $\alpha$ to be the generator of $L^{\times}$, in which case $\varphi(\alpha) = g(\alpha) \implies \varphi(\alpha^k)= g(\alpha^k)$ for each $k \implies \varphi = g.$ If $L$ is infinite, then $K$ is infinite and for any $g\in G$, we consider $L_g = \{a\in L \mid \varphi(a) = g(a)\}\subset L$. By definition, $L_g = L^{g^{-1}\circ \varphi}$ is a subfield in $L$. This contains $K$ because $g^{-1}\circ \varphi \in \gal(L/K)$. Therefore, $K\subset L_g \subset L$ is a field extension, meaning that $L_g$ is a $K$-vector subspace in $L$.
+Let $\varphi \in \gal(L/K)$. Recall that $f(x)$ is the minimal polynomial of $\alpha$ over $K$. Note that $\varphi(x)$ is a root of $f^{\varphi}(x)$. Indeed, since $\varphi_K = \id_K$, we have that $f^{\varphi}(x) = f(x)$. Hence $\varphi(\alpha) \in \orb_G(\alpha)$, so that there exists $g\in G$ such that $\varphi(\alpha) = g(\alpha)$. If $L$ is a finite field, then we can take $\alpha$ to be the generator of $L^{\times}$, in which case $\varphi(\alpha) = g(\alpha) \implies \varphi(\alpha^k)= g(\alpha^k)$ for each $k \implies \varphi = g.$ If $L$ is infinite, then $K$ is infinite and for any $g\in G$, we consider $L_g = \left\{a\in L \mid \varphi(a) = g(a)\right\}\subset L$. By definition, $L_g = L^{g^{-1}\circ \varphi}$ is a subfield in $L$. This contains $K$ because $g^{-1}\circ \varphi \in \gal(L/K)$. Therefore, $K\subset L_g \subset L$ is a field extension, meaning that $L_g$ is a $K$-vector subspace in $L$.
 
 We have shown that $L = \bigcup_{g\in G} L_g$.
 \begin{claim}
@@ -1499,7 +1500,7 @@ If $K$ is an infinite field and $V$ is a finite-dimensional $K$-vector space and
 \begin{proof}
 Suppose that each $V_i \subsetneq V$ and that $V= \bigcup_{i=1}^g V_i $. Then there exists a linear map $f_i : V \to K$ such that $f_i \restriction_{V_i} =0$ and $f_i \ne 0$. Then $f: V \to K$ given by $f = \prod_{i=1}^kf_i$ is the function associates with a nonzero polynomial in $V= K^n$ of degree $s$.  But $f$ is the zero function since $V = \bigcup_{i=1}^k V_i$, a contradiction.
 \end{proof}
-\item  Suppose that $K \subset P \subset L$. Let $K \subset P \subset Q \subset L$ where $Q = P(\alpha) = P[\alpha]$ and $\alpha$ is a root of some irreducible $h(x) \in P[x]$. Let $f(x) = \prod_{i=1}^m (x-\lambda_i)$ where $\orb_G(\alpha) = \{\lambda_1, \ldots, \lambda_m\} \subset L$. Then $f(x), g(x) \in P[x]$ have a common root, and $h(x)$ is irreducible. Hence $h\mid f$ in $P[x]$.
+\item  Suppose that $K \subset P \subset L$. Let $K \subset P \subset Q \subset L$ where $Q = P(\alpha) = P[\alpha]$ and $\alpha$ is a root of some irreducible $h(x) \in P[x]$. Let $f(x) = \prod_{i=1}^m (x-\lambda_i)$ where $\orb_G(\alpha) = \left\{\lambda_1, \ldots, \lambda_m\right\} \subset L$. Then $f(x), g(x) \in P[x]$ have a common root, and $h(x)$ is irreducible. Hence $h\mid f$ in $P[x]$.
 
 Let $\varphi : P \to L$ be any field homomorphism over $K$.  Then $h^{\varphi}\mid \underbrace{f^{\varphi}}_{f}$ in $L[x]$. But $f$ decomposes into distinct linear factors in $L[x]$. Hence $h^{\varphi}$ equals a product of a subcollection of these factors.  It follows that $h^{\varphi}$ has $\deg{h^{\varphi}}= \deg{h}$ distinct roots in $L$. By \cref{mlGT}, since $Q \cong P[x]/(h)$, we see that $\varphi$ extends in exactly $\deg{h} - [Q:P]$ many ways. 
 
@@ -1525,22 +1526,22 @@ If $K$ is a field and $f(x) \in K[x]$, then we say that $f$ is \textit{separable
 \subsection{Lecture 16}
 
 \begin{prop}
-A polynomial $f(x) \in K[x]$ is separable over $K$ if and only if $(f, f') =1$.
+A polynomial $f(x) \in K[x]$ is separable over $K$ if and only if $\left(f, f'\right) =1$.
 \end{prop}
 \begin{proof}
-If $f,g \in K[x]$, then $(f,g) \in K[x]$. Suppose there exsits $L \supset K$ such that $f$ has a multiple root in $L$. Then there exists an irreducible polynomial $h(x) \in L[x]$ such that $h^2 \mid f$. This implies that $f = h^2q$, so that $f' = 2hh'q +h^2q' = h(2h'q+hq')$. Hence $h \mid f'$ in $L[x]$. Then $h \mid (f,f')$ in $L[x]$, making $(f,f') \ne 1$.
+If $f,g \in K[x]$, then $\left(f,g\right) \in K[x]$. Suppose there exsits $L \supset K$ such that $f$ has a multiple root in $L$. Then there exists an irreducible polynomial $h(x) \in L[x]$ such that $h^2 \mid f$. This implies that $f = h^2q$, so that $f' = 2hh'q +h^2q' = h(2h'q+hq')$. Hence $h \mid f'$ in $L[x]$. Then $h \mid \left(f,f'\right)$ in $L[x]$, making $\left(f,f'\right) \ne 1$.
 
 \medskip
 
  
-Conversely, suppose that $(f,f') \ne 1$. Then there exists $h$ irreducible in $K[x]$ such that $h\mid f'$ and $h \mid f$ in $K[x]$. We can write $f=hg$, so that $f' = h'g + hg'$. Either $h \mid g$ or $h'=0$. In the former case, we have that $h \mid g \implies h^2 \mid f \implies f$ has a double root in $L = \faktor{K[x]}{(h)}$. In the latter case, we see that $\Char{K} = p>0$ and $h(x) = a_0 + a_1x^p + a_2x^{2p} + \cdots + a_sx^{sp}$ with $a_s \ne 0$. Let $L \supset K$ be a finite field extension such that for any $i=0, \ldots, s$, we have $b_i$ such that $b_i^p = q_i$. Then viewing $h(x) \in L[x]$, we get $h(x) = (b_0 + b_1x + b_2x^2 + \cdots + b_sx^s)^p$ since $b_s \ne 0$. Hence if $\varphi(x)$ is an irreducible factor of $b_0 + b_1x + \cdots + b_sx^s$ in $L[x]$, then if $F = \faktor{L[x]}{(\varphi)}$, then $\varphi$ has a root in $F$ and $h$ will have a root with multiplicity $p$ in $F$. In this case, $f$ has a root with multiplicity $p$ in $F$.
+Conversely, suppose that $\left(f,f'\right) \ne 1$. Then there exists $h$ irreducible in $K[x]$ such that $h\mid f'$ and $h \mid f$ in $K[x]$. We can write $f=hg$, so that $f' = h'g + hg'$. Either $h \mid g$ or $h'=0$. In the former case, we have that $h \mid g \implies h^2 \mid f \implies f$ has a double root in $L = \faktor{K[x]}{(h)}$. In the latter case, we see that $\Char{K} = p>0$ and $h(x) = a_0 + a_1x^p + a_2x^{2p} + \cdots + a_sx^{sp}$ with $a_s \ne 0$. Let $L \supset K$ be a finite field extension such that for any $i=0, \ldots, s$, we have $b_i$ such that $b_i^p = q_i$. Then viewing $h(x) \in L[x]$, we get $h(x) = \left(b_0 + b_1x + b_2x^2 + \cdots + b_sx^s\right)^p$ since $b_s \ne 0$. Hence if $\varphi(x)$ is an irreducible factor of $b_0 + b_1x + \cdots + b_sx^s$ in $L[x]$, then if $F = \faktor{L[x]}{(\varphi)}$, then $\varphi$ has a root in $F$ and $h$ will have a root with multiplicity $p$ in $F$. In this case, $f$ has a root with multiplicity $p$ in $F$.
 \end{proof}
 
 \begin{corollary}
 If $K$ has $\Char{K} =0$, then every irreducible $f(x) \in K[x]$ is separable. 
 \end{corollary}
 \begin{proof}
-If $\Char{K}=0$, then $f \ne 0$ and $f$ is irreducible. Since $\deg{f} >0$, it follows that $f' \ne 0$. Hence $(f,f')$ is a polynomial of degree $\geq 0$. Since $f$ is irreducible, this means that $(f,f') \in \left\{1, f\right\}$. But $\deg{f'} < \deg{f}$, so that $\left(f,f'\right) =1$.
+If $\Char{K}=0$, then $f \ne 0$ and $f$ is irreducible. Since $\deg{f} >0$, it follows that $f' \ne 0$. Hence $\left(f,f'\right)$ is a polynomial of degree $\geq 0$. Since $f$ is irreducible, this means that $\left(f,f'\right) \in \left\{1, f\right\}$. But $\deg{f'} < \deg{f}$, so that $\left(f,f'\right) =1$.
 \end{proof}
 
 \begin{corollary}
@@ -1551,13 +1552,13 @@ If $f(x) \in K[x]$ is irreducible and $\Char{K} \nmid \deg{f}$, then $f$ is sepa
 Every irreducible polynomial $f$ over a finite field $F$ is separable. 
 \end{corollary}
 \begin{proof}
-If $f$ is irreducible and $f' \ne 0$, then apply a similar argument to the proof of \cref{cor16}. Suppose $f'=0$. Then $f(x) = a_0 + a_1x^p + \cdots + a_sx^{sp}$ with $p= \Char{F}$. But as $F$ is finite, we know that the Frobenius map $\varphi$ is an automorphism. Thus, any element in $F$ has a $p$-th root in $F$. Hence there exists $b_i \in F$ such that $b_i^p = a_i$. This shows that $f(x) = (b_0 + b_1x + \cdots + b_sx^s)^p$, which contradicts that $f$ is irreducible over $F$.
+If $f$ is irreducible and $f' \ne 0$, then apply a similar argument to the proof of \cref{cor16}. Suppose $f'=0$. Then $f(x) = a_0 + a_1x^p + \cdots + a_sx^{sp}$ with $p= \Char{F}$. But as $F$ is finite, we know that the Frobenius map $\varphi$ is an automorphism. Thus, any element in $F$ has a $p$-th root in $F$. Hence there exists $b_i \in F$ such that $b_i^p = a_i$. This shows that $f(x) = \left(b_0 + b_1x + \cdots + b_sx^s\right)^p$, which contradicts that $f$ is irreducible over $F$.
 \end{proof}
 
 \begin{exmp}
 There are irreducible polynomials over fields of characteristic $>0$ that are not separable. For example, let $K = \F_p(t)$ and $f(x) = x^p-t$. This is irreducible in $K[x]$ but not separable over $K$.
 
-Indeed,  if $L \supset K$ is such that $f$ has a root $\alpha$ in $L$, then $f$ splits in $L[x]$. We can write $f(x) = (x-\alpha)^p$. But if $0 <k < p$, then $\alpha^k \notin K$. This shows that $f$ is irreducible in $F[x]$ but has a root of multiplicity $p$.
+Indeed,  if $L \supset K$ is such that $f$ has a root $\alpha$ in $L$, then $f$ splits in $L[x]$. We can write $f(x) = \left(x-\alpha\right)^p$. But if $0 <k < p$, then $\alpha^k \notin K$. This shows that $f$ is irreducible in $F[x]$ but has a root of multiplicity $p$.
 \end{exmp}
 
 
@@ -1565,7 +1566,12 @@ Indeed,  if $L \supset K$ is such that $f$ has a root $\alpha$ in $L$, then $f$ 
 If $f(x) \in K[x]$ and every irreducible factor of $f$ is separable over $K$, then the splitting field $L$ of $f$ is Galois over $K$.
 \end{theorem}
 \begin{proof}
-We constructed $L$ as a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s = L$$ where $K_{i+1} = K_i(\alpha_{i+1})$ and $\alpha_{i+1}$  is a root of some irreducible factor $f_{i+1}(x)$ of $f(x)\in K_i[x]$. Since $f_{i+1}$ is irreducible in $K_i[x]$ and $f_{i+1} \mid f $ in $K_i[x]$, it follows that $f_{i+1}$ must divide one of the irreducible factors of $f(x)$ in $K[x]$. But these are separable, which implies that $f_{i+1}$ is separable for each $i$. By \cref{mlGT}, a field homomorphism $\varphi : K \to L$ extends to an isomorphism $\varphi : L \to L$ in $$\left(\# \text{ of distinct roots in } f_1\right) \cdot \left(\# \text{ of distinct roots in }f_2\right)\cdots \left(\# \text{ of distinct roots in }f_{s-1}\right)$$ many ways. Note that (\# of distinct roots in $f_1$) $\cdot$ (\# of distinct roots in $f_2$)$\cdots$ (\# of distinct roots in $f_{s-1}$) $= \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}}$. Hence $$\left\lvert{\gal(L/K)}\right\rvert = \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}} = [K_1: K_0][K_2: K_1] \cdots [K_s: K_{s-1}] = [L:K].$$
+We constructed $L$ as a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s = L$$ where $K_{i+1} = K_i(\alpha_{i+1})$ and $\alpha_{i+1}$  is a root of some irreducible factor $f_{i+1}(x)$ of $f(x)\in K_i[x]$. Since $f_{i+1}$ is irreducible in $K_i[x]$ and $f_{i+1} \mid f $ in $K_i[x]$, it follows that $f_{i+1}$ must divide one of the irreducible factors of $f(x)$ in $K[x]$. But these are separable, which implies that $f_{i+1}$ is separable for each $i$. By \cref{mlGT}, a field homomorphism $\varphi : K \to L$ extends to an isomorphism $\varphi : L \to L$ in $$\left(\# \text{ of distinct roots in } f_1\right) \cdot \left(\# \text{ of distinct roots in }f_2\right)\cdots \left(\# \text{ of distinct roots in }f_{s-1}\right)$$ many ways. Note that 
+\begin{gather*}
+\left(\# \text{ of distinct roots in } f_1\right) \cdot \left(\# \text{ of distinct roots in } f_2\right)\cdots \left(\# \text{ of distinct roots in } f_{s-1}\right) 
+\\  = \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}}.
+\end{gather*}
+Hence $$\left\lvert{\gal(L/K)}\right\rvert = \deg{f_1}\cdot \deg{f_2} \cdots \deg{f_{s-1}} = \left[K_1: K_0\right]\left[K_2: K_1\right] \cdots \left[K_s: K_{s-1}\right] = \left[L:K\right].$$
 \end{proof}
 
 \smallskip
@@ -1576,9 +1582,9 @@ If $f(x) \in K[x]$ and $L \supset K$ is the splitting field for $f$, then let $\
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $K$ be a field and let $f(x) \in K[x]$ be irreducible of degree $2$. Let $L$ denote the splitting field for $f(x)$. Then $K[\sqrt{D}]$ where $D = \disc(f) \in K$. In this case, $[L:K] = 2$, and $\gal(L/K) \subset S_2$ since $D \ne 0$. Thus, $f$ must have distinct roots in $L$. Note that $\gal(L/K) \ne \{\id\}$, since these roots are not in $K$. This shows that $\gal(L/K) = \langle \sigma \rangle = S_2$ where $\sigma : L \to L$ is given by $a + b \sqrt{D} \mapsto a-b \sqrt{D}$.
+\item Let $K$ be a field and let $f(x) \in K[x]$ be irreducible of degree $2$. Let $L$ denote the splitting field for $f(x)$. Then $K\left[\sqrt{D}\right]$ where $D = \disc(f) \in K$. In this case, $[L:K] = 2$, and $\gal(L/K) \subset S_2$ since $D \ne 0$. Thus, $f$ must have distinct roots in $L$. Note that $\gal(L/K) \ne \{\id\}$, since these roots are not in $K$. This shows that $\gal(L/K) = \langle \sigma \rangle = S_2$ where $\sigma : L \to L$ is given by $a + b \sqrt{D} \mapsto a-b \sqrt{D}$.
 \item Let $q=p^n$. Consider the extension $\F_q \supset \F_p$. Then $\gal(\F_q/\F_p) = \langle \varphi \rangle \cong \Z/n$.
-\item Recall that the cyclotomic field $\Gamma_n \supset \Q$ is the splitting field for $x^n-1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$. This polynomial has irreducible factors each of which is separable. Thus, $\Gamma_n \supset \Q$ is a Galois extension such that $\gal(\Gamma_n / \Q) \subset S_{\mu_n}$. Since any $g \in \gal(\Gamma_n/\Q)$ respects multiplication in $\Gamma_n$, we see that $g \restriction_{\mu_n} : \mu_n \to \mu_n$ is a a group automorphism. It follows that $\gal(\Gamma_n / \Q) \subset \aut_{\mathbf{Grp}}(\mu_n) \cong (\Z/n)^{\times}$, which has order $\phi(n)$.   We have shown that the minimal polynomial of a root of $1$ over $\Q$ is precisely $\Phi_n(x)$, where $\deg{\Phi_n(x)} = \phi(n)$. Hence $[\Gamma_n : \Q]= \phi(n)$, so that $\gal(\Gamma_n / \Q) = (\Z/n)^{\times}$.
+\item Recall that the cyclotomic field $\Gamma_n \supset \Q$ is the splitting field for $$x^n-1 = \left(x-1\right)\left(x^{n-1} + x^{n-2} + \cdots + x + 1\right).$$ This polynomial has irreducible factors each of which is separable. Thus, $\Gamma_n \supset \Q$ is a Galois extension such that $\gal(\Gamma_n / \Q) \subset S_{\mu_n}$. Since any $g \in \gal(\Gamma_n/\Q)$ respects multiplication in $\Gamma_n$, we see that $g \restriction_{\mu_n} : \mu_n \to \mu_n$ is a a group automorphism. It follows that $\gal(\Gamma_n / \Q) \subset \aut_{\mathbf{Grp}}(\mu_n) \cong (\Z/n)^{\times}$, which has order $\phi(n)$.   We have shown that the minimal polynomial of a root of $1$ over $\Q$ is precisely $\Phi_n(x)$, where $\deg{\Phi_n(x)} = \phi(n)$. Hence $\left[\Gamma_n : \Q\right]= \phi(n)$, so that $\gal(\Gamma_n / \Q) = \left(\Z/n\right)^{\times}$.
 \item Suppose that $\Char{K} \notin \{2,3\}$. Let $f(x) \in K[x]$ be irreducible and monic of degree $3$. Let $D \in K$ denote the discriminant of $f$. Let $L \supset K$ be the splitting field for $f$, so that $L \supset K$ is Galois. Then $$\left\lvert{\gal(L/K)}\right\rvert = \begin{cases} 6 & D \notin K^2  \\ 3 & D \in K^2    \end{cases}.$$ But $\gal(L/K) \subset S_3$. This shows that $$\gal(L/K) = \begin{cases} S_3 & D \notin K^2  \\ A_3 & D \in K^2    \end{cases}.$$
 \end{enumerate}
 \end{exmp}
@@ -1605,7 +1611,7 @@ As a result, if $A$ is a finitely generated algebra without zero divisions, then
 Suppose that $\left\{u_1, \ldots, u_n\right\}$ is a transcendence basis of $A/k$ and that $v$ is transcendental over $k[u_1, \ldots, u_n]$. Then $\left\{ v, u_2, u_3, \ldots, u_n \right\}$ is also a transcendence basis of $A/k$.
 \end{lemma}
 \begin{proof}
-Note that $v, u_2, \ldots, u_n$ are algebraically independent over $k$ whereas $v, u_1, u_2, \ldots, u_n$ are algebraically dependent. A nontrivial algebraic relation among these will be given by a polynomial $p(x)$ over $k$ such that $p(x)$ includes a monomial involving $u_1$ with a nonzero coefficient. Then $p(x)$ can be viewed as a nonzero polynomial in $(k[v, u_1, \ldots, u_n])[u_1]$ with $\deg \geq 1$ on $u$. We have that $u_1$ is algebraic over $k[v, u_1, \ldots, u_n]$. Thus, the algebraic closure of $k[v, u_2, \ldots, u_n]$ in $\Frac(A)$ contains $u_1$, hence contains $A$. It follows that the algebraic closure of $k[v, u_2, \ldots, u_n]$ equals $\Frac(A)$.
+Note that $v, u_2, \ldots, u_n$ are algebraically independent over $k$ whereas $v, u_1, u_2, \ldots, u_n$ are algebraically dependent. A nontrivial algebraic relation among these will be given by a polynomial $p(x)$ over $k$ such that $p(x)$ includes a monomial involving $u_1$ with a nonzero coefficient. Then $p(x)$ can be viewed as a nonzero polynomial in $\left(k\left[v, u_1, \ldots, u_n\right]\right)\left[u_1\right]$ with $\deg \geq 1$ on $u$. We have that $u_1$ is algebraic over $k[v, u_1, \ldots, u_n]$. Thus, the algebraic closure of $k[v, u_2, \ldots, u_n]$ in $\Frac(A)$ contains $u_1$, hence contains $A$. It follows that the algebraic closure of $k[v, u_2, \ldots, u_n]$ equals $\Frac(A)$.
 
 \medskip
 
@@ -1630,7 +1636,7 @@ $\trdeg$ is an invariant of the extension $\widetilde{F}$.
 Let $k$ be a field and $a_1, a_2, \ldots, a_n$ be indeterminates.  Let $K\coloneqq  k(a_1, \ldots, a_n)$. Consider $f(x) = x^n + a_1x^{n-1} + a_2x^{n-2} + \cdots a_n \in K[x]$. Then $\gal(L/K) = S_n$ where $L$ denotes the splitting field for $f$.
 \end{exmp}
 \begin{proof}
-Let $x_1, x_2, \ldots, x_n \in L$ denote the roots of $f$. Then $a_i = ({-1})^i\sigma_i(x_1, \ldots, x_n)$ where $\sigma_i$ denotes the $i$-th elementary symmetric function. Hence $L = K(x_1, \ldots, x_n) = k(x_1, \ldots, x_n)$. Consider the chain of field extensions $L \supset K \supset k$. Note that $L \supset K$ is an algebraic extension and that $K \supset k$ is a transcendental extension because $K$ is obtained from adding $n$ independent transcendentals to $K$.
+Let $x_1, x_2, \ldots, x_n \in L$ denote the roots of $f$. Then $a_i = \left({-1}\right)^i\sigma_i(x_1, \ldots, x_n)$ where $\sigma_i$ denotes the $i$-th elementary symmetric function. Hence $L = K(x_1, \ldots, x_n) = k(x_1, \ldots, x_n)$. Consider the chain of field extensions $L \supset K \supset k$. Note that $L \supset K$ is an algebraic extension and that $K \supset k$ is a transcendental extension because $K$ is obtained from adding $n$ independent transcendentals to $K$.
 
 \medskip
 
@@ -1668,7 +1674,7 @@ We compute
 \begin{align*}
 \left\lvert{\gal(L/P)}\right\rvert & = [L:P]
 \\ [P:K] & = \frac{[L:K]}{[L:P]} = \frac{\left\lvert{\gal(L/K)}\right\rvert}{\left\lvert{\gal(L/K)}\right\rvert}
-\\ [P:K] & = [\gal(L/K) : \gal(L/P)].
+\\ [P:K] & = \left[\gal(L/K) : \gal(L/P)\right].
 \end{align*}
 Thus, $P \supset K$ is a Galois extension if and only if any element of $\gal(L/K)$ leaves $P$ invariant. But $P = L^{\gal(L/P)}$, and $P = P^{\gal(L/P)}$. Hence any $g \in \gal(L/P)$ satisfies $$g(P) = g(L^{\gal(L/P)}) = L^{g\gal(L/P)g^{-1}}.$$ It follows that $g(P) = P \iff g\gal(L/P)g^{-1} = \gal(L/P)$.
 \end{proof}
@@ -1677,24 +1683,24 @@ Thus, $P \supset K$ is a Galois extension if and only if any element of $\gal(L/
 
 \begin{exmp}
 Let $K$ be a field with $\Char{K} \notin \{2,3\}$. Let $f$ be an irreducible, monic, cubic polynomial over $K$. Let $L$ be the splitting field for $f$. Let $D\coloneqq  \disc{f} \in K \setminus K^2$. Then $\gal(L/K) = S_3$. We get
-\begin{align*} L & \supset L^{A_3} \supset K  \\   \gal(L/K)  & \unrhd A_3 \unrhd \{e\}  . \end{align*} It follows that $L^{A_3}\supset K$ is Galois with $\gal(L^{A_3}/K) \cong \gal(L/K)/A_3 \cong C_2$. In fact, $L^{A_3} \cong K[\sqrt{D}]$.
+\begin{align*} L & \supset L^{A_3} \supset K  \\   \gal(L/K)  & \unrhd A_3 \unrhd \{e\}  . \end{align*} It follows that $L^{A_3}\supset K$ is Galois with $\gal(L^{A_3}/K) \cong \gal(L/K)/A_3 \cong C_2$. In fact, $L^{A_3} \cong K\left[\sqrt{D}\right]$.
 \end{exmp}
 
 \smallskip
 
 Now, let $p>2$ be prime. Consider the cyclotomic field $\Gamma_p \supset \Q$. We have that $$   \gal(\Gamma_p/\Q) \cong (\Z/p)^{\times} \cong \Z/(p-1) .$$ Let $H \unlhd \gal(\Gamma_p/\Q)$ be the unique subgroup of index $2$. Then $\left[\Gamma_p^H :\Q\right] =2$.
 
-Let $\langle \varphi \rangle = \gal(\Gamma_p /\Q)$. Then $\varphi \restriction_{\mu_p} : \mu_p \to \mu_p$ is a group automorphism and  uniquely determines $\varphi$, which in turn is uniquely determined by the image of $\zeta$ the positive $p$-th root of $1$. Write $\varphi(\zeta) = 1\zeta^r$ for some $r \in \Z_{>0}$ so that $[r]_p \in \Z/p$ is a generator of $(\Z/p)^{\times}$. 
+Let $\langle \varphi \rangle = \gal(\Gamma_p /\Q)$. Then $\varphi \restriction_{\mu_p} : \mu_p \to \mu_p$ is a group automorphism and  uniquely determines $\varphi$, which in turn is uniquely determined by the image of $\zeta$ the positive $p$-th root of $1$. Write $\varphi(\zeta) = 1\zeta^r$ for some $r \in \Z_{>0}$ so that $[r]_p \in \Z/p$ is a generator of $\left(\Z/p\right)^{\times}$. 
 \begin{definition}
-Given $k \in \Z_{>0}$ and prime $p>2$, define the \textit{Legendre symbol} $$\left(\frac{k}{p} \right) = \begin{cases}    1 & [k]_p \in ((\Z/p)^{\times})^2 \\ {-1} & [k]_p \notin  ((\Z/p)^{\times})^2  \end{cases}.$$
+Given $k \in \Z_{>0}$ and prime $p>2$, define the \textit{Legendre symbol} $$\left(\frac{k}{p} \right) = \begin{cases}    1 & [k]_p \in \left(\left(\Z/p\right)^{\times}\right)^2 \\ {-1} & [k]_p \notin  \left(\left(\Z/p\right)^{\times}\right)^2  \end{cases}.$$
 \end{definition}
 Consider $\alpha \in \Gamma_p$ given by $$  \alpha = \sum_{k=1}^{p-1} \left(\frac{k}{p} \right) \zeta^{r^{k-1}} = \zeta - \zeta^r + \zeta^{r^2} - \cdots \zeta^{r^{p-2}}   .$$ If $g\in \gal(\Gamma_p /\Q)$, then $$ g(\alpha) = \begin{cases}  \alpha & g \in H \\ {-}\alpha & g \notin H   \end{cases} . $$ Then $\alpha \in \Gamma_p^H$. Also, $\alpha^2$ is fixed by every element of $\gal(\Gamma_p/\Q)$ and thus is rational. This implies that $\Gamma_p^H = \Q[\alpha]$.
 \begin{lemma}\label{l16}
-$\alpha^2 = ({-1})^{\frac{p-1}{2}}p$, so that $$\Gamma_p^H = \begin{cases} \Q[\sqrt{p}] & p \equiv 1 \mod 4 \\ \Q[\sqrt{{-p}}] & p \not \equiv 1 \mod 4   \end{cases}.$$
+$\alpha^2 = \left({-1}\right)^{\frac{p-1}{2}}p$, so that $$\Gamma_p^H = \begin{cases} \Q\left[\sqrt{p}\right] & p \equiv 1 \mod 4 \\ \Q\left[\sqrt{{-p}}\right] & p \not \equiv 1 \mod 4   \end{cases}.$$
 \end{lemma}
 \begin{proof}
-Let $L \supset K$ be a finite extension of fields. Then for any $u\in L$, we get a map $\mult_u : L \to L$, which is linear over $K$. Applying trace determines a $K$-linear map $L \to K$ given by $u \mapsto \tr(\mult_u)$. This induces a symmetric bilinear map $\langle \cdot, \cdot \rangle : L \otimes_K L \to K$ given by $u \otimes v \mapsto \tr(\mult_u \circ \mult_v)$. Note that if $u \ne 0$, then $$\langle u, u^{-1} \rangle = \tr(\mult_{uu^{-1}}) = \tr(\id_L) =[L:K] $$ since $(\Char{K}, [L:K])=1$. Now, the vector space $\Gamma_p$ has a $\Q$-basis $\left\{1, \zeta, \zeta^2, \ldots, \zeta^{p-2}\right\}$. Hence $\mult_{\zeta^2}$ is a cyclic operator, and $\tr(\mult_1) = p-1$ and $\tr(\mult_{\zeta^k}) = {-1}$ for each $k=1, \ldots, p-2$. It follows that $$ \langle \zeta^k, \zeta^l \rangle = \begin{cases}  p-1 & k+l \equiv 0 \mod p \\ 1 & \text{otherwise}   \end{cases}.$$ If $x = \sum_{i=0}^{p-1} x_i \zeta^i$ and $y = \sum_{i=0}^{p-1} y_i \zeta^i$ are two elements of $\Gamma_p$, then we can choose $x_i$ and $y_i$ such that $\sum x_i = 0$ and $\sum y_i= 0$. Thus, $$\langle x, y \rangle = p(x_0y_0 + \sum{k=1}^{p-1} x_k y_{p-k}).$$ But $\alpha = \sum_{k=1}^{p-1} \left(\frac{k}{p} \right) \zeta^{r^{k-1}}$, so that \begin{align*}
- \alpha^2 = \frac{1}{p-1} \langle \alpha, \alpha \rangle & = \frac{1}{p-1} \sum_{k=1}^{p-1} p \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ &= \frac{p}{p-1} \sum_{k=1}^{p} \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ & = p \left(\frac{-1}{p} \right) = ({-1})^{\frac{p-1}{2}}p
+Let $L \supset K$ be a finite extension of fields. Then for any $u\in L$, we get a map $\mult_u : L \to L$, which is linear over $K$. Applying trace determines a $K$-linear map $L \to K$ given by $u \mapsto \tr(\mult_u)$. This induces a symmetric bilinear map $\langle \cdot, \cdot \rangle : L \otimes_K L \to K$ given by $u \otimes v \mapsto \tr(\mult_u \circ \mult_v)$. Note that if $u \ne 0$, then $$\langle u, u^{-1} \rangle = \tr(\mult_{uu^{-1}}) = \tr(\id_L) =[L:K] $$ since $\left(\Char{K}, \left[L:K\right]\right)=1$. Now, the vector space $\Gamma_p$ has a $\Q$-basis $\left\{1, \zeta, \zeta^2, \ldots, \zeta^{p-2}\right\}$. Hence $\mult_{\zeta^2}$ is a cyclic operator, and $\tr(\mult_1) = p-1$ and $\tr(\mult_{\zeta^k}) = {-1}$ for each $k=1, \ldots, p-2$. It follows that $$ \langle \zeta^k, \zeta^l \rangle = \begin{cases}  p-1 & k+l \equiv 0 \mod p \\ 1 & \text{otherwise}   \end{cases}.$$ If $x = \sum_{i=0}^{p-1} x_i \zeta^i$ and $y = \sum_{i=0}^{p-1} y_i \zeta^i$ are two elements of $\Gamma_p$, then we can choose $x_i$ and $y_i$ such that $\sum x_i = 0$ and $\sum y_i= 0$. Thus, $$\langle x, y \rangle = p(x_0y_0 + \sum{k=1}^{p-1} x_k y_{p-k}).$$ But $\alpha = \sum_{k=1}^{p-1} \left(\frac{k}{p} \right) \zeta^{r^{k-1}}$, so that \begin{align*}
+ \alpha^2 = \frac{1}{p-1} \langle \alpha, \alpha \rangle & = \frac{1}{p-1} \sum_{k=1}^{p-1} p \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ &= \frac{p}{p-1} \sum_{k=1}^{p} \left(\frac{k}{p} \right) \left(\frac{{-}k}{p} \right) \\ & = p \left(\frac{-1}{p} \right) = \left({-1}\right)^{\frac{p-1}{2}}p
 . \end{align*}
 \end{proof}
 
@@ -1744,7 +1750,7 @@ If $K$ is a field with characteristic $0$, $f(x) \in K[x]$ is irreducible, and $
 
 ($\Longleftarrow$) 
 
-We have a series $$ G = G^{(0)} \unrhd G^{(1)} \unrhd \cdots \unrhd G^{(s)} \unrhd \{e\} ,$$ which we can refine to get a normal series $$  G=G_0 \unrhd G_1 \unrhd \cdots \unrhd G_r = \{e\}  $$ such that $G_{i+1}/G_i \cong \Z/n_i$. Letting $K_i = L^{n_i}$, we have a tower $$ K= K_0 \subset K_1 \subset \cdots \subset K_r = L  .$$ Let $F$ be the cyclotomic field that contains all roots of $1$ of order $n= n_1n_2 \cdots n_r$. Consider the tower $$KF \subset K_1F \subset \cdots \subset K_r F = LF.$$  Then $K_{n_i}F \supset K_1F$ is a cyclic extension of degree dividing $n_i$.
+We have a series $$ G = G^{(0)} \unrhd G^{(1)} \unrhd \cdots \unrhd G^{(s)} \unrhd \{e\} ,$$ which we can refine to get a normal series $$  G=G_0 \unrhd G_1 \unrhd \cdots \unrhd G_r = \left\{e\right\}  $$ such that $G_{i+1}/G_i \cong \Z/n_i$. Letting $K_i = L^{n_i}$, we have a tower $$ K= K_0 \subset K_1 \subset \cdots \subset K_r = L  .$$ Let $F$ be the cyclotomic field that contains all roots of $1$ of order $n= n_1n_2 \cdots n_r$. Consider the tower $$KF \subset K_1F \subset \cdots \subset K_r F = LF.$$  Then $K_{n_i}F \supset K_1F$ is a cyclic extension of degree dividing $n_i$.
 \begin{lemma}
 Let $K$ be a field and let $n$ have $\Char{K} \nmid n$. Suppose that $K \supset \mu_n$.
 \begin{enumerate}[label=(\alph*)]
@@ -1762,7 +1768,7 @@ Before proving this, note that (b) implies that $K_{i+1}F \supset K_iF$ for ever
  
 \item Suppose that $\gal\left(\widetilde{K}/K\right)$ is cyclic of order $d \mid n$. We want to show that there exists $\alpha \in K$ such that $\widetilde{K} \cong K(\sqrt[d]{\alpha})$. 
 
-Let $ \alpha \in \widetilde{K}$ and $\xi \in \mu_d \subset \mu_n \subset K$. The \textit{Lagrange resolvent} of $(\alpha, \xi)$ is the element $$ \ell(\alpha, \xi) =    \alpha + \xi \sigma(\alpha) + \xi^2 \sigma^2(\alpha) + \cdots + \xi^{d-1} \sigma^{d-1}(\alpha)$$ of $\widetilde{K}$ where $\sigma \in \gal\left(\widetilde{K}/K\right)$ is a generator. 
+Let $ \alpha \in \widetilde{K}$ and $\xi \in \mu_d \subset \mu_n \subset K$. The \textit{Lagrange resolvent} of $\left(\alpha, \xi\right)$ is the element $$ \ell(\alpha, \xi) =    \alpha + \xi \sigma(\alpha) + \xi^2 \sigma^2(\alpha) + \cdots + \xi^{d-1} \sigma^{d-1}(\alpha)$$ of $\widetilde{K}$ where $\sigma \in \gal\left(\widetilde{K}/K\right)$ is a generator. 
 
 Note that $\sigma(\ell(\alpha, \xi)) = \xi^{-1}\ell(\alpha, \xi)$, so that $\sigma(\ell(\alpha, \xi)^2) = \xi^{-k}\ell(\alpha, \xi)^k$.
 
@@ -1813,13 +1819,13 @@ Suppose that $K$ and $F$ are two finite field extensions of $k$. Then
 \begin{proof} $ $
 \begin{enumerate}[label=(\alph*)]
 \item  If $K\supset k$ is Galois, then $K$ is the splitting field of some separable polynomial $f(x) \in k[x]$. Thus, $KF$ is the splitting field of $f(x)$ viewed over $F$. But if $f$ is separable over $k$, then it is separable over $F$. Therefore, $KF \supset F$ is Galois.
-\item Consider the tower of extensions $k \subset K \subset KF$. The main theorem of Galois theory says that $\gal(K/k) \unlhd \gal(KF/k)$ since $K\supset k$ is assumed to be Galois. Thus, if $\sigma \in \gal(KF/k)$, then $\sigma(K) \subset K$. Indeed, $\sigma(K) = K$ as a subfield in $KF$ if and only if $\sigma(K) = (KF)^{\gal(KF/K)}$. Let $g\in \gal(KF/K) \subset \gal(KF/k)$. Then $g(x) = x$ for any $x\in K$. 
+\item Consider the tower of extensions $k \subset K \subset KF$. The main theorem of Galois theory says that $\gal(K/k) \unlhd \gal(KF/k)$ since $K\supset k$ is assumed to be Galois. Thus, if $\sigma \in \gal(KF/k)$, then $\sigma(K) \subset K$. Indeed, $\sigma(K) = K$ as a subfield in $KF$ if and only if $\sigma(K) = \left(KF\right)^{\gal(KF/K)}$. Let $g\in \gal(KF/K) \subset \gal(KF/k)$. Then $g(x) = x$ for any $x\in K$. 
 
-Let $x\in K$. Consider $\sigma(x) \in KF$.  We must show that $g(\sigma(x)) = \sigma(x)$ for any $g \in \gal(KF/K)$, i.e., $(\sigma^{-1}{g}{\sigma})(x) = x$ for any $g$. But since $\sigma^{-1}{g}{\sigma} \in \sigma^{-1}{\gal(KF/K)}{\sigma}$, we see that $\sigma^{-1}{g}{\sigma}(x) = x$ for any $x\in K$. Hence we get a natural homomorphism $ \rho : \gal(KF/F) \to \gal(K/k)$ given by $\sigma \mapsto \sigma \restriction_K$.  Note that \begin{align*} \ker{\rho} & = \left\{\sigma \in \gal(KF/F) \mid \sigma \restriction_K = \id_K\right\}
+Let $x\in K$. Consider $\sigma(x) \in KF$.  We must show that $g(\sigma(x)) = \sigma(x)$ for any $g \in \gal(KF/K)$, i.e., $\left(\sigma^{-1}{g}{\sigma}\right)(x) = x$ for any $g$. But since $\sigma^{-1}{g}{\sigma} \in \sigma^{-1}{\gal(KF/K)}{\sigma}$, we see that $\sigma^{-1}{g}{\sigma}(x) = x$ for any $x\in K$. Hence we get a natural homomorphism $ \rho : \gal(KF/F) \to \gal(K/k)$ given by $\sigma \mapsto \sigma \restriction_K$.  Note that \begin{align*} \ker{\rho} & = \left\{\sigma \in \gal(KF/F) \mid \sigma \restriction_K = \id_K\right\}
 \\ & = \left\{\sigma \in \gal(KF/k) \mid \sigma \restriction_K = \id_K, \ \sigma \restriction_F = \id_F\right\}.
-\end{align*}  But $KF$ is generated by $K$ and $F$, so that $\sigma = \id_{KF}$. This shows that $\ker{\rho} = \{\id_{KF}\}$. We see that $\gal(KF/F) \subset \gal(K/k)$. 
+\end{align*}  But $KF$ is generated by $K$ and $F$, so that $\sigma = \id_{KF}$. This shows that $\ker{\rho} = \left\{\id_{KF}\right\}$. We see that $\gal(KF/F) \subset \gal(K/k)$. 
 
-Let $H \coloneqq  \im{\rho} \subset \gal(K/k)$ and consider its fixed subfield $K^H$. Note that (b) is equivalent to saying that $K^H - K \cap F$. We have that $K^H \supset K \cap F$ because $K^H = \{x\in K \mid \forall \sigma \in \gal(KF/F).\sigma(x) =x\}$. Moreover, if we view $K^H$ as subfield of $KF$, then $k \subset K^H \subset KF$ and $k \subset F \subset KF$.  Since $\gal(KF/F)$ fixes $K^H$ and $F$ (pointwise), it follows that $\gal(KF/F)$ fixes $K^HF$. Therefore, $K^HF \subset KF^{\gal(KF/F)} = F$, so that $K^H \subset H$. This proves that $K^H \subset F \cap K$. 
+Let $H \coloneqq  \im{\rho} \subset \gal(K/k)$ and consider its fixed subfield $K^H$. Note that (b) is equivalent to saying that $K^H - K \cap F$. We have that $K^H \supset K \cap F$ because $K^H = \left\{x\in K \mid \left(\forall \sigma \in \gal(KF/F)\right)\left(\sigma(x) =x\right)\right\}$. Moreover, if we view $K^H$ as subfield of $KF$, then $k \subset K^H \subset KF$ and $k \subset F \subset KF$.  Since $\gal(KF/F)$ fixes $K^H$ and $F$ (pointwise), it follows that $\gal(KF/F)$ fixes $K^HF$. Therefore, $K^HF \subset KF^{\gal(KF/F)} = F$, so that $K^H \subset H$. This proves that $K^H \subset F \cap K$. 
 \end{enumerate}
 \end{proof}
 
@@ -1875,7 +1881,7 @@ By taking the composites $K_1\sigma K_1 \subset \cdots \subset K_1\sigma K_s$ an
 \medskip
 
 
-We still must prove that each step in our radical tower is Galois and cyclic. Let $n=n_1n_2 \cdots n_k$.  Let $F = K[\mu_n]$. If the tower $K = K_0 \subset K_1 \subset \cdots \subset K_t = L_{\alpha}$ has $K_i = K_{i-1}[\sqrt[n_i]{a_i}]$, then we can pass to composites $$  K \subset K_0F \subset K_1F \subset \cdots \subset K_tF = L_{\alpha}F  .$$ We see that $LF \supset K$ is radical and Galois as the splitting field for $x^n-1$ and that $K_iF \supset K_{i+1}F$ is radical of degree $n_i$ and contains $\mu_{n_i}$. Thus, $K_iF \supset K_{i+1}F$ is Galois and cyclic of degree dividing $n_i$ by \cref{l16}(a). 
+We still must prove that each step in our radical tower is Galois and cyclic. Let $n=n_1n_2 \cdots n_k$.  Let $F = K[\mu_n]$. If the tower $K = K_0 \subset K_1 \subset \cdots \subset K_t = L_{\alpha}$ has $K_i = K_{i-1}\left[\sqrt[n_i]{a_i}\right]$, then we can pass to composites $$  K \subset K_0F \subset K_1F \subset \cdots \subset K_tF = L_{\alpha}F  .$$ We see that $LF \supset K$ is radical and Galois as the splitting field for $x^n-1$ and that $K_iF \supset K_{i+1}F$ is radical of degree $n_i$ and contains $\mu_{n_i}$. Thus, $K_iF \supset K_{i+1}F$ is Galois and cyclic of degree dividing $n_i$ by \cref{l16}(a). 
 
 \medskip
 
@@ -1892,7 +1898,7 @@ It follows that $\gal(LF/K)$ is solvable. But $LF \supset L \supset K$ where $L 
 \subsection{Lecture 21}
 
 \begin{definition}
-Let $K$ be a field and $f(x) \in K[x]$. We say that $f$ is \textit{solvable in quadratic radicals} if the splitting field $L$ for $f$ is a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s =L   $$ such that $K_i =K_{i-1}[\sqrt{a_i}]$ for some $a_i \in K_{i-1}$.
+Let $K$ be a field and $f(x) \in K[x]$. We say that $f$ is \textit{solvable in quadratic radicals} if the splitting field $L$ for $f$ is a tower $$K = K_0 \subset K_1 \subset \cdots \subset K_s =L   $$ such that $K_i =K_{i-1}\left[\sqrt{a_i}\right]$ for some $a_i \in K_{i-1}$.
 \end{definition}
 
 \begin{theorem}\label{solv}
@@ -1909,7 +1915,7 @@ We have that $L \supset K$ is a tower of quadratic extensions. Hence  $[L:K] = 2
 
 ($\Longleftarrow$)  
 
-We have that $[L:K] = 2^n$ for some $n\geq 0$ and $\deg{f} = [K(\alpha): K] \mid [L: K]$ where $\alpha$ is a root of $f(x)$. Thus, $[K(\alpha): K]$ equals a power of $2$, so that $f$ is separable. This shows that $L \supset K$ is Galois and thus that $G\coloneqq  \gal(L/K)$ has order $2^n$. It follows that there is some normal series $$ G =G^0 \unrhd G^1  \unrhd \cdots \unrhd G^s = \{e\}  $$ such that $\faktor{G^{i}}{G^{i+1}} \cong \Z/2$. This induces a tower of field  extensions $$ K= L^{G^0} \subset L^{G_1} \subset \cdots \subset L^{G_s} = L   $$ such that $[L^{G^{i+1}}: L^{G_i}] =2$.
+We have that $[L:K] = 2^n$ for some $n\geq 0$ and $\deg{f} = [K(\alpha): K] \mid [L: K]$ where $\alpha$ is a root of $f(x)$. Thus, $[K(\alpha): K]$ equals a power of $2$, so that $f$ is separable. This shows that $L \supset K$ is Galois and thus that $G\coloneqq  \gal(L/K)$ has order $2^n$. It follows that there is some normal series $$ G =G^0 \unrhd G^1  \unrhd \cdots \unrhd G^s = \left\{e\right\}  $$ such that $\faktor{G^{i}}{G^{i+1}} \cong \Z/2$. This induces a tower of field  extensions $$ K= L^{G^0} \subset L^{G_1} \subset \cdots \subset L^{G_s} = L   $$ such that $[L^{G^{i+1}}: L^{G_i}] =2$.
 \end{proof}
 
 \smallskip
@@ -1943,7 +1949,7 @@ Now, suppose that $K \supsetneq \R$ is a finite field extension. If $[K : \R]$ i
 
 We want to prove the \textit{fundamental theorem of algebra}: that any $f(x) \in \C[x]$ has a root in $\C$. Note that if $c$ is a complex root of $f(x)\overline{f(x)} \in \R[x]$, then either $c$ or $\bar{c}$ is a root of $f(x)$.  Thus, it suffices to show that any polynomial over $\R$ has a root in $\C$.
 
-To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \left\lvert{\gal(L/\R)}\right\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$\left[L: \R\right] = \left[L: L^H\right] = \left\lvert{\gal(L/L^H)}\right\rvert = \left\lvert{H}\right\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $[\C : \R] = 2$. 
+To this end, let $g(x) \in \R[x]$ be non-constant and irreducible. Let $L$ denote the splitting field for $g$. Then $[L :K] = \left\lvert{\gal(L/\R)}\right\rvert$ is even, so that there is some nontrivial $2$-Sylow subgroup $H \leq \gal(L/\R)$. This means that the intermediate extension $L \supset L^H \supset \R$ has odd degree. But then $L^H = \R$. This means that $L \supset L^H$ is Galois, so that $$\left[L: \R\right] = \left[L: L^H\right] = \left\lvert{\gal(L/L^H)}\right\rvert = \left\lvert{H}\right\rvert = 2^n$$ for some $n$. By \cref{solv}, it follows that $g(x)$ is solvable in quadratic radicals. Therefore, $L = \C$ since $\left[\C : \R\right] = 2$. 
 
 
 \begin{theorem}[Primitive element theorem]
@@ -1957,7 +1963,7 @@ If $K$ is finite, then $L$ is a finite group with cyclic multiplicative group $\
 
 ($\Longleftarrow$) 
 
-For any $\alpha, \beta \in L$, consider the collection of intermediate fields $$K \subset K(\alpha + c\beta) \subset L$$ where $c\in K$. Thus,  $ \exists c, c' \in K$ such that $E\coloneqq  K(\alpha + c \beta) = K(\alpha + c' \beta)$. Hence $(c - c')\beta \in E$, and $c- c' \in K \setminus \{0\}$. Then $ \beta \in E$, so that $\alpha \in E$. This shows that $E \supset K(\alpha, \beta)$. It's clear that $E \subset K(\alpha, \beta)$. Hence $E = K(\alpha, \beta)$. But $L \supset K$ is a finite extension, which implies that $L = K(\alpha_1, \ldots, \alpha_n)$ for some $\alpha_1, \ldots, \alpha_n$. By indiction on $n$, we can find elements $c_2, \ldots, c_n \in K$ such that $$ K(\alpha_1, \ldots, \alpha_n) = K(\alpha_1 + c_2\alpha_2 + c_3\alpha_3 + \cdots + c_n \alpha_n ) . $$
+For any $\alpha, \beta \in L$, consider the collection of intermediate fields $$K \subset K(\alpha + c\beta) \subset L$$ where $c\in K$. Thus,  $ \exists c, c' \in K$ such that $E\coloneqq  K(\alpha + c \beta) = K(\alpha + c' \beta)$. Hence $\left(c - c'\right)\beta \in E$, and $c- c' \in K \setminus \{0\}$. Then $ \beta \in E$, so that $\alpha \in E$. This shows that $E \supset K(\alpha, \beta)$. It's clear that $E \subset K(\alpha, \beta)$. Hence $E = K(\alpha, \beta)$. But $L \supset K$ is a finite extension, which implies that $L = K(\alpha_1, \ldots, \alpha_n)$ for some $\alpha_1, \ldots, \alpha_n$. By indiction on $n$, we can find elements $c_2, \ldots, c_n \in K$ such that $$ K(\alpha_1, \ldots, \alpha_n) = K(\alpha_1 + c_2\alpha_2 + c_3\alpha_3 + \cdots + c_n \alpha_n ) . $$
 
 \medskip
 
@@ -2021,19 +2027,19 @@ Let $\left\{\lambda_1, \ldots, \lambda_n\right\}$ denote the set of roots of $f$
 Suppose that $p$ is prime and that $f(x) \in \Q[x]$ is monic and irreducible with $\deg{f} =p$. Suppose that $f$ has exactly two non-real roots in $\C$. Then $G_f = S_p$.
 \end{theorem}
 \begin{proof}
-Let $L$ be the splitting field for $f(x)$. Write $f(x) = \prod_{i=1}^p(x- x_i)$ with each $\lambda_i \in \C$. THen $\Q(\lambda_1, \ldots, \lambda_p) \subset \C$. We see that $$ \Q \subset \Q(\lambda_i)  \subset \Q(\lambda_1, \ldots, \lambda_p) \subset \C,$$ so that $[\Q(\lambda_i) : \Q] \mid [L : \Q]$.  Since $p \mid [L: \Q] = \left\lvert{G_f}\right\rvert \subset S_p$, it follows from Sylow that $G_p$ contains an element of order $p$, i.e., that $G_f$ contains a $p$-cycle. Also, the element in $G_f$ that switches the roots is the complex conjugate pair of a transposition.
+Let $L$ be the splitting field for $f(x)$. Write $f(x) = \prod_{i=1}^p(x- x_i)$ with each $\lambda_i \in \C$. Then $\Q(\lambda_1, \ldots, \lambda_p) \subset \C$. We see that $$ \Q \subset \Q(\lambda_i)  \subset \Q(\lambda_1, \ldots, \lambda_p) \subset \C,$$ so that $\left[\Q(\lambda_i) : \Q\right] \mid \left[L : \Q\right]$.  Since $p \mid \left[L: \Q\right] = \left\lvert{G_f}\right\rvert \subset S_p$, it follows from Sylow that $G_p$ contains an element of order $p$, i.e., that $G_f$ contains a $p$-cycle. Also, the element in $G_f$ that switches the roots is the complex conjugate pair of a transposition.
 \end{proof}
 
 \begin{theorem}[Brouwer]
 For any prime $p \geq 5$, there are infinitely many polynomials in $\Q[x]$ of degree $p$ with Galois group $S_p$.
 \end{theorem}
 \begin{proof}
-Let $k$ be an odd integer and let $0\leq m, n_1 \leq n_2 < \cdots < n_{k-2}$ be even integers. Consider $$g(x) = (x^2 +m)(x-n_1)(x-n_2) \cdots (x-n_{k-2}).$$ This polynomial has $\frac{k-3}{2}$ local maxima. Also, for each odd $h\in \Z$, $\left\lvert{g(h)}\right\rvert >2$. Hence if $c$ denotes a local maximum of $g$, then $g(c) >2$. This shows that if $f(x) = g(x) -2$, then there are 
+Let $k$ be an odd integer and let $0\leq m, n_1 \leq n_2 < \cdots < n_{k-2}$ be even integers. Consider $$g(x) = \left(x^2 +m\right)\left(x-n_1\right)\left(x-n_2\right) \cdots \left(x-n_{k-2}\right).$$ This polynomial has $\frac{k-3}{2}$ local maxima. Also, for each odd $h\in \Z$, $\left\lvert{g(h)}\right\rvert >2$. Hence if $c$ denotes a local maximum of $g$, then $g(c) >2$. This shows that if $f(x) = g(x) -2$, then there are 
 \begin{itemize}
 \item $\frac{k-3}{2}$ positive local maxima in $[n_1, n_{k-2}]$ and
 \item $\frac{k-3}{2}$ negative local maxima in $[n_1, n_{k-2}]$.
 \end{itemize}
-It follows that $f(x)$ has $k$-3 real roots in $[n_1, n_{k-2}]$ with $f(n_{k-2}) = {-2}$ and $\lim_{x\to \infty} f(x) >0$. Therefore, we have another real roots $> n_{k-2}$. Hence $f(x)$ has at least $k-2$ real roots. Let $\lambda, \ldots, \lambda_n \in \C$ denote the distinct roots of $f$. Then $$\prod_{i=1}^k(x-\lambda_i) = f(x) = (x^2 +m)(x-n_1)(x-n_2) \cdots (x-n_{k-2}) -2$$, and ${-}\sum_{i=1}^k \lambda_i = {- \sum_{i=1}^{k-2} n_i}$. From this, we compute
+It follows that $f(x)$ has $k$-3 real roots in $[n_1, n_{k-2}]$ with $f(n_{k-2}) = {-2}$ and $\lim_{x\to \infty} f(x) >0$. Therefore, we have another real roots $> n_{k-2}$. Hence $f(x)$ has at least $k-2$ real roots. Let $\lambda, \ldots, \lambda_n \in \C$ denote the distinct roots of $f$. Then $$\prod_{i=1}^k(x-\lambda_i) = f(x) = \left(x^2 +m\right)\left(x-n_1\right)\left(x-n_2\right) \cdots \left(x-n_{k-2}\right) -2$$, and ${-}\sum_{i=1}^k \lambda_i = {- \sum_{i=1}^{k-2} n_i}$. From this, we compute
 \begin{align*}
 \sum_{i <j} \lambda_i \lambda_j & = m + \sum_{a < b} n_an_b 
 \\ \sum_{i=1}^k \lambda_i^2 & = \left(\sum_{i=1}^k \lambda_i \right)^2 = \sum \sum_{i<j} \lambda _i \lambda_j
@@ -2053,7 +2059,7 @@ Hilbert wanted to extract numerical invariants from a module. Specifically, if $
 
 \bigskip
 
-A typical graded module over $R$ will be a module of the form $M R/I$ where $I \unlhd R$ is a homogeneous ideal. By the Hilbert basis theorem, $I \unlhd R$ is generated by finitely many homogenous polynomials $f_1, f_2, \ldots, f_{r_0}$. Thus, we have surjective map $\psi: R^{\oplus r_o} \to I $ given by $(a_1, \ldots, a_{r_0}) \mapsto \sum a_if_i$. But, there generators are not, in general, independent. Therefore, we consider the module of relations $Z_0(I) \equiv \ker{\psi}$ among the $f_i$. Note that $Z_0(I)$ is finitely generated. We can choose generators and get a map $\psi': R^{\oplus r_1} \twoheadrightarrow Z_0(I)$. Then $$R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0$$ is an exact sequence of graded $R$-modules. If $Z_1(I) \equiv \ker{\psi'}$ is not zero, then choose generators again to get a map $\psi'': R^{\oplus r_2} \twoheadrightarrow Z_1(I)$. Continuing in this way, we get an exact sequence $$\cdots \to R^{\oplus r_2} \to R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0.$$ The \textit{length} of this sequence is defined to be $\max\{i \mid r_i \ne 0\}$. This is an invariant of $I$ and of $R/I$.
+A typical graded module over $R$ will be a module of the form $M R/I$ where $I \unlhd R$ is a homogeneous ideal. By the Hilbert basis theorem, $I \unlhd R$ is generated by finitely many homogenous polynomials $f_1, f_2, \ldots, f_{r_0}$. Thus, we have surjective map $\psi: R^{\oplus r_o} \to I $ given by $\left(a_1, \ldots, a_{r_0}\right) \mapsto \sum a_if_i$. But, there generators are not, in general, independent. Therefore, we consider the module of relations $Z_0(I) \equiv \ker{\psi}$ among the $f_i$. Note that $Z_0(I)$ is finitely generated. We can choose generators and get a map $\psi': R^{\oplus r_1} \twoheadrightarrow Z_0(I)$. Then $$R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0$$ is an exact sequence of graded $R$-modules. If $Z_1(I) \equiv \ker{\psi'}$ is not zero, then choose generators again to get a map $\psi'': R^{\oplus r_2} \twoheadrightarrow Z_1(I)$. Continuing in this way, we get an exact sequence $$\cdots \to R^{\oplus r_2} \to R^{\oplus r_1} \to R^{\oplus r_0} \to I \to 0.$$ The \textit{length} of this sequence is defined to be $\max\{i \mid r_i \ne 0\}$. This is an invariant of $I$ and of $R/I$.
 
 
 \begin{theorem}[Hilbert's syzygy theorem]
@@ -2064,10 +2070,10 @@ Hilbert's syzygy theorem states that $Z_{n-1}(I)$ is free, i.e., that there is a
 
 \begin{definition} $ $
 \begin{enumerate}
-\item  A \textit{chain complex} (in $\mathbf{Ab}$) is a pair $\left(M_{\bullet}, \partial_{\bullet}\right)$ where $M_{\bullet} = \{M_i\}_{i\in \Z}$ is a set of abelian groups and $\partial_{\bullet} =\{\partial_i\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $\partial_i : M_i \to M_{i-1}$ satisfies $\partial_{i-1} \circ \partial_i = 0$. 
+\item  A \textit{chain complex} (in $\mathbf{Ab}$) is a pair $\left(M_{\bullet}, \partial_{\bullet}\right)$ where $M_{\bullet} = \left\{M_i\right\}_{i\in \Z}$ is a set of abelian groups and $\partial_{\bullet} =\left\{\partial_i\right\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $\partial_i : M_i \to M_{i-1}$ satisfies $\partial_{i-1} \circ \partial_i = 0$. 
 
 We call $Z_n \equiv \ker{\partial_{n}}$ \textit{the group of degree $n$ cycles} and $B_n \equiv \im{\partial_{n+1}}$ \textit{the group of degree $n$ boundaries}. Finally, we call $H_n \equiv Z_n/B_n$ the \textit{degree $n$ homology group}.
-\item A \textit{((co)chain) complex} (in $\mathbf{Ab}$) is a pair $\left(M^{\bullet}, d^{\bullet}\right)$ where $M^{\bullet} = \{M^i\}_{i\in \Z}$ is a set of abelian groups and $d^{\bullet} =\{d^i\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $d^i : M^i \to M^{i+1}$ satisfies $d^{i+1} \circ d^i = 0$. 
+\item A \textit{((co)chain) complex} (in $\mathbf{Ab}$) is a pair $\left(M^{\bullet}, d^{\bullet}\right)$ where $M^{\bullet} = \left\{M^i\right\}_{i\in \Z}$ is a set of abelian groups and $d^{\bullet} =\left\{d^i\right\}_{i\in \Z}$ is a set of morphisms in $\mathbf{Ab}$ such that the \textit{$i$-th differential} $d^i : M^i \to M^{i+1}$ satisfies $d^{i+1} \circ d^i = 0$. 
 
 We call $Z^n \equiv \ker{d^n}$ \textit{the group of degree $n$ cocycles} and $B^n \equiv \im{d^{n-1}}$ \textit{the group of degree $n$ coboundaries}. 
 
@@ -2095,9 +2101,9 @@ As a result, we have the subcategories $\mathbf{CoCh}^{{-}}(\mathbf{Ab})$, $\mat
 \medskip
 
 
-If $C^{\bullet} = \bigoplus_{i\in \Z} C^i$ is a graded abelian group, then it induces a natural complex $(\underline{C}^{\bullet}, 0)$ where $\underline{C}^i \equiv C^i$. In particular, any abelian group may be viewed as a complex. 
+If $C^{\bullet} = \bigoplus_{i\in \Z} C^i$ is a graded abelian group, then it induces a natural complex $\left(\underline{C}^{\bullet}, 0\right)$ where $\underline{C}^i \equiv C^i$. In particular, any abelian group may be viewed as a complex. 
 
-Conversely, given a complex $(M^{\bullet}, d^{\bullet})$, we can form the graded abelian group $M^{\bullet} \equiv  \bigoplus_{i\in \Z} M^i$ and package the differential $d^i$ into a single group map $D: M^{\bullet} \to M^{\bullet}$ such that $D\restriction_{M^i} = d^i$ and $D^2 =0$. We can write $D$ as the block diagonal matrix
+Conversely, given a complex $\left(M^{\bullet}, d^{\bullet}\right)$, we can form the graded abelian group $M^{\bullet} \equiv  \bigoplus_{i\in \Z} M^i$ and package the differential $d^i$ into a single group map $D: M^{\bullet} \to M^{\bullet}$ such that $D\restriction_{M^i} = d^i$ and $D^2 =0$. We can write $D$ as the block diagonal matrix
 $$  \begin{bmatrix} 0 & & &  & \\  d^i &0   &  &  & \\  &  d^{i+1} & 0  &   & \\ &   & d^{i+2}  & 0   &   \\  &  & &  \ddots &   \ddots \end{bmatrix} .$$
 As a result, we obtain the \textit{cochain functor} given by $\left(A^{\bullet}, d^{\bullet}\right) \to \bigoplus_{i\in \Z} A^i$ and $f^{\bullet} \mapsto (f^i)_{i\in \Z}$.
 
@@ -2139,7 +2145,7 @@ as desired
 \medskip
 
 \begin{definition}
-If $A$ is an abelian group, then a \textit{left resolution of $A$} is an exact complex $(C^{\bullet}, d^{\bullet}) \in \ob{\mathbf{CoCh}^{\leq 0}(\mathbf{Ab})}$  of the form $$\cdots \to C^{i-1} \to C^i \to \cdots \to  C^0 \to A \to 0 .$$
+If $A$ is an abelian group, then a \textit{left resolution of $A$} is an exact complex $\left(C^{\bullet}, d^{\bullet}\right) \in \ob{\mathbf{CoCh}^{\leq 0}(\mathbf{Ab})}$  of the form $$\cdots \to C^{i-1} \to C^i \to \cdots \to  C^0 \to A \to 0 .$$
 \end{definition}
 
 \begin{exmp}
@@ -2169,7 +2175,7 @@ Show that $d^{i+1}_{\cone(f)} \circ d^i_{\cone(f)} =0$.
 
 \begin{definition} $ $
 \begin{enumerate}
-\item A \textit{double complex} is a triple $\left(A^{\bullet, \bullet}, d^{\bullet}, \delta^{\bullet}\right)$ where $A^{i,j} = \{A^{i,j}\}_{(i,j) \in \Z^2}$ and both $d : A^{\bullet, \bullet} \to A^{\bullet +1, \bullet}$ and $\delta : A^{\bullet, \bullet} \to A^{\bullet, \bullet +1}$ are homomorphisms such that $d{\delta} = \delta{d}$ and $d^2 = \delta^2 =0$.
+\item A \textit{double complex} is a triple $\left(A^{\bullet, \bullet}, d^{\bullet}, \delta^{\bullet}\right)$ where $A^{i,j} = \left\{A^{i,j}\right\}_{\left(i,j\right) \in \Z^2}$ and both $d : A^{\bullet, \bullet} \to A^{\bullet +1, \bullet}$ and $\delta : A^{\bullet, \bullet} \to A^{\bullet, \bullet +1}$ are homomorphisms such that $d{\delta} = \delta{d}$ and $d^2 = \delta^2 =0$.
 As a commutative diagram, this has the form
  \[
 \begin{tikzcd}
@@ -2340,8 +2346,8 @@ Conversely, let $[a] \in  \ker{H^{n+1}(f)}$, so that $H^{n+1}(f)([a]) = [f(a)]= 
 \begin{definition}
 Let $\c$ be an additive category. Let $f: x \to y$ be a morphism in $\c$. 
 \begin{enumerate}
-\item A \textit{kernel (object) for $f$} is a pair $(k, q)$ where $k \in \ob{\c}$ and $q : k \to x$ such that for any $z \in \ob{\c}$, the natural sequence $$ \Hom(z,k) \overset{q\circ {-}}{\longrightarrow} \Hom(z,x) \overset{f\circ {-}}{\longrightarrow} \Hom(z,y)   $$ is exact.
-\item  A \textit{cokernel (object) for $f$} is a pair $(c, p)$ where $c \in \ob{\c}$ and $p : y \to c$ such that for any $z \in \ob{\c}$, the natural sequence $$ \Hom(c,z) \overset{{-}\circ p}{\longrightarrow} \Hom(y,z) \overset{{-}\circ f}{\longrightarrow} \Hom(x,z)   $$ is exact.
+\item A \textit{kernel (object) for $f$} is a pair $\left(k, q\right)$ where $k \in \ob{\c}$ and $q : k \to x$ such that for any $z \in \ob{\c}$, the natural sequence $$ \Hom(z,k) \overset{q\circ {-}}{\longrightarrow} \Hom(z,x) \overset{f\circ {-}}{\longrightarrow} \Hom(z,y)   $$ is exact.
+\item  A \textit{cokernel (object) for $f$} is a pair $\left(c, p\right)$ where $c \in \ob{\c}$ and $p : y \to c$ such that for any $z \in \ob{\c}$, the natural sequence $$ \Hom(c,z) \overset{{-}\circ p}{\longrightarrow} \Hom(y,z) \overset{{-}\circ f}{\longrightarrow} \Hom(x,z)   $$ is exact.
 \end{enumerate}
 \end{definition}
 
@@ -2351,10 +2357,10 @@ We say that a category $\a$ is \textit{abelian} if
 \item $\a$ is additive and
 \item for any morphism $f : x \to y$ in $\a$, there exists a sequence $k \overset{q}{\longrightarrow} x  \overset{a}{\longrightarrow} i \overset{b}{\longrightarrow}y \overset{p}{\longrightarrow} c$ in $\a$ such that
 \begin{enumerate}
-\item $(k, q)$ is a kernel for $f$,
-\item $(c, p)$ is a cokernel for $f$,
-\item $(c, a)$ is a cokernel for $q$, and
-\item $(i,b)$ is a kernel for $p$.
+\item $\left(k, q\right)$ is a kernel for $f$,
+\item $\left(c, p\right)$ is a cokernel for $f$,
+\item $\left(c, a\right)$ is a cokernel for $q$, and
+\item $\left(i,b\right)$ is a kernel for $p$.
 \end{enumerate}
 We call $i$ the \textit{image of $f$}.
 \end{enumerate}
@@ -2841,7 +2847,7 @@ Now,  let $\v \subset \d$ be a pair of triangulated categories. Let $x \in \ob{\
 
 \begin{exercise} Prove the following assertions.
 \begin{enumerate}
-\item Both $x/ \q$ and $(\q/x)^{\op}$ are directed categories. 
+\item Both $x/ \q$ and $\left(\q/x\right)^{\op}$ are directed categories. 
 \item Any map in $x/\q$ or $\q/x$ is automatically a $\v$-quasi-isomorphism. 
 \end{enumerate}
 \end{exercise}
@@ -2923,7 +2929,7 @@ If $\a$ is an abelian category, then the \textit{derived category of $\a$} is th
 \end{definition}
 
 
-To do computations in $\D(\a)$, we must understand when $\D(a)$ can be embedded in $\mathcal{C}(\a)$ so that $\left(\mathcal{C}(\a)^{\acyc}, \D(\a)\right)$ is an adjoint pair. This requires $(\mathcal{C}(\a)^{\acyc})^{\perp}$  to be large. 
+To do computations in $\D(\a)$, we must understand when $\D(a)$ can be embedded in $\mathcal{C}(\a)$ so that $\left(\mathcal{C}(\a)^{\acyc}, \D(\a)\right)$ is an adjoint pair. This requires $\left(\mathcal{C}(\a)^{\acyc}\right)^{\perp}$  to be large. 
 
 \medskip
 

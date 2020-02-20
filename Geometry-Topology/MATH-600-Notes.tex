@@ -373,7 +373,12 @@ V \arrow[r, "F"] \arrow[d, "\varphi", swap]
 \]
 \end{definition}
 
-This definition is independent of coordinates. Indeed, if $\left(U, \bar{\varphi}\right)$ and $\left(U', \bar{\psi}\right)$ are other charts around $p$ and $F(p)$, respectively, then $$\bar{\psi} \circ F \circ \varphi^{-1} = (\bar{\psi} \circ \psi^{-1}) \circ (\psi \circ F \circ \varphi^{-1})$$ $$\psi \circ F\circ \bar{\varphi}^{-1} = (\psi \circ F \circ \varphi^{-1}) \circ (\varphi \circ \bar{\varphi}^{-1}),$$ which are smooth as composites of smooth maps.
+This definition is independent of coordinates. Indeed, if $\left(U, \bar{\varphi}\right)$ and $\left(U', \bar{\psi}\right)$ are other charts around $p$ and $F(p)$, respectively, then 
+\begin{gather*}
+\bar{\psi} \circ F \circ \varphi^{-1} = \left(\bar{\psi} \circ \psi^{-1}\right) \circ \left(\psi \circ F \circ \varphi^{-1}\right)
+\\ \psi \circ F\circ \bar{\varphi}^{-1} = \left(\psi \circ F \circ \varphi^{-1}\right) \circ \left(\varphi \circ \bar{\varphi}^{-1}\right),
+\end{gather*}
+which are smooth as composites of smooth maps.
 
 \begin{lemma}\label{sco}
 Smoothness implies continuity.
@@ -716,7 +721,7 @@ For any smooth $n$-dimensional manifold $M$, the tangent bundle $TM$ has a natur
 \end{itemize}
 \end{lemma}
 \begin{proof}
-Given a chart $\left(U, \varphi\right)$, define $\tilde{\varphi}: \pi^{-1}(U) \to \R^n$ by $$v_i\frac{\partial}{\partial{x_i}}\bigr\rvert_p \mapsto \left(x^1(p), \ldots, x^n(p), v_1, \ldots, v_n\right)$$ where $\varphi = (x^1, \ldots, x^n)$.\footnote{The expression $v_i\frac{\partial}{\partial{x_i}}\bigr\rvert_p$ is secretly a summation, in accordance with the \textit{Einstein summation convention}.}
+Given a chart $\left(U, \varphi\right)$, define $\tilde{\varphi}: \pi^{-1}(U) \to \R^n$ by $$v_i\frac{\partial}{\partial{x_i}}\bigr\rvert_p \mapsto \left(x^1(p), \ldots, x^n(p), v_1, \ldots, v_n\right)$$ where $\varphi = \left(x^1, \ldots, x^n\right)$.\footnote{The expression $v_i\frac{\partial}{\partial{x_i}}\bigr\rvert_p$ is secretly a summation, in accordance with the \textit{Einstein summation convention}.}
 This is continuous with $\Ima \tilde{\varphi} = \varphi(U) \times \R^n$, which is open. Further, $\tilde{\varphi}^{-1}$ is given by $\left(x_1, \ldots, x_n, v_1, \ldots, v_n\right)\mapsto v_i \frac{\partial}{\partial{x_i}}\bigr\rvert_{\varphi^{-1}(x)}$ on  $\varphi(U) \times \R^n$. Take $\left\{\left(\pi^{-1}(U), \tilde{\varphi}\right)\right\}$ to be charts on $TM$. Given two such charts $\left(\pi^{-1}(U), \tilde{\varphi}\right)$ and $\left(\pi^{-1}(V), \tilde{\psi}\right)$, it's straightforward to check that $\tilde{\psi} \circ \tilde{\varphi}^{-1}: \varphi(U \cap V)\times \R^n \to \psi(U \cap V)\times \R^n$ is smooth.
 
 \medskip
@@ -769,7 +774,7 @@ Let $\left(U, \varphi\right)$ be a chart centered at $p$. Write $v = v_i \frac{\
 \end{proof}
 
 \begin{prop}
-Let $v \in T_pM$. Then $dF_p(v) = (F \circ \gamma)'(0)$ for any smooth map $\gamma : J \to M$ satisfying $\gamma(0)=p$ and $\gamma'(0) =v$.
+Let $v \in T_pM$. Then $dF_p(v) = \left(F \circ \gamma\right)'(0)$ for any smooth map $\gamma : J \to M$ satisfying $\gamma(0)=p$ and $\gamma'(0) =v$.
 \end{prop}
 
 \begin{aside}
@@ -817,7 +822,7 @@ Before proving this, we should mention a couple of things:
 
 
 \begin{proof}
-Since our statement is local, we may assume that $M\subset \R^m$ and $N\subset \R^n$ are open subsets. Since $DF(p)$ has rank $r$, it has some invertible $r\times r$ sub-matrix, which we may assume is the upper left sub-matrix $\left(\frac{\partial{F^i}}{\partial{x^j}}\right)_{i,j\in [r]}$. Write $\left(x,y\right) = \left(x^1, \ldots, x^r, y^1, \ldots, y^{m-r}\right)$ and $\left(v,w\right) = \left(v^1, \ldots, v^r, w^1, \ldots, w^{n-r}\right)$ for the standard coordinates on $\R^m$ and $\R^n$, respectively. By applying suitable translations, we may assume that $p=\left(0,0\right)$ and $F(p)= \left(0,0\right)$. We have $F(x,y)= (Q(x,y), R(x,y))$ for some smooth map $Q: M \to \R^r$ and $R: M \to \R^{n-r}$. Then the Jacobian matrix $\left(\frac{\partial{Q^i}}{\partial{x^j}} \right)$ is invertible at $\left(0,0\right)$ by hypothesis. 
+Since our statement is local, we may assume that $M\subset \R^m$ and $N\subset \R^n$ are open subsets. Since $DF(p)$ has rank $r$, it has some invertible $r\times r$ sub-matrix, which we may assume is the upper left sub-matrix $\left(\frac{\partial{F^i}}{\partial{x^j}}\right)_{i,j\in [r]}$. Write $\left(x,y\right) = \left(x^1, \ldots, x^r, y^1, \ldots, y^{m-r}\right)$ and $\left(v,w\right) = \left(v^1, \ldots, v^r, w^1, \ldots, w^{n-r}\right)$ for the standard coordinates on $\R^m$ and $\R^n$, respectively. By applying suitable translations, we may assume that $p=\left(0,0\right)$ and $F(p)= \left(0,0\right)$. We have $F(x,y)= \left(Q(x,y), R(x,y)\right)$ for some smooth map $Q: M \to \R^r$ and $R: M \to \R^{n-r}$. Then the Jacobian matrix $\left(\frac{\partial{Q^i}}{\partial{x^j}} \right)$ is invertible at $\left(0,0\right)$ by hypothesis. 
 
 \medskip
 
@@ -828,11 +833,11 @@ $$\delta_i^j = \begin{cases} 1 & i=j \\ 0 & i \ne j \end{cases}.$$  Then $$D[f]\
 \medskip
 
  Thus, we can apply the inverse function theorem to get a connected open set $U_0 \ni \left(0,0\right)$ and an open cube $\widetilde{U}_0 \ni f\left(0,0\right) = \left(0,0\right)$ such that $f: U_0 \to \widetilde{U}_0$ is a diffeomorphism.  Let $f^{-1}(x,y) =\left(A(x,y), B(x,y)\right)$. Then $\left(x,y\right) = f(A(x,y), B(x,y)) = \left(Q(A(x,y), B(x,y)), B(x,y)\right)$, so that $y = B(x,y)$. Hence $$f^{-1}(x,y) = \left(A(x,y), y\right).$$ Additionally, $Q(A(x,y), y)=x$ since $f\circ f^{-1} = \id_{\widetilde{U}_0}$. If $\widetilde{R} : \widetilde{U}_0 \to \R^{n-r}$ is defined by $\left(x,y\right) \mapsto R(A(x,y), y)$, then $$F\circ f^{-1}(x,y) = \left(x, \widetilde{R}(x,y)\right).$$ Therefore, $$D[F\circ f^{-1}](x,y)  =  \begin{bmatrix}    \delta^i_j & 0 \\ 
-\frac{\partial{\widetilde{R}^i}}{\partial{x^j}}(x,y) & \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y)    \end{bmatrix} $$ for any $\left(x,y\right) \in \widetilde{U}_0$. It's clear that the first $r$ columns of this matrix are linearly independent. But since $f^{-1}$ is a diffeomorphism, it has rank $r$ on $\widetilde{U}_0$. It follows that $ \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y) =0$ for each $\left(x,y\right) \in \widetilde{U}_0$. But $\widetilde{U}_0$ was chosen to be an open cube, so that $\widetilde{R}(x,y) = \widetilde{R}(x,0)$. If $S(x) \coloneqq \widetilde{R}(x,0)$, then $F \circ f^{-1}(x,y) = (x, S(x))$. 
+\frac{\partial{\widetilde{R}^i}}{\partial{x^j}}(x,y) & \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y)    \end{bmatrix} $$ for any $\left(x,y\right) \in \widetilde{U}_0$. It's clear that the first $r$ columns of this matrix are linearly independent. But since $f^{-1}$ is a diffeomorphism, it has rank $r$ on $\widetilde{U}_0$. It follows that $ \frac{\partial{\widetilde{R}^i}}{\partial{y^j}}(x,y) =0$ for each $\left(x,y\right) \in \widetilde{U}_0$. But $\widetilde{U}_0$ was chosen to be an open cube, so that $\widetilde{R}(x,y) = \widetilde{R}(x,0)$. If $S(x) \coloneqq \widetilde{R}(x,0)$, then $F \circ f^{-1}(x,y) = \left(x, S(x)\right)$. 
 
 \medskip
 
- Now, let $$V_0 = \left\{(v,w) \in N \mid (v,0)\in \widetilde{U}_0\right\},$$ which is a neighborhood of $\left(0,0\right)$ in  $N$. Since $\widetilde{U}_0$ is a cube, we see that $F \circ f^{-1}(\widetilde{U}_0) \subset V_0$. Hence $F(U_0) \subset V_0$.  Define $g : V_0 \to \R^n$ by $\left(v,w\right) \mapsto (v, w-S(v))$, which is smooth with inverse $g^{-1}(s,t) = \left(s, t + S(s)\right)$. Then $$\widehat{F}(x,y) = g \circ F \circ f^{-1}(x,y) = (x, S(x) - S(x)) = (x,0),$$ as desired.
+ Now, let $$V_0 = \left\{(v,w) \in N \mid (v,0)\in \widetilde{U}_0\right\},$$ which is a neighborhood of $\left(0,0\right)$ in  $N$. Since $\widetilde{U}_0$ is a cube, we see that $F \circ f^{-1}(\widetilde{U}_0) \subset V_0$. Hence $F(U_0) \subset V_0$.  Define $g : V_0 \to \R^n$ by $\left(v,w\right) \mapsto (v, w-S(v))$, which is smooth with inverse $g^{-1}(s,t) = \left(s, t + S(s)\right)$. Then $$\widehat{F}(x,y) = g \circ F \circ f^{-1}(x,y) = \left(x, S(x) - S(x)\right) = \left(x,0\right),$$ as desired.
 \end{proof}
 
 \subsection{Lecture 10}
@@ -1095,7 +1100,7 @@ If $X_i = \frac{\partial}{\partial{x_i}}\in \vf(M)$, then $\left[X_i, X_j\right]
 A map $D: C^{\infty}(M) \to C^{\infty}(M)$ is a derivation if and only if there is some $X \in \vf(M)$ such that $Df = Xf$ for any $f$.
 \end{lemma}
 \begin{proof}
-We have established the ($\Longleftarrow$) direction. Conversely, assume that $D$ is a derivation. Define $X : M \to TM$ by $X_p(f) = (Df)(p)$. Since $Df = Xf$ is smooth for each $X$, it follows that $X$ is smooth thanks to Proposition 8.14 (Lee).
+We have established the ($\Longleftarrow$) direction. Conversely, assume that $D$ is a derivation. Define $X : M \to TM$ by $X_p(f) = \left(Df\right)(p)$. Since $Df = Xf$ is smooth for each $X$, it follows that $X$ is smooth thanks to Proposition 8.14 (Lee).
 \end{proof}
 
 \begin{lemma}
@@ -1134,15 +1139,19 @@ Since $\left[X, Y\right]$ is a vector field, we see that $\left(\left[X, Y\right
 \end{proof}
 
 \begin{remark}
-If $X_1, \ldots, X_n \in \vf(U)$ satisfy $[X_i, X_j]= 0$, then there are local coordinates $x^i : V \to \R$ such that $X_i  =\frac{\partial}{\partial{x^i}}$. This is a converse of Clairaut's theorem.
+If $X_1, \ldots, X_n \in \vf(U)$ satisfy $\left[X_i, X_j\right]= 0$, then there are local coordinates $x^i : V \to \R$ such that $X_i  =\frac{\partial}{\partial{x^i}}$. This is a converse of Clairaut's theorem.
 \end{remark}
 
 \begin{prop} $ $
 \begin{enumerate}
-\item (Bilinearity) For any $a,b \in \R$, $$[aX + bY, Z] = a[X, Z] + b[Y, Z]$$ $$[Z, aX + bY] = a[Z, X] + b[Z, Y]. $$ 
+\item (Bilinearity) For any $a,b \in \R$, 
+\begin{gather*}
+\left[aX + bY, Z\right] = a[X, Z] + b[Y, Z]
+\\ \left[Z, aX + bY\right] = a[Z, X] + b[Z, Y]. 
+\end{gather*}
 \item (Antisymmetry) $$\left[X, Y\right] = {-[Y,X]}.$$
 \item (Jacobi Identity) $$\left[X, [Y, Z]\right]+ \left[Y, [Z, X]\right] + \left[Z, \left[X, Y\right]\right] =0  . $$
-\item For any $f, g \in C^{\infty}(M)$, $$[fX, gY] = fg\left[X, Y\right] + \left(fXg\right)Y - \left(gYf\right)X, $$ where $fX$ denotes the module action $f \cdot X$.
+\item For any $f, g \in C^{\infty}(M)$, $$\left[fX, gY\right] = fg\left[X, Y\right] + \left(fXg\right)Y - \left(gYf\right)X, $$ where $fX$ denotes the module action $f \cdot X$.
 \end{enumerate}
 \end{prop}
 
@@ -1154,7 +1163,7 @@ We say   $X$ and $Y$ are \textit{$F$-related} if $Y = F_{\ast}X$.
 
 
 \begin{note}\label{relat}
-$X(f \circ F) = (Yf) \circ F$ if and only if $X$ and $Y$ are $F$-related.
+$X(f \circ F) = \left(Yf\right) \circ F$ if and only if $X$ and $Y$ are $F$-related.
 \end{note}
 
 \begin{theorem}[Naturality of the Lie bracket]
@@ -1384,12 +1393,12 @@ Let $F: M \to N$ be smooth. Let $\omega \in \Gamma(T^{\ast}N)$. Define the \text
 Note that, unlike the pushforward, the pullback requires merely that $F$ be smooth. 
 
 \begin{lemma}
-Let $F: M \to N$ be smooth, $\alpha, \beta \in \Gamma(T^{\ast} N)$ and $f, g \in C^{\infty}(N)$. Then $$F^{\ast}(f \alpha + g \beta) = (f \circ F)F^{\ast} \alpha + (g \circ F)F^{\ast} \beta.$$
+Let $F: M \to N$ be smooth, $\alpha, \beta \in \Gamma(T^{\ast} N)$ and $f, g \in C^{\infty}(N)$. Then $$F^{\ast}(f \alpha + g \beta) = \left(f \circ F\right)F^{\ast} \alpha + (g \circ F)F^{\ast} \beta.$$
 \end{lemma}
 \begin{proof}
 Let $X \in \vf(M)$. We have that
 \begin{align*}
-F^{\ast}(f \alpha + g\beta)\bigr\rvert_p(X_p) & = (f \alpha + g \beta)\bigr\rvert_{F(p)}\left(F_{\ast}\bigr\rvert_p X_p\right) 
+F^{\ast}(f \alpha + g\beta)\bigr\rvert_p(X_p) & = \left(f \alpha + g \beta\right)\bigr\rvert_{F(p)}\left(F_{\ast}\bigr\rvert_p X_p\right) 
 \\ & = 
 f\left(F(p)\right)\alpha_{F(p)}\left(F_{\ast}\bigr\rvert_p  X_p\right)+ g\left(F(p)\right)\beta_{F(p)}\left(F_{\ast}\bigr\rvert_p X_p\right)
 \\ &   = \left[(f\circ F)F^{\ast}\alpha\right]_p (X_p) + \left[(g\circ F) F^{\ast}\beta\right]_p(X_p).
@@ -1813,7 +1822,7 @@ If we view $\Omega^k : \mathbf{Diff}^{\op} \to \mathbf{Vec}_{\R}$ as the functor
 \begin{enumerate}[label=(\arabic*)]
 \item $d$ is linear over $\R$.
 \item $d(F^{\ast} \omega) = F^{\ast}(d \omega).$
-\item $d( \omega \wedge \eta) = d \omega \wedge \eta + ({-1})^k\omega \wedge d \eta.$
+\item $d( \omega \wedge \eta) = d \omega \wedge \eta + \left({-1}\right)^k\omega \wedge d \eta.$
 \item $d \circ d = 0$.
 \end{enumerate}
 \end{lemma}
@@ -1830,10 +1839,10 @@ F^{*}\left(d\left(u d x^{i_{1}} \wedge \cdots \wedge d x^{i_{k}}\right)\right) &
 For (3), let $\eta = v dx^J$. Again, by linearity, it suffices to compute $d(udx^I \wedge v dx^J)$. 
 \begin{align*}
 d(udx^I \wedge vdx^J) & = d(uvdx^I \wedge dx^J)
-\\ & = (vdu + udv) \wedge dx^I \wedge dx^J
-\\ & = (du \wedge dx^I) \wedge (v dx^J) \wedge (dv \wedge u dx^I) \wedge dx^J
-\\ & = (du \wedge dx^I) \wedge (v dx^J) \wedge ({-1})^k(udx^I) \wedge (dv \wedge dx^J)
-\\ & = d( \omega \wedge \eta) = d \omega \wedge \eta + ({-1})^k\omega \wedge d \eta .
+\\ & = \left(vdu + udv\right) \wedge dx^I \wedge dx^J
+\\ & = \left(du \wedge dx^I\right) \wedge \left(v dx^J\right) \wedge \left(dv \wedge u dx^I\right) \wedge dx^J
+\\ & = \left(du \wedge dx^I\right) \wedge \left(v dx^J\right) \wedge \left({-1}\right)^k(udx^I) \wedge \left(dv \wedge dx^J\right)
+\\ & = d( \omega \wedge \eta) = d \omega \wedge \eta + \left({-1}\right)^k\omega \wedge d \eta .
 \end{align*}
 
 To prove (4), first observe that so long as $k=1$ and  $\omega = \omega_jdx^j$, we have that
@@ -1879,7 +1888,7 @@ It is \emph{not} the case, however, that any closed form is exact. Let $M=  \R^2
 \begin{theorem}[Unique differentiation]\label{UD}
 The exterior derivative is the unique linear map $\bar{d} : \mathcal{A}^k(M) \to \mathcal{A}^{k+1}$ such that
 \begin{enumerate}[label=(\roman*)]
-\item $\bar{d}( \omega \wedge \eta) = \bar{d} \omega \wedge \eta + ({-1})^k\omega \wedge \bar{d} \eta$,
+\item $\bar{d}( \omega \wedge \eta) = \bar{d} \omega \wedge \eta + \left({-1}\right)^k\omega \wedge \bar{d} \eta$,
 \item $\bar{d}{f}(X)= X{f}$ for any $f\in C^{\infty}(M)$, and 
 \item $\bar{d} \circ \bar{d} = 0$.
 \end{enumerate}
@@ -1946,13 +1955,13 @@ Conversely, any orientation on $M$ gives rise to a nowhere vanishing $n$-form on
 
 ($\Longrightarrow$)
 
-Let $\omega \in \mathcal{A}^n(M)$ be nowhere vanishing. For each $p \in M$, we see that $\omega_p$ defines an orientation $O_M^p$ on $M$ by declaring that $[e_1, \ldots, e_n] \in  O_M^p$ if and only if $\omega_p(e_1, \ldots, e_n) >0$. It remains to show that if $p\in M$, then we can find some chart $U_p$ around $p$ and some local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$ such that $\omega_q(E_1\bigr\rvert_q, \ldots, E_n\bigr\rvert_q) >0$ for every $q \in U_p$. To see this, pick any $U_p$ and local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$. Write $\omega = fdE^1 \wedge \cdots \wedge dE^n$ locally for some smooth function $f: U_p \to \R$. Since $\omega$ is nowhere vanishing, it follows that $$\omega(E_1, \ldots, E_n) = f \ne 0.$$ Since $f$ is continuous and $M$ connected, we see that $f>0$ or $f<0$. We may assume that $f>0$ for otherwise we can choose $\left({-E_1}, \ldots, {-E_n}\right)_p$ instead. 
+Let $\omega \in \mathcal{A}^n(M)$ be nowhere vanishing. For each $p \in M$, we see that $\omega_p$ defines an orientation $O_M^p$ on $M$ by declaring that $\left[e_1, \ldots, e_n\right] \in  O_M^p$ if and only if $\omega_p(e_1, \ldots, e_n) >0$. It remains to show that if $p\in M$, then we can find some chart $U_p$ around $p$ and some local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$ such that $\omega_q(E_1\bigr\rvert_q, \ldots, E_n\bigr\rvert_q) >0$ for every $q \in U_p$. To see this, pick any $U_p$ and local frame $\left(E_1, \ldots, E_n\right)_p$ on $U_p$. Write $\omega = fdE^1 \wedge \cdots \wedge dE^n$ locally for some smooth function $f: U_p \to \R$. Since $\omega$ is nowhere vanishing, it follows that $$\omega(E_1, \ldots, E_n) = f \ne 0.$$ Since $f$ is continuous and $M$ connected, we see that $f>0$ or $f<0$. We may assume that $f>0$ for otherwise we can choose $\left({-E_1}, \ldots, {-E_n}\right)_p$ instead. 
 
 \medskip
 
 ($\Longleftarrow$)
 
-Given $p\in M$ and an orientation $O_M^p$ on $T_pM$, say that $w \in \bigwedge^n(T_pM)$ is positively oriented if and only if $w(e_1, \ldots, e_n) >0$ for any $[e_1, \ldots, e_n] \in O_M^p$. Then the subspace $\bigwedge^n_+(T_pM)$ is open and convex. By \cref{convex}, we are done.
+Given $p\in M$ and an orientation $O_M^p$ on $T_pM$, say that $w \in \bigwedge^n(T_pM)$ is positively oriented if and only if $w(e_1, \ldots, e_n) >0$ for any $\left[e_1, \ldots, e_n\right] \in O_M^p$. Then the subspace $\bigwedge^n_+(T_pM)$ is open and convex. By \cref{convex}, we are done.
 \end{proof}
 
 \begin{definition}
@@ -1976,7 +1985,7 @@ Consider the commutative diagram
 \R^{n+1} \arrow[r, "\hat{\alpha}"] & \R^{n+1}
 \end{tikzcd}
 \]
-where $\hat{\alpha}(\x) \equiv {-\x}$. Note that the Jacobian of $\hat{\alpha}$ is precisely the identity matrix $I_{n+1}$. Since $\det(I_{n+1}) = ({-1})^{n+1}$, we see that $\hat{\alpha}$ is orientation-preserving  if and only if $n$ is odd. Thus, the restriction $\alpha$ of $\hat{\alpha}$ to $\S^n$ has the same property.
+where $\hat{\alpha}(\x) \equiv {-\x}$. Note that the Jacobian of $\hat{\alpha}$ is precisely the identity matrix $I_{n+1}$. Since $\det(I_{n+1}) = \left({-1}\right)^{n+1}$, we see that $\hat{\alpha}$ is orientation-preserving  if and only if $n$ is odd. Thus, the restriction $\alpha$ of $\hat{\alpha}$ to $\S^n$ has the same property.
 \end{proof}
 
 \begin{corollary}\label{RPor}
@@ -2057,7 +2066,7 @@ Let $p: \left[0,1\right]^k \to \left[0,1\right]^k$ be a diffeomorphism.
 \begin{enumerate}
 \item A \textit{singular $k$-chain on $M$} is a formal finite  $\R$-combination $\sigma = \sum_{i=1}^Na_i\sigma_i$ of singular $k$-cells on $M$. Define $$ \int_{\sigma} \omega= \sum_{i=1}^N a_i\int_{\sigma_i}\omega .$$
 \item
-Let $\sigma$ be a singular $k$-cell on $M$. Let $i=1, \ldots, 2k$ and $\alpha =0,1$. Define the \textit{$\left(i, \alpha\right)$-face of $\sigma$} as the smooth map $\sigma_{(i, \alpha)}$ given by $$\sigma_{(i, \alpha)}(x^1, \ldots, x^k) = \sigma(x^1,\ldots, x^{i-1}, \alpha, x^{i}, \ldots, x^k).$$ Moreover, define the \textit{boundary of $\sigma$} as the $\left(k-1\right)$-chain $$  \partial{\sigma} \equiv \sum_{i=1}^k({-1})^{i+1}(\sigma_{(i,1)}-\sigma_{(i,0)}) .$$
+Let $\sigma$ be a singular $k$-cell on $M$. Let $i=1, \ldots, 2k$ and $\alpha =0,1$. Define the \textit{$\left(i, \alpha\right)$-face of $\sigma$} as the smooth map $\sigma_{(i, \alpha)}$ given by $$\sigma_{(i, \alpha)}(x^1, \ldots, x^k) = \sigma(x^1,\ldots, x^{i-1}, \alpha, x^{i}, \ldots, x^k).$$ Moreover, define the \textit{boundary of $\sigma$} as the $\left(k-1\right)$-chain $$  \partial{\sigma} \equiv \sum_{i=1}^k\left({-1}\right)^{i+1}(\sigma_{(i,1)}-\sigma_{(i,0)}) .$$
 \item
 If $\sigma\coloneqq  \sum_{i=1}^Na_i\sigma_i$ is a singular $k$-chain, then define the \textit{boundary of $\sigma$} as the $\left(k-1\right)$-chain $$\partial{\sigma} \equiv \sum_{i=1}^N a_i \partial{\sigma_i}   .$$ 
 \end{enumerate}
@@ -2083,19 +2092,19 @@ For now, assume that $M= \R^k$ and $\sigma = I^k$. As the smooth structure on $\
 \begin{align*}
  d\omega & = df \wedge dx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k
 \\ & = \left(\sum_{j=1}^k\frac{\partial{f}}{\partial{x^j}}dx^j \right)\wedge dx^1 \wedge \cdots \wedge \widehat{dx^i} \wedge \cdots \wedge dx^k
-\\ & = ({-1})^{i-1} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k.
+\\ & = \left({-1}\right)^{i-1} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k.
 \end{align*}
 Now, apply Fubini's theorem  together with the fundamental theorem of calculus (FTC) to obtain
 \begin{align*}
- \int_{\sigma}d\omega & = ({-1})^{i-1}\int_{\left[0,1\right]^k} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k
-\\ & = ({-1})^{i-1}\int_0^1 \cdots \int_0^1 \left(\int_0^1  \frac{\partial{f}}{\partial{x^i}}dx^i \right)dx^1 \cdots \widehat{dx^i}  \cdots dx^k
-\\ & = ({-1})^{i-1}\int_0^1 \cdots \int_0^1(f(x^1, \ldots, \underbrace{1}_{i\text{-th position}}, \ldots, x^k) - f(x^1, \ldots, \underbrace{0}_{i\text{-th position}}, \ldots, x^k))dx^1 \cdots \widehat{dx^i}  \cdots dx^k
-\\ & =  ({-1})^{i-1}\left( \int_{\left[0,1\right]^{k-1}} f(x^1, \ldots, 1, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k -\int_{\left[0,1\right]^{k-1}}f(x^1, \ldots, 0, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k \right)
-\\ & = ({-1})^{i-1}\left(\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \right) .
+ \int_{\sigma}d\omega & = \left({-1}\right)^{i-1}\int_{\left[0,1\right]^k} \frac{\partial{f}}{\partial{x^i}}dx^1 \wedge \cdots \wedge dx^k
+\\ & = \left({-1}\right)^{i-1}\int_0^1 \cdots \int_0^1 \left(\int_0^1  \frac{\partial{f}}{\partial{x^i}}dx^i \right)dx^1 \cdots \widehat{dx^i}  \cdots dx^k
+\\ & = \left({-1}\right)^{i-1}\int_0^1 \cdots \int_0^1(f(x^1, \ldots, \underbrace{1}_{i\text{-th position}}, \ldots, x^k) - f(x^1, \ldots, \underbrace{0}_{i\text{-th position}}, \ldots, x^k))dx^1 \cdots \widehat{dx^i}  \cdots dx^k
+\\ & =  \left({-1}\right)^{i-1}\left( \int_{\left[0,1\right]^{k-1}} f(x^1, \ldots, 1, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k -\int_{\left[0,1\right]^{k-1}}f(x^1, \ldots, 0, \ldots, x^k)dx^1 \cdots \widehat{dx^i}  \cdots dx^k \right)
+\\ & = \left({-1}\right)^{i-1}\left(\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \right) .
 \end{align*}
 Moreover, we compute
-$$ \int_{\partial{\sigma}}\omega = \sum_{j=1}^k({-1})^{j-1}\left(\int_{\sigma_{(j, 1)}}\omega - \int_{\sigma_{(j, 0)}}\omega \right).$$
-Since $x^j$ is constant along the $\left(j, \alpha\right)$-face for each $\alpha = 0, 1$, it follows that $dx^j = 0$. Therefore, $$ \int_{\partial{\sigma}}\omega =   ({-1})^{i-1}\left(\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \right) = \int_{\sigma} d\omega.$$
+$$ \int_{\partial{\sigma}}\omega = \sum_{j=1}^k\left({-1}\right)^{j-1}\left(\int_{\sigma_{(j, 1)}}\omega - \int_{\sigma_{(j, 0)}}\omega \right).$$
+Since $x^j$ is constant along the $\left(j, \alpha\right)$-face for each $\alpha = 0, 1$, it follows that $dx^j = 0$. Therefore, $$ \int_{\partial{\sigma}}\omega =   \left({-1}\right)^{i-1}\left(\int_{\sigma_{(i, 1)}}\omega - \int_{\sigma_{(i, 0)}}\omega \right) = \int_{\sigma} d\omega.$$
 Finally, assume that $M$ is arbitrary and $\sigma $ is an arbitrary $k$-cell on $M$. By the special case just proved, we have that
 $$  \int_{\sigma}d\omega = \int_{\left[0,1\right]^k}\sigma^{\ast}(d\omega) = \int_{\left[0,1\right]^k}d(\sigma^{\ast}\omega) = \int_{\partial{\left[0,1\right]^k}}\sigma^{\ast} \omega = \int_{\partial{\sigma}} \omega .$$
 This clearly remains true if $\sigma$ is a $k$-chain on $M$.
@@ -2162,7 +2171,7 @@ Let $M$ be an oriented compact $n$-manifold with boundary. If $\omega \in \mathc
 \medskip
 
 
-\underline{Case 2:} Suppose that there is some orientation-preserving $n$-cell $\sigma$ on $M$ such that $\supp \omega \subset  \im \sigma$, $\im \sigma \cap \partial{M} =\sigma_{(n,0)}\left(\left[0,1\right]^{n-1}\right)$, and $\supp \omega \cap \im \partial{\sigma} \subset \sigma_{(n,0)}$. By \cref{chains}, it follows that $$\int_M d\omega  = \int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega = ({-1})^n \int_{\sigma_{(n,0)}} \omega .$$ Note that if $\mu$ denotes the usual orientation on $\H^n$, then the induced orientation on the boundary $\partial{\H^n}$ is equal to $\left({-1}\right)^n \mu$. Therefore, $\sigma_{(n,0)} : \left[0,1\right]^{n-1}\to \partial{M}$ is orientation-preserving  if and only if $n$ is even. In either situation, we have that $$\left({-1}\right)^n \int_{\sigma_{(n,0)}} \omega = \int_{\partial{M}} \omega  ,$$ which completes our present case.
+\underline{Case 2:} Suppose that there is some orientation-preserving $n$-cell $\sigma$ on $M$ such that $\supp \omega \subset  \im \sigma$, $\im \sigma \cap \partial{M} =\sigma_{(n,0)}\left(\left[0,1\right]^{n-1}\right)$, and $\supp \omega \cap \im \partial{\sigma} \subset \sigma_{(n,0)}$. By \cref{chains}, it follows that $$\int_M d\omega  = \int_{\sigma} d\omega = \int_{\partial{\sigma}} \omega = \left({-1}\right)^n \int_{\sigma_{(n,0)}} \omega .$$ Note that if $\mu$ denotes the usual orientation on $\H^n$, then the induced orientation on the boundary $\partial{\H^n}$ is equal to $\left({-1}\right)^n \mu$. Therefore, $\sigma_{(n,0)} : \left[0,1\right]^{n-1}\to \partial{M}$ is orientation-preserving  if and only if $n$ is even. In either situation, we have that $$\left({-1}\right)^n \int_{\sigma_{(n,0)}} \omega = \int_{\partial{M}} \omega  ,$$ which completes our present case.
 
 \medskip
 
@@ -2309,7 +2318,7 @@ Since $f$ has constant rank $n$ and $\left\{q\right\}\subset N$ is compact, we s
 \end{proof}
 
 \begin{exmp}
-Let $A_n: \S^n \to \S^n$ denote the antipodal map. Choose $p_0 \in \S^n$, which is a regular value of $A_n$. Hence $\deg A_n = ({-1})^{n-1}$.
+Let $A_n: \S^n \to \S^n$ denote the antipodal map. Choose $p_0 \in \S^n$, which is a regular value of $A_n$. Hence $\deg A_n = \left({-1}\right)^{n-1}$.
 \end{exmp}
 
 \begin{theorem}\label{same}
@@ -2460,7 +2469,7 @@ If $V, W\in \vf(M)$, then $\mathcal{L}_VW = [V, W]$.
 \begin{proof}
 Let $\mathcal{R}(M)$ denote the set of points $p\in M$ such that $V_p\ne 0$. Note that $\cl\left(\mathcal{R}(M)\right) = \supp V$. Let $p\in M$. We have three cases to consider.
 \begin{enumerate}[label=(\roman*)]
-\item Suppose that $p\in \mathcal{R}(M)$. We can find smooth coordinates $\left(U, u^i\right)$ near $p$ such that $V= \frac{\partial}{\partial{u^1}}$. In these coordinates we thus have that $\theta_t(u) = (u^1 +t, u^2, \ldots, u^n)$. The Jacobian of ${\theta_{-t}}$ at each $t$ equals the identity. For any $u\in U$, it follows that
+\item Suppose that $p\in \mathcal{R}(M)$. We can find smooth coordinates $\left(U, u^i\right)$ near $p$ such that $V= \frac{\partial}{\partial{u^1}}$. In these coordinates we thus have that $\theta_t(u) = \left(u^1 +t, u^2, \ldots, u^n\right)$. The Jacobian of ${\theta_{-t}}$ at each $t$ equals the identity. For any $u\in U$, it follows that
 \begin{align*}
 & d(\theta_{-t})_{\theta_t(u)}\left(W_{\theta_{t(u)}}\right)
 \\ & = d(\theta_{-t})_{\theta_t(x)} \left(W^j(u^1 + t, u^2, \ldots, u^n)\frac{\partial}{\partial{u^j}}\bigr\rvert_{\theta_t(u)}\right)

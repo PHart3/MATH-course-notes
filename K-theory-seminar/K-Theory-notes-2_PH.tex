@@ -212,7 +212,7 @@ X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F\left(\hat
 \end{tikzcd}
 \]
 
-Dually, a \textit{universal arrow from $F$ to $X$} is an ordered pair $(Y, f)$ with $Y \in \ob \d$ and $f: F(Y) \to X$ of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : F(X') \to X$, there exists a unique morphism $\hat{f}: X' \to Y$ such that $f' = f \circ F\left(\hat{f}\right)$.
+Dually, a \textit{universal arrow from $F$ to $X$} is an ordered pair $\left(Y, f\right)$ with $Y \in \ob \d$ and $f: F(Y) \to X$ of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : F(X') \to X$, there exists a unique morphism $\hat{f}: X' \to Y$ such that $f' = f \circ F\left(\hat{f}\right)$.
 \[ \begin{tikzcd}
 F(X') \arrow[r, dashed, "F\left(\hat{f}\right)"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, "f"] \\% 
  & X
@@ -225,15 +225,15 @@ To see why this notion of universality agrees with the original one, we first ge
 
 \begin{definition} $ $
 \begin{enumerate}
-\item Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. The \textit{slice} or \textit{left fiber category}, denoted by $\left(F/Y\right)$ or $\left(F \downarrow Y\right)$, has as objects pairs $(X, f)$ where $f: F(X) \to Y$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ such that $f = f' \circ F(g).$ 
+\item Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. The \textit{slice} or \textit{left fiber category}, denoted by $\left(F/Y\right)$ or $\left(F \downarrow Y\right)$, has as objects pairs $\left(X, f\right)$ where $f: F(X) \to Y$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ such that $f = f' \circ F(g).$ 
 \item 
-The \textit{coslice} or \textit{right fiber category}, denoted by $\left(Y/F\right)$ or $\left(Y \downarrow F\right)$, has as objects pairs $(X, f)$ where $f: Y\to F(X)$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ such that $f' = F(g) \circ f.$
+The \textit{coslice} or \textit{right fiber category}, denoted by $\left(Y/F\right)$ or $\left(Y \downarrow F\right)$, has as objects pairs $\left(X, f\right)$ where $f: Y\to F(X)$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ such that $f' = F(g) \circ f.$
 \end{enumerate}
 \end{definition}
 
 
 
-If $F^{\op}:C^{\op} \to D^{\op}$ is opposite to the functor $F: \c \to \d$ and $Y \in \ob \d$, then $(Y/F)^{\op} = {F^{\op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{\op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
+If $F^{\op}:C^{\op} \to D^{\op}$ is opposite to the functor $F: \c \to \d$ and $Y \in \ob \d$, then $\left(Y/F\right)^{\op} = {F^{\op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{\op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
 
 \smallskip
 
@@ -241,11 +241,11 @@ If $F^{\op}:C^{\op} \to D^{\op}$ is opposite to the functor $F: \c \to \d$ and $
 Let $F : \d \to \c$ be a functor and $x \in \ob C$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is initial object of the coslice $\left(x \downarrow F\right)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of the same category.
 \end{prop}
 \begin{proof}
-Suppose that $u$ is universal and $f: x \to Fy$ is another object of $(x \downarrow F)$. Then there is some unique $\hat{f}: r \to y$ such that $F\left(\hat{f}\right) \circ u = f$. Thus $F\left(\hat{f}\right)$ is a unique morphism of the coslice.
+Suppose that $u$ is universal and $f: x \to Fy$ is another object of $\left(x \downarrow F\right)$. Then there is some unique $\hat{f}: r \to y$ such that $F\left(\hat{f}\right) \circ u = f$. Thus $F\left(\hat{f}\right)$ is a unique morphism of the coslice.
 
 \smallskip
 
-Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $(x \downarrow F)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ makes $u$ a universal arrow.
+Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $\left(x \downarrow F\right)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ makes $u$ a universal arrow.
 \end{proof}
 
 \begin{corollary}
@@ -303,7 +303,7 @@ We already know that $\id_X$ is terminal. If $p: Y \to X$ is an object in ${\c}/
 \end{proof}
 
 \begin{exmp}
-Let $\left(X, x\right)$ be a pointed set with $X= \{x\}$. Let $\set_{\ast}$ denotes the category of pointed sets with base point preserving functions. Since  $\set_{\ast} \cong {X}/{\set}$, it follows that $X$ is a zero object in $\set_{\ast}$.
+Let $\left(X, x\right)$ be a pointed set with $X= \left\{x\right\}$. Let $\set_{\ast}$ denotes the category of pointed sets with base point preserving functions. Since  $\set_{\ast} \cong {X}/{\set}$, it follows that $X$ is a zero object in $\set_{\ast}$.
 \end{exmp}
 
 \smallskip
@@ -356,7 +356,7 @@ Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta
 \end{enumerate}
 \end{definition}
 
-If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in the right fiber category $F/\Delta_{\c}$, which has as objects pairs $\left(Z, j: F \to \Delta{Z}\right)$ and as morphisms from $(Y, i)$ to $(Z, j)$ the morphisms $g : Y \to Z$ in $\d$ such that $\Delta{g} \circ i = j$.
+If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in the right fiber category $F/\Delta_{\c}$, which has as objects pairs $\left(Z, j: F \to \Delta{Z}\right)$ and as morphisms from $\left(Y, i\right)$ to $\left(Z, j\right)$ the morphisms $g : Y \to Z$ in $\d$ such that $\Delta{g} \circ i = j$.
 
 \smallskip
 
