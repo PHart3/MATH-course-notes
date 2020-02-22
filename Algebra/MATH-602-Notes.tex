@@ -300,15 +300,13 @@ Consider a group action $\theta: G \to \aut(S)$.
 \begin{exercise} $ $
 \begin{enumerate}
 \item Given an action $a: G \times S \to S$, show that the equivalence relation $R_a \subset S \times S$ is the projection of $\graph(a) \subset G\times S \times S$ onto $S \times S$.
-\item If $\theta : G \to \aut(S)$ is a group action and $x\in S$, then show that the function $\faktor{G}{\stab_{\theta}(x)} \to \orb_{\theta}(x)$ given by $[g] \mapsto g \cdot x$ is well-defined and bijective.
+\item If $\theta : G \to \aut(S)$ is a group action and $x\in S$, then show that the function $f : \faktor{G}{\stab_{\theta}(x)} \to \orb_{\theta}(x)$ given by $\left[g\right] \mapsto g \cdot x$ is well-defined and bijective.
 \end{enumerate}
 \end{exercise}
-
-
 \begin{proof} $ $
 \begin{enumerate}
-\item This follows from the fact that $R_a = \left\{(s, gs): s \in S, \ g\in G\right\}$.
-\item
+\item This follows directly from the equation $R_a = \left\{\left(s, gs\right): s \in S, \ g\in G\right\}$.
+\item Let $g \sim h$, so that $g = hs$ for some $s\in \stab_{\theta}(x)$.Then $g \cdot x = \left(hs\right)\cdot x = h\cdot x$, which means that $f$ is well-defined. The fact that it's injective and surjective is obvious. 
 \end{enumerate}
 \end{proof}
 
@@ -498,7 +496,7 @@ If $x \in K$, then $f_x: \faktor{G}{\stab_\theta(x)} \to K$ given by $[g] \mapst
 \begin{proof}
 Let $[g] = [h]$. Then $g = hs$ for some $s \in \stab(x)$. Hence $$\theta(g)(x) = \theta(hs)(x) = \theta(h)(\theta(s)(x)) = \theta(h)(x),$$ proving that $f_x$ is well-defined.
 
-Define the map $F: K \to \stab_\theta(x)$ by $F(y) = S_y \coloneqq  \left\{g \in G : \theta(g)(x) = y\right\} = [s_0]$ for fixed $s_0 \in S_y$.
+Define the map $F: K \to \stab_\theta(x)$ by $F(y) = S_y \coloneqq  \left\{g \in G : \theta(g)(x) = y\right\} = \left[s_0\right]$ for fixed $s_0 \in S_y$.
 It's easy to check that this is the inverse of $f_x$. 
 
 Finally, let $g, g'\in G$. Then 
@@ -1053,7 +1051,7 @@ A group $G$ is \textit{simple} if it has no nontrivial proper normal subgroup.
 \end{exmp}
 
 \begin{definition}
-A \textit{composition series for $G$} is a subnormal series $G = G_0 > G_1 > \cdots > G_k = \left\{e\right\}$ where each $\faktor{G_i}{G_{i+1}}$ is simple.
+A \textit{composition series for $G$} is a subnormal series $G = G_0 > G_1 > \cdots > G_k = \left\{e\right\}$ where each quotient group $\faktor{G_i}{G_{i+1}}$ is simple.
 \end{definition}
 
 \begin{exmp} $ $
@@ -1158,7 +1156,7 @@ is a split exact sequence, then we say that $G$ is \textit{essentially a product
 \subsection{Lecture 10}
 
 
-Let $G$ be a group and $\left\{G_1, \ldots, G_k\right\}$ be a collection of subgroups. Recall that $G$ decomposes as the (direct) product of $G_1, \ldots, G_k$, i.e., the map $$\phi : G_1 \times \cdots \times G_k \to G,\ \quad  (g_1, \cdots, g_k) \mapsto g_1\cdots g_k$$ is an isomorphism, if and only if
+Let $G$ be a group and $\left\{G_1, \ldots, G_k\right\}$ be a collection of subgroups. Recall that $G$ decomposes as the (direct) product of $G_1, \ldots, G_k$, i.e., the map $$\phi : G_1 \times \cdots \times G_k \to G,\ \quad  \left(g_1, \cdots, g_k\right) \mapsto g_1\cdots g_k$$ is an isomorphism, if and only if
 \begin{enumerate}[label=(\roman*)]
 \item Each $g\in G$ can be written uniquely as $g_1 g_2\cdots g_k$, i..e, $\phi$ is bijective.
 \item We have $xy = yx$ for any $x \in G_i$ and $y\in G_j$, i.e., $\phi$ is a morphism.
@@ -1167,7 +1165,7 @@ Let $G$ be a group and $\left\{G_1, \ldots, G_k\right\}$ be a collection of subg
 
 \begin{exercise} $ $
 \begin{enumerate}
-\item Check that condition (i) is equivalent to the condition that $G_1 \cdots G_k = G$ and $G_i \cap (G_1 \cdots \widehat{G}_i \cdots G_k) = \left\{e\right\}$.
+\item Check that condition (i) is equivalent to the condition that $G_1 \cdots G_k = G$ and $G_i \cap \left(G_1 \cdots \widehat{G}_i \cdots G_k\right) = \left\{e\right\}$.
 \item Check that condition (ii) is equivalent to the condition that $G_i \unlhd G$ for each $i$.
 \end{enumerate}
 \end{exercise}
@@ -1212,12 +1210,12 @@ Recall that if $H \unlhd G$ and $K \leq G$, then $HK$ is a subgroup of $G$ and $
 
 Suppose that $G = HK$ with $H\unlhd G$ and $H \cap K = \left\{e\right\}$. Let $\alpha : K \to \aut_{\mathbf{Grp}}(H)$ be the inner automorphism of $H$, which depends on the group law $*_G$. Then $*_G$ can be recovered from $*_H$, $*_K$, and $\alpha$.
 Indeed,
-let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely, so that $$g_1g_1 = \left(h_1\alpha_{k_1}(h_2)\right)k_1k_2.$$
+let $g_1, g_2 \in G$. Then decompose $g_1 = h_1k_1$ and $g_2= h_2k_2$ uniquely, so that $$g_1g_1 = \left(h_1\alpha_{k_1}\left(h_2\right)\right)k_1k_2.$$
 
 \medskip
 
 We are ready to state an equivalent formulation of the notion \textit{semidirect product}. To this end,
-let $K$ and $H$ be groups and $\alpha : K \to \aut(H)$ be a structure-preserving action. Then the \textit{semidirect product of $K$ with $H$ along $\alpha$}, denoted by $H \rtimes_{\alpha} K$, is the group with underlying set $H \times K$ and group law $$\left(h_1, k_1\right)\left(h_2, k_2\right) \equiv  \left(h_1 \alpha_{k_1}(h_2), k_1k_2\right).$$
+let $K$ and $H$ be groups and $\alpha : K \to \aut(H)$ be a structure-preserving action. Then the \textit{semidirect product of $K$ with $H$ along $\alpha$}, denoted by $H \rtimes_{\alpha} K$, is the group with underlying set $H \times K$ and group law $$\left(h_1, k_1\right)\left(h_2, k_2\right) \equiv  \left(h_1 \alpha_{k_1}\left(h_2\right), k_1k_2\right).$$
 
 Every semidirect product is naturally a split extension of $K$ by $H$. Indeed, if $K \ltimes_{\alpha} H$, then $i_H : H \to K \ltimes_{\alpha} H$ is normal and $p_K : K\ltimes_{\alpha} H \to K$ is a surjective homomorphism with kernel $H$. Hence \[
 	\begin{tikzcd}
@@ -1266,7 +1264,7 @@ commutes.
 \end{exmp}
 
 \begin{exercise}
-Recall  the Heisenberg group  $H(V, W)$. Show that $0 \to \R \to H(V, W) \to V \to 0$ cannot be split.
+Recall  the Heisenberg group  $H(V, W)$. Show that the exact sequence $$0 \to \R \to H(V, W) \to V \to 0$$ cannot be split.
 \end{exercise}
 
 \subsection{Lecture 11}
@@ -1286,10 +1284,10 @@ Once we answer the question of existence, we ask in how many ways can we break a
 
 \begin{exmp} Any scenario can happen.
 \begin{enumerate}
-\item Any finite group has both \acc and \dcc.
-\item $\Z$ has \acc but not \dcc. On the one hand, if $a\Z \leq b\Z$, then $b\mid a$. But any positive integer has only finitely many divisors. Hence $\Z$ has \acc. On the other hand, we have an descending normal series
+\item Every finite group has both \acc and \dcc.
+\item $\Z$ has \acc but not \dcc. On the one hand, if $a\Z \leq b\Z$, then $b\mid a$. But any positive integer has only finitely many divisors. Hence $\Z$ has \acc. On the other hand, we have a descending normal series
 \[
-\Z > 2\Z > 4\Z >\cdots >2^n\Z> \cdots
+\Z > 2\Z > 4\Z >\cdots >2^n\Z> \cdots >\left\{0\right\}
 ,\] which never stabilizes. 
 \item Given $p$ prime, let $G_p \coloneqq  \left\{z\in \C^{\ast} : z^{p^k} =1 \text{ for some } k \right\}$. This has \dcc but not \acc.  \reversemarginpar{\marginpar{\small{Why?}}}
 \item $\Q$ has neither \acc nor \dcc.
@@ -1298,13 +1296,21 @@ Once we answer the question of existence, we ask in how many ways can we break a
 
 \begin{exercise} Prove the following assertions.
 \begin{enumerate}
-\item Given an exact sequence $1 \to H \to G \to K \to 1$, if both $H$ and $K$ have \acc and \dcc, then so does $G$. 
-\item If $G = H \times K$ and $G$ has \acc and \dcc, then so do $H$ and $K$.
+\item Given a short exact sequence 
+\[
+\begin{tikzcd}
+1 \arrow[r] & H \arrow[r, "a"] & G \arrow[r, "b"] & K \arrow[r] & 1
+\end{tikzcd},
+\] if both $H$ and $K$ have \acc (resp. \dcc), then $G$ has \acc (resp. \dcc). 
+\item If $G = H \times K$ and $G$ has \acc (resp. \dcc), then so do $H$ and $K$.
 \end{enumerate}
 \begin{proof} $ $ 
 \begin{enumerate}
-\item 
-\item Both $H$ and $K$ are normal in $G$, and any normal subgroup of either is normal in $G$.
+\item For simplicity, let us consider just the case where $H$ and $K$ have $\dcc$. Suppose that 
+\[
+G \geq J_1 \geq J_2 \geq J_3 \geq \cdots \geq \left\{e\right\}
+\] is any descending normal series. We must show that it stabilizes.By hypothesis, the descending normal series $\left(b(J_i)\right)_{i\geq 1}$ and $\left(a^{-1}(J_i)\right)_{i\geq 1}$ both stabilize at, say, $k\in \N$. Suppose that $i\geq k$ and let $x \in J_i$. Then $b(x) \in  b(J_i)= b(J_{i+1})$, and thus there is some $y\in J_{i+1}$ such that $b(x) = b(y)$. From this we deduce that $x-y \in \ker{b} = \im{a}$, so that there is some $z\in H$ such that $x-y = a(z)$. Since $x-y \in J_i$, it follows that $z \in a^{-1}(J_i) = a^{-1}(J_{i+1})$. Hence $x-y\in J_{i+1}$ as $a$ is injective. This implies that $x = \left(x-y\right)+y \in J_{i+1}$, so that $J_i = J_{i+1}$, thereby completing our proof.
+\item Both $H$ and $K$ are normal in $G$, and any normal subgroup of either one is normal in $G$. It follows automatically that if either $H$ or $K$ lacks \acc  (resp. \dcc), then so does $G$.
 \end{enumerate}
 \end{proof}
 \end{exercise}
@@ -1318,7 +1324,7 @@ Let $D$ denote the class of groups that can be written as the product of indecom
 
 \smallskip
 
- Assume, toward a contradiction, that $G$ has \dcc but $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \left\{e\right\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus, we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
+ Assume, toward a contradiction, that $G$ has \dcc and $G \notin D$. Set $H_0 = G$ so that $H_0 = H_1 \times K_1$ with $H_1 \notin D$ and $K_1 \ne \left\{e\right\}$. Proceeding in this way, we can construct $H_n = H_{n+1} \times K_{n+1}$ with $H_{n+1} \notin D$ and $K_{n+1}$ nontrivial. Thus, we get a normal series $G= H_0 > H_1 > H_2 > \cdots$. But there must be some $i$ such that $H_i = H_{i+1}$, a contradiction.
 
 \smallskip
 
@@ -1341,17 +1347,16 @@ An endomorphism $\phi$ of $G$ is \textit{normal} if $\phi \circ \conj_x = \conj_
 \item The inverse of a normal automorphism is also normal.
 \item Normal endomorphisms preserve normal subgroups.
 \item If $\phi$ and $\psi$ are normal, then $\phi + \psi$ is normal, where $\phi + \psi$ is given by $g\mapsto \phi(g)\psi(g)$.
-\item If $G = G_1 \times \cdots \times G_k$ and $p_i$ and $f_i$ denote projection and inclusion, respectively, then each each $f_ip_i$ is normal. Moreover, for any $\left\{a_1, \ldots, a_r\right\} \subset \left\{1, \ldots, k\right\}$, we have that $\sum_{j=1}^r f_{a_j}p_{a_j}$ is normal.
+\item If $G = G_1 \times \cdots \times G_k$ and $p_i$ and $f_i$ denote projection and inclusion, respectively, then each each $f_ip_i$ is normal. Moreover, for any subset  $\left\{a_1, \ldots, a_r\right\} \subset \left\{1, \ldots, k\right\}$, we have that $\sum_{j=1}^r f_{a_j}p_{a_j}$ is normal.
 \end{enumerate}
 \end{lemma}
 \begin{prop}
 If $G$ has \acc and \dcc and $\phi$ is normal, then $\phi$ is injective if and only if it's surjective.
 \end{prop}
 \begin{proof}
-Suppose first that $\ker{\phi}$ is trivial. Suppose there is some $g \in G \setminus \phi(G)$.  Then $\phi^n(g) \notin \phi^{n+1}(G)$ for any $n \geq 1$. Hence $G > \phi(G) > \phi^2(G) > \cdots$ is a normal series that fails to terminate, a contradiction. 
-\medskip
+Suppose first that $\ker{\phi}$ is trivial. Suppose there is some $g \in G \setminus \phi(G)$.  Then $\phi^n(g) \notin \phi^{n+1}(G)$ for any $n \geq 1$. Hence $$G > \phi(G) > \phi^2(G) > \cdots$$ is a normal series that fails to terminate, a contradiction. 
 
- Now suppose that $\phi$ is not injective. Find nontrivial $g_1 \in \ker{\phi}$. Suppose, toward a contradiction, that $\phi(g_2) = g_1$ for some $g_2$. Then $g_2 \notin \ker{\phi}$ but $g_2 \in \ker{\phi^2}$. Continue to get the chain $\ker{\phi} < \ker{\phi^2} < \cdots$, which fails to stabilize, a contradiction. 
+ Now suppose that $\phi$ is not injective. Find a nontrivial $g_1 \in \ker{\phi}$. Suppose, toward a contradiction, that $\phi(g_2) = g_1$ for some $g_2$. Then $g_2 \notin \ker{\phi}$ but $g_2 \in \ker{\phi^2}$. Continue this process to get a chain $$\ker{\phi} < \ker{\phi^2} < \cdots,$$ which fails to stabilize, a contradiction. 
 \end{proof}
 
 \begin{definition}
@@ -1441,7 +1446,7 @@ Suppose that $G$ is finite and that
 G = F^0G \geq F^1G \geq \cdots \geq F^sG = \left\{e\right\}  
 \\ G = T^0G \geq T^1G \geq \cdots \geq T^tG = \left\{e\right\}
 \end{gather*}
-are two composition series of $G$. Consider the \textit{graded groups} 
+are two composition series for $G$. Consider the \textit{graded groups} 
 \begin{gather*}
 \gr_F(G) \equiv \prod \faktor{F^i}{F^{i+1}}
 \\ \gr_T(G) \equiv \prod \faktor{T^i}{T^{i+1}}.
@@ -1546,7 +1551,7 @@ Likewise, $\widetilde{T}_{j-1}^{(i)} \coloneqq  (T^{j-1}\cap F^i) \cdot T^j$ def
 \end{proof}
 
 \begin{corollary}[Jordan-Holder]
-Any two composition series of $G$ are equivalent.
+Any two composition series for $G$ are equivalent.
 \end{corollary}
 \begin{proof}
 Since each intermediate term in a composition series is a maximal normal subgroup, neither series admits a proper refinement. Hence any refinement must be identical to the original series. This completes our proof thanks to \cref{schr}.
@@ -1760,7 +1765,7 @@ This implies that we could have taken the pushout first and then the pullback.
 \medskip
 
 Suppose that $\left(\xi\right) : 1\to A \to G \to K \to 1$ is an extension. If it is not split, then by the axiom of choice there is some set-theoretic section $s: K \to G$ of $q$.
-Define $f : K \times K\to G$ by $$\left(x,y\right)) \mapsto s(x)s(y)s(xy)^{-1}.$$ This is a homomorphism if and only if it is constant at $e_G$. Notice that $q(f(x,y)) = e$ for any $x,y\in K$. Then $\im{f} \subset A$, giving us  $f: K\times K \to A$.
+Define $f : K \times K\to G$ by $$\left(x,y\right) \mapsto s(x)s(y)s(xy)^{-1}.$$ This is a homomorphism if and only if it is constant at $e_G$. Notice that $q(f(x,y)) = e$ for any $x,y\in K$. Then $\im{f} \subset A$, giving us  $f: K\times K \to A$.
 \begin{definition}
 We say that $f$ is \textit{normalized} if $f(e, y) = f(x, e) =e$ for any $x,y \in K$.
 \end{definition}
@@ -2069,7 +2074,7 @@ This is weaker than \textit{isomorphism} as $F\circ G$ and $G\circ F$ need not b
 
 \smallskip
 
-\begin{exmp}\cref{vect}
+\begin{exmp}\label{vect}
 Let $\c = \mathbf{Vect}_k^n$, which consists of all $n$-dimensional vector spaces over $k$, and $\d =  B{\Mat_n(k)}$. Consider the functor $F : \d \to \c$ defined on objects by $\ast \mapsto k^n$ and on morphisms by $A \mapsto \left(v \mapsto Av\right)$. Define the functor $G: \c \to \d$ using the axiom of choice as follows. Choose a basis for each space $V \in \c$ and send each linear map $f$ to the matrix of $f$ with respect to the two chosen bases. Then $F$ is an equivalence with quasi-inverse $G$.
 \end{exmp}
 
@@ -2116,8 +2121,6 @@ Any subcategory $\a$ of $\c$ yields an inclusion functor $i : \a \to \c$.  \Cref
 \begin{exmp}
 The inclusion functor $i : \a \to \c$ is faithful.
 \end{exmp}
-
-\smallskip
 
 
 \begin{exercise}
@@ -2201,7 +2204,7 @@ V \times W \arrow[r, "\xi"] \arrow[rd] & T \arrow[d, "u"] \\
  & L
 \end{tikzcd}
 \]
-We construct such a pair $\left(T, \xi\right)$ as follows. Let $\mathcal{F}$ denote the vector space of set maps $f: V \times W \to k$ such that $\supp(f)$ is finite. A basis for $\mathcal{F}$ is given by the delta functions of points $\left(x,y\right)) \in V \times W$, defined by
+We construct such a pair $\left(T, \xi\right)$ as follows. Let $\mathcal{F}$ denote the vector space of set maps $f: V \times W \to k$ such that $\supp(f)$ is finite. A basis for $\mathcal{F}$ is given by the delta functions of points $\left(x,y\right) \in V \times W$, defined by
 \[ \delta_{(x,y)}(a, b) = \begin{cases}
 0 & \left(a,b\right) \ne \left(x,y\right) \\
 1 & \left(a, b\right) = \left(x,y\right)
@@ -2214,7 +2217,7 @@ Now, let $\mathcal{F}_0 \subset \mathcal{F}$ be the subspace spanned by elements
 \\ \delta_{(cx, y)} - c\delta_{(x,y)}  
 \\\delta_{(x,cy)} -c \delta_{(x,y)} 
 \end{gather*}
-where $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T = \faktor{\mathcal{F}}{\mathcal{F}_0}$ and define $\xi$ by  $\left(x,y\right)) \mapsto \delta_{(x,y)} + \mathcal{F}_0$. Then $T$ represents $B$. We usually write $V \otimes_k W$ for $T$.
+where $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T = \faktor{\mathcal{F}}{\mathcal{F}_0}$ and define $\xi$ by  $\left(x,y\right) \mapsto \delta_{(x,y)} + \mathcal{F}_0$. Then $T$ represents $B$. We usually write $V \otimes_k W$ for $T$.
 \end{exmp}
 
 \bigskip
@@ -3025,7 +3028,7 @@ An \textit{additive invariant of modules} is a class function $\phi : \ob(R{-} \
 
 \smallskip
 
-We have exact analogues of the Jordan-Holder and Krull-Schmidt theorems for $R{-}\mathbf{Mod}$. Define the \textit{length of $M$} as the length of any composition series of $M$. By the Jordan-Holder theorem, the length function $\lambda : \ob(R{-} \mathbf{Mod}) \to \Z \cup \{\infty\}$ is an additive invariant.
+We have exact analogues of the Jordan-Holder and Krull-Schmidt theorems for $R{-}\mathbf{Mod}$. Define the \textit{length of $M$} as the length of any composition series for $M$. By the Jordan-Holder theorem, the length function $\lambda : \ob(R{-} \mathbf{Mod}) \to \Z \cup \{\infty\}$ is an additive invariant.
 
 
 

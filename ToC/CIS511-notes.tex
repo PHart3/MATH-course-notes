@@ -388,7 +388,7 @@ Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \col
 \end{proof}
 
 \begin{exmp}
-Let $L\subset \{0, 1\}^{\ast}$ consist of those strings $x$ such that $``1010"$ appears in $x$. We can easily capture $L$ with the following $\NFA$, but writing a $\DFA$ that captures $L$ is much harder. 
+Let $L\subset \left\{0,1\right\}^{\ast}$ consist of those strings $x$ such that $``1010"$ appears in $x$. We can easily capture $L$ with the following $\NFA$, but writing a $\DFA$ that captures $L$ is much harder. 
 \[
 \begin{tikzpicture}[shorten >=1pt, node distance=2cm, on grid, auto]
 \node[state, initial] (q_0) {$q_0$};
@@ -738,7 +738,7 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 
 \begin{note} $ $
 \begin{enumerate}
-\item This simulation has time complexity $O(m^T)$ where $T$ denotes the steps taken by $M$.
+\item This simulation has time complexity $O\left(m^T\right)$ where $T$ denotes the steps taken by $M$.
 \item We can modify the proof of \cref{LT} to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
 \end{enumerate}
 \end{note}
@@ -749,7 +749,7 @@ There is an injective function $\iota$ from the set of Turning machines into $\l
 
 \smallskip
 
-\begin{theorem}
+\begin{theorem}\label{UTM}
  There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\langle M \rangle$ and $x$, (i.e., one string over $\left\{0,1\right\} \times \Sigma$) such that
  \begin{enumerate}[label=(\alph*)]
  \item if $M$ accepts $x$, then $U_{\TM}$ accepts,
@@ -757,13 +757,39 @@ There is an injective function $\iota$ from the set of Turning machines into $\l
  \item if $M$ does not halt on $x$, then neither does $U_{\TM}$.
  \end{enumerate} Moreover, if $M$ takes $T$ steps on $w$, then $U_{\TM}$ takes $O(T \log{T})$ steps on $\langle M, w \rangle$.
 \end{theorem}
-\begin{proof}
-This is like constructing an interpreter for a programming language within the language itself. See Theorem 1.13 (Arora and Barak) for a high-level proof.
-\end{proof}
+
+Proving \cref{UTM} amounts to constructing an interpreter for a programming language within the language itself. See Theorem 1.13 (Arora and Barak) for a high-level proof.
 
 \begin{term}
 We call $U_{\TM}$ a \textit{universal Turing machine}.
 \end{term}
+
+\medskip
+
+\begin{aside}
+Let  $f:\left\{0,1\right\}^{\ast} \to\left\{0,1\right\}^{\ast}$ be a partial computable function (see \cref{computable} below). For any string $\sigma$, a \textit{description of $\sigma$ relative to $f$} is a string $\tau$ such that $f(\tau) = \sigma$. The \textit{Kolmogorov complexity} of $\sigma$ relative to $f$ is
+\[
+C_f(\sigma ) \equiv  \begin{cases}
+\min\left\{\left\lvert{\tau}\right\rvert \mid f(\tau) = \sigma\right\} & \sigma \in \im{f}
+\\ \infty & \text{otherwise}
+\end{cases}.
+\] To obtain an absolute definition of \textit{Kolmogorov complexity}, let $n_f$ denote the length of $\langle f\rangle$ and define a new partial computable function $g: \left\{0,1\right\}^{\ast} \to\left\{0,1\right\}^{\ast}$ by
+\[
+0^{n_f}1\langle f\rangle y \mapsto U_{\TM}(\langle f\rangle, y).
+\] It is straightforward to prove that there is some constant $R\geq 0$ such that $C_g(\sigma) - C_f(\sigma) \leq R$ for every $\sigma$. Now, the \textit{Kolmogorov complexity} of $\sigma$ is $C(\sigma) \equiv C_g(\sigma)$.
+
+\smallskip
+
+We say that $\sigma$ is \textit{Kolmogorov random} if it cannot be compresses, formally, $C(\sigma) \geq \left\lvert{\sigma}\right\rvert$.
+
+\begin{prop}
+For every integer $n\geq 1$, there is a Kolmogorov random string of length $n$.
+\end{prop}
+\begin{proof}
+Suppose not. Then for any string $x$ of length $n$, $C(x) < n$.  Hence there is some $\tau_x$ such that $g(\tau_x) = x$ and $\left\lvert{\tau_x}\right\rvert < n$. The mapping $x \mapsto \tau_x$ is clearly injective. But there are exactly $2^{n-1}$ strings of length $< n$ and exactly $2^n$ strings of length $n$. This yields a contradiction.
+\end{proof}
+\end{aside}
+
 
 \subsection{Lecture 7}
 
@@ -826,7 +852,7 @@ Find some $M_1$ and $M_2$ such that $L = L(M_1)$ and $\overline{L} = L(M_2)$. Co
 $\overline{A_{\TM}}$ is not recursively enumerable. 
 \end{corollary}
 
-\begin{definition}
+\begin{definition}\label{computable}
 A function $f: \Sigma^{\ast} \to \underline{\Sigma}^{\ast}$ is \textit{computable} if there is some $\TM$ $M$ such that for any string $w$, $M$ halts on $w$ with its tape containing just $f(w)$. 
 \end{definition}
 
@@ -968,7 +994,7 @@ $\mathbf{P}$ belongs todependent of the variant of deterministic Turing machine 
 \end{prop}
 
 \begin{remark}
-Given any convex body, we want to compute its volume. In 1989, Dyer and Frieze proved that this is solvable in $O(n^{23})$ steps. It is now known that it's solvable in $O(n^2)$ steps. 
+Given any convex body, we want to compute its volume. In 1989, Dyer and Frieze proved that this is solvable in $O\left(n^{23}\right)$ steps. It is now known that it's solvable in $O\left(n^2\right)$ steps. 
 \end{remark}
 
 \begin{exmp}
@@ -980,7 +1006,7 @@ For any $k\geq 0$, $\mathsf{DTIME}(n^k) \subset \mathsf{DTIME}(n^{k+1})$. Consid
 \item  If $M_w$ does not halt in so many steps, then let $x\notin L$. 
 \item Else, let $x\in L$ when $M_w$ rejects and let $x\notin L$ when $M_w$ accepts. 
 \end{enumerate}
-Steps 2 and 3 together take $O(n^2 \log{n})$ steps. It follows that $L \in \mathsf{DTIME}(n^2\log{n})\subset \mathsf{DTIME}(n^3)$. But $L \notin \mathsf{DTIME}(n^2)$.
+Steps 2 and 3 together take $O\left(n^2 \log{n}\right)$ steps. It follows that $L \in \mathsf{DTIME}(n^2\log{n})\subset \mathsf{DTIME}(n^3)$. But $L \notin \mathsf{DTIME}(n^2)$.
 \end{exmp}
 
 \begin{theorem}[Time hierarchy]
@@ -995,12 +1021,12 @@ We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of
 
 Let  
 \begin{gather*}
-\mathsf{NTIME}(t(n)) = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O(t(n))\text{ steps}\right\} \\ 
+\mathsf{NTIME}(t(n)) = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O\left(t(n)\right)\text{ steps}\right\} \\ 
 \mathbf{NP} = \bigcup_{k \geq 0} \mathsf{NTIME}(n^k).
 \end{gather*} 
 
 \begin{prop}
-$\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}(2^{O(t(n))})$.
+$\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}\left(2^{O(t(n))}\right)$.
 \end{prop}
 
 \begin{exmp}
@@ -1110,7 +1136,7 @@ This is an example of a non-uniform model of computation as we must specify a ne
 \end{remark}
 
 \begin{lemma}\label{pl1}
-Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O(2^n)$. 
+Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O\left(2^n\right)$. 
 \end{lemma}
 \begin{proof}
 We use induction to show that any function $g:\left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
@@ -1124,10 +1150,10 @@ Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \left\{0,1
 \end{proof}
 
 \begin{lemma}\label{pl2}
-Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O(t^2 \cdot (\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert)^3) = O(t^2)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
+Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O\left(t^2 \cdot (\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert)^3\right) = O\left(t^2\right)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
 \end{lemma}
 \begin{proof}
-We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3 )$ that simulates $M$ on inputs of size $n$.
+We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O\left(2^{3B}\right)$ and hence by one of size $O\left(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3\right)$. Thus, there is a circuit of size $O\left(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3\right)$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
@@ -1305,13 +1331,10 @@ since $M$ always halts, it can never reach the same configuration more than once
 
 
 \begin{lemma}
-$\mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$.
+$\mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$.
 \end{lemma}
 \begin{proof}
 Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$.  Given any input $x$ of length $n$, we can use $O(S(n))$ bits to describe the current contents of the tape, $O(\log{S(n)})$ bits to describe the current state, and $O(1)$ bits to describe the current location of the head. Thus, we need $$O(S(n)) + O(1) + O(\log{S(n)})= O(S(n))$$ bits to describe any vertex of $G_{M,x}$. 
-
-\medskip
-
 
 Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided that any configuration of a $\NDTM$ yields at most two distinct configurations).  Therefore, we can construct $G_{M,x}$ in $2^{O(S(n))}$ steps. Now apply the standard linear-time breadth-first search for connectivity to $G_{M,x}$ to decide if there is a path from $C_{\mathrm{start}}$ to $C_{\accpt}$. 
 \end{proof}
@@ -1319,7 +1342,7 @@ Note that the number of configurations of $M$ is at most $2^{O(S(n))}$ (provided
 
 \begin{corollary} $ $
 \begin{enumerate}
-\item $\mathsf{DTIME}(S(n)) \subset \mathsf{DSPACE}(S(n)) \subset \mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$.
+\item $\mathsf{DTIME}(S(n)) \subset \mathsf{DSPACE}(S(n)) \subset \mathsf{NSPACE}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$.
 \item $\mathsf{DTIME}(S(n)) \subset \mathsf{NTIME}(S(n)) \subset \mathsf{NSPACE}(S(n))$.
 \end{enumerate}
 \end{corollary}
@@ -1355,10 +1378,10 @@ Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\langle G, s, t 
 
 \smallskip
 
-Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}(2^{O(S(n))})$. The corresponding relation for space complexity, however, is much better
+Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$. The corresponding relation for space complexity, however, is much better
 
 \begin{theorem}[Savitch]
- $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n))$.
+ $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}\left(S^2(n)\right)$.
 \end{theorem}
 
 \begin{corollary}
@@ -1368,7 +1391,7 @@ $\mathsf{PSPACE} = \mathsf{NPSPACE}$.
 \subsection{Lecture 15}
 
 \begin{theorem}[Savitch]\label{Sav}
- $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}(S^2(n)).$
+ $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}\left(S^2(n)\right).$
 \end{theorem}
 \begin{proof}
 Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$. Recall that the configuration graph $G_{M,x}$ has at most $T_0\coloneqq 2^{O(S(n))}$ nodes. Consider the following recursive algorithm.
@@ -1387,7 +1410,7 @@ Denote the space complexity of the preceding algorithm by $\mathcal{L}(T_0)$. No
 $$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that the recursion depth here is precisely $\log{T_0}$. Using this, we compute
 \begin{align*}  \mathcal{L}(T_0)  & =    \log{T_0} + \mathcal{L}(T_0/2) 
 \\ & = \log^2{T_0} + \mathcal{L}(1) =  \log^2{2^{O(S(n))}} + \mathcal{L}(1) 
-\\ & = O(S^2(n)) + O(S(n)) = O(S^2(n))  .
+\\ & = O\left(S^2(n)\right) + O(S(n)) = O\left(S^2(n)\right)  .
 \end{align*}
 \end{proof}
 
@@ -1416,7 +1439,7 @@ Construct an algorithm $T(\varphi)$ as follows.
 \item If $\varphi = \exists x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if either of these recursive calls accepts and reject otherwise. 
 \item If  $\varphi = \forall x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if both of these recursive calls accept and reject otherwise. 
 \end{itemize} 
-If $m$ denotes the size of $\varphi$, then $$\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O(m^k)$$ for some $k$.
+If $m$ denotes the size of $\varphi$, then $$\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O\left(m^k\right)$$ for some $k$.
 \end{proof}
 \end{enumerate}
 \end{exmp}
@@ -1431,7 +1454,7 @@ A language $L$ is $\mathsf{PSPACE}$-complete if it belongs to $\mathsf{PSPACE}$ 
 $\mathsf{TQBF{-}SAT} $ is $\mathsf{PSPACE}$-complete.
 \end{exmp}
 \begin{proof}
-Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lvert{x}\right\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O(S(n)^2)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
+Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lvert{x}\right\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O\left(S(n)^2\right)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
 
 
  We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
@@ -1439,7 +1462,7 @@ Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lve
 \varphi_{c_1, c_2, i} & \leftrightarrow \exists c\left(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1}\right)
 \\ & \leftrightarrow \exists c \forall D^1 \forall D^2\left(\left(D^1 = c_1 \land D^2 = c\right) \vee \left(D^1 = c\right) \land \left(D^2 = c_2\right)\right) \implies \varphi_{D^1, D^2, i-1}.
 \end{align*}
-It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{\varphi_{c_1, c_2, i-1}}\right\rvert +O(S(n))$, so that $\left\lvert{\hat{\varphi}}\right\rvert \leq O(S(n)^2)$, as desired.
+It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{\varphi_{c_1, c_2, i-1}}\right\rvert +O(S(n))$, so that $\left\lvert{\hat{\varphi}}\right\rvert \leq O\left(S(n)^2\right)$, as desired.
 \end{proof}
 
 \begin{prop}
@@ -1484,6 +1507,8 @@ First, let $v\in V$. Given that $\left\lvert{C_i}\right\rvert = k$, we can verif
 \item Verify that $m = k$ by using a counter on the work tape. If not, then \textit{reject}. Otherwise, \textit{accept}.
 \end{enumerate}
 
+\smallskip
+
 Second, given that $\left\lvert{C_{i-1}}\right\rvert = k$,  we can verify that $v\notin C_i$ as follows.
 \begin{enumerate}
 \item Propose a list $v_{s_1}, \ldots, v_{s_m}$ of vertices and a path $s\leadsto v_{s_i}$ for each $1\leq i \leq m$. 
@@ -1493,6 +1518,8 @@ Second, given that $\left\lvert{C_{i-1}}\right\rvert = k$,  we can verify that $
 \item \text{Repeat steps 2-4} until there is no $v_{s_i}$ left. 
 \item Verify that $m = k$ by using a counter on the work tape. If not, then \textit{reject}. Otherwise, \textit{accept}.
 \end{enumerate}
+
+\smallskip
 
 Finally, let $c\in \N$. Given that $\left\lvert{C_{i-1}}\right\rvert=k$, we can verify that $\left\lvert{C_i}\right\rvert = c$ as follows. 
 \begin{enumerate} 
@@ -1542,14 +1569,14 @@ $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 
 \begin{remark} $ $
 \begin{enumerate}
-\item Computing the value of the determinant of an $n\times n$ matrix of integers via cofactor expansion takes $\omega(n!)$ steps. Computing it via Gaussian elimination, however, takes $O(n^3)$ steps. 
+\item Computing the value of the determinant of an $n\times n$ matrix of integers via cofactor expansion takes $\omega(n!)$ steps. Computing it via Gaussian elimination, however, takes $O\left(n^3\right)$ steps. 
 \item Computing the value of the determinant of an $n\times n$ matrix of linear forms over $\Z$ via cofactor expansion is exponential in $n$. There is no known deterministic polynomial time algorithm for such a computation.
 \end{enumerate}
 \end{remark}
 
 \begin{prop}\label{poly} $ $
 \begin{enumerate}[label=(\alph*)]
-\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
+\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O\left(n^2\right)}$.
 \item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $$\mathbb{P}\left[p(x) =0\right] \leq \frac{d}{\left\lvert{S}\right\rvert}$$ for any $x\in_R S$.
 \end{enumerate}
 \end{prop}
@@ -1653,7 +1680,7 @@ We have that $L \in \mathbf{ZPP}$ if there exists a randomized algorithm that ru
 \subsection{Lecture 20}
 
 \begin{theorem}
-If there exist $L \in \mathsf{DTIME}(2^{O(n)})$ and $\gamma >0$ such that $L$ requires circuits of size at least $2^{\gamma{n}}$, then $\mathbf{P} = \mathbf{BPP}$.
+If there exist $L \in \mathsf{DTIME}\left(2^{O(n)}\right)$ and $\gamma >0$ such that $L$ requires circuits of size at least $2^{\gamma{n}}$, then $\mathbf{P} = \mathbf{BPP}$.
 \end{theorem}
 
 \smallskip
@@ -1785,6 +1812,8 @@ $\mathsf{PSPACE} \subset \mathbf{IP}$.
 \begin{corollary}
 $\mathsf{PSPACE} = \mathbf{IP}$.
 \end{corollary}
+
+\bigskip
 
 \begin{definition}[Hash function]
 Let $A$ and $B$ be sets of size $2^n$ and $2^k$, respectively. A set of functions $\H\coloneqq \left\{h_1, \ldots, h_t\right\}$ from $A$ to $B$ is \textit{pairwise independent} if for any distinct $x, x' \in A$ and any $y, y' \in B$, $$  \mathbb{P}_{h \in_R \H}\left[h(x) = y \land h(x') = y'\right] = \frac{1}{2^{2k}}  = \frac{1}{\left\lvert{B}\right\rvert^2}.$$ An element of such a set is called a \textit{(pairwise independent) hash function}.

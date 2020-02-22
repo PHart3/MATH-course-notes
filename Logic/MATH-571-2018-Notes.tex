@@ -1629,16 +1629,20 @@ Suppose that $\con(\zfc)$, so that there is some set model $\A$ of $\zfc$. If th
 
 
 \begin{lemma}[Tarski-Vaught elementary submodel criterion]\label{TV}
-Let $\A$ be a model for $\L$ such that its domain $A$ is a set. (Such an $\A$ is sometimes called an \textit{$\L$-structure}.) Let $B \subset A$. Suppose that for every formula of the form $$\exists y \theta(x_1, \ldots, x_n, y)$$ and every $b_1, \ldots, b_n \in B$, if $\A \models \exists y \theta[b_1, \ldots, b_n]$, then there is some $b \in B$ such that $\A \models \theta[b_1, \ldots, b_n, b]$.
+Let $\A$ be a model for $\L$ such that its domain $A$ is a set. 
+\begin{term}
+Such an $\A$ is sometimes called an \textit{$\L$-structure}.
+\end{term}
+ Let $B \subset A$. Suppose that for every formula of the form $$\exists y \theta(x_1, \ldots, x_n, y)$$ and every $b_1, \ldots, b_n \in B$, if $\A \models \exists y \theta[b_1, \ldots, b_n]$, then there is some $b \in B$ such that $\A \models \theta[b_1, \ldots, b_n, b]$.
 Then $B$ forms an elementary submodel of $\A$. 
 \end{lemma}
 
 \begin{theorem}[(Downward) L\"owenheim-Skolem (L-S)]\label{LS}
-Let $\L$ be a countable language. For any infinite set model $\A$ for $\L$ and any set $X\subset \dom(\A)$, we can use $\ac$ to find a set model $\B$ for $\L$ such that 
+Let $\L$ be a countable language. For any set model $\A$ for $\L$ and any subset $X\subset \dom(\A)$, we can use $\ac$ to find a set model $\B$ for $\L$ such that 
 \be[label=(\alph*)]
 \item $X\subset \dom(\B)$, 
 \item $\B \preceq \A$, and
-\item $\dom(\B)$ has cardinality at most $\left\lvert{X}\right\rvert \cdot \left\lvert{\L}\right\rvert \cdot \aleph_0$.
+\item $\dom(\B)$ has cardinality at most $\left\lvert{X}\right\rvert + \left\lvert{\L}\right\rvert +\aleph_0$.
 \ee 
 In particular, there is a countable $\L$-structure $\B$ such that $\B \preceq \A$.
 \end{theorem}
@@ -1669,10 +1673,10 @@ In general, as a result of the compactness theorem, if an $\L$-structure $\left(
 \end{proof}
 
 \begin{theorem}[Skolem's paradox]
-Let $\varphi(x)$ denote the formula $$\exists f(f : \omega  \to  x \land f \text{ is a bijection})  ,  $$ where $\omega$ denotes the smallest infinite ordinal. Provided that $\zf$ has at least one well-founded set model $\A$,\footnote{This assumption is strictly stronger than the assumption that $\con(\zf)$ but is weaker than the assumption that $\exists \kappa(\si(\kappa))$.} there is a transitive set model $\B$ of $\zf$ such that $\B \nvDash \varphi$ but $\varphi$ holds in the universe of all sets.
+Let $\varphi(x)$ denote the formula $$\exists f\left(f : \omega  \to  x \land f \text{ is a bijection}\right)  ,  $$ where $\omega$ denotes the smallest infinite ordinal. Provided that $\zf$ has at least one well-founded set model $\A$,\footnote{This assumption is strictly stronger than the assumption $\con(\zf)$ but is weaker than the assumption $\exists \kappa(\si(\kappa))$.} there is a transitive set model $\B$ of $\zf$ such that $\B \nvDash \varphi$ but $\varphi$ holds in the universe of all sets.
 \end{theorem}
 \begin{proof}
-By \cref{LS}, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By \cref{MC}, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi(\kappa^{\B})}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi(\kappa^{\B})$ holds in the universe of all sets.
+By \cref{LS}, there is some countable elementary submodel $\A'$ of $\A$. Note that $\A'$ is both extensional and well-founded as a submodel of $\A$. By \cref{MC}, we have that $\A' \cong \B$ for some transitive model $\B$. Then $\B$ is a countable transitive model of $\zf$ (written as $\ctm(\B)$). Since $\B \models \zf$, we can take the Hartogs number $H(\omega)$ to get a cardinal $\kappa^{\B} \in \dom(\B)$ with $\kappa^{\B} > \omega$. Therefore, $$\B \models \neg{\varphi\left[\kappa^{\B}\right]}.$$ That is, $\kappa^{\B}$ is not countable inside $\B$. But since $\B$ is transitive, we get $\kappa^{\B} \subset \dom(B)$, which implies that $\kappa^{\B}$ is countable outside $\B$. That is, $\varphi\left[\kappa^{\B}\right]$ holds in the universe of all sets.
 \end{proof}
 
 \subsection{Lecture 16}
@@ -1714,7 +1718,7 @@ Let $M$ be a transitive class. \Cref{d0abs} states that any $\Delta_0$-formula i
 The following is, in essence, a re-wording of \cref{TV}.
 
 \begin{lemma}[Tarski-Vaught (alternative formulation)]
-Suppose that $\underset{\text{submodel}}{A \subset B}$ and that $\varphi(\bar{x}, y)$ is a formula such that $\abs(A, B, \varphi(\bar{x}, y))$. Further, suppose that for any $\bar{a} \in A$, if there exists $b\in B$ such that $\varphi^B[\bar{a}, b]$, then there exists $b' \in A$ such that $\varphi^B[\bar{a}, b']$. Then $\abs(A, B, \exists{y}\varphi(\bar{x}, y))$.
+Suppose that $\overset{\text{submodel}}{A \subset B}$ and that $\varphi(\bar{x}, y)$ is a formula such that $\abs(A, B, \varphi(\bar{x}, y))$. Further, suppose that for any $\bar{a} \in A$, if there exists $b\in B$ such that $\varphi^B\left[\bar{a}, b\right]$, then there exists $b' \in A$ such that $\varphi^B\left[\bar{a}, b'\right]$. Then $\abs(A, B, \exists{y}\varphi(\bar{x}, y))$.
 \end{lemma}
 \begin{proof}
 By induction on the complexity $\varphi$, let us show that $$A\models \exists{y}\varphi(\bar{a}, y) \iff B\models \exists{y}\varphi(\bar{a}, y) $$ for every $\bar{a}\in A$.  The case where $\varphi$ is atomic is obvious, as is the case where $\varphi   = \varphi_1 \square \varphi_2$ where $\square \in \left\{\neg, \land\right\}$. It remains to consider the case where $\varphi = \exists{z}\psi$. 
@@ -1982,7 +1986,7 @@ Recall that $\zf+ \VL \models \ac$, so that \cref{LS} holds. We know that $\P(\o
 
 \smallskip
 
-Thanks to \cref{LS}, we have a countable submodel $M\preceq L_{\omega_2}$ such that ${\alpha}\in M$. Since $\omega_2$ is a limit ordinal and the function $\alpha \mapsto L_{\alpha}$ is $\Delta_1$, this function must be absolute for $L_{\omega_{2}}$ and the transitive collapse of $M$. The collapse therefore must equal $L_{\chi}$ for some countable ordinal $\chi$. Hence ${\alpha}\in  L_{\chi} \preceq L_{\omega_2}$. Note that since $\omega_2$ is a limit, $\chi$ must be one as well. Also, note that $\omega \in L_{\chi}$ and that $L_{\omega_1}, \omega_1 \in L_{\omega_2}$. Finally, note that $L_{\omega_2} \models \alpha < \omega_1$. 
+Thanks to \cref{LS}, we have a countable elementary submodel $M\preceq L_{\omega_2}$ such that ${\alpha}\in M$. Since $\omega_2$ is a limit ordinal and the function $\alpha \mapsto L_{\alpha}$ is $\Delta_1$, this function must be absolute for $L_{\omega_{2}}$ and the transitive collapse of $M$. The collapse therefore must equal $L_{\chi}$ for some countable ordinal $\chi$. Hence ${\alpha}\in  L_{\chi} \preceq L_{\omega_2}$. Note that since $\omega_2$ is a limit, $\chi$ must be one as well. Also, note that $\omega \in L_{\chi}$ and that $L_{\omega_1}, \omega_1 \in L_{\omega_2}$. Finally, note that $L_{\omega_2} \models \alpha < \omega_1$. 
 
 \smallskip
 

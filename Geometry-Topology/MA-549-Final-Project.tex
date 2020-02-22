@@ -256,7 +256,7 @@ We can apply the additivity of the inner product to get
 
 Now, it follows that $ \left\lVert{g(\e_i)}\right\rVert^2= \left\lVert{\e_i}\right\rVert^2=1$ for each $i=1,2,3,4$, so that $ \left\lVert{g(\e_i)}\right\rVert=1$. Similarly,  we can deduce that  $\langle g(\e_i),g(\e_j)\rangle = 0$ if $i\ne j$. Thus, $\left\{g(\e_i)\right\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
 
-Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
+Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id_{\R^4}$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
 
 By \cref{c2}, $\det(g)=\pm 1$. If $\det(g)=1$, then $g\in \SO(4)$, and we're done. Assume that $\det(g)={-1}$. 
  Note that the reflection $$\phi(a,b,c,d)\equiv (a,b,c,-d)$$ is given by the matrix $$S\coloneqq\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0&1&0&0\\ 0 & 0 &1 & 0 \\ 0 & 0 &0 &-1 \end{bmatrix}.$$ Since it's clear that $\phi \in \ORT(4)$, we see that $g\circ \phi\in \ORT(4)$. Also, $\det(gS)=\det(g)\det(S)=(-1)(-1)=1$. Therefore, $g\circ \phi \in \SO(4)$. As $\phi = \phi^{-1}$, it follows that $\left(g\circ \phi\right)\circ \phi= g\circ (\phi^2)=g$. Now, set $R'=g\circ \phi$ and $\F=\phi$, thereby completing out proof.
@@ -340,7 +340,14 @@ Every $2\times 2$ unitary matrix $X$ has $\left\lvert{\det(X)}\right\rvert=1$, w
 \end{cor}
 
 \begin{proof}
-We have that $1=\det(I)=\det(XX^\ast)= \det(X)\det(X^\ast)=\det(X)\overline{\det(X)}=\left\lvert{\det(X)}\right\rvert$.
+We have that 
+\begin{align*}
+1 &=\det(I)
+\\ &=\det(XX^\ast)
+\\ &= \det(X)\det(X^\ast)
+\\ &=\det(X)\overline{\det(X)}
+\\ &=\left\lvert{\det(X)}\right\rvert.
+\end{align*}
 \end{proof}
 
 \medskip
@@ -380,7 +387,7 @@ H(Rx, Ry)=H(x,y) & \iff \overline{Rx}^TRy=\bar{x}^Ty
 
 Let us look now at the complex analogue of $\SO(4)$. The map $D:\U(2)\to \U(1)$ given by $D(X)=\det(X)$ is well-defined by \cref{unitnorm}. As $\det$ is multiplicative, it is also a homomorphism. For any $e^{i\theta}\in \C$, we see that $M\coloneqq\begin{bmatrix}e^{i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix}\in \U(2)$ and $D(M)=e^{i\theta}$, which means that $D$ is surjective. Now note that $$\ker D=K\coloneqq\left\{X\in \U(2) :\det(X)=1\right\}.$$ This yields an isomorphism $\U(2)/K\cong \U(1)$ in the category $\mathbf{Grp}$ of groups. 
 
-Let $\SU(2)\coloneqq \ker(D)$. Then $\SU(2)$ consists precisely of those $2\times 2$ unitary matrices which are orientation-preserving.
+Let $\SU(2)= \ker(D)$. Then $\SU(2)$ consists precisely of those $2\times 2$ unitary matrices which are orientation-preserving.
 Let $W\in \SU(2)$ and write $W=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. Since $\det(W)=1$, we find that $W^{-1}=\begin{bmatrix} d & {-b} \\ {-c} & a \end{bmatrix}$. Since $W^\ast= W^{-1}$, it follows that $d=\bar{a}$ and ${-\bar{b}} ={c}$. Therefore, $\det(W)= \left\lVert{(a,c)}\right\rVert^2=a\bar{a}+c\bar{c}=1$, and $W=\begin{bmatrix} a & c\\ {-\bar{c}} & \bar{a} \end{bmatrix}$. Conversely, the column vectors of such a matrix are orthonormal. Hence $$\SU(2)= \left\{X\in \M^2(\C): X=  \begin{bmatrix} x & {y}\\ {-\bar{y}} & \bar{x} \end{bmatrix} \text{ with } x\bar{x}+y\bar{y}=1\right\}.$$
 
 \begin{theorem}\label{u2iso}
@@ -418,7 +425,7 @@ Let us turn our attention to providing the groups
 \end{itemize}
 with \emph{topological} characterizations, having treated them only as algebraic objects thus far. The first four of these groups are topological spaces as subsets of normed vector spaces. The last group, $\Isom(\R^4)$, has the metric topology induced by
 \[
-d(f,g) \equiv \max\{ \left\lvert{f(x)-g(x)}\right\rvert : x \in \R^4,\ \left\lvert{x}\right\rvert \leq 1\},
+d(f,g) \equiv \max\left\{ \left\lvert{f(x)-g(x)}\right\rvert : x \in \R^4,\ \left\lvert{x}\right\rvert \leq 1\right\},
 \]  which is a modest generalization of the metric induced by the familiar operator norm in the theory of finite-dimensional vector spaces.
 \begin{remark}
 All five groups are actually Lie groups.
