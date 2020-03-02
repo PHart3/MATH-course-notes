@@ -1412,15 +1412,14 @@ so that $\Delta_D =\sum \frac{\partial^{2}{f}}{\partial{x_i^2}}$.
 
 Let $G$ be any Lie group. For any $g\in G$, $\ell_g : G \to G$ is an isomorphism of $\C$-manifolds. Thus, if $V$ is a vector field on $G$, then so is $\left(\ell_g\right)_{\ast}{V}$.
 
-\begin{defn}
-We say that $V$ is \textit{left-invariant} if $\left(\ell_g\right)_{\ast}{V} = V$ for every $g\in G$.
+\begin{defn}[Lie algebra] $ $
+\be
+\item We say that a vector field $V$ on $G$ is \textit{left-invariant} if $\left(\ell_g\right)_{\ast}{V} = V$ for every $g\in G$.
+\item The \textit{Lie algebra $\G_G$ of $G$} is the space of left-invariant vector fields on $G$ under the Lie bracket.
+\ee
 \end{defn}
 
-\begin{defn}[Lie algebra]
-The \textit{Lie algebra $\G_G$ of $G$} is the space of left-invariant vector fields on $G$ under the Lie bracket.
-\end{defn}
-
-Consider the commutative diagram
+Consider now the commutative diagram
 \[
 \begin{tikzcd}
 \G_G \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), \left[{-},{-}\right]\right)} \arrow[d, "\ev_1"] \\

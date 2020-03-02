@@ -395,11 +395,11 @@ From now on, assume that every topological space is Hausdorff.
 \end{remark}
 
 \begin{definition}
-Let $A\subset X$ be a subspace. A \textit{homotopy between $f$ and $g$ relative to $A$} is a homotopy $F$ between $f$ and $g$ such that if $t\in [0,1]$, then $F(x, t) = f(x) = g(x)$ for each $x\in A$.
+Let $A\subset X$ be a subspace. A \textit{homotopy between $f$ and $g$ relative to $A$} is a homotopy $F$ between $f$ and $g$ such that if $t\in [0,1]$, then $$F(x, t) = f(x) = g(x)$$ for each $x\in A$.
 \end{definition}
 
 \begin{exmp}
-Let $X\coloneqq  D^2 \setminus \left\{0\right\}$. Define $f: X \to X$ by $f(r, \theta) = \left(r, \theta\right)$ and $g: X \to X$ by $g(r, \theta) = \left(1, \theta\right)$. Then the map $F: X \times I \to X$ given by  $F((r, \theta), t)=  \left(t+ (1-t)r, \theta\right)$ is a homotopy between $f$ and $g$ relative to $S^1\subset X$.
+Let $X\coloneqq  D^2 \setminus \left\{0\right\}$. Define $f: X \to X$ by $f(r, \theta) = \left(r, \theta\right)$ and $g: X \to X$ by $g(r, \theta) = \left(1, \theta\right)$. Then the map $F: X \times I \to X$ given by  $F((r, \theta), t)=  \left(t+ \left(1-t\right)r, \theta\right)$ is a homotopy between $f$ and $g$ relative to $S^1\subset X$.
 \end{exmp}
 
 \begin{definition}
@@ -628,7 +628,12 @@ Let $\gamma, \hat{\gamma}: I \to X$ be paths in $X$ such that $\gamma(0) = \hat{
 
 \smallskip
 
-Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ with $\ob(\Pi_1(X)) = X$ and $\Hom_{\Pi_1(X)}(x,y) = \left\{[\gamma]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}$. We make concatenation of paths the composition of morphisms. 
+Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ where
+\begin{align*}
+\ob(\Pi_1(X)) & \equiv X
+\\ \Hom_{\Pi_1(X)}(x,y) & \equiv \left\{[\gamma]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}.
+\end{align*}
+ Here, composition of morphisms refers to concatenation of paths . 
 
 
 
@@ -639,7 +644,7 @@ This is, in fact, a groupoid in the sense of category theory.
 Given $x_0 \in X$, define the \textit{fundamental group of the pointed space $\left(X, x_0\right)$} as $$\pi_1\left(X, x_0\right) \equiv \Hom_{\Pi_1(X)}(x_0,x_0) .$$ 
 \end{definition}
 
-This means that $\pi_1\left(X, x_0\right) \equiv  \faktor{\left\{\gamma : S^1 \to X \mid \gamma(1,0) =x_0\right\}}{\simeq (\rel \ (1,0))}$.
+This means that $\pi_1\left(X, x_0\right) \equiv  \faktor{\left\{\gamma : S^1 \to X \mid \gamma(1,0) =x_0\right\}}{\simeq \left(\rel{ \left(1,0\right)}\right)}$.
 
 \begin{remark}
 Any map $f: X \to Y$ induces a functor $f_{\ast} : \Pi_1(X) \to \Pi_1(Y)$ that restricts to a homomorphism $f_{\ast} : \pi_1\left(X, x_0\right) \to \pi_1(Y, f(x_0))$.

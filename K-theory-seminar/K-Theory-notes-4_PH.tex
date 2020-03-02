@@ -160,7 +160,6 @@
 \DeclareMathOperator{\ar}{Ar}
 \DeclareMathOperator{\co}{\mathtt{co}}
 \DeclareMathOperator{\red}{red}
-\DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\ZFC}{ZFC}
 \DeclareMathOperator{\set}{\mathbf{Set}}
 \DeclareMathOperator{\Ab}{\mathbf{Ab}}
@@ -172,6 +171,26 @@
 \DeclareMathOperator{\wh}{Wh}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Mod}{\mathbf Mod}
+
+\DeclareMathOperator{\colimm}{colim}
+
+\makeatletter
+\newcommand{\colim}{\gen@colim{\colimm}}
+\newcommand{\gen@colim}[1]{%
+  \@ifnextchar_{\gen@@colim{#1}}{\mathbin{#1}}%
+}
+\def\gen@@colim#1_#2{%
+  \mathpalette\gen@@@colim{{#1}{#2}}%
+}
+\newcommand\gen@@@colim[2]{\mathbin{\gen@@@@colim#1#2}}
+\newcommand\gen@@@@colim[3]{%
+  \ifx#1\displaystyle
+    \mathop{#2}\limits_{#3}%
+  \else
+    {#2}_{#3}%
+  \fi
+}
+\makeatother
 
 \linespread{1.3}
 

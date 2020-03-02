@@ -313,7 +313,7 @@ Suppose that $\L$ is a finite language without function symbols. Let $\D$ and $\
 \begin{enumerate}[label=(\alph*)]
 \item There are exactly two players, the \textit{spoiler} and the \textit{duplicator}.
 \item There are exactly $n$ rounds.
-\item The spoiler begins round $k\leq n$ by picking an element of either $\dom(\D)$ or $\dom(\E)$. Next, the duplicator picks an element of the other domain.
+\item The spoiler begins round $k\leq n$ by picking an element (sometimes called a pebble) of either $\dom(\D)$ or $\dom(\E)$. Next, the duplicator picks an element of the other domain.
 \item This yields two sequences $\left(d_1, \ldots, d_n\right)$ and $\left(e_1, \ldots, e_n\right)$ such that $d_i\in \dom(\D)$ and $e_i\in \dom(\E)$ for each $i=1, \ldots, n$.  If the mapping $d_i \mapsto e_i$ defines an isomorphism of finite substructures, then we say that the duplicator has won $\ef_n(\D, \E)$. Otherwise, we say that the spoiler has won.
 \end{enumerate}
 \end{definition}
@@ -342,38 +342,38 @@ Unfortunately, it's unclear that this method can be adapted to show that $\thh(\
 Let $L_1$ and $L_2$ be linearly ordered sets.
 \begin{itemize}
 \item $L_1^{\op}$ refers to $L_1$ equipped with the inverse order.
-\item $L_1 \cdot L_2$ refers to $L_1 \times L_2$ equipped with the lexicographic order.
-\item ${L_1 + L_2}$ refers to $L_1$ with its ordering followed by $L_2$ with its ordering.
+\item $L_1 \otimes L_2$ refers to $L_1 \times L_2$ equipped with the lexicographic order.
+\item ${L_1 \oplus L_2}$ refers to $L_1$ with its ordering followed by $L_2$ with its ordering.
 \end{itemize}
 Now, consider the following linearly ordered structures:
 \begin{gather*}
- {\N^{\ast} + \left(\Z \cdot \kappa\right)}
-\\ {\N^{\ast} +  \left(\Z \cdot \left(\Q +\kappa\right)\right)},
+ {\N^{\ast} \oplus \left(\Z \otimes\kappa\right)}
+\\ {\N^{\ast}  \oplus  \left(\Z \otimes\left(\Q  \oplus\kappa\right)\right)},
 \end{gather*} both of which have cardinality $\kappa$.
-These orderings possess minimal elements and are \textit{discrete} in the sense that both structures satisfy the sentences
+These orderings possess bottom elements and are \textit{discrete} in the sense that both structures satisfy the sentences
 \begin{align}
 \begin{split}
 & \forall{x}\exists{y}\left(x<y \land \neg{\exists{z}\left(x<z \land z<y\right)}\right) \\
  \forall{x}&\left(\exists{w}\left(w < x\right)\rightarrow \exists{y}\left(y<x \land \neg{\exists{z}\left(y<z \land z<x\right)}\right)\right).
 \end{split} \label{eqn:disc}
 \end{align}
-(Informally, we can view $y$ here as the \textit{successor}/\textit{predecessor} of $x$.) Note that, on the one hand, $ {\N^{\ast} + \left(\Z \cdot \kappa\right)}$ cannot possess an descending chain of length $\omega^2$, for otherwise $\kappa$, which is well-ordered, would possess an infinite descending chain. On the other hand, ${\N^{\ast} +  \left(\Z \cdot \left(\Q +\kappa\right)\right)}$ does possess such a chain since $\omega^{\ast}$ (the order type of $\Z_{<0}$) can be embedded in $\Q$. Therefore, \[
-{\N^{\ast} + \left(\Z \cdot \kappa\right)} \not\cong {\N^{\ast} +  \left(\Z \cdot \left(\Q +\kappa\right)\right)}.
+(Informally, we can view $y$ here as the \textit{successor}/\textit{predecessor} of $x$.) Note that, on the one hand, $ {\N^{\ast}  \oplus \left(\Z \otimes\kappa\right)}$ cannot possess an descending chain of length $\omega^2$, for otherwise $\kappa$, which is well-ordered, would possess an infinite descending chain. On the other hand, ${\N^{\ast}  \oplus  \left(\Z \otimes\left(\Q  \oplus \kappa\right)\right)}$ does possess such a chain since $\omega^{\ast}$ (the order type of $\Z_{<0}$) can be embedded in $\Q$. Therefore, \[
+{\N^{\ast}  \oplus \left(\Z \otimes\kappa\right)} \not\cong {\N^{\ast}  \oplus  \left(\Z \otimes\left(\Q  \oplus\kappa\right)\right)}.
 \]
 
 \begin{claim}
-Suppose that $\left(\E, <\right)$ is a discrete linear ordering with a minimal element but no maximal element. Then $\E \equiv \N^{\ast}$.
+Suppose that $\left(\E, <\right)$ is a discrete linear ordering with a bottom element but no top element. Then $\E \equiv \N^{\ast}$.
 \end{claim}
 \begin{proof}[Proof sketch]
 Consider the Ehrenfeucht-Fra\"{\i}ss\'e  game $\ef_n(\E, \N^{\ast})$. The duplicator has a winning strategy in $\ef_n(\E, \N^{\ast})$ by adhering to the following rules.
 \begin{enumerate}[label=(\roman*)]
-\item If, in round $m$, the spoiler chooses an element of one of the structures that is connected to a previously chosen element or the minimal element by a path of successors of length $k<\infty$, then choose the corresponding element of the other structure in round $m$.
+\item If, in round $m$, the spoiler chooses an element of one of the structures that is connected to a previously chosen element or the bottom element by a path of successors of length $k<\infty$, then choose the corresponding element of the other structure in round $m$.
 \item Otherwise, make sure that any chosen element of $\dom(\N^{\ast})$ is always separated by at least $n+1$ elements from any previously chosen element of $\dom(\N^{\ast})$ while preserving the required order of your choices. 
 
 In this case, choose first a natural number separated by more than $3^n$ elements from the greatest previously chosen clement of $\dom(\N^{\ast})$.
 \end{enumerate}
 \end{proof}
-Thanks to \cref{EF}, it follows that both $ {\N^{\ast} + \left(\Z \cdot \kappa\right)}$ and ${\N^{\ast} +  \left(\Z \cdot \left(\Q +\kappa\right)\right)}$ are elementarily equivalent to $\N^{\ast}$ and thus models of $\thh(\N^{\ast})$. Hence $\thh(\N^{\ast})$ is not $\kappa$-categorical. 
+Thanks to \cref{EF}, it follows that both $ {\N^{\ast}  \oplus \left(\Z \otimes\kappa\right)}$ and ${\N^{\ast}  \oplus  \left(\Z \otimes\left(\Q  \oplus\kappa\right)\right)}$ are elementarily equivalent to $\N^{\ast}$ and thus models of $\thh(\N^{\ast})$. Hence $\thh(\N^{\ast})$ is not $\kappa$-categorical. 
 \end{solution}
 
 \begin{problem}[4.]
@@ -387,7 +387,7 @@ Note that any set definable over $\N^{\ast}$ is $0$-definable  because any natur
 \[
 \begin{cases}
  ``n \text{ is less than any other element}" & n=0
-\\``\text{there are exactly }n-1\text{ elements between $0$ (the minimal element) and }n"  & n>1
+\\``\text{there are exactly }n-1\text{ elements between $0$ (the bottom element) and }n"  & n>1
 \end{cases}.
 \]
 Suppose, toward a contradiction, that there exist a formula $\theta(y)$ such that $\theta\left[\N^{\ast}\right]$ is both infinite and coinfinite. Consider, again, the theory \eqref{eqn:st1}. Let $$T' = T \cup \left\{\theta(c_0), \neg{\theta(c_1)}\right\}.$$ Since both $\theta\left[\N^{\ast}\right]$ and $\neg{\theta\left[\N^{\ast}\right]}$ are infinite by assumption, we can find an expansion of $\N^{\ast}$ that satisfies any finite subset of $T'$, By the compactness theorem together with the L\"owenheim-Skolem theorem, we thus can find a countable model $\D$ of $T'$ and take its reduct $\C$ to the language of $\N^{\ast}$. Note that $\left(\dom(\C), < \right)$ is a countable linear ordering with an  infinite descending and ascending chain $\chi$ on which both $c_0^{\D}$ and $c_1^{\D}$ lie. Moreover, this ordering is discrete in the sense of \eqref{eqn:disc}.
@@ -406,8 +406,8 @@ This shows that $\mathsf{DLO}$ is \emph{not} $\kappa$-categorical even though it
 \begin{solution}
 Consider the linear orderings 
 \begin{gather*}
-L_1 \coloneqq \Q \cdot \left(\omega_1^{\op} + \omega_1  \right)
-\\ L_2\coloneqq  \Q \cdot \left(1+ \omega_1^{\op} + \omega_1 \right).
+L_1 \coloneqq \Q \otimes\left(\omega_1^{\op}  \oplus \omega_1  \right)
+\\ L_2\coloneqq  \Q \otimes\left(1 \oplus \omega_1^{\op}  \oplus \omega_1 \right).
 \end{gather*}
 Now, by replacing each $\alpha \in \kappa$ with a choice of $L_1$ or $L_2$, we obtain $2^{\kappa}$ many dense linear orderings $\left\{P_{\beta}\right\}_{\beta< 2^{\kappa}}$ without endpoints such that $\left\lvert{P_{\beta}}\right\rvert=\kappa$ for ever $\beta$. It remains to show that these are pairwise non-isomorphic.
 
@@ -584,5 +584,27 @@ X_{i+1} = X_i \cup \bigcup_{\varphi, \bar{a}} \widetilde{F}_{\varphi, \bar{a}}.
 
 It is easy to see that the union $\M'\coloneqq \bigcup_{i\in \omega}X_i$ forms an elementary submodel of $\M$ thanks to \cref{TV}. Further, we have that $\left\lvert{\M'}\right\rvert = \left\lvert{X}\right\rvert + \aleph_0 + \aleph_0 =  \left\lvert{X}\right\rvert + \aleph_0$, as desired.
 \end{solution}
+
+\medskip
+
+Let $X\subset \omega$. We write $\phi_e^X: W_e^X \to \left\{0,1\right\}$ for the partial function computed by the Turing machine with index $e$ and access to an oracle for $X$. 
+
+\begin{definition}[Computability] Let $Y\subset \omega$.
+\be
+\item We say that $Y$ is \textit{computable/recursive relative to $X$} if the characteristic function $\chi_Y$ equals $\phi_e^X$ for some index $e$.
+\item We say that $Y$ is \textit{computably/recursively enumerable relative to $X$} if $Y= W_e^X$ for some index $e$.
+\ee
+If $Y= \emptyset$, then we omit ``relative to $X$.''
+\end{definition}
+
+Let $\mathcal{C}$ denote any collection of computably enumerable sets. We say that a set $B\subset \left\{0,1\right\}^{\ast}$ of binary strings is a \textit{weak index set for $\mathcal{C}$} if $\mathcal{C} = \left\{W_e \mid e \in B\right\}$. 
+
+\begin{problem}[8.]
+Let $\mathsf{REC}$ denote the collection of all recursive sets. Show that $\mathsf{REC}$ has a computably enumerable weak index set.
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
 
 \end{document}

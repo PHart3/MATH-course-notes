@@ -201,7 +201,6 @@
 \DeclareMathOperator{\Fun}{Fun}
 \DeclareMathOperator{\Fr}{Fr}
 \DeclareMathOperator{\cone}{cone}
-\DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\nilp}{Nilp}
 \DeclareMathOperator{\tot}{Tot}
 \DeclareMathOperator{\kor}{Kor}
@@ -213,6 +212,26 @@
 \DeclareMathOperator{\disc}{Discr}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\acyc}{acyclic}
+
+\DeclareMathOperator{\colimm}{colim}
+
+\makeatletter
+\newcommand{\colim}{\gen@colim{\colimm}}
+\newcommand{\gen@colim}[1]{%
+  \@ifnextchar_{\gen@@colim{#1}}{\mathbin{#1}}%
+}
+\def\gen@@colim#1_#2{%
+  \mathpalette\gen@@@colim{{#1}{#2}}%
+}
+\newcommand\gen@@@colim[2]{\mathbin{\gen@@@@colim#1#2}}
+\newcommand\gen@@@@colim[3]{%
+  \ifx#1\displaystyle
+    \mathop{#2}\limits_{#3}%
+  \else
+    {#2}_{#3}%
+  \fi
+}
+\makeatother
 
 \pagestyle{headings}
 
@@ -1361,28 +1380,37 @@ Let $\F_{p^{mn}}^{\times}=\langle \theta \rangle $. Then the minimal polynomial 
 Let $q=p^n$ and $d>0$ be any integer. Among the finitely many polynomials over $\F_q$ of degree $d$, how many of these are irreducible? We have just shown that at least one is irreducible. 
 
 
-\begin{definition}
-Define the \textit{M\"{o}bius function $\mu : \Z_{>0} \to \{{-1}, 0, 1\}$} by $$n \mapsto \begin{cases} {-1} & n=1\\ ({-1})^k & n = p_1\cdots p_k \text{ where the } p_i \text{ are pairwise distinct} \\ 0 & n \text{ is divisible by a square}     \end{cases}    .$$
-\end{definition}
+\medskip
 
-\begin{prop} $ $
-\begin{enumerate}
+Define the \textit{M\"{o}bius function $\mu : \Z_{>0} \to \{{-1}, 0, 1\}$} by 
+\[
+n \mapsto \begin{cases} {-1} & n=1\\ ({-1})^k & n = p_1\cdots p_k \text{ where the } p_i \text{ are pairwise distinct} \\ 0 & n \text{ is divisible by a square}     \end{cases}    .
+\]
+
+\begin{prop}\label{mob} $ $
+\begin{enumerate}[label=(\roman*)]
 \item $\mu(k) \ne 0$ for some $k$.
 \item $\mu(nm) = \mu(n) \mu(m)$ when $\left(n,m\right) = 1$.
-\item $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$ (This completely characterizes the M\"{o}bius function.)
+\item $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
+\begin{proof} Let $n>0$ be an integer and write $p_1^{k_1}\cdots p_k^{r_k}$ where the prime $p_i$ are pairwise distinct. Let $n_0 = p_1\cdots p_k$. Then $\sum_{d\mid n}\mu(d) =\sum_{d\mid n_0} \mu(d)$. If $d\mid n_0$, then $d= p_{i_1}\cdots p_{i_s}$, so that $\mu(d) = \left({-1}\right)^s$. By the binomial theorem, it follows that \begin{align*} \sum_{d\mid n_0}\mu(d) & = \sum_{s=0}^k {k\choose s}({-1})^2\\ & = \left(1-1\right)^k
+\\ & =\begin{cases} 1 & k=0 \\ 0 & k>0 \end{cases}  . \end{align*}
+Therefore, $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
+\end{proof}
 \end{enumerate}
 \end{prop}
-\begin{proof} Let $n>0$ be an integer and write $p_1^{k_1}\cdots p_k^{r_k}$ where the prime $p_i$ are pairwise distinct. Let $n_0 = p_1\cdots p_k$. Then $\sum_{d\mid n}\mu(d) =\sum_{d\mid n_0} \mu(d)$. If $d\mid n_0$, then $d= p_{i_1}\cdots p_{i_s}$, so that $\mu(d) = \left({-1}\right)^s$. By the binomial theorem, it follows that \begin{align*} \sum_{d\mid n_0}\mu(d) & = \sum_{s=0}^k {k\choose s}({-1})^2\\ & = \left(1-1\right)^k=\begin{cases} 1 & k=0 \\ 0 & k>0 \end{cases}  . \end{align*}
-Thus, $\sum_{d\mid n}\mu(d) = \begin{cases} 1 & n=1 \\ 0 & n \ne 1 \end{cases}.$
-\end{proof}
 
 
 \begin{corollary}
-For any $m\in \Z_{>0}$ and $d\mid m$, we have that $$\sum_{d\mid n \mid m}\mu \left(\frac{m}{n} \right) = \begin{cases}  1 & d = m \\ 0 & d\ne m\end{cases}.$$
+For any $m, d\in \Z_{>0}$ such that $d\mid m$, we have that $$\sum_{d\mid n \mid m}\mu \left(\frac{m}{n} \right) = \begin{cases}  1 & d = m \\ 0 & d\ne m\end{cases}.$$
 \end{corollary}
 
-\begin{lemma}
-Let $A$ be an abelian group and $f,g: \Z_{>0}\to A$ be functions such that $f(n) = \sum_{d\mid n}g(d)$ for every $n$. Then we obtain the so-called \textit{M\"{o}bius inversion formula} 
+
+\begin{remark}
+\Cref{mob} completely characterizes the M\"{o}bius function.
+\end{remark}
+
+\begin{lemma}[M\"{o}bius inversion formula]
+Let $A$ be an abelian group and $f,g: \Z_{>0}\to A$ be functions such that $f(n) = \sum_{d\mid n}g(d)$ for every $n$. Then
 \[
 \label{eqn:MI} g(n) = \sum_{d\mid n}\mu \left(\frac{n}{d} \right)f(d). \tag{$\dagger$}
 \] If $A$ is written multiplicatively, then this becomes  $$g(n) = \prod_{d\mid n}f(d)^{\mu \left(\frac{n}{d} \right)}.$$
@@ -2119,7 +2147,7 @@ We say that $\left(A^{\bullet}, d^{\bullet}\right)$ is \textit{acyclic} or \text
 Let $K^{\bullet}$ be an exact complex of $R$-modules and $I^{\bullet}$ a bounded below complex of injective $R$-modules. Any chain map $f: K^{\bullet} \to I^{\bullet}$ is homotopic to zero.
 \end{theorem}
 \begin{proof}
-There is some $r\in \Z$ such that $I^k =0$ for any $k<r$. Then $f^k =0$ for any $k<r$. Define $h^k: K^k \to I^{k-1}$ by $h^k =0$ for each $k\leq r$. Then $f^{k} = 0 = d_I{h^{k}} + h^{k+1}{d_K}$ for any $k <r$. Let $s> r$ and assume, for induction, that, for each $k<s$, we have constructed $h^k : K^k \to I^{k-1}$ such that $f^{k-1} = d_I{h^{k-1}} + h^{k}{d_K}$. We must construct $h^s : K^s \to I^{s-1}$ such that $f^{s-1} = d_I{h^{s-1}} + h^{s}{d_K}$.
+By hypothesis, there is some $r\in \Z$ such that $I^k =0$ for any $k<r$. Then $f^k =0$ for any $k<r$. Define $h^k: K^k \to I^{k-1}$ by $h^k =0$ for each $k\leq r$. Then $f^{k} = 0 = d_I{h^{k}} + h^{k+1}{d_K}$ for any $k <r$. Let $s> r$ and assume, for induction, that, for each $k<s$, we have constructed a map $h^k : K^k \to I^{k-1}$ such that $f^{k-1} = d_I{h^{k-1}} + h^{k}{d_K}$. We must construct a map $h^s : K^s \to I^{s-1}$ such that $f^{s-1} = d_I{h^{s-1}} + h^{s}{d_K}$.
 \\ \\ Let $g^{s-1} = f^{s-1} - d_I{h^{s-1}}$. Note that 
 \begin{align*}
 g^{s-1}{d_K} & = \left(f^{s-1} - d_I{h^{s-1}}\right){d_K}
