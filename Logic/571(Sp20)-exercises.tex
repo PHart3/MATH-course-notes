@@ -27,6 +27,7 @@
 \usepackage{ mathrsfs }
 \usepackage{hyperref}
 \usepackage{comment}
+\usepackage[linesnumbered,ruled]{algorithm2e}
 \hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
@@ -110,6 +111,7 @@
 \newcommand{\X}{\mathbf X}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\B}{\mathbb{B}}
+\newcommand{\TM}{\mathsf{TM}}
 \newcommand{\1}{\mathbb{1}}
 \newcommand{\ds}{\displaystyle}
 \newcommand{\ran}{\right>}
@@ -603,7 +605,36 @@ Let $\mathcal{C}$ denote any collection of computably enumerable sets. We say th
 Let $\mathsf{REC}$ denote the collection of all recursive sets. Show that $\mathsf{REC}$ has a computably enumerable weak index set.
 \end{problem}
 \begin{solution}
+By mapping all invalid encodings of Turing machines to a distinguished trivial Turing machine, we may assume that our binary representation scheme $$\langle{-}\rangle : \left\{a \mid a\text{ is a }\TM\right\} \to \left\{0,1\right\}^{\ast}$$ of Turing machines is surjective, i.e., every binary string represents a Turing machine. Therefore, we may computably enumerate all Turing machines 
+ \[
+M_1 < M_2 < M_3 <\cdots
+ \] according to the string order $<$. With this in mind, construct an enumerator  $E$ that prints, for each Turing machine $M_i$, the binary representation of a new Turing machine $M_i'$ given as follows.
+ 
+ \smallskip
+ 
+ \begin{algorithm}[H]
+    \SetKwInOut{Input}{Input}
+    \Input{the binary string $x$}
+    {run $U_{\TM}$ on $\langle M_i, x\rangle$}\;
+         \eIf{$U_{\TM}$ rejects}{reject}{run $U_{\TM}$ on $\langle M_i,y\rangle$ for all strings $y$ such that $\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert$\;\eIf{$U_{\TM}$ halts for each such $y$}{accept}{reject}}
+      \caption{pseudocode describing $M_i'$}
+\end{algorithm}
+ 
+ \smallskip
+ 
+It is easy to see that
+ \[
+ L(M_i') = \begin{cases}
+ L(M_i) & M_i \text{ is total}
+ \\ \text{a finite set} & \text{otherwise} 
+ \end{cases}.
+ \] We claim that the language $\left\{\langle M_i'\rangle \mid i \in \Z_{\geq 1}\right\}$ enumerated by $E$ is a weak index set for $\mathsf{REC}$, i.e.,  $$\mathsf{REC} = \left\{L(M_i') \mid i \in \Z_{\geq 1}\right\}.$$ Indeed, if $Y$ is recursive, then there is some Turing machine $M_k$ deciding it, in which case $Y = L(M_k) = L(M_k')$. Conversely,  for any language of the form $L(M_k')$, $M_k$ is either total or non-total. If it is total, then $L(M_k') = L(M_k)$ and $L(M_k)$ is recursive. If it is non-total, then $L(M_k')$ is finite and thus recursive.
 
+\bigskip
+
+\begin{remark}
+We could \emph{not} have used the set $S\coloneqq \left\{D_1, D_2, D_3, \ldots \right\}$ of all  deciders as our weak index set for $\mathsf{Rec}$, for $S$ is not computably enumerable. Indeed, suppose, toward a contradiction, that $S$ is computably enumerable. Enumerate all binary strings $$w_1 < w_2 < w_3 < \cdots.$$ We now can construct a Turing machine $N$ such that for each integer $i\geq 1$,  $N$ accepts $w_i$ if $D_i$ rejects  it and rejects $w_i$ if $D_i$ accepts it. Then $L(N)$ is a decidable language, but $N\notin S$ by construction, a contradiction.
+\end{remark}
 \end{solution}
 
 
