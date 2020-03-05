@@ -656,12 +656,25 @@ We define the \textit{language of the $\TM$ $M$} as $$L(M) \equiv \left\{x \in \
 \end{enumerate}
 \end{definition}
 
+\smallskip
+
+An \textit{enumerator $E$} is a Turing machine with both a work tape and an output tape (a ``printer'') that begins with a blank input and possesses an additional ``print'' state.  The language enumerated by $E$ is precisely the set of all strings eventually printed by $E$.  A language $L$ is recursively enumerable if and only if  an enumerator enumerates it.  Indeed, the ($\Longleftarrow$) direction is obvious. For the reverse implication, suppose that $L$ is recognized by a Turing machine $N$. Enumerate $\Sigma^{\ast}$ as $$w_1 < w_2 < w_3 < \cdots$$ according to the string order. Construct an enumerator $E_L$ such that, for each $i\in \Z_{\geq 1}$,
+
+\begin{enumerate}[label=(\arabic*)]
+\item $E_L$ runs $N$ on $w_1, w_2, \ldots, w_i$ for exactly $i$ steps and
+\item $E_L$ prints $w_j$ whenever $N$ accepts it.
+\end{enumerate}
+
+It is easy to see that $E_L$ enumerates $L$.
+
+\smallskip
+
 \begin{note}
 Every decidable language is recursively enumerable. 
 \end{note}
 
 \begin{exmp}
-By the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is \emph{not} regular.  But $L$ is decidable. Indeed,
+Using the pumping lemma, one may show that the language $L\coloneqq \left\{0^n1^n : n\geq 1\right\}$ is \emph{not} regular.  But $L$ is decidable. Indeed,
 set $\Sigma = \left\{0,1\right\}$ and $\Gamma = \Sigma \cup \left\{\bot, +, \times\right\}$. Define the $\TM$ $M$ as follows.
 \[
 \begin{tikzpicture}[shorten >=1pt,node distance=6cm,on grid,auto] 
@@ -698,7 +711,7 @@ A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine 
 \end{definition}
 
 \begin{theorem}\label{equiv}
-For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k(T^2)$ steps of a single-tape $\TM$.
+For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k\left(T^2\right)$ steps of a single-tape $\TM$.
 \end{theorem}
 \begin{proof}
 Write $M= \left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$. Let $$ \left\{\#\right\} \bigcup_{\gamma \in \Gamma} \left\{\gamma, \dot{\gamma} \right\}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
@@ -1175,7 +1188,7 @@ Suppose that $\mathsf{CIRCUIT{-}SAT} \leq_m^p L$ and $L\in \NP$. Then any $L' \i
 
 \smallskip
 
-\Cref{cc1} and \cref{cc2} hold with $\mathsf{CIRCUIT{-}SAT}$ replaced by any $\NP$-complete language. 
+Both \cref{cc1} and \cref{cc2} hold with $\mathsf{CIRCUIT{-}SAT}$ replaced by any $\NP$-complete language. 
 
 \smallskip
 
