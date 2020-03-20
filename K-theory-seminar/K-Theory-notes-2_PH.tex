@@ -204,8 +204,11 @@ We  introduce the concept of a universal property in category theory. The main s
 
 \section{Universal arrows}
 
-\begin{definition}
-An object $X$ of $\c$ is \textit{initial} if for each $Y \in \ob \c$, there is a unique morphism $f : X \to Y$. Moreover, we say that $X$ is \textit{terminal} if for each $Z \in \ob \c$, there is a unique morphism $g : Z \to X$. 
+\begin{definition} Let $\c$ be a category.
+\begin{enumerate}
+\item An object $X$ of $\c$ is \textit{initial} if for each $Y \in \ob \c$, there is a unique morphism $f : X \to Y$. 
+\item We say that $X$ is \textit{terminal} if for each $Z \in \ob \c$, there is a unique morphism $g : Z \to X$. 
+\end{enumerate}
 
 Either condition is called a \textit{universal property} of $X$.
 \end{definition}
@@ -348,12 +351,12 @@ If $F: \c \to \c$ is the identity functor, then the undercategory $Y/\c$ equals 
 
 \medskip
 
-\begin{definition}
+
 Let $\j$ be a category. A \textit{diagram of shape $\j$ in $\c$} is a functor $F: \j \to \c$.
-\end{definition}
+
 
 \begin{definition}
-Given a functor $F: \j \to \c$ and $X \in \ob \c$, a \textit{cone over $F$} consists of an \textit{apex} $X\in \ob \c$ and \textit{legs} $f_j : X \to F(j)$ for each $j \in \ob \j$ such that for any $\alpha : j \to j'$, the triangle
+Given a functor $F: \j \to \c$ and $X \in \ob \c$, a \textit{cone over $F$} consists of an \textit{apex} $X\in \ob \c$ and \textit{legs} $f_j : X \to F(j)$ for each $j \in \ob \j$ such that for any morphism $\alpha : j \to j'$, the triangle
 \[ \begin{tikzcd}
 X \arrow[r, "f_j"] \arrow[swap, dr,  " f_{j'} "] & F(j) \arrow[d, "F\alpha"] \\
  & F(j')
@@ -362,13 +365,16 @@ X \arrow[r, "f_j"] \arrow[swap, dr,  " f_{j'} "] & F(j) \arrow[d, "F\alpha"] \\
 commutes.
 \end{definition}
 
- This is simply a natural transformation $\Delta_{\j} X \Rightarrow F$ where $\Delta_{\j} X$ denotes the constant functor on $\j$ at $X$. If $\j$ is small, then $\Delta_{\j}$ is just a functor from $\c$ to $\mathbf{Fun}(\j, \c)$.
+ This is simply a natural transformation $\Delta_{\j} X \Rightarrow F$ where $\Delta_{\j} X$ denotes the constant functor on $\j$ at $X$. If $\j$ is small, then $\Delta_{\j}$ is a functor from $\c$ to $\mathbf{Fun}(\j, \c)$.
 
-\begin{definition}
-The \textit{category of cones over $F$} is the right fiber category $X/F$. The \textit{category of cones under $F$} is the left fiber category  $F/X$.
+\begin{definition} $ $
+\begin{enumerate}
+\item The \textit{category of cones over $F$} is the right fiber category $X/F$. 
+\item The \textit{category of cones under $F$} is the left fiber category  $F/X$.
+\end{enumerate}
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Colimit]
 Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta_{\c} g : \Delta_{\c} Y \Rightarrow \Delta_{\c} Z$ be the natural transformation with components $X \mapsto g$. 
 \begin{enumerate}
 \item A \textit{colimit  $\colim_{\c}{F}$} of the functor $F: \c \to \d$ is an object $Y$ of $\d$ together with a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$.
@@ -381,21 +387,29 @@ If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in 
 
 \smallskip
 
-\begin{remark}
-There is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta{Z})$ iff $Y = \colim_{\c}F$.
-\end{remark}
+\begin{exmp}  
+If $\c$ is the empty category, then the empty functor $F: \c \to \d$ satisfies $F/\Delta_{\c}\cong \d$, so that the colimit of $F$ is precisely the  initial object of $\d$.
+\end{exmp}
+
+\smallskip
 
 \begin{prop}
-Any two colimits are canonically isomorphic.
+There is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta{Z})$ if and only if  $Y = \colim_{\c}F$.
 \end{prop}
+
+\begin{lemma}
+Any two colimits are canonically isomorphic.
+\end{lemma}
 \begin{proof}
-When $\c$ is small, this is immediate from \cref{initial}. But note that the proof of \cref{initial} does \emph{not} require that $\c$ be locally small (a property which Rognes stipulates of any category). 
+When $\c$ is small, this follows immediately from \cref{initial}. Notice, however,  that our proof of \cref{initial} does \emph{not} require that $\c$ be locally small (a property which Rognes stipulates of any category). 
 \end{proof}
 
 \smallskip
 
+\begin{remark}
 Assume that $\d$ has $\c$-shaped colimits and that $\c$ is small. Then a (possibly global) choice function $\colim_\c : \mathbf{Fun}(\c, \d) \to \d$ given by choosing a colimit for each functor determines a functor that is left adjoint to the constant diagram functor $\Delta_{\c} : \d \to \mathbf{Fun}(\c, \d)$. Indeed,
 for any functor $F : \c \to \d$, there is a bijection $\d(\colim_{\c} F, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta_{\c}Z)$.
+\end{remark}
 
 \begin{definition}
 A \textit{limit} of the functor $F: \c \to \d$ is  the colimit of $F^{\op} : \c^{\op} \to \d^{\op}$.
@@ -404,16 +418,11 @@ A \textit{limit} of the functor $F: \c \to \d$ is  the colimit of $F^{\op} : \c^
 
 Explicitly,  a limit for $F: \c \to \d$ is an object $Z$ of $\d$ along with a natural transformation $p: \Delta_{\c}Z \Rightarrow F$ such that for any $Y \in \ob \d$ and natural transformation $q: \Delta_{\c}Y \Rightarrow F$, there is a unique morphism $g: Y \to Z$ such that $ q= p \circ \Delta_{\c}g$.
 
+\smallskip
 
-\begin{remark}
-The colimit of a functor $F$ is the limit of $F^{\op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized  for limits.
-\end{remark}
+Note that the colimit of a functor $F$ is the limit of $F^{\op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized  for limits.
 
-\begin{exmp}
-If $\c$ is the empty category, then the empty functor $F: \c \to \d$ satisfies $F/\Delta_{\c}\cong \d$, so that the colimit is an initial object of $\d$.
-\end{exmp}
-
-\begin{definition}
+\begin{definition}[(Co)product]
 Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{i\in \ob{\j}}$ of shape $\j$. 
 \begin{enumerate}
 \item The limit of this diagram is called the \textit{product} $\prod_i A_i$, equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique map $f\coloneqq \left(f_i\right) : U \to \prod_i A_i$ satisfying $\pi_i \circ f = f_i$. 
@@ -425,38 +434,59 @@ Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{
 
 Familiar examples of limits include cartesian products and direct products, whereas familiar examples of colimits include disjoint unions and free products. 
 
+\begin{exmp}\label{comsets}
+Consider any small diagram $F: \mathscr{J} \to \set$. On the one hand,
+\[
+\left. \colim_{j}F_j \cong \left(\coprod_{j\in \ob{\mathscr{J}}}F_j\right)\middle /{\sim}\right.
+\] where $\sim$ is the smallest equivalence relation such that $F_j\ni f_j \sim f_{j'} \in F_{j'}$ whenever  $F(\psi)(f_j) = f_{j'}$ for some $\psi  : j \to j'$. 
 
-\smallskip
+On the other hand,
+\[
+\lim_j{F_j} \cong  \left\{  \left(f_j\right)_j \in \prod_{j\in \ob{\mathscr{J}}} F_ j \mid \forall{\psi : j \to j'} \text{ in }\mathscr{J},\ F(\psi )(f_ j) = f_{j'} \right\} .
+\]
+We have proven that $\set$ is both complete and cocomplete.
+\end{exmp}
 
-Let $\j$ be a category of the form $\bullet \rightrightarrows \bullet$. Then  a diagram of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over this with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $ff_1=f_2 = gf_1$.
+\medskip
 
-\begin{definition}
-If such an object $C$ together with $f_1$ is the limit of the diagram, then we say it is the \textit{equalizer} of $f$ and $g$. Dually, the colimit is called the \textit{coequalizer} of $f$ and $g$.
+Let $\j$ be a category of the form $\bullet \rightrightarrows \bullet$. Then  a diagram $D$ of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over $D$ with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $ff_1=f_2 = gf_1$.
+
+\begin{definition}[(Co)equalizer] $ $
+\begin{enumerate}
+\item If such an object $C$ together with $f_1$ is the limit of $D$, then we say it is the \textit{equalizer} of $f$ and $g$. 
+\item Dually, the colimit of $D$ is called the \textit{coequalizer} of $f$ and $g$.
+\end{enumerate}
 \end{definition}
 
 \begin{exmp}\label{set}
-The equalizer in $\set$ of $f, g: X \to Y$ is the subset $X'\coloneqq \left\{x \in X : f(x) = g(x)\right\}$ together with the inclusion function $X' \hookrightarrow X$. The coequalizer of $\left(f, g\right)$ is $\faktor{Y}{\sim}$ together with the quotient map on $B$ where $\sim$ is the smallest equivalence relation under which $f(x) \sim g(x)$ for every $x$.
+The equalizer in $\set$ of $f, g: X \to Y$ is the subset $X'\coloneqq \left\{x \in X : f(x) = g(x)\right\}$ together with the inclusion function $X' \hookrightarrow X$. 
+
+The coequalizer of $\left(f, g\right)$ is $\faktor{Y}{\sim}$ together with the quotient map on $B$ where $\sim$ is the smallest equivalence relation under which $f(x) \sim g(x)$ for every $x$.
 \end{exmp}
 
 \smallskip
 
-Now, let $\j$ be a category of the form $\bullet \rightarrow \bullet \leftarrow \bullet$. Then a diagram of this shape looks like $B \overset{f}{\longrightarrow} D \overset{g}{\longleftarrow} A$, and a cone over this diagram looks like 
+It is easy to check that any equalizer $f: C \to A$ must be monic. Further, if $f$ is split epic, i.e., has a section $g: A \to C$, as well, then $f$ is an isomorphism. For, in this case, $f\circ \left(g \circ f\right) = \id_A \circ f = f \circ \id_C$. As $f$ is monic, we have that $g \circ f= \id_C$, so that $g$ is an inverse of $f$.
+
+\medskip
+
+Next, let $\j$ be a category of the form $\bullet \rightarrow \bullet \leftarrow \bullet$. Then a diagram of this shape looks like $B \overset{f}{\longrightarrow} C \overset{g}{\longleftarrow} A$, and a cone over this diagram looks like 
 \[
 \begin{tikzcd}[row sep=large, column sep=large]
-C \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, "\alpha", swap]
+E \arrow[to=Z, "i ", swap] \arrow[to=2-2, dr, "\alpha", swap]
 & A \arrow[to=2-2, "g "] \\
 |[alias=Z]| B  \arrow[to=2-2, "f"'] 
-& D
+& C
 \arrow[from=ul, to=1-2, "j "]
 \end{tikzcd}.
 \]
 
-\begin{definition}
-If such an object $C$ together with $i$ and $j$ is the limit of this diagram, then we call it the \textit{pullback} of $f$ and $g$, denoted by $B \times_{D} A$.
+\begin{definition}[Pullback]
+If such an object $C$ together with $i$ and $j$ is the limit of this diagram, then we call it the \textit{pullback} of $f$ and $g$, denoted by $B \times_{C} A$.
 \end{definition}
 
 
-We can perform an analogous construction for $\j^{\op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{D} A$.
+We can perform an analogous construction for $\j^{\op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{C} A$.
 
 
 \begin{exmp} $ $
@@ -467,6 +497,26 @@ We can perform an analogous construction for $\j^{\op}$. Then the colimit of the
 \end{exmp}
 
 \smallskip
+
+\begin{prop}
+The pullback of a monomorphism in a category $\c$ is again a monomorphism in $\c$.
+\end{prop}
+\begin{proof}
+Consider any pullback square
+\[
+\begin{tikzcd}
+B\times_C A \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & A \arrow[d, "f"] \\
+B \arrow[r, "g"']                                  & C               
+\end{tikzcd}
+\] in $\c$ where $f$ is monic. We must show that $\pi_1$ is monic. Let $h_1, h_2 : B' \to B\times_CA$ be morphisms in $\c$ such that 
+\begin{gather*}
+\pi_1 \circ h_1 = \pi_1 \circ h_2
+\\ \Downarrow
+\\ f\circ \pi_2 \circ h_1 = g\circ \pi_1 \circ h_1 = g\circ \pi_1 \circ h_2 = f\circ \pi_2 \circ h_2.
+\end{gather*} Since $f$ is monic by assumption, it follows that $\pi_2 \circ h_1 = \pi_2 \circ h_2$. As a result, the universal property of pullbacks implies that $h_1 = h_2$, as required. 
+\end{proof}
+
+\medskip
 
 All coequalizers $A \overset{f}{\underset{g}{\rightrightarrows}} B \overset{h}{\longrightarrow} C$ can be obtained from taking binary coproducts and pushouts as follows.
 \[
