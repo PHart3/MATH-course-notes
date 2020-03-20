@@ -560,7 +560,7 @@ Let $p$ be a prime. A finite group $G$ is a \textit{$p$-group} if $\left\lvert{G
 \end{prop}
 \begin{proof} $ $
 \begin{enumerate}
-\item Choose an element $x\in G$ such that $x\ne e$. Note that $\left\lvert{\langle x\rangle}\right\rvert \mid \left\lvert{G}\right\rvert =p$. Hence $\left\lvert{\langle x\rangle}\right\rvert = p$ since $p$ is prime. This means that $\langle x\rangle = G$.
+\item Choose an element $x\in G$ such that $x\ne e$. Note that $\left\lvert{\left\langle x\right\rangle}\right\rvert \mid \left\lvert{G}\right\rvert =p$. Hence $\left\lvert{\left\langle x\right\rangle}\right\rvert = p$ since $p$ is prime. This means that $\left\langle x\right\rangle = G$.
 \item The class equation implies that $\left\lvert{Z(G)}\right\rvert \equiv 0 \mod p$. But $Z(G)$ contains at least the identity element, so that $\left\lvert{Z(G)}\right\rvert>0$. It follows that $\left\lvert{Z(G)}\right\rvert\geq p$.
 \end{enumerate}
 \end{proof}
@@ -640,9 +640,9 @@ G  \geq & G_i \geq G_{i-1}
 \begin{exmp}  $ $
 \begin{enumerate}
 \item Every abelian group is nilpotent and thus solvable. 
-\item There are abelian groups which are not polycyclic, e.g., $G\coloneqq \faktor{\Q}{\Z} \cong \mu_{\infty}$ where $\mu_{\infty}$ denotes the group of all roots of unity. Recall that this is  not finitely generated.  But if $G$ is polycyclic, then it admits a cyclic subnormal series $G = G_0 \unrhd G_1 \cdots \unrhd G_n$. Choose $x_i$ that generates each factor $\faktor{G_{i-1}}{G_i}$ for $1\leq i \leq n$.  This implies that $\langle x_i\rangle = G$, a contradiction. 
-\item The dihedral group $D_n$ is polycyclic (hence solvable) since the subgroup $\langle r\rangle$ has index $2$.
-\item $S_3\cong D_3$ is not nilpotent. Indeed, its only normal subgroup is $\langle (1 2 3)\rangle$, which is nontrivial and thus cannot be contained in $Z(D_3)$.
+\item There are abelian groups which are not polycyclic, e.g., $G\coloneqq \faktor{\Q}{\Z} \cong \mu_{\infty}$ where $\mu_{\infty}$ denotes the group of all roots of unity. Recall that this is  not finitely generated.  But if $G$ is polycyclic, then it admits a cyclic subnormal series $G = G_0 \unrhd G_1 \cdots \unrhd G_n$. Choose $x_i$ that generates each factor $\faktor{G_{i-1}}{G_i}$ for $1\leq i \leq n$.  This implies that $\left\langle x_i\right\rangle = G$, a contradiction. 
+\item The dihedral group $D_n$ is polycyclic (hence solvable) since the subgroup $\left\langle r\right\rangle$ has index $2$.
+\item $S_3\cong D_3$ is not nilpotent. Indeed, its only normal subgroup is $\left\langle (1 2 3)\right\rangle$, which is nontrivial and thus cannot be contained in $Z(D_3)$.
 \end{enumerate}
 \end{exmp}
 
@@ -795,7 +795,7 @@ $$ \underbrace{\begin{bmatrix} 1 \\ 1  \end{bmatrix}}_{   \ell_1 }
  \\  \left\lvert{\phi(\pi(Y))}\right\rvert = 3
  \\ \left\lvert{\phi(\pi(XY))}\right\rvert =5.
  \end{gather*}
- It is a fact of elementary group theory that $$A_5 = \langle x, y \mid x^2 = y^3 = \left(xy\right)^5 = e \rangle.$$ From this we see that the restriction $\phi \restriction_{\langle \pi(X), \pi(Y) \rangle} : \langle \pi(X), \pi(Y) \rangle \to A_5$ is a surjective homomorphism.  Since $\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)}$ has order $60$, it follows that $$\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} =  \langle \pi(X), \pi(Y) \rangle    \cong A_5,$$ as desired.
+ It is a fact of elementary group theory that $$A_5 = \left\langle x, y \mid x^2 = y^3 = \left(xy\right)^5 = e \right\rangle.$$ From this we see that the restriction $\phi \restriction_{\left\langle \pi(X), \pi(Y) \right\rangle} : \left\langle \pi(X), \pi(Y) \right\rangle \to A_5$ is a surjective homomorphism.  Since $\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)}$ has order $60$, it follows that $$\faktor{\SL_2\left(\Z/5\right)}{\left(\pm \I\right)} =  \left\langle \pi(X), \pi(Y) \right\rangle    \cong A_5,$$ as desired.
 \end{aside}
 
 \subsection{Lecture 6}
@@ -841,7 +841,7 @@ If $\left\lvert{G}\right\rvert =p^2$ with $p$ prime, then $G$ is abelian.
 \begin{proof}
 Note that $G$ has nontrivial center as a result of the class equation. If $\left\lvert{Z(G)}\right\rvert =p^2$, then $Z(G) = G$, as desired. Suppose that $\left\lvert{Z(G)}\right\rvert =p$. 
 \begin{claim}
-For any group $H$, if the quotient group $\faktor{H}{Z(H)}$ is cyclic $\langle \left[a\right]\rangle$, then $H$ is abelian. 
+For any group $H$, if the quotient group $\faktor{H}{Z(H)}$ is cyclic $\left\langle \left[a\right]\right\rangle$, then $H$ is abelian. 
 \end{claim}
 \begin{proof}
 Let $f,h\in H$, so that $\left[f\right] = \left[a\right]^n$ and $\left[h\right] = \left[a\right]^m$ for some $n,m\in \Z_{\geq 0}$. This means that $f = a^nc_1$ and $h = a^mc_2$ for some $c_1, c_2\in Z(H)$. Therefore,
@@ -1007,9 +1007,9 @@ Choose finitely many generators $g_1, \ldots, g_n$ for $G$ with $n$ minimal. We 
 $N$ is free, i.e., $N \cong \Z^n$.
 \end{claim}
 \begin{proof}
-Proceed by induction on $n\in \Z_{\geq 1}$. For the base case, notice that  $N = d\Z$ for some integer $d\ne 0$, so that $N \cong \Z$. For the induction step, suppose that our claim holds for any subgroup $M\leq \Z^m$ of finite index where $m<n$. Let $M = \langle e_1, \ldots, e_{n-1}\rangle\cap N$. Then $$\faktor{\langle e_1, \ldots, e_{n-1}\rangle}{M}\leq \faktor{\Z^n}{N},$$ which is finite. By our induction hypothesis, it follows that $M \cong \langle e_1, \ldots, e_{n-1}\rangle$. 
+Proceed by induction on $n\in \Z_{\geq 1}$. For the base case, notice that  $N = d\Z$ for some integer $d\ne 0$, so that $N \cong \Z$. For the induction step, suppose that our claim holds for any subgroup $M\leq \Z^m$ of finite index where $m<n$. Let $M = \left\langle e_1, \ldots, e_{n-1}\right\rangle\cap N$. Then $$\faktor{\left\langle e_1, \ldots, e_{n-1}\right\rangle}{M}\leq \faktor{\Z^n}{N},$$ which is finite. By our induction hypothesis, it follows that $M \cong \left\langle e_1, \ldots, e_{n-1}\right\rangle$. 
 
-Find a basis $\left(f_1, \ldots, f_{n-1}\right)$ for $M$ and consider the surjective group homomorphism $p : \Z^n \to \Z$ defined by $\left(x_1, \ldots, x_n\right) \mapsto x_n.$ Then $\ker{p} = \langle e_1, \ldots, e_{n-1}\rangle$. We also see that $p(N) \ne 0$ for otherwise $N$ would have infinite index. Hence $p(N) = k\Z$ for some nonzero integer $k$. Let $f_n = \left(0, \ldots, 0, k\right)\in \Z^n$, so that $p(f_n) =k$. Then $\left\{f_1, \ldots, f_n\right\}$ is a basis for $N$. Indeed, if $\xi \in N$, then $p(\xi) = zk$ for some $z\in \Z$. Then $\xi - zf_n \in \ker{p} \cap N = M$. Hence $\xi \in \langle f_1, \ldots, f_n\rangle$. 
+Find a basis $\left(f_1, \ldots, f_{n-1}\right)$ for $M$ and consider the surjective group homomorphism $p : \Z^n \to \Z$ defined by $\left(x_1, \ldots, x_n\right) \mapsto x_n.$ Then $\ker{p} = \left\langle e_1, \ldots, e_{n-1}\right\rangle$. We also see that $p(N) \ne 0$ for otherwise $N$ would have infinite index. Hence $p(N) = k\Z$ for some nonzero integer $k$. Let $f_n = \left(0, \ldots, 0, k\right)\in \Z^n$, so that $p(f_n) =k$. Then $\left\{f_1, \ldots, f_n\right\}$ is a basis for $N$. Indeed, if $\xi \in N$, then $p(\xi) = zk$ for some $z\in \Z$. Then $\xi - zf_n \in \ker{p} \cap N = M$. Hence $\xi \in \left\langle f_1, \ldots, f_n\right\rangle$. 
 
 Moreover, given the equation $0 = a_1f_1 + \cdots + a_nf_n$, we see that $0= p(0) = a_nk$. Since $f_1, \ldots, f_{n-1}$ are linearly independent, it follows that $a_i= 0$ for each $i=1, \ldots, n$. Thus, $f_1, \ldots, f_n$ are linearly independent as well.
 \end{proof}
@@ -1184,7 +1184,7 @@ We have a short exact sequence  \[
 	\end{tikzcd}
 \] where $s(x) = \frac{1}{\sqrt[n]{a}}I_n$. Note that $s(\R_{>0}) = Z(\GL_n^+(\R))$, which of course commutes with $\SL_n(\R)$.
 \item Let $\mathsf{Diag}_n$ denote the group of diagonal matrices over $k$. Then $\mathsf{Diag}_n \cong \underbrace{k^{\ast}\times \cdots \times k^{\ast}}_{n \text{ copies}}.$
-\item If $p$ is prime, then $\faktor{\Z}{p^2}$ is not a product of any nontrivial subgroups. For if $\faktor{\Z}{p^2} \cong H \times K$, then $H \unlhd \faktor{\Z}{p^2}$ is nontrivial, so that $H = \langle x^p \rangle$ where $\langle x \rangle = \faktor{\Z}{p}$. Similarly, $K \cong C_p$. But $K \ne H$, contrary to the fact that $\faktor{\Z}{p^2}$ has a unique subgroup of order $p$. 
+\item If $p$ is prime, then $\faktor{\Z}{p^2}$ is not a product of any nontrivial subgroups. For if $\faktor{\Z}{p^2} \cong H \times K$, then $H \unlhd \faktor{\Z}{p^2}$ is nontrivial, so that $H = \left\langle x^p \right\rangle$ where $\left\langle x \right\rangle = \faktor{\Z}{p}$. Similarly, $K \cong C_p$. But $K \ne H$, contrary to the fact that $\faktor{\Z}{p^2}$ has a unique subgroup of order $p$. 
 \medskip
 
  In fact, this shows that $1 \to H \to \faktor{\Z}{p} \to K \to 1$ cannot be split.
@@ -1596,7 +1596,7 @@ Let $\ext(K, (H, \alpha))$ denote the set of all isomorphism classes of extensio
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Since $Z(S_3) =\left\{e\right\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\left\lvert{\aut(S_3)}\right\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
+\item Since $Z(S_3) =\left\{e\right\}$, we have that $\inn(S_3) = S_3$. Recall that $S_3 \cong D_6$, so that $$S_3 = \left\langle a, b \mid a^2 = b^3 = e,\ b^2a = ab\right\rangle.$$ Let $\phi$ be an automorphism of $S^3$. Then $\phi(a) \in \{a, ab, ab^2\}$ and $\phi(b) \in \{b, b^2\}$. Hence $\left\lvert{\aut(S_3)}\right\rvert\leq 6$. But $S_3 \leq \aut(S_3)$, and thus $\aut(S_3) = S_3$.
 \item If $G$ is abelian, then $\aut(G)= \out(G)$.
 \end{enumerate}
 \end{exmp}
@@ -1657,7 +1657,7 @@ We can draw $\Sigma_g$ as an oriented  $4g$-gon with pairs of sides identified a
  
 \end{tikzpicture}
 \]
-For example, $a_1 \sim \bar{a}_1$.  Then $$\pi_1(\Sigma_g) \cong \langle a_1, \ldots, a_g, b_1, \ldots, b_g \mid \prod_{i=1}^g [a_i, b_i] = 1 \rangle.$$ 
+For example, $a_1 \sim \bar{a}_1$.  Then $$\pi_1(\Sigma_g) \cong \left\langle a_1, \ldots, a_g, b_1, \ldots, b_g \mid \prod_{i=1}^g [a_i, b_i] = 1 \right\rangle.$$ 
 
 \begin{figure}[H]
 \centering
@@ -2696,7 +2696,7 @@ Let $R$ be a ring and $S$ be a set. For any object $B$ in $\mathbf{Ring}^R$, con
 \[
 \operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{B}\right\rvert)\coloneqq \left\{\phi: S \rightarrow B: \phi(s)(\xi)=\xi \cdot \phi(s), \forall{s} \in S, \forall{\xi} \in \operatorname{im}(R \rightarrow B)\right\}. 
 \]
-This induces a functor $\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{-}\right\rvert) : \mathbf{Ring}^R \to \mathbf{Set}$, which has a left adjoint $R\langle{-}\rangle : \mathbf{Set} \to \mathbf{Ring}^R$.
+This induces a functor $\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{-}\right\rvert) : \mathbf{Ring}^R \to \mathbf{Set}$, which has a left adjoint $R\left\langle{-}\right\rangle : \mathbf{Set} \to \mathbf{Ring}^R$.
 
 
 \section{Noetherian and Artinian modules}
@@ -3259,7 +3259,7 @@ Let \[
  & \Q &  \\
 0 \arrow[r] & X' \arrow[r, "i"', hook] \arrow[u, "\phi"] & X
 \end{tikzcd}
-\] be an injectivity diagram. The set $$\left\{ (A, \xi) : X' \subset \underset{\text{abelian}}{A} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \right\}$$ is nonempty and partially ordered  by $\leq$ where $\left(A_1, \xi_1\right) \leq \left(A_2, \xi_2\right)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn's lemma, there is some maximal element $\left(A, \xi\right)$. If $A = X$, then we are done. Suppose, toward a contradiction, that $A \subsetneq X$, i.e., there is some $x\in X \setminus A$. Let $\tilde{A} = \langle A, x\rangle \subset X$. 
+\] be an injectivity diagram. The set $$\left\{ (A, \xi) : X' \subset \underset{\text{abelian}}{A} \subset X, \ \xi : A \to \Q \text{ lifts } \phi.  \right\}$$ is nonempty and partially ordered  by $\leq$ where $\left(A_1, \xi_1\right) \leq \left(A_2, \xi_2\right)$ if $A_1 \subset A_2$ and $\xi_1 = \xi_2\restriction_{A_1}$. By Zorn's lemma, there is some maximal element $\left(A, \xi\right)$. If $A = X$, then we are done. Suppose, toward a contradiction, that $A \subsetneq X$, i.e., there is some $x\in X \setminus A$. Let $\tilde{A} = \left\langle A, x\right\rangle \subset X$. 
 
 We can extend $\xi : A \to \Q$ to a homomorphism $\tilde{\xi} : \tilde{A} \to \Q$ by deciding where to send $x$. Indeed, if $nx \notin A$ for every nonzero integer $n$, then set $\tilde{\xi}(x) = 0$. If there is some $n\in \Z \setminus \{0\}$ such that $nx \in A$, then $\left\{n \in \Z : nx \in A\right\}$ is an ideal in $\Z$ and thus equals $\left(n_0\right)$ for some integer $n_0 >0$. In this case, set $\tilde{\xi}(x) = \frac{\xi(n_0x)}{n_0} \in \Q$. 
 

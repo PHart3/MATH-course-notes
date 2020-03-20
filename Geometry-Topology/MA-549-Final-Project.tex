@@ -165,7 +165,7 @@ This project briefly describes the isometries of $\C^2$. In particular, it class
 
 \section{Isometries of $\C^2$ over $\R$}
 
-If $M$ is a metric space, then let $\Isom(M)$ denote the set of all isometries of $M$. For now, let $\left(\C^2,  \left\lVert{\cdot}\right\rVert\right)$ denote the normed vector space $\C^2$ over $\R$ where $ \left\lVert{\cdot}\right\rVert : \C^2\to \left[0,\infty\right)$ is given by  $$ \left\lVert{(z,w)}\right\rVert=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\ \left\lVert{\cdot}\right\rVert$ is exactly the norm induced by the (Euclidean) inner product $\langle (z,w), (z,w) \rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T: \C^2 \to \R^4$ given by 
+If $M$ is a metric space, then let $\Isom(M)$ denote the set of all isometries of $M$. For now, let $\left(\C^2,  \left\lVert{\cdot}\right\rVert\right)$ denote the normed vector space $\C^2$ over $\R$ where $ \left\lVert{\cdot}\right\rVert : \C^2\to \left[0,\infty\right)$ is given by  $$ \left\lVert{(z,w)}\right\rVert=\sqrt{z\bar{z}+w\bar{w}}.$$ That is, $\ \left\lVert{\cdot}\right\rVert$ is exactly the norm induced by the (Euclidean) inner product $\left\langle (z,w), (z,w) \right\rangle$. Then $\C^2\cong \R^4$ as normed vector spaces via the map $T: \C^2 \to \R^4$ given by 
 \[ \label{eqn:T}
 \left(a+bi, a'+b'i\right)\mapsto \left(a,a',b,b'\right)
 \tag{$\ast$}.\] 
@@ -176,7 +176,7 @@ Thus, the map $f\mapsto T\circ f \circ T^{-1}$ defines a group isomorphism $\Iso
 
 \medskip
 
-Consider the group $\ORT(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0\right\}$. For each $\v\in \R^4$, define $T_{\v}:\R^4\to \R^4$ by $\x \mapsto \x + \v$.
+We can form the group $$\ORT(4)\coloneqq \left\{f\in  \Isom(\R^4): f \text{ fixes } \0\right\}.$$ For each $\v\in \R^4$, define $T_{\v}:\R^4\to \R^4$ by $\x \mapsto \x + \v$.
 
 \begin{lemma}\label{l1}
 Any $A\in \Isom(\R^4)$ can be  written uniquely as $T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. 
@@ -197,7 +197,7 @@ A matrix  $X\in \M^4(\R)$ is \textit{orthogonal} if its column vectors are ortho
 \end{prop}
 
 
-\begin{cor}\label{preip} Any orthogonal matrix $X\in \M^4(\R)$ preserves the inner product, i.e., $\langle X\v, X\w\rangle=\langle \v, \w\rangle$ for any $\v, \w\in \R^4$.
+\begin{cor}\label{preip} Any orthogonal matrix $X\in \M^4(\R)$ preserves the inner product, i.e., $\left\langle X\v, X\w\right\rangle=\left\langle \v, \w\right\rangle$ for any $\v, \w\in \R^4$.
 \end{cor}
 
 \begin{proof}
@@ -249,12 +249,12 @@ Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $\le
  By \cref{l1}, we have that $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $ \left\lVert{\x-\y}\right\rVert^2= \left\lVert{g(\x)-g(\y)}\right\rVert^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $ \left\lVert{g(\v)}\right\rVert=\v$ for any $\v\in \R^4$.
 We can apply the additivity of the inner product to get  
 \begin{align*}
- \left\lVert{g(\v)}\right\rVert^2+ \left\lVert{g(\w)}\right\rVert^2-2\langle g(\v), g(\w)\rangle & =\langle g(\v)-g(\w), g(\v)-g(\w)\rangle 
-\\ & =\langle \v-\w, \v-\w\rangle
-\\ & = \left\lVert{\v}\right\rVert^2+ \left\lVert{\w}\right\rVert^2-2\langle \v, \w\rangle.
+ \left\lVert{g(\v)}\right\rVert^2+ \left\lVert{g(\w)}\right\rVert^2-2\left\langle g(\v), g(\w)\right\rangle & =\left\langle g(\v)-g(\w), g(\v)-g(\w)\right\rangle 
+\\ & =\left\langle \v-\w, \v-\w\right\rangle
+\\ & = \left\lVert{\v}\right\rVert^2+ \left\lVert{\w}\right\rVert^2-2\left\langle \v, \w\right\rangle.
 \end{align*}  We can cancel terms to find that $g$ preserves the inner product. Note that our proof of this fact actually applies to any element of $\ORT(4)$.
 
-Now, it follows that $ \left\lVert{g(\e_i)}\right\rVert^2= \left\lVert{\e_i}\right\rVert^2=1$ for each $i=1,2,3,4$, so that $ \left\lVert{g(\e_i)}\right\rVert=1$. Similarly,  we can deduce that  $\langle g(\e_i),g(\e_j)\rangle = 0$ if $i\ne j$. Thus, $\left\{g(\e_i)\right\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
+Now, it follows that $ \left\lVert{g(\e_i)}\right\rVert^2= \left\lVert{\e_i}\right\rVert^2=1$ for each $i=1,2,3,4$, so that $ \left\lVert{g(\e_i)}\right\rVert=1$. Similarly,  we can deduce that  $\left\langle g(\e_i),g(\e_j)\right\rangle = 0$ if $i\ne j$. Thus, $\left\{g(\e_i)\right\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
 
 Since $f\in \ORT(4)$, it follow that $$f(\x)\bullet f(\e_i) = \x \bullet \e_i=f(\x)\bullet \e_i=\x\bullet \e_i$$ for each $i$. Writing $\x=\sum_{i=1}^4 c_i\e_i$ for some $c_i\in \R$, we have that $f(\x)\bullet \e_i =\left(\sum_{i=1}^4 c_i\e_i\right) \bullet \e_i=c_i$, and thus $f(\x)=\x$. Hence $f=\Id_{\R^4}$, so that $M=g$.  We deduce that any isometry of $\R^4$ that fixes $\0$ is given by an orthogonal matrix.
 

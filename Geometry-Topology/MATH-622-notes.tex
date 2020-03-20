@@ -525,7 +525,7 @@ let $X = \P^1$ and $D$ be a point $p$. Let $\left(x_0, x_1\right)$ denote local 
 In fact, it can be shown that
 \[
 \Gamma\left(\P^1, \O_X\left(m,p\right)\right) = \begin{cases}
-\C\langle 1, x, \ldots, x^m\rangle & m \geq 0 
+\C\left\langle 1, x, \ldots, x^m\right\rangle & m \geq 0 
 \\ 0 & \text{otherwise}
 \end{cases}
 \]
@@ -538,7 +538,7 @@ $\Gamma\left(U, \O_U\left(D\right)\right)$ consists of all holomorphic functions
 \begin{exmp}[Veronese embedding]
 Let $X = \P^1$ and $p$ be as before. 
 \be
-\item Let $D = \O(2p)$. Consider the space $V \coloneqq \Gamma\left(\P^1, \O\left(2p\right)\right) = \C\langle 1, x, x^2\rangle.$ Define the map $\varphi_{\O(2p)} : \P^1 \to \P^2$ by $$\varphi_{\O(2p)}(x) = \underbrace{\left(1, x, x^2\right)}_{\left(x,y,z\right)}.$$ This is an embedding. Its image is precisely the smooth curve given by $y^2 = xz$.
+\item Let $D = \O(2p)$. Consider the space $V \coloneqq \Gamma\left(\P^1, \O\left(2p\right)\right) = \C\left\langle 1, x, x^2\right\rangle.$ Define the map $\varphi_{\O(2p)} : \P^1 \to \P^2$ by $$\varphi_{\O(2p)}(x) = \underbrace{\left(1, x, x^2\right)}_{\left(x,y,z\right)}.$$ This is an embedding. Its image is precisely the smooth curve given by $y^2 = xz$.
 \item Let $D = \O(3p)$. Then the image of the map $\varphi_{\O(3p)} : \P^1 \hookrightarrow \P^3$ given by $x \mapsto \left(1, x, x^2, x^3\right)$ is a so-called twisted cubic.
 \ee
 \end{exmp}
@@ -565,7 +565,7 @@ X\setminus\BL\left(V\right) \arrow[u, hook] \arrow[ru] &
 \end{tikzcd}.
 \]
 
-Let $X = \P^1$ and $p = \left\{x=0\right\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right) = \C\langle 1, x, x^2\rangle$, and
+Let $X = \P^1$ and $p = \left\{x=0\right\}$. Then $V \subset \Gamma\left(\P^1, \O(2)\right) = \C\left\langle 1, x, x^2\right\rangle$, and
 \[
 \begin{tikzcd}
 \P^1 \arrow[rd, "\varphi_V"', dashed] \arrow[r, "\varphi_{\O(2)}"] & \P^2 \arrow[d, "\rho", dashed] \\
@@ -585,24 +585,24 @@ Let $L_1$ and $L_2 $ be line bundles over $X$ with transition functions $\left\{
 We say that a divisor $D = \sum_im_iY_i$ is \text{effective} if $m_i\geq 0$ for each $i$.
 \end{defn}
 
-Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\langle D \rangle \subset V$. We have that $\supp(D) = \varphi^{-1}\left(\text{hyperplane}\right)$ where $\left(\C \langle 0\rangle \right)^{\perp}$ is precisely the hyperplane in $\P\left(V^{\vee}\right)$.
+Let $V = \Gamma\left(X, \O_X(D)\right)$ and let $D$ be effective. Note that $\C\left\langle D \right\rangle \subset V$. We have that $\supp(D) = \varphi^{-1}\left(\text{hyperplane}\right)$ where $\left(\C \left\langle 0\right\rangle \right)^{\perp}$ is precisely the hyperplane in $\P\left(V^{\vee}\right)$.
 
 \begin{exmp} Let $X = \P^1$.
 \be
-\item Let $x= \frac{x_1}{x_0}$ and $D =p \coloneqq \left\{x=0\right\}$. Then $V = \C\langle 1, x \rangle$, and the map $\varphi_V : \P^1 \to \P\left(V^{\vee}\right)$ is given by $c\mapsto y\coloneqq \frac{x}{1}$.
-\item Let $D = m\left(\infty\right)$ with $m>0$. Then $V= \C\langle x_1, \ldots, x_m^m\rangle$, and the map $\varphi_{m{\infty}} : \P^1 \to \P^m$ is given by
+\item Let $x= \frac{x_1}{x_0}$ and $D =p \coloneqq \left\{x=0\right\}$. Then $V = \C\left\langle 1, x \right\rangle$, and the map $\varphi_V : \P^1 \to \P\left(V^{\vee}\right)$ is given by $c\mapsto y\coloneqq \frac{x}{1}$.
+\item Let $D = m\left(\infty\right)$ with $m>0$. Then $V= \C\left\langle x_1, \ldots, x_m^m\right\rangle$, and the map $\varphi_{m{\infty}} : \P^1 \to \P^m$ is given by
 \begin{align*}
 \left(x_0, x_1\right) & \mapsto \left(x_0^m, x_0^{m-1}x_1, \ldots, x_0x_1^{m-1}, x_1^m\right)
 \\ x \ & \mapsto \  \left(1, x, \ldots, x^m\right).
 \end{align*}
-\item Let $D = p_1 + \cdots + p_m$ where $p_i = \left[1:t_i\right]$. Let $x = \frac{x_1}{x_0}$, so that $\infty$ is given by $x_0 =0$. Then $V = \C\langle \underbrace{1, \frac{1}{x-t_1}, \ldots, \frac{1}{x-t_m}}_{a_0, \frac{a_1}{x-t_1}, \ldots, \frac{a_m}{x-t_m}}\rangle$. This can be viewed as the space of all regular meromorphic functions on open subsets of $\P^1$ having poles of order at most $m$. The image of $\varphi : \P^1 \to \P^m$ is precisely the hyperplane $\left\{a_0 =0\right\}$.
+\item Let $D = p_1 + \cdots + p_m$ where $p_i = \left[1:t_i\right]$. Let $x = \frac{x_1}{x_0}$, so that $\infty$ is given by $x_0 =0$. Then $V = \C\left\langle \underbrace{1, \frac{1}{x-t_1}, \ldots, \frac{1}{x-t_m}}_{a_0, \frac{a_1}{x-t_1}, \ldots, \frac{a_m}{x-t_m}}\right\rangle$. This can be viewed as the space of all regular meromorphic functions on open subsets of $\P^1$ having poles of order at most $m$. The image of $\varphi : \P^1 \to \P^m$ is precisely the hyperplane $\left\{a_0 =0\right\}$.
 \ee
 \end{exmp}
 
 \begin{exmp}
 Let $X$ be an elliptic curve, i.e., a space of the form $\C/\Lambda$. Let $p$ be the image of $0$ and let $D = mp$. 
 \be
-\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{-1}\left(\infty\right) = \left\{0\right\}$. These are precisely the constant maps, so that $V \cong \C\langle s\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
+\item Let $m =1$. Then $V = \Gamma\left(X, \O_X(D)\right)$, which consists of all maps $f: X \to \P^1$ such that $f^{-1}\left(\infty\right) = \left\{0\right\}$. These are precisely the constant maps, so that $V \cong \C\left\langle s\right\rangle$ where $s$ is a holomorphic section of $\O_X(D)$ vanishing at $p$ and is meromorphic on $\O_X$.
 \[
 \begin{tikzcd}
 X \arrow[r, dashed]                     & \P^0 \\
@@ -610,21 +610,21 @@ X\setminus p \arrow[u, hook] \arrow[ru] &
 \end{tikzcd}
 \]
 It follows that  $\BL\left(\O_X(D)\right) =p$.
-\item Let $m=2$. Then $V= \C\langle 1, p\rangle$, and $\varphi_{2p} : X \to \P^1$ is precisely the $D$-th Weierstrass function. Moreover, we have an exact sequence
+\item Let $m=2$. Then $V= \C\left\langle 1, p\right\rangle$, and $\varphi_{2p} : X \to \P^1$ is precisely the $D$-th Weierstrass function. Moreover, we have an exact sequence
 \[
 \begin{tikzcd}
 0 \arrow[r] & \O_X(p) \arrow[r] & \O_X(2p) \arrow[r] & \O_p \arrow[r] & \cdots
 \end{tikzcd}.
 \]
-\item Let $m=3$. Then $V = \langle 1, p, p'\rangle$, and the image of $\varphi_{3p} :X \to \P^2$ is given by $y^2 = x^3+ax+b$. 
+\item Let $m=3$. Then $V = \left\langle 1, p, p'\right\rangle$, and the image of $\varphi_{3p} :X \to \P^2$ is given by $y^2 = x^3+ax+b$. 
 \ee
 \end{exmp}
 
 \begin{exmp} Let $X = \P^2$. Let $D= m\underbrace{\left(\text{line at }\infty\right)}_{\{z=0\}}$.
 \be
-\item Let $m=0$. Then $V = \C\langle 1\rangle$, and $\BL= \emptyset$.
-\item Let $m=1$. Then $C = \C\langle \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\rangle \cong \C\langle 1, X, Y\rangle$, and $\BL = \emptyset$. The map $\varphi_D : \P^2 \to \P^2$ is precisely the identity. 
-\item Let $m=2$. Then $V = \langle \frac{x^2}{z^2}, \frac{x^4}{z^2}, \frac{y^2}{z^2}. \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\rangle$, and the map $\varphi_D : \P^2 \to \P^5$ is an embedding given by $\left(x,y,z\right) \mapsto \langle x^2, xy, y^2, xz, yz, z^2\rangle$.
+\item Let $m=0$. Then $V = \C\left\langle 1\right\rangle$, and $\BL= \emptyset$.
+\item Let $m=1$. Then $C = \C\left\langle \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\right\rangle \cong \C\left\langle 1, X, Y\right\rangle$, and $\BL = \emptyset$. The map $\varphi_D : \P^2 \to \P^2$ is precisely the identity. 
+\item Let $m=2$. Then $V = \left\langle \frac{x^2}{z^2}, \frac{x^4}{z^2}, \frac{y^2}{z^2}. \frac{x}{z}, \frac{y}{z}, \frac{z}{z}\right\rangle$, and the map $\varphi_D : \P^2 \to \P^5$ is an embedding given by $\left(x,y,z\right) \mapsto \left\langle x^2, xy, y^2, xz, yz, z^2\right\rangle$.
 \ee
 \end{exmp}
 
@@ -635,7 +635,7 @@ Let $X = \P^2$ with coordinates $\left(x,y,z\right)$. Let $H$ denote the hyperpl
 \[
 \begin{tikzcd}
 V \arrow[r, hook]                                                         & \Gamma\left(\O\left(2{H}\right)\right)                           \\
-{\C\langle x^2, xy, y^2, xz,yz\rangle} \arrow[r, hook] \arrow[u, "\cong"] & {\C\langle x^2, xy, y^2, xz, yz, z^2\rangle} \arrow[u, "\cong"']
+{\C\left\langle x^2, xy, y^2, xz,yz\right\rangle} \arrow[r, hook] \arrow[u, "\cong"] & {\C\left\langle x^2, xy, y^2, xz, yz, z^2\right\rangle} \arrow[u, "\cong"']
 \end{tikzcd}
 \] commutes. Further, $\BL(V) = \left\{0\right\} = \left[0,0,1\right]$, and $\varphi_V$ is a map $\P^2 \setminus \left\{0\right\} \to \P^4$ but does not extend to $\P^2$. Indeed, we have that
 \begin{align*}
@@ -824,7 +824,7 @@ Let $\P^n = \P(V)$. We have an exact sequence
 \]
 We have that
 \be
-\item $\Gamma\left(\P^n , \O(1)\right) = \C\langle z_0, \ldots, z_n\rangle = V^{\vee}$,
+\item $\Gamma\left(\P^n , \O(1)\right) = \C\left\langle z_0, \ldots, z_n\right\rangle = V^{\vee}$,
 \item $\Gamma \left(\P^n, \O({-1})\right) =0$, and
 \item $\Gamma \left(\P^n, \O(k)\right) = \begin{cases} \sym^k\left(V^{\vee}\right) & k\geq0 \\ 0 & k<0\end{cases}$.
 \ee
@@ -1062,7 +1062,7 @@ Consider the map $\left\lvert{\O(d)}\right\rvert : \P^2 \hookrightarrow \P^{{{d+
 \]
 
 \begin{prop}
-Consider the blow-up $\pi : \underbrace{\widetilde{\P^2}}_{X} \to \P^2$. We have that $$\pic(X) \cong \Z\langle \pi^{\ast}\left(\O(1)\right), E_1, \ldots, E_n\rangle$$ where $E_i$ denotes the divisor collapsing to $p_i$.
+Consider the blow-up $\pi : \underbrace{\widetilde{\P^2}}_{X} \to \P^2$. We have that $$\pic(X) \cong \Z\left\langle \pi^{\ast}\left(\O(1)\right), E_1, \ldots, E_n\right\rangle$$ where $E_i$ denotes the divisor collapsing to $p_i$.
 \end{prop}
 
 \begin{remark} $ $
@@ -1469,7 +1469,7 @@ Intuitively, \cref{Kid} means that the space $\A^{p,q}\left(X\right)$ has a symm
 \subsection{Lecture 13}
 
 \begin{defn}
-Let $V$ be a vector space endowed with a non-degenerate symmetric bilinear form $\langle \cdot , \cdot \rangle$. The \textit{orthogonal group $\Or\left(V, \langle \cdot , \cdot \rangle\right)$} is the group of all linear maps $f : V \to V$ such that $\langle f{x}, f{y}\rangle = \langle x,y\rangle$ for any $x,y\in V$.
+Let $V$ be a vector space endowed with a non-degenerate symmetric bilinear form $\left\langle \cdot , \cdot \right\rangle$. The \textit{orthogonal group $\Or\left(V, \left\langle \cdot , \cdot \right\rangle\right)$} is the group of all linear maps $f : V \to V$ such that $\left\langle f{x}, f{y}\right\rangle = \left\langle x,y\right\rangle$ for any $x,y\in V$.
 \end{defn}
 
 \begin{exmp}

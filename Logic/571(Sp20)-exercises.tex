@@ -226,7 +226,7 @@ We present solutions to all exercises from Scott Weinstein's ``Model Theory'' co
 \end{abstract}
 
 \begin{problem}[1.] 
-Let $I$ be a countably infinite set. Let $\D \coloneqq \langle I, E\rangle$ be a structure where $E$ is an equivalence relation for which  there is exactly one equivalence class of size $k$ for each $k\in \Z_{\geq 1}$.
+Let $I$ be a countably infinite set. Let $\D \coloneqq \left\langle I, E\right\rangle$ be a structure where $E$ is an equivalence relation for which  there is exactly one equivalence class of size $k$ for each $k\in \Z_{\geq 1}$.
 \be[label=(\arabic*)]
 \item Show that the set $\Lambda$ of (first-order) sentences expressing that $E$ is an equivalence relation with exactly one equivalence class of size $k$ for each $k\in \Z_{\geq 1}$ axiomatizes $\D$, i.e., $\thh(\D) = \cn(\Lambda)$ where 
 \[
@@ -325,7 +325,7 @@ The duplicator has a winning strategy in $\ef_n(\D, \E)$ for each $n\in \omega$ 
 \end{theorem}
 
 \begin{problem}[3.]
-Let $\N^{\ast} = \langle \omega, <\rangle$. Show that for any infinite cardinal $\kappa$, $\thh(\N^{\ast})$ is \emph{not} $\kappa$-categorical.
+Let $\N^{\ast} = \left\langle \omega, <\right\rangle$. Show that for any infinite cardinal $\kappa$, $\thh(\N^{\ast})$ is \emph{not} $\kappa$-categorical.
 \end{problem}
 \begin{solution}
 Expand the language of $\N^{\ast}$ by adjoining countably many constants $\left\{c_i\right\}_{i\in \Z}$. Consider the theory
@@ -605,7 +605,7 @@ Let $\mathcal{C}$ denote any collection of computably enumerable sets. We say th
 Let $\mathsf{REC}$ denote the collection of all recursive sets. Show that $\mathsf{REC}$ has a computably enumerable weak index set.
 \end{problem}
 \begin{solution}
-By mapping all invalid encodings of Turing machines to a distinguished trivial Turing machine, we may assume that our binary representation scheme $$\langle{-}\rangle : \left\{a \mid a\text{ is a }\TM\right\} \to \left\{0,1\right\}^{\ast}$$ of Turing machines is surjective, i.e., every binary string represents a Turing machine. Therefore, we may computably enumerate all Turing machines 
+By mapping all invalid encodings of Turing machines to a distinguished trivial Turing machine, we may assume that our binary representation scheme $$\left\langle{-}\right\rangle : \left\{a \mid a\text{ is a }\TM\right\} \to \left\{0,1\right\}^{\ast}$$ of Turing machines is surjective, i.e., every binary string represents a Turing machine. Therefore, we may computably enumerate all Turing machines 
  \[
 M_1 < M_2 < M_3 <\cdots
  \] according to the string order $<$. With this in mind, construct an enumerator  $E$ that prints, for each Turing machine $M_i$, the binary representation of a new Turing machine $M_i'$ given as follows.
@@ -615,8 +615,8 @@ M_1 < M_2 < M_3 <\cdots
  \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the binary string $x$}
-    {run $U_{\TM}$ on $\langle M_i, x\rangle$}\;
-         \eIf{$U_{\TM}$ rejects}{reject}{run $U_{\TM}$ on $\langle M_i,y\rangle$ for all strings $y$ such that $\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert$\;\eIf{$U_{\TM}$ halts for each such $y$}{accept}{reject}}
+    {run $U_{\TM}$ on $\left\langle M_i, x\right\rangle$}\;
+         \eIf{$U_{\TM}$ rejects}{reject}{run $U_{\TM}$ on $\left\langle M_i,y\right\rangle$ for all strings $y$ such that $\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert$\;\eIf{$U_{\TM}$ halts for each such $y$}{accept}{reject}}
       \caption{pseudocode describing $M_i'$}
 \end{algorithm}
  
@@ -628,7 +628,7 @@ Here, $U_{\TM}$ denotes a universal Turing machine. It is easy to see that
  L(M_i) & M_i \text{ is total}
  \\ \text{a finite set} & \text{otherwise} 
  \end{cases}.
- \] We claim that the language $\left\{\langle M_i'\rangle \mid i \in \Z_{\geq 1}\right\}$ enumerated by $E$ is a weak index set for $\mathsf{REC}$, i.e.,  $$\mathsf{REC} = \left\{L(M_i') \mid i \in \Z_{\geq 1}\right\}.$$ Indeed, if $Y$ is recursive, then there is some Turing machine $M_k$ deciding it, in which case $Y = L(M_k) = L(M_k')$. Conversely,  for any language of the form $L(M_k')$, $M_k$ is either total or non-total. If it is total, then $L(M_k') = L(M_k)$ and $L(M_k)$ is recursive. If it is non-total, then $L(M_k')$ is finite and thus recursive.
+ \] We claim that the language $\left\{\left\langle M_i'\right\rangle \mid i \in \Z_{\geq 1}\right\}$ enumerated by $E$ is a weak index set for $\mathsf{REC}$, i.e.,  $$\mathsf{REC} = \left\{L(M_i') \mid i \in \Z_{\geq 1}\right\}.$$ Indeed, if $Y$ is recursive, then there is some Turing machine $M_k$ deciding it, in which case $Y = L(M_k) = L(M_k')$. Conversely,  for any language of the form $L(M_k')$, $M_k$ is either total or non-total. If it is total, then $L(M_k') = L(M_k)$ and $L(M_k)$ is recursive. If it is non-total, then $L(M_k')$ is finite and thus recursive.
 
 \bigskip
 

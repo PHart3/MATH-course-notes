@@ -658,14 +658,14 @@ We define the \textit{language of the $\TM$ $M$} as $$L(M) \equiv \left\{x \in \
 
 \smallskip
 
-An \textit{enumerator $E$} is a Turing machine with both a work tape and an output tape (a ``printer'') that begins with a blank input and possesses an additional ``print'' state.  The language enumerated by $E$ is precisely the set of all strings eventually printed by $E$.  A language $L$ is recursively enumerable if and only if  an enumerator enumerates it.  Indeed, the ($\Longleftarrow$) direction is obvious. For the reverse implication, suppose that $L$ is recognized by a Turing machine $N$. Enumerate $\Sigma^{\ast}$ as $$w_1 < w_2 < w_3 < \cdots$$ according to the string order. Construct an enumerator $E_L$ such that, for each $i\in \Z_{\geq 1}$,
+An \textit{enumerator $E$} is a Turing machine with both a work tape and an output tape (a ``printer'') that begins with a blank input and possesses an additional ``print'' state.  The language enumerated by $E$ is precisely the set of all strings eventually printed by $E$.  A language $L$ is recursively enumerable if and only if  an enumerator enumerates it.  Indeed, the ($\Longleftarrow$) direction is obvious. For the reverse implication, suppose that $L$ is recognized by a Turing machine $N$. Enumerate $\Sigma^{\ast}$ as $$w_1 < w_2 < w_3 < \cdots$$ according to the string order. Construct an enumerator $E_L$ such that for each $i\in \Z_{\geq 1}$,
 
 \begin{enumerate}[label=(\arabic*)]
 \item $E_L$ runs $N$ on $w_1, w_2, \ldots, w_i$ for exactly $i$ steps and
-\item $E_L$ prints $w_j$ whenever $N$ accepts it.
+\item $E_L$ prints $w_j$ whenever $N$ accepts $w_j$.
 \end{enumerate}
 
-It is easy to see that $E_L$ enumerates $L$.
+It is easy to see that $E_L$ enumerates $L$, thereby completing the ($\Longrightarrow$) direction.
 
 \smallskip
 
@@ -758,17 +758,17 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 
 \medskip
 
-There is an injective function $\iota$ from the set of Turning machines into $\left\{0,1\right\}^{\ast}$ because any $\TM$'s transition function admits a finite description. In particular, the set of $\TM$ is countable. Let $\langle M \rangle $ denote the binary encoding of the $\TM$ $M$. Let any $x\notin \im{\iota}$ correspond to the $\TM$ that immediately halts and outputs zero on every input. As a result, every binary string corresponds to some Turing machine. 
+There is an injective function $\iota$ from the set of Turning machines into $\left\{0,1\right\}^{\ast}$ because any $\TM$'s transition function admits a finite description. In particular, the set of $\TM$ is countable. Let $\left\langle M \right\rangle $ denote the binary encoding of the $\TM$ $M$. Let any $x\notin \im{\iota}$ correspond to the $\TM$ that immediately halts and outputs zero on every input. As a result, every binary string corresponds to some Turing machine. 
 
 \smallskip
 
 \begin{theorem}\label{UTM}
- There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\langle M \rangle$ and $x$, (i.e., one string over $\left\{0,1\right\} \times \Sigma$) such that
+ There is a $\TM$ (denoted by $U_{\TM}$) taking two strings as inputs, $\left\langle M \right\rangle$ and $x$, (i.e., one string over $\left\{0,1\right\} \times \Sigma$) such that
  \begin{enumerate}[label=(\alph*)]
  \item if $M$ accepts $x$, then $U_{\TM}$ accepts,
  \item if $M$ rejects $x$, then $U_{\TM}$ rejects, and
  \item if $M$ does not halt on $x$, then neither does $U_{\TM}$.
- \end{enumerate} Moreover, if $M$ takes $T$ steps on $w$, then $U_{\TM}$ takes $O(T \log{T})$ steps on $\langle M, w \rangle$.
+ \end{enumerate} Moreover, if $M$ takes $T$ steps on $w$, then $U_{\TM}$ takes $O(T \log{T})$ steps on $\left\langle M, w \right\rangle$.
 \end{theorem}
 
 Proving \cref{UTM} amounts to constructing an interpreter for a programming language within the language itself. See Theorem 1.13 (Arora and Barak) for a high-level proof.
@@ -786,9 +786,9 @@ C_f(\sigma ) \equiv  \begin{cases}
 \min\left\{\left\lvert{\tau}\right\rvert \mid f(\tau) = \sigma\right\} & \sigma \in \im{f}
 \\ \infty & \text{otherwise}
 \end{cases}.
-\] To obtain an absolute definition of \textit{Kolmogorov complexity}, let $n_f$ denote the length of $\langle f\rangle$ and define a new partial computable function $g: \left\{0,1\right\}^{\ast} \to\left\{0,1\right\}^{\ast}$ by
+\] To obtain an absolute definition of \textit{Kolmogorov complexity}, let $n_f$ denote the length of $\left\langle f\right\rangle$ and define a new partial computable function $g: \left\{0,1\right\}^{\ast} \to\left\{0,1\right\}^{\ast}$ by
 \[
-0^{n_f}1\langle f\rangle y \mapsto U_{\TM}(\langle f\rangle, y).
+0^{n_f}1\left\langle f\right\rangle y \mapsto U_{\TM}(\left\langle f\right\rangle, y).
 \] It is straightforward to prove that there is some constant $R\geq 0$ such that $C_g(\sigma) - C_f(\sigma) \leq R$ for every $\sigma$. Now, the \textit{Kolmogorov complexity} of $\sigma$ is $C(\sigma) \equiv C_g(\sigma)$.
 
 \smallskip
@@ -807,7 +807,7 @@ Suppose not. Then for any string $x$ of length $n$, $C(x) < n$.  Hence there is 
 \subsection{Lecture 7}
 
 
-Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\langle M \rangle,  w, 1^k\right)$ such that
+Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\left\langle M \right\rangle,  w, 1^k\right)$ such that
 \begin{enumerate}[label=(\roman*)]
 \item if $M$ accepts (resp. rejects) on $w$ in $\leq k$ steps, then $U_{\TM}$ accepts (resp. rejects) and
 \item if $M$ does not halt on $w$ in $\leq k$ steps, then $U_{\TM}$ will reach a special state.
@@ -815,7 +815,7 @@ Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\la
 
 
 \begin{lemma}
-Let $A_{\TM}$ denote the language $\left\{ \langle M, w \rangle \mid M \text{ accepts }w\right\}$. Then $A_{\TM}$ is recursively enumerable.
+Let $A_{\TM}$ denote the language $\left\{ \left\langle M, w \right\rangle \mid M \text{ accepts }w\right\}$. Then $A_{\TM}$ is recursively enumerable.
 \end{lemma}
 \begin{proof}
 Simply observe that $L(U_{\TM}) = A_{\TM}$.
@@ -827,11 +827,11 @@ $A_{\TM}$ is undecidable.
 \begin{proof}
 Suppose, toward a contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
 \begin{enumerate}[label=(\alph*)]
-\item Given a binary string $x$, run $M$ on $\left(\langle M_x \rangle, \langle M_x \rangle \right)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
+\item Given a binary string $x$, run $M$ on $\left(\left\langle M_x \right\rangle, \left\langle M_x \right\rangle \right)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
 \item Let $N$ reject when $M$ accepts and $N$ accept when $M$ rejects.
 \end{enumerate}
 
-Then $$N(\langle N \rangle) = \begin{cases} \textit{accept} & N \text{ does not accept } \langle N \rangle \\ \textit{reject} & N \text{ accepts } \langle N \rangle    \end{cases},$$ which is impossible. 
+Then $$N(\left\langle N \right\rangle) = \begin{cases} \textit{accept} & N \text{ does not accept } \left\langle N \right\rangle \\ \textit{reject} & N \text{ accepts } \left\langle N \right\rangle    \end{cases},$$ which is impossible. 
 \end{proof}
 
 \begin{lemma}
@@ -852,8 +852,8 @@ Find some $M_1$ and $M_2$ such that $L = L(M_1)$ and $\overline{L} = L(M_2)$. Co
     {$T=1$}\;
     \While{the current state is a non-halting state}
       {
-        run $U_{\TM}$ on $\left(\langle M_1 \rangle, w\right) $ for $T$ steps\;
-        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $\left(\langle M_2 \rangle, w\right)$ for $T$ steps \;
+        run $U_{\TM}$ on $\left(\left\langle M_1 \right\rangle, w\right) $ for $T$ steps\;
+        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $\left(\left\langle M_2 \right\rangle, w\right)$ for $T$ steps \;
         \eIf{$U_{\TM}$ accepts}{reject}{$T$\texttt{ += }1}
       }  }
       \caption{pseudocode describing $M$}
@@ -885,17 +885,17 @@ In this way, $L'$ is at least as ``hard" as $L$.
 \subsection{Lecture 8}
 
 \begin{exmp}[Halting problem]
-Let $A_{\text{HALT}} = \left\{\langle M, w \rangle \mid M \text{ halts on }w\right\}$. Then $A_{\text{HALT}}$ is undecidable.
+Let $A_{\text{HALT}} = \left\{\left\langle M, w \right\rangle \mid M \text{ halts on }w\right\}$. Then $A_{\text{HALT}}$ is undecidable.
 \end{exmp}
 \begin{proof}
-Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\text{HALT}}$. To do this, we want to design a computable function that maps any $\langle M, w \rangle$ to another $\langle M' \rangle, w'$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
+Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\text{HALT}}$. To do this, we want to design a computable function that maps any $\left\langle M, w \right\rangle$ to another $\left\langle M' \right\rangle, w'$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
 
 \smallskip
 
 \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
-    {run $U_{\TM}$ on $\left(\langle M \rangle, x\right)$}\;
+    {run $U_{\TM}$ on $\left(\left\langle M \right\rangle, x\right)$}\;
      \eIf{$U_{\TM}$ accepts}{accept}{
      \While{true}{pass}
      } 
@@ -904,23 +904,23 @@ Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \l
 
 \smallskip
 
-Then we get a suitable function given by $\left(\langle M \rangle , w\right) \mapsto \left(\langle M' \rangle, w\right)$.
+Then we get a suitable function given by $\left(\left\langle M \right\rangle , w\right) \mapsto \left(\left\langle M' \right\rangle, w\right)$.
 \end{proof}
 
 
 \begin{theorem}[Rice]
- Let $C$ be any subset of the universe of all languages over a fixed alphabet. Let $$L_C = \left\{ \langle M \rangle : L(M) \in C\right\}.$$ Suppose that both $L_C$ and $\overline{L_C}$ are nonempty. Then $L_C$ is undecidable. 
+ Let $C$ be any subset of the universe of all languages over a fixed alphabet. Let $$L_C = \left\{ \left\langle M \right\rangle : L(M) \in C\right\}.$$ Suppose that both $L_C$ and $\overline{L_C}$ are nonempty. Then $L_C$ is undecidable. 
 \end{theorem}
 \begin{proof}
-We may assume that $\emptyset \notin C$ for otherwise we could show that $\overline{L_C}$ is undecidable.  We know that $L(M_y) \in C$ for some $\TM$ $M_y$.  We show that $A_{\TM} \leq_m L_C$. Consider any $\langle M, w \rangle \in A_{\TM}$. Define $M'$ as follows.
+We may assume that $\emptyset \notin C$ for otherwise we could show that $\overline{L_C}$ is undecidable.  We know that $L(M_y) \in C$ for some $\TM$ $M_y$.  We show that $A_{\TM} \leq_m L_C$. Consider any $\left\langle M, w \right\rangle \in A_{\TM}$. Define $M'$ as follows.
 
 \smallskip
 
 \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
-    {run $U_{\TM}$ on $\langle M, w \rangle$}\;
-     \eIf{$U_{\TM}$ accepts}{run $U_{\TM}$ on $\langle M_y, x \rangle$}{
+    {run $U_{\TM}$ on $\left\langle M, w \right\rangle$}\;
+     \eIf{$U_{\TM}$ accepts}{run $U_{\TM}$ on $\left\langle M_y, x \right\rangle$}{
     reject
      } 
       \caption{pseudocode describing $M'$}
@@ -938,7 +938,7 @@ This means that every nontrivial semantic property of Turing machines is undecid
 \medskip
 
 \begin{exmp}\label{fin}
-Let $A_{\fin} = \left\{\langle M \rangle : L(M) \text{ is finite}\right\}$. Then $A_{\fin}$ is undecidable. 
+Let $A_{\fin} = \left\{\left\langle M \right\rangle : L(M) \text{ is finite}\right\}$. Then $A_{\fin}$ is undecidable. 
 \end{exmp}
 
 \smallskip
@@ -951,14 +951,14 @@ In fact, we can strengthen \cref{fin}.
 $A_{\fin}$ is not recursively enumerable. 
 \end{prop}
 \begin{proof}
-Recall that $\overline{A_{\TM}}$ is not recursively enumerable.  We show that $\overline{A_{\TM}} \leq_m A_{\fin}$. Given any $\langle M, w \rangle$, define $M'$ as follows.
+Recall that $\overline{A_{\TM}}$ is not recursively enumerable.  We show that $\overline{A_{\TM}} \leq_m A_{\fin}$. Given any $\left\langle M, w \right\rangle$, define $M'$ as follows.
 
 \smallskip
 
 \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
-    {run $U_{\TM}$ on $\langle M, w \rangle$}\;
+    {run $U_{\TM}$ on $\left\langle M, w \right\rangle$}\;
      \eIf{$U_{\TM}$ accepts}{accept}{
     reject
      } 
@@ -1045,7 +1045,7 @@ $\mathsf{NTIME}(t(n)) \subset \mathsf{DTIME}\left(2^{O(t(n))}\right)$.
 \begin{exmp}
 Let $\varphi$ be a Boolean formula in conjunctive normal form (CNF). Suppose that $\varphi$ contains $n$ clauses and $m$ literals. Then the size of the representation in bits of $\varphi$ is of order $O(2 m \cdot n) = O(mn)$. Also, deciding whether $\varphi$ evaluates to $1$ takes  $O(2 m \cdot n) = O(mn)$ steps. 
 
-Let $\mathsf{CNF\text{-}SAT} = \left\{\langle \varphi \rangle : \varphi \text{ is satisfiable}\right\}$. Notice that this can be decided by a nondeterministic Turing machine in linear time.  There is, however, no known deterministic Turing machine running faster than brute force. 
+Let $\mathsf{CNF\text{-}SAT} = \left\{\left\langle \varphi \right\rangle : \varphi \text{ is satisfiable}\right\}$. Notice that this can be decided by a nondeterministic Turing machine in linear time.  There is, however, no known deterministic Turing machine running faster than brute force. 
 \end{exmp}
 
 \subsection{Lecture 10}
@@ -1085,8 +1085,8 @@ An \textit{independent set} of a graph $G=\left(V, E\right)$ is a set $I\subset 
 
 \begin{exmp} The following languages are in $\NP$.
 \begin{enumerate}
-\item $\mathsf{IND{-}SET} \coloneqq \left\{\langle G, k \rangle : G\text{ is an (undirected) graph with an independent set of size at least }k\right\}$
-\item $\mathsf{3{-}COLOR}\coloneqq \left\{ \langle G \rangle : G\text{ has a }3\text{-coloring}\right\}$.
+\item $\mathsf{IND{-}SET} \coloneqq \left\{\left\langle G, k \right\rangle : G\text{ is an (undirected) graph with an independent set of size at least }k\right\}$
+\item $\mathsf{3{-}COLOR}\coloneqq \left\{ \left\langle G \right\rangle : G\text{ has a }3\text{-coloring}\right\}$.
 \item $\mathsf{Composite} \coloneqq \left\{x \mid x\text{ is a composite number}\right\}$.
 \item $\mathsf{PRIMES}\coloneqq \left\{ n \mid n\text{ is prime}\right\}$.
 \end{enumerate}
@@ -1170,10 +1170,10 @@ We want to encode a given configuration of $M$, which we may assume uses at most
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
-Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \langle C \rangle : \exists x\left(C(x) = 1\right)\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
+Let  $\mathsf{CIRCUIT{-}SAT} = \left\{ \left\langle C \right\rangle : \exists x\left(C(x) = 1\right)\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \end{exmp}
 \begin{proof}
-If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\left(\forall x\in L\right)\left(\exists y\in \Sigma^{\ast}\right)\left(\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V\left(x,y\right) =1 \land \left(x\notin L \implies \forall y\left(V\left(x,y\right)=0\right)\right)\right).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C\left(x,y\right) = V\left(x,y\right)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x({\cdot})$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V\left(x,y\right)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \langle C_x({\cdot}) \rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
+If $L \in \NP$, then there is an efficient (i.e.,  polynomial-time) algorithm $V$ such that $$\left(\forall x\in L\right)\left(\exists y\in \Sigma^{\ast}\right)\left(\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)} \land V\left(x,y\right) =1 \land \left(x\notin L \implies \forall y\left(V\left(x,y\right)=0\right)\right)\right).$$ Thus, for each $n\in \N$, we can use \cref{pl2} to construct a circuit of size $n^{O(1)}$ such that $C\left(x,y\right) = V\left(x,y\right)$ for each string $x$ of size $n$ and each string $y$ with $\left\lvert{y}\right\rvert\leq n^{O(1)}$. This means that for each string $x$, we can construct a circuit $C_x({\cdot})$ of size $\left\lvert{x}\right\rvert^{O(1)}$ such that $C_x(y) = V\left(x,y\right)$ for any $y$ with $\left\lvert{y}\right\rvert\leq \left\lvert{x}\right\rvert^{O(1)}$. The mapping $M: x\mapsto \left\langle C_x({\cdot}) \right\rangle$ satisfies $x\in L \iff M(x) \in \mathsf{CIRCUIT{-}SAT}$, as desired.  
 \end{proof}
 
 \subsection{Lecture 12}
@@ -1198,9 +1198,9 @@ A Boolean formula in CNF is a \textit{3cnf formula} if each clause contains exac
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Consider $\mathsf{3{-}SAT}\coloneqq \left\{\langle \varphi \rangle \mid \varphi\text{ is a 3cnf formula that is satisfiable}\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
+\item Consider $\mathsf{3{-}SAT}\coloneqq \left\{\left\langle \varphi \right\rangle \mid \varphi\text{ is a 3cnf formula that is satisfiable}\right\}$. This is certainly in $\NP$. We claim that it is $\NP$-complete.
 \begin{proof}
-It suffices to show that $\mathsf{CIRCUIT{-}SAT} \leq_m^p \mathsf{3{-}SAT}$. We must construct an efficient algorithm $M( -)$ such that the circuit $C$ is satisfiable  if and only if $\varphi\coloneqq M(\langle C \rangle)$ is satisfiable. If $C$ has size $n$, then, wlog, we can use the associativity of our Boolean operations to add at most $n^k$ internal nodes to $C$ such that each gate labeled by $\land$ or $\vee$ takes exactly two inputs. 
+It suffices to show that $\mathsf{CIRCUIT{-}SAT} \leq_m^p \mathsf{3{-}SAT}$. We must construct an efficient algorithm $M( -)$ such that the circuit $C$ is satisfiable  if and only if $\varphi\coloneqq M(\left\langle C \right\rangle)$ is satisfiable. If $C$ has size $n$, then, wlog, we can use the associativity of our Boolean operations to add at most $n^k$ internal nodes to $C$ such that each gate labeled by $\land$ or $\vee$ takes exactly two inputs. 
 
 Let $g_1, \ldots, g_n$ and $x_1, \ldots, x_m$ denote  the Boolean values given by the edges and inputs of $C$, respectively. Relabel $g_1, \ldots, g_n, x_1, \ldots, x_m$ as $w_1, \ldots, w_{n+m}$. Let $\varphi$ be the 3cnf formula in the variables $w_1, \ldots, w_{n+m}$ where each clause of $\varphi$ corresponds either to $C$'s output value $w_s \vee w_s \vee w_s$ or to one of $C$'s internal edges. In the latter case, we can give the following descriptions.
 \begin{itemize}
@@ -1209,15 +1209,15 @@ $$
 \item If $w_h = w_i \land w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$  \left(w_i \vee w_j \vee \neg w_h\right) \land \left(w_i \vee \neg w_j \vee \neg w_h\right) \land \left(\neg w_i \vee w_j \vee \neg w_h\right) \land \left(\neg w_i \vee \neg w_j \vee w_h\right).$$
 \item If $w_h = w_i \vee w_j$ in $C$, then $\varphi$ contains exactly one clause of the form $$ \left(w_i \vee w_j \vee \neg w_h\right) \land \left(w_i \vee \neg w_j \vee w_h\right) \land \left(\neg w_i \vee w_j \vee w_h\right) \land \left(\neg w_i \vee \neg w_j \vee w_h\right)
 .$$
-\end{itemize} By construction, $\varphi$ is satisfiable if and only if $C$ is. The algorithm $M: \langle C \rangle \mapsto \varphi$ is linear in $n^k$, hence efficient. Therefore, it is a suitable reduction. 
+\end{itemize} By construction, $\varphi$ is satisfiable if and only if $C$ is. The algorithm $M: \left\langle C \right\rangle \mapsto \varphi$ is linear in $n^k$, hence efficient. Therefore, it is a suitable reduction. 
 \end{proof}
 \item  It's clear that $\mathsf{IND{-}SET}$ belongs to $\NP$. We claim that this is $\NP$-complete.
 \begin{proof}
-We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and let $$\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m.$$ For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \langle G_{\varphi}, m\rangle$ defines a suitable reduction. 
+We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and let $$\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m.$$ For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \left\langle G_{\varphi}, m\right\rangle$ defines a suitable reduction. 
 \end{proof}
-\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $\left(x,y\right) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \left\{ \langle G, k\rangle \mid G\text{ has a vertex cover of size at most }k\right\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
+\item We say that $K \subset V$ is a \textit{vertex cover} of a graph $G=\left(V, E\right)$ if any $\left(x,y\right) \in E$ has $x\in K$ or $y\in K$. Define $\mathsf{VC}= \left\{ \left\langle G, k\right\rangle \mid G\text{ has a vertex cover of size at most }k\right\}$. Then $\mathsf{IND{-}SET} \leq_m^p \mathsf{VC}$, so that $\mathsf{VC}$ is $\NP$-complete.  
 \begin{proof}
-Let $G$ be a graph with an independent set $S$ with $\left\lvert{S}\right\rvert\geq k$.  Then $V \setminus S$ is a vertex cover of $G$. Conversely, if $G$ has a vertex cover $K$ of size at most $\left\lvert{V}\right\rvert - k$, then $V \setminus K$ is an independent set of size at least $k$ in $G$. Thus, the algorithm $\langle G, k \rangle \mapsto \langle G, \left\lvert{V}\right\rvert - k\rangle$ defines a suitable reduction.  
+Let $G$ be a graph with an independent set $S$ with $\left\lvert{S}\right\rvert\geq k$.  Then $V \setminus S$ is a vertex cover of $G$. Conversely, if $G$ has a vertex cover $K$ of size at most $\left\lvert{V}\right\rvert - k$, then $V \setminus K$ is an independent set of size at least $k$ in $G$. Thus, the algorithm $\left\langle G, k \right\rangle \mapsto \left\langle G, \left\lvert{V}\right\rvert - k\right\rangle$ defines a suitable reduction.  
 \end{proof}
 \end{enumerate}
 \end{exmp}
@@ -1230,7 +1230,7 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 
 \begin{definition} Let $G=\left(V, E\right)$ be a graph
 \begin{enumerate}
-\item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}= \left\{\langle G, k \rangle \mid G \text{ has a clique of size at least }k\right\}.$$
+\item A subset $C \subset V$ is a \textit{clique in $G$} if any two distinct points in $C$ are adjacent. Let $$\mathsf{CLIQUE}= \left\{\left\langle G, k \right\rangle \mid G \text{ has a clique of size at least }k\right\}.$$
 \item The graph $\overline{G} = \left(V, E'\right)$ where $E' \equiv \left\{\left(x,y\right) \mid \left(x,y\right) \notin E\right\}$ is the  \textit{complement graph of $G$}.
 \end{enumerate}
 \end{definition}
@@ -1240,7 +1240,7 @@ We say that a language $L$ is \textit{$\NP$-hard} if $L' \leq_m^p L$ for any $L'
 \end{prop}
 
 \begin{exmp}
-$\mathsf{IND{-}SET} \leq_m^p \mathsf{CLIQUE}$ via the mapping $\langle G, k \rangle \mapsto \langle \overline{G}, k \rangle$. Hence $\mathsf{CLIQUE}$ is $\NP$-hard.
+$\mathsf{IND{-}SET} \leq_m^p \mathsf{CLIQUE}$ via the mapping $\left\langle G, k \right\rangle \mapsto \left\langle \overline{G}, k \right\rangle$. Hence $\mathsf{CLIQUE}$ is $\NP$-hard.
 \end{exmp}
 
 \begin{definition}
@@ -1262,7 +1262,7 @@ Let $G= \left(V, E\right)$. A subset $C\subset V$ \textit{has a Steiner tree of 
 \end{definition}
 
 \begin{exmp}
-Let $\mathsf{Steiner{-}tree} = \left\{\langle G, C, W \rangle \mid C\text{ has a Steiner tree of total weight at most }W\right\}$. This is $\NP$-complete.
+Let $\mathsf{Steiner{-}tree} = \left\{\left\langle G, C, W \right\rangle \mid C\text{ has a Steiner tree of total weight at most }W\right\}$. This is $\NP$-complete.
 \end{exmp}
 \begin{proof}
 It's clear that $\mathsf{Steiner{-}tree} $ belongs to  $\NP$. To show that it is also $\NP$-hard, we prove that $\mathsf{VC} \leq_m^p \mathsf{Steiner{-}tree} $. Let $G = \left(V, E\right)$ be a graph with a vertex cover $S$ of size $k$. 
@@ -1303,7 +1303,7 @@ Any undirected  weighted (connected) graph can be endowed with a metric by takin
 \end{remark}
 
 \begin{exmp}
-Let $\mathsf{SUBSET{-}SUM} = \left\{\langle a_1, \ldots, a_k, t\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
+Let $\mathsf{SUBSET{-}SUM} = \left\{\left\langle a_1, \ldots, a_k, t\right\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
 \end{exmp}
 \begin{proof}
 It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $\left\lvert{V}\right\rvert = n$ and $\left\lvert{E}\right\rvert= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq \left\lvert{E}\right\rvert-1$ and  $\left(u,v\right) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
@@ -1320,7 +1320,7 @@ Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $\left\lvert{U}\right\rv
 \end{proof}
 
 \begin{remark}
-Using dynamic programming, one can show that there is a poly$\left(k, t\right)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\langle a_1, \ldots, a_k, t\rangle$ is on the order of \hl{$k\log{t}$}.
+Using dynamic programming, one can show that there is a poly$\left(k, t\right)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\left\langle a_1, \ldots, a_k, t\right\rangle$ is on the order of \hl{$k\log{t}$}.
 \end{remark}
 
 \subsection{Lecture 14}
@@ -1381,10 +1381,10 @@ It is not known whether these chains of containment can be improved.
 \begin{prop}
 Let $\mathbf{L} = \mathsf{DSPACE}(\log{n})$ and $\mathbf{NL}= \mathsf{NSPACE}(\log{n})$. 
 \begin{enumerate}
-\item Let $L_1 = \left\{\langle x,y,z \rangle \mid x \cdot y = z\right\}$ and $L_2 = \left\{\langle x,y,z \rangle \mid x+y = z\right\}$. Then $L_1, L_2 \in \mathbf{L}$.
-\item Let $\mathsf{DIR{-}REACH} = \left\{\langle G, s, t \rangle \mid G\text{ is directed and the vertex }t\text{ is reachable from }s\right\}$. Then $\mathsf{DIR{-}REACH}  \in \mathbf{NL}$.
+\item Let $L_1 = \left\{\left\langle x,y,z \right\rangle \mid x \cdot y = z\right\}$ and $L_2 = \left\{\left\langle x,y,z \right\rangle \mid x+y = z\right\}$. Then $L_1, L_2 \in \mathbf{L}$.
+\item Let $\mathsf{DIR{-}REACH} = \left\{\left\langle G, s, t \right\rangle \mid G\text{ is directed and the vertex }t\text{ is reachable from }s\right\}$. Then $\mathsf{DIR{-}REACH}  \in \mathbf{NL}$.
 \begin{remark}
-Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\langle G, s, t \rangle \mid G\text{ is undirected and the vertex }t\text{ is reachable from }s\right\}$$ belongs to $\mathbf{L}$.
+Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\left\langle G, s, t \right\rangle \mid G\text{ is undirected and the vertex }t\text{ is reachable from }s\right\}$$ belongs to $\mathbf{L}$.
 \end{remark}
 \end{enumerate}
 \end{prop}
@@ -1606,13 +1606,13 @@ By induction together with \cref{poly}(b), it follows that
 \end{proof}
 
 \begin{exmp}\label{matrix}
-Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Define the probabilistic $\TM$ $A$ on input $\langle L \rangle$ as follows. 
+Let $L$ be an $n \times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Define the probabilistic $\TM$ $A$ on input $\left\langle L \right\rangle$ as follows. 
 \begin{enumerate}
 \item Set $S = \left\{1, \ldots, 100n\right\}$.
 \item Choose $a_1, \ldots, a_n$ randomly from $S$ with replacement
 \item Evaluate $\det(a_1, \ldots, a_n)$.  If this equals $0$, then \textit{accept}. Otherwise, \textit{reject}.
 \end{enumerate}
-Then $A$ accepts $\langle L \rangle$ with probability $1$ when $\det{L} = 0$. Also, it rejects with probability $\geq \frac{99}{100}$ when $\det{L} \ne 0$ because $$\mathbb{P}\left[\det(a_1, \ldots, a_n) =0\right] \leq \frac{1}{100}.$$ Since evaluating a polynomial is polynomial in its degree, we see that $A$ is polynomial in $n$.
+Then $A$ accepts $\left\langle L \right\rangle$ with probability $1$ when $\det{L} = 0$. Also, it rejects with probability $\geq \frac{99}{100}$ when $\det{L} \ne 0$ because $$\mathbb{P}\left[\det(a_1, \ldots, a_n) =0\right] \leq \frac{1}{100}.$$ Since evaluating a polynomial is polynomial in its degree, we see that $A$ is polynomial in $n$.
 \end{exmp}
 
 \subsection{Lecture 19}
@@ -1783,11 +1783,11 @@ Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_
 \item  Let $V, P: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}^{\ast}$ be mappings and $x$ a binary string. Let $r\in_R \left\{0,1\right\}^{\ast}$. A \textit{$k$-round (randomized) interaction of $V$ and $P$ on $x$ and $r$} is the sequence of length $k$  consisting of the following strings.
 \[
 \begin{aligned} a_{1} &=V(x, r) \\ a_{2} &=P\left(x, a_{1}\right) \\ \vdots & \\ a_{2 i+1} &=V\left(x,r, a_{1}, \ldots, a_{2 i}\right) \\ a_{2 i+2} &=P\left(x, a_{1}, \ldots, a_{2 i+1}\right) \end{aligned}
-\] Let $\out{\langle V, P\rangle (x, r)}$ denote the final string of this sequence. We call $V$ a \textit{verifier} and $P$ a \textit{prover}.
+\] Let $\out{\left\langle V, P\right\rangle (x, r)}$ denote the final string of this sequence. We call $V$ a \textit{verifier} and $P$ a \textit{prover}.
 \item Let $k : \N \to \N$ be polynomial computable. A language $L$ has a \textit{has a $k$-round (randomized) interactive protocol} or \textit{lies in the class $\mathsf{IP}[k]$} if there exists a randomized $\TM$ $V$ that $V$ is polynomial in its first input and
 \begin{enumerate}
-\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\langle V, P\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction and $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
-\item (soundness) if $x\notin L$, then for any prover $P$ such that $\langle V, P\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction, $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\langle V, P\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
+\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\left\langle V, P\right\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction and $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\left\langle V, P\right\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
+\item (soundness) if $x\notin L$, then for any prover $P$ such that $\left\langle V, P\right\rangle(x)$ is $k(\left\lvert{x}\right\rvert)$-round interaction, $$\mathbb{P}_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\left\langle V, P\right\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
 \end{enumerate}
 \item Let $\mathbf{IP} \coloneqq \bigcup_{k\in \N}\mathsf{IP}\left[n^k\right]$.
 \end{enumerate}
@@ -1798,7 +1798,7 @@ Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\mathbb{P}_{z \in_
 Recall that two graphs $\left(V, E\right)$ and $\left(V', E'\right)$ are \textit{isomorphic} if there is a bijection $f: V \to V'$ such that $\left(x,y\right) \in E \iff \left(f(x), f(y)\right)\in E'$.
 
 \begin{exmp}
-Let $\mathsf{NIP}=  \left\{ \langle G_1, G_2 \rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
+Let $\mathsf{NIP}=  \left\{ \left\langle G_1, G_2 \right\rangle \mid G_1 \text{ and }G_2 \text{ are non-isomorphic graphs}\right\}$. The following interaction shows that $\mathsf{NIP} \in \mathbf{IP}$.
 \[
 \begin{array}{l}{V : \text { Pick } i \in \left\{1,2\right\} \text { uniformly randomly. Randomly permute the vertices of } G_{i} \text { to get a  new isomorphic graph } H .} \\ {\text {\quad \quad Send } H \text { to } P .} \\ {P : \text { If } H \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_j \text{ denote the selected graph. Send } j \text { to } V \text {. }} \\
@@ -1898,8 +1898,8 @@ For any $a_1, \ldots, a_i \in \Z_p$, define $$S(a_1, \ldots, a_i) = \sum_{x\in \
 \begin{lemma}[Sum-check protocol]\label{SCP}
 For any $K\in \N$, there exists an efficient interactive protocol $\left(V, P\right)$ such that 
 \begin{itemize}
-\item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\langle \varphi, p \rangle$ with probability $1$ and
-\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\langle \varphi, p \rangle$ with probability $\geq \left(1-\frac{d}{p}\right)^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
+\item if $K =S(a_1, \ldots, a_i)$, then $V$ accepts $\left\langle \varphi, p \right\rangle$ with probability $1$ and
+\item if $K \ne S(a_1, \ldots, a_i)$, then $V$ rejects $\left\langle \varphi, p \right\rangle$ with probability $\geq \left(1-\frac{d}{p}\right)^{n-i}$ where \hl{$d \equiv 3m\leq n^3$}.
 \end{itemize}
 \end{lemma}
 

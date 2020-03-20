@@ -1003,7 +1003,7 @@ Conversely, let $v\coloneqq  w'(0) \in A$. We have $w = j \circ w$ where $j: i(S
 At this point, we begin developing the theory of differential forms. Let $F: \R^n \to \R$ be smooth. The gradient $\nabla F$ has two main properties.
 \begin{enumerate}
 \item It is orthogonal to the level sets of $F$.
-\item $dF_p(v) = \langle \nabla F_p, v\rangle$.
+\item $dF_p(v) = \left\langle \nabla F_p, v\right\rangle$.
 \end{enumerate}
 But given a smooth manifold $M$, we don't necessarily have an inner product on $M$ unless $M$ is a \textit{Riemannian manifold}, which by definition has a smoothly varying inner product.  Instead, we shall view $dF_p$ as a so-called $1$-form.
 
@@ -1454,18 +1454,18 @@ $V_1 \otimes \cdots \otimes V_k$ is called the \textit{tensor product of the $V_
 \end{term}
 
 \begin{proof}
-Let us just prove this when $k=2$, for then we're done by induction. Let $\R\langle V_1 \times V_2 \rangle$ denote the free vector space on $V_1 \times V_2$, which consists of  all finite formal linear combinations of $V_1 \times V_2$. Let 
+Let us just prove this when $k=2$, for then we're done by induction. Let $\R\left\langle V_1 \times V_2 \right\rangle$ denote the free vector space on $V_1 \times V_2$, which consists of  all finite formal linear combinations of $V_1 \times V_2$. Let 
 \[
-G = \langle (av_1, v_2) - a(v_1, v_2), (v_1, av_2) - a(v_1, v_2), (v_1 + w_1, v_2) - (v_1, v_2)-(w_1, v_2), (v_1, w_2 + v_2) - (v_1, w_2) -(v_1, v_2)\rangle.
+G = \left\langle (av_1, v_2) - a(v_1, v_2), (v_1, av_2) - a(v_1, v_2), (v_1 + w_1, v_2) - (v_1, v_2)-(w_1, v_2), (v_1, w_2 + v_2) - (v_1, w_2) -(v_1, v_2)\right\rangle.
 \]
-Given a  multilinear map $T: V_1 \times V_2 \to W$, define $\widetilde{T} : \R\langle V_1 \times V_2\rangle \to W$ by $$\sum a_{(v_1, v_2)}(v_1, v_2) \mapsto \sum a_{(v_1, v_2)} T(v_1, v_2).$$ Since $T$ is multilinear, $G \subset \ker \widetilde{T}$. Therefore,  the vector space $V_1 \otimes V_2 \coloneqq  \faktor{\R\langle V_1 \times V_2 \rangle}{G}$ fits in a commutative triangle 
+Given a  multilinear map $T: V_1 \times V_2 \to W$, define $\widetilde{T} : \R\left\langle V_1 \times V_2\right\rangle \to W$ by $$\sum a_{(v_1, v_2)}(v_1, v_2) \mapsto \sum a_{(v_1, v_2)} T(v_1, v_2).$$ Since $T$ is multilinear, $G \subset \ker \widetilde{T}$. Therefore,  the vector space $V_1 \otimes V_2 \coloneqq  \faktor{\R\left\langle V_1 \times V_2 \right\rangle}{G}$ fits in a commutative triangle 
 \[
 \begin{tikzcd}
-\R\langle V_1 \times V_2 \rangle \arrow[d, "\pi"'] \arrow[r, "\tilde{T}"] & W \\
+\R\left\langle V_1 \times V_2 \right\rangle \arrow[d, "\pi"'] \arrow[r, "\tilde{T}"] & W \\
 V_1 \otimes V_2 \arrow[ru, "\widetilde{\widetilde{T}}"', dashed] & 
 \end{tikzcd}.
 \]
-Thus, if $i: V_1 \times V_2 \to \R\langle V_1 \times V_2 \rangle$ denotes inclusion, then $\widetilde{\widetilde{T}} \circ \pi \circ i = \widetilde{T} \circ i$, which induces our desired diagram. We see that $\widetilde{\widetilde{T}}$ is unique because it is uniquely determined by elements of the form $$v_1 \otimes v_2\coloneqq \left[(v_1, v_2)\right]$$ under $T$ and every element of $V_1 \otimes V_2$ can be written as some linear combination of such elements.
+Thus, if $i: V_1 \times V_2 \to \R\left\langle V_1 \times V_2 \right\rangle$ denotes inclusion, then $\widetilde{\widetilde{T}} \circ \pi \circ i = \widetilde{T} \circ i$, which induces our desired diagram. We see that $\widetilde{\widetilde{T}}$ is unique because it is uniquely determined by elements of the form $$v_1 \otimes v_2\coloneqq \left[(v_1, v_2)\right]$$ under $T$ and every element of $V_1 \otimes V_2$ can be written as some linear combination of such elements.
 \end{proof}
 
 \smallskip

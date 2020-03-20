@@ -215,11 +215,11 @@ This is a brief, introductory overview of homotopy type theory (HoTT). After cov
 
 In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields Medalist who passed away in 2017. He wanted a logical system that could both handle certain higher-dimensional algebraic objects and facilitate formalization better than set theory could. In 2005 and 2006, the first homotopical models of intensional (dependent) type theory were constructed by Steve Awodey, Michael Warren, and Voevodsky. In 2012-13,  the IAS at Princeton held \textit{A Special Year on Univalent Foundations of Mathematics}, from which the standard reference \textit{Homotopy Type Theory: Univalent Foundations of Mathematics} was produced. This includes Voevodsky's univalence axiom in its formulation of type theory.
 
-One may think of HoTT as a topological (or, more generally, homotopical) version of what Robert Harper calls \textit{computational trinitarianism}':
+One may think of HoTT as a topological (or, more generally, homotopical) version of what Robert Harper calls \textit{computational trinitarianism}:
 \[
 \begin{tikzcd}
- & \text{Proof Theory (Logic)} \arrow[rd] \arrow[ld] &  \\
-\text{Type Theory (Language)} \arrow[ru] \arrow[rr] &  & \text{Category Theory (Algebra)} \arrow[lu] \arrow[ll]
+ & \text{Proof theory (Logic)} \arrow[rd] \arrow[ld] &  \\
+\text{Type theory (Language)} \arrow[ru] \arrow[rr] &  & \text{Category theory (Algebra)} \arrow[lu] \arrow[ll]
 \end{tikzcd}
 .\]
 
@@ -550,13 +550,9 @@ For any types $A$ and $B$ and any path $p: A \leadsto_{\type} B$, there is some 
 By path induction, it suffices to notice that the identity map on $A$ is an equivalence.
 \end{proof}
 
-As a result, we obtain a function $v(A, B) : \left(A \leadsto B\right) \to \left(A \simeq B\right)$
-
-\begin{definition}[Univalence]
- $v(A, B)$ is an equivalence. 
-\end{definition}
-
-In particular, there is some function $v(A, B) ^{{-}1}: \left(A \simeq B\right) \to \left(A \leadsto B\right)$.
+As a result, we obtain a function $$v(A, B) : \left(A \leadsto B\right) \to \left(A \simeq B\right).$$
+The \textit{univalence axiom $(\univ)$} states that $v(A, B)$ is an equivalence. 
+In particular, there is some function $$v(A, B) ^{{-}1}: \left(A \simeq B\right) \to \left(A \leadsto B\right).$$
 
 \smallskip
 
@@ -574,7 +570,7 @@ If $A \simeq B$, then $\left(X \to A\right) \simeq \left(X \to B\right)$ for eac
 \end{corollary}
 
 \begin{prop}\label{PP}
-The univalence axiom ($\univ$) entails naive non-dependent functional extensionality. 
+The univalence axiom entails naive non-dependent functional extensionality. 
 \end{prop}
 
 \begin{corollary}[Voevodsky]
@@ -610,7 +606,7 @@ Thus far, we have looked at the syntax of HoTT. This section is a very brief and
 
 \medskip
 
-A category modeling intensional type theory has the following structure.
+A category modeling intensional type theory has the following structure:
 
 \[
 \begin{tikzcd}
@@ -621,11 +617,11 @@ A category modeling intensional type theory has the following structure.
 \text{cartesian closed} \arrow[r] & P \to Q \arrow[l] \\
 \text{locally cartesian closed} \arrow[r] & \prod_{x:A}P(x) \arrow[l] \\
 \text{weak factorization system} \arrow[r] & {a\leadsto b} \arrow[l]
-\end{tikzcd}
+\end{tikzcd}.
 \]
-Any proof in our type theory produces a theorem in any appropriate model of it.
+We define an interpretation function from the set of all terms of intensional type theory to such a category so that any proof in our type theory produces a theorem in the categorical structure. In other words, our categorical semantics is sound.
 
-HoTT without $\univ$ may be modeled in a certain extension of $\mathsf{ZFC}$. In 2006, Voevodsky showed that the category of Kan complexes (i.e., simplicial sets with Kan fillers) is a model of HoTT.  In it, a type family corresponds to a Kan fibration.  His construction, however, is non-constructive to some degree as it relies heavily on the axiom of choice. Thus, it fails as a \emph{computational} interpretation of HoTT.
+It is known that HoTT without $\univ$ may be interpreted in the category $\mathbf{Set}$ under the theory $$\mathsf{ZFC} + ``\text{there exist countably many inaccessible cardinals"}$$ with every type interpreted as a set. In 2006, Voevodsky showed that the category of Kan complexes (i.e., simplicial sets with Kan fillers) is a model of HoTT.  In it, a type family corresponds to a Kan fibration.  His construction, however, is non-constructive to some degree as it relies heavily on the axiom of choice. Thus, it fails as a \emph{computational} interpretation of HoTT.
 
 Coquand, however, has designed a so-called cubical model of HoTT, in which $\univ$ is a theorem. This models the $\infty$-groupoid structure of identity types with the category of constructive cubical sets, which are set-valued presheaves on the category of power sets of finite sets (viewed as $n$-cubes). Thus, Coquand's model serves as a constructive interpretation of $\univ$.  
 Anders M\"ortberg has designed a Haskell implementation of cubical type theory, called Cubical Agda (\url{https://github.com/agda/cubical}).
