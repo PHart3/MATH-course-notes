@@ -216,7 +216,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ Viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ By viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
@@ -305,8 +305,8 @@ Let $\c'$ be a skeleton of $\c$. Then the inclusion functor  $\c' \hookrightarro
 Any two skeleta $\c', \c'' \subset \c$ are isomorphic.
 \end{lemma}
 \begin{proof}
-Define $F: \c' \to \c''$ on objects by $F(X) =Y$ where $X\cong Y$ via a chosen map $h_X$ and on morphisms $f\in \c(X, Y)$ by $F(f) = h_Y \circ f \circ (h_X)^{{-1}}$.
-To get $F^{{-1}}$,  define $G: \c'' \to \c'$ by similarly choosing $\left(h_X\right)^{{-1}}$.
+Define $F: \c' \to \c''$ on objects by $F(X) =Y$ where $X\cong Y$ via a chosen isomorphism $h_X$ and on morphisms $f\in \c(X, Y)$ by $F(f) = h_Y \circ f \circ (h_X)^{{-1}}$.
+To get $F^{{-1}}$,  define $G: \c'' \to \c'$ by similarly choosing an isomorphism $\left(h_X\right)^{{-1}}$ for each $X\in \ob{\c''}$.
 \end{proof}
 
 \begin{remark}
@@ -330,12 +330,15 @@ We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented by 
 \smallskip
 
 A functor of the form $\c \times \c' \to \d$ is called a \textit{bifunctor}.
-In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $\left(X, X'\right) \to \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : (X, X') \to (Y, Y')$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
+In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $\left(X, X'\right) \to \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : \left(X, X'\right) \to \left(Y, Y'\right)$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
 
+\medskip
+
+Let $\c$ and $\d$ be categories and $F : \c \to \d$ and $G: \d \to \c$ be functors. 
 
 
 \begin{definition}[Kan]
-Let $\c$ and $\d$ be categories and $F : \c \to \d$ and $G: \d \to \c$ be functors. Consider the set-valued bifunctors $ \d(F(-), -), \c(-, G(-)): \c^{\op} \times \d \to \mathbf{Set}$. An \textit{adjunction from $F$ to $G$} is a natural isomorphism $$\phi : \d(F(-), -) \Rightarrow \c(-, G(-)).$$
+Consider the set-valued bifunctors $ \d(F(-), -), \c(-, G(-)): \c^{\op} \times \d \to \mathbf{Set}$. An \textit{adjunction from $F$ to $G$} is a natural isomorphism $$\phi : \d(F(-), -) \Rightarrow \c(-, G(-)).$$
 If such a $\phi$ exists, then we say that $\left(F, G\right)$ is an \textit{adjoint pair (of functors)}. 
 \end{definition}
 
@@ -354,16 +357,22 @@ Note that $\phi$ is natural in the sense that for any map $c: X' \to X$ in $\c$ 
 \] commutes in $\mathbf{Set}$.
 
 \begin{prop}
-Left and right adjoints are unique up to unique isomorphism.
+Left and right adjoints are both unique up to unique isomorphism.
 \end{prop}
 
 \begin{term}
 We call $F$ the \textit{left adjoint} to $G$ and $G$ the \textit{right adjoint} to $F$. In symbols, $F \dashv G$.
 \end{term}
 
-\smallskip
+\begin{note}
+It is straightforward to check that any adjoint triple $F \dashv G \dashv H$ yields two new adjunctions:
+\begin{gather*}
+G{F} \dashv G{H}
+\\ F{G} \dashv H{G}
+\end{gather*}
+\end{note}
 
-Let $F: \c \to \d$ and $G: \d \to \c$ be functors.
+
 
 \begin{definition}
 Given an adjunction $\phi: \d(F(-), -) \Rightarrow \c(-, G(-))$, define the \textit{unit morphism } $$\eta_X =\phi_{X, F{X}}\left(\id_{F{X}}\right) \in \c(X, GF(X))$$ and the \textit{counit morphism} $$\epsilon_Y =\phi_{G{Y}, Y}^{{-1}}\left(\id_{G{Y}}\right) \in \d(FG(Y), Y).$$

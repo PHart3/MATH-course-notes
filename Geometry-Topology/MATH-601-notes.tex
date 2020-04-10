@@ -2873,7 +2873,7 @@ The smash product is a monoidal product in $\mathbf{Top}_{\ast}$.
 \begin{enumerate}
 \item $S^n \wedge  S^m \cong S^{n+m}$.
 \begin{proof}
- It suffices to show that if $\left(X, x_0\right)$ and $\left(Y, y_0\right)$ are compact manifolds, then $$X \wedge Y \cong \left(\left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)\right)^{\ast}$$ where $\left({-}\right)^{\ast}$ denotes the one-point compactification. Let $Z\coloneqq  \left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)$. Note that $Z$ is noncompact but locally compact. 
+ It suffices to show that if $\left(X, x_0\right)$ and $\left(Y, y_0\right)$ are compact manifolds, then $$X \wedge Y \cong \left(\left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)\right)^{\ast}$$ where $\left({-}\right)^{\ast}$ denotes the one-point compactification. Let $Z\coloneqq  \left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)$. Note that $Z$ is noncompact but is locally compact. 
  
  We see that $\psi \coloneqq  \pi \circ i : Z \to X \wedge Y$ is injective with $\im{\psi} = X \wedge Y \setminus \left\{\left(x_0, y_0\right)\right\}$. Let $U \subset Z$ be open. Then $U$ is open in $X \times Y$.  Since $\pi^{-1}(\pi(U)) = U$, it follows that $\pi(U)$ is open in $X \wedge Y$. Thus, $\psi$ is an open map, so that $\psi$ is a topological embedding. Since $X \wedge Y$ is compact, it follows that $\psi$ is a Hausdorff compactification. 
 \end{proof}
@@ -3100,7 +3100,7 @@ Now, let $X$ be an $n$-manifold with orientation $x \mapsto \alpha_x$. Let $K \s
 \subsection{Lecture 22}
 
 
-Any  proper map of locally compact CW-complexes $f: X \to Y$ induces  a homomorphism $f^{\ast}: H_c^{\ast}(Y; R) \to H_c^{\ast}(X; R)$. It also induces a map $C_c(Y) \to C_c(X)$ where $C_c({-})$ where $C_c({\cdot})$ denotes the space of compactly supported  maps ${\cdot} \to \R$.
+Any  proper map $f: X \to Y$ of locally compact CW-complexes  induces  a homomorphism $f^{\ast}: H_c^{\ast}(Y; R) \to H_c^{\ast}(X; R)$. It also induces a map $C_c(Y) \to C_c(X)$ where $C_c({-})$ where $C_c({\cdot})$ denotes the space of compactly supported  maps ${\cdot} \to \R$.
 
 But we also have a \textit{wrong way functor} or an \textit{umkehr map} in that the inclusion $i: U \to V$ of open sets in $X$ induces a homomorphism $i_{!} : H_c^k(U; R) \to H_c^k(V; R)$. It also induces a map $C_c(U) \to C_c(V)$ since every CW-complex is paracompact and thus always admits subordinate partitions of unity.
 
@@ -3620,7 +3620,7 @@ Given any sheaf $G$, define a new sheaf $\Gd(G)$ by
 \Gd(G)(U) & =  \prod_{x\in U}G_x
 \\
 \Gd(G)(i : U \hookrightarrow V) & = \left(s \mapsto s \restriction_V\right)\\ 
-.\end{align*} Then we have an exact sequence $0 \to G \to \Gd(G) \to H_0 \to 0$ where $H_0 \equiv \coker(G \to \Gd(G))$. From this, we can form the exact sequence $0 \to H_0 \to \Gd(H_0) \to H_1 \to 0$ where $H_1 \equiv \coker(H_0 \to \Gd(H_0))$, and so on. What results is a resolution $$ 0 \to \Gd(G) \to \Gd(H_0) \to \Gd(H_1) \to \cdots    .$$  Note that $\Gd(G)$, as well as each sheaf $\Gd(H_i)$, is flabby. 
+.\end{align*} Then we have an exact sequence $0 \to G \to \Gd(G) \to H_0 \to 0$ where $H_0 \equiv \coker(G \to \Gd(G))$. From this, we can form an exact sequence $0 \to H_0 \to \Gd(H_0) \to H_1 \to 0$ where $H_1 \equiv \coker(H_0 \to \Gd(H_0))$, and so on. What results is a resolution $$ 0 \to \Gd(G) \to \Gd(H_0) \to \Gd(H_1) \to \cdots    .$$  Note that $\Gd(G)$, as well as each sheaf $\Gd(H_i)$, is flabby. 
 \end{exmp}
 
 \begin{definition}

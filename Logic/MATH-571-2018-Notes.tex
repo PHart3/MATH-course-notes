@@ -349,7 +349,7 @@ $X$ is perfect if and only if it is nonempty, is closed, and has no isolated poi
 \end{corollary}
 
 \begin{definition}
-Let  $X \subset \R$. Suppose that for any open interval $I\subset \R$, we have $I \cap X \ne \emptyset$. In this case, we say that $X$ is \textit{dense in $\R$}.
+Let  $X \subset \R$. We say that $X$ is \textit{dense in $\R$} if for every  open interval $I\subset \R$, we have $I \cap X \ne \emptyset$.
 \end{definition}
 
 \begin{exmp}
@@ -359,6 +359,10 @@ $\Q$ is dense in $\R$.
 \begin{note}
 Any set of pairwise disjoint open intervals must be countable because $\Q$ is both countable and dense in $\R$.
 \end{note}
+
+\begin{remark}
+We say that a subset $X\subset \R$ is \textit{nowhere dense} if for every  open interval $I\subset \R$, we have that $I \cap X$ is \emph{not} dense in $X$ (equivalently, $I\setminus X$ has nonempty interior). For example, both $\Z$ and  $\left\{\frac{1}{n} \mid n \in \Z_{>0}\right\}$ are nowhere dense in $\R$.
+\end{remark}
 
 \begin{definition} Let  $\left(P, <\right)$ be a (strict) linear ordering (also known as a (strict) total order).
 \begin{enumerate}
@@ -379,9 +383,9 @@ Let $\left(P, <\right)$ and $\left(Q, <'\right)$ be any two linear orderings.
 \begin{prop}
 The following  properties are invariant under isomorphism.
 \begin{itemize}
-\item Being dense in a set.
-\item Being complete.
-\item Being unbounded. 
+\item \emph{Being dense in a set}.
+\item \emph{Being complete}.
+\item \emph{Being unbounded}. 
 \end{itemize}
 \end{prop}
 
@@ -1006,7 +1010,7 @@ Let $F' : \ord \to V$ also have $F'(\alpha) = G(F'\restriction_{\alpha})$. Using
 \end{proof}
 
 
-\subsection{Lecture 10}
+\subsection{Lecture 10}\label{Lecture10}
 
 
 \begin{exercise}\label{ord-char}
@@ -1190,7 +1194,7 @@ m(n+1).$$ Hence $\omega =\Gamma(\omega \times \omega)$, as desired.
 
 \begin{corollary}{$(\zfc)$}
 Let $\kappa$ and $\lambda$ be infinite cardinals.
-Then $$\kappa \cdot \lambda = \kappa + \lambda = \max\{\kappa, \lambda\},$$
+Then $$\kappa \cdot \lambda = \kappa + \lambda = \max\{\kappa, \lambda\}.$$
 \end{corollary}
 
 \subsection{Lecture 11}
@@ -1198,7 +1202,7 @@ Then $$\kappa \cdot \lambda = \kappa + \lambda = \max\{\kappa, \lambda\},$$
 \begin{remark}
 If $\U$ denotes the universe of all sets, then $\zf \setminus \{\mathsf{Reg}\} \vdash \mathsf{Reg} \leftrightarrow \U = V$.
 \end{remark}$ $
-We now prove a theorem stated in Lecture 10.
+We now prove a theorem stated in \cref{Lecture10}.
 
 \begin{proof}{\textbf{($\ac \iff \mathsf{WOP}$)}}$ $\\ 
 ($\Longleftarrow$) Let $I$ be any set and let $C\coloneqq \{A_i\}_{i\in I}$ be a collection of nonempty sets. By  $\mathsf{Union}$, we see that $\bigcup C$ is a set. By $\mathsf{WOP}$, there exists a well-ordering $<$ on $\bigcup C$. Note that each $A_i$ is a nonempty subset of $\bigcup C$. Thus, $A_i$ contains a least element $a_i$. Now, define $f: I \rightarrow \bigcup C$ by $f(i)=a_i$. As long as $f$ is well-defined, it is a choice function. To show that it is well-defined, it suffices to show that the $a_i$ are unique. Suppose that both $a_i$ and $b_i$ are minimal elements of $A_i$. Note  that $<$ is a linear ordering of $C$. Thus, either $a_i \leq b_i$ or $b_i\leq a_i$. But both are minimal, so that, in either case, $a_i=b_i$. This shows that $f$ is well-defined.

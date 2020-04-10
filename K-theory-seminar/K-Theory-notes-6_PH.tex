@@ -243,7 +243,7 @@ Recall that $\left\lvert{wS_{\bullet} \c}\right\rvert$ is an $H$-space via the m
 Let $F' \rightarrowtail F \twoheadrightarrow F''$ be a short exact sequence of exact functors $\b \to \c$. Then $F_{\ast} \simeq F_{\ast}' + F_{\ast}''$ as maps $K(\b) \to K(\c)$, so that $$F_{\ast} = F_{\ast}' + F_{\ast}''$$ as maps $K_i(\b) \to K_i(\c)$. 
 \end{theorem}
 \begin{proof}
-As $S_2{\c}$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2{\c} \xbigtoto[s \coprod q]{t} \c$$ are the same. \Cref{ext} implies that $K\left(\coprod\right): K(\c) \times K(\c) \to K(S_2{\c})$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we get $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
+As $S_2{\c}$ is universal, it suffices to prove that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. Notice that the two composites $$\c \times \c \overset{\coprod}{\longrightarrow} S_2{\c} \xbigtoto[s \coprod q]{t} \c$$ are the same. \Cref{ext} implies that $K\left(\coprod\right): K(\c) \times K(\c) \to K(S_2{\c})$ is a homotopy equivalence. Since the $H$-space structure on $K(\c)$ is induced by $\coprod$, we conclude that $t_{\ast}  \simeq s_{\ast} + q_{\ast}$. 
 \end{proof}
 
 \begin{definition}
@@ -275,9 +275,9 @@ A \arrow[r, "j_1"] \arrow[rd, "f"'] & T(f) \arrow[d, "p"] & B \arrow[l, "j_2"'] 
 Moreover, $T$ must satisfy the following axioms.
 \begin{enumerate}[label=(\arabic*)]
 \item $T$ sends every initial morphism $\ast \to A$ to $A$ for any $A \in \ob \c$.
-\item $j_1 \coprod j_2 : A \coprod B \rightarrowtail T(f)$ is a cofibration for any $f: A \to B$.
+\item The map $j_1 \coprod j_2 : A \coprod B \rightarrowtail T(f)$ is a cofibration for any $f: A \to B$.
 \item Given a morphism $\left(a,b\right) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are weak equivalences in $\c$, then so is $T(f) \to T(f').$
-\item Given a morphism $\left(a,b\right) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $A' \coprod_A T(f) \coprod_B B' \to T(f')$ induced by axiom (2) is a cofibration in $\c$.
+\item Given a morphism $\left(a,b\right) : f \to f'$ in $\Ar(\c)$, if both $a$ and $b$ are cofibrations in $\c$, then so is $T(f) \to T(f')$. Also, the map $$A' \coprod_A T(f) \coprod_B B' \to T(f')$$ induced by axiom (2) is a cofibration in $\c$.
 \item {(\textit{Cylinder axiom})} The map $p: T(f) \to B$ is a weak equivalence in $\c$.
 \end{enumerate}
 
@@ -348,11 +348,11 @@ Let $\a$ be an exact category closed under kernels of surjections. Then the exac
 \end{theorem}
 
 \begin{definition}
-Let $F: \a \to \b$ be an exact functor between \emph{Waldhausen} categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there exist a map $a : A \to A'$ in $\a$ and a weak equivalence $b' : F(A') \simeq B$ in $\b$ such that
+Let $F: \a \to \b$ be an exact functor between \emph{Waldhausen} categories. We say that $F$ satisfies the \textit{approximate lifting property} if for any map $b: F(A) \to B$ in $\b$, there exists a map $a : A \to A'$ in $\a$ along with a weak equivalence $b' : F(A') \simeq B$ in $\b$ such that
 \[
 \begin{tikzcd}
 F(A') \arrow[r, "\sim", dashed] & B \\
-F(A) \arrow[u, "F(a)", dashed] \arrow[ru, "b"] & 
+F(A) \arrow[u, "F(a)", dashed] \arrow[ru, "b"'] & 
 \end{tikzcd}.
 \]
 commutes.
@@ -374,7 +374,7 @@ Then $wF : w{\a} \to w{\b}$ is a homotopy equivalence.
 With the same hypotheses as in \cref{pp}, we have $$K(\a) \simeq K(\b).$$
 \end{corollary}
 \begin{proof}[Proof sketch]
-One can show that each functor $S_n \a \to S_n \b$ is exact and also has the approximate lifting property.  \Cref{pp} thus gives degree-wise homotopy equivalence between the bisimplicial map $wS_{\bullet}\a \to wS_{\bullet} \b$, which is enough. 
+One can show that each functor $S_n \a \to S_n \b$ is exact and also has the approximate lifting property.  \Cref{pp} thus gives rise to degree-wise homotopy equivalence between the bisimplicial map $wS_{\bullet}\a \to wS_{\bullet} \b$, which is enough. 
 \end{proof}
 
 \smallskip
