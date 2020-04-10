@@ -528,7 +528,7 @@ where $\left\lvert{x}\right\rvert = m$. It is straightforward to verify that the
 \end{proof}
 \begin{corollary} $ $
 \begin{enumerate} 
-\item Our last proof shows that any regular language $L$ has pumping length $\leq \left\lvert{Q}\right\rvert$.
+\item Any regular language $L$ has pumping length $\leq \left\lvert{Q}\right\rvert$.
 \item If $L(M) \ne \emptyset$, then there exists $x\in L(M)$ such that $\left\lvert{x}\right\rvert \leq \left\lvert{Q}\right\rvert$.
 \end{enumerate}
 \end{corollary}
@@ -980,14 +980,9 @@ It's possible that both a language and its complement are not recursively enumer
 
 
 Once we know that a question is decidable, we want to determine the amount of computational resources required to decide it. Such resources include 
-\begin{itemize}
-\item time
-\item space
-\item parallelism 
-\item communication 
-\item rounds
-\item randomness
-.\end{itemize}
+\[ \text{time, space, parallelism, communication, rounds, and randomness}
+.
+\]
 We also want to study how these trade off with each other. 
 
 \smallskip
@@ -998,8 +993,14 @@ Given any $\TM$ $M$, its \textit{time complexity} is the function $f: \N \to \N$
 
 \smallskip
 
- Given any \textit{time-constructible} function $f: \N \to \N$, let $$\mathsf{DTIME}(f(n)) = \left\{ L : \exists \TM \ M  \text{ s.t. } L = L(M) \text{ and }M \text{ halts on all inputs of length }n \text{ in }O(f(n)) \text{ steps}\right\}.$$
-Let $\mathbf{P} = \bigcup_{k\geq 0} \mathsf{DTIME}(n^k)$.
+Let $f: \N \to \N$ be a \textit{time-constructible} function, i.e., computable in $O(f(n))$-time with $f(n)\geq n$ for all $n\in \N$. Let 
+\begin{gather*}
+\mathsf{DTIME}(f(n))  = \left\{ L : \exists \TM \ M  \text{ s.t. } L = L(M) \text{ and }M \text{ halts on all inputs of length }n \text{ in }O(f(n)) \text{ steps}\right\}.
+\\  \Downarrow
+\\
+ \mathbf{P}  = \bigcup_{k\geq 0} \mathsf{DTIME}(n^k)
+.
+\end{gather*}
 
 
 \begin{prop}
@@ -1303,7 +1304,7 @@ Any undirected  weighted (connected) graph can be endowed with a metric by takin
 \end{remark}
 
 \begin{exmp}
-Let $\mathsf{SUBSET{-}SUM} = \left\{\left\langle a_1, \ldots, a_k, t\right\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}$. Then $\mathsf{SUBSET{-}SUM}$ is $\NP$-complete.
+The language  $$\mathsf{SUBSET{-}SUM} \coloneqq \left\{\left\langle a_1, \ldots, a_k, t\right\rangle \mid a_i,t\geq 0,\ \exists S \subset [k].\sum_{i\in S} a_i = t\right\}.$$ is $\NP$-complete.
 \end{exmp}
 \begin{proof}
 It's clear that this belongs to $\NP$. We show that $\mathsf{VC} \leq_m^p \mathsf{SUBSET{-}SUM}$. Let $G=\left(V, E\right)$ such that $\left\lvert{V}\right\rvert = n$ and $\left\lvert{E}\right\rvert= m$. We can make $E$ totally ordered. Suppose that $G$ has a vertex cover $C$ of size $k$. For each $v\in V$, we define an integer $a_v\geq 0$ in base-4 (written from left to right) consisting of $m+1$ digits. Further, for each $e\in E$, we define an integer $b_e\geq 0$ in base-4 consisting of $m+1$ digits. Specifically, if $0\leq i \leq \left\lvert{E}\right\rvert-1$ and  $\left(u,v\right) \in E$ is the $i$-th edge, then define both $a_u$ and $a_v$  as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 01   $$ and define $b_{(u,v)}$ as the integer $$0 \cdots 0 \underbrace{1}_{i\text{-th digit}} 0 \cdots 00     .$$ Now, set $t= k \cdot 4^m + \sum_{i=0}^{m-1}2 \cdot 4^i$.
@@ -1334,8 +1335,8 @@ Further, let $\mathsf{NSPACE}(S(n))$ consist of all languages $L$ for which  the
 \]
 
 
-\begin{definition}
-Let $M$ be a Turing machine that always halts. Define the \textit{configuration graph $G_{M,x}$ of $M$ on input $x$} as the directed graph $\left(V, E\right)$ where $V$ consists of the possible configurations of $M$ on $x$ and $E \equiv \left\{(C,C') : C \vdash C'\right\}$.
+\begin{definition}\label{Configg}
+Let $M$ be a Turing machine that always halts. Define the \textit{configuration graph $G_{M,x}$ of $M$ on input $x$} as the directed graph $\left(V, E\right)$ where $V$ consists of the possible configurations of $M$ on $x$ and $E \equiv \left\{\left(C,C'\right) : C \vdash C'\right\}$.
 \end{definition}
 
  By making $M$ erase the contents of its work tapes right before halting, we may assume that $M$ has exactly one accepting configuration $C_{\accpt}$ on $x$.
@@ -1422,8 +1423,10 @@ Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$. Recall that the configuratio
 Denote the space complexity of the preceding algorithm by $\mathcal{L}(T_0)$. Note that we we can reuse the space used by the first recursive call for the second recursive call. Since we need $\log{T_0}$ cells to encode the counter, it follows that
 $$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that the recursion depth here is precisely $\log{T_0}$. Using this, we compute
 \begin{align*}  \mathcal{L}(T_0)  & =    \log{T_0} + \mathcal{L}(T_0/2) 
-\\ & = \log^2{T_0} + \mathcal{L}(1) =  \log^2{2^{O(S(n))}} + \mathcal{L}(1) 
-\\ & = O\left(S^2(n)\right) + O(S(n)) = O\left(S^2(n)\right)  .
+\\ & = \log^2{T_0} + \mathcal{L}(1) 
+\\ & =  \log^2{2^{O(S(n))}} + \mathcal{L}(1) 
+\\ & = O\left(S^2(n)\right) + O(S(n)) 
+\\ & = O\left(S^2(n)\right)  .
 \end{align*}
 \end{proof}
 
@@ -1444,7 +1447,7 @@ The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by ou
 \begin{exmp} $ $
 \begin{enumerate}
 \item Let $\Sigma_2{-}\mathsf{SAT} = \left\{\varphi \text{ Boolean} \mid \forall \bar{x} \exists \bar{y}(\varphi(\bar{x}, \bar{y}) = 1)\right\}$. It is unclear that this (or its complement) belongs to $\NP$. 
-\item Let $\mathsf{TQBF{-}SAT} = \left\{ \varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} \left(\varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) = 1\right), \ Q_i \in \left\{\forall, \exists\right\} \right\}$. This stands for the set of \textit{totally quantified Boolean formulas}. It belongs to $\mathsf{PSPACE}$.
+\item Consider the language $$\mathsf{TQBF{-}SAT} = \left\{ \varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) \mid Q_1 \overline{x_1} Q_2 \overline{x_2}Q_3 \overline{x_3} \cdots Q_n \overline{x_n} \left(\varphi\left(\overline{x_1}, \ldots, \overline{x_n}\right) = 1\right), \ Q_i \in \left\{\forall, \exists\right\} \right\}$$  of all \textit{totally quantified Boolean formulas}. This belongs to $\mathsf{PSPACE}$.
 \begin{proof}
 Construct an algorithm $T(\varphi)$ as follows. 
 \begin{itemize}
@@ -1470,7 +1473,7 @@ $\mathsf{TQBF{-}SAT} $ is $\mathsf{PSPACE}$-complete.
 Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lvert{x}\right\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O\left(S(n)^2\right)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
 
 
- We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we see that 
+ We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we deduce that 
 \begin{align*}
 \varphi_{c_1, c_2, i} & \leftrightarrow \exists c\left(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1}\right)
 \\ & \leftrightarrow \exists c \forall D^1 \forall D^2\left(\left(D^1 = c_1 \land D^2 = c\right) \vee \left(D^1 = c\right) \land \left(D^2 = c_2\right)\right) \implies \varphi_{D^1, D^2, i-1}.
@@ -1479,7 +1482,13 @@ It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{
 \end{proof}
 
 \begin{prop}
-A language $L$ belongs to $\mathbf{NL}$ if and only if there exist $c\in \N$ and a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of one read-only input tape, one work tape, and one read-only, single-axis proof tape  such that $V$'s work tape uses $O(\log{\left\lvert{\text{(first input)}}\right\rvert})$ space and $$L = \left\{ x \mid \exists y.\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V\left(x,y\right) = 1\right\}.$$ .
+A language $L$ belongs to $\mathbf{NL}$ if and only if there exists $c\in \N$ along with a deterministic $\TM$ $V(\cdot, \cdot)$ consisting of 
+\begin{itemize}
+\item one read-only input tape, 
+\item one work tape, and 
+\item one read-only, single-axis proof tape  such that 
+\item $V$'s work tape uses $O\left(\log{\left\lvert{\left(\text{first input}\right)}\right\rvert}\right)$ space and $$L = \left\{ x \mid \exists y\left(\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V\left(x,y\right) = 1\right)\right\}.$$ 
+\end{itemize}
 \end{prop}
 
 \subsection{Lecture 17}
@@ -1537,17 +1546,19 @@ Second, given that $\left\lvert{C_{i-1}}\right\rvert = k$,  we can verify that $
 Finally, let $c\in \N$. Given that $\left\lvert{C_{i-1}}\right\rvert=k$, we can verify that $\left\lvert{C_i}\right\rvert = c$ as follows. 
 \begin{enumerate} 
 \item Write the next $v_i$ on the work tape (where $1\leq i \leq n$). 
-\item Decide if $v_i \in C_i$ using our two previous algorithms.
+\item Decide if $v_i \in C_i$ using our two preceding algorithms.
 \item Repeat steps 1-2 until there is no $v_i$ left.
 \item Determine the number $r$ of vertices in $C_i$ by using a counter on the work tape. If $r = c$, then \textit{accept}. Otherwise, \textit{reject}.
 \end{enumerate}
 
-Note that each of our three verifiers uses $O(\log{n})$ space on its work tape and  is polynomial in $n$ on its proof tape. Apply our final algorithm iteratively $n$-times to verify the size of  $C_n$. Since we can reuse space on the work tape, our space complexity on it remains $O(\log{n})$.  Next, apply our first algorithm to verify that $t\notin C_n$, in which case $t$ is not reachable from $s$.
+Note that each of our three verifiers uses $O(\log{n})$ space on its work tape and  is polynomial in $n$ on its proof tape. Apply our final algorithm iteratively $n$ times to verify the size of  $C_n$. Since we can reuse space on the work tape, our space complexity on it remains $O(\log{n})$.  Next, apply our first algorithm to verify that $t\notin C_n$, in which case $t$ is not reachable from $s$.
 \end{proof}
 
 \begin{corollary}
 If $s(n) \geq \log{n}$, then $\mathsf{NSPACE}(s(n)) = \mathbf{co}{-}\mathsf{NSPACE}(s(n))$.
 \end{corollary}
+
+\bigskip
 
 \begin{remark}
 Thanks to Bertrand's postulate, some prime number between $N$ and $2N$ always exists.  Suppose that we want to find the least such prime $\tilde{p}$. Consider the probability $\mathbb{P}$ that a randomly chosen number between $N$ and $2N$ is prime. From the prime number theorem, it is known that $\mathbb{P} \approx \frac{N}{\log{N}}$. As a result, we can apply the AKS primality test $O(\log{N})$ times to find $\tilde{p}$ with high probability.
