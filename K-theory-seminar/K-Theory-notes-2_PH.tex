@@ -197,6 +197,7 @@ We  introduce the concept of a universal property in category theory. The main s
 \item $n$Lab.
 \item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 4.
 \item Peter Johnstone's lecture notes for ``Category Theory" (Mathematical Tripos Part III, Michaelmas 2015), Ch. 4.
+\item Steve Awodey's \textit{Category Theory}, Ch. 5.6.
 \end{itemize}
 \end{abstract}
 
@@ -222,9 +223,9 @@ Being initial and being terminal are dual properties.
 \end{exmp}
 
 \begin{lemma}\label{initial}
-Any two initial objects of $\c$ are canonically isomorphic. The same holds for any two terminal objects of $\c$.
+Any two initial objects of $\c$ are unique up to unique isomorphism. The same holds for any two terminal objects of $\c$.
 \end{lemma}
-\begin{proof}
+\begin{proof}[Proof sketch]
 Let $X$ and $X'$ be two initial objects. Compose the two unique morphisms $X\to X'$ and $X'\to X$ to get an isomorphism between $X$ and $X'$. Apply duality to this argument for the case of terminal objects.
 \end{proof}
 
@@ -265,11 +266,11 @@ If $F^{\op}:C^{\op} \to D^{\op}$ is opposite to the functor $F: \c \to \d$ and $
 Let $F : \d \to \c$ be a functor and $x \in \ob C$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is an initial object of the coslice $\left(x \downarrow F\right)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of the same category.
 \end{prop}
 \begin{proof}
-Suppose that $u$ is universal and $f: x \to Fy$ is another object of $\left(x \downarrow F\right)$. Then there is some unique $\hat{f}: r \to y$ such that $F\left(\hat{f}\right) \circ u = f$. Thus $F\left(\hat{f}\right)$ is a unique morphism of the coslice.
+Suppose that $u$ is universal and $f: x \to Fy$ is another object of $\left(x \downarrow F\right)$. Then there exists a unique $\hat{f}: r \to y$ such that $F\left(\hat{f}\right) \circ u = f$. Thus $F\left(\hat{f}\right)$ is a unique morphism of the coslice.
 
 \smallskip
 
-Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $\left(x \downarrow F\right)$, there is some unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ makes $u$ a universal arrow.
+Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $\left(x \downarrow F\right)$, there exists a unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ makes $u$ a universal arrow.
 \end{proof}
 
 \begin{corollary}
@@ -370,14 +371,14 @@ commutes.
 \begin{definition} $ $
 \begin{enumerate}
 \item The \textit{category of cones over $F$} is the right fiber category $X/F$. 
-\item The \textit{category of cones under $F$} is the left fiber category  $F/X$.
+\item The \textit{category of cocones under $F$} is the left fiber category  $F/X$.
 \end{enumerate}
 \end{definition}
 
 \begin{definition}[Colimit]
 Let $\c$ and $\d$ be categories and $g: Y \to Z$ a morphism in $\d$. Let $\Delta_{\c} g : \Delta_{\c} Y \Rightarrow \Delta_{\c} Z$ be the natural transformation with components $X \mapsto g$. 
 \begin{enumerate}
-\item A \textit{colimit  $\colim_{\c}{F}$} of the functor $F: \c \to \d$ is an object $Y$ of $\d$ together with a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$.
+\item A \textit{colimit  $\colim_{\c}{F}$} of the functor $F: \c \to \d$ is an object $Y$ of $\d$ together with a natural transformation $i : F \Rightarrow \Delta_{\c} Y$ such that for any $Z \in \ob \d$ and any natural transformation $j: F \Rightarrow \Delta_{\c} Z$, there is a unique morphism $g: Y \to Z$ such that $j = \Delta_{\c}g \circ i$.
 \item  We say that $\d$ \textit{admits/has  $\c$-shaped colimits} if each functor $G: \c \to \d$ has a colimit.
 \item We sat that $\d$ is \textit{cocomplete} if each functor $G : \c \to \d$ with $\c$ small has a colimit.
 \end{enumerate}
@@ -387,18 +388,16 @@ If $\c$ is small, then a colimit of $F: \c \to \d$ is just an initial object in 
 
 \smallskip
 
-\begin{exmp}  
-If $\c$ is the empty category, then the empty functor $F: \c \to \d$ satisfies $F/\Delta_{\c}\cong \d$, so that the colimit of $F$ is precisely the  initial object of $\d$.
+\begin{exmp}  If $\c$ is the empty category, then the empty functor $F: \c \to \d$ satisfies $F/\Delta_{\c}\cong \d$, so that the colimit of $F$ is exactly the  initial object of $\d$.
 \end{exmp}
 
-\smallskip
 
 \begin{prop}
 There is a natural bijection $\d(Y, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta{Z})$ if and only if  $Y = \colim_{\c}F$.
 \end{prop}
 
 \begin{lemma}
-Any two colimits are canonically isomorphic.
+Any two colimits are unique up to unique isomorphism. 
 \end{lemma}
 \begin{proof}
 When $\c$ is small, this follows immediately from \cref{initial}. Notice, however,  that our proof of \cref{initial} does \emph{not} require that $\c$ be locally small (a property which Rognes stipulates of any category). 
@@ -411,22 +410,24 @@ Assume that $\d$ has $\c$-shaped colimits and that $\c$ is small. Then a (possib
 for any functor $F : \c \to \d$, there is a bijection $\d(\colim_{\c} F, Z) \cong \mathbf{Fun}(\c, \d)(F, \Delta_{\c}Z)$.
 \end{remark}
 
-\begin{definition}
-A \textit{limit} of the functor $F: \c \to \d$ is  the colimit of $F^{\op} : \c^{\op} \to \d^{\op}$.
+\smallskip
+
+\begin{definition}[Limit]
+A \textit{limit} of the functor $F: \c \to \d$ is  a colimit of $F^{\op} : \c^{\op} \to \d^{\op}$.
 \end{definition}
 
 
-Explicitly,  a limit for $F: \c \to \d$ is an object $Z$ of $\d$ along with a natural transformation $p: \Delta_{\c}Z \Rightarrow F$ such that for any $Y \in \ob \d$ and natural transformation $q: \Delta_{\c}Y \Rightarrow F$, there is a unique morphism $g: Y \to Z$ such that $ q= p \circ \Delta_{\c}g$.
+Explicitly,  a limit for $F: \c \to \d$ is an object $Z$ of $\d$ along with a natural transformation $p: \Delta_{\c}Z \Rightarrow F$ such that for any $Y \in \ob \d$ and any natural transformation $q: \Delta_{\c}Y \Rightarrow F$, there is a unique morphism $g: Y \to Z$ such that $ q= p \circ \Delta_{\c}g$.
 
 \smallskip
 
-Note that the colimit of a functor $F$ is the limit of $F^{\op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized  for limits.
+Note that the colimit of a functor $F$ is exactly the limit of $F^{\op}$. Hence \textit{limit} and \textit{colimit} are dual properties, and our results so far for colimits can be dualized  for limits.
 
 \begin{definition}[(Co)product]
 Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{i\in \ob{\j}}$ of shape $\j$. 
 \begin{enumerate}
-\item The limit of this diagram is called the \textit{product} $\prod_i A_i$, equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there is some unique map $f\coloneqq \left(f_i\right) : U \to \prod_i A_i$ satisfying $\pi_i \circ f = f_i$. 
-\item  Dually, the colimit of the diagram is called the \textit{coproduct} $\coprod_i A_i$, equipped with inclusions $u_i : A_i \to \coprod_i A_i$ such that for any $f_i : A_i \to Y$, there is some unique map $f\coloneqq \left(f_i\right) : \coprod_i A_i \to Y$ satisfying $f_i = f \circ u_i$.
+\item The limit of $\left\{A_i\right\}_i$ is called the \textit{product} $\prod_i A_i$, equipped with projections $\pi_i : \prod_i A_i \to A_i$ such that for every $f_{i} : U \to A_i$ there exists a unique map $f\coloneqq \left(f_i\right) : U \to \prod_i A_i$ satisfying $\pi_i \circ f = f_i$. 
+\item  The colimit of $\left\{A_i\right\}_i$ is called the \textit{coproduct} $\coprod_i A_i$, equipped with inclusions $u_i : A_i \to \coprod_i A_i$ such that for any $f_i : A_i \to Y$, there exists a unique map $f\coloneqq \left(f_i\right) : \coprod_i A_i \to Y$ satisfying $f_i = f \circ u_i$.
 \end{enumerate}
 \end{definition}
 
@@ -434,8 +435,9 @@ Let $\j$ be a discrete small category. Consider a diagram  $\left\{A_i\right\}_{
 
 Familiar examples of limits include cartesian products and direct products, whereas familiar examples of colimits include disjoint unions and free products. 
 
-\begin{exmp}\label{comsets}
-Consider any small diagram $F: \mathscr{J} \to \set$. On the one hand,
+\begin{exmp}\label{comsets} $ $
+\begin{enumerate}[label=(\arabic*)]
+\item Consider any small diagram $F: \mathscr{J} \to \set$. On the one hand,
 \[
 \left. \colim_{j}F_j \cong \left(\coprod_{j\in \ob{\mathscr{J}}}F_j\right)\middle /{\sim}\right.
 \] where $\sim$ is the smallest equivalence relation such that $F_j\ni f_j \sim f_{j'} \in F_{j'}$ whenever  $F(\psi)(f_j) = f_{j'}$ for some $\psi  : j \to j'$. 
@@ -444,24 +446,45 @@ On the other hand,
 \[
 \lim_j{F_j} \cong  \left\{  \left(f_j\right)_j \in \prod_{j\in \ob{\mathscr{J}}} F_ j \mid \forall{\psi : j \to j'} \text{ in }\mathscr{J},\ F(\psi )(f_ j) = f_{j'} \right\} .
 \]
-We have proven that $\set$ is both complete and cocomplete.
+We have shown that $\set$ is both complete and cocomplete.
+\item Let $A$ be any set. Define the \textit{cumulative hierarchy $V_n(A)$} of rank $n<\omega$ over $A$ along with a countable sequence
+\[
+\begin{tikzcd}
+V_0 \arrow[r, "v_0"] & V_1 \arrow[r, "v_1"] & V_2 \arrow[r] & \cdots \arrow[r] & V_n \arrow[r, "v_n"] & V_{n+1} \arrow[r] & \cdots
+\end{tikzcd}
+\] of maps recursively by
+\begin{align*}
+V_0(A) &=A
+\\ V_{n+1}(A) & = A\coprod \P(V_n(A))
+\\ &
+\\ v_0  : A  & \hookrightarrow A \coprod \P(A), \ \hspace{40mm} a \mapsto a
+\\ v_{n+1}  : A&\coprod \P(V_n(A)) \to A \coprod \P(V_{n+1}(A)), \ \quad  \left(\id_A, \P(V_n(A))\right).
+\end{align*} 
+Let  $V_{\omega}(A) =\colim_{n<\omega}V_n(A)$, which exists by part (1). Then $V_{\omega}(\emptyset)$ is exactly the set of all hereditarily finite sets. To see that $V_{\omega}({-})$ is a functor $\mathbf{Set} \to \mathbf{Set}$, let $f:A \to B$ be a function. Then we  can build a cocone 
+\[
+\begin{tikzcd}[row sep=large]
+V_0(A) \arrow[r, "v_0"] \arrow[d, "f_0\equiv f"'] & V_1(A) \arrow[r] \arrow[d, "{\left(f, \mathcal{P}(f)\right)}"] & \cdots \arrow[r] & V_n(A) \arrow[r, "v_n"] \arrow[d, "{\left(f, \mathcal{P}(f_{n-1})\right)}"] & V_{n+1}(A) \arrow[d, "{\left(f, \mathcal{P}(f_{n})\right)}"] &               \\
+V_0(B) \arrow[r]                                  & V_1(B) \arrow[r]                                               & \cdots \arrow[r] & V_n(B) \arrow[r]                                                            & V_{n+1}(B) \arrow[r]                                         & V_{\omega}(B)
+\end{tikzcd}
+\] under $\left\{V_n(A)\right\}_n$ recursively. By the universal property of colimits, there exists a unique map $V_{\omega}(A) \to V_{\omega}(B)$, so that $V_{\omega}({-})$ is functorial.
+\end{enumerate} 
 \end{exmp}
 
 \medskip
 
-Let $\j$ be a category of the form $\bullet \rightrightarrows \bullet$. Then  a diagram $D$ of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over $D$ with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $ff_1=f_2 = gf_1$.
+Let $\j$ be a category of the form $\bullet \rightrightarrows \bullet$. Then  a diagram $D$ of shape $\j$ looks like $A \overset{f}{\underset{g}{\rightrightarrows}} B$. A cone over $D$ with apex $C$ and legs $f_1 : C \to A$ and $f_2 : C \to B$ satisfies $f\circ f_1=f_2 = g\circ f_1$.
 
 \begin{definition}[(Co)equalizer] $ $
 \begin{enumerate}
 \item If such an object $C$ together with $f_1$ is the limit of $D$, then we say it is the \textit{equalizer} of $f$ and $g$. 
-\item Dually, the colimit of $D$ is called the \textit{coequalizer} of $f$ and $g$.
+\item The colimit of $D$ is called the \textit{coequalizer} of $f$ and $g$.
 \end{enumerate}
 \end{definition}
 
 \begin{exmp}\label{set}
 The equalizer in $\set$ of $f, g: X \to Y$ is the subset $X'\coloneqq \left\{x \in X : f(x) = g(x)\right\}$ together with the inclusion function $X' \hookrightarrow X$. 
 
-The coequalizer of $\left(f, g\right)$ is $\faktor{Y}{\sim}$ together with the quotient map on $B$ where $\sim$ is the smallest equivalence relation under which $f(x) \sim g(x)$ for every $x$.
+The coequalizer of $\left(f, g\right)$ is precisely $\faktor{Y}{\sim}$ together with the quotient map on $B$ where $\sim$ is the smallest equivalence relation under which $f(x) \sim g(x)$ for every $x$.
 \end{exmp}
 
 \smallskip
@@ -495,7 +518,7 @@ Z \arrow[rdd, bend right] \arrow[rrd, bend left] &                              
 \end{definition}
 
 
-We can perform a dual construction for $\j^{\op}$. Then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{C} A$. The universal property of a pullback square states that for any commutative diagram of the form
+If we perform a dual construction for $\j^{\op}$, then the colimit of the resulting diagram is called the \textit{pushout}, denoted by $B \cup_{C} A$. The universal property of a pullback square states that for any commutative diagram of the form
 \[
 \begin{tikzcd}
 B\times_CA \arrow[d, "\pi_B"'] \arrow[r, "\pi_A"] & A \arrow[d, "f"] \arrow[rdd, bend left] &   \\
@@ -577,7 +600,7 @@ X_0 \arrow[r, "f_0"] & X_1 \arrow[r, "f_1"] & X_2 \arrow[r, "f_2"] & \cdots
 
 \smallskip
 
-\begin{theorem}[Freyd] $ $
+\begin{theorem}[Freyd]\label{Freyd} $ $
 \begin{enumerate}[label=(\roman*)]
 \item If $\c$ has equalizers and small (resp. finite) products, then it has small (resp. finite) limits.
 \item If $\c$ has pullbacks and a terminal object, then it has finite limits.
@@ -601,13 +624,11 @@ A \arrow[r, "{\left(\id_A, g\right)}"] & A\times B & A \arrow[l, "{\left(\id_A, 
 \end{enumerate}
 \end{proof}
 
-\begin{corollary}
-Both $\mathbf{Set}$ and $\mathbf{Grp}$ are complete and cocomplete (i.e., \textit{bicomplete}).
-\end{corollary}
+We may view \cref{comsets}(1) as an instance of \cref{Freyd}.
 
 \medskip
 
-It turns out that adjoints interact nicely with (co)limits under mild conditions.
+Next, let us show that adjoints interact nicely with (co)limits under mild conditions.
 
 
 \begin{prop}[Left adjoints preserve colimits]
