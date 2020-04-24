@@ -1639,9 +1639,9 @@ Let $M= \left(m_{i,j}\right)$ be the $n\times n$ matrix with $$m_{i,j} \equiv \b
 
 Let $X_1, \ldots, X_n$ be independent boolean-valued random variables. Let $\mathbb{E}[X_i]= \mu$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}\left[z\right] = \mu$. 
 
-\begin{lemma}[Chernoff bound]
-$\mathbb{P}\left[\left\lvert{Z - \mu}\right\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}$ for any $t\in (0,1)$.
-\end{lemma}
+\begin{theorem}[Chernoff bound]\label{Chb}
+ For any $t\in (0,1)$, $$\mathbb{P}\left[\left\lvert{Z - \mu}\right\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}.$$
+\end{theorem}
 
 \begin{corollary}
 Let $M$ be a randomized polynomial-time $\TM$ and $L\subset \Sigma^{\ast}$ be a language. Suppose that there exists $c>0$ such that
@@ -1660,7 +1660,7 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 
 \medskip
 
-  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\mathbb{E}[X_i] = \mathbb{P}[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can apply the Chernoff bound to get   
+  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\mathbb{E}[X_i] = \mathbb{P}[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can apply \cref{Chb} to get   
 \begin{align*}
  \mathbb{P}\left[\sum_{i=1}^m X_i \leq \frac{m}{2}\right] & \leq \mathbb{P}\left[ \left\lvert{\frac{\sum_{i=1}^m X_i}{m} -\mu}\right\rvert \geq n^{-c}\right] 
 \\ & \leq

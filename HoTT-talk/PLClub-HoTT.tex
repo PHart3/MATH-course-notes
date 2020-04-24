@@ -215,11 +215,11 @@ This is a brief, introductory overview of homotopy type theory (HoTT). After cov
 
 In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields Medalist who passed away in 2017. He wanted a logical system that could both handle certain higher-dimensional algebraic objects and facilitate formalization better than set theory could. In 2005 and 2006, the first homotopical models of intensional (dependent) type theory were constructed by Steve Awodey, Michael Warren, and Voevodsky. In 2012-13,  the IAS at Princeton held \textit{A Special Year on Univalent Foundations of Mathematics}, from which the standard reference \textit{Homotopy Type Theory: Univalent Foundations of Mathematics} was produced. This includes Voevodsky's univalence axiom in its formulation of type theory.
 
-One may think of HoTT as a topological (or, more generally, homotopical) version of what Robert Harper calls \textit{computational trinitarianism}:
+One may think of HoTT as a homotopical version of what Robert Harper calls \textit{computational trinitarianism}:
 \[
 \begin{tikzcd}
- & \text{Proof theory (Logic)} \arrow[rd] \arrow[ld] &  \\
-\text{Type theory (Language)} \arrow[ru] \arrow[rr] &  & \text{Category theory (Algebra)} \arrow[lu] \arrow[ll]
+                                                  & \text{Proof theory} \arrow[ld, no head, dashed] \arrow[rd, no head] &                                  \\
+\text{Type theory} \arrow[rr, no head] &                                                                     & \text{Category theory}
 \end{tikzcd}
 .\]
 

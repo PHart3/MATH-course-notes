@@ -524,7 +524,7 @@ If we perform a dual construction for $\j^{\op}$, then the colimit of the result
 B\times_CA \arrow[d, "\pi_B"'] \arrow[r, "\pi_A"] & A \arrow[d, "f"] \arrow[rdd, bend left] &   \\
 B \arrow[r, "g"'] \arrow[rrd, bend right]         & C                                       &   \\
                                                   &                                         & Z
-\end{tikzcd}
+\end{tikzcd},
 \] there is a unique mediating map $ B\cup_CA\to Z$ fitting into it.
 
 
@@ -557,7 +557,26 @@ B \arrow[r, "g"']                                  & C
 
 \smallskip
 
-Our next result is quite useful and follows directly from the universal property of pullback (dually, pushout) squares.
+Our next two results are quite useful and follow directly from the universal property of pullback (dually, pushout) squares.
+
+\begin{prop} Let $f: X \to Y$ be a morphism in a category $\c$.
+\begin{enumerate}
+\item  The commutative square
+\[
+\begin{tikzcd}
+X \arrow[r, equal] \arrow[d, equal] & X \arrow[d, "f"] \\
+X \arrow[r, "f"']     & Y               
+\end{tikzcd}
+\] is a pullback if and only if $f$ is a monomorphism.
+\item The commutative square
+\[
+\begin{tikzcd}
+X \arrow[d, "f"'] \arrow[r, "f"] & Y \arrow[d, equal] \\
+Y \arrow[r, equal]                      & Y          
+\end{tikzcd}
+\] is a pushout if and only if $f$ is an epimorphism.
+\end{enumerate}
+\end{prop}
 
 \begin{prop}[Pasting law]
 Consider a commutative diagram of the form
@@ -566,12 +585,16 @@ Consider a commutative diagram of the form
 X \arrow[d] \arrow[r] & Y \arrow[r] \arrow[d] & Z \arrow[d] \\
 X' \arrow[r]          & Y' \arrow[r]          & Z'         
 \end{tikzcd}
-.\]
+\] in a category $\c$.
 \begin{enumerate}
 \item Suppose that the righthand square is a pullback. Then the total rectangle is a pullback if and only if the lefthand square is one.
 \item Suppose that the lefthand square is a pushout. Then the total rectangle is a pushout if and only if the righthand square is one. 
 \end{enumerate}
 \end{prop}
+
+\begin{corollary}
+The operations of forming pullbacks and forming pushouts are associative up to isomorphism.
+\end{corollary}
 
 \medskip
 
@@ -632,8 +655,8 @@ Next, let us show that adjoints interact nicely with (co)limits under mild condi
 
 
 \begin{prop}[Left adjoints preserve colimits]
-Let $F: \c \to \d$ and $G : \d \to \c$ be functors such that $\left(F, G\right)$ is an adjoint pair. Let $\e$ be small category. If $X: \e \to \c$ is a functor whose colimit exists, then $$\colim_{\e}(F \circ X) = F\left(\colim_{\e} X\right).$$
-Dually, if $Y: \e \to \d$ is a functor whose limit exists, then $$ \lim_{\e}(G \circ Y)=  G\left(\lim_{\e} Y\right) .$$ 
+Let $F: \c \to \d$ and $G : \d \to \c$ be functors such that $\left(F, G\right)$ is an adjoint pair. Let $\e$ be small category. If $X: \e \to \c$ is a functor whose colimit exists, then $$\colim_{\e}(F \circ X) \cong F\left(\colim_{\e} X\right).$$
+Dually, if $Y: \e \to \d$ is a functor whose limit exists, then $$ \lim_{\e}(G \circ Y)\cong  G\left(\lim_{\e} Y\right) .$$ 
 \end{prop}
 \begin{proof}
 We have the following chain of natural  bijections  in $Y \in \ob{\d}$: 
