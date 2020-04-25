@@ -218,8 +218,8 @@ In its current form, HoTT largely originated from Vladimir Voevodsky, a Fields M
 One may think of HoTT as a homotopical version of what Robert Harper calls \textit{computational trinitarianism}:
 \[
 \begin{tikzcd}
-                                                  & \text{Proof theory} \arrow[ld, no head, dashed] \arrow[rd, no head] &                                  \\
-\text{Type theory} \arrow[rr, no head] &                                                                     & \text{Category theory}
+                                                  & \text{Proof theory} \arrow[ld, no head, "\text{C-H}"'] \arrow[rd, no head, dashed] &                                  \\
+\text{Type theory} \arrow[rr, no head, "\text{Internal language}"'] &                                                                     & \text{Category theory}
 \end{tikzcd}
 .\]
 
@@ -254,7 +254,7 @@ We form the \textit{dependent sum type $\sum_{x:A} B(x)$} according to the follo
 \item \underline{${\sum}$-Elimination:} Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$ and $p: \sum_{x:A}B(x)$, then $\ind_{\sum_{x:A}B(x)}(C, g, p) : C(p)$.
 \item \underline{${\sum}$-Computation:}  Given any family of types $C: \left(\sum_{x:A} B(x)\right) \to \mathbf{Type}$, if $g: C(x,y)$ for any $x: A$ and $y: B(x)$, $a: A$, and $b: B(a)$, then $\ind_{\sum_{x:A}B(x)}(C, g, (a,b)) \equiv g(a,b) : C(a,b)$.
 \end{enumerate}
-Note that the ordinary product type $A  \times B$ is a special case of the dependent sum type. Intuitively, a dependent sum type is like a set-theoretic disjoint union (or, more generally, as a coproduct).
+Note that the ordinary product type $A  \times B$ is a special case of the dependent sum type. Intuitively, a dependent sum type is like a set-theoretic disjoint union (or, more generally, a coproduct).
 \end{enumerate}
 \end{definition}
 
@@ -268,7 +268,7 @@ Note that the ordinary product type $A  \times B$ is a special case of the depen
 
 Given $p: \sum_{x:A} B(x)$, we have that $p\equiv \left(\pr_1(p), \pr_2(p)\right) : \sum_{x:A}B(x)$. This is known as the uniqueness principle for dependent sum types.
 
-\bigskip
+\pagebreak
 
 \begin{note}[Curry-Howard isomorphism]
 It can be useful to think of our type theory as familiar first-order logic.
@@ -488,7 +488,7 @@ Our next concept is a constructive version of a unit-counit adjunction in catego
 \begin{definition}
 An \textit{adjoint equivalence from $A$ to $B$} is a $5$-tuple $\left(f, g, \eta, \epsilon, \alpha\right)$  consisting of $f: A \to B$, $g: B \to A$, $\eta : \idmap_A \simeq g\circ f$, $\epsilon f \circ g \simeq \idmap_B$, and witnesses $\alpha(x)$ of the commutativity of the triangle 
 \[
-\begin{tikzcd}
+\begin{tikzcd}[column sep=large]
 f(x) \arrow[r, "f(\eta(x))", squiggly] \arrow[rd, "\refl_{f(x)}"', squiggly] & f(g(f(x))) \arrow[d, "\epsilon(f(x))", squiggly] \\
  & f(x)
 \end{tikzcd}
@@ -590,7 +590,7 @@ Finally, by assuming $\univ$, we can prove a fundamental result of category theo
 \begin{lemma}[Yoneda]
 Assume that $\wfe$ holds. Then for any dependent type $P$ over $A$ and any $a: A$, there exists a natural equivalence $$ \alpha_{P,a} :\Hom(\mathsf{Y}(a), P)\simeq P(a) . $$ The term $ \alpha_{P,a} $ is natural in the sense that for any $p: a\leadsto a'$ and $\sigma : \Hom(P, P')$, the square
 \[
-\begin{tikzcd}
+\begin{tikzcd}[column sep=large, row sep=large]
 {\Hom(\mathsf{Y}(a), P)} \arrow[r, "{\alpha_{P,a}}"] \arrow[d, "{\Hom(\mathsf{Y}(p), \sigma)}"'] & P(a) \arrow[d, "\sigma(p)"] \\
 {\Hom(\mathsf{Y}(a'), P')} \arrow[r, "{\alpha_{P', a'}}"'] & P'(a')
 \end{tikzcd}\] commutes up to homotopy.\footnote{See Egbert Rijke's proof of this at the \href{https://homotopytypetheory.org/2012/05/02/a-type-theoretical-yoneda-lemma/}{HoTT website}, which resembles many standard proofs from category theory.}
