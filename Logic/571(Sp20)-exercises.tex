@@ -477,6 +477,8 @@ In this case, we call $p$ \textit{complete} if $\theta \in p$ or $\neg{\theta}$ 
 We say that $T$ is \textit{$\kappa$-stable} if whenever $\M \models T$, $A\subset \dom(\M)$, and $\left\lvert{A}\right\rvert = \kappa$, we have that $\left\lvert{\S_n^{\M}(A)}\right\rvert = \kappa$.
 \end{definition} 
 
+\pagebreak
+
 \begin{problem}[6.]
 Let $\A$ be a structure and $\theta(x,y)$ be a formula in the language of $\A$. Suppose that $B\subset \dom(\A)$ is an infinite set on which $\theta[\A]$ is a linear order $\prec$. 
 Show that $\thh(\A)$ is \emph{not} $\omega$-stable (i.e., $\aleph_0$-stable).
@@ -533,7 +535,8 @@ child {
 };
 
 \end{tikzpicture}
-\] with height $\omega$. We call nodes of the form $\theta(a_{\sigma}, x)$ \textit{positive} and those of the form $\neg{\theta(a_{\sigma}, x)}$ \textit{negative}.  Let $U$ denote any branch of \eqref{eqn:tree}. Let $U_p$ denote the set of all strings $\sigma \in 2^{\aleph_0}$ such that $a_{\sigma}$ occurs in a positive node of $U$. Since $U_p$ is countable, it has an upper bound in $\left(2^{\aleph_0}, <\right)$. Since $\left(2^{\aleph_0}, <\right)$  is a complete order and  $2^{\aleph_0}$ is a limit ordinal, it follows that $U_p$ has a supremum $\tau$ in $2^{\aleph_0}$.  By construction of \eqref{eqn:tree}, if $\theta(a_{\sigma}, x)$ is a positive node of $U$ and $\neg{\theta(a_{\sigma'}, x)}$ is a negative one, then $\sigma' > \sigma$. Hence $\tau \leq \sigma'$ for any $\sigma'$ occurring in a negative node of $U$. As a result,  we see that $\A' \models \varphi[a_{\sigma}, b_{\tau}]$ for any node $\varphi$ of $U$.  
+\] 
+with height $\omega$. We call nodes of the form $\theta(a_{\sigma}, x)$ \textit{positive} and those of the form $\neg{\theta(a_{\sigma}, x)}$ \textit{negative}.  Let $U$ denote any branch of \eqref{eqn:tree}. Let $U_p$ denote the set of all strings $\sigma \in 2^{\aleph_0}$ such that $a_{\sigma}$ occurs in a positive node of $U$. Since $U_p$ is countable, it has an upper bound in $\left(2^{\aleph_0}, <\right)$. Since $\left(2^{\aleph_0}, <\right)$  is a complete order and  $2^{\aleph_0}$ is a limit ordinal, it follows that $U_p$ has a supremum $\tau$ in $2^{\aleph_0}$.  By construction of \eqref{eqn:tree}, if $\theta(a_{\sigma}, x)$ is a positive node of $U$ and $\neg{\theta(a_{\sigma'}, x)}$ is a negative one, then $\sigma' > \sigma$. Hence $\tau \leq \sigma'$ for any $\sigma'$ occurring in a negative node of $U$. As a result,  we see that $\A' \models \varphi[a_{\sigma}, b_{\tau}]$ for any node $\varphi$ of $U$.  
 
 \smallskip
 
@@ -674,7 +677,9 @@ By \cref{compcon}, we can find a complete $n$-type $\tau$ over $T$ that contains
 Our proof of \cref{Stonecomp} reveals why the compactness theorem is so named.
 \end{remark}
 
-\begin{problem}[8.]
+\pagebreak
+
+\begin{problem}[9.]
 Prove that $S_n(T)$ is finite if and only if $B_n(T)$ is finite.
 \end{problem}
 \begin{solution}
