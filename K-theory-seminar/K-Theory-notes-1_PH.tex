@@ -356,6 +356,13 @@ Note that $\phi$ is natural in the sense that for any map $c: X' \to X$ in $\c$ 
 \end{tikzcd}
 \] commutes in $\mathbf{Set}$.
 
+\begin{exmp}
+Let $\left(P, \leq\right)$ and $\left(Q, \leq\right)$ be preorders. An adjoint pair $\left(F: P \to Q, G: Q \to P\right)$ is precisely a pair of order-preserving functions such that 
+\[
+F{x} \leq y \iff x \leq G{y}
+\] for all $x\in P$ and $y \in Q$. In order theory, such a pair is called a \textit{Galois connection}. 
+\end{exmp}
+
 \begin{prop}
 Left and right adjoints are both unique up to unique isomorphism.
 \end{prop}

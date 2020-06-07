@@ -319,12 +319,24 @@ $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 \end{enumerate}
 \end{exmp}
 
-\begin{definition}
-A language $L$ is \textit{regular} is there is some $\DFA$ $M$ such that $L(M) = L$.
+\begin{definition}[Regular language]
+A language $L$ is \textit{regular} if there is some $\DFA$ $M$ such that \linebreak $L(M) = L$.
+\end{definition}
+
+\begin{definition}[Regular expression]
+A \textit{regular expression} over $\Sigma$ is defined recursively as either
+\begin{itemize}
+\item the symbol $\emptyset$,
+\item the symbol $\epsilon$,
+\item a symbol $a\in \Sigma$,
+\item the symbol $\underbrace{\left( R_1 \cup R_2\right)}_{\text{$R_i$ regular}}$, 
+\item the symbol $\underbrace{\left( R_1 \circ R_2\right)}_{\text{$R_i$ regular}}$, or
+\item the symbol $\left(R^{\ast}\right)$, $R$ regular.
+\end{itemize}
 \end{definition}
 
 
-Every regular expression induces a $\DFA$, and vice versa. Thus, they have equal expressive power. The former gives rules for generating legitimate strings whereas the latter recognizes membership of a language.
+As it turns out, every regular expression generates a $\DFA$ (i.e., a regular language), and vice versa. Thus, they have equal expressive power. The former specifies rules for generating legitimate strings whereas the latter recognizes membership of a language.
 
 
 \begin{definition}
