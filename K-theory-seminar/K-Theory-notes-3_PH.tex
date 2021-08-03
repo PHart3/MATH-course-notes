@@ -433,21 +433,50 @@ If $R$ and $S$ are Morita equivalent, then $K_0(R) \cong K_0(S)$.
 
 
 
-Our results thus far can be extended to symmetric monodical categories because these come equipped with a notion of direct sum that enabled our Grothendieck construction. 
+Our results thus far can be extended to \textit{symmetric monoidal} categories because these come equipped with a notion of direct sum enabling our Grothendieck construction. 
 
-\begin{definition}
-A \textit{symmetric monoidal category} $S$ is a category  equipped with a functor $\square : S \times S \to S$, a base object $e$, and four natural isomorphisms expressing commutativity, associativity, and the property that $e$ acts as an identity with respect to $\square$. These four isomorphisms must also satisfy certain coherence properties.
+\begin{definition} Let $S$ be a category equipped with a functor $\otimes : S \times S \to S$ and a \textit{unit} object $1$.
+\begin{enumerate}
+\item We say that $\left(S, \otimes, 1\right)$ is \textit{monoidal} if it is equipped with  natural isomorphisms 
+\begin{gather*}
+\alpha : \left({-}\otimes {-}\right)\otimes {-} \overset{\cong}{\longrightarrow} {-}\otimes \left({-}\otimes {-}\right)
+\\ \lambda : 1 \otimes {-} \overset{\cong}{\longrightarrow} {-} \  \quad \rho : {-} \otimes 1 \overset{\cong}{\longrightarrow} {-}
+\end{gather*}
+ranging over objects in $S$ such that the two following diagram commute:
+\[
+\begin{tikzcd}[row sep=large]
+\left(x \otimes 1\right)\otimes y \arrow[rd, "\rho_x\otimes \id_y"'] \arrow[rr, "{\alpha_{x,1,y}}"]                                           &                                                                                                & x\otimes \left(1\otimes y\right) \arrow[ld, "\id_x\otimes \lambda_y"]                               \\
+                                                                                                                                              & x\otimes y                                                                                     &                                                                                                     \\
+                                                                                                                                              & \left(w\otimes x\right)\otimes \left(y\otimes z\right) \arrow[rd, "{\alpha_{w,x,y\otimes z}}"] &                                                                                                     \\
+\left(\left(w\otimes x\right) \otimes y\right)\otimes z \arrow[ru, "{\alpha_{w\otimes x, y, z}}"] \arrow[d, "{\alpha_{w,x,y}\otimes \id_z}"'] &                                                                                                & w \otimes \left(x\otimes\left( y\otimes z\right)\right)                                             \\
+\left(w \otimes \left(x\otimes y\right)\right)\otimes z \arrow[rr, "{\alpha_{w, x\otimes y, z}}"']                                            &                                                                                                & w \otimes \left(\left(x\otimes y\right)\otimes z\right) \arrow[u, "{\id_w\otimes \alpha_{x,y,z}}"']
+\end{tikzcd}.
+\]
+(This is called the \textit{pentagon identity}.)
+\item We say that $\left(S, \otimes, 1\right)$  is \textit{symmetric monoidal} if it is monoidal and is equipped with a \textit{braiding} \linebreak $B_{x,y} : x\otimes y \to y\otimes x$ for all $x,y\in \ob{S}$ such that 
+\[
+B_{y,x}\circ B_{x,y} = \id_{x\otimes y}
+\] and the hexagon 
+\[
+\begin{tikzcd}[row sep=large]
+                                                                       & \left(x\otimes y\right)\otimes z \arrow[rd, "{\alpha_{x,y,z}}"] \arrow[ld, "{B_{x,y}\otimes \id_z}"'] &                                                                  \\
+\left(y\otimes x\right)\otimes z \arrow[d, "{\alpha_{y,x,z}}"']        &                                                                                                       & x\otimes \left(y\otimes z\right) \arrow[d, "{B_{x,y\otimes z}}"] \\
+y\otimes \left(x\otimes z\right) \arrow[rd, "{\id_Y\otimes B_{x,z}}"'] &                                                                                                       & \left(y\otimes z\right)\otimes x \arrow[ld, "{\alpha_{y,z,x}}"]  \\
+                                                                       & y\otimes\left(z\otimes x\right)                                                                       &                                                                 
+\end{tikzcd}
+\] commutes.
+\end{enumerate}
 \end{definition}
 
 \begin{exmp} The following are examples of a symmetric monoidal category.	.
 \begin{enumerate}
-\item Any $k$-vector space where $\square \coloneqq \otimes_k$.
-\item Any category with finite coproducts where $s \square t\coloneqq s \amalg t$.
-\item The category of pointed topological spaces where $s \square t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
+\item Any $k$-vector space where $\otimes \coloneqq \otimes_k$.
+\item Any category with finite coproducts where $s \otimes t\coloneqq s \amalg t$.
+\item The category of pointed topological spaces where $s \otimes t \coloneqq s \wedge t $ and $e\coloneqq S^0$.
 \end{enumerate} 
 \end{exmp}
 
-Suppose that the class of isomorphism classes of objects of a category $S$ is a set and denote it by $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \square\right)$ is an abelian monoid with identity element $e$. In this case, we define the \textit{Grothendieck group of $S$} as $K_0(S)$.
+Suppose that the class of isomorphism classes of objects of a category $S$ is a set and denote it by $S^{\iso}$. If $S$ is symmetric monoidal, then $\left(S^{\iso}, \otimes \right)$ is an abelian monoid with identity element $e$. In this case, we define the \textit{Grothendieck group of $S$} as $K_0(S)$.
 
 \section{Topological $K$-theory}
 

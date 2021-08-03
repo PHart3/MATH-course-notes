@@ -556,7 +556,7 @@ We have a module homomorphism $\varphi : R^n \to M$ given by $\left(a_1, \ldots,
 
 Let $R$ be a commutative ring. Given $x\in R$, when can we make $x$ multiplicatively invertible, perhaps in a new ring? This is a question of representability. We have a functor $\Phi_x : \mathbf{CommRing} \to \mathbf{Set}$ given by $$B \mapsto \{\varphi : R \to B \mid \varphi(x) \in B^{\times}\} \subset \Hom_{\mathbf{CommRing}}(R, B).$$ We are asking whether or not $\Phi_x$ is representable. That is, we want to find some pair $\left(R_x, h\right)$ where $R_x$ is a commutative ring and $h: R \to R_x$ is a morphism such that $h(x) \in (R_x)^{\times}$ and if $\varphi : R \to B$ with $\varphi(x) \in B^x$, then $\underline{\varphi}  \circ h= \varphi$ for some  map $\underline{\varphi} : R_x \to B$.
 
-In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we will also make the \textit{multiplicative closure $\cl(S)$ of $S$} invertible.
+In general, we can consider a set $S$ of nonzero elements and ask for a universal way of making them invertible. But if we make $S$ invertible, then we shall also make the \textit{multiplicative closure $\cl(S)$ of $S$} invertible.
 
 \begin{definition}
 Any $S\subset R$ is called \textit{multiplicatively closed} if $0\notin S$, $1\in S$, and $x,y\in S \implies xy\in S$.
@@ -763,7 +763,7 @@ Let $A$ be a ring. We call $A$ a \textit{local ring} if any of the following equ
 \item $A \setminus A^{\times}$ is an ideal.
 \item If $\frak{m}$ is maximal and $x\in \frak{m}$, then $1+x \in A^{\times}$. 
 \end{enumerate}
-If $A$ is a ring and $\p$ a prime ideal, we will denote the localization $\left(A\setminus \p\right)^{-1}A $ by $A_{\p}$. 
+If $A$ is a ring and $\p$ a prime ideal, we shall denote the localization $\left(A\setminus \p\right)^{-1}A $ by $A_{\p}$. 
 \end{definition}
 
 \begin{prop}
@@ -831,7 +831,7 @@ Write arbitrary intersections of closed sets, finite unions of closed sets, $X$,
 \end{exercise}
 
 
-Any $f\in A$ can be viewed as a function on $X$ in two ways. First, view $f$ as a mapping $X \to \coprod_{\p \in X} A_{\p}$ given by $\p \mapsto \frac{f}{1} \in A_{\p}$.  Then for any $\p$, the value of $f$ on $\p$ is in $A_{\p}$. Second, view $f$ as a mapping $X \to \coprod_{\p \in X} k_{\p}$ given by $$ f \mapsto \frac{f}{1} + \p^e \in k_{\p} = \faktor{A_{\p}}{\p^e}.$$ We call $k_{\p}$ the \textit{residue field of $A_{\p}$}. 
+Any $f\in A$ can be viewed as a function on $X$ in two ways. First, view $f$ as a mapping $X \to \coprod_{\p \in X} A_{\p}$ given by $\p \mapsto \frac{f}{1} \in A_{\p}$.  Then for any $\p$, the value of $f$ on $\p$ is in $A_{\p}$. Second, view $f$ as a mapping $X \to \coprod_{\p \in X} k_{\p}$ given by $$ f \mapsto \frac{f}{1} + \p^e \in k_{\p} \coloneqq \faktor{A_{\p}}{\p^e}.$$ We call $k_{\p}$ the \textit{residue field of $A_{\p}$}. 
 
 
 \begin{exmp}

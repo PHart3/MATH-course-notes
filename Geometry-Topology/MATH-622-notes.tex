@@ -31,6 +31,8 @@
 \usepackage{adjustbox}
 \usepackage{media9}
 
+\usepackage{comment}
+\usepackage[edgeLength=.7cm]{dynkin-diagrams}
 
 \usepackage{thmtools}
 \usepackage[capitalise]{cleveref} 
@@ -155,6 +157,7 @@
 \DeclareMathOperator{\tor}{Tor}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\homeo}{Homeo}
 \DeclareMathOperator{\GL}{GL}
@@ -179,6 +182,8 @@
 \DeclareMathOperator{\BM}{BM}
 \DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\pgl}{PGL}
+\DeclareMathOperator{\psl}{PSL}
+\DeclareMathOperator{\psu}{PSU}
 \DeclareMathOperator{\clength}{cup{-}length}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\orb}{Orb}
@@ -193,6 +198,7 @@
 \DeclareMathOperator{\Op}{\mathbf{Op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\lie}{\mathsf{Lie}}
 \DeclareMathOperator{\ev}{eval}
 \DeclareMathOperator{\sym}{Sym}
 \DeclareMathOperator{\BL}{\mathcal{BL}}
@@ -245,7 +251,7 @@ These notes are based on Ron Donagi's lectures for the course ``Complex Algebrai
 
 \subsection{Lectures 1-4}
 
-These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we will cover rigorously. The following three problems give a taste of the initial concepts presented.
+These lectures consisted of informal surveys of certain fundamental concepts of algebraic geometry. They were meant as previews of various topics that we shall cover rigorously. The following three problems give a taste of the initial concepts presented.
 
 \medskip
 
@@ -1119,7 +1125,7 @@ Consider the following Hasse diagram of subgroups:
 
 where $\Sp\left(2n, \R\right)$ denotes the group of real $2n\times 2n$ \textit{symplectic matrices}, i.e., matrices $M$ satisfying $$M^t{\begin{bmatrix} 0 & I_n \\ {-I_n} & 0 \end{bmatrix}}{M} = \begin{bmatrix} 0 & I_n \\ {-I_n} & 0 \end{bmatrix}.$$
 
-Similarly, we can view various areas of geometry as refinements of certain others. Specifically,
+Similarly, we can view various areas of geometry as refinements of certain others:
 
 \begin{center}
 \begin{tikzpicture}[scale=.7]
@@ -1132,7 +1138,7 @@ Similarly, we can view various areas of geometry as refinements of certain other
 \end{tikzpicture}
 \end{center}
 
-Before investigating K\"ahler geometry, we establish some basic geometric concepts.
+Before investigating K\"ahler geometry, let us establish some basic geometric concepts.
 
 \begin{defn}
 Let  $X$ be a real manifold. An \textit{almost complex structure on $X$} is a bundle map $I : T{X} \to T{X}$ such that $I^2 = {-1}$.
@@ -1410,19 +1416,39 @@ so that $\Delta_D =\sum \frac{\partial^{2}{f}}{\partial{x_i^2}}$.
 
 \section{Lie algebras}
 
-Let $G$ be any Lie group. For any $g\in G$, $\ell_g : G \to G$ is an isomorphism of $\C$-manifolds. Thus, if $V$ is a vector field on $G$, then so is $\left(\ell_g\right)_{\ast}{V}$.
+\bi
+\item[] A \textit{Lie algebra} is a (finite-dimensional) vector space $V$  endowed with a \textit{bracket $\left[{-}, {-}\right] : V \times V \to V$} satisfying bilinearity, antisymmetry, and the Jacobi identity.
+\item[] A linear map $f: V\to W$ is a \textit{Lie algebra homomorphism} if $f\left[x,y\right] = \left[f(x), f(y)\right]$ for all $x,y\in V$.
+ \item[] A \textit{(Lie) ideal of $V$} is a subspace $W$ of $V$ such that $\left[W, V\right] \subset  V$.
+ \ei
+ 
+ \pagebreak
+ 
+ \begin{defn}  Let $\left(V, \left[{-}, {-}\right]\right)$ be a Lie algebra.
+\be
+\item We say that $V$ is \textit{abelian} if $\left[x,y\right] =0$ for all $x,y\in V$.
+\item We say that $V$ is \textit{simple} if it is non-abelian and  has no non-trivial ideals.
+\item We say that $V$ is \textit{semi-simple} if  it is the direct sum of simple Lie algebras. 
+\item We say that $v$ is \textit{adjoint} if it is both semi-simple and centerless.
+\ee 
+ \end{defn}
+ 
+ \medskip
 
-\begin{defn}[Lie algebra] $ $
+Now let $G$ be any Lie group. For any $g\in G$, left-translation $\ell_g : G \to G$ is an isomorphism of $\C$-manifolds. Thus, if $V$ is a vector field on $G$, then so is $\left(\ell_g\right)_{\ast}{V}$.
+
+
+\begin{defn} $ $
 \be
 \item We say that a vector field $V$ on $G$ is \textit{left-invariant} if $\left(\ell_g\right)_{\ast}{V} = V$ for every $g\in G$.
-\item The \textit{Lie algebra $\G_G$ of $G$} is the space of left-invariant vector fields on $G$ under the Lie bracket.
+\item The \textit{Lie algebra $\lie(G)$ of $G$} is the space of left-invariant vector fields on $G$ under the Lie bracket.
 \ee
 \end{defn}
 
 Consider now the commutative diagram
 \[
 \begin{tikzcd}
-\G_G \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), \left[{-},{-}\right]\right)} \arrow[d, "\ev_1"] \\
+\lie(G) \arrow[r, hook] \arrow[rd, "\alpha"'] & {\left(\X(G), \left[{-},{-}\right]\right)} \arrow[d, "\ev_1"] \\
                                          & T_1(G)                                   
 \end{tikzcd}.
 \]
@@ -1433,7 +1459,7 @@ $\alpha$ is an isomorphism of vector spaces.
 
 
 \begin{exmp}
-Let $G = \GL(n, \C)$, which is a complex Lie group. We have that $\GL(n, \C)$ is an open submanifold of the vector space $M_n(\C)$. Hence $\G_G$ is  isomorphic to $M_n(\C)$ under the \textit{commutator bracket}, which is given by $\left[A,B\right]= AB -BA$ .
+Let $G = \GL(n, \C)$, which is a complex Lie group. We have that $\GL(n, \C)$ is an open submanifold of the vector space $M_n(\C)$. Hence $\lie(G)$ is  isomorphic to $M_n(\C)$ under the \textit{commutator bracket}, which is given by $\left[A,B\right]= AB -BA$ .
 \end{exmp}
 
 \begin{defn}[Matrix exponential]
@@ -1446,10 +1472,10 @@ e^A  = \sum_{n=0}^{\infty} \frac{A^n }{n!}.
 This is well-defined. Indeed, letting $\left\lVert{\cdot}\right\rVert$ denote the operator norm, we see that $\frac{\left\lVert{A^n}\right\rVert}{n!}\leq \frac{\left\lVert{A^n}\right\rVert^n}{n!}$ on any bounded subset $S\subset \C^n$. But $\sum_{n=0}^{\infty}\frac{\left\lVert{A^n}\right\rVert^n}{n!} = e^{\left\lVert{A^n}\right\rVert}$ on $S$, and thus $e^A$ converges uniformly on $S$. Moreover, one can show that its limit must be invertible.
 
 \begin{exercise}
-Let $G= \SL_2\left(\C\right)$, which is complex Lie group. Show that $$\G_{G} = \left\{\begin{bmatrix} a & b \\ c & d \end{bmatrix} \in M_2\left(\C\right) \mid a+d =0\right\}.$$
+Let $G= \SL_2\left(\C\right)$, which is complex Lie group. Show that $$\lie(G) = \left\{\begin{bmatrix} a & b \\ c & d \end{bmatrix} \in M_2\left(\C\right) \mid a+d =0\right\}.$$
 \end{exercise}
 \begin{proof}
-Any element $X$ of $\G_{G}$ generates a local flow $\theta : D \subset \R \times G \to G$. Since $X$ is left-invariant, it is complete. In particular, the maximal integral curve $\theta^1$ is defined on $\R$.  Left-invariance also implies that for any $s\in \R$, $L_{\theta^1(s)} \circ \theta^1$ is an integral curve starting at $\theta^1(s)$. But the curve given by $t\mapsto \theta^1(s+t)$ is also an integral curve starting at $\theta^1(s)$. Hence $ \theta^1(s+t) = \theta^1(s)\theta^1(s)$. By the uniqueness of maximal integral curves, this proves that $\theta^1(s)$ is a smooth group homomorphism $\R \to G$, known as a \textit{one-parameter subgroup of $G$}. 
+Any element $X$ of $\lie(G)$ generates a local flow $\theta : D \subset \R \times G \to G$. Since $X$ is left-invariant, it is complete. In particular, the maximal integral curve $\theta^1$ is defined on $\R$.  Left-invariance also implies that for any $s\in \R$, $L_{\theta^1(s)} \circ \theta^1$ is an integral curve starting at $\theta^1(s)$. But the curve given by $t\mapsto \theta^1(s+t)$ is also an integral curve starting at $\theta^1(s)$. Hence $ \theta^1(s+t) = \theta^1(s)\theta^1(s)$. By the uniqueness of maximal integral curves, this proves that $\theta^1(s)$ is a smooth group homomorphism $\R \to G$, known as a \textit{one-parameter subgroup of $G$}. 
 
 \smallskip
 
@@ -1464,7 +1490,9 @@ X \in T_1(G)&  \iff \forall{t} \in \R, \  e^{tX} \in G
 . \end{align*}
 \end{proof}
 
+\begin{remark}
 Intuitively, \cref{Kid} means that the space $\A^{p,q}\left(X\right)$ has a symmetry encoded in the $\SL_2\left(\C\right)$-action.  
+\end{remark}
 
 \subsection{Lecture 13}
 
@@ -1473,11 +1501,264 @@ Let $V$ be a vector space endowed with a non-degenerate symmetric bilinear form 
 \end{defn}
 
 \begin{exmp}
-Consider the Lie group $G \coloneqq \Or(\R^n)$. Define the smooth map $\varphi : \GL_n(\R) \to \GL_n(\R)$ by $A\mapsto AA^t$, which as constant rank.  Then $G = \varphi^{-1}(I_n)$, so that $T_{I_n}{G} = \ker{d{\varphi}_{I_n}}$. Since $d{\varphi}_{I_n}(A) = A^t + A$ for any $A \in M_n(\R)$, it follows that $\G_G$ consists of all $n\times n$ skew-symmetric matrices. 
+Consider the Lie group $G \coloneqq \Or(\R^n)$. Define the smooth map $\varphi : \GL_n(\R) \to \GL_n(\R)$ by $A\mapsto AA^t$, which as constant rank.  Then $G = \varphi^{-1}(I_n)$, so that $T_{I_n}{G} = \ker{d{\varphi}_{I_n}}$. Since $d{\varphi}_{I_n}(A) = A^t + A$ for any $A \in M_n(\R)$, it follows that $\lie(G)$ consists of all $n\times n$ skew-symmetric matrices. 
 \end{exmp}
 
+\medskip
+
+Let $\left(V, \langle{-}, {-}\rangle\right)$ be a finite-dimensional inner product space over $\R$. For each non-zero $v\in V$, let $\rho_v : V \to V$ denote the reflection about the hyperplane perpendicular to $v$, i.e.,
 \[
-\vdots
+\rho_v(w) \equiv w - \frac{2\langle w, v\rangle}{\langle v, v\rangle}v.
+\] Note that this is an isometry.
+
+\begin{defn}
+A finite subset $R \subset V$ with $0\notin R$ is a \textit{root system} for $V$ if
+\be[label=(\roman*)]
+\item $\Span(R)=V$, 
+\item if $a\in R$ and $\lambda{r} \in R$, then $\lambda =\pm 1$, 
+\item $\rho_v(a)\in R$ for all $v,a\in R$, and 
+\item $\frac{2\langle w, v\rangle}{\langle v, v\rangle} \in \Z$ for all $w,v\in R$.
+\ee
+The \textit{rank of $R$} is $\dim(V)$.
+\end{defn}
+
+\begin{term}
+An element of $R$ is called a \textit{root}.
+\end{term}
+
+
+An \textit{isomorphism $R\overset{\cong}{\longrightarrow}R'$ of root systems} is a vector space isomorphism  $\varphi : V \overset{\cong}{\longrightarrow} V'$ such that 
+\begin{align*}
+\varphi(R) & = R' 
+\\ \frac{2\langle b, a\rangle}{\langle a, a\rangle} &= \frac{2\langle \varphi(b),\varphi(a)\rangle}{\langle \varphi(a), \varphi(a)\rangle}.
+\end{align*} for any $a,b\in R$.
+
+
+\smallskip
+
+
+The following result flows easily from the geometric definition of an inner product along with the equality condition of the Cauchy-Schwarz inequality.
+
+\begin{lemma}
+Let $a,b\in R$ such that $a\ne \pm b$. Then $$\left(\frac{2\langle a, b\rangle}{\langle a, a\rangle} \right) \left(\frac{2\langle b, a\rangle}{\langle b, b\rangle}\right) \in \left\{0,1,2,3\right\}.$$
+\end{lemma}
+
+\smallskip
+
+We say that $R$ is \textit{irreducible} if it cannot be partitioned into two nonempty subsets $R_1$ and $R_2$ such that $\langle a,b\rangle =0$ for any $a\in R_1$ and $b\in R_2$.
+\begin{prop}
+Every root system can be decomposed into finitely many irreducible root systems.
+\end{prop}
+
+\begin{defn} Let $R$ be a root system for $V$.
+A subset $B\subset R$  is a \textit{base} for $R$ if 
+\be[label=(\roman*)]
+\item $B$ is a basis for $V$ and
+\item every element of $R$ can be written as an $B$-combination with coefficients either all positive or all negative. 
+\ee
+\end{defn}
+
+\begin{prop}
+Every root system has a base.
+\end{prop}
+
+\begin{defn}[Dynkin diagram]
+Let $B\coloneqq \left\{b_1, \ldots, b_n\right\}$ be a base for $R$. The \textit{Dynkin diagram} of $R$ (with respect to $B$) is the chain graph with vertex set $B$ and exactly
+\[
+\delta_{i,j} \coloneqq \left(\frac{2\langle b_i, b_j\rangle}{\langle b_i, b_i\rangle} \right) \left(\frac{2\langle b_j, b_i\rangle}{\langle b_j, b_j\rangle}\right) \in \left\{0,1,2,3\right\}
+\] edges between $b_i$ and $b_j$ ($i\ne j$) such that if $\left\|b_i\right\| > \left\|b_j\right\|$, then these edges are directed from $b_i$ to $b_j$.
+\end{defn}
+
+\begin{term}
+The same graph with only undirected edges is called the \textit{Coxeter graph} of $R$.
+\end{term}
+
+If there is a single edge between two nodes, then it must be undirected. If there are multiple edges between two nodes, then they must be directed.
+
+\begin{theorem}\label{Dynkin} $ $
+\be
+\item There is a one-to-one correspondence between (isomorphism classes of) irreducible root systems and finite-dimensional simple Lie algebras over $\C$.
+\item There is a one-to-one correspondence between  irreducible root systems and Dynkin diagrams of the following forms: 
+\pagebreak
+\begin{gather*}
+ \overset{A_n, n\geq 1}{\dynkin A{}}
+\\
+\overset{B_n, n\geq 2}{\dynkin B{}}
+\\
+\overset{C_n, n\geq 3}{\dynkin C{}}
+\\
+\overset{D_n, n\geq 4}{\dynkin D{}}
+\\ 
+\overset{E_6}{\dynkin E6}
+\\
+\overset{E_7}{\dynkin E7}
+\\
+\overset{E_8}{\dynkin E8}
+\\
+\overset{F_4}{\dynkin F4}
+\\
+\overset{G_2}{\dynkin G2}
+.\end{gather*}
+\ee
+\end{theorem}
+
+In particular, we have the following characterizations of classical groups: 
+\begin{align*}
+\lie(\SL_{n+1}(\C))  & \longleftrightarrow  A_n
+\\
+\lie(\SO_{2n+1}(\C) ) & \longleftrightarrow B_n
+\\
+\lie(\Sp_{2n}(\C))  & \longleftrightarrow C_n
+\\
+\lie(\SO_{2n}(\C))   & \longleftrightarrow D_n  \quad n\geq 2.
+\end{align*}
+
+\smallskip
+
+As a result of \cref{Dynkin}, one can show that the following classes of Lie groups are determined by the preceding Dynkin diagrams:
+\be[label=(\alph*)]
+\item compact Lie groups,
+\item simply connected complex Lie groups,
+\item simply connected compact Lie groups,
+\item adjoint complex Lie groups, and
+\item adjoint compact Lie groups.
+\ee
+
+\begin{exmp}
+All of the following Lie groups are determined by $A_n$.
+\be[label=(\alph*)]
+\item $\SU_{n+1}(\C) \coloneqq \left\{X\in \SL_{n+1}(\C) \mid XX^{\ast} = I_{n+1}\right\}$
+\item $\SL_{n+1}(\C)$
+\item $\SU_{n+1}(\C)$
+\item $\psl_{n+1}(\C)\coloneqq  \frac{\SL_{n+1}(\C)}{Z(\GL_{n+1}(\C)\cap \SL_{n+1}(\C)} \cong \frac{\SL_{n+1}(\C)}{\Z/\left(n+1\right)}$
+\item $\psu_{n+1}(\C)$
+\ee
+\end{exmp}
+
+\smallskip
+
+\begin{defn} $ $
+\be
+\item A \textit{representation} of a Lie group $G$ is a vector space $V$ together with a group homomorphism \linebreak $G\to \aut(V)$.
+\item A \textit{representation} of a Lie algebra $\frak{g}$ on a vector space $V$ is a Lie algebra homomorphism $\frak{g} \to \ed(V)$.
+\ee
+\end{defn}
+
+A Lie group representation $f: G \to \aut(V)$  is \textit{irreducible} if there is no non-trivial subspace of $V$ invariant under $f(g)$ for all $g\in G$. An \textit{irreducible Lie algebra representation}  is defined similarly. As it turns out, \cref{Dynkin} gives rise to a classification of all irreducible representations of complex Lie algebras.
+
+\begin{note}
+If $\left(V_1, f_1\right)$ and $\left(V_2, f_2\right)$ are representations of $G$, then so are both the direct sum $\left(V_1 \oplus V_2, f_1\oplus f_2\right)$  and the tensor product $\left(V_1 \otimes V_2, f_1\otimes f_2\right)$ where 
+\begin{align*}
+\left(f_1\oplus f_2\right)(g) & \equiv f_1(g) \oplus f_2(g)
+\\ \left(f_1\otimes f_2\right)(g) & \equiv f_1(g) \otimes f_2(g) \ \quad  g\in G.
+\end{align*}
+
+\smallskip
+
+This property also holds for representations of Lie algebras.
+\end{note}
+
+
+For example, suppose that $V$ is a defining representation of dimension two (over $\C$) with basis $\left\{x,y\right\}$. Let $S^k{V}$ denote a $\left(k+1\right)$-dimensional vector space ($k\geq 0$) with basis $\left\{x^k, x^{k-1}y, \ldots, xy^{k-1}, y^k\right\}$. Then the tensor product $V^{\otimes{k}}$ decomposes as $S^k{V} \oplus \Lambda^k{V}$.
+
+\medskip
+
+Now consider the Lie algebra $\lie(\SL(2))$, which is three-dimensional with basis elements
+\[
+\begin{tikzcd}
+e\equiv \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} & f\equiv \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} & h\equiv \begin{bmatrix} 1 & 0 \\ 0 & {-1} \end{bmatrix}
+\end{tikzcd}.
+\] such that 
+
+\begin{align*}
+\left[e,e\right] &=0
+\\ \left[h,e\right] & = 2e
+\\ \left[f,h\right] & = 2f
+\\ \left[e,f\right] &= h
+\end{align*}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+ & $x$ & $y$ \\ \cline{2-3} 
+\multicolumn{1}{l|}{$e$} & $0$ & $x$ \\
+\multicolumn{1}{l|}{$f$} & $y$ & $0$ \\
+\multicolumn{1}{l|}{$h$} & $x$ & ${-y}$
+\end{tabular}  \quad \quad $x<y$
+\caption{Action of $\lie(\SL(2))$ on ${V}$}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lllll}
+                         & $x^k$        & $x^{k-1}y$ & $\cdots$ & $y^k$         \\ \cline{2-5} 
+\multicolumn{1}{l|}{$e$} & $0$          & $x^k$      & $\cdots$ & $k{xy^{k-1}}$ \\
+\multicolumn{1}{l|}{$f$} & $kx^{k-1}{y}$ & $\left(k-1\right)x^{k-2}y^2$          & $\cdots$ & $0$            \\
+\multicolumn{1}{l|}{$h$} & $kx^k$       & $\left(k-2\right){x^{k-1}y}$         & $\cdots$ & ${-k}y^k$    
+\end{tabular}
+\caption{Action of $\lie(\SL(2))$ on $S^k{V}$.}
+\label{tab:my-table}
+\end{table}
+
+Observe that $e$, $f$, and $h$ act as a lowering, raising, and $\pm$-grading operators, respectively. 
+
+\begin{theorem}
+Any finite-dimensional representation of $\lie(\SL(2))$ is isomorphic to a direct sum of the form
+\[
+\bigoplus_{k\in \Z_{\geq 0}}S^k{V}^{\otimes{m_k}}, \ m_k\geq 0
+.\]
+\end{theorem}
+
+For example, we have that
+\begin{gather*}
+V \otimes V \cong S^2{V} \oplus \Lambda^2{V} \cong S^2{V} \oplus S^0{V}
+\\ V \otimes S^k{V} \cong S^{k+1}{V} \oplus S^{k-1}{V} 
+\\ S^k{V} \otimes S^l{V} \cong S^{k+l}{V} \oplus S^{k+l-2}{V} \oplus \cdots \oplus S{V}
+.
+\end{gather*}
+
+
+\smallskip
+
+\begin{theorem} $ $
+\be
+\item If $G$ is a  compact Lie group, then any finite-dimensional representation of $G$ is isomorphic to a direct sum of irreducible representations of $G$. 
+\item If $\frak{g}$ is a  semisimple Lie algebra, then any finite-dimensional representation of $\frak{g}$ is isomorphic to a direct sum of irreducible representations of $\frak{g}$. 
+\ee
+\end{theorem}
+
+\medskip
+
+\begin{defn}
+A \textit{torus} in a compact Lie group $G$ is a connected abelian subgroup of $G$.
+\end{defn}
+
+\begin{prop}[Uniqueness of maximal torus]
+Any two maximal tori in $G$ are conjugate in $G$.
+\end{prop}
+
+\begin{prop}
+The rank of a connected compact Lie group $G$ is  the dimension of a maximal (w.r.t. inclusion) torus in $G$.
+\end{prop}
+
+\begin{exmp} $ $
+\be
+\item  The maximal torus in $\U(n)$ is precisely the group $\U(1)^n \cong \left(S^1\right)^n$ of all matrices of the form
+\[
+\begin{bmatrix} S^1 &  &  \text{\large0} \\ & \ddots & \\  \text{\large0} & & S^1 \end{bmatrix}.
 \]
+\item The maximal torus in $\SU(n)$ has dimension $n-1$.
+\ee
+\end{exmp}
+
+
+\bigskip
+
+In representation theory, we assign to any Lie algebra $\frak{g}$ a lattice $\Lambda_{\frak{g}}$ along with a finite group (or ``weight") $W$, known as the \textit{Weyl group} of $\frak{g}$, acting on $\Lambda_{\frak{g}}$. As it turns out, irreducible representations of $\frak{g}$ are in one-to-one correspondence with  quotients of the form $\faktor{\Lambda_{\frak{g}}}{W}$.
+
+\begin{exmp}
+Assign the group $W\coloneqq \Z/2$ to $\lie(\SL(2))$. Embed the lattice $\Lambda \coloneqq \Z$ into $\Z \oplus \Z$ via the mapping $n \mapsto \left(n, {-n}\right)$. This yields an irreducible representation $\faktor{\Lambda}{W} \cong \Z_{\geq 0}$ of $\lie(\SL(2))$.
+\end{exmp}
 
 \end{document}

@@ -189,6 +189,7 @@
 \DeclareMathOperator{\Et}{\acute{E}t}
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
 \DeclareMathOperator{\vf}{\mathscr{X}}
+\DeclareMathOperator{\lb}{\mathcal{LB}}
 
 
 \makeatletter
@@ -459,7 +460,7 @@ There is a homeomorphism $M(X \times Y, Z) \cong M(X, M(Y, Z))$ so long as $Y$ i
 In particular, we have a composite 
 
 \[
-M(([0,1], \{0,1\}), (M((D^{n-1}, \partial), (X,x)), e_x)) \hookrightarrow M([0,1], M(D^{n-1}, X)) \overset{\cong}{\longrightarrow} M([0,1] \times D^{n-1}, X),
+M((\left[0,1\right], \{0,1\}), (M((D^{n-1}, \partial), (X,x)), e_x)) \hookrightarrow M(\left[0,1\right], M(D^{n-1}, X)) \overset{\cong}{\longrightarrow} M(\left[0,1\right] \times D^{n-1}, X),
 \] whose image is precisely $M((D^n, \partial), (X,x)) \cong M((S^n, \pt), (X,x))$. This proves that $\pi_n(X,x)$ consists of all homotopy classes of maps $\left(I^n, \partial\right) \to \left(X,x\right)$ under the operation $\left[f\right] \ast \left[g\right] = \left[f \ast g\right]$ where $$ f \ast g(t_1, \ldots, t_n) = \begin{cases}
       f(2t_1, t_2, \ldots, t_n) & 0\leq t_1 \leq \frac{1}{2}
       \\ f(2t_1-1, t_2, \ldots, t_n) & \frac{1}{2} \leq t\leq 1
@@ -551,7 +552,7 @@ If $x\in A \subset X$, then the \textit{$n$-th relative homotopy group $\pi_n(X,
 We see that  $$M((D^n, S^{n-1}, x), (X, A, x_0)) \cong M((I^n, I^{n-1} \times \{1\}, \underbrace{\partial{I^n} \setminus \Int(I^{n-1} \times \{1\})}_{\partial_0{I^n}}), (X, A, x_0))$$ by considering the homeomorphism $\left(I^n/\partial_0{I^n}, \partial{I^n}/\partial_0{I^n}\right) \cong \left(D^n, S^{n-1}\right)$. Therefore, $\pi_n(X, A, x)$ can be viewed as consisting of all homotopy classes of maps $\left(I^n, \partial{I^n}, \partial_0{I^n}\right) \to \left(X, A, x\right)$.
 
 \begin{defn}
-In order to interpret an exact sequence involving objects in the category of pointed sets, we define the \textit{kernel of a function $f: (X,x) \to (Y,y)$ of pointed sets} as $\ker{f} \equiv f^{-1}(y)$.   
+In order to interpret an exact sequence involving objects in the category of pointed sets, we define the \textit{kernel of a function $f: \left(X,x\right) \to \left(Y,y\right)$ of pointed sets} as $\ker{f} \equiv f^{-1}(y)$.   
 \end{defn}
 
 \begin{prop} $ $
@@ -588,9 +589,9 @@ Finally, let's review the notion of a fibration of spaces.
 
 \medskip
 
-Recall that if $p: E \to B$ is a covering projection, then TFAE.
+Consider any map $f: Z \to B$. Recall that if $p: E \to B$ is a covering projection, then TFAE.
 \be
-\item For any $f: Z \to B$, there exists a unique $\hat{f} :Z \to E$ such that $p \circ \hat{f} = f$.
+\item There exists a unique $\hat{f} : Z \to E$ such that $p \circ \hat{f} = f$.
 \item $f_{\ast}(\pi_1(Z)) \subset p_{\ast}(\pi_1(E))$.
 \ee
 
@@ -600,14 +601,14 @@ The existence of $\hat{f}$ follows from the fact that any covering space satisfi
 Suppose that $p: E \to B$ is any map. We say that $p$ is a \textit{(Serre) fibration} if it satisfies the homotopy lifting property, i.e., given a commutative square
 \[
 \begin{tikzcd}
-X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
-{X\times [0,1]} \arrow[r, "f"']                      & B               
+X\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
+{X\times \left[0,1\right]} \arrow[r, "f"']                      & B               
 \end{tikzcd}
 ,\]  where $X$ is a cell complex, there is some $G$ such that
 \[
 \begin{tikzcd}
-X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
-{X\times [0,1]} \arrow[r, "f"'] \arrow[ru, "G"]      & B               
+X\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
+{X\times \left[0,1\right]} \arrow[r, "f"'] \arrow[ru, "G"]      & B               
 \end{tikzcd}
 \] commutes. 
 \end{defn}
@@ -616,17 +617,17 @@ X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & E \arrow[d, "p"] \\
 If $p: E \to B$ is a fibration with $e \in F \coloneqq p^{-1}(b)$, then $$p_{\ast} : \pi_i(E, F, e) \overset{\cong}{\longrightarrow} \pi_i(B, b, b) = \pi_i(B, b).$$
 \end{theorem}
 \begin{proof}
-Let $f: (I^n, \partial{I^n}) \to (B, b)$. To prove that $p_{\ast}$ is surjective, it suffices to find some $G : (I^n, \partial{I^n}) \to (E, F)$ such that 
+Let $f: \left(I^n, \partial{I^n}\right) \to \left(B, b\right)$. To prove that $p_{\ast}$ is surjective, it suffices to find some $G : \left(I^n, \partial{I^n}\right) \to \left(E, F\right)$ such that 
 \[
 \begin{tikzcd}
-\partial_0{I^n} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
-{I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G"] &                       &                   & B               
+\partial_0{I^n} \arrow[r, two heads] \arrow[d, hook]       & \left\{e\right\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
+{I^{n-1} \times \left[0,1\right]} \arrow[rrr, "f"'] \arrow[rrru, "G"] &                       &                   & B               
 \end{tikzcd}
 \] commutes, for in this case $\left[p \circ G'\right] = \left[f\right]$. Since $p$ is a fibration, there is some $G$ such that
 \[
 \begin{tikzcd}
-I^{n-1} \times \{0\} \arrow[r, two heads] \arrow[d, hook]       & \{e\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
-{I^{n-1} \times [0,1]} \arrow[rrr, "f"'] \arrow[rrru, "G'"] &                       &                   & B               
+I^{n-1} \times \left\{0\right\} \arrow[r, two heads] \arrow[d, hook]       & \left\{e\right\} \arrow[r, hook] & F \arrow[r, hook] & E \arrow[d, "p"] \\
+{I^{n-1} \times \left[0,1\right]} \arrow[rrr, "f"'] \arrow[rrru, "G'"] &                       &                   & B               
 \end{tikzcd}
 \] 
 commutes. But $\left(I^n, \partial_0{I^n}\right) \cong \left(I^n, I^{n-1} \times \left\{0\right\}\right)$, and thus such a $G'$ is enough. 
@@ -646,13 +647,13 @@ We have a long exact sequence
 \item Suppose that
 \[
 \begin{tikzcd}
-X\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & B \times F \arrow[d, "\pi_B"] \\
-{X\times [0,1]} \arrow[r, "f"]                           & B                            
+X\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\hat{f}"] & B \times F \arrow[d, "\pi_B"] \\
+{X\times \left[0,1\right]} \arrow[r, "f"]                           & B                            
 \end{tikzcd}
-\] commutes. Then $\hat{f}(x,0) = \left(\hat{f}_1(x,0), \hat{f}_2(x,0)\right)$ where $\hat{f}_1(x,0) = f(x,0)$. Let $G(X,t) =  (f(x,t), \hat{f}_2(x,0))$. Then \[
+\] commutes. Then $\hat{f}(x,0) = \left(\hat{f}_1(x,0), \hat{f}_2(x,0)\right)$ where $\hat{f}_1(x,0) = f(x,0)$. Let $G(X,t) =  \left(f(x,t), \hat{f}_2(x,0)\right)$. Then \[
 \begin{tikzcd}
-X\times \{0\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & B \times F \arrow[d, "\pi_B"] \\
-{X\times [0,1]} \arrow[r, "f"] \arrow[ru, "G"]           & B                            
+X\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\widehat{f_0}"] & B \times F \arrow[d, "\pi_B"] \\
+{X\times \left[0,1\right]} \arrow[r, "f"] \arrow[ru, "G"]           & B                            
 \end{tikzcd}
 \] commutes, so that $\pi_B$ is a fibration. (Moreover, $\pi_n(B \times F) \cong \pi_n(B) \times \pi_n(F)$.)
 \item Let $A \subset X$ be a subcomplex. The map $\varphi : M(X, Y) \to M(A, Y)$ defined by $f \mapsto f\restriction_A$ is a fibration. 
@@ -662,6 +663,8 @@ S^3 = \left\{\left(z_1, z_2\right) \in \C^2 \mid z_1\overline{z_1} + z_2\overlin
 \]
 \ee
 \end{exmp}
+
+\pagebreak
 
 \begin{corollary}
 $\pi_3(S^3) \cong \pi_3(S^2)$.
@@ -693,7 +696,7 @@ Any locally trivial map $p: E \to B$ is a fibration whenever $B$ is a cell compl
 Prove that the Hopf fibration is locally trivial.
 \end{exercise}
 \begin{proof}
-For each $k \in \{0,1\}$, let $U_k = \left\{\left[z_0, z_1\right] \in \CP^1 \mid z_k \ne 0\right\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\left\{\left(z_0, z_1\right) \in S^3 \mid z_k \ne 0\right\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$\left(z_0, z_1\right) \mapsto \left(\left[z_0, z_1\right], \frac{z_k}{|z_k|}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left([z_0, z_1], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}|z_k|}{z_k \left\lvert{(z_0, z_1)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
+For each $k \in \{0,1\}$, let $U_k = \left\{\left[z_0, z_1\right] \in \CP^1 \mid z_k \ne 0\right\}$. Then $U_0$ and $U_1$ form an open cover of $\CP^1$. Note that the preimage of $U_k$ under the Hopf fibration $q$ is precisely $\left\{\left(z_0, z_1\right) \in S^3 \mid z_k \ne 0\right\}$. Define $f: q^{-1}(U_k) \to  U_k \times S^1$ by  $$\left(z_0, z_1\right) \mapsto \left(\left[z_0, z_1\right], \frac{z_k}{\left\lvert{z_k}\right\lvert}\right).$$ This is clearly continuous. Further, define the map $g: U_k \times S^1 \to q^{-1}(U_k)$ by $$\left(\left[z_0, z_1\right], e^{i{\theta}}\right) \mapsto \frac{e^{i\theta}\left\lvert{z_k}\right\rvert}{z_k \left\lvert{\left(z_0, z_1\right)}\right\rvert}\left(z_0, z_1 \right).$$ Since $U_k$ is a saturated open set, we have that the restriction of $q$ to $q^{-1}(U_k)$ is a quotient map. But $g \circ q\restriction_{q^{-1}(U_k)}$ is continuous, so that $g$ is also continuous by the characteristic property of quotient maps. Finally, it is easy to verify that $g$ and $f$ are inverses of each other and that $\pi_{U_I} \circ f = p\restriction_{q^{-1}(U_k)}$.
 \end{proof}
 
 \subsection{Lecture 4}
@@ -705,49 +708,49 @@ Let $A\subset X$ be a subcomplex. Define $r: M(X, Y) \to M(A, Y)$ by $r(f) = f\r
 We must fill any diagram of the form
 \[
 \begin{tikzcd}
-Z\times \{0\} \arrow[r, "\hat{f}"] \arrow[d, hook]                 & {M(X,Y)} \arrow[d, "r"] \\
-{Z\times [0,1]} \arrow[ru, "F", dashed] \arrow[r, "f"'] & {M(A,Y)}               
+Z\times \left\{0\right\} \arrow[r, "\hat{f}"] \arrow[d, hook]                 & {M(X,Y)} \arrow[d, "r"] \\
+{Z\times \left[0,1\right]} \arrow[ru, "F", dashed] \arrow[r, "f"'] & {M(A,Y)}               
 \end{tikzcd}
 .\] It suffices to find a map $\overline{F}$ such that
 \[
 \begin{tikzcd}
-Z\times \{0\}\times X \arrow[r, "\hat{\bar{f}}"] \arrow[d, hook] & Y \arrow[d, equals] \\
-{Z\times [0,1]\times X} \arrow[ru, "\overline{F}"]               & Y           \\
-{Z\times [0,1]\times A} \arrow[u, hook] \arrow[ru, "\bar{f}"']   &            
+Z\times \left\{0\right\}\times X \arrow[r, "\hat{\bar{f}}"] \arrow[d, hook] & Y \arrow[d, equals] \\
+{Z\times \left[0,1\right]\times X} \arrow[ru, "\overline{F}"]               & Y           \\
+{Z\times \left[0,1\right]\times A} \arrow[u, hook] \arrow[ru, "\bar{f}"']   &            
 \end{tikzcd}
 \] commutes for, in this case, we can set $F(z,t)(x) = \overline{F}(z, t, x)$.
 
 \begin{note}
-Suppose that such an $\overline{F}$ exists. Define $g: Z \times X \to Y$ by $g(z,x) = \hat{\bar{f}}(z,0, x)$. Define $h: Z \times X \times [0,1] \to Y$ by $H(z,x,t) = \overline{F}(z,t,x)$. Then
+Suppose that such an $\overline{F}$ exists. Define $g: Z \times X \to Y$ by $g(z,x) = \hat{\bar{f}}(z,0, x)$. Define $h: Z \times X \times \left[0,1\right] \to Y$ by $H(z,x,t) = \overline{F}(z,t,x)$. Then
 \[
 \begin{tikzcd}
-Z\times X\times \{0\} \arrow[rd, "g"] \arrow[d, hook]     &   \\
-{Z\times X \times [0,1]} \arrow[r, "H"]                   & Y \\
-{Z\times A \times [0,1]} \arrow[u, hook] \arrow[ru, "K"'] &  
+Z\times X\times \left\{0\right\} \arrow[rd, "g"] \arrow[d, hook]     &   \\
+{Z\times X \times \left[0,1\right]} \arrow[r, "H"]                   & Y \\
+{Z\times A \times \left[0,1\right]} \arrow[u, hook] \arrow[ru, "K"'] &  
 \end{tikzcd}
 \]
-commutes where $K(z,a,t) = \bar{f}(z,t,a)$. In the case where $Z = \pt$, this means that if $K: A \times [0,1] \to Y$ is a homotopy from a map $f: A \to Y$ and $g$ extends $f$ to $X$, then there exists a homotopy $H : X \times [0,1]\to Y$ such that $H\restriction_{A \times [0,1]} = K$. In other words, the extension problem for cell complexes is a homotopy problem. 
+commutes where $K(z,a,t) = \bar{f}(z,t,a)$. In the case where $Z = \pt$, this means that if $K: A \times \left[0,1\right] \to Y$ is a homotopy from a map $f: A \to Y$ and $g$ extends $f$ to $X$, then there exists a homotopy $H : X \times \left[0,1\right]\to Y$ such that $H\restriction_{A \times \left[0,1\right]} = K$. In other words, the extension problem for cell complexes is a homotopy problem. 
 \end{note}
 Let's return to proving our theorem. By induction, it suffices to consider just the case where $X = A \cup_{\varphi} D^n$, with characteristic map $\chi: D^n \to X$.   Thus, it suffices to find a map $w$ such that
 \[
 \begin{tikzcd}[column sep = huge]
-Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                    &                                          &   \\
-{Z\times D^n \times [0,1]} \arrow[rr, "w"]                                                                  &                                          & Y \\
-{Z\times S^{n-1} \times [0,1]} \arrow[u, hook] \arrow[r, "{\id_Z \times \varphi \times \id_{[0,1]}}"'] & {Z\times A\times [0,1]} \arrow[ru, "K"'] &  
+Z\times D^n \times \left\{0\right\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                    &                                          &   \\
+{Z\times D^n \times \left[0,1\right]} \arrow[rr, "w"]                                                                  &                                          & Y \\
+{Z\times S^{n-1} \times \left[0,1\right]} \arrow[u, hook] \arrow[r, "{\id_Z \times \varphi \times \id_{\left[0,1\right]}}"'] & {Z\times A\times \left[0,1\right]} \arrow[ru, "K"'] &  
 \end{tikzcd}
 \] commutes for, in this case, we can set $H(z, x, t) = g \cup_{\varphi} w$, thereby making
 \[
 \begin{tikzcd}[column sep = huge]
-Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                          &                                           &   \\
-{Z\times D^n \times [0,1]} \arrow[r, "{\id_Z \times \chi \times \id_{[0,1]}}"'] \arrow[rr, "w"', bend right] & {Z\times X\times [0,1]} \arrow[r, "H"']   & Y \\
-{Z\times S^{n-1} \times [0,1]} \arrow[u, hook] \arrow[rd, "{\id_Z \times \varphi \times \id_{[0,1]}}"']      &                                           &   \\
-                                                                                                             & {Z\times A\times [0,1]} \arrow[ruu, "K"'] &  
+Z\times D^n \times \left\{0\right\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi)"]                          &                                           &   \\
+{Z\times D^n \times \left[0,1\right]} \arrow[r, "{\id_Z \times \chi \times \id_{\left[0,1\right]}}"'] \arrow[rr, "w"', bend right] & {Z\times X\times \left[0,1\right]} \arrow[r, "H"']   & Y \\
+{Z\times S^{n-1} \times \left[0,1\right]} \arrow[u, hook] \arrow[rd, "{\id_Z \times \varphi \times \id_{\left[0,1\right]}}"']      &                                           &   \\
+                                                                                                             & {Z\times A\times \left[0,1\right]} \arrow[ruu, "K"'] &  
 \end{tikzcd}
-\] commute. To this end, define the retraction $u : D^n \times [0,1] \to D^n \times \{0\} \cup S^{n-1} \times [0,1]$ by  picking a point $\ast$ directly above the cylinder $D^n \times [0,1]$ and then sending any point $x$ in the cylinder to the unique point where $D^n \times \{0\} \cup S^{n-1} \times [0,1]$ intersects the line containing $\ast$ and $x$. Now, define $w$ so that
+\] commute. To this end, define the retraction $u : D^n \times \left[0,1\right] \to D^n \times \left\{0\right\} \cup S^{n-1} \times \left[0,1\right]$ by  picking a point $\ast$ directly above the cylinder $D^n \times \left[0,1\right]$ and then sending any point $x$ in the cylinder to the unique point where $D^n \times \left\{0\right\} \cup S^{n-1} \times \left[0,1\right]$ intersects the line containing $\ast$ and $x$. Now, define $w$ so that
 \[
 \begin{tikzcd}[column sep = huge]
-{Z \times (D^n \times [0,1])} \arrow[d, "\id_Z \times u"'] \arrow[r, "w"]                                                                     & Y \\
-{Z \times (D^n \times \{0\} \cup S^{n-1} \times [0,1])} \arrow[ru, "{\id_Z \times \left(g \circ \chi \cup K \circ (\varphi \times \id_{[0,1]})\right)}"'] &  
+{Z \times (D^n \times \left[0,1\right])} \arrow[d, "\id_Z \times u"'] \arrow[r, "w"]                                                                     & Y \\
+{Z \times (D^n \times \left\{0\right\} \cup S^{n-1} \times \left[0,1\right])} \arrow[ru, "{\id_Z \times \left(g \circ \chi \cup K \circ (\varphi \times \id_{\left[0,1\right]})\right)}"'] &  
 \end{tikzcd}
 \] commutes. 
 \end{proof}
@@ -756,17 +759,17 @@ Z\times D^n \times \{0\} \arrow[d, hook] \arrow[rrd, "\id_Z \times (g \circ \chi
 Let $x\in X$. Consider the  loop space $\Omega(X, x) \equiv M((S^1, \pt), (X, x))$. Prove that $\pi_n(\Omega{X})\cong \pi_{n+1}(X)$.
 \end{exercise}
 \begin{proof}
-Consider the \textit{path space $P{X} \equiv \left\{\gamma : [0,1] \to X \mid \gamma(0) =x\right\}$ of $\left(X,x\right)$}, equipped with the compact-open topology. We claim that $P{X}$ is contractible. Indeed, define $K: P{X} \times [0,1] \to P{X}$ by $$\left(\gamma, t\right) \mapsto \left(s \mapsto \gamma(s(1-t))\right).$$ Then $K$ is a homotopy from $\id_{P{X}}$ to the constant map at the constant path at $x$.
+Consider the \textit{path space $P{X} \equiv \left\{\gamma : \left[0,1\right] \to X \mid \gamma(0) =x\right\}$ of $\left(X,x\right)$}, equipped with the compact-open topology. We claim that $P{X}$ is contractible. Indeed, define $K: P{X} \times \left[0,1\right] \to P{X}$ by $$\left(\gamma, t\right) \mapsto \left(s \mapsto \gamma(s(1-t))\right).$$ Then $K$ is a homotopy from $\id_{P{X}}$ to the constant map at the constant path at $x$.
 
 \medskip
 
 Define the map $p : P{X} \to X$ by $\gamma \mapsto \gamma(1)$. Then $p^{-1}(x) = \Omega(X)$. By \cref{exhtpy}, it suffices to show that $p$ is a fibration. To this end, suppose that the square
 \[
 \begin{tikzcd}
-Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
-{Y\times [0,1]} \arrow[r, "f"']                    & X                  
+Y\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
+{Y\times \left[0,1\right]} \arrow[r, "f"']                    & X                  
 \end{tikzcd}
-\] commutes. Define $H: Y \times [0,1] \to P{X}$ by $\left(y, t\right) \mapsto  H(y,t)$ where 
+\] commutes. Define $H: Y \times \left[0,1\right] \to P{X}$ by $\left(y, t\right) \mapsto  H(y,t)$ where 
 \[
 H(y, t)(s) = \begin{cases} 
 \hat{f}(y)\left((1+t)s\right) & 0\leq s\leq \frac{1}{1+t}
@@ -775,13 +778,13 @@ H(y, t)(s) = \begin{cases}
 \] We see that $H$ is continuous when viewed as a function of $\left(y,t,s\right)$ and thus is continuous. It is easy to check that 
 \[
 \begin{tikzcd}
-Y\times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
-{Y\times [0,1]} \arrow[r, "f"'] \arrow[ru, "H"]    & X                  
+Y\times \left\{0\right\} \arrow[d, hook] \arrow[r, "\hat{f}"] & P{X} \arrow[d, "p"] \\
+{Y\times \left[0,1\right]} \arrow[r, "f"'] \arrow[ru, "H"]    & X                  
 \end{tikzcd}
 \] commutes, as desired.
 \end{proof}
 
-Let $p : E \to B$ be a map. Recall that the pullback of $p$ along $f : X \to B$ is given explicitly as   $$f^{\ast}{E} \equiv \{(x, e) \in X \times E \mid f(x) = p(e)\}.$$  Let  $f^{\ast}{p}$ denote the map $\pi_X\restriction_{f^{\ast}{E}}$.
+Let $p : E \to B$ be a map. Recall that the pullback of $p$ along $f : X \to B$ is given explicitly as   $$f^{\ast}{E} \equiv \left\{\left(x, e\right) \in X \times E \mid f(x) = p(e)\right\}.$$  Let  $f^{\ast}{p}$ denote the map $\pi_X\restriction_{f^{\ast}{E}}$.
 
 \begin{prop}
 If $p$ is a fibration, then so is $f^{\ast}{p}$.
@@ -793,7 +796,7 @@ If $p$ is locally trivial, then so is $f^{\ast}{p}$.
 \begin{proof}
 Let $a \in X$. Since $p$ is locally trivial by assumption, we can find a neighborhood $U$ of $f(a)$ in $B$ and a homeomorphism $\varphi : p^{-1}(U) \to U \times F$. Observe that 
 \[
-(f^{\ast}{p})^{-1}(f^{-1}(U)) = \left\{(x,e) \mid f(x) = p(e), \ f(x) \in U\right\} \subset f^{-1}(U) \times p^{-1}(U).
+(f^{\ast}{p})^{-1}(f^{-1}(U)) = \left\{\left(x,e\right) \mid f(x) = p(e), \ f(x) \in U\right\} \subset f^{-1}(U) \times p^{-1}(U).
 \] Further, we have a map $\psi : f^{-1}(U) \to p^{-1}(U) \to f^{-1}(U) \times F$ given by $\left(x,e\right) \mapsto \left(x, \pi_F(\varphi(e))\right)$. Define $\lambda : f^{-1}(U) \times F \to (f^{\ast}{p})^{-1}(f^{-1}(U))$ by $\left(x,y\right) \mapsto \left(x, \varphi^{-1}(f(x), y)\right)$. Using the fact that 
 \[
 \begin{tikzcd}
@@ -816,7 +819,7 @@ It suffices to prove the following claim:
 
 \smallskip
 
-If $h : Z \to X \times [0,1]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a cell complex, and $\sigma_0 : X \times \{0\} \to Z$ satisfies $h \circ \sigma_0 = \id_{X \times \{0\}}$, then there is some map $\sigma : X \times [0,1] \to Z$ such that $\sigma_{X \times \{0\}} = \sigma_0$ and $h \circ \sigma = \id_{X \times [0,1]}$.
+If $h : Z \to X \times \left[0,1\right]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a cell complex, and $\sigma_0 : X \times \left\{0\right\} \to Z$ satisfies $h \circ \sigma_0 = \id_{X \times \left\{0\right\}}$, then there is some map $\sigma : X \times \left[0,1\right] \to Z$ such that $\sigma_{X \times \left\{0\right\}} = \sigma_0$ and $h \circ \sigma = \id_{X \times \left[0,1\right]}$.
 \end{addmargin}
 
 \smallskip
@@ -824,29 +827,29 @@ If $h : Z \to X \times [0,1]$ is locally trivial, $X = \bigcup_{i=0}^n X^i$ is a
 For, in this case, \cref{pbtriv} implies that given any commutative square
 \[
 \begin{tikzcd}
-X \times \{0\} \arrow[d, hook] \arrow[r, "\hat{f}"] & E \arrow[d, "p"] \\
-{X \times [0,1]} \arrow[r, "f"']                    & B               
+X \times \left\{0\right\} \arrow[d, hook] \arrow[r, "\hat{f}"] & E \arrow[d, "p"] \\
+{X \times \left[0,1\right]} \arrow[r, "f"']                    & B               
 \end{tikzcd}
 ,\] we can find some $\sigma$ such that
 \[
 \begin{tikzcd}
                                                       & f^{\ast}{E} \arrow[r] \arrow[d]                                   & E \arrow[d, "p"] \\
-X \times \{0\} \arrow[ru, "\sigma_0"] \arrow[r, hook] & {X \times [0,1]} \arrow[r, "f"'] \arrow[u, "\sigma"', bend right] & B               
+X \times \left\{0\right\} \arrow[ru, "\sigma_0"] \arrow[r, hook] & {X \times \left[0,1\right]} \arrow[r, "f"'] \arrow[u, "\sigma"', bend right] & B               
 \end{tikzcd}
 \] commutes where $\sigma_0(x,0) = \left(x,0, \hat{f}(x,0)\right)$.
 
 \medskip
 
-For induction, let us assume that our claim is true for each $X^0, X^1, \ldots, X^{n-1}$. We may assume, wlog, that $X = D^n$. It suffices to find a map $\tau : S^{n-1} \times [0,1] \to Z$ such that $h \circ \tau = \id_{S^{n-1}\times [0,1]}$ and
+For induction, let us assume that our claim is true for each $X^0, X^1, \ldots, X^{n-1}$. We may assume, wlog, that $X = D^n$. It suffices to find a map $\tau : S^{n-1} \times \left[0,1\right] \to Z$ such that $h \circ \tau = \id_{S^{n-1}\times \left[0,1\right]}$ and
 \[
 \begin{tikzcd}
                                                         & Z \arrow[d, "h"]                                       &                                                           \\
-D^n \times \{0\} \arrow[r, hook] \arrow[ru, "\sigma_0"] & {D^n \times [0,1]}                                     & {S^{n-1}\times [0,1]} \arrow[l, hook] \arrow[lu, "\tau"', dashed] \\
-                                                        & S^{n-1} \times \{0\} \arrow[lu, hook] \arrow[ru, hook] &                                                          
+D^n \times \left\{0\right\} \arrow[r, hook] \arrow[ru, "\sigma_0"] & {D^n \times \left[0,1\right]}                                     & {S^{n-1}\times \left[0,1\right]} \arrow[l, hook] \arrow[lu, "\tau"', dashed] \\
+                                                        & S^{n-1} \times \left\{0\right\} \arrow[lu, hook] \arrow[ru, hook] &                                                          
 \end{tikzcd}
-\] commutes as there is a retraction $$r: D^n \times [0,1] \to D^{n} \times \{0\} \cup S^{n-1}\times [0,1].$$ To this end, fix a positive integer $m$. For each $j\in \left\{0,1, \ldots, m\right\}$, let $a_j = \frac{j}{m}$ and let $I_j = \left[a_j, a_{j+1}\right]$. Since $D^n \times [0,1]$ is compact,  by making $m$ large enough, we can ensure that $h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_{n+1}})}$ is trivial.
+\] commutes as there is a retraction $$r: D^n \times \left[0,1\right] \to D^{n} \times \left\{0\right\} \cup S^{n-1}\times \left[0,1\right].$$ To this end, fix a positive integer $m$. For each $j\in \left\{0,1, \ldots, m\right\}$, let $a_j = \frac{j}{m}$ and let $I_j = \left[a_j, a_{j+1}\right]$. Since $D^n \times \left[0,1\right]$ is compact,  by making $m$ large enough, we can ensure that $h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_{n+1}})}$ is trivial.
 \begin{claim}
-$h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  [0,1])}$ is also trivial. 
+$h\restriction_{h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  \left[0,1\right])}$ is also trivial. 
 \end{claim}
 \begin{proof}
 We may assume, wlog, that $h$ is trivial on $h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  I_j)$ for any $j$. Let $k\in \left\{0, 1, \ldots, m-1\right\}$ and assume, for induction, that $h$ is trivial on $h^{-1}(I_{j_1} \times \cdots \times I_{j_n} \times  \left[0,a_k\right])$. Let $K = I_{j_1} \times \cdots \times I_{j_n}$ and $J = K\times \left[0, a_k\right]$ and $\tilde{J}= K\times \left[a_k, a_{k+1}\right]$. By assumption, there exists a homeomorphism $\varphi :h^{-1}(J) \overset{\cong}{\longrightarrow} J\times F$ such that $\pi_J \circ \varphi =h$. Likewise, there exists a homeomorphism $\psi : h^{-1}(\tilde{J}) \overset{\cong}{\longrightarrow} \tilde{J} \times F$ such that $\pi_{\tilde{J}} \circ \psi = h$.
@@ -1105,7 +1108,7 @@ p_1^{-1}(A) \MySymb{dr} \arrow[r] \arrow[d] & E_2 \arrow[d, "p_2"] \\
 A \arrow[r]                       & B_2                 
 \end{tikzcd}
 \]
-is a bundle map.  Then $\alpha$ extends when ??. Also, the corresponding section $$\sigma : A \to p^{{-1}}(A) \times_G E_2 \subset E_1 \times_G E_2$$ extends.
+is a bundle map.  Then $\alpha$ extends when {??}. Also, the corresponding section $$\sigma : A \to p^{{-1}}(A) \times_G E_2 \subset E_1 \times_G E_2$$ extends.
 
 \begin{defn}[Principal bundle]
 Let $G$ be a topological group. A \textit{principal $G$-bundle} is a fiber bundle with group $G$ and fiber $G$ with $G$ acting on itself by left translation.
@@ -1165,7 +1168,7 @@ In fact, $\tau$ is a bundle with fiber $\faktor{G\times G}{\Delta{G}} \cong G$.
 Due to \cref{iso},  we may assume that $p$ is a principal $G$-bundle.  By assumption, there is some homotopy $H : X \times I \to Y$ from $f$ to $g$.
 Let $\omega=  H^{\ast}{p}$. Then 
 \begin{align*}
-f^{\ast}{p} &  = \omega\restriction_{\omega^{-1}\left(X\times \{0\}\right)} : \omega^{-1}\left(X\times \{0\}\right) \to X\times \{0\} \cong X
+f^{\ast}{p} &  = \omega\restriction_{\omega^{-1}\left(X\times \left\{0\right\}\right)} : \omega^{-1}\left(X\times \left\{0\right\}\right) \to X\times \left\{0\right\} \cong X
 \\ g^{\ast}{p}  & = \omega\restriction_{ \omega^{-1}\left(X\times \{1\}\right) } : \omega^{-1}\left(X\times \{1\}\right) \to X\times \{1\} \cong X.
 \end{align*}
 Therefore, it suffices to show that $f^{\ast}{p}\times \id_I \cong \omega $ such that the diagram
@@ -1174,14 +1177,14 @@ Therefore, it suffices to show that $f^{\ast}{p}\times \id_I \cong \omega $ such
 f^{\ast}{E}\times I \arrow[r, "\cong"]  \arrow[d, "f^{\ast}{p}\times \id_I"']                        & H^{\ast}{E} \arrow[r] \arrow[d, "\omega"] & E \arrow[d, "p"] \\
 X\times I \arrow[r, equals] & X\times I \arrow[r, "H"']                      & Y               
 \end{tikzcd}
-\] commutes. For, in this case, our isomorphism restricts over $X \times \{1\}$, i.e., $g^{\ast}{p} = \omega\restriction_{X\times \{1\}} \cong f^{\ast}{p}$. It thus suffices to exhibit a bundle map $f^{\ast}{p} \times I\to \omega $ over $\id_{X \times I}$ that equals the identity over $\omega\restriction_{X\times \{0\}} = f^{\ast}{p}$.
+\] commutes. For, in this case, our isomorphism restricts over $X \times \{1\}$, i.e., $g^{\ast}{p} = \omega\restriction_{X\times \{1\}} \cong f^{\ast}{p}$. It thus suffices to exhibit a bundle map $f^{\ast}{p} \times I\to \omega $ over $\id_{X \times I}$ that equals the identity over $\omega\restriction_{X\times \left\{0\right\}} = f^{\ast}{p}$.
 
 \begin{remark}
 It is easy to show that there is some bundle map $f^{\ast}{p}\times \id_I \to \omega$.  Indeed, by the homotopy lifting property, we obtain a section $\sigma$ fitting into the commutative diagram
 \[
 \begin{tikzcd}
                                    & \left(f^{\ast}{E}\times I\right) \times_G H^{\ast}{E} \arrow[d] \\
-X\times \{0\} \arrow[r] \arrow[ru, "\lambda_0"] & X\times I \arrow[u, "\sigma"', dashed, bend right]             
+X\times \left\{0\right\} \arrow[r] \arrow[ru, "\lambda_0"] & X\times I \arrow[u, "\sigma"', dashed, bend right]             
 \end{tikzcd}
 ,\] in which case we obtain our desired map by \cref{corr}. As mentioned, however, we want a bundle map that  equals the identity over $f^{\ast}{p}$.
 \end{remark}
@@ -1190,7 +1193,7 @@ To get such a map, we must find a section $\lambda$ such that
 \[
 \begin{tikzcd}
                                                       & \left(f^{\ast}{E} \times I\right) \times_G H^{\ast}{E} \arrow[rd, "\tau"] \arrow[d] &                                                       \\
-X\times \{0\} \arrow[ru, "\lambda_0"] \arrow[r, hook] & X\times I \arrow[r, "\Delta"'] \arrow[u, "\lambda"', dashed, bend right]            & \left(X\times I\right) \times \left(X \times I\right)
+X\times \left\{0\right\} \arrow[ru, "\lambda_0"] \arrow[r, hook] & X\times I \arrow[r, "\Delta"'] \arrow[u, "\lambda"', dashed, bend right]            & \left(X\times I\right) \times \left(X \times I\right)
 \end{tikzcd}
 \] commutes. But  $\lambda$ must exist since $\tau$ is a fibration by virtue of \cref{ttriv}. 
 
@@ -1211,7 +1214,7 @@ which is trivial since the pullback of a trivial bundle is trivial.
 \end{proof}
 
 \begin{corollary}\label{restiso}
-Every bundle $p$ over $X\times I$ is isomorphic to $\left(p\restriction_{p^{-1}\left(X\times \{0\}\right)}\right) \times \id_I$.
+Every bundle $p$ over $X\times I$ is isomorphic to $\left(p\restriction_{p^{-1}\left(X\times \left\{0\right\}\right)}\right) \times \id_I$.
 \end{corollary}
 
 \begin{exmp}
@@ -1408,7 +1411,7 @@ Each of our results holds even if we assume that a certain space is merely a CW 
 
 \medskip
 
-We want to ensure that a classifying space for a topological group $G$ exists. There are at least two famous ways of finding a classifying space for $G$.
+We want to ensure that a classifying space for any topological group $G$ exists. There are at least two famous ways of finding a classifying space for $G$.
 
 \begin{theorem}[Milnor construction]\label{MC}
 There is some functor $\mathbf{TopGrp} \to \mathbf{PrinBund}$ that maps each topological group $G$ to a principal $G$-bundle $$E_G \overset{p_G}{\longrightarrow} B_G$$ such that $B_G$ is a CW complex and $\pi_i\left(E_G\right) =0$.
@@ -1536,7 +1539,7 @@ Eventually, we want to describe $H^{\ast}\left(B_G\right)$. This will lead us to
 Before moving to spectral sequences, let us look at a couple more examples of fiber bundles.
 
 \begin{exmp}
-Let $\left\{e_i\right\}_{1\leq i \leq n}$ denote the standard basis of $\R^n$.  Consider the map $\rho : \GL(n, \R) \to \R^n\setminus \{0\}$ given by $A \mapsto A{e_n}$ and its restriction $\tau : \Or(n, \R) \to S^{n-1}$.
+Let $\left\{e_i\right\}_{1\leq i \leq n}$ denote the standard basis of $\R^n$.  Consider the map $\rho : \GL(n, \R) \to \R^n\setminus \left\{0\right\}$ given by $A \mapsto A{e_n}$ and its restriction $\tau : \Or(n, \R) \to S^{n-1}$.
 Note that $\rho^{-1}(e_n)$ consists of all $n\times n$ matrices of the form 
 \[
 \begin{pmatrix}
@@ -2312,7 +2315,7 @@ c_i \in H^{2i}(B{\Un(n)}) \cong \cdots \cong H^{2i}(B{\Un(i+1)}) \cong H^{2i}(B{
 \] for each $i\leq n$. Abusing notation, we shall write $c_i \in H^{2i}(B{\Un(i)})$.
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{cherngens}
 $H^{\ast}(B{\Un(n)}; \Z)\cong  \Z[c_1, \ldots, c_n]$
 \end{theorem}
 \begin{proof}
@@ -2391,17 +2394,114 @@ y tick handler = {
 \draw[->](0,2) to["d_{2n-1}"] (6,0);
 \end{sseqpage}.
 \]
-
+{??}
 \end{proof} 
 
-\bigskip
+\smallskip
 
+We call $c_i$ the $i$-th \textit{Chern class} of $B{\Un(n)}$. The following may be seen as a real analogue to \cref{cherngens}.
+
+\begin{theorem}
+$H^{\ast}(B{\Or(n)}, \Z_2) \cong \Z\left[w_1, \ldots, w_n\right]$ for certain cohomology classes $w_i \in H^i(B{\Or(n)}, \Z_2)$.
+\end{theorem}
+
+We call $w_i$ the $i$-th \textit{Stiefel-Whitney} class of $B{\Or(n)}$.
+
+
+\begin{exmp}
+Let $M$ be a smooth $n$-manifold. Consider the tangent bundle $T{M}$ with group $\Or(n)$ and fiber $\R^n$. Let $f : M \to B{\Or(n)}$ denote the classifying map for $T{M} \overset{\pi}{\longrightarrow} M$, so that  $f^{\ast}{\gamma_n} = \pi$ where $\gamma_n$ denotes the universal $\Or(n)$-bundle. For each $i\in \left\{1, 2, \ldots, n\right\}$, the $i$-th Stiefel-Whitney class for $M$ is exactly the element 
 \[
-\vdots
+w_i(M) \equiv f^{\ast}{w_i\left(E_{\Or(n)}\right)}
+\] of $H^i(M, \Z_2)$. Note that $w_i$ is natural in the sense that  
+$w_i\left(f^{\ast}{E_{\Or(n)}}\right) =  f^{\ast}{w_i\left(E_{\Or(n)}\right)}$.  Now, the complexification of $\pi$ is the vector bundle $T_{\C}{M}$, with classifying map $f: M \to B{\Un(n)}$. In this case, the
+$i$-th Chern class for $M$ is exactly the element
+\[
+c_i(M) \equiv f^{\ast}{c_i\left(E_{\Un(n)}\right)}
+\] of $H^{2i}(M, \Z)$.
+ In general, any  vector bundle $\xi$ with group $\Or(n) \subset \Un(n)$ and fiber $\R^n$ has a complexification $\xi \otimes \C$ with group $\Un(n)$ and fiber $\C^n$. Every fiber $E_x$ of $\xi$ is converted to a fiber $E_x \oplus E_x$ of $\xi \otimes \C$ with scalar multiplication given by $i \cdot \left(x,y\right) \equiv \left({-y}, x\right)$. The \textit{$i$-th Pontryagin class} for $M$ is exactly
+\[
+p_i(M) \equiv \left({-1}\right)^ic_{2i}(T{M} \otimes \C).
+\]
+\end{exmp}
+
+\medskip
+
+For any two complex vector bundles $\xi$ and $ \eta$ over $X$ with groups $\Un(n)$ and $\Un(m)$, respectively, we can form a new vector bundle $\xi \oplus \eta$ with group $\Un(n +m)$ and fiber $\C^n \times \C^m$ such that
+\[
+h_{\alpha{\beta}}(\xi \oplus \eta) \equiv \begin{bmatrix}  h_{\alpha{\beta}}(\xi) & 0 \\ 0 & h_{\alpha{\beta}}(\eta) \end{bmatrix}.
 \]
 
-\section{Cobordism theory}
+\begin{term} 
+The sum $c(\xi) \coloneqq 1 + c_1 + c_2 + \cdots + c_n \in H^{\ast}(X, \Z)$ is called the \textit{total Chern class} for $\eta$. If $\xi$ is instead a real vector bundle, then we have the \textit{total Stiefel-Whitney class} $w(\xi) \coloneqq 1 + w_1 + w_2 + \cdots + w_n \in H^{\ast}(X, \Z_2)$.
+\end{term}
 
-\textit{To do.}
+\begin{theorem}[Whitney sum formulas] $ $
+\be
+\item $c(\xi \oplus \eta) = c(\xi) \smile c(\eta)$, i.e.,  $c_k(\xi \oplus \eta) = \sum_{i+j =k}c_i(\xi) \smile c_j(\eta), \  \ c_0 \equiv 1$.
+\item $w(\xi \oplus \eta) = w(\xi) \smile c(\eta)$, i.e.,  $w_k(\xi \oplus \eta) = \sum_{i+j =k}w_i(\xi) \smile w_j(\eta), \ \ w_0 \equiv 1$.
+\ee
+\end{theorem}
+
+
+\begin{exercise}
+Let $\xi$ and $\eta$ be fiber bundles over a CW complex $X$ with group $U(1)\cong S^1$ and fiber $\C$, i.e., (complex) line bundles over $X$. Consider the tensor bundle $\xi \otimes \eta$. 
+\be[label=(\alph*)]
+\item Show that the set $\lb(X)$ of isomorphism classes of line bundles over $X$ is an abelian group under $\otimes$. 
+\item Compute $c_1(\xi \otimes \eta)$ where $c_1$ denotes the first Chern class.
+\ee
+\end{exercise}
+\begin{proof} $ $
+\be[label=(\alph*)]
+\item It is easy to see that $\otimes$ is commutative and associative. It is also easy to see that the natural isomorphism $\C \otimes \C \cong \C$ extends to an isomorphism between $\xi \otimes \eta$ and the trivial line bundle $X \times \C$, which is thus the identity element of $\lb(X)$. 
+
+\smallskip
+
+It remains to show that $\lb(X)$ has all inverses. To this end, consider the conjugate line bundle $\bar{\xi}$. If $h_{\beta{\alpha}}: U_{\alpha} \cap U_{\beta} \to S^1$ is any transition function for $\xi$, then the corresponding transition function for $\xi \otimes \bar{\xi}$ is given by 
+\[
+\tilde{h}_{\beta{\alpha}} \coloneqq h_{\beta{\alpha}} \otimes \overline{h_{\beta{\alpha}}} : U_{\alpha} \cap U_{\beta} \to S^1, \ \quad x \mapsto h_{\beta{\alpha}}(x)\cdot \overline{h_{\beta{\alpha}}(x)}.
+\] But this means that every transition function for $\xi \otimes \bar{\xi}$ is the constant map at $1$. As a result,
+\[
+\label{eqn:iso} \tilde{h}_{\beta} \circ \tilde{h}_{\alpha}^{-1}(x, f)=\left(x, f\right), \tag{$\star$}
+\] i.e., the local trivializations $\tilde{h}_{\alpha}$ and $\tilde{h}_{\beta}$ for $\xi \otimes \bar{\xi}$ agree on $U_{\alpha} \cap U_{\beta}$.  By gluing together these local trivializations, we get a well-defined bundle isomorphism $$\tilde{h} \equiv \bigcup_{\alpha}h_{\alpha} : \xi \otimes \bar{\xi} \overset{\cong}{\longrightarrow} X \times \C.$$ This proves that $\bar{\xi}$ is the inverse of $\xi$.
+\item Since $U(1)$ is a topological group, we can apply the Milton construction to it to obtain the universal bundle $$p_{U(1)} : L \to B{U(1)} = \CP^{\infty}.$$ For each $i\in \left\{1,2\right\}$, let $\pi_i:  \CP^{\infty}\times  \CP^{\infty} \to  \CP^{\infty}$ denote the $i$-th projection. Consider now the tensor bundle 
+\[
+\tilde{L} \coloneqq \underbrace{\pi_1^{\ast}(L)}_{L_1} \otimes \underbrace{\pi_2^{\ast}(L)}_{L_2}
+\]
+over $\CP^{\infty}\times  \CP^{\infty}$. Then $c_1(\tilde{L})$ belongs to $H\coloneqq H^2(\CP^n \times \CP^n; \Z)$. From lecture, we know that $H^{\ast}(\CP^{\infty}; \Z)$ is precisely the infinite cyclic group generated by $c_1(L)$. In particular, it is a finitely-generated abelian group. Further, $ \CP^{\infty}$ is a CW complex as the colimit of CW complexes. Since $H^0(\CP^{\infty}; \Z) = \Z$ and $H^1(\CP^{\infty}; \Z) =0$, it follows from the K\"unneth theorem  that 
+\[
+\label{eqn:2}   
+H \cong  \left(H^2(\CP^{\infty}; \Z) \otimes \Z\right) \oplus \left(\Z \otimes H^2(\CP^{\infty}; \Z)\right)\cong H^2(\CP^{\infty}; \Z) \oplus H^2(\CP^{\infty}; \Z) . \tag{1}
+\]  
+Under this sequence of isomorphisms, $c_1(\tilde{L})\in H$ corresponds uniquely to $\left(nc_1(L), mc_1(L)\right)$ for some $n,m \in \Z$. Choose any point $P\in \CP^{\infty}$ and let $i : \left\{P\right\} \times \CP^{\infty} \hookrightarrow \CP^{\infty} \times \CP^{\infty}$ denote the inclusion map. Taking the pullback of $L$ along $i$ yields a line bundle $i^{\ast}{L}$ over $\left\{P\right\} \times \CP^{\infty} \cong \CP^{\infty}$ that is isomorphic to $L_2$ viewed over $\CP^{\infty}$. Hence $c_1(i^{\ast}{L}) = c_1(L)$. But $i^{\ast}(c_1(L)) = mc_1(L)$, so that $c_1(L)= mc_1(L)$ by naturality of $c_1$. It follows that $m=1$. Similarly, we see that $n=1$. 
+
+\smallskip
+
+By inspection,  $c_1(L_1) + c_1(L_2)$ also corresponds uniquely to $\left(c_1(L), c_1(L)\right)$ under \eqref{eqn:2}. This means that 
+\[
+\label{eqn:3} c_1(L_1) + c_1(L_2) = c_1(\tilde{L}).  \tag{2}
+\]
+%Moreover, $\tilde{L}$ is isomorphic to $L_1$ when viewed over $\CP^{\infty} \times \left\{x_1\right\} \cong \CP^{\infty} $ and to $L_2$ when viewed over   $\CP^{\infty} \times \left\{x_2\right\} \cong \CP^{\infty} $ where  $x_1$ and $x_2$ are any two chosen elements of $\CP^{\infty}$. Denote these two new line bundles over $ \CP^{\infty} $ by $Q$ and $Q'$, respectively.  Then $\left(c_1(Q), c_1(Q')\right)$ equals $\left(c_1(L), c_1(L)\right)$ and thus corresponds uniquely to   $c_1(L_1) + c_1(L_2)$ via $\eqref{eqn:2}$. But it also corresponds uniquely to $c_1(\tilde{L})$, so that 
+
+From \eqref{eqn:3}, we can derive that $c_1(\xi \otimes \eta) = c_1(\xi)+ c_1(\eta)$. Indeed, there must be maps $g_1, g_2 : X \to B{U(1)}$ such that $\xi \cong f_1^{\ast}{L}$ and $\eta \cong f_2^{\ast}{L}$. Note that the map $F\coloneqq \left(f_1, f_2\right) : X \to B{U(1)} \times B{U(1)}$ satisfies
+\begin{align*}
+F^{\ast}(L_1) & = F^{\ast}(\pi_1^{\ast}(L)) \cong \left(\pi_1 \circ F \right)^{\ast}(L) = f_1^{\ast}{L} \cong \xi
+\label{eqn:4} \\ & \tag{3}
+\\ F^{\ast}(L_2) & = F^{\ast}(\pi_2^{\ast}(L)) \cong \left(\pi_2 \circ F \right)^{\ast}(L) = f_2^{\ast}{L} \cong \eta.
+\end{align*}
+Now, recalling that for any line bundle $E$ over $X$, the local trivializations and transition functions of $F^{\ast}(E)$ are given by precomposition with $F$,  we easily see that
+\[
+\label{eqn:5} c_{1}(F^{*}(L_{1}) \otimes F^{*}(L_{2}))=c_{1}(F^{*}(L_{1} \otimes L_{2})). \tag{4}
+\] Finally, by combining \eqref{eqn:3}, \eqref{eqn:4}, \eqref{eqn:5}, and the naturality of $c_1$, we get
+\begin{align*}
+c_1(\xi \otimes \eta) & = c_{1}(F^{*}(L_{1}) \otimes F^{*}(L_{2}))
+\\ & =c_{1}(F^{*}(L_{1} \otimes L_{2}))
+\\ & = F^{*}(c_1(L_{1} \otimes L_{2}))
+\\ & = F^{*}(c_{1}(L_{1})+c_{1}(L_{2}))
+\\ & =F^{*}(c_{1}(L_{1}))+F^{*}(c_{1}(L_{2}))
+\\ & = c_{1}(F^{*}(L_{1}))+c_{1}(F^{*}(L_{2}))
+\\ & = c_1(\xi) + c_1(\eta).
+\end{align*}
+\ee
+\end{proof}
 
 \end{document}

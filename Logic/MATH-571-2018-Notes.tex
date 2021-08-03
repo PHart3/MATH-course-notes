@@ -1,6 +1,7 @@
 \documentclass[10pt,letterpaper,cm]{nupset}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
+\usepackage{quiver}
 \usepackage{float}
 \usepackage{svg}
  \usepackage{enumerate}
@@ -37,6 +38,7 @@
 \usepackage{thmtools}
 \usepackage[capitalise]{cleveref} 
 \usepackage{comment}
+\usepackage{breqn}
     
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
@@ -620,6 +622,8 @@ Historically, there were three major paradoxes of naive set theory that pushed c
 Those mathematicians hoped that such an axiomatization would act as a consistent yet powerful enough foundation for the great advances being made in analysis, algebra, and geometry.
 \end{remark}
 
+\pagebreak
+
 \begin{definition}
  The following eight axioms constitute \textit{Zermelo-Fraenkel set theory} ($\zf$). 
 \begin{enumerate}
@@ -844,7 +848,7 @@ A class $x$ is \textit{transitive} if for any $y\in x$, we have $y\subset x$.
 \end{definition}
 
 \begin{note}
-A set $x$ is transitive if and only if $z \in y \in x \implies z\in x$. By Note 5(4), it follows that $\in$ is a partial ordering of $\ord$.
+A set $x$ is transitive if and only if $z \in y \in x \implies z\in x$. Therefore, $\in$ is a partial ordering of $\ord$.
 \end{note}
 
 \begin{definition}
@@ -854,6 +858,8 @@ A set $x$ is an \textit{ordinal (number)}, written as $\od(x)$, if $x$ is transi
 \begin{notation}
 We shall use the symbols $\in$ and $<$ interchangeably for the ordering of ordinals. 
 \end{notation}
+
+\pagebreak
 
 \begin{lemma}
 Let $\alpha$ be an ordinal. Let $\alpha +1 = \alpha \cup \{\alpha \}$. Then $\alpha +1$ is the minimal ordinal greater than $\alpha$. 
@@ -902,6 +908,8 @@ Let $x \in \alpha$. Since $\left(\beta, \in\right)$ is a linear ordering and $\g
  Conversely, let $x \in \gamma$. Since $\gamma \subset \beta$, we get $x \in \beta$. By our choice of $\gamma$, it follows that $x \in \alpha$. Hence $\gamma \subset \alpha$.
 \end{proof}
 
+\pagebreak
+
 \begin{lemma} \label{ord-wo}
 $\left(\ord, \in\right)$ is a well-ordered class.
 \end{lemma}
@@ -940,6 +948,7 @@ For any woset $\left(W, <\right)$, there is a unique ordinal $\alpha$ such that 
 \end{theorem}
 \begin{proof}
 \Cref{non-iso} together with \cref{ord-wo} proves that such an $\alpha$ must be unique. We must prove that such an $\alpha$ exists.
+\pagebreak
 \begin{claim}
 For any $x\in W$, there is some ordinal $Z(x)$ such that $W_x \cong Z(x)$.
 \end{claim}
@@ -1006,7 +1015,7 @@ $$  f_{\alpha}(\beta) = G(f_{\alpha}\restriction_{\beta}) =  G(f_{\beta})= F_{\a
 
 \smallskip
 
-Let $F' : \ord \to V$ also have $F'(\alpha) = G(F'\restriction_{\alpha})$. Using transfinite induction, it is easy to check that $F'(\alpha) = F(\alpha)$ for any ordinal $\alpha$. Thus, $F$ is unique. 
+Let $F' : \ord \to V$ also have $F'(\alpha) = G({F'\restriction_{\alpha}})$. Using transfinite induction, it is easy to check that $F'(\alpha) = F(\alpha)$ for any ordinal $\alpha$. Thus, $F$ is unique. 
 \end{proof}
 
 
@@ -1016,6 +1025,13 @@ Let $F' : \ord \to V$ also have $F'(\alpha) = G(F'\restriction_{\alpha})$. Using
 \begin{exercise}\label{ord-char}
 Show that a set $x$ is an ordinal if and only if $x$ is transitive and every $y\in x$ is transitive. 
 \end{exercise}
+\begin{proof}
+Suppose that $x$ is an ordinal. Then $x$ is obviously transitive. If an element $y\in x$ is not transitive, then we can find a chain $w \in z \in y$ such that $w\notin y$. In this case, $y\ne w$ for otherwise we have a cycle $y\in z \in y$. Hence $y\in w$ as $\left(x, \in \right)$ is a total ordering. But this also yields a cycle $w\in z \in y \in w$. Thus, every element of $x$ must be transitive.
+
+\medskip
+
+Conversely, suppose that $x$ is transitive and every element of $x$ is transitive. We must show that $\left(x, \in \right)$ is a well-ordering.Thanks to $\mathsf{Reg}$, it suffices to show that this is a total ordering. Since every element of $x$ is transitive, we see that $\in$ is transitive. Suppose, toward a contradiction, that there exist $\in$-incomparable elements in $x$. Let $z$ be the minimal element incomparable with at least one element of $x$. Let $y$ be the minimal element incomparable with $z$. By the minimality of $z$ and of $y$, we have that $z \subset y$ and $y \subset z$. Hence $y =z$, a contradiction. It follows that $\in$ is trichotomous and thus a total order.
+\end{proof}
 
 \begin{lemma}
 If $\alpha$ is an ordinal and $x\in \alpha$, then $x$ is an ordinal. 
@@ -1151,7 +1167,7 @@ Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\left
 \end{remark}
 
 \begin{note}[Linear ordering of cardinals]
-\begin{enumerate}
+\begin{enumerate} $ $
 \item Consider the binary relation $< $ on the class of all cardinal numbers where $\left\lvert{X}\right\rvert < \left\lvert{Y}\right\rvert$ if there is an injection from $X$ intro $Y$ but $\left\lvert{X}\right\rvert \ne \left\lvert{Y}\right\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
 \item In $\zfc$, if $\lambda$ is an infinite cardinal, then $\lambda = \aleph_{\alpha}$ for some ordinal $\alpha$. In this case, we get a transfinite enumeration of class of all cardinals
 \[
@@ -1200,12 +1216,12 @@ Then $$\kappa \cdot \lambda = \kappa + \lambda = \max\{\kappa, \lambda\}.$$
 \subsection{Lecture 11}
 
 \begin{remark}
-If $\U$ denotes the universe of all sets, then $\zf \setminus \{\mathsf{Reg}\} \vdash \mathsf{Reg} \leftrightarrow \U = V$.
+If $\U$ denotes the universe of all sets, then $\zf \setminus \left\{\mathsf{Reg}\right\} \vdash \mathsf{Reg} \leftrightarrow \U = V$.
 \end{remark}$ $
 We now prove a theorem stated in \cref{Lecture10}.
 
 \begin{proof}{\textbf{($\ac \iff \mathsf{WOP}$)}}$ $\\ 
-($\Longleftarrow$) Let $I$ be any set and let $C\coloneqq \{A_i\}_{i\in I}$ be a collection of nonempty sets. By  $\mathsf{Union}$, we see that $\bigcup C$ is a set. By $\mathsf{WOP}$, there exists a well-ordering $<$ on $\bigcup C$. Note that each $A_i$ is a nonempty subset of $\bigcup C$. Thus, $A_i$ contains a least element $a_i$. Now, define $f: I \rightarrow \bigcup C$ by $f(i)=a_i$. As long as $f$ is well-defined, it is a choice function. To show that it is well-defined, it suffices to show that the $a_i$ are unique. Suppose that both $a_i$ and $b_i$ are minimal elements of $A_i$. Note  that $<$ is a linear ordering of $C$. Thus, either $a_i \leq b_i$ or $b_i\leq a_i$. But both are minimal, so that, in either case, $a_i=b_i$. This shows that $f$ is well-defined.
+($\Longleftarrow$) Let $I$ be any set and let $C\coloneqq \left\{A_i\right\}_{i\in I}$ be a collection of nonempty sets. By  $\mathsf{Union}$, we see that $\bigcup C$ is a set. By $\mathsf{WOP}$, there exists a well-ordering $<$ on $\bigcup C$. Note that each $A_i$ is a nonempty subset of $\bigcup C$. Thus, $A_i$ contains a least element $a_i$. Now, define $f: I \rightarrow \bigcup C$ by $f(i)=a_i$. As long as $f$ is well-defined, it is a choice function. To show that it is well-defined, it suffices to show that the $a_i$ are unique. Suppose that both $a_i$ and $b_i$ are minimal elements of $A_i$. Note  that $<$ is a linear ordering of $C$. Thus, either $a_i \leq b_i$ or $b_i\leq a_i$. But both are minimal, so that, in either case, $a_i=b_i$. This shows that $f$ is well-defined.
 
 \smallskip
 
@@ -1878,9 +1894,9 @@ Note that $\tau$ is $\Delta_0$ and that ``$R \text{ is a relation on }A$" is a $
 
 \subsection{Lecture 19}
 
-At this point, our goal is to show that ``$x\in L_{\alpha}$" is $\Delta_1^{\zf}$.
+At this point, our goal is to show that both ``$x= L_{\alpha}$'' and ``$x\in L_{\alpha}$'' are $\Delta_1^{\zf}$.
 
-\begin{theorem}[L\'evy]
+\begin{theorem}[L\'evy]\label{levy}
 Suppose that $\kappa$ is an uncountable cardinal and that $\varphi(x, \bar{y})$ is a $\Sigma_1^{\zf}$ formula. Let $$\bar{a} \in \mathrm{H}(\kappa) \coloneqq \left\{x \mid \hc(x)<\kappa\right\}.$$ If $\exists{x}\varphi(x, \bar{a})$, then $\left(\exists{x \in \mathrm{H}(\kappa)}\right)\varphi(x, \bar{a})$.
 \end{theorem}
 \begin{proof}
@@ -1900,11 +1916,55 @@ Now, let $x_0$ witness $\exists{x}\varphi(x, \bar{a})$ where $\varphi$ is $\Sigm
 \] such that $\pi(d) =d$ whenever $d \in X$. Then $\pi$ fixes each component of $\bar{a}$, so that $\C \models \varphi(\pi(x_0), \bar{a})$.  Further, since $\pi(x_0)$ belongs to the transitive set $\dom(\C)$, we have that $\tc(\pi(x_0)) \subset \C$. Therefore, $\hc(\pi(x_0)) \leq \left\lvert{\C}\right\rvert \leq \lambda$. Since $\varphi$ is $\Sigma_0^{\zf}$, it is absolute for all transitive models, which completes our proof.
 \end{proof}
 
+\begin{remark}
+Assuming that ``$x\in L_{\alpha}$'' is $\Sigma_1^{\zf}$, \cref{levy} implies that $x\leq \kappa \implies \order(x) < \kappa^{+}$ for any set $x$ and cardinal $\kappa$.
+\end{remark}
+
+\begin{lemma}[Collection principle]\label{S1closed}
+$\Sigma_1^{\zf}$ is closed under bounded universal quantification.
+\end{lemma}
+\begin{proof}
+Consider any $\Sigma_1$ formula $\exists{z}{\theta(y,z)}$, where $\theta$ is $\Delta_0$ and $y$ is any set. It suffices to prove the biconditional 
+\[
+\left(\forall{x\in y}\right)\exists{z}{\theta(x,z)} \leftrightarrow \exists{w}\underbrace{\left(\forall{x \in y}\right)\left(\exists{z\in w}\right){\theta(x,z)}}_{\Delta_0}
+.\] The ($\leftarrow$) direction is trivial. Conversely, let 
+\[
+w = \bigcup_{x\in y}S_x, \ \quad S_x \equiv \left\{z \mid \theta(x,z) \land \forall{v}\left(\theta(x,v) \to \rnk(z) \leq \rnk(v)\right)\right\}
+.\] (Forming the set $S_x$ from the class $\theta(x, {-})$ is an example of \textit{Scott's trick}.)
+\end{proof}
+
+\smallskip
+
+We want to show that the property of being definable with parameters over a structure is $\Sigma_1^{\zf}$. For this, we must show that the satisfaction relation $A \models \varphi \left[\bar{z}\right]$ is $\Sigma_1^{\zf}$  where the set of indices of all variables in $\varphi$ is bounded above by, say, $n\in \N$. We can encode this relation with the recursive formula
+\begin{align*}
+\mathtt{Sat}(s, A, n, \bar{z}) \coloneqq  \mathtt{Formula}(s) \land  \left(\exists{i,j\in n}\right) & \bigl( \left(s = \left(0, i,j\right) \land \bar{z}(i) = \bar{z}(j) \right)
+\\ & \vee
+\left(s = \left(1, i,j\right) \land \bar{z}(i) \in \bar{z}(j)\right)
+\\ &  \vee \exists{t}\left(s = \left(2, t\right) \land \neg{\mathtt{Sat}(t, A, n, \bar{z})} \right) 
+\\ & \vee \exists{t}\exists{u}\left( s = \left(3, t, u\right) \land \left(\mathtt{Sat}(t, A, n , \bar{z}) 
+ \vee \mathtt{Sat}(u, A, n , \bar{z}) \right)\right) 
+ \\ &  \vee  \exists{t}\left( s = \left(4, t, i\right) \land \left(\exists{x \in A}\right)\mathtt{Sat}(t, A, n, \bar{z}\left[i \mapsto x\right])\right) \bigr)
+\end{align*}
+where $\mathtt{Formula}(s)$ expresses that $s$ encodes a first-order formula under the mapping
+\begin{align*}
+G(v_i = v_j) &\equiv \left(0,i,j\right)
+\\ G(v_i \in v_j) &\equiv \left(1, i,j\right)
+\\ G(\neg{\varphi}) &\equiv \left(2, G(\varphi)\right)
+\\ G(\varphi \vee \psi) &\equiv \left(3, G(\varphi), G(\psi)\right)
+\\ G(\exists{v_i}{\varphi}) &\equiv \left(4, i, G(\varphi)\right)
+.\end{align*}
+We can express that a binary number encodes a first-order formula in terms of the $\mathtt{BIT}$ predicate where $\mathtt{BIT}(i,j)$ holds if the $j$-th bit of $i$ equals $1$.  We also have a definable isomorphism $\left(\N, \mathtt{BIT}\right) \cong \left(V_{\omega}, \in\right)$.  It follows that $\mathtt{Formula}(s)$ is $\Sigma_1^{\zf}$. It is now easy to check that $\mathtt{Sat}(s, A, n, \bar{z})$ is $\Sigma_1^{\zf}$.
+
+
+
+
+\begin{comment}
 \subsection{Lecture 20}
 
 \subsection{Lecture 21}
 
 \subsection{Lecture 22}
+
 
 \subsection{Lecture 23}
 %Discussion of Problems 1 and 4 (Homework 2).
@@ -1929,7 +1989,6 @@ Of course, the empty set can be well-ordered. Now ,suppose that $\beta= \alpha +
 \subsection{Lecture 24}
 %Discussion of Problem 4 (Homework 2). Return to $L$.
 
-\begin{comment}
 \begin{problem}[Homework 2.4.]
 
 Prove in $\zfc$ that if there is some $\alpha \in \ord$ such that $V_\alpha \models \zfc$, then $\cf(\beta)=\omega$ where $\beta$ equals the least such $\alpha$.
@@ -1943,7 +2002,6 @@ Suppose, toward a contradiction, that $\cf(\beta)>\omega$. Note that $\beta \set
 Apply \cref{LS} to get an elementary submodel $E_0 \preceq V_{\beta}$ such that $\left\lvert{E_0}\right\rvert=\left\lvert{V_{\omega}}\right\rvert$. Then there is some least $b_0 < \beta$ such that $E_0\subset V_{b_0}$. Apply \cref{LS} again to get an elementary submodel $V_{b_0}\subset E_1 \preceq V_{\beta}$ such that $\left\lvert{E_1}\right\rvert=\left\lvert{V_{b_0}}\right\rvert<\left\lvert{V_{\beta}}\right\rvert$. We can find some least $b_1<\beta$ such that $V_{b_1}\supset E_1$. Continuing like this via finite induction, we get a sequence $$E_0\subset V_{b_0}\subset E_1 \subset V_{b_1}\subset E_2 \subset \cdots $$ with $E_i\preceq V_{\beta}$ for  each $i\in \N$. Then $\bigcup_n E_n = \bigcup_n V_{b_n} = V_{\sup\{b_n\}}$. Since $E_i \models \zfc$ for each $i$, it follows that $V_{\sup\{b_n\}} \models \zfc$.
 But $\cf(\beta)>\omega$, and thus $\sup\{b_n\} < \beta$, contrary to our choice of $\beta$.
 \end{solution}
-\end{comment}
 
 \subsection{Lecture 25}
 
@@ -1998,8 +2056,13 @@ The formula $x=\delta$ is absolute for $L_{\omega_2}$ for any ordinal $\delta < 
 By elementary equivalence there is some ordinal $\beta' \in L_{\chi}$ such that $\P(\omega)^{L_{\chi}}\subset L_{\beta'}$. Let $\beta$ be the least such $\beta '$, so that by elementary equivalence we have that $\alpha <\beta$. As $L_\chi$ is countable and transitive, it follows that $\alpha < \beta < \aleph_1$. Also, since $\chi$ is a limit, we know that $L_{\beta+1}\in L_{\chi}$, thereby completing our proof.
 \end{solution}
 
+
+
 \subsection{Lecture 38}
 
+
 \subsection{Lecture 39}
+
+\end{comment}
 
 \end{document}

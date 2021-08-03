@@ -234,8 +234,9 @@ Consider the global charts $\left(\R, x \mapsto x\right)$ and $\left(\R, x \maps
 \begin{definition}{An atlas $A$ is \textit{maximal} if it contains every chart that is $C^{\infty}$- (or smoothly) compatible with every chart in $A$.}
 \end{definition}
 
-\begin{prop}\label{l1} $ $
+\pagebreak
 
+\begin{prop}\label{l1} $ $
 
 \begin{enumerate}
 \item Every smooth atlas $A$ is contained in a unique maximal atlas, namely the family of all charts that are smoothly compatible with every chart in $A$.
@@ -1189,11 +1190,10 @@ Let $i : S \to M$ denote inclusion. Then  there are $X', Y' \in \vf(S)$ with $X'
 \section{Vector bundles}
 
 \begin{definition}
-Let $M$ be a space. A \textit{(real) vector bundle of rank $k$ over $M$} is a space $E$ endowed with the following structure.
+Let $M$ be a space. A \textit{(real) vector bundle of rank $k$ over $M$} is a space $E$ together with a continuous surjection $\pi : E \to M$ having the following properties.
 \begin{enumerate}[label=(\Roman*)]
-\item A surjective continuous map $\pi : E \to M$.
-\item For each $p \in M$, $E_p\coloneqq  \pi^{-1}(p)$ is a $k$-dimensional vector space.
-\item For each $p\in M$, there is a neighborhood $U_p$ in $M$ together with a homeomorphism $\varphi :\pi^{-1}(U) \to U \times \R^k$ (called a \textit{local trivialization}) such that
+\item For each $p \in M$, the fiber $E_p\coloneqq  \pi^{-1}(p)$ is a $k$-dimensional vector space.
+\item For each $p\in M$, there is a neighborhood $U_p$ in $M$ together with a homeomorphism $\varphi_U :\pi^{-1}(U) \to U \times \R^k$ (called a \textit{local trivialization}) such that
 \begin{enumerate}
 \item $\pi_U \circ \varphi  = \pi \restriction_{\pi^{-1}(U)}$, where $\pi_U : U \times \R^k \to U$ denotes the projection and
 \item for each $q\in U$, $\varphi \restriction_{E_q}$ is a linear isomorphism $E_q \overset{\cong}{\longrightarrow} \{q\} \times \R^k \cong \R^k.$
@@ -1201,6 +1201,15 @@ Let $M$ be a space. A \textit{(real) vector bundle of rank $k$ over $M$} is a sp
 \end{enumerate}
 If $M$ and $E$ are smooth manifolds and each local trivialization  is smooth, then $E$ is called a \textit{smooth vector bundle}.
 \end{definition}
+
+\begin{note}
+Any vector bundle $\pi : E \to M$ is an open map. Indeed, suppose that $V$ is open in $E$. Then 
+\[
+\pi(V) = \bigcup_{x \in \pi(V)}\pi\restriction_{\pi^{-1}(U_x)}(V \cap \pi^{-1}(U_x))
+.\] But each map $\pi\restriction_{\pi^{-1}(U_x)}$ is open as the composite $\pi_{U_x} \circ \varphi_{U_x}$ of open maps. Hence $\pi(V)$ is open as the union of open sets.
+\end{note}
+
+\pagebreak
 
 \begin{exmp}
 The M\"obius strip and $\S^1 \times \R$ are distinct vector bundles of rank $1$ over $\S^1$.
@@ -1250,13 +1259,13 @@ We can always construct a global section of a smooth vector bundle by using part
 \subsection{Lecture 14}
 
 \begin{lemma}[Vector bundle construction]
-Let $M^n$ be a smooth manifold and suppose that for any $p\in M$, there is some vector space $E_p$ of dimension $k$. Let $E\coloneqq  \coprod_{p\in M} E_p$ and $\pi : E \to M$ be the projection map. Further, suppose we have the following data:
+Let $M^n$ be a smooth manifold and suppose that for any $p\in M$, there is some vector space $E_p$ of dimension $k$. Let $E=  \coprod_{p\in M} E_p$ and let $\pi : E \to M$ be the projection map. Further, suppose we have the following data:
 \begin{enumerate}[label=(\alph*)]
 \item an open cover $\left\{U_{\alpha}\right\}$,
 \item for each $\alpha$, a bijection $\varphi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha} \times \R^k$ whose restriction to each $E_p$ is a linear isomorphism to $\left\{p\right\}\times \R^k$, and
 \item for each $U_{\alpha} \cap U_{\beta} \ne \emptyset$, a smooth map $\tau_{\alpha \beta} : U_{\alpha} \cap U_{\beta} \to \GL(k , \R)$ such that $\varphi_{\alpha} \circ \varphi_{\beta}^{-1}(p, v) = \left(p, \tau_{\alpha \beta}(p)v\right)$.
 \end{enumerate}
-Then $E$ has a unique topology and smooth structure making it into a smooth vector bundle of rank $k$ over $M$.
+Then $E$ has a unique topology and smooth structure making $\left(E,\pi\right)$ into a smooth vector bundle of rank $k$ over $M$.
 \end{lemma}
 
 The matrices $\tau_{\alpha \beta}(p)$ are called the \textit{transition functions} of the vector bundle $E$. They satisfy the so-called cocycle condition: 
@@ -1419,7 +1428,7 @@ The \textit{integral of $\omega$ along $\gamma$} is $$\int_{\gamma} \omega \equi
 \end{definition}
 
 \begin{prop}
-Suppose that $\varphi$ is a positive reparameterization of $\gamma$ (i.e., one with positive derivative) . Then $\int_{\gamma} \omega = \int_{\gamma \circ \varphi} \omega$.\footnote{Proposition 11.31 (Lee).}
+Suppose that $\varphi$ is a positive reparameterization of $\gamma$ (i.e., one with positive derivative). Then $\int_{\gamma} \omega = \int_{\gamma \circ \varphi} \omega$.\footnote{Proposition 11.31 (Lee).}
 \end{prop}
 
 \begin{definition}\label{closed}
@@ -1516,9 +1525,12 @@ b \mapsto \sum_{i,j}b(f_i, g_j)\xi^i \otimes \eta^j
 
 We can generalize \Cref{isom}  to obtain an isomorphism $$V_1^{\ast} \otimes \cdots \otimes V_k^{\ast} \cong L(V_1, \ldots, V_k; \R). $$
 
+
 \begin{definition}[Tensor type]
 We say that an element of $$V_{\ell}^k\coloneqq  \underbrace{V^{\ast} \otimes \cdots \otimes V^{\ast}}_{k \text{ copies}} \otimes \underbrace{V \otimes \cdots \otimes V}_{\ell \text{ copies}}$$ is a \textit{$\left(k, \ell\right)$-tensor}. 
 \end{definition}
+
+\pagebreak
 
 \begin{term} $ $
 \begin{enumerate}
@@ -1573,6 +1585,8 @@ Let $\sigma = \delta_j^i dx^j \otimes \frac{\partial}{\partial{x^i}}$, $X = X^k 
 \begin{exmp}
 Show that the tensor $\delta_i^j dx^i \otimes dx^j$ is \emph{not} invariant. 
 \end{exmp}
+
+\pagebreak
 
 \begin{prop} $ $
 \begin{enumerate}
@@ -2067,6 +2081,8 @@ Let $p: \left[0,1\right]^k \to \left[0,1\right]^k$ be a diffeomorphism.
 \item If $p$ is orientation-reversing, then $\int_{\sigma} \omega = {-\int_{\sigma \circ p} \omega}.$
 \end{enumerate}
 \end{prop}
+
+\pagebreak
 
 \begin{definition} $ $
 \begin{enumerate}

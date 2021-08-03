@@ -248,7 +248,7 @@ This is known as the \textit{Alexander horned sphere}. It turns out that $X \con
 \end{exmp}
 
 
-The following are types of spaces that we will care about.
+The following are types of spaces that we shall care about.
 \begin{enumerate}
 \item \underline{Manifolds}.
 \begin{definition}
@@ -434,7 +434,7 @@ Equivalently, a space $X$ is contractible if $\id_X$ is \textit{nullhomotopic}, 
 Homotopy equivalence of maps is an equivalence relation.
 \end{lemma}
 \begin{proof}
-Both reflexivity and symmetry are obvious. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$. Let $$H(x,t) = \begin{cases}
+Both reflexivity and symmetry are obvious. To check transitivity, suppose that $F : f \simeq g$ and $G: g\simeq h$ are homotopies. Let $$H(x,t) = \begin{cases}
 F(x, 2t) & 0 \leq t \leq \frac{1}{2}
 \\ G(x, 2t-1) & \frac{1}{2} \leq t \leq 1
 \end{cases}.$$ Then $H$ is a homotopy $f \simeq h$.
@@ -480,13 +480,13 @@ $\faktor{D^n}{S^{n-1}} \cong S^2$ for any $n\geq 1$.
 \end{note}
 
 \begin{definition}
-Given any space $X$, define the \textit{cone of $X$} as $$C(X) = \faktor{X\times I}{(x,1) \sim (y,1)}.   $$
+Given any space $X$, define the \textit{cone of $X$} as $$C(X) = \faktor{X\times I}{\left(x,1\right) \sim \left(y,1\right)}.   $$
 \end{definition}
 \begin{lemma}
 $C(X)$ is contractible.
 \end{lemma}
 \begin{proof}
-The map $H((x,t), s) \equiv \begin{cases} \left(x, (1-s)t\right) & t\ne 1 \\ (x,1) & t=1
+The map $H((x,t), s) \equiv \begin{cases} \left(x, \left(1-s\right)t\right) & t\ne 1 \\ \left(x,1\right) & t=1
 \end{cases}$ is a null-homotopy.
 \end{proof}
 
@@ -631,7 +631,7 @@ Let $\gamma, \hat{\gamma}: I \to X$ be paths in $X$ such that $\gamma(0) = \hat{
 Define the \textit{fundamental groupoid of a space $X$} as the category $\Pi_1(X)$ where
 \begin{align*}
 \ob(\Pi_1(X)) & \equiv X
-\\ \Hom_{\Pi_1(X)}(x,y) & \equiv \left\{[\gamma]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}.
+\\ \Hom_{\Pi_1(X)}(x,y) & \equiv \left\{\left[\gamma\right]_{\simeq_p} \mid \gamma \text{ is a path from }x \text{ to }y\right\}.
 \end{align*}
  Here, composition of morphisms refers to concatenation of paths . 
 
@@ -756,25 +756,30 @@ A \textit{group action on a space $X$} is an injective group homomorphism $G \to
 \end{definition}
 Let $\Gamma$ act on the space $Y$ such that for every $y\in Y$, there is some open set $U\ni y$ such that $g\cdot U \cap U =\emptyset$ when $g\ne e$. We call such a group action \textit{a covering space action} or \textit{properly discontinuous}. In particular, this action is free.  Proposition 1.40(a) (Hatcher) states that $Y \twoheadrightarrow \faktor{Y}{\Gamma}$ is a covering projection.
 
-\begin{remark}
+\begin{remark}\label{actiso}
 If $Y$ is simply connected, then $\pi_1 \left(\faktor{Y}{\Gamma} , y_0 \right) \cong \Gamma$.
 \end{remark}
 
-Let $\alpha \in \R\setminus \Q$. We have that $S^1 \cong \faktor{\R}{x\sim x+1} \cong \faktor{\R}{\Z}$. Let $\Z$ act on $S^1$ by $n\cdot [x] = [x + n \alpha]$. But note that for any $x\in S^1$, the orbit of $x$ is dense in $S^1$ since $\alpha$ is irrational. Thus, $\faktor{S^1}{\Z}$ has the indiscrete topology, and $S^1 \twoheadrightarrow \faktor{S^1}{\Z}$ is \emph{not} a covering projection.
+Let $\alpha \in \R\setminus \Q$. We have that $S^1 \cong \faktor{\R}{x\sim x+1} \cong \faktor{\R}{\Z}$. Let $\Z$ act on $S^1$ by $n\cdot \left[x\right] = \left[x + n \alpha\right]$. But note that for any $x\in S^1$, the orbit of $x$ is dense in $S^1$ since $\alpha$ is irrational. Thus, $\faktor{S^1}{\Z}$ has the indiscrete topology, and $S^1 \twoheadrightarrow \faktor{S^1}{\Z}$ is \emph{not} a covering projection.
 
+\pagebreak
 
 \begin{exmp} The following, however, are covering projections.
 \begin{enumerate}
 \item $\R^2 \twoheadrightarrow \faktor{\R^2}{\Z^2} \cong S^1 \times S^1$.
 \item $\SL_2(\R) \twoheadrightarrow \faktor{\SL_2(\R)}{\SL_2(\Z)}$.
-\item Set $G = \left \{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}  \mid x,y,z \in \R \right \}$ and $\Gamma = \left \{ \begin{bmatrix} 1 & a & c \\  & 1 & b \\  &  & 1 \end{bmatrix} \mid a,b,c \in \R \right \}$. Then $\Gamma$ is a discrete subgroup of $G$, and $G \twoheadrightarrow \faktor{G}{\Gamma}$ is a covering projection. We call $\faktor{G}{\Gamma}$ an \textit{Iwasawa manifold}.
-Since $G$ is simply connected, we also have that $\pi_1 \left(\faktor{G}{\Gamma} \right) \cong \Gamma$.
+\item Let $G = \left \{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}  \mid x,y,z \in \R \right \}$ and $\Gamma = \left \{ \begin{bmatrix} 1 & a & c \\  0 & 1 & b \\  0 & 0 & 1 \end{bmatrix} \mid a,b,c \in \Z \right \}$. Then $\Gamma$ is a discrete subgroup of $G$, and $G \twoheadrightarrow \faktor{G}{\Gamma}$ is a covering projection. We call $\faktor{G}{\Gamma}$ an \textit{Iwasawa manifold}.
+Since $G$ is simply connected, we also have that $\pi_1 \left(\faktor{G}{\Gamma} \right) \cong \Gamma$ by \cref{actiso}.
 \end{enumerate}
 \end{exmp}
+
+\smallskip
 
 \begin{exercise}
 Prove that $\pi_1(X \times Y, (x_0, y_0)) \cong \pi_1\left(X, x_0\right) \times \pi_1\left(Y, y_0\right)$.
 \end{exercise}
+
+\smallskip
 
 \begin{lemma}
 Let $F : Z \times I \to X$ be any map and $p: Y \to X$ be a covering projection. Suppose that there is some $\widetilde{F}_0 : Z \times \left\{0\right\} \to Y$ such that $p \circ \widetilde{F}_0 = F_0$. Then there exists a unique map $\widetilde{F} : Z \times I \to Y$ such that $p \circ \widetilde{F} = F$ and $\widetilde{F} \restriction_{Z\times \left\{0\right\}} = \widetilde{F}_0$.
@@ -833,16 +838,16 @@ Let $z_0\in Z$.
 \end{claim}
 \begin{proof}
 For any $\left(z_0, t\right) \in Z \times I$, note that $F(z_0, t)$ has some neighborhood $V_{z_0,t}$ such that $$p^{-1}(V_{z_0, t}) = \coprod_{\alpha} V_{z_0,t, \alpha}$$ with $p: V_{z_0, t, \alpha} \to V_{z_0, t}$ a homeomorphism. Thus, $F^{-1}(V_{z_0, t})$ contains some set of the form $\overbrace{U_{z_0, t}}^{\text{nbhd of } z_0} \times \left(a_t, b_t\right)$, so that $F(U_{z_0, t}  \times (a_t, b_t)) \subset V_{z_0, t} $. This makes $\left\{\left(a_t, b_t\right)\right\}_{t\in I}$ an open cover of $I$. As $I$ is compact, there is some $k\in \N$ such that $\left\{(a_{t_i}, b_{t_i})\right\}_{i=1, \ldots, k}$  cover $I$. Set $$U_{z_0} = \bigcap_{1\leq i \leq k} U_{z_0, t_i},$$ which must be  open and contain $z_0$. We obtain a sequence $$ 0= t_0 < t_1 < \cdots < t_n =1 $$ such that $F(U_{z_0} \times [t_i, t_{i+1}])$ is contained in an evenly covered set of $X$. 
-Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0}) =\coprod_j \widetilde{U}_{z_0, 0, j} \subset Y$, say, $j_0$. Define $\widetilde{F} : U_{z_0} \times [0, t_1] \to \widetilde{U}_{z_0, 0, j_0}$ as the composite $p^{-1}_{j_0} \circ F \restriction_{U_{z_0} \times [0, t_1]}$ where $p_{j_0} : \widetilde{U}_{z_0, 0, j_0} \to U_{z_0, 0}$ is some homeomorphism.
+Now, $\widetilde{F}_0 $ is contained in some unique sheet of $p^{-1}(U_{z_0, 0}) =\coprod_j \widetilde{U}_{z_0, 0, j} \subset Y$, say, $j_0$. Define $\widetilde{F} : U_{z_0} \times \left[0, t_1\right] \to \widetilde{U}_{z_0, 0, j_0}$ as the composite $p^{-1}_{j_0} \circ F \restriction_{U_{z_0} \times \left[0, t_1\right]}$ where $p_{j_0} : \widetilde{U}_{z_0, 0, j_0} \to U_{z_0, 0}$ is some homeomorphism.
 
 \medskip
 
- Suppose that we have extended $\widetilde{F}$ to $U_{z_0} \times [0,t_i]$. We can use a similar argument to define an extension $\widetilde{F}$ on $U_{z_0} \times [t_i, t_{i+1}]$.  By induction, it follows that we can construct a lift $\tilde{F} : U_{z_0} \times I \to Y$ of $F$.
+ Suppose that we have extended $\widetilde{F}$ to $U_{z_0} \times \left[0,t_i\right]$. We can use a similar argument to define an extension $\widetilde{F}$ on $U_{z_0} \times \left[t_i, t_{i+1}\right]$.  By induction, it follows that we can construct a lift $\tilde{F} : U_{z_0} \times I \to Y$ of $F$.
 \end{proof}
- It remains to verify that such a lift is unique. For now, assume that $Z= \ast$. Suppose that $\widetilde{F}$ and $\widetilde{F}'$ are two lifts of $F: I \to X$ such that $\widetilde{F}(0) = \widetilde{F}'(0)$. Assume inductively that $\widetilde{F} = \widetilde{F}'$ on $\left[0,t_i\right]$. Since both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are connected and $\widetilde{F}(t_i) = \widetilde{F}'(t_i)$, there is a single sheet over $U_{i-1}$ in which both $\widetilde{F}([t_i, t_{i+1}])$ and $\widetilde{F}'([t_i, t_{i+1}])$ are contained. Since $p$ is injective on this sheet and $p\circ \widetilde{F} = p \circ \widetilde{F}'$, it follows that $\widetilde{F} = \widetilde{F}'$ on $\left[t_i, t_{i+1}\right]$. We are done with our induction.
+ It remains to verify that such a lift is unique. For now, assume that $Z= \ast$. Suppose that $\widetilde{F}$ and $\widetilde{F}'$ are two lifts of $F: I \to X$ such that $\widetilde{F}(0) = \widetilde{F}'(0)$. Assume inductively that $\widetilde{F} = \widetilde{F}'$ on $\left[0,t_i\right]$. Since both $\widetilde{F}\left(\left[t_i, t_{i+1}\right]\right)$ and $\widetilde{F}'\left(\left[t_i, t_{i+1}\right]\right)$ are connected and $\widetilde{F}(t_i) = \widetilde{F}'(t_i)$, there is a single sheet over $U_{i-1}$ in which both $\widetilde{F}\left(\left[t_i, t_{i+1}\right]\right)$ and $\widetilde{F}'\left(\left[t_i, t_{i+1}\right]\right)$ are contained. Since $p$ is injective on this sheet and $p\circ \widetilde{F} = p \circ \widetilde{F}'$, it follows that $\widetilde{F} = \widetilde{F}'$ on $\left[t_i, t_{i+1}\right]$. We are done with our induction.
 
 
- As a result, the  lifts  $\left\{F \restriction_{U_{z} \times [0, t_1]}\right\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\left\{z\right\} \times I$.
+ As a result, the  lifts  $\left\{F \restriction_{U_{z} \times \left[0, t_1\right]}\right\}_{z\in Z}$ constructed above must agree with each other when $U_z \cap U_{z'} \ne \emptyset$. We may thus apply the gluing lemma to get a lift $\tilde{F} : Z \times I \to Y$ of $F$. This must be unique as it is unique when restricted to each segment $\left\{z\right\} \times I$.
 \end{proof}
 
 \begin{corollary}
@@ -1103,7 +1108,7 @@ Let $S_g$ denote the (closed) orientable surface of genus $g$. Note that $S_g \c
 \]
 
 For example, $a_1 \sim \bar{a}_1$. 
-Then we can decompose $S_g$ into a small disk $A$ around the origin and an annulus-like space $B$ so that $A \cap B$ is a smaller annulus bounded above by the boundary of $A$ and below by the inner boundary of $B$. Then $\pi_1(A \cap B) \cong \left\langle \gamma \right\rangle$ where $\left\lvert{\gamma}\right\rvert =\infty$. Further, $\pi_1(A) = 0$, and $$\pi_1(B) \cong \underset{\{1,2, \ldots, 2g\}}{\ast} \Z$$ since $B$ deformation retracts onto a bouquet of $2g$ circles. Observe that $i_{BA}(\gamma) = \prod_{i=1}^{g}[a_i, b_i]$, which implies that $$ \pi_1(S_g) \cong \left\langle a_1, \ldots, a_g, b_1, \ldots, b_g \mid    \prod_{i=1}^{g}[a_i, b_i] =1 \right\rangle .$$
+Then we can decompose $S_g$ into a small disk $A$ around the origin and an annulus-like space $B$ so that $A \cap B$ is a smaller annulus bounded above by the boundary of $A$ and below by the inner boundary of $B$. Then $\pi_1(A \cap B) \cong \left\langle \gamma \right\rangle$ where $\left\lvert{\gamma}\right\rvert =\infty$. Further, $\pi_1(A) = 0$, and $$\pi_1(B) \cong \underset{\{1,2, \ldots, 2g\}}{\ast} \Z$$ since $B$ deformation retracts onto a bouquet of $2g$ circles. Observe that $i_{BA}(\gamma) = \prod_{i=1}^{g}[a_i, b_i]$, which implies that $$ \pi_1(S_g) \cong \left\langle a_1, \ldots, a_g, b_1, \ldots, b_g \mid    \prod_{i=1}^{g}\left[a_i, b_i\right] =1 \right\rangle .$$
 \end{exmp}
 
 \smallskip
@@ -1161,11 +1166,11 @@ Such a property of $X$ is called being \textit{semilocally simply connected}.
 Suppose that $X$ is path connected, locally path connected, and semilocally simply connected (hereafter ``swell"). Then there is some covering projection $p: \widetilde{X} \to X$ such that $\widetilde{X}$ is simply connected. 
 \end{theorem}
 \begin{proof}
-Pick $x_0 \in X$. Let $P_{x_0} \coloneqq  \{\gamma : I \to X \mid \gamma(0) = x_0\}$. Set $\widetilde{X} = \faktor{P_{x_0}}{\simeq_p}$, endowed with the compact-open topology. 
+Pick $x_0 \in X$. Let $P_{x_0} =  \left\{\gamma : I \to X \mid \gamma(0) = x_0\right\}$ and let $\widetilde{X} = \faktor{P_{x_0}}{\simeq_p}$, endowed with the compact-open topology. 
 \end{proof}
 
 \begin{lemma}
-Let $X$ be a swell space.  If $Y_1, Y_2 \overset{p_1, p_2}{\longrightarrow} X$ are two simply connected covering spaces, then they are \textit{isomorphic} in the following sense. There is some homeomorphism $\psi : Y_2 \to Y_1$ such that 
+Let $X$ be a swell space.  If $Y_1, Y_2 \xrightarrow{p_1, p_2} X$ are two simply connected covering spaces, then they are \textit{isomorphic} in the following sense. There is some homeomorphism $\psi : Y_2 \to Y_1$ such that 
 \[
 \begin{tikzcd}
 Y_1 \arrow[d, "p_1"'] & Y_2 \arrow[ld, "p_2"] \arrow[l, "\psi"'] \\
@@ -1195,11 +1200,11 @@ If $X$ is a swell space, then we call such a cover $p: \left(\widetilde{X}, \til
 Let $X$ be swell. For any subgroup $H \leq \pi_1\left(X, x_0\right)$, there exists a path connected covering space $p_H : X_H \to X$ such that $p_H (\pi_1(X_H, h_H)) = H$.
 \end{lemma}
 \begin{proof}
-Define an equivalence relation $\sim$ on the universal cover $p: \widetilde{X} \to X$ as follows. Let $y_1 \sim y_2$ if $p(y_1) = p(y_2)$ and for any two paths $\gamma_1$ and $\gamma_2$ from $x_0$ to $y_1$ and $y_2$, respectively, $\left(p\gamma_1\right)\ast \left(p\gamma_2\right)^{-1}\in H$. Set $X_H = \faktor{\widetilde{X}}{\sim}$ and note that the map $p_H : X_H \to X$ given by $\left[y\right] \mapsto p(y)$ is a covering space. Set $x_H= q(\tilde{x}_0)$ where $q: \widetilde{X} \to X_H$ denotes the natural projection. We know that $p_H \pi_1(X_H, x_H)$ consists of loops $\gamma$ in $\left(X, x_0\right)$ whose lifts to $X_H$ are also loops.  If $\tilde{\gamma}$ denotes the lift of $\gamma$ to $\widetilde{X}$, then we see that $$\tilde{\gamma}(1) \sim \tilde{x}_0 \iff p_H(\tilde{\gamma}^{-1} c_{\tilde{x} _0}) \in H,$$ meaning that  $p_H \circ \tilde{\gamma}$ is a loop at $x_0$ if and only if $\gamma$ belongs to $H$.
+Define an equivalence relation $\sim$ on the universal cover $p: \widetilde{X} \to X$ as follows. Let $y_1 \sim y_2$ if $p(y_1) = p(y_2)$ and for any two paths $\gamma_1$ and $\gamma_2$ from $x_0$ to $y_1$ and $y_2$, respectively, $\left(p\gamma_1\right)\ast \left(p\gamma_2\right)^{-1}\in H$. Set $X_H = \faktor{\widetilde{X}}{\sim}$ and note that the map $p_H : X_H \to X$ given by $\left[y\right] \mapsto p(y)$ is a covering space. Set $x_H= q(\tilde{x}_0)$ where $q: \widetilde{X} \to X_H$ denotes the natural projection. We know that $p_H \pi_1(X_H, x_H)$ consists of loops $\gamma$ in $\left(X, x_0\right)$ whose lifts to $X_H$ are also loops.  If $\tilde{\gamma}$ denotes the lift of $\gamma$ to $\widetilde{X}$, then we see that $$\tilde{\gamma}(1) \sim \tilde{x}_0 \iff p_H\left(\tilde{\gamma}^{-1} c_{\tilde{x} _0}\right) \in H,$$ meaning that  $p_H \circ \tilde{\gamma}$ is a loop at $x_0$ if and only if $\gamma$ belongs to $H$.
 \end{proof}
 
 \begin{lemma}
-Let $X$ be path connected and locally path connected. Suppose that $p_1:(Y_1, y_1) \to \left(X, x_0\right)$ and $p_2 : (Y_2, y_2) \to \left(X, x_0\right)$ are two (path connected) covering projections. Then there exists an isomorphism $\varphi : (Y_1, y_1) \to (Y_2, y_2)$ if and only if  $$p_{1\ast} \pi_1(Y_1, y_1) = p_{2 \ast} \pi_1(Y_2, y_2).$$
+Let $X$ be path connected and locally path connected. Suppose that $p_1: \left(Y_1, y_1\right) \to \left(X, x_0\right)$ and $p_2 : (Y_2, y_2) \to \left(X, x_0\right)$ are two (path connected) covering projections. Then there exists an isomorphism $\varphi : \left(Y_1, y_1\right) \xrightarrow{\cong} \left(Y_2, y_2\right)$ if and only if  $$p_{1\ast} \pi_1(Y_1, y_1) = p_{2 \ast} \pi_1(Y_2, y_2).$$
 \end{lemma}
 \begin{proof} $ $
 \smallskip
@@ -1221,16 +1226,19 @@ Let $X$ be swell. There is a bijection between the set of isomorphism classes of
 
 \smallskip
 
-Let $p: \widetilde{X} \to X$ be a covering space. The set of isomorphisms $\widetilde{X}  \to \widetilde{X} $, called \textit{deck transformations}, forms a group $G(\widetilde{X})$ under composition. This corresponds to the Galois group in algebra.
+Let $p: \widetilde{X} \to X$ be a covering space. The set of isomorphisms $\widetilde{X}  \to \widetilde{X} $, called \textit{deck transformations}, forms a group $G\left(\widetilde{X}\right)$ under composition. This corresponds to the Galois group in algebra.
 
-By \cref{ULP}, if $\widetilde{X}$ is path connected, then any $f\in G(\widetilde{X})$ is entirely determined by its value at a single point.
+By \cref{ULP}, if $\widetilde{X}$ is path connected, then any $f\in G\left(\widetilde{X}\right)$ is entirely determined by its value at a single point.
 
 \begin{definition}
-A covering space $p:Y \to X$ is \textit{normal} if $G(Y)$ acts transitively on the set $p^{-1}(x)$ for each $x\in X$.
+A covering space $p:Y \to X$ is \textit{normal} if $G(Y)$ acts transitively on the set $p^{-1}(x)$ for each $x\in X$, where 
+\[
+f  \cdot y \equiv f(y), \ \quad f \in G(Y), \ y \in p^{-1}(x)
+.\]
 \end{definition}
 
 \begin{lemma}
-Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected covering space with $X$ swell. Let $H\coloneqq  p_{\ast}\pi_1\left(Y, y_0\right)$. Then 
+Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected covering space with $X$ swell. Let \linebreak $H =  p_{\ast}\pi_1\left(Y, y_0\right)$. Then 
 \begin{enumerate}
 \item $p$ is normal if and only if $H \unlhd \pi_1\left(X, x_0\right)$.
 \item $G(Y) \cong \faktor{N(H)}{H}$. 
@@ -1243,10 +1251,10 @@ Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected coverin
 \end{enumerate}
 \end{proof}
 
-Therefore, $G(Y) \cong \faktor{\pi_1\left(X, x_0\right)}{H}$ when $p$ is normal.
+Therefore, $G(Y) \cong \faktor{\pi_1\left(X, x_0\right)}{H}$ so long as $p$ is normal.
 
 \begin{exmp}
-If $\Gamma$ acts freely and properly discontinuously on the space $Y$, then the quotient map $Y \to \faktor{Y}{\Gamma}$ is a normal covering space such that $\Gamma \cong G(Y)$. Hence $\Gamma \cong \faktor{\pi_1\left(X, x_0\right)}{p_{\ast}\pi_1\left(Y, y_0\right)}$ where $X\coloneqq  \faktor{Y}{\Gamma}$.
+If $\Gamma$ acts freely and properly discontinuously on the space $Y$, then the quotient map $Y \to \faktor{Y}{\Gamma}$ is a normal covering space such that $\Gamma \cong G(Y)$. Hence $\Gamma \cong \faktor{\pi_1\left(X, x_0\right)}{p_{\ast}\pi_1\left(Y, y_0\right)}$ where $X\equiv  \faktor{Y}{\Gamma}$.
 \end{exmp}
 
 \begin{definition}
@@ -1261,7 +1269,7 @@ Since every tree is contractible, we see that $G$ is homotopy equivalent to a we
 \end{proof}
 
 \begin{note}
-If $X$ is a graph and $p: Y \to X$ is a covering space, then $Y$ is also a graph. 
+If $X$ is a graph with covering space $Y$, then $Y$ is also a graph. 
 \end{note}
 
 \begin{theorem}[Nielsen-Schreier]
@@ -1656,7 +1664,7 @@ Let $c\in C_k$ such that $\partial{c} = 0$. By exactness, there exists $b\in B_k
 \\ & =\partial{i}u
 \\ &=  i\partial{u}.
 \end{align*}
-Therefore, $\partial{b'} =i(a -\partial{u})$. Since $[a] = \left[a-\partial{u}\right] $ in $H_{k-1}(A)$, we see that $a$ is independent of our choice of $b$. From now on, we will denote such an $a$ by $a_c$. It is clear that $\partial '$ is also independent of our choice of $c\in \ker{\partial}$ and thus is well-defined. Finally, it is straightforward to check that it is a homomorphism.
+Therefore, $\partial{b'} =i(a -\partial{u})$. Since $[a] = \left[a-\partial{u}\right] $ in $H_{k-1}(A)$, we see that $a$ is independent of our choice of $b$. From now on, we shall denote such an $a$ by $a_c$. It is clear that $\partial '$ is also independent of our choice of $c\in \ker{\partial}$ and thus is well-defined. Finally, it is straightforward to check that it is a homomorphism.
 \end{proof}
 \item Verify that the given long sequence is exact both at $H_k(C)$ and at  $H_{k-1}(A)$.
 \begin{proof} $ $
@@ -2402,7 +2410,7 @@ We say that a space $M$ is an \textit{n-dimensional manifold} if it is Hausdorff
 \end{definition}
 
 
-Let $X$ be an $n$-manifold and $x\in X$. Let $U$ be a coordinate ball around $x$. Then 
+Let $X$ be an $n$-manifold and $x\in X$. Let $U$ be a coordinate ball around $x$. By excision,
 \begin{align*} 
  {H}_k(X, X \setminus x) & \cong {H}_k(U, U \setminus x)  \\ &   \cong \widetilde{H}_{k-1}(U\setminus x) \\ & \cong  \widetilde{H}_{k-1}(S^{n-1})  \cong \begin{cases} 0 & k \ne n \\ \Z & k =n \end{cases}.\end{align*} There are precisely two generators of  $\widetilde{H}_n(U, U \setminus x)$, a choice $\alpha_x$ of which is called a \textit{local orientation of $X$ at $x$}.
 
@@ -2427,7 +2435,7 @@ Let $V$ be a coordinate neighborhood of $x$ that is contained in $W$. Then there
 ,\] which shows that $j_y^U$ is an isomorphism for any $y \in U$.
 \end{proof}
 
-\begin{definition}
+\begin{definition}[Orientable]
 An  $n$-manifold $X$ is \textit{orientable} if for any $x\in X$, we can choose a local orientation $\alpha_x \in H_n(X, X \setminus x)$ such that for any $x\in X$, we can find an open set $U \ni x$ and $\alpha_U \in H_n(X, X \setminus U)$ such that $j_y^U(\alpha_U) = \alpha_y$ for every $y\in U$. We call such a choice of local orientations \textit{locally compatible}.  If we specify the local orientations $\alpha_x$, then we say that $X$ is \textit{oriented}. 
 \end{definition}
 
@@ -2539,7 +2547,7 @@ In this case, we call a generator $[X]$ of $H_n(X)$ a \textit{fundamental} or \t
 
 
 \begin{definition}
-Let $X$ be any space. Define the \textit{open cone on $X$} as $$C^0{X} =\faktor{[0,1) \times X}{(x,0) \sim (x',0)} .$$
+Let $X$ be any space. Define the \textit{open cone on $X$} as $$C^0{X} =\faktor{[0,1) \times X}{\left(x,0\right) \sim \left(x',0\right)} .$$
 \end{definition}
 
 \begin{definition}
@@ -2644,7 +2652,8 @@ There exists a non-canonical split short exact sequence $$\begin{tikzcd}
 \item  {\textbf{(Reduced cohomology)}} Define the map $f : G \to C^n(X; G)$ by $g \mapsto c_g$ where $c_g$ denotes the constant map at $g$. Let $\widetilde{C}^{\ast}(X; G) \coloneqq  \coker{f}$, thereby defining $\widetilde{H}^{\ast}(X; G)$.
 
 Then $\widetilde{H}^n(X; G) = H^n(X; G)$ when $n>0$. Note that $C^0(X; G)$ is precisely the group of functions $X \to G$. For any function $\varphi : X \to G$, we have that $\delta{\varphi}(\sigma) = \varphi(\sigma(1)) - \varphi(\sigma(0))$ for any $\sigma \in \sing_1(X)$. This shows that $\varphi$ is a cocycle if and only if it is constant on each path component of $X$. Thus, $$H^0(X; G) \cong \prod_{\pi_0(X)} G.$$ It follows that $\widetilde{H}^0(X; G)$ is precisely the group of all functions $X \to G$ constant on each path component of $X$ modulo the group of globally constant functions $X \to G$.
-\item  {\textbf{(Relative cohomology)}} Let $\left(X, A\right)$ be a pair.  Note that $C_n(X,A)$ is isomorphic to the free abelian group with basis $\left\{\varphi : \Delta^n \to X \mid \im{\varphi} \subset X \setminus A\right\}$. Applying $\Hom({-}, G)$ to the short exact sequence $\eta: 0 \to C_n(A) \to C_n(X) \to C_n(X,A) \to 0$ yields the sequence $$ 0 \from C^n(A; G) \from C^n(X; G) \from C^n(X, A; G) \from 0  .$$ This is exact because $\eta$ splits. Thus, $$ C^n(X, A; G) \cong \{\varphi : \sing_n(X) \to G \mid \sigma : \Delta^n \to A \implies \varphi(\sigma) = 0\}.$$
+\item  {\textbf{(Relative cohomology)}} Let $\left(X, A\right)$ be a pair.  Note that $C_n(X,A)$ is isomorphic to the free abelian group with basis $\left\{\varphi : \Delta^n \to X \mid \im{\varphi} \subset X \setminus A\right\}$. Applying $\Hom({-}, G)$ to the short exact sequence $\eta: 0 \to C_n(A) \to C_n(X) \to C_n(X,A) \to 0$ yields the sequence $$ 0 \from C^n(A; G) \from C^n(X; G) \from C^n(X, A; G) \from 0  .$$ This is exact because $\eta$ splits. Thus, $$ C^n(X, A; G) \cong 
+\left\{\varphi : \sing_n(X) \to G \mid \sigma : \Delta^n \to A \implies \varphi(\sigma) = 0\right\}.$$
 \end{enumerate}
 \end{note}
 
@@ -2898,7 +2907,7 @@ Any polynomial ring is graded since $R[x] = \bigoplus_{n \in \N} Rx^n$.
 Let $X = \CP^n$ (resp. $\RP^n$) and $R = \Z$ (resp. $\Z/2$), then $H^{\ast}(X; R) \cong \faktor{R[\tilde{x}]}{(\tilde{x}^{n+1})}$ where $\left\lvert{\tilde{x}}\right\rvert =2$ (resp. $1$).
 \end{theorem}
 \begin{proof}
-See Theorem 3.19 (Hatcher) for a proof of the case where $X= \RP^n$. We will assume that $X = \CP^n$.
+See Theorem 3.19 (Hatcher) for a proof of the case where $X= \RP^n$. We shall assume that $X = \CP^n$.
 
 \medskip
 
@@ -3244,7 +3253,7 @@ If $M$ is $R$-oriented, then we obtain a relative fundamental class $[M] \in H_n
 Let $M^n$ be an $R$-oriented compact manifold with boundary. Then the map $D_M: H^k(M, \partial{M}; R) \to H_{n-k}(M; R)$ given by $D{\varphi} = [M] \frown \varphi$ is an isomorphism. 
 \end{theorem}
 \begin{proof}
-We will suppress our notation for the coefficient ring $R$. Let $C$ denote the directed set of compact sets $K$ contained in a complement of collar neighbohood of $\partial{M}$. Observe that
+We shall suppress our notation for the coefficient ring $R$. Let $C$ denote the directed set of compact sets $K$ contained in a complement of collar neighbohood of $\partial{M}$. Observe that
 \begin{align*}
 H^k_c(\Int{M}) & \cong \varinjlim_{K_{\Int{M}}} H^k(\Int{M}, \Int{M} \setminus K)
 \\ & \cong \varinjlim_{C} H^k(M, M \setminus K) \cong \varinjlim_{\epsilon{\text{-collars }}U} H^k(M, U)
@@ -3488,7 +3497,7 @@ Let $F$ be a presheaf on $X$ and $x\in X$. Define \textit{the stalk $F_x$ of $F$
 \begin{exmp} $ $
 \begin{enumerate}
 \item For any $x \in X$, $\underline{A}_x =A$.
-\item The \textit{germs of continuous functions at $x$} are precisely the elements of $$C_x = \faktor{  \left\{(U, f) \mid x\in U, \ f \in C(U)\right\}    }{\sim}$$ where $\left(U, f\right) \sim \left(V, g\right)$ if $f =g$ on $U \cap V$.
+\item The \textit{germs of continuous functions at $x$} are precisely the elements of $$C_x = \faktor{  \left\{\left(U, f\right) \mid x\in U, \ f \in C(U)\right\}    }{\sim}$$ where $\left(U, f\right) \sim \left(V, g\right)$ if $f =g$ on $U \cap V$.
 \item Let $X = \R$. Let $C^{\infty}({-})$ denote the sheaf of smooth functions on $X$. Then we have an exact sequence $$ 0 \to \left(\text{flat functions}\right) \to C_0^{\infty} \to \R[\![x]\!] \to 0   .$$
 \item Let $\mathcal{A}$ denote the sheaf of real analytic functions. Then $\mathcal{A}_0 \cong \R\{x\}$, the ring of real analytic functions.
 \end{enumerate}
@@ -3570,11 +3579,11 @@ There are \textit{enough injectives} in $R^{\op}{-}\mathbf{Mod}$, i.e., any obje
 There are enough injectives in $\mathbf{Sh}_{X}$. 
 \end{prop}
 \begin{proof}
-If $\left\{I_x\right\}_{x\in X}$ denotes a family of abelian groups , then define $\underline{I}(U) = \prod_{x\in U} I_x$ and $\Hom_{\mathbf{Sh}}(F, \underline{I}) = \prod_{x\in X} \Hom(F_x, I_x)$. As a result, if $I_x$ is injective (i.e., divisible), then $I$ will be injective. Given any sheaf $F$, choose $I_x$ injective such that $F_x \hookrightarrow I_x$. By doing this, we can form an injective object $I$ so that $0 \to F \to I$ is exact. 
+Suppose that $\left\{I_x\right\}_{x\in X}$ is a family of abelian groups. Let $\underline{I}(U) = \prod_{x\in U} I_x$ and $\Hom_{\mathbf{Sh}}(F, \underline{I}) = \prod_{x\in X} \Hom(F_x, I_x)$. As a result, if $I_x$ is injective (i.e., divisible), then $\underline{I}$ will be injective. Given any sheaf $F$, choose $I_x$ injective such that $F_x \hookrightarrow I_x$. By doing this, we can form an injective object $I$ so that $0 \to F \to I$ is exact. 
 \end{proof}
 
 \begin{definition}
-Given any diagram of sheaves $$  0 \to A \overset{i}{\longrightarrow} B \overset{j}{\longrightarrow} C \to 0  ,$$ we say that this is \textit{exact} if $0 \to A_x  \overset{i_x}{\longrightarrow}  B_x  \overset{j_x}{\longrightarrow}  C_x \to 0$ is exact for each $x\in X$. 
+We say that a diagram  $$  0 \to A \overset{i}{\longrightarrow} B \overset{j}{\longrightarrow} C \to 0  $$ of sheaves is \textit{exact} if $0 \longrightarrow A_x  \overset{i_x}{\longrightarrow}  B_x  \overset{j_x}{\longrightarrow}  C_x \longrightarrow 0$ is exact for each $x\in X$. 
 \end{definition}
 
 \begin{prop}
@@ -3582,7 +3591,7 @@ If $0 \to A \to B \to C \to 0$ is exact in $\mathbf{Sh}_{X}$, then $0 \to A(X) \
 \end{prop}
 
 \begin{exmp}
- Let $X = \C^{\times}$. Then $$ 0 \to \underline{\Z} \overset{i}{\longrightarrow} \mathcal{O}_X \overset{g}{\longrightarrow} \mathcal{O}_X^X \to 0$$ is exact where $\mathcal{O}_X^X(U) \equiv \{ \varphi : U \to \C$ holomorphic $\mid \varphi(x) \ne 0$ for any $x\in U\}$ and $g : f \mapsto e^{2\pi i f}$.
+ Let $X = \C^{\times}$. Then $$ 0 \to \underline{\Z} \overset{i}{\longrightarrow} \mathcal{O}_X \overset{g}{\longrightarrow} \mathcal{O}_X^X \to 0$$ is exact where $\mathcal{O}_X^X(U) \equiv \left\{ \varphi : U \to \C \text{ holomorphic} \mid \varphi(x) \ne 0 \text{ for any } x\in U\right\}$ and $g : f \mapsto e^{2\pi i f}$.
 \end{exmp}
 \begin{proof}
 Clearly, $i$ is injective. If $f \in \mathcal{O}_X(U)$ and $e^{2\pi i f} =1$, then $f : U \to \C$ is locally constant and $f(x) \in \Z$. If $\varphi \in \mathcal{O}_{X,x}^X$, then there exist a small open simply connected set $U$ and $\tilde{\varphi} \in \mathcal{O}_X^X(U)$ such that $\tilde{\varphi}_x = \varphi$ and $\log{\tilde{\varphi}_x}$ exists. Globally, however, \hl{$z\in \mathcal{O}_X^X(\C^{\times})$} cannot be hit by $e^{2\pi i \varphi}$.
@@ -3591,6 +3600,8 @@ Clearly, $i$ is injective. If $f \in \mathcal{O}_X(U)$ and $e^{2\pi i f} =1$, th
 \begin{definition}
 Let $F$ be a sheaf on $X$. A \textit{resolution of $F$} is an exact sequence of the form $$0 \to F \to F^0 \to F^1 \to F^2 \to \cdots .$$
 \end{definition}
+
+\pagebreak
 
 \begin{exmp} $ $
 \begin{enumerate}
@@ -3941,7 +3952,7 @@ We call the dimension of $E_0$ the \textit{rank of the bundle}. If $\pi$ is smoo
 \item $X \times E_0$ is called the \textit{trivial vector bundle}.
 \item  The M\"obius strip, i.e., $\faktor{\left[0,1\right]\times \R}{\sim}$ where $\left(0, {-t}\right) \sim \left(1, t\right)$.
 \item Let $X$ be a smooth manifold. Then the tangent bundle $T{X}$ is a vector bundle. 
-\item If $G$ is a Lie group, then $ G \times T_0{G} \cong T{G}$ via $ (g, \xi) \mapsto \left(L_g\right)_{\ast}{\xi}$ where  $L_g$ denotes left translation by $g$. 
+\item If $G$ is a Lie group, then $ G \times T_0{G} \cong T{G}$ via $ \left(g, \xi\right) \mapsto \left(L_g\right)_{\ast}{\xi}$ where  $L_g$ denotes left translation by $g$. 
 \end{enumerate}
 \end{exmp}
 

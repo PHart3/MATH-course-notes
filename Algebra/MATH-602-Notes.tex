@@ -373,7 +373,7 @@ We can define a further class of examples with the following notion from represe
 \begin{definition}  Let $S$ be a set and $G$ be a group. Let $k$ be a field.
 \begin{enumerate}
 \item If $\left(S, +\right)$ is an abelian group and $\theta : G \to \aut_+(S)$ is an action, then we call $S$ a \textit{left $G$-module}.
-\item If $S$ is also a vector space over $k$ and $\theta$ is $k$-linear, then $\theta$ is called a \textit{$k$-linear representation of $G$}.
+\item If $S$ is also a vector space over $k$ and $\theta$ preserves $k$-linearity, then $\theta$ is called a \textit{$k$-linear representation of $G$}.
 \end{enumerate}
 \end{definition}
 
@@ -470,10 +470,11 @@ S \arrow[r, "f"']
 & T
 \end{tikzcd}
 \]
+We say that $\theta$ and $\psi$ are \textit{isomorphic}, written as $\theta \cong \psi$,  if there is an equivariant bijection for $\theta$ and $\psi$.
 \end{definition}
 
 
-We say that $\theta$ and $\psi$ are \textit{isomorphic}, written as $\theta \cong \psi$,  if there is an equivariant bijection for $\theta$ and $\psi$.
+
 
 Note that  $\theta \cong \psi$ if and only if there exist intertwiners $f_1 : S \to T$ and $f_2 : T \to S$ such that $f_1 \circ f_2 = \id_T$ and $f_2 \circ f_1 = \id_S$. 
 
@@ -1108,7 +1109,7 @@ A sequence of groups with homomorphisms $S \overset{\phi}{\longrightarrow} G \ov
 \begin{enumerate}[label=(\roman*)]
 \item  $\phi$ is injective, 
 \item $\pi$ is surjective, and 
-\item $\ker{\pi} = \im{i}$. 
+\item $\ker{\pi} = \im{\phi}$. 
 \end{enumerate}
 In this case, we say that $G$ is an \textit{extension of $Q$ by $S$}. If $\phi(S) \leq Z(G)$, then we say this is a \textit{central extension}.
 \end{definition}
@@ -2302,7 +2303,7 @@ a                                    &
 \item We have arbitrary fibered products and coproducts in $\c\coloneqq  \mathbf{Set}$. Indeed, let $a$ be a set and $\left\{(A_{\alpha}, \pi_{\alpha})\right\}_{\alpha}$ be a collection of objects in $\c_a$. Then set $$\underset{a}{\prod_{\alpha}} A_{\alpha} = \left\{x \in \prod_{\alpha} A_{\alpha} :  (\exists y \in a)(\forall \alpha \in I)(\pi_{\alpha}(x_{\alpha}) = y)\right\}.$$ Next, let $\left\{(A_{\alpha}, i_{\alpha})\right\}_{\alpha}$ be a collection of objects in $\c^a$. Then set $$ 
 \overset{a}{\coprod}_{\alpha}A_{\alpha} = \faktor{\coprod_{\alpha} A_{\alpha}}{\sim_a}$$ where $\eta \sim_a \xi$ if there is some $y \in a$ along with $\alpha, \beta \in I$ such that $\eta = i_{\alpha}(y) = i_{\beta}(y) = \xi$.
 \item Arbitrary fibered products and fibered coproducts exist in $\mathbf{Mod}_R$ and $\mathbf{Mod}_G$ by the same constructions as those in (1) since the $\pi_{\alpha}$ and $i_{\alpha}$ are module homomorphisms.
-\item $\mathbf{Grp}$ inherits arbitrary products and fibered products from $\mathbf{Set}$, equipped the componentwise group law. In \cref{L22}, we will construct arbitrary coproducts and fibered coproducts in $\mathbf{Grp}$. 
+\item $\mathbf{Grp}$ inherits arbitrary products and fibered products from $\mathbf{Set}$, equipped the componentwise group law. In \cref{L22}, we shall construct arbitrary coproducts and fibered coproducts in $\mathbf{Grp}$. 
 \end{enumerate}
 \end{exmp}
 
