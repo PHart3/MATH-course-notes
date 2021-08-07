@@ -153,7 +153,7 @@
 % info for header block in upper right hand corner
 \name{Perry Hart}
 \class{Boston University}
-\assignment{August 10, 2017}
+\assignment{August 13, 2017}
 
 \begin{document}
 
@@ -243,7 +243,7 @@ Soon we shall prove that $\ORT(4)\subset \GL(4,\R)$. Therefore, it makes sense t
 Let $\left\{\e_1, \ldots, \e_4\right\}$  denote the standard basis of $\R^4$. We are now ready to establish one of our main results.
 
 \begin{theorem}[TRF-decomposition]\label{t1}
-Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $\left(a,b,c,d\right)\mapsto \left(a,b,c,{-d}\right)$. Let $A\in \Isom(\R^4)$. Then we have $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
+Let $\F:\R^4\to \R^4$ be given either by the identity map or the reflection $\left(a,b,c,d\right)\mapsto \left(a,b,c,{-d}\right)$. Let $A\in \Isom(\R^4)$. Then we have that $$A=T_{A(\0)}\circ R' \circ  \F$$ for some $R'\in \SO(4)$.
 \end{theorem}
 \begin{proof}
  By \cref{l1}, we have that $A=T_{A(\0)}\circ g$ for some $g\in \ORT(4)$. Since $g$ is an isometry, we know that $ \left\lVert{\x-\y}\right\rVert^2= \left\lVert{g(\x)-g(\y)}\right\rVert^2$ for any $\x, \y\in \R^4$. As $g$ fixes $\0$, it follows that $ \left\lVert{g(\v)}\right\rVert=\v$ for any $\v\in \R^4$.
@@ -252,7 +252,7 @@ We can apply the additivity of the inner product to get
  \left\lVert{g(\v)}\right\rVert^2+ \left\lVert{g(\w)}\right\rVert^2-2\left\langle g(\v), g(\w)\right\rangle & =\left\langle g(\v)-g(\w), g(\v)-g(\w)\right\rangle 
 \\ & =\left\langle \v-\w, \v-\w\right\rangle
 \\ & = \left\lVert{\v}\right\rVert^2+ \left\lVert{\w}\right\rVert^2-2\left\langle \v, \w\right\rangle.
-\end{align*}  We can cancel terms to find that $g$ preserves the inner product. Note that our proof of this fact actually applies to any element of $\ORT(4)$.
+\end{align*}  We can cancel terms to find that $g$ preserves the inner product. Note that our proof of this fact applies to any element of $\ORT(4)$.
 
 Now, it follows that $ \left\lVert{g(\e_i)}\right\rVert^2= \left\lVert{\e_i}\right\rVert^2=1$ for each $i=1,2,3,4$, so that $ \left\lVert{g(\e_i)}\right\rVert=1$. Similarly,  we can deduce that  $\left\langle g(\e_i),g(\e_j)\right\rangle = 0$ if $i\ne j$. Thus, $\left\{g(\e_i)\right\}_{i=1,2,3,4}$ is an orthonormal (hence linearly independent) set.  Let $$M\coloneqq \begin{bmatrix} \vdots & \vdots & \vdots & \vdots \\g(\e_1) & g(\e_2) & g(\e_3) & g(\e_4) \\ \vdots & \vdots & \vdots & \vdots\end{bmatrix}.$$ Then $M^TM=MM^T=I$, so that $M$ is invertible with $M^T=M^{-1}$.  \Cref{l2} implies that $M\in \ORT(4)$. The isometry $f\coloneqq M^{-1}\circ g:\R^4 \to \R^4$ satisfies $f(\0)=\0$ and $f(\e_i)=\e_i$ for each $i$. 
 
@@ -406,7 +406,7 @@ $\SU(2) \cong S^3$ in $\mathbf{Grp}$.
 \end{theorem}
 
 \begin{proof}
-For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, let $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}=1$, which establishes a clear bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
+For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, let $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}=1$, which establishes a bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
 \begin{align*}
 f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}} & \overline{pz-q\bar{w}} \end{bmatrix}\\ & =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ {-\bar{p}\bar{w}-\bar{q}{z}} & {\bar{p}\bar{z}-\bar{q}{w}} \end{bmatrix}\\ & =\begin{bmatrix} p & q \\ {-\bar{q}} & \bar{p}\end{bmatrix}\begin{bmatrix} z & w \\ {-\bar{w}} & \bar{z}\end{bmatrix}
 \\ & =f(y)f(x).
@@ -428,7 +428,7 @@ with \emph{topological} characterizations, having treated them only as algebraic
 d(f,g) \equiv \max\left\{ \left\lvert{f(x)-g(x)}\right\rvert : x \in \R^4,\ \left\lvert{x}\right\rvert \leq 1\right\},
 \]  which is a modest generalization of the metric induced by the familiar operator norm in the theory of finite-dimensional vector spaces.
 \begin{remark}
-All five groups are actually Lie groups.
+All five groups are Lie groups.
 \end{remark}
 
 \smallskip
@@ -449,9 +449,9 @@ $\SU(2)$ is simply connected.
 
 \begin{theorem}
  $\U(2)\cong \left(\SU(2)\times \U(1)\right)/\Z_2$ in $\mathbf{Top}$.
-\end{theorem}.
+\end{theorem}
 \begin{proof}
-We claim that the map $\tilde{\psi}$ from \cref{u2iso} is a homeomorphism. Indeed, it is clearly continuous due to the universal property of quotient spaces. Moreover, its inverse is given by 
+We claim that the map $\tilde{\psi}$ from \cref{u2iso} is a homeomorphism. Indeed, it is  continuous due to the universal property of quotient spaces. Moreover, its inverse is given by 
 \[
 X\mapsto \left[\left(X\frac{1}{\sqrt{\det{X}}}, \sqrt{\det{X}}\right)\right]
 ,\] which is continuous because both $\sqrt{\cdot}$ and $\det(\cdot)$ are continuous.
@@ -460,15 +460,11 @@ X\mapsto \left[\left(X\frac{1}{\sqrt{\det{X}}}, \sqrt{\det{X}}\right)\right]
 \bigskip
 
 \begin{prop}
-For any quaternions $x,y$, we have $\overline{xy}=\bar{y}\bar{x}$.
+For any quaternions $x$ and $y$, we have that $\overline{xy}=\bar{y}\bar{x}$.
 \end{prop}
 
-\smallskip
-
-Recall that by definition $\left\lvert{x}\right\rvert=\sqrt{x\bar{x}}$.
-
 \begin{cor}\label{mult}
-$\left\lvert{xy}\right\rvert=\left\lvert{x}\right\rvert \left\lvert{y}\right\rvert$.
+$\left\lvert{xy}\right\rvert=\left\lvert{x}\right\rvert \left\lvert{y}\right\rvert$, where $\left\lvert{x}\right\rvert\equiv \sqrt{x\bar{x}}$
 \end{cor}
  
 
@@ -477,7 +473,7 @@ $\SO(4) \cong S^3\times \SO(3)$ in $\mathbf{Top}$.
 \end{theorem}
 
 \begin{proof}
-Formally, we can identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $\left\lvert{aq}\right\rvert=\left\lvert{a}\right\rvert\left\lvert{q}\right\rvert=\left\lvert{a}\right\rvert$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we see that $$\left\lvert{a-b}\right\rvert=\left\lvert{\alpha_q(a-b)}\right\rvert=\left\lvert{aq-bq}\right\rvert,$$ so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
+We may identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the map $\alpha_q :\R^4\to \R^4$ given by $a\mapsto aq$ satisfies $\left\lvert{aq}\right\rvert=\left\lvert{a}\right\rvert\left\lvert{q}\right\rvert=\left\lvert{a}\right\rvert$ thanks to \cref{mult}. Hence for any $a,b\in \R^4$, we see that $$\left\lvert{a-b}\right\rvert=\left\lvert{\alpha_q(a-b)}\right\rvert=\left\lvert{aq-bq}\right\rvert,$$ so that $\alpha_q \in \Isom(\R^4)$. Further, since $\alpha_q(0)=0$, it belongs to $\ORT(4)$. Hence it preserves the Euclidean inner product.
 
 \smallskip
 
@@ -485,10 +481,9 @@ We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as foll
 
 \smallskip
 
-Finally, the restriction of $f$ to $S^3 \times \SO(3)$ yields our desired homeomorphism.  
+Finally, the restriction of $f$ to $S^3 \times \SO(3)$ yields a homeomorphism $S^3\times \SO(3) \xrightarrow{\cong} \SO(4)$.  
 \end{proof}
 
-\smallskip
 
 \begin{cor}
 $\SO(4) \cong S^3\times \RP^3$.
