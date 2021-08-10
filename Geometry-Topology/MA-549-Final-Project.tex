@@ -287,7 +287,7 @@ Every  $f\in \Isom(\R^4)$ and every $g\in \Isom(\C^2)$ are invertible, so that  
 \end{cor}
 
 \begin{proof}
-Thanks to \cref{af}, we can write $f(\x)=M\x+\b$. Then it's easy to verify that \linebreak $f^{-1}(\x)=M^{-1}\x-M^{-1}\b$.
+Thanks to \cref{af}, we can write $f(\x)=M\x+\b$. Now it's easy to verify that \linebreak $f^{-1}(\x)=M^{-1}\x-M^{-1}\b$.
 
 Moreover, with $T$ given by \eqref{eqn:T}, we find that $g=T\circ h \circ T^{-1}$ for some $h\in \Isom(\R^4)$. Hence $g$ is the composite of three invertible functions and thus is invertible. 
 \end{proof}
@@ -375,7 +375,7 @@ A map $R\in \M^2(\C)$ satisfies $H(R(x), R(y))=H(x,y)$ for any $x,y\in \C^2$ if 
 \end{lemma}
 
 \begin{proof}
-Note that $H(x,y)=\bar{x}^Ty$. Then 
+Note that $H(x,y)=\bar{x}^Ty$. Hence 
 \begin{align*}
 H(Rx, Ry)=H(x,y) & \iff \overline{Rx}^TRy=\bar{x}^Ty
 \\ & \iff \bar{x}^T(\overline{R}^TR)y=\bar{x}^Ty 
@@ -406,7 +406,7 @@ $\SU(2) \cong S^3$ in $\mathbf{Grp}$.
 \end{theorem}
 
 \begin{proof}
-For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, let $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}=1$, which establishes a bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Then since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
+For any $x\coloneqq \left(x_1, x_2, x_3, x_4\right) \in S^3$, let $z=x_1+x_2i\in \C$ and $w=x_3+x_4i\in \C$. Then $x=z+wj$. Define the map $f: S^3\to \SU(2)$ by $$f(x)= \begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}.$$ We see that $|x|^2=|z|^2+|w|^2=\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}$. Hence $x\in S^3$ if and only if $\det{\begin{bmatrix} z & w\\ {-\bar{w}} & \bar{z} \end{bmatrix}}=1$, which establishes a bijection. It remains to check that $f$ is a homomorphism. Let $y\in S^3$ so that $y=p+qj$. Since $jw=\bar{w}j$ and $jz=\bar{z}j$, we obtain $$xy=pz+pwj+q(jz)+p(jw)j=(pz-p\bar{w})+pw+q\bar{z})j.$$ Finally, we compute 
 \begin{align*}
 f(yx)& =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ \overline{-pw+q\bar{z}} & \overline{pz-q\bar{w}} \end{bmatrix}\\ & =\begin{bmatrix} {pz-q\bar{w}}&  {pw+q\bar{z}} \\ {-\bar{p}\bar{w}-\bar{q}{z}} & {\bar{p}\bar{z}-\bar{q}{w}} \end{bmatrix}\\ & =\begin{bmatrix} p & q \\ {-\bar{q}} & \bar{p}\end{bmatrix}\begin{bmatrix} z & w \\ {-\bar{w}} & \bar{z}\end{bmatrix}
 \\ & =f(y)f(x).
@@ -477,7 +477,7 @@ We may identify $\R^4$ with the group of quaternions. For each $q\in S^3$, the m
 
 \smallskip
 
-We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Then set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, \left(1,x, y, z\right)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $\left(v, u, r, s\right)\mapsto \left(v, \left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $\left(1,0,0,0\right)$, as required.  
+We construct a continuous embedding $E : \ORT(3)\hookrightarrow \ORT(4)$ as follows. Let $X\in \ORT(3)$ and $X=\begin{bmatrix} \x & \y & \z \end{bmatrix}$ where $\x, \y, \z \in \R^3$. Now set $$E(X)=\left(1, x, y, z\right)\coloneqq \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 &  \vdots & \vdots & \vdots \\ 0 &\x & \y & \z  \\ 0 & \vdots & \vdots & \vdots \end{bmatrix},$$ which is an element of $\ORT (4)$. Now, define $f: S^3\times \ORT(3) \to \ORT(4)$ by $\left(q, \left(1,x, y, z\right)\right)\mapsto \left(q, xq, yq, zq\right)$. As $\alpha_q$ preserves the norm and the inner product, it preserves orthonormality. This means that $f$ is well-defined.  It's clear that $f$ is continuous. Moreover, $f$ is invertible with continuous inverse $\left(v, u, r, s\right)\mapsto \left(v, \left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\right)$. Note that, in fact, $\left(1, uv^{-1}, rv^{-1}, sv^{-1}\right)\in \ORT(3)$ because $\alpha_{v^{-1}}$ preserves orthonormality, so that in particular $vv^{-1}$ must be orthogonal to each of the other three column vectors. Hence the first row vector must be $\left(1,0,0,0\right)$, as required.  
 
 \smallskip
 

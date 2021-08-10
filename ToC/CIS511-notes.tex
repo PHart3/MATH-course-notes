@@ -421,12 +421,12 @@ Let $L\subset \left\{0,1\right\}^{\ast}$ consist of those strings $x$ such that 
 
 \begin{definition} $ $
 \begin{enumerate}
-\item An $\NFA$ is called an \textit{$\epsilon{-}\NFA$} if its transition function is of the form $\delta: Q\times \left(\Sigma \cup \{\epsilon\}\right) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
+\item An $\NFA$ is called an \textit{$\epsilon{\text{-}}\NFA$} if its transition function is of the form $\delta: Q\times \left(\Sigma \cup \{\epsilon\}\right) \to \P(Q)$. In this case, we call $\delta$ an \textit{$\epsilon$-transition}.
 \item  Let $q$ be a state. The \textit{$\epsilon$-closure of $q$} is the set of states that can be reached from $q$ by taking finitely many $\epsilon$-transitions. 
 \end{enumerate}
 \end{definition}
 
-This determines a function $\epsilon{-}\cl(-): \P(Q) \to \P(Q)$.
+This determines a function $\epsilon{\text{-}}\cl(-): \P(Q) \to \P(Q)$.
 
 \smallskip
 
@@ -437,7 +437,7 @@ We have that $\hat{\delta}(q, x) = \begin{cases} \epsilon \text{-}\cl(q) & x = \
 \end{note}
 
 \begin{theorem}
-For any $\epsilon{-}\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
+For any $\epsilon{\text{-}}\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
 Use a similar argument to the proof of \cref{same}. In particular, set $$q_0^{(1)} = \epsilon \text{-}\cl(q_0)$$ and 
@@ -463,9 +463,9 @@ If $L$ is finite or cofinite, then it is regular.
 \begin{proof} By assumption, there exist $\DFA$'s $M_1$ and $M_2$ such that $L_1 = L(M_1)$ and $L_2 = L(M_2)$.
 \begin{enumerate}[label=(\alph*)]
 \item Construct a new $\DFA$ $M_3$ by making every final state of $M_1$ non-final and vice versa. Then $L(M_3) = \overline{L_1}$.
-\item Construct an $\epsilon{-}\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
+\item Construct an $\epsilon{\text{-}}\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
 \item Note that $L_1 \cap L_2 = \left(\overline{L_1} \cup \overline{L_2}\right)^c$.  Now apply (a) and (b).
-\item Construct an $\epsilon{-}\NFA$ $M_3$ as follows. Given any final state $q$ of $M_1$, add an $\epsilon$-transition from $q$ to the start state of $M_2$. Then $L(M_3) = L_1\cdot L_2$.
+\item Construct an $\epsilon{\text{-}}\NFA$ $M_3$ as follows. Given any final state $q$ of $M_1$, add an $\epsilon$-transition from $q$ to the start state of $M_2$. Then $L(M_3) = L_1\cdot L_2$.
 \end{enumerate}
 \end{proof}
 
@@ -1180,7 +1180,7 @@ Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \left\{0,1
 Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O\left(t^2 \cdot (\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert)^3\right) = O\left(t^2\right)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
 \end{lemma}
 \begin{proof}
-We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. If $B\coloneqq 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$, then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ be be computed by a circuit of size $O\left(2^{3B}\right)$ and hence by one of size $O\left(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3\right)$. Thus, there is a circuit of size $O\left(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3\right)$ that simulates $M$ on inputs of size $n$.
+We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. Let $B= 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$. Then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ can be computed by a circuit of size $O\left(2^{3B}\right)$ and hence by one of size $O\left(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3\right)$. Thus, there is a circuit of size $O\left(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3\right)$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
@@ -1693,6 +1693,8 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 \begin{remark}\label{good}
 Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, we have that  $\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
 \end{remark}
+
+\pagebreak
 
 \begin{definition} $ $
 \begin{enumerate}
