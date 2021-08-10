@@ -170,7 +170,7 @@
 \begin{document}
 
 \begin{abstract}
-We introduce the concept of a natural transformation in category theory, leading to equivalences and adjunctions. The main sources for this talk are the following.
+We introduce the concept of a natural transformation in category theory. Afterward, we describe equivalences and adjunctions. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab.
 \item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 3.
@@ -208,7 +208,7 @@ Note that if $\d$ is a groupoid (i.e., a category in which every morphism is an 
 Let $F$, $G$, and $H$ be functors $\c \to \d$. The \textit{identity natural transformation} $\id_F : F \Rightarrow F$ is given by $A \mapsto \id_{F(A)}$. Moreover, given natural transformations $\phi: F \to G$ and $\psi: G \to H$, define the \textit{composite natural transformation} $\psi \circ \phi$ by $A \mapsto (\psi \circ \phi)_A \coloneqq \psi_{A} \circ \phi_{A}$.
 
 \begin{lemma}
-A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse $\phi^{{-1}} : G \Rightarrow F$.
+A natural transformation $\phi: F \Rightarrow G$ is a natural isomorphism iff it has an inverse\linebreak $\phi^{{-1}} : G \Rightarrow F$.
 \end{lemma}
 \begin{proof}
 This follows from \cref{rmk} along with our definition of a composite natural transformation.
@@ -216,7 +216,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ By viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ By viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes\linebreak $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
