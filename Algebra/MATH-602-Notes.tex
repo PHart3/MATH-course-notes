@@ -222,6 +222,7 @@ These notes are based on Tony Pantev's ``Algebra I'' lectures at UPenn. Any mist
 
 \begin{definition} 
 A \textit{(left) action of a group $G$ on a set $S$} is a homomorphism $\theta : G \to \aut(S)$, where $ \aut(S)$ denotes the group of all set bijections $S\to S$. 
+\end{definition}
 
 \begin{notation}
 We may write $g\cdot x$ for $\theta(g)(x)$.
@@ -235,8 +236,6 @@ Equivalently, a group action is a function $a : G \times S \to S$ such that
 \item $a(e, x) = x$
 \end{enumerate}
 for any $g,g' \in G$ and $x\in S$. 
-\end{definition}
-
 Indeed, given a homomorphism $\theta : G \to \aut(S)$, we have a function $G\times S \to S$ defined by  $\left(g, x\right) \mapsto \theta(g)(x)$. Conversely, given an action $a : G\times S \to S$, we have a homomorphism $G \to \aut(S)$ defined by $g \mapsto \left(x \mapsto a(g, x)\right)$.
 
 
@@ -244,7 +243,6 @@ Indeed, given a homomorphism $\theta : G \to \aut(S)$, we have a function $G\tim
 The \textit{trivial group action} sends each element $g$ to the identity function $\id_S$ on $S$.
 \end{exmp}
 
-\smallskip
 
 \begin{definition}
 A \textit{right group action} is a function $b: S \times G \to S$ such that 
@@ -265,14 +263,12 @@ Given $a$, define $f: G^{\op} \to \aut(S)$ by $g \mapsto \left(x \mapsto a(x, g)
 
 \medskip
 
-Every group action $\theta: G \to \aut(S)$ factors through a \textit{tautological action} $H \leq \aut(S)$. 
+Every group action $\theta: G \to \aut(S)$ factors through a \textit{tautological action} $H \leq \aut(S)$: 
 \[
 \begin{tikzcd}
 G \arrow[r, two heads] \arrow[rr, "\theta", bend left] & \im{\theta} \arrow[r, hook] & \aut(S)
-\end{tikzcd}
-\]
-
-Moreover, we have a commutative triangle
+\end{tikzcd}.
+\] Moreover, we have a commutative triangle
 \[ \begin{tikzcd}
 G \arrow{r}{q} \arrow[swap]{dr} {\theta} & \faktor{G}{\ker(\theta)} \arrow{d}{\cong} \\% 
  & \theta(G)
@@ -281,11 +277,16 @@ G \arrow{r}{q} \arrow[swap]{dr} {\theta} & \faktor{G}{\ker(\theta)} \arrow{d}{\c
 
 \medskip
 
+
+
 \begin{definition}
 Consider a group action $\theta: G \to \aut(S)$.
 \begin{enumerate}
 \item We say that $\theta$ is \textit{faithful} or \textit{effective} if it is injective. 
-\item We say that $\theta$ is \textit{free} if for any $g\in G$ and $s\in S$, $\theta(g)(s) =s \implies g =e$.
+\item We say that $\theta$ is \textit{free} if for any $g\in G$ and $s\in S$, 
+\[
+\theta(g)(s) =s \implies g =e.
+\]
 \end{enumerate}
 \end{definition}
 
@@ -294,13 +295,16 @@ Consider a group action $\theta: G \to \aut(S)$.
  Let $x\in S$. Define the \textit{stabilizer subgroup of $x$} as 
  \[
  \stab_{\theta}(x)  \equiv \left\{g \in G \mid g \cdot x = x\right\}.
- \] Further, define the \textit{orbit of $x$} as $$\orb_{\theta} \equiv \left\{y \in S \mid \exists g \in G \text{ s.t. }g \cdot x = y\right\}.$$ Note that the orbits of an action behave as equivalence classes. 
+ \] Further, define the \textit{orbit of $x$} as 
+ \[
+ \orb_{\theta}(x) \equiv \left\{y \in S \mid \exists g \in G \text{ s.t. }g \cdot x = y\right\}.
+ \] Note that the orbits of an action behave as equivalence classes. 
 
 
 \begin{exercise} $ $
 \begin{enumerate}
 \item Given an action $a: G \times S \to S$, show that the equivalence relation $R_a \subset S \times S$ is the projection of $\graph(a) \subset G\times S \times S$ onto $S \times S$.
-\item If $\theta : G \to \aut(S)$ is a group action and $x\in S$, then show that the function $f : \faktor{G}{\stab_{\theta}(x)} \to \orb_{\theta}(x)$ given by $\left[g\right] \mapsto g \cdot x$ is well-defined and bijective.
+\item If $\theta : G \to \aut(S)$ is a group action and $x\in S$, then show that the function \linebreak$f : \faktor{G}{\stab_{\theta}(x)} \to \orb_{\theta}(x)$ given by $\left[g\right] \mapsto g \cdot x$ is well-defined and bijective.
 \end{enumerate}
 \end{exercise}
 \begin{proof} $ $
@@ -353,7 +357,7 @@ Let $\theta$ denote the conjugation action. Show that $\ker{\theta}$ equals the 
 
 \subsection{Lecture 2}
 
-Suppose that a set $S$ possesses additional structure $\Phi$ (such as a group law). Let the subgroup $\aut_{\Phi}(S) \leq \aut(S)$ consists of all those automorphisms of $S$ preserving $\Phi$. We say that a group $G$ \textit{acts on $S$ by automorphisms of $\Phi$} if we have an action $\theta : G\to \aut(S)$ such that $\theta(g)$ preserves $\Phi$ for every $g\in G$.  In this case, there is a commutative triangle
+Suppose that a set $S$ possesses additional structure $\Phi$ (such as a group law). Let the subgroup $\aut_{\Phi}(S) \leq \aut(S)$ consists of all those automorphisms of $S$ preserving $\Phi$. We say that a group $G$ \textit{acts on $S$ by automorphisms of $\Phi$} if we have an action $\theta : G\to \aut(S)$ such that $\theta(g)$ preserves $\Phi$ for every $g\in G$.  In this case, there is a commutative triangle of the form
 
 \[ 
 \begin{tikzcd}
@@ -410,19 +414,19 @@ Let $f(x) = a_nx^n + \cdots + a_0$ over $\Q$ where $a_n \ne 0$. Thanks to the fu
 
 Consider 
 \begin{gather*}
-\Q\left[\tilde{\beta}\right]  \coloneqq  \Q[\beta_1, \ldots, \beta_n] = \left\{F(\beta_1, \ldots, \beta_n) : F \in \Q[x_1, \ldots, x_n]\right\} \\ \underbrace{\gal(f)  \coloneqq  \left\{\sigma \in S_n : \exists\text{ bijection } g : \Q\left[\tilde{\beta}\right] \to \Q\left[\tilde{\beta}\right] \text{ s.t. }  g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)})\  \forall{F} \in \Q[x_1, \ldots, x_n]\right\}}_{\textit{Galois group of }f}.
+\Q\left[\tilde{\beta}\right]  \coloneqq  \Q\left[\beta_1, \ldots, \beta_n\right] = \left\{F(\beta_1, \ldots, \beta_n) : F \in \Q\left[x_1, \ldots, x_n\right]\right\} \\ \underbrace{\gal(f)  \coloneqq  \left\{\sigma \in S_n : \exists\text{ bijection } g : \Q\left[\tilde{\beta}\right] \to \Q\left[\tilde{\beta}\right] \text{ s.t. }  g(F(\beta_1, \ldots, \beta_n)) = F(\beta_{\sigma(1)}, \ldots, \beta_{\sigma(n)})\  \forall{F} \in \Q\left[x_1, \ldots, x_n\right]\right\}}_{\textit{Galois group of }f}.
 \end{gather*}
 
 \begin{exercise}
-Show that $g: G \to \aut(\Q[\tilde{\beta]})$ is a homomorphism where $G \coloneqq  \left\{g(\sigma): \sigma \in \gal(f)\right\}$.
+Show that $g: G \to \aut(\Q\left[\tilde{\beta}\right])$ is a homomorphism where $G \coloneqq  \left\{g(\sigma): \sigma \in \gal(f)\right\}$.
 \end{exercise}
 
 \smallskip
 
-In fact, $G$ is a representation of $\Q[\tilde{\beta}]$, yielding
+In fact, $G$ is a representation of $\Q\left[\tilde{\beta}\right]$, yielding
 \[ \begin{tikzcd}
-G \arrow{r} \arrow[swap]{dr} & \aut(\Q[\tilde{\beta}]) \\% 
- & \GL_\Q(\Q[\tilde{\beta}]) \arrow[hookrightarrow]{u}
+G \arrow{r} \arrow[swap]{dr} & \aut(\Q\left[\tilde{\beta}\right]) \\% 
+ & \GL_\Q(\Q\left[\tilde{\beta}\right]) \arrow[hookrightarrow]{u}
 \end{tikzcd}.
 \]
 Now, consider the polynomial $f(x) \equiv (x^2 -3)(x^2 -5)$, which has roots $\left\{\pm \sqrt{3}, \pm \sqrt{5}\right\}$. Then $\gal(f) \subset S_4$. Note that $g\cdot q= q$ for each $g \in \gal(f)$ and $q\in \Q$. If $\sigma(1) =3$, then $g(\sigma)(\beta_1^2) = g(\sigma)  (3) = \beta_3^2 = 5$, which is impossible. By similar reasoning, it follows that $\gal(f) = \left\{(1), (1 2), (3 4), (1 2)(3 4)\right\} \cong \Z_2 \times \Z_2$.
@@ -495,7 +499,7 @@ If $x \in K$, then $f_x: \faktor{G}{\stab_\theta(x)} \to K$ given by $[g] \mapst
 \end{theorem}
 
 \begin{proof}
-Let $[g] = [h]$. Then $g = hs$ for some $s \in \stab(x)$. Hence $$\theta(g)(x) = \theta(hs)(x) = \theta(h)(\theta(s)(x)) = \theta(h)(x),$$ proving that $f_x$ is well-defined.
+Let $[g] = [h]$. Then $g = hs$ for some $s \in \stab(x)$. Hence $$\theta(g)(x) = \theta(hs)(x) = \theta(h)(\theta(s)(x)) = \theta(h)(x),$$ which proves that $f_x$ is well-defined.
 
 Define the map $F: K \to \stab_\theta(x)$ by $F(y) = S_y \coloneqq  \left\{g \in G : \theta(g)(x) = y\right\} = \left[s_0\right]$ for fixed $s_0 \in S_y$.
 It's easy to check that this is the inverse of $f_x$. 
@@ -1030,8 +1034,9 @@ We may adapt this proof to show that if $A$ is a finitely generated abelian grou
 
 \smallskip
 
+
 \begin{corollary}
-Weak Sylow-I.
+Weak Sylow-I (\cref{ws1}).
 \end{corollary}
 
 
@@ -1531,7 +1536,7 @@ A filtration $F^{\bullet}G$ is called \textit{non-repetitious} if $F^i \ne F^{i+
 \end{definition}
 
 \begin{definition}
-We say that $\left\{R^iG\right\}_{i=1}^t$ is a \textit{refinement} of $\left\{F^iG\right\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to [t]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
+We say that $\left\{R^iG\right\}_{i=1}^t$ is a \textit{refinement} of $\left\{F^iG\right\}_{i=1}^s$ if there is a non-decreasing map $j : [s] \to \left[t\right]$ such that $F^aG = R^{j(a)}G $ for every $a \in [s]$.
 \end{definition}
 
 \begin{theorem}[Schreier refinement]\label{schr}
@@ -2193,7 +2198,7 @@ h_x(y) &  \to F(y)
 \begin{exmp} $ $
 \begin{enumerate}
 \item Define the presheaf $\P : \mathbf{Set}^{\op} \to \mathbf{Set}$ on objects by $S \mapsto \P(S)$ and on morphisms by $\P(f : S \to T) : A \mapsto f^{-1}(A).$ For $\P$ to be representable, we need to find some set $Q$ and $\xi \subset Q$ such that $\Hom(S, Q) \to \P(S)$ given by $u \mapsto u^{-1}(\xi)$ is a bijection for every set $S$. We can do so by setting $Q = \left\{0, 1\right\}$ and $\xi = \left\{1\right\}$ since $\Hom(S, \left\{0, 1\right\}) \cong \P(S)$ via the characteristic function on $S$.
-\item Consider the forgetful presheaf $U: \mathbf{Ring} \to \mathbf{Set}$ on  $\mathbf{Ring}^{\op}$.  For any unital ring $R$, any ring map $\phi : \Z[t] \to R$ is determined by the value $\phi(t)$. Therefore, the map $\Hom_{\mathbf{Ring}}( \rho, R) \to R$ given by $u \mapsto U(u)(\xi)$ is bijective where $\rho \equiv \Z[t]$ and $\xi \equiv t$ (which belongs to $U(\Z[t])$). This shows that $U$ is represented by $\Z[t]$.
+\item Consider the forgetful presheaf $U: \mathbf{Ring} \to \mathbf{Set}$ on  $\mathbf{Ring}^{\op}$.  For any unital ring $R$, any ring map $\phi : \Z\left[t\right] \to R$ is determined by the value $\phi(t)$. Therefore, the map $\Hom_{\mathbf{Ring}}( \rho, R) \to R$ given by $u \mapsto U(u)(\xi)$ is bijective where $\rho \equiv \Z\left[t\right]$ and $\xi \equiv t$ (which belongs to $U(\Z\left[t\right])$). This shows that $U$ is represented by $\Z\left[t\right]$.
 \end{enumerate}
 \end{exmp}
 
@@ -2225,10 +2230,10 @@ where $x, x', x'' \in V$ and $y, y', y'' \in W$ and $c \in k$. Finally, set $T =
 
  Instead of constructing the real numbers as equivalence classes of Cauchy sequences or as Dedekind cuts, we want to find a special property distinguishing $\R$ (equivalently, an open or closed interval) in  $\mathbf{Top}$. 
 
-We can pick out the interval $[0,1]$ among all topological spaces as follows. We see that $$[0,1]\cong \left( \faktor{[0,1] \coprod [0,1]}{\text{first 1 = second 0}} \right)$$ via the mean function $M$. Let $\c$ denote the category of pairs $\left(X, \alpha\right)$ where $X$ is a topological space with two ordered marked points $\ell_x$ and $r_x$  along with a map $\alpha :  \faktor{X \coprod X}{\sim} \overset{\cong}{\longrightarrow} X$ where the first $r_x$ is equal under $\sim$ to the second $\ell_x$.
+We can pick out the interval $\left[0,1\right]$ among all topological spaces as follows. We see that $$\left[0,1\right]\cong \left( \faktor{\left[0,1\right] \coprod \left[0,1\right]}{\text{first 1 = second 0}} \right)$$ via the mean function $M$. Let $\c$ denote the category of pairs $\left(X, \alpha\right)$ where $X$ is a topological space with two ordered marked points $\ell_x$ and $r_x$  along with a map $\alpha :  \faktor{X \coprod X}{\sim} \overset{\cong}{\longrightarrow} X$ where the first $r_x$ is equal under $\sim$ to the second $\ell_x$.
  
 \begin{theorem}[Freyd]
-$\left([0,1], M\right)$ is the terminal object in $\c$.
+The pair $\left(\left[0,1\right], M\right)$ is the terminal object in $\c$.
 \end{theorem}
 
 \subsection{Lecture 21}
@@ -2476,8 +2481,8 @@ For each $s\in S$, define $\delta_s : S \to \bigoplus_{s\in S} G_s$ by $$\delta_
 \]
 Notice that $\phi$ must be surjective. Hence $\phi^{\ab}$ is also surjective.
 
-It remains to show that it is injective. Let $[x] \in \ker{\phi}^{\ab}$.
-Then we may write $$[x] = n_1n_2\cdots n_r+\Fr(S)'$$ where each $n_i \in G_i$. This implies that $$0= \phi^{\ab}([x]) = \sum_{i=1}^r n_i \delta_{s_i},$$ and thus each $n_i$ vanishes. This proves that $[x]=0$, so that $\ker{\phi^{\ab}}$ is trivial. 
+It remains to show that it is injective. Let $\left[x\right] \in \ker{\phi}^{\ab}$.
+Then we may write $$\left[x\right] = n_1n_2\cdots n_r+\Fr(S)'$$ where each $n_i \in G_i$. This implies that $$0= \phi^{\ab}(\left[x\right]) = \sum_{i=1}^r n_i \delta_{s_i},$$ and thus each $n_i$ vanishes. This proves that $\left[x\right]=0$, so that $\ker{\phi^{\ab}}$ is trivial. 
 \end{proof}
 
 \begin{lemma}\label{l14}
@@ -2571,47 +2576,47 @@ $\deg(p_1 + p_2) \leq \max(\deg p_1, \deg p_2)$.
 
 
 Let $S$ be a set. Note that $\Fun^{\fs}(S, \Z_{\geq 0})$ is an additive monoid because $\Z$ is one. We can view its elements as finite subsets of $S$ where each element of $S$ is ``colored" by a nonnegative integer. Alternatively, we can view its elements as monomials in elements of $S$. For any $s\in S$, define $t_s : S \to \Z_{\geq 0}$ by $$x \mapsto \begin{cases} 0 & s \ne x \\ 1 & s =x \end{cases}.$$ Then for any $\xi \in \Fun^{\fs}(S, \Z_{\geq 0})$, we have that $$\xi = \prod_{s\in S}t_s^{\xi(s)} =\prod_{s\in \supp(\xi)}t_s^{\xi(s)},$$
-Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial ring over $A$ on $\left\{t_s\right\}_{s\in S}$} as $$A[S] \equiv \Fun^{\fs}(\Fun^{\fs}(S, \Z_{\geq 0}), A)$$ equipped with the operations
+Let $A \in \ob \mathbf{CommRing}$. Define the \textit{multivariable polynomial ring over $A$ on $\left\{t_s\right\}_{s\in S}$} as $$A\left[S\right] \equiv \Fun^{\fs}(\Fun^{\fs}(S, \Z_{\geq 0}), A)$$ equipped with the operations
 \begin{align*}
 (f+g)(\xi) & \equiv f(\xi) +g(\xi)
 \\ (f\cdot g)(\xi) & \equiv \mathop{\sum_{\mu, \nu}}_{\mu \cdot \nu = \xi} f(\mu) \cdot g(\nu).
 \end{align*}
 
-Note that $A[S] \in  \ob \mathbf{CommRing}$ with $0_{A[S]}(\xi) =0$ and and $$1_{A[S]}(\xi) = \begin{cases} 0_A & \xi \ne 0 \\ 1_A & \xi =0   \end{cases}$$ for each monomial $\xi$. 
+Note that $A\left[S\right] \in  \ob \mathbf{CommRing}$ with $0_{A\left[S\right]}(\xi) =0$ and and $$1_{A\left[S\right]}(\xi) = \begin{cases} 0_A & \xi \ne 0 \\ 1_A & \xi =0   \end{cases}$$ for each monomial $\xi$. 
 
 \begin{note}
-There is  a natural ring monomorphism $i_A : A \hookrightarrow A[S]$ given by $a \mapsto a1_{A[S]}$.
+There is  a natural ring monomorphism $i_A : A \hookrightarrow A\left[S\right]$ given by $a \mapsto a1_{A\left[S\right]}$.
 \end{note}
 
-Any $f\in A[S]$ has the form $\sum_{\xi \in \supp(f)} f(\xi)\delta_{\xi}$. Let $ \delta_{\xi}\coloneqq \prod_{s\in \supp(\xi)}t_s^{\xi(s)}$, allowing us to write $f$ uniquely in the form of a polynomial in several variables, namely
+Any $f\in A\left[S\right]$ has the form $\sum_{\xi \in \supp(f)} f(\xi)\delta_{\xi}$. Let $ \delta_{\xi}\coloneqq \prod_{s\in \supp(\xi)}t_s^{\xi(s)}$, allowing us to write $f$ uniquely in the form of a polynomial in several variables, namely
 \[
 \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)}
 .\]
 
 \begin{prop} $ $
 \begin{enumerate}
-\item The polynomial functor $A[-]: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to the forgetful functor  $\left\lvert{-}\right\rvert: \mathbf{CommRing}^A \to \mathbf{Set}$.
+\item The polynomial functor $A{\left[-\right]}: \mathbf{Set} \to \mathbf{CommRing}^A $ is left adjoint to the forgetful functor  $\left\lvert{-}\right\rvert: \mathbf{CommRing}^A \to \mathbf{Set}$.
 \begin{proof}
-We want a natural bijection $\Hom_{\mathbf{CommRing}^A}(A[S], B) \cong \Hom_{\mathbf{Set}}(S, \left\lvert{B}\right\rvert)$ for any ring $B$ and any set $S$.  Given a commutative diagram 
+We want a natural bijection $\Hom_{\mathbf{CommRing}^A}(A\left[S\right], B) \cong \Hom_{\mathbf{Set}}(S, \left\lvert{B}\right\rvert)$ for any ring $B$ and any set $S$.  Given a commutative diagram 
 \[
 \begin{tikzcd}
-{A[S]} \arrow[r, "\theta"] & B \\
+{A\left[S\right]} \arrow[r, "\theta"] & B \\
 A \arrow[u, hook] \arrow[ru, "i"'] & 
 \end{tikzcd}
-\] of ring maps, define the set map $\hat{\theta} : S \to \left\lvert{B}\right\rvert$ by $s\mapsto \theta(t_s)$. Conversely, given a set map $\phi : S\to \left\lvert{B}\right\rvert$, define the ring map $\hat{\phi} : A[S] \to B$ by $$ \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)}  \mapsto \sum_{\xi \in \supp(f)} i(f(\xi))\prod_{s\in \supp(\xi)}\phi(t_s)^{\xi(s)}  .$$
+\] of ring maps, define the set map $\hat{\theta} : S \to \left\lvert{B}\right\rvert$ by $s\mapsto \theta(t_s)$. Conversely, given a set map $\phi : S\to \left\lvert{B}\right\rvert$, define the ring map $\hat{\phi} : A\left[S\right] \to B$ by $$ \sum_{\xi \in \supp(f)} f(\xi)\prod_{s\in \supp(\xi)}t_s^{\xi(s)}  \mapsto \sum_{\xi \in \supp(f)} i(f(\xi))\prod_{s\in \supp(\xi)}\phi(t_s)^{\xi(s)}  .$$
 \end{proof}
-\item Any set inclusion $T \subset S$ incudes a ring monomorphism $A[T] \hookrightarrow A[S]$.
+\item Any set inclusion $T \subset S$ incudes a ring monomorphism $A\left[T\right] \hookrightarrow A\left[S\right]$.
 \end{enumerate}
 \end{prop}
 
 \begin{exercise}
-Apply the Yoneda lemma to the adjoint pair $\left(A[-], \left\lvert - \right\rvert\right)$ to prove that $$A[S]\cong A[T][S\setminus T].$$
+Apply the Yoneda lemma to the adjoint pair $\left(A{\left[-\right]}, \left\lvert - \right\rvert\right)$ to prove that $$A\left[S\right]\cong A\left[T\right][S\setminus T].$$
 \end{exercise}
 
 \medskip
 
 
-Given a monomial $\xi$ in elements of $S$, let $\deg(\xi) = \sum_{s\in S} \xi(s).$ If $f\in A[S]$, then define the \textit{degree of $f$} as $$ \deg(f)  \equiv \max \{ \deg (\xi) : f(\xi) \ne 0\}  .$$ By convention, $\deg(0) = {-\infty}$.
+Given a monomial $\xi$ in elements of $S$, let $\deg(\xi) = \sum_{s\in S} \xi(s).$ If $f\in A\left[S\right]$, then define the \textit{degree of $f$} as $$ \deg(f)  \equiv \max \{ \deg (\xi) : f(\xi) \ne 0\}  .$$ By convention, $\deg(0) = {-\infty}$.
 
 
 \begin{lemma} $ $ 
@@ -2649,7 +2654,7 @@ Recall that a commutative ring $R$ is called an \textit{integral domain} if it h
 If $A$ is an integral domain, then $\deg(fg) = \deg(f) + \deg(g)$.
 \end{lemma}
 \begin{proof}
-Suppose that $A$ has no zero divisors. Given $f,g \in A[S]$,  write 
+Suppose that $A$ has no zero divisors. Given $f,g \in A\left[S\right]$,  write 
 \begin{gather*}
 f= \sum_{\xi} f(\xi)t^{\xi}
 \\  g= \sum_{\xi} g(\xi)t^{\xi}.
@@ -2661,8 +2666,8 @@ Also, if $g=0$ or $f=0$, then clearly $\deg(fg) = \deg(f) + \deg(g)$.
 \begin{corollary}
 Let $A$ be an integral domain. 
 \begin{enumerate}
-\item $\left(A[S]\right)^{\times} =A^{\times}$.
-\item $A[S]$ is an integral domain.
+\item $\left(A\left[S\right]\right)^{\times} =A^{\times}$.
+\item $A\left[S\right]$ is an integral domain.
 \end{enumerate}
 \end{corollary}
 
@@ -2673,19 +2678,19 @@ Consider an object $\left(B, i : A \to B\right)$ in the undercategory $\mathbf{C
 \end{definition}
 
 \begin{definition}
-Let $B$ be a commutative $A$-algebra and $S\subset B$. Then $S$ is \textit{algebraically independent over $A$} if the natural homomorphism $A[S] \to B$ is injective. 
+Let $B$ be a commutative $A$-algebra and $S\subset B$. Then $S$ is \textit{algebraically independent over $A$} if the natural homomorphism $A\left[S\right] \to B$ is injective. 
 
 If $S=\left\{x\right\}$, then we say that $x$ is \textit{transcendental over $A$} if $S$ is algebraically independent over $A$ and \textit{algebraic over $A$} otherwise.
 \end{definition}
 
 \begin{definition}
-Let $B$ be a commutative $A$-algebra. We say that $B$ is \textit{finitely generated} (or \textit{has finite type}) if $A[T] \to B$ is surjective for some finite subset $T\subset B$.
+Let $B$ be a commutative $A$-algebra. We say that $B$ is \textit{finitely generated} (or \textit{has finite type}) if $A\left[T\right] \to B$ is surjective for some finite subset $T\subset B$.
 \end{definition}
 
 \medskip
 
 \begin{prop}
-If $S$ and $T$ are sets, then $S\cong T \iff \Z[S]\cong \Z[T]$.
+If $S$ and $T$ are sets, then $S\cong T \iff \Z\left[S\right]\cong \Z\left[T\right]$.
 \end{prop}
 \begin{proof}
 See \cref{CH}.
@@ -2841,7 +2846,7 @@ N \cap M_i \arrow[r, hook] & M_i \arrow[r, two heads] & q(M_i) \\
 N \cap M_r \arrow[u, equal] \arrow[r, hook] & M_r \arrow[u, hook] \arrow[r, two heads] & q(M_r) \arrow[u, equal]
 \end{tikzcd}.
 \]
-Suppose that $i\geq r$ and let $x \in M_i$. Then $[x] = [y]$ for some $y\in M_r$, i.e., $x = y+n$ for some $n\in N$. This implies that $x-y \in N \cap M_i = N \cap M_r$. It follows that $x = y+t$ for some $t\in M_r$, so that $x\in M_r$. This proves that $M_r\subset M_i$, hence $M_i = M_r$.
+Suppose that $i\geq r$ and let $x \in M_i$. Then $\left[x\right] = \left[y\right]$ for some $y\in M_r$, i.e., $x = y+n$ for some $n\in N$. This implies that $x-y \in N \cap M_i = N \cap M_r$. It follows that $x = y+t$ for some $t\in M_r$, so that $x\in M_r$. This proves that $M_r\subset M_i$, hence $M_i = M_r$.
 \item The Artinian case follows from a similar argument to (1).
 \item Assume that both $N$ and $\faktor{M}{N}$ are finitely generated $R$-modules. Then there are finite sets $S$ and $T$ together with maps
 \begin{align*}
@@ -2933,15 +2938,15 @@ Then we may construct a commutative diagram
 \end{exmp}
 
 \begin{theorem}[Hilbert's basis] 
-If $A\in \ob{\mathbf{CommRing}}$ is Noetherian, then $A[x]$ is also Noetherian. 
+If $A\in \ob{\mathbf{CommRing}}$ is Noetherian, then $A\left[x\right]$ is also Noetherian. 
 \end{theorem}
 \begin{proof}
-Note that $A[x]$ is an $A$-module since $A$ is a subring. We see that $$A[x] = \bigcup_{n\geq 0} A[x]_n, \quad A[x]_n \coloneqq \{f \in A[x] : \deg f \leq n\}.$$
-Note that each $A[x]_n$ is finitely generated by $1, x, \ldots, x^n$, giving us a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A[x]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by \cref{l19}, so is $A[x]_n$.
+Note that $A\left[x\right]$ is an $A$-module since $A$ is a subring. We see that $$A\left[x\right] = \bigcup_{n\geq 0} A\left[x\right]_n, \quad A\left[x\right]_n \coloneqq \{f \in A\left[x\right] : \deg f \leq n\}.$$
+Note that each $A\left[x\right]_n$ is finitely generated by $1, x, \ldots, x^n$, giving us a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A\left[x\right]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by \cref{l19}, so is $A\left[x\right]_n$.
 
 \medskip
 
- Let $\Omega \unlhd A[x]$ be an ideal. Then $\Omega \cap A[x]_n$ is an $A$-submodule in $A[x]_n$ and thus a finitely generated $A$-module with generators, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \left\{a\in A : a = 0 \text{ or } \left(\exists f\in \Omega\right)\left(\deg f >0 \land f(x) = ax^r+ O(x^{r-1})\right)\right\}.$$
+ Let $\Omega \unlhd A\left[x\right]$ be an ideal. Then $\Omega \cap A\left[x\right]_n$ is an $A$-submodule in $A\left[x\right]_n$ and thus a finitely generated $A$-module with generators, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \left\{a\in A : a = 0 \text{ or } \left(\exists f\in \Omega\right)\left(\deg f >0 \land f(x) = ax^r+ O(x^{r-1})\right)\right\}.$$
 \begin{claim}
 $\widetilde{\Omega}$ is an ideal in $A$.
 \end{claim}
@@ -2956,35 +2961,35 @@ Further, it's clear that if $a\in \widetilde{\Omega}$ and $b\in A$, then $ba\in 
 \end{proof}
 It follows that $\widetilde{\Omega}$ is a finitely generated $A$-module with generators, say, $b_1, \ldots, b_s$. For each $i=1, \ldots, s$, find some $f_i \in \Omega$ such that $f_i = b_ix^{m_i} + O(x^{m_i-1})$. Set $n= \max\{m_i\}$.
 \begin{claim}
-$\Omega$ is generated by $\left\{\alpha_1, \ldots, \alpha_{k_n}, f_1, \ldots, f_s\right\}$ as an ideal in $A[x]$.
+$\Omega$ is generated by $\left\{\alpha_1, \ldots, \alpha_{k_n}, f_1, \ldots, f_s\right\}$ as an ideal in $A\left[x\right]$.
 \end{claim}
 \begin{proof}
-Let $f\in \Omega$. Write $f = \beta x^r + O(x^{r-1})$ for some $r \geq 1$. Then $\beta \in \widetilde{\Omega}$. It follows that $\beta = \sum_{i=1}^s c_ib_i$ for some $c_i \in A$. If $r \geq n$, then $f -\sum_{i=1}^s c_ix^{r-n}f_i$ has degree $< r$. We can repeat such reasoning to find that $$f - \left(\text{some combination of } f_i \text{ with coefficients in } A[x]\right)$$ has degree $\leq n$. That is, there are $g_1, \ldots, g_s \in A[x]$ such that $\deg\left(f - \sum_{i=1}^sg_if_i\right) \leq n$. But now we're done because $f - \sum_{i=1}^sg_if_i \in \Omega \cap A[x]_n$.
-\end{proof}$ $As $\Omega$ was arbitrary, it follows that $A[x]$ is Noetherian as an $A[x]$-module. 
+Let $f\in \Omega$. Write $f = \beta x^r + O(x^{r-1})$ for some $r \geq 1$. Then $\beta \in \widetilde{\Omega}$. It follows that $\beta = \sum_{i=1}^s c_ib_i$ for some $c_i \in A$. If $r \geq n$, then $f -\sum_{i=1}^s c_ix^{r-n}f_i$ has degree $< r$. We can repeat such reasoning to find that $$f - \left(\text{some combination of } f_i \text{ with coefficients in } A\left[x\right]\right)$$ has degree $\leq n$. That is, there are $g_1, \ldots, g_s \in A\left[x\right]$ such that $\deg\left(f - \sum_{i=1}^sg_if_i\right) \leq n$. But now we're done because $f - \sum_{i=1}^sg_if_i \in \Omega \cap A\left[x\right]_n$.
+\end{proof}$ $As $\Omega$ was arbitrary, it follows that $A\left[x\right]$ is Noetherian as an $A\left[x\right]$-module. 
 \end{proof}
 
 \subsection{Lecture 28}
 
 \begin{corollary}\label{pc2}
-If $A \in \ob \mathbf{CommRing}$ is Noetherian, then $A[x_1, \ldots, x_n]$ is also Noetherian.
+If $A \in \ob \mathbf{CommRing}$ is Noetherian, then $A\left[x_1, \ldots, x_n\right]$ is also Noetherian.
 \end{corollary}
 \begin{proof}
-We have that $A[x_1, \ldots, x_n] \cong A[x_1, \ldots, x_{n-1}][x_n]$. Now induct on $n$.
+We have that $A\left[x_1, \ldots, x_n\right] \cong A\left[x_1, \ldots, x_{n-1}\right]\left[x_n\right]$. Now induct on $n$.
 \end{proof}
 
 \begin{exmp}
-Both $\Z[x_1, \ldots, x_n]$ and $k[x_1, \ldots, x_n]$ are Noetherian where $k$ is a field.
+Both $\Z\left[x_1, \ldots, x_n\right]$ and $k\left[x_1, \ldots, x_n\right]$ are Noetherian where $k$ is a field.
 \end{exmp}
 
 \begin{corollary}
-If $k$ is a field, then $k[x]$ is a PID, i.e., every ideal of $k[x]$ is generated by exactly one element.
+If $k$ is a field, then $k\left[x\right]$ is a PID, i.e., every ideal of $k\left[x\right]$ is generated by exactly one element.
 \end{corollary}
 
 \begin{corollary}
 If $A$ is Noetherian and $B$ is a finitely generated commutative $A$-algebra, then $B$ is Noetherian as a ring.
 \end{corollary}
 \begin{proof}
-We have a ring embedding $i: A \hookrightarrow B$. As $B$ is finitely generated as an $A$-algebra, there exists a map $\phi: A[x_1, \ldots, x_n] \twoheadrightarrow B$ of $A[x_1, \ldots, x_n]$-modules. By \cref{pc2}, $A[x_1, \ldots, x_n]$ is Noetherian, which implies that $B$ is the quotient of a Noetherian $A[x_1, \ldots, x_n]$-module. Hence $B$ is also Noetherian as a module over $A[x_1, \ldots, x_n]$. Let $I\unlhd B$ be an ideal. Then $I$ is a submodule over $A[x_1, \ldots, x_n]$ via $\phi$ and thus is finitely generated as such. It follows automatically that $I$ is also finitely generated as a $B$-module.
+We have a ring embedding $i: A \hookrightarrow B$. As $B$ is finitely generated as an $A$-algebra, there exists a map $\phi: A\left[x_1, \ldots, x_n\right] \twoheadrightarrow B$ of $A\left[x_1, \ldots, x_n\right]$-modules. By \cref{pc2}, $A\left[x_1, \ldots, x_n\right]$ is Noetherian, which implies that $B$ is the quotient of a Noetherian $A\left[x_1, \ldots, x_n\right]$-module. Hence $B$ is also Noetherian as a module over $A\left[x_1, \ldots, x_n\right]$. Let $I\unlhd B$ be an ideal. Then $I$ is a submodule over $A\left[x_1, \ldots, x_n\right]$ via $\phi$ and thus is finitely generated as such. It follows automatically that $I$ is also finitely generated as a $B$-module.
 \end{proof}
 
 \bigskip
@@ -3002,13 +3007,13 @@ Let $A \in \ob \mathbf{CommRing}$, $B$ be a commutative $A$-algebra, and $G$ be 
 Let $k$ be a field, $G$ a finite group, and $A$ a finitely generated $k$-algebra equipped with a $G$-action. If $\left(\left\lvert{G}\right\rvert, \Char(k)\right)=1$, then $$A^G\coloneqq  \{ a \in A: \forall g \in G.g\cdot a =a\}$$ is a finitely generated $k$-subalgebra. 
 \end{theorem}
 \begin{proof}
-Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\left\lvert{G}\right\rvert$ is coprime to $\Char(k)$, we know that $\left\lvert{G}\right\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\left\lvert{G}\right\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A[x].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\left\{g\cdot a\right\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G[x]$. 
+Note that $A^G$ is a $k$-subalgebra because $k\subset A^G$. As $\left\lvert{G}\right\rvert$ is coprime to $\Char(k)$, we know that $\left\lvert{G}\right\rvert$ is invertible in $A$. Define the algebra homomorphism $$S: A \to A,\ \quad a \mapsto \frac{1}{\left\lvert{G}\right\rvert}\sum_{g\in G}g\cdot a   .$$ Let $a\in A$. Then $$\chi_a(x)\coloneqq  \prod_{g\in G}(x-g\cdot a)\in A\left[x\right].$$ The coefficients of this polynomials are elementary symmetric functions in $\left\{g\cdot a\right\}_{g\in G}$. Further, for any $h\in G$, we get a permutation $\left\{g\cdot a\right\}_{g\in G} \overset{h\cdot (-)}{\longrightarrow} \left\{h g\cdot a\right\}_{g\in G}$. Thus, the same coefficients are invariant under the $G$-action, which proves that $\chi_a(x) \in A^G\left[x\right]$. 
 \begin{definition}
 Let $P(x)$ be a polynomial of degree $k$ with roots $x_1, \ldots, x_k$. If $n\in \N$, then define the \textit{n-th Newton sum} as $P_n \equiv x_1^n + \cdots + x_k^n$.
 \end{definition}
 It is known that any elementary symmetric polynomial can be expressed in terms of Newton sums. In our case, we can express each coefficient of $\chi_a(x)$ in terms of $S(a), S(a^2) , \ldots, S\left(a^{\left\lvert{G}\right\rvert}\right)$.
 
-Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S\left(u_i^k\right)\right\}_{i=1, \ldots, m,\ k=1, \ldots, \left\lvert{G}\right\rvert}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B[x]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{\left\lvert{G}\right\rvert}$ can be written as a $B$-combination of the elements $1, u_i, \ldots, u_i^{\left\lvert{G}\right\rvert-1}$.\reversemarginpar{\marginpar{\small{Why can it be written like this?}}} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where $0\leq \alpha_i <\left\lvert{G}\right\rvert$. We thus have $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha},\ \quad \alpha_i < \left\lvert{G}\right\rvert,\ \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $$a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha}).$$ As  $\alpha_i<\left\lvert{G}\right\rvert$,  the set $\left\{S(u^{\alpha})\right\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
+Find generators $u_1, \ldots, u_m$ for $A$ over $k$. Let $B$ denote subalgebra of $A^G$ generated by $$\left\{S\left(u_i^k\right)\right\}_{i=1, \ldots, m,\ k=1, \ldots, \left\lvert{G}\right\rvert}$$ over $k$. For each $i$, observe that $X_{u_i}(x) \in B\left[x\right]$ and that $X_{u_i}(u_i) =0$. It follows that $u_i^{\left\lvert{G}\right\rvert}$ can be written as a $B$-combination of the elements $1, u_i, \ldots, u_i^{\left\lvert{G}\right\rvert-1}$.\reversemarginpar{\marginpar{\small{Why can it be written like this?}}} This implies that any monomial of the form $u_1^{s_1}\cdots u_m^{s_m}$ can be written as a $B$-combination of monomials of the form $u_1^{\alpha_1}\cdots u_m^{\alpha_m}$ where $0\leq \alpha_i <\left\lvert{G}\right\rvert$. We thus have $$a= \sum_{\alpha\coloneqq  (\alpha_1, \ldots, \alpha_m)}\phi_{\alpha}u^{\alpha},\ \quad \alpha_i < \left\lvert{G}\right\rvert,\ \quad \phi_{\alpha} \in B.   $$ If $a\in A^G$, then $$a=S(a) = \sum_{\alpha}S(\phi_{\alpha})S(u^{\alpha}) = \sum_{\alpha} \phi_{\alpha}S(u^{\alpha}).$$ As  $\alpha_i<\left\lvert{G}\right\rvert$,  the set $\left\{S(u^{\alpha})\right\}_{\alpha}$ is finite. Also, $B$ is finitely generated over $k$. As a result, $A^G$ is finitely generated over $k$. 
 \end{proof}
 
 \section{Projective and injective modules}

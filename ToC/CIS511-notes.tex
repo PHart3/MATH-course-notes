@@ -273,7 +273,7 @@ For each alphabet $\Sigma$, we have a category $\mathbf{Aut}_{\Sigma}$ whose obj
 \item $f(q_0) = q_0'$,
 \item $f(\delta(q, \sigma)) = \delta'(f(q), \sigma)$, and
 \item $f(Q_F) \subset Q_F'$.
-\end{enumerate}.
+\end{enumerate}
 \end{aside}
 
 \medskip
@@ -514,7 +514,7 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 
 \smallskip
 
-There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that $\left\{0,1\right\}^{\ast} \cong \N$. But then $$\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}.$$ Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
+There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that\linebreak $\left\{0,1\right\}^{\ast} \cong \N$. But then $$\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}.$$ Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
 
 
 \subsection{Lecture 4}
@@ -538,6 +538,7 @@ w\coloneqq x_1\cdots x_i
 \end{gather*}
 where $\left\lvert{x}\right\rvert = m$. It is straightforward to verify that these satisfy conditions (a), (b), and (c).
 \end{proof}
+\pagebreak
 \begin{corollary} $ $
 \begin{enumerate} 
 \item Any regular language $L$ has pumping length $\leq \left\lvert{Q}\right\rvert$.
@@ -602,16 +603,18 @@ A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0,
 \item $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, and 
 \item $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. 
 \end{enumerate}
-We call $\Sigma$ the \textit{input alphabet}, $\Gamma$ the \textit{tape alphabet}, $Q_F$ the set of \textit{accepting states}, and $Q_R$ the set of \textit{rejecting states}.
+We call 
+\begin{itemize}
+\item $\Sigma$ the \textit{input alphabet}, 
+\item $\Gamma$ the \textit{tape alphabet}, 
+\item $Q_F$ the set of \textit{accepting states}, and 
+\item $Q_R$ the set of \textit{rejecting states}.
+\end{itemize}
 \end{definition}
 
-\begin{note}
-On any given input $x$, a $\TM$ can either \textit{accept} or \textit{reject} or \textit{loop} (i.e., fail to halt on $x$).
-\end{note}
 
-\smallskip
-
-A Turing machine is supposed to act as a minimal model of computation. It should be able to write, be able to move left and right, and have unconstrained memory.
+On any given input $x$, a Turing machine can either \textit{accept} or \textit{reject} or \textit{loop} (i.e., fail to halt on $x$).
+Such a machine is supposed to act as a minimal model of computation. It should be able to write, be able to move left and right, and have unconstrained memory.
 
 
 \subsection{Lecture 5}
@@ -641,7 +644,7 @@ We call this an \textit{accepting configuration} if $q \in Q_F$ and a \textit{re
 \end{definition}
 
 \begin{definition}
-Let $a,b,c\in \Gamma$ and $u,v\in \Gamma^{\ast}$. Let $p,q\in Q$. We say that the configuration $C_1$ \textit{yields} the configuration $C_2$ in the following cases:
+Let $a,b,c\in \Gamma$ and $u,v\in \Gamma^{\ast}$. Let $p,q\in Q$. We say that the configuration $C_1$ \textit{yields} the configuration $C_2$ in the following cases.
 \begin{enumerate}[label=(\alph*)]
 \item $uapbv$ yields $uqacv$ when $\delta(p,b) = \left(q, c, L\right)$.
 \item $uapbv$ yields $uacqv$ when $\delta(p, b) = \left(q, c, R\right)$. 
@@ -763,7 +766,7 @@ By \cref{equiv}, it suffices to construct a multi-tape $\TM$ that simulates $M$.
 
 \begin{note} $ $
 \begin{enumerate}
-\item This simulation has time complexity $O\left(m^T\right)$ where $T$ denotes the steps taken by $M$.
+\item This simulation has time complexity $O(m^T)$ where $T$ denotes the steps taken by $M$.
 \item We can modify the proof of \cref{LT} to show that if $M$ always halts on each branch of computation, then $M'$ always halts. Thus, a language is decidable if and only if a $\NDTM$ decides it.
 \end{enumerate}
 \end{note}
@@ -805,7 +808,7 @@ C_f(\sigma ) \equiv  \begin{cases}
 
 \smallskip
 
-We say that $\sigma$ is \textit{Kolmogorov random} if it cannot be compresses, formally, $C(\sigma) \geq \left\lvert{\sigma}\right\rvert$.
+We say that $\sigma$ is \textit{Kolmogorov random} if it cannot be compressed, formally, $C(\sigma) \geq \left\lvert{\sigma}\right\rvert$.
 
 \begin{prop}
 For every integer $n\geq 1$, there is a Kolmogorov random string of length $n$.
@@ -819,7 +822,7 @@ Suppose not. Then for any string $x$ of length $n$, $C(x) < n$.  Hence there is 
 \subsection{Lecture 7}
 
 
-Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left(\left\langle M \right\rangle,  w, 1^k\right)$ such that
+Alternatively, we can view $U_{\TM}$ as a ternary function with input $\left\langle M, w, 1^k \right\rangle$ such that
 \begin{enumerate}[label=(\roman*)]
 \item if $M$ accepts (resp. rejects) on $w$ in $\leq k$ steps, then $U_{\TM}$ accepts (resp. rejects) and
 \item if $M$ does not halt on $w$ in $\leq k$ steps, then $U_{\TM}$ will reach a special state.
@@ -839,7 +842,7 @@ $A_{\TM}$ is undecidable.
 \begin{proof}
 Suppose, toward a contradiction, that there is some $M$ that decides $A_{\TM}$.  Design a new $\TM$ $N$ as follows.
 \begin{enumerate}[label=(\alph*)]
-\item Given a binary string $x$, run $M$ on $\left(\left\langle M_x \right\rangle, \left\langle M_x \right\rangle \right)$ where $M_x$ denotes the $\TM$ corresponding to $x$.
+\item Given a binary string $x$, run $M$ on $\left\langle M_x,  M_x \right\rangle$ where $M_x$ denotes the $\TM$ corresponding to $x$.
 \item Let $N$ reject when $M$ accepts and $N$ accept when $M$ rejects.
 \end{enumerate}
 
@@ -864,8 +867,8 @@ Find some $M_1$ and $M_2$ such that $L = L(M_1)$ and $\overline{L} = L(M_2)$. Co
     {$T=1$}\;
     \While{the current state is a non-halting state}
       {
-        run $U_{\TM}$ on $\left(\left\langle M_1 \right\rangle, w\right) $ for $T$ steps\;
-        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $\left(\left\langle M_2 \right\rangle, w\right)$ for $T$ steps \;
+        run $U_{\TM}$ on $\left\langle M_1, w \right\rangle $ for $T$ steps\;
+        \eIf{$U_{\TM}$ accepts}{accept}{run $U_{\TM}$ on $\left\langle M_2, q \right\rangle$ for $T$ steps \;
         \eIf{$U_{\TM}$ accepts}{reject}{$T$\texttt{ += }1}
       }  }
       \caption{pseudocode describing $M$}
@@ -897,17 +900,17 @@ In this way, $L'$ is at least as ``hard" as $L$.
 \subsection{Lecture 8}
 
 \begin{exmp}[Halting problem]
-Let $A_{\text{HALT}} = \left\{\left\langle M, w \right\rangle \mid M \text{ halts on }w\right\}$. Then $A_{\text{HALT}}$ is undecidable.
+Let $A_{\mathsf{HALT}} = \left\{\left\langle M, w \right\rangle \mid M \text{ halts on }w\right\}$. Then $A_{\mathsf{HALT}}$ is undecidable.
 \end{exmp}
 \begin{proof}
-Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\text{HALT}}$. To do this, we want to design a computable function that maps any $\left\langle M, w \right\rangle$ to another $\left\langle M' \right\rangle, w'$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
+Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \leq_m A_{\mathsf{HALT}}$. To do this, we want to design a computable function that maps any $\left\langle M, w \right\rangle$ to another $\left\langle M', w' \right\rangle$ such that $M'$ halts on $w'$ precisely when $M$ accepts $w$. Construct such an $M'$ as follows.
 
 \smallskip
 
 \begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \Input{the string $x$}
-    {run $U_{\TM}$ on $\left(\left\langle M \right\rangle, x\right)$}\;
+    {run $U_{\TM}$ on $\left\langle M, x \right\rangle$}\;
      \eIf{$U_{\TM}$ accepts}{accept}{
      \While{true}{pass}
      } 
@@ -916,7 +919,7 @@ Recall that $A_{\TM}$ is undecidable. Thus, it suffices to show that $A_{\TM} \l
 
 \smallskip
 
-Then we get a suitable function given by $\left(\left\langle M \right\rangle , w\right) \mapsto \left(\left\langle M' \right\rangle, w\right)$.
+Then we get a suitable function given by $\left\langle M, w \right\rangle  \mapsto \left\langle M', w' \right\rangle$.
 \end{proof}
 
 
@@ -1020,7 +1023,7 @@ Our definition of $\mathbf{P}$ is independent of the variant of deterministic Tu
 \end{note}
 
 \begin{remark}
-Given any convex body, we want to compute its volume. In 1989, Dyer and Frieze proved that this is solvable in $O\left(n^{23}\right)$ steps. It is now known that it's solvable in $O\left(n^2\right)$ steps. 
+Given any convex body, we want to compute its volume. In 1989, Dyer and Frieze proved that this is solvable in $O(n^{23})$ steps. It is now known that it's solvable in $O(n^2)$ steps. 
 \end{remark}
 
 \begin{exmp}
@@ -1032,7 +1035,7 @@ For any $k\geq 0$, $\mathsf{DTIME}(n^k) \subset \mathsf{DTIME}(n^{k+1})$. Consid
 \item  If $M_w$ does not halt in so many steps, then let $x\notin L$. 
 \item Else, let $x\in L$ when $M_w$ rejects and let $x\notin L$ when $M_w$ accepts. 
 \end{enumerate}
-Steps 2 and 3 together take $O\left(n^2 \log{n}\right)$ steps. It follows that $L \in \mathsf{DTIME}(n^2\log{n})\subset \mathsf{DTIME}(n^3)$. But $L \notin \mathsf{DTIME}(n^2)$.
+Steps 2 and 3 together take $O(n^2 \log{n})$ steps. It follows that $L \in \mathsf{DTIME}(n^2\log{n})\subset \mathsf{DTIME}(n^3)$. But $L \notin \mathsf{DTIME}(n^2)$.
 \end{exmp}
 
 \begin{theorem}[Time hierarchy]
@@ -1048,7 +1051,7 @@ We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of
 Let  
 \begin{align*}
 & \quad \mathsf{NTIME}(t(n))
-\\ & \quad \quad  = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O\left(t(n)\right)\text{ steps}\right\} 
+\\ & \quad \quad  = \left\{ L : \exists \NDTM M \text{ s.t. }L(M) = L \text{ and every branch of }M\text{ halts on any input of length }n\text{ in }O(t(n))\text{ steps}\right\} 
 \\ & \quad   \mathbf{NP}  = \bigcup_{k \geq 0} \mathsf{NTIME}(n^k).
 \end{align*} 
 
@@ -1163,7 +1166,7 @@ This is an example of a non-uniform model of computation as we must specify a ne
 \end{remark}
 
 \begin{lemma}\label{pl1}
-Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O\left(2^n\right)$. 
+Every function $g: \left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size $O(2^n)$. 
 \end{lemma}
 \begin{proof}
 We use induction to show that any function $g:\left\{0,1\right\}^n \to \left\{0,1\right\}$ can be computed by a circuit of size at most $3 \cdot 2^n -4$, which is enough. When $n=1$, there are four cases to consider.
@@ -1177,10 +1180,10 @@ Hence the base case holds. Now, define $g_0, g_1 : \{0,1 \}^{n-1} \to \left\{0,1
 \end{proof}
 
 \begin{lemma}\label{pl2}
-Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O\left(t^2 \cdot (\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert)^3\right) = O\left(t^2\right)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
+Let $M= \left(Q, \Sigma, \Gamma, q_0, \delta, Q_F, Q_R\right)$ be a $\TM$. Suppose that on any input of size $n$, $M$ halts in at most $t$ steps with $t\geq n$. Then there is a circuit of size $O(t^2 \cdot (\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert)^3) = O(t^2)$ that  outputs $1$ on a  string $x$ of length $n$ if and only if $M$ accepts $x$.
 \end{lemma}
 \begin{proof}
-We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. Let $B= 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$. Then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ can be computed by a circuit of size $O\left(2^{3B}\right)$ and hence by one of size $O\left(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3\right)$. Thus, there is a circuit of size $O\left(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3\right)$ that simulates $M$ on inputs of size $n$.
+We want to encode a given configuration of $M$, which we may assume uses at most $t$ cells of tape. To do this, we take $\log{\left\lvert{\Gamma}\right\rvert}$ bits, $1$ bit, and $\log{\left\lvert{Q}\right\rvert}$ bits to encode the content of the current cell, whether or not the head is located at this cell, and, if so, the current state, respectively.  For each $i,j\geq0$, the bit $b_{j, l+1}$ representing the $j$-th cell at time $l+1$ depends precisely on the three bits $b_{j-1, l}$, $b_{j, l}$, and $b_{j+1, l}$. Let $B= 1+ \log{\left\lvert{\Gamma}\right\rvert} +\log{\left\lvert{Q}\right\rvert}$. Then every bit of the encoding of the configuration of $M$ at time $l+1$ depends on $3B$ bits. This determines a Boolean function $f: \left\{0,1\right\}^{3B}\to \left\{0,1\right\}$ that computes the next configuration. \Cref{pl1} implies that $f$ can be computed by a circuit of size $O(2^{3B})$ and hence by one of size $O(\left(\left\lvert{\Gamma}\right\rvert\cdot \left\lvert{Q}\right\rvert\right)^3)$. Thus, there is a circuit of size $O(t\cdot t\cdot  \left(\left\lvert{\Gamma}\right\rvert \cdot \left\lvert{Q}\right\rvert\right)^3)$ that simulates $M$ on inputs of size $n$.
 \end{proof}
 
 \begin{exmp}[Cook-Levin theorem]
@@ -1225,7 +1228,6 @@ $$
 .$$
 \end{itemize} By construction, $\varphi$ is satisfiable if and only if $C$ is. The algorithm $M: \left\langle C \right\rangle \mapsto \varphi$ is linear in $n^k$, hence efficient. Therefore, it is a suitable reduction. 
 \end{proof}
-\pagebreak
 \item  It's clear that $\mathsf{IND{-}SET}$ belongs to $\NP$. We claim that this is $\NP$-complete.
 \begin{proof}
 We show that $\mathsf{3{-}SAT} \leq_m^p \mathsf{IND{-}SET}$.  Let $\varphi$ be a 3cnf-formula and let $$\varphi = c_1 \land c_2 \land c_3 \land \cdots \land c_m.$$ For each clause $c_i$, create a triangle $t_i$ with vertices corresponding to the three literals in $c_i$. Let $G_{\varphi}$ denote the graph obtained from the graph $\coprod_{i=1}^m t_i$ by adding an edge between any two conflicting vertices $v$ and $\neg v$ in $\coprod_{i=1}^m t_i$. Then the algorithm $\varphi \mapsto \left\langle G_{\varphi}, m\right\rangle$ defines a suitable reduction. 
@@ -1406,7 +1408,7 @@ Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\left\langle G, 
 
 \smallskip
 
-Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$. The corresponding relation for space complexity, however, is much better
+Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$. The corresponding relation for space complexity, however, is much better.
 
 \begin{theorem}[Savitch]
  $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}\left(S^2(n)\right)$.
@@ -1440,8 +1442,8 @@ $$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that 
 \begin{align*}  \mathcal{L}(T_0)  & =    \log{T_0} + \mathcal{L}(T_0/2) 
 \\ & = \log^2{T_0} + \mathcal{L}(1) 
 \\ & =  \log^2{2^{O(S(n))}} + \mathcal{L}(1) 
-\\ & = O\left(S^2(n)\right) + O(S(n)) 
-\\ & = O\left(S^2(n)\right)  .
+\\ & = O(S^2(n)) + O(S(n)) 
+\\ & = O(S^2(n))  .
 \end{align*}
 \end{proof}
 
@@ -1449,12 +1451,12 @@ $$  \mathcal{L}(T_0) = \log{T_0} + \mathcal{L}(T_0/2) + O(1) .   $$   Note that 
 $\mathbf{NL} \subset \mathbf{P}$.
 \end{corollary}
 \begin{proof}
-The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by our proof of \cref{Sav}, has a $\log^2{n}$-space deterministic algorithm.
+The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by our proof of \cref{Sav}, has a \linebreak $\log^2{n}$-space deterministic algorithm.
 \end{proof}
 
 \begin{note} $ $
 \begin{enumerate}
-\item $\mathsf{NTIME}(\text{poly}(n)) \subset \mathsf{NPSACE}(\text{poly}(n)) \subset \mathsf{DPSACE}(\text{poly}(n)) = \mathsf{PSPACE}.$
+\item $\mathsf{NTIME}(\poly(n)) \subset \mathsf{NPSACE}(\poly(n)) \subset \mathsf{DPSACE}(\poly(n)) = \mathsf{PSPACE}.$
 \item $\mathsf{PSPACE}$ is closed under complementation. 
 \end{enumerate}
 \end{note}
@@ -1466,11 +1468,17 @@ The follows because $\mathsf{DIR{-}REACH}$ is  $\mathbf{NL}$-complete and, by ou
 \begin{proof}
 Construct an algorithm $T(\varphi)$ as follows. 
 \begin{itemize}
-\item If $\varphi$ is quantifier-free, then evaluate it directly. Accept if it evaluates to $1$ and reject otherwise. 
-\item If $\varphi = \exists x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if either of these recursive calls accepts and reject otherwise. 
-\item If  $\varphi = \forall x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. Accept if both of these recursive calls accept and reject otherwise. 
+\item If $\varphi$ is quantifier-free, then evaluate it directly. 
+
+Accept if it evaluates to $1$ and reject otherwise. 
+\item If $\varphi = \exists x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. 
+
+Accept if either of these recursive calls accepts and reject otherwise. 
+\item If  $\varphi = \forall x \psi$, then recursively call $T$ on $\psi$ once with $x=0$ and once with $x=1$. 
+
+Accept if both of these recursive calls accept and reject otherwise. 
 \end{itemize} 
-If $m$ denotes the size of $\varphi$, then $$\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O\left(m^k\right)$$ for some $k$.
+If $m$ denotes the size of $\varphi$, then $$\mathcal{L}(m) = m^{O(1)} + \mathcal{L}(m-1) + O(1) = m^{O(1)} + \mathcal{L}(m-1) = O(m^k)$$ for some $k$.
 \end{proof}
 \end{enumerate}
 \end{exmp}
@@ -1485,7 +1493,7 @@ A language $L$ is \textit{$\mathsf{PSPACE}$-complete} if it belongs to $\mathsf{
 $\mathsf{TQBF{-}SAT} $ is $\mathsf{PSPACE}$-complete.
 \end{exmp}
 \begin{proof}
-Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lvert{x}\right\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O\left(S(n)^2\right)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$ if and only if $x\in L$.
+Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lvert{x}\right\rvert =n$, we want to construct a TQBF $\varphi_{c, c', i}$ of size $O(S(n)^2)$ that is is satisfiable if and only if there is a path of length at most $2^i$ from $c$ to $c'$ in the configuration graph $G_{M,x}$. This will imply that $$\hat{\varphi}\coloneqq \varphi_{C_{\mathrm{start}}, C_{\accpt}, O(S(n))}$$ is true if and only if $M$ accepts $x$, i.e.,  $x\in L$.
 
 
  We have previously constructed such a $\varphi_{c_1, c_2, 0}$. Moreover, if $i\geq 1$, then we deduce that 
@@ -1493,7 +1501,7 @@ Let $L \in \mathsf{PSPACE}$ with $L(M) = L$. Given any input $x$ with $\left\lve
 \varphi_{c_1, c_2, i} & \leftrightarrow \exists c\left(\varphi_{c_1, c, i-1} \land \varphi_{c, c_2, i-1}\right)
 \\ & \leftrightarrow \exists c \forall D^1 \forall D^2\left(\left(D^1 = c_1 \land D^2 = c\right) \vee \left(D^1 = c\right) \land \left(D^2 = c_2\right)\right) \implies \varphi_{D^1, D^2, i-1}.
 \end{align*}
-It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{\varphi_{c_1, c_2, i-1}}\right\rvert +O(S(n))$, so that $\left\lvert{\hat{\varphi}}\right\rvert \leq O\left(S(n)^2\right)$, as desired.
+It follows that $\left\lvert{\varphi_{c_1, c_2, i}}\right\rvert\leq \left\lvert{\varphi_{c_1, c_2, i-1}}\right\rvert +O(S(n))$, so that $\left\lvert{\hat{\varphi}}\right\rvert \leq O(S(n)^2)$, as desired.
 \end{proof}
 
 \begin{prop}
@@ -1502,7 +1510,7 @@ A language $L$ belongs to $\mathbf{NL}$ if and only if there exists $c\in \N$ al
 \item one read-only input tape, 
 \item one work tape, and 
 \item one read-only, single-axis proof tape  such that 
-\item $V$'s work tape uses $O\left(\log{\left\lvert{\left(\text{first input}\right)}\right\rvert}\right)$ space and $$L = \left\{ x \mid \exists y\left(\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V\left(x,y\right) = 1\right)\right\}.$$ 
+\item $V$'s work tape uses $O(\log{\left\lvert{\left(\text{first input}\right)}\right\rvert})$ space and $$L = \left\{ x \mid \exists y\left(\left\lvert{y}\right\rvert \leq \left\lvert{x}\right\rvert^{c} \land V\left(x,y\right) = 1\right)\right\}.$$ 
 \end{itemize}
 \end{prop}
 
@@ -1608,14 +1616,14 @@ $\mathbf{P} \ne \mathbf{NP} \implies \mathbf{P} = \mathbf{BPP}$.
 
 \begin{remark} $ $
 \begin{enumerate}
-\item Computing the value of the determinant of an $n\times n$ matrix of integers via cofactor expansion takes $\omega(n!)$ steps. Computing it via Gaussian elimination, however, takes $O\left(n^3\right)$ steps. 
+\item Computing the value of the determinant of an $n\times n$ matrix of integers via cofactor expansion takes $\omega(n!)$ steps. Computing it via Gaussian elimination, however, takes $O(n^3)$ steps. 
 \item Computing the value of the determinant of an $n\times n$ matrix of linear forms over $\Z$ via cofactor expansion is exponential in $n$. There is no known deterministic polynomial time algorithm for such a computation.
 \end{enumerate}
 \end{remark}
 
 \begin{prop}\label{poly} $ $
 \begin{enumerate}[label=(\alph*)]
-\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O\left(n^2\right)}$.
+\item Let $L$ be an $n\times n$ matrix of linear forms in $\Z[x_1, \ldots, x_n]$ whose coefficients are in $\left[{-2}^n, 2^n\right]$. Then $\det{L}$ is a polynomial in $x_1, \ldots, x_n$ with (total) degree $n$ and each coefficient an integer $\leq 2^{O(n^2)}$.
 \item Let $p(x)$ be a univariate polynomial of degree $d \geq 0$. Let $S\subset \Z$ be finite. Then $$\pr\left[p(x) =0\right] \leq \frac{d}{\left\lvert{S}\right\rvert}$$ for any $x\in_R S$.
 \end{enumerate}
 \end{prop}
@@ -1694,7 +1702,7 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, we have that  $\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
 \end{remark}
 
-\pagebreak
+
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1783,7 +1791,7 @@ For simplicity, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some form
 $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \end{theorem}
 \begin{proof}
-Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\pr_{r \in_R \left\{0,1\right\}^{\text{poly}(n)}}\left[A(x,r) = \chi_L(x)\right] \geq \frac{2}{3}$ where $n$ denotes $\left\lvert{x}\right\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\pr_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\pr\left[A'(x, \overline{r}) = \chi_L(x)\right] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
+Since $\mathbf{BPP} = \mathsf{co}{-}\mathbf{BPP}$, it suffices to show that $\mathbf{BPP} \subset \Sigma^2_p$. If $L \in \mathbf{BPP}$, then there exists an efficient algorithm $A$ such that $\pr_{r \in_R \left\{0,1\right\}^{\poly(n)}}\left[A(x,r) = \chi_L(x)\right] \geq \frac{2}{3}$ where $n$ denotes $\left\lvert{x}\right\rvert$. Define $A'$ to run $A(x, r_1), \ldots, A(x, r_s)$ and take the majority. Then $A'$ uses $st$ random bits, and $$\pr_{r_1, \ldots, r_s}\left[A'(x, r_1, \ldots, r_s) =\chi_L(x)\right] \geq 1 - 2^{{-}s(n)}.$$ By choosing $s \gg 10t^2$, we see that $\pr\left[A'(x, \overline{r}) = \chi_L(x)\right] \geq 1 -\frac{1}{100m^2}$ where $m$ denotes the number of random bits used. 
 \begin{claim}
 $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\right\}^m \forall \overline{z} \in \left\{0,1\right\}^m \bigvee_{j=1}^m A'\left(x, \overline{y_j} \oplus \overline{z}\right)=1$.
 \end{claim}
@@ -1836,7 +1844,7 @@ Let $\mathsf{NIP}=  \left\{ \left\langle G_1, G_2 \right\rangle \mid G_1 \text{ 
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_j \text{ denote the selected graph. Send } j \text { to } V \text {. }} \\
 {V : \text { Pick } i' \in \left\{1,2\right\} \text { uniformly randomly. Randomly permute the vertices of } G_{i'} \text { to get a new isomorphic graph } H' .} \\ { \text {\quad \quad Send } H' \text { to } P .} \\ {P : \text { If } H' \text { is not isomorphic to one of } G_1 \text{ and } G_2 \text {, then select the other graph. }} \\ {
 \text {\quad \quad Otherwise, select one of } G_1 \text{ and } G_2 \text { by flipping a coin. Let } G_{j'} \text{ denote the selected graph. Send } j' \text { to } V \text {. }}
-\\ {V : \text { Accept if both } i=j \text{ and } i' =j'. \text { Reject otherwise. }}\end{array}
+\\ {V : \text { Accept if } i=j \text{ \emph{and} } i' =j'. \text { Reject otherwise. }}\end{array}
 \] 
 \end{exmp}
 

@@ -294,14 +294,14 @@ This implies that $\tilde{\psi}$ is a well-defined homomorphism. But then $\left
 \end{proof}
 
 \begin{aside}
-The categorical dual $\Rho^{\op}$ of this recognition principle for injectivity expresses a recognition principle for projectivity, namely that for any $R$-module $M$, ideal $I\subset R$, and homomorphism $\varphi : M \to \faktor{R}{I}$, we can fill the diagram
+The categorical dual $\Rho^{\op}$ of this recognition principle for injectivity expresses a recognition principle for projectivity, namely that for any $R$-module $M$, ideal $I\subset R$, and homomorphism\linebreak $\varphi : M \to \faktor{R}{I}$, we can fill the diagram
 \[ \tag{$\ast$}
 \begin{tikzcd}
 M \arrow[rd, "\varphi"] \arrow[d, dashed] &  &  \\
 R \arrow[r, two heads] & \faktor{R}{I} \arrow[r] & 0
 \end{tikzcd}
 \] if and only if $M$ is projective. This is equivalent to saying that $M$ is projective if and only if the natural group map $\Hom_R(M, R) \to \Hom_R \left(M, \faktor{R}{I} \right)$ is surjective. 
-But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``Faith's problem on $R$-projectivity,'' which Trlifaj (2017) proved to be undecidable in ZFC + GCH. Therefore, both $\Rho^{\op}$ and $\neg (\Rho^{\op})$ are consistent with ZFC + GCH.
+But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``Faith's problem on $R$-projectivity,'' which Trlifaj (2017) proved to be undecidable in $\mathsf{ZFC} + \mathsf{GCH}$. Therefore, both $\Rho^{\op}$ and $\neg (\Rho^{\op})$ are consistent with $\mathsf{ZFC} + \mathsf{GCH}$.
 \end{aside}
 
 \begin{corollary} $ $
@@ -1495,7 +1495,7 @@ so that $q^m = \sum_{d\mid m} d\psi(q)$. Then $$ \psi_d(q) = \frac{1}{m}\sum_{d\
 \end{exmp}
 
 \begin{remark}
-A randomly chosen polynomial over $\F_q$ of degree $d$ will be irreducible with probability $\approx \frac{1}{d}$. Given a polynomial $p(x)$ over $\F_q$ of degree $d$, there is no known algorithm that is polynomial in $d$ for deciding whether $p(x)$  is irreducible. 
+A randomly chosen polynomial over $\F_q$ of degree $d$ will be irreducible with probability $\approx \frac{1}{d}$. Given a polynomial $p(x)$ over $\F_q$ of degree $d$, there is no known algorithm with complexity polynomial in $d$ that decides whether $p(x)$  is irreducible. 
 \end{remark}
 
 \section{Galois theory}
@@ -1735,7 +1735,7 @@ Let $L \supset K$ be a finite extension of fields. Then for any $u\in L$, we get
 \smallskip
 
 \begin{definition}
-Let $L \supset K$ be a field extension and $\alpha \in L$> We sat that $\alpha$ \textit{can be expressed in radicals over $K$} if it can be obtained from elements in $K$ by applying $+$, $\cdot$, and $\sqrt[r]{\cdot}$, i.e., there exists a tower of subfields $$ K = K_0 \subset K_1 \subset \cdots \subset K_s \subset L  $$ such that $K_{i+1} = K_i(\alpha_{i+1})$ where $\alpha_{i+1}^{r_{i+1}} \in K_i$ and $\alpha \in K_s$. 
+Let $L \supset K$ be a field extension and $\alpha \in L$> We say that $\alpha$ \textit{can be expressed in radicals over $K$} if it can be obtained from elements in $K$ by applying $+$, $\cdot$, and $\sqrt[r]{\cdot}$, i.e., there exists a tower of subfields $$ K = K_0 \subset K_1 \subset \cdots \subset K_s \subset L  $$ such that $K_{i+1} = K_i(\alpha_{i+1})$ where $\alpha_{i+1}^{r_{i+1}} \in K_i$ and $\alpha \in K_s$. 
 \end{definition}
 
 \begin{prop}

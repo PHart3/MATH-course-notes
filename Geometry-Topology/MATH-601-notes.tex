@@ -1008,7 +1008,7 @@ t = e^{\frac{1}{1-\sqrt{x^2 + y^2}}} -C, \quad C \in \R.
 
 \medskip
 
-Now, if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}, \ \quad  x\in L_{\alpha_x}$$ is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies [X, Y] \in \L$. The Frobenius theorem is precisely the converse of this. 
+Now, if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M} T_x \L_{\alpha_x}, \ \quad  x\in L_{\alpha_x}$$ is a subbundle of $TM$ such that $X, Y \in C^{\infty}(M, \L) \implies \left[X, Y\right] \in \L$. The Frobenius theorem is precisely the converse of this. 
 
 
 \bigskip
@@ -1238,7 +1238,7 @@ f  \cdot y \equiv f(y), \ \quad f \in G(Y), \ y \in p^{-1}(x)
 \end{definition}
 
 \begin{lemma}
-Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected covering space with $X$ swell. Let \linebreak $H =  p_{\ast}\pi_1\left(Y, y_0\right)$. Then 
+Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected covering space with $X$ swell. Let \linebreak $H =  p_{\ast}\pi_1\left(Y, y_0\right)$. Then
 \begin{enumerate}
 \item $p$ is normal if and only if $H \unlhd \pi_1\left(X, x_0\right)$.
 \item $G(Y) \cong \faktor{N(H)}{H}$. 
@@ -1265,7 +1265,7 @@ A \textit{graph} is a $1$-dimensional CW-complex.
 Let $G$ be a graph.  Then $\pi_1(G)$ is a free group.
 \end{lemma}
 \begin{proof}
-Since every tree is contractible, we see that $G$ is homotopy equivalent to a wedge sum of circles by noting that $\bigvee_{\alpha} S_{\alpha}^1 \simeq \faktor{G}{T}\simeq G$ where $T$ is a maximal tree contained in $G$. 
+Since every tree is contractible, we see that $\bigvee_{\alpha} S_{\alpha}^1 \simeq \faktor{G}{T}\simeq G$ where $T$ is a maximal tree contained in $G$. A wedge sum of circles has free fundamental group.
 \end{proof}
 
 \begin{note}
@@ -1276,7 +1276,7 @@ If $X$ is a graph with covering space $Y$, then $Y$ is also a graph.
 Let $\Gamma$ be a free group and $H\leq \Gamma$. Then $H$ is free. 
 \end{theorem}
 \begin{proof}
-We have that $\Gamma \cong \pi_1(X)$ where $X\coloneqq  \bigvee_{\alpha} S_{\alpha}^1$. Also, $H$ corresponds to some covering space $p: Y \to X$. Therefore, $Y$ is a graph, and $\pi_1(Y)$ is free. This implies that $H= p_{\ast}\pi_1(Y)$ is free since $p_{\ast}$ is injective. 
+We have that $\Gamma \cong \pi_1(X)$ where $X\equiv  \bigvee_{\alpha} S_{\alpha}^1$. Also, $H$ corresponds to some covering space $p: Y \to X$. Therefore, $Y$ is a graph, and $\pi_1(Y)$ is free. This implies that $H= p_{\ast}\pi_1(Y)$ is free since $p_{\ast}$ is injective. 
 \end{proof}
 
 \section{Homology} 
@@ -1392,6 +1392,8 @@ B_0 & B_1 \arrow[l, "\partial'_1"] & B_2 \arrow[l, "\partial'_2"] & B_3 \arrow[l
 \end{tikzcd}
 ,\] so that  $\partial_{i-1}f_i = f_{i-1}\partial_{i-1}$ for each $i$. In this case, we call $f\coloneqq  \left(f_i\right)_{i\in \Z}$ a \textit{chain map}.
 \end{definition}
+
+\pagebreak
 
 \begin{definition} $ $
 \begin{enumerate}
