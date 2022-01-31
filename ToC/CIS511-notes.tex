@@ -1010,7 +1010,7 @@ Given any $\TM$ $M$, its \textit{time complexity} is the function $f: \N \to \N$
 
 Let $f: \N \to \N$ be a \textit{time-constructible} function, i.e., computable in $O(f(n))$ time with $f(n)\geq n$ for all $n\in \N$. Let 
 \begin{gather*}
-\mathsf{DTIME}(f(n))  = \left\{ L : \exists \TM \ M  \text{ s.t. } L = L(M) \text{ and }M \text{ halts on all inputs of length }n \text{ in }O(f(n)) \text{ steps}\right\}.
+\mathsf{DTIME}(f(n))  = \left\{ L : \exists \TM \ M  \text{ s.t. } L = L(M) \text{ and }M \text{ halts on all inputs of length }n \text{ in }O(f(n)) \text{ steps}\right\}
 \\  \Downarrow
 \\
  \mathbf{P}  = \bigcup_{k\geq 0} \mathsf{DTIME}\left(n^k\right)
