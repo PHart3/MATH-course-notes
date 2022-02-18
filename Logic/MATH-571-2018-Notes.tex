@@ -391,7 +391,7 @@ The following  properties are invariant under isomorphism.
 \end{prop}
 
 \begin{theorem}
- Let $\left(C, <\right)$ be a complete linear ordering  containing some countable dense subset $\left(P, <\right)$ such that $P \cong \Q$ . Then $C\cong \R$. 
+ Let $\left(C, <\right)$ be a complete linear ordering  containing some countable dense subset $\left(P, <\right)$ such that $P \cong \Q$. Then $C\cong \R$. 
 \end{theorem}
 \begin{proof} 
  By hypothesis, there is some isomorphism $f: P \to \Q$. Extend $f$ to $\tilde{f} : C \to \R$ as follows. For any $c \in C \setminus P$, let $$\tilde{f}(c)  = \sup\left\{f(p) \mid p\in P \land p < c\right\}.$$ It is easy to check that $\tilde{f}$ is order-preserving. It remains to show that it is surjective. If $r\in \R \setminus \Q$, then there is some strictly increasing sequence of rationals $\left(q_n\right)_{n\in \N}$ that converges to $r$. In particular, $\sup\{q_n \mid n\in \N\}  = r$. Then $\tilde{f}$ sends $\sup\left\{f^{-1}(q_n) \mid n \in \N\right\}$ to $r$.
@@ -1204,7 +1204,7 @@ Note that for any $\left(n,m\right) \in \omega \times \omega$, $$ \Gamma(n,m) =
 m(n+1).$$ Hence $\omega =\Gamma(\omega \times \omega)$, as desired.  
 
 \smallskip
- Suppose, towards a contradiction, that the class $E\coloneqq \{x >0 \mid \Gamma(\omega_{x} \times \omega_{x}) \ne \omega_{x}\}$ of ordinals is nonempty. Let $\beta = \min( E )$ . Then \hl{$\Gamma(\gamma, \delta) = \omega_{\beta}$} for some $\gamma, \delta \in \omega_{\beta}$. Since $\omega_{\beta}$ is a limit, we can find some $\eta \in \omega_{\beta}$ such that $\gamma,\delta \in \eta$. Note that $\left(\gamma, \delta\right) \in \eta \times \eta$. Since $\eta \times \eta = \left(\ord \times \ord\right)_{(0, \eta)}$, it follows that $$\Gamma(\eta \times \eta) \supset \underbrace{\Gamma(\{\left(x,y\right) \mid \left(x,y\right) \lhd \left(\gamma, \delta\right)\})}_{\text{transitive}} \supset \omega_{\beta}. $$ This implies that $\left\lvert{\aleph_{\beta}}\right\rvert \leq \left\lvert{\eta \times \eta}\right\rvert$. But $$\left\lvert{\eta \times \eta}\right\rvert=  \left\lvert{\left\lvert{\eta}\right\rvert \times \left\lvert{\eta}\right\rvert}\right\rvert = \left\lvert{\eta}\right\rvert < \aleph_{\beta}   ,$$ a contradiction. 
+ Suppose, towards a contradiction, that the class $E\coloneqq \{x >0 \mid \Gamma(\omega_{x} \times \omega_{x}) \ne \omega_{x}\}$ of ordinals is nonempty. Let $\beta = \min( E )$. Then \hl{$\Gamma(\gamma, \delta) = \omega_{\beta}$} for some $\gamma, \delta \in \omega_{\beta}$. Since $\omega_{\beta}$ is a limit, we can find some $\eta \in \omega_{\beta}$ such that $\gamma,\delta \in \eta$. Note that $\left(\gamma, \delta\right) \in \eta \times \eta$. Since $\eta \times \eta = \left(\ord \times \ord\right)_{(0, \eta)}$, it follows that $$\Gamma(\eta \times \eta) \supset \underbrace{\Gamma(\{\left(x,y\right) \mid \left(x,y\right) \lhd \left(\gamma, \delta\right)\})}_{\text{transitive}} \supset \omega_{\beta}. $$ This implies that $\left\lvert{\aleph_{\beta}}\right\rvert \leq \left\lvert{\eta \times \eta}\right\rvert$. But $$\left\lvert{\eta \times \eta}\right\rvert=  \left\lvert{\left\lvert{\eta}\right\rvert \times \left\lvert{\eta}\right\rvert}\right\rvert = \left\lvert{\eta}\right\rvert < \aleph_{\beta}   ,$$ a contradiction. 
 \end{proof}
 
 \begin{corollary}{$(\zfc)$}
