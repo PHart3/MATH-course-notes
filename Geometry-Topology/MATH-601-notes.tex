@@ -2373,14 +2373,14 @@ It it \textit{not} the case that if $C_{\ast}$ is a chain complex, then $H_{\ast
 
 \medskip
 
-Let $M$ be an $R$-module. Consider the functor $N \mapsto N \otimes_R M$ from $R^{\op}{-}\mathbf{Mod}$ to $\mathbf{Ab}$. This is right exact and thus has \textit{left derived functors}  denoted by $\tor_i^R({-}, M)$.  Specifically, from any projective resolution $\cdots \to P^2 \to P^2 \to P^0 \to N\to 0$ in $R^{\op}{-}\mathbf{Mod}$, construct $C_{\ast}$ the chain complex $$\cdots  \to P^2 \otimes_R M\to  P^1 \otimes_R M\to  P^0 \otimes_R M  \to 0.$$ Then $\tor_i^R(N, M) = H_i(C_{\ast}).$
+Let $M$ be an $R$-module. Consider the functor $N \mapsto N \otimes_R M$ from $R^{\op}\text{-}\mathbf{Mod}$ to $\mathbf{Ab}$. This is right exact and thus has \textit{left derived functors}  denoted by $\tor_i^R({-}, M)$.  Specifically, from any projective resolution $\cdots \to P^2 \to P^2 \to P^0 \to N\to 0$ in $R^{\op}\text{-}\mathbf{Mod}$, construct $C_{\ast}$ the chain complex $$\cdots  \to P^2 \otimes_R M\to  P^1 \otimes_R M\to  P^0 \otimes_R M  \to 0.$$ Then $\tor_i^R(N, M) = H_i(C_{\ast}).$
 \begin{note}
 Our definition of $\tor_i^{R}$ is independent of our choice of projective resolution. 
 \end{note}
 
 \smallskip
 
-Consider a functor $F$ from $\mathbf{Top}$. It may be that $FX$ depends on more than the homotopy type of $X$. To ``extend" $F$ to the homotopy category, we replace $X$ by an equivalent cofibrant space or CW-complex. Since projective modules are precisely the cofibrant objects in $R{-}\mathbf{Mod}$, we see that $$ \cdots \to P^1 \to P^0$$ is a \textit{cofibrant replacement} of $N$. This is why we remove $N$ when constructing our new chain complex $C_{\ast}$ above.
+Consider a functor $F$ from $\mathbf{Top}$. It may be that $FX$ depends on more than the homotopy type of $X$. To ``extend" $F$ to the homotopy category, we replace $X$ by an equivalent cofibrant space or CW-complex. Since projective modules are precisely the cofibrant objects in $R\text{-}\mathbf{Mod}$, we see that $$ \cdots \to P^1 \to P^0$$ is a \textit{cofibrant replacement} of $N$. This is why we remove $N$ when constructing our new chain complex $C_{\ast}$ above.
 
 \begin{exmp} $ $
 \begin{enumerate}
@@ -2884,7 +2884,7 @@ The smash product is a monoidal product in $\mathbf{Top}_{\ast}$.
 \begin{enumerate}
 \item $S^n \wedge  S^m \cong S^{n+m}$.
 \begin{proof}
- It suffices to show that if $\left(X, x_0\right)$ and $\left(Y, y_0\right)$ are compact manifolds, then $$X \wedge Y \cong \left(\left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)\right)^{\ast}$$ where $\left({-}\right)^{\ast}$ denotes the one-point compactification. Let $Z\coloneqq  \left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)$. Note that $Z$ is noncompact but is locally compact. 
+ It suffices to show that if $\left(X, x_0\right)$ and $\left(Y, y_0\right)$ are compact manifolds, then $$X \wedge Y \cong \left(\left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)\right)^{\ast}$$ where $\left({-}\right)^{\ast}$ denotes the one-point compactification. Let $Z =   \left(X \setminus \left\{x_0\right\}\right) \times \left(Y \setminus \left\{y_0\right\}\right)$. Note that $Z$ is noncompact but is locally compact. 
  
  We see that $\psi \coloneqq  \pi \circ i : Z \to X \wedge Y$ is injective with $\im{\psi} = X \wedge Y \setminus \left\{\left(x_0, y_0\right)\right\}$. Let $U \subset Z$ be open. Then $U$ is open in $X \times Y$.  Since $\pi^{-1}(\pi(U)) = U$, it follows that $\pi(U)$ is open in $X \wedge Y$. Thus, $\psi$ is an open map, so that $\psi$ is a topological embedding. Since $X \wedge Y$ is compact, it follows that $\psi$ is a Hausdorff compactification. 
 \end{proof}
@@ -3047,7 +3047,7 @@ Show that the induced map $\epsilon: H_c^1(\R; \Z) \to \Z$ is injective, i.e., i
 
 \begin{definition} $ $
 \begin{enumerate}
-\item Let $i$ be a poset. We say that $I$ is a \textit{directed set} if for any $\alpha, \beta \in I$, there exists $\gamma \in I$ such that $\alpha, \beta \leq \gamma$. 
+\item Let $I$ be a poset. We say that $I$ is a \textit{directed set} if for any $\alpha, \beta \in I$, there exists $\gamma \in I$ such that $\alpha, \beta \leq \gamma$. 
 
 Let $G_{\alpha}$ be an abelian group for each $\alpha \in I$. Suppose that for any $\alpha \leq \beta$, there is some homomorphism $f_{\alpha{\beta}} : G_{\alpha} \to G_{\beta}$ such that 
 \begin{enumerate}[label=(\roman*)]
@@ -3255,10 +3255,11 @@ If $M$ is $R$-oriented, then we obtain a relative fundamental class $[M] \in H_n
 Let $M^n$ be an $R$-oriented compact manifold with boundary. Then the map $D_M: H^k(M, \partial{M}; R) \to H_{n-k}(M; R)$ given by $D{\varphi} = [M] \frown \varphi$ is an isomorphism. 
 \end{theorem}
 \begin{proof}
-We shall suppress our notation for the coefficient ring $R$. Let $C$ denote the directed set of compact sets $K$ contained in a complement of collar neighbohood of $\partial{M}$. Observe that
+We shall suppress our notation for the coefficient ring $R$. Let $C$ denote the directed set of compact sets $K$ contained in a complement a of collar neighbohood of $\partial{M}$. Observe that
 \begin{align*}
 H^k_c(\Int{M}) & \cong \varinjlim_{K_{\Int{M}}} H^k(\Int{M}, \Int{M} \setminus K)
-\\ & \cong \varinjlim_{C} H^k(M, M \setminus K) \cong \varinjlim_{\epsilon{\text{-collars }}U} H^k(M, U)
+\\ & \cong \varinjlim_{C} H^k(M, M \setminus K) 
+\\ & \cong \varinjlim_{\epsilon{\text{-collars }}U} H^k(M, U)
 \\ & \cong H^k(M, \partial{M}). 
 \end{align*}
 By PD, it follows that $$H^k(M, \partial{M}) \cong H^k_c(\Int{M}) \cong H_{n-k}(\Int{M}) \cong H_{n-k}(M)  .$$
@@ -3559,7 +3560,7 @@ Given any $f : F \to G$ with $F, G \in \ob{\mathbf{Sh}_{X}}$, let $\ker{f}(U) = 
 $\mathbf{Sh}_{X}$ is an abelian category. 
 \end{prop}
 
-This means that the familiar definitions of \textit{projective} and \textit{injective object} for $R{-}\mathbf{Mod}$ apply to $\mathbf{Sh}_{X}$.
+This means that the familiar definitions of \textit{projective} and \textit{injective object} for $R\text{-}\mathbf{Mod}$ apply to $\mathbf{Sh}_{X}$.
 
 \begin{exercise}
 Show that there are no projectives in $\mathbf{Sh}_{X}$.
@@ -3574,7 +3575,7 @@ Let $I$ be a right $R$-module. Then $I$ is injective if and only if for any righ
 \end{prop}
 
 \begin{corollary}
-There are \textit{enough injectives} in $R^{\op}{-}\mathbf{Mod}$, i.e., any object can be embedded in an injective object. 
+There are \textit{enough injectives} in $R^{\op}\text{-}\mathbf{Mod}$, i.e., any object can be embedded in an injective object. 
 \end{corollary}
 
 \begin{prop}
