@@ -1016,7 +1016,7 @@ Now, if $M = \coprod_{\alpha} \L_{\alpha}$, then $$\L \coloneqq  \bigcup_{x\in M
 Let us return now to our discussion of knot theory.
 
 \begin{note}[Wirtinger presentation] 
-Draw our knot $K$ as follows. Take a finitely many arcs $\alpha_1, \ldots, \alpha_n$ such that each $\alpha_i$ is connected to $\alpha_{i+1} \mod n$. Orient the knot so that the arcs are labeled in the direction of the orientation. Draw a short arrow $x_i$ passing under each $\alpha_i$ from right to left. Such $x_i$ represent loops starting at a base point going under the arc from its base to head and back to base. At each crossing, we get a relation among the $x_i$ as follows.
+Draw our knot $K$ as follows. Take finitely many arcs $\alpha_1, \ldots, \alpha_n$ such that each $\alpha_i$ is connected to $\alpha_{i+1} \mod n$. Orient the knot so that the arcs are labeled in the direction of the orientation. Draw a short arrow $x_i$ passing under each $\alpha_i$ from right to left. Such $x_i$ represent loops starting at a base point going under the arc from its base to head and back to base. At each crossing, we get a relation among the $x_i$ as follows.
 \begin{figure}[H]
 \centering
 \includegraphics[width=68mm]{Wirtinger_presentation.png}
@@ -1217,7 +1217,7 @@ This follows from the fact that $p_1 = p_2f$ and $p_2 = p_1f^{-1}$.
 
  ($\Longleftarrow$) 
  
- Apply \cref{LC} twice to lifts $\tilde{p}_1$ and $\tilde{p}_2$ such that $p_2\tilde{p_1} = p_1$ and $p_1\tilde{p_2}=p_2$. By \cref{ULP}, $\tilde{p}_1\tilde{p}_2=\1$ and $\tilde{p}_2\tilde{p}_1 = \1$. Hence $\tilde{p}_1$ and $\tilde{p}_2$ are inverse isomorphisms. 
+ Apply \cref{LC} twice to lifts $\tilde{p}_1$ and $\tilde{p}_2$ such that $p_2\tilde{p}_1 = p_1$ and $p_1\tilde{p}_2=p_2$. By \cref{ULP}, $\tilde{p}_1\tilde{p}_2=\1$ and $\tilde{p}_2\tilde{p}_1 = \1$. Hence $\tilde{p}_1$ and $\tilde{p}_2$ are inverse isomorphisms. 
 \end{proof}
 
 \begin{corollary}
@@ -1246,8 +1246,12 @@ Let $p: \left(Y, y_0\right) \to \left(X, x_0\right)$ be a path connected coverin
 \end{lemma}
 \begin{proof} $ $
 \begin{enumerate}
-\item For any $y_1 \in p^{-1}(x_0)$, there is some path $\eta : y_0 \leadsto y_1$. Then $\pi_1\left(Y, y_0\right) \cong \pi_1(Y, y_1)$ via the map $\left[\gamma\right] \mapsto \eta^{-1} \gamma \eta$. Note that $p \eta \in \pi_1\left(X, x_0\right)$ and that $p_{\ast} \pi_1\left(Y, y_0\right) = [p \eta]p_{\ast} \pi_1(Y, y_1) [p\eta]^{-1}$. Hence $\left[\gamma\right] \in N(H) \iff  p_{\ast} \pi_1\left(Y, y_0\right) = p_{\ast} \pi_1(Y, y_1)$ where $\gamma$ lifts to a path $y_0 \leadsto y_1$. By \cref{LC} together with \cref{ULP}, it follows that $\left[\gamma\right] \in N(H)$ if and only if there is some deck transformation $Y \to Y$ mapping $y_0$ to $y_1$. Hence $N(H) = \pi_1\left(X, x_0\right)$ if and only if $p$ is normal. 
-\item Define $\varphi : N(H) \to G(Y)$ by mapping $\left[\gamma\right]$ to the deck transformation sending $y_0$ to $y_1$. The preceding argument shows that $\varphi$ is surjective. Further, $\ker{\varphi}$ consists of loop at $x_0$ whose lifts are loops in $Y$. Thus, $\ker{\varphi} = H$. 
+\item For any $y_1 \in p^{-1}(x_0)$, there is some path $\eta : y_0 \leadsto y_1$. Then $\pi_1\left(Y, y_0\right) \cong \pi_1(Y, y_1)$ via the map $\left[\gamma\right] \mapsto \eta^{-1} \gamma \eta$. Note that $p \eta \in \pi_1\left(X, x_0\right)$ and that $p_{\ast} \pi_1\left(Y, y_0\right) = [p \eta]p_{\ast} \pi_1(Y, y_1) [p\eta]^{-1}$. Hence 
+\[
+\left[\gamma\right] \in N(H) \iff  p_{\ast} \pi_1\left(Y, y_0\right) = p_{\ast} \pi_1(Y, y_1)
+\]
+ where $\gamma$ lifts to a path $y_0 \leadsto y_1$. By \cref{LC} together with \cref{ULP}, it follows that $\left[\gamma\right] \in N(H)$ if and only if there is some deck transformation $Y \to Y$ mapping $y_0$ to $y_1$. Hence $N(H) = \pi_1\left(X, x_0\right)$ if and only if $p$ is normal. 
+\item Define $\varphi : N(H) \to G(Y)$ by mapping $\left[\gamma\right]$ to the deck transformation sending $y_0$ to $y_1$. The preceding argument shows that $\varphi$ is surjective. Further, $\ker{\varphi}$ consists of loops at $x_0$ whose lifts are loops in $Y$. Thus, $\ker{\varphi} = H$. 
 \end{enumerate}
 \end{proof}
 
@@ -3501,7 +3505,10 @@ Let $F$ be a presheaf on $X$ and $x\in X$. Define \textit{the stalk $F_x$ of $F$
 \begin{enumerate}
 \item For any $x \in X$, $\underline{A}_x =A$.
 \item The \textit{germs of continuous functions at $x$} are precisely the elements of $$C_x = \faktor{  \left\{\left(U, f\right) \mid x\in U, \ f \in C(U)\right\}    }{\sim}$$ where $\left(U, f\right) \sim \left(V, g\right)$ if $f =g$ on $U \cap V$.
-\item Let $X = \R$. Let $C^{\infty}({-})$ denote the sheaf of smooth functions on $X$. Then we have an exact sequence $$ 0 \to \left(\text{flat functions}\right) \to C_0^{\infty} \to \R[\![x]\!] \to 0   .$$
+\item Let $X = \R$. Let $C^{\infty}({-})$ denote the sheaf of smooth functions on $X$. Then we have an exact sequence 
+\[
+0 \longrightarrow \left(\text{flat functions}\right) \longrightarrow C_0^{\infty} \longrightarrow \R[\![x]\!] \longrightarrow 0   .
+\]
 \item Let $\mathcal{A}$ denote the sheaf of real analytic functions. Then $\mathcal{A}_0 \cong \R\{x\}$, the ring of real analytic functions.
 \end{enumerate}
 \end{exmp}
@@ -3518,7 +3525,7 @@ The natural projection $\pi : \Et(F) \to X$ is a local homeomorphism.
 
 \smallskip
 
-We have a functor $\mathbf{PreSh}_X \overset{+}{\longrightarrow} \mathbf{Sh}_{X}$ given by $F \mapsto F^{+}$ where $F^{+}$ is given by $$U \mapsto\left \{s : U \to \Et(F) \mid \pi s(x) = x \text{ and } s \text{ is continuous}\right\}  .$$ This is left adjoint to the forgetful functor $\mathbf{Sh}_{X} \to \mathbf{PreSh}_X$.
+We have a functor $\mathbf{PreSh}_X \overset{+}{\longrightarrow} \mathbf{Sh}_{X}$ given by $F \mapsto F^{+}$ with $F^{+}$ defined by $$U \mapsto \left\{s : U \to \Et(F) \mid \pi s(x) = x \text{ and } s \text{ is continuous}\right\}  .$$ This is called \textit{sheafification} and is left adjoint to the forgetful functor $\mathbf{Sh}_{X} \to \mathbf{PreSh}_X$.
 
 
 \subsection{Lecture 25}
@@ -3915,7 +3922,7 @@ If $X$ is locally contractible and paracompact, then $\underbrace{H^{\ast}(X; \Z
 
 Let $f : X \to Y$ be a map of spaces and $F$ be a sheaf on $X$. Define the \textit{$i$-th right derived functor} as $$\mathcal{R}^i{f_{\ast}{F}} = \left( U\subset Y \mapsto H^i(f^{-1}(U), F)  \right)^+.$$ This is \hl{equivalent} to the sheaf $\underline{H}^i(f_{\ast}{I})\equiv (U\subset Y \mapsto H^i(\Gamma(U, f_{\ast}I)))$ where $I^{\bullet}$ is an injective resolution of $F$. We can view $\mathcal{R}f_{\ast}F$ as a complex $$f_{\ast}I^0 \to f_{\ast}I^1 \to f_{\ast}I^2 \to \cdots$$ of injective sheaves on $Y$.
 
-Furthermore, given a complex of sheaves $\left(C^{\bullet}, \delta\right)$ on $X$, the \textit{cohomology sheaf $\underline{H}^i(C^{\bullet})  $} is given by the sheafification of $U \mapsto H^i(C^{\bullet}(U), \delta)$. Note that $\underline{H}^i(C^{\bullet})_x = H^i(C^{\bullet}_x, \delta)$ for any $x\in X$.
+Furthermore, given a complex of sheaves $\left(C^{\bullet}, \delta\right)$ on $X$, the \textit{cohomology sheaf $\underline{H}^i(C^{\bullet})  $} is given by the sheafification of the presheaf $U \mapsto H^i(C^{\bullet}(U), \delta)$. Note that $\underline{H}^i(C^{\bullet})_x = H^i(C^{\bullet}_x, \delta)$ for any $x\in X$.
 
 Consider the augmented double complex 
 \[

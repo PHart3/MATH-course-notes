@@ -312,7 +312,7 @@ But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``F
 \end{corollary}
 \begin{proof} $ $
 \begin{enumerate}
-\item Given any $a\in R$, we want to show that the homomorphism $\mult_a : M \to M$ given by $x\mapsto ax$ is surjective. The assumption that $R$ is an integral domain entails that $\mult_a : R\to R$ is injective. Note that $\frak{a}\coloneqq  \mult_a(R)$ is an ideal in $R$, giving the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}}\to 0.  $$ By assumption, $\Hom_R(-, M)$ is exact, so that the sequence $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to \Hom_R(R, M) \to \Hom_R(\frak{a}, M) \to 0   $$ is exact. Since $R$ and $\frak{a}$ are free $R$-modules of rank $1$, it follows that $\Hom_R(R, M) \cong M \cong  \Hom_R(\frak{a}, M)$. This means that the sequence  $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to M \overset{\mult_a}{\longrightarrow} M \to 0 $$ exact. In particular $\mult_a$ is surjective.
+\item Given any $a\in R$, we want to show that the homomorphism $\mult_a : M \to M$ given by $x\mapsto ax$ is surjective. The assumption that $R$ is an integral domain entails that $\mult_a : R\to R$ is injective. Note that $\frak{a}\coloneqq  \mult_a(R)$ is an ideal in $R$, giving the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}}\to 0.  $$ By assumption, $\Hom_R(-, M)$ is exact, so that the sequence $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to \Hom_R(R, M) \to \Hom_R(\frak{a}, M) \to 0   $$ is exact. Since $R$ and $\frak{a}$ are free $R$-modules of rank $1$, it follows that $\Hom_R(R, M) \cong M \cong  \Hom_R(\frak{a}, M)$. This means that the sequence  $$0 \to \Hom\left(\faktor{R}{\frak{a}}, M \right) \to M \xrightarrow{\mult_a} M \to 0 $$ exact. In particular $\mult_a$ is surjective.
 
 \item $(\Longleftarrow)$ Suppose that $M$ is divisible and $R$ is a PID. We want to fill the injectivity diagram
 \[
@@ -321,7 +321,10 @@ But then $\Rho^{\op}$ is precisely an affirmative answer to what is known as ``F
 0 \arrow[r] & \frak{a} \arrow[r] \arrow[ru, "\varphi"] & R \arrow[u, "\psi", dashed]
 \end{tikzcd}.
 \]
-where $\frak{a}$ is an ideal in $R$. We have that $\frak{a} = \left(a\right)$. Therefore, the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}} \to 0$$ is isomorphic to $0 \to R \overset{\mult_a}{\longrightarrow} R \to \faktor{R}{\frak{a}}\to 0$. Since $M$ is divisible, we know that $M \overset{\mult_a}{\longrightarrow} M \to 0$ is exact.  Apply $\Hom_R(-, M)$ to get the sequence $$\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M) \to 0,$$ which is isomorphic $M \overset{\mult_a}{\longrightarrow} M \to 0$. This shows that $\Hom_R(R, M) \overset{(-)\circ \mult_a}{\longrightarrow} \Hom_R(R, M)$ is surjective. It follows that $\varphi$ can be lifted to some $\psi : R \to M$.
+where $\frak{a}$ is an ideal in $R$. We have that $\frak{a} = \left(a\right)$. Therefore, the short exact sequence $$0 \to \frak{a} \to R \to \faktor{R}{\frak{a}} \to 0$$ is isomorphic to $0 \to R  \xrightarrow{\mult_a}  R \to \faktor{R}{\frak{a}}\to 0$. Since $M$ is divisible, we know that \linebreak$M \xrightarrow{\mult_a} M \to 0$ is exact.  Apply $\Hom_R(-, M)$ to get the sequence 
+\[
+\Hom_R(R, M) \xrightarrow{\left({-}\right)\circ \mult_a} \Hom_R(R, M) \to 0,
+\] which is isomorphic to $M \xrightarrow{\mult_a} M \to 0$. This shows that $\left({-}\right)\circ \mult_a$ is surjective. It follows that $\varphi$ can be lifted to some $\psi : R \to M$.
 \end{enumerate}
 \end{proof}
 
@@ -358,7 +361,7 @@ For any $R$-module $M$, we can find an injective resolution $$ 0 \to M \to I_0 \
 \begin{proof}
 We want to invent a duality operation that will convert $R {-} \mathbf{Mod}^{\op}$ to  $R^{\op} {-} \mathbf{Mod}$ and then use projective objects in $R^{\op}{-}\mathbf{Mod}$. If $T$ is an abelian group, then the functor $$ \mathbf{Ab}\underset{\Hom_{\mathbf{Ab}}(-, T)}{ \longrightarrow} \mathbf{Ab}^{\op}$$ will reverse arrows. The choice of $T$ that ends up working is precisely $\faktor{\Q}{\Z}$.
 \begin{claim}
-Let $\Hom_{\mathbf{Ab}}(-, \faktor{\Q}{\Z}) \coloneqq  (-)^D$. Note that for any abelian group $A$, we have a canonical homomorphism $\epsilon_A : A \to A^{DD}$ given by $a \mapsto \left(\left[\varphi :A \to \faktor{\Q}{\Z}\right] \to \varphi(a)\right).$ Then $\epsilon_A$ is injective.
+Let $\Hom_{\mathbf{Ab}}(-, \faktor{\Q}{\Z}) \coloneqq  \left({-}\right)^D$. Note that for any abelian group $A$, we have a canonical homomorphism $\epsilon_A : A \to A^{DD}$ given by $a \mapsto \left(\left[\varphi :A \to \faktor{\Q}{\Z}\right] \to \varphi(a)\right).$ Then $\epsilon_A$ is injective.
 \end{claim}
 \begin{proof}
 We need to show that if $a\in A$ is nonzero, then we can find some homomorphism $f: A \to \faktor{\Q}{\Z}$ such that $f(a) \ne 0$.
@@ -439,7 +442,7 @@ This follows from the fact that any two projective resolutions are chain homotop
 \begin{proof}
 Let $$\cdots \overset{\partial_1}{\longrightarrow} P^1 \overset{\partial_0}{\longrightarrow} P^0  \overset{\epsilon}{\longrightarrow} M \to 0$$ be a projective resolution and
 let $$\left(\xi\right) : 0 \to N \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} M \to 0$$ be a short exact sequence of $R$-modules.
-Note that $\Hom_R(P^k, -)$ is exact for each $k\geq 0$. Therefore, the sequence $$ 0 \to \Hom_R(P^k, N) \overset{f_k}{\longrightarrow} \Hom_R(P^k, T) \overset{g_k}{\longrightarrow} \Hom_R(P^k, M) \to 0   $$ is exact where $f_k \coloneqq  f\circ (-)$ and $g_k \coloneqq  g \circ (-)$. Letting $d_i \coloneqq  (-)\circ \partial_i$, we get \textit{short exact sequences of complexes} constituting the columns of 
+Note that $\Hom_R(P^k, -)$ is exact for each $k\geq 0$. Therefore, the sequence $$ 0 \to \Hom_R(P^k, N) \overset{f_k}{\longrightarrow} \Hom_R(P^k, T) \overset{g_k}{\longrightarrow} \Hom_R(P^k, M) \to 0   $$ is exact where $f_k \coloneqq  f\circ \left({-}\right)$ and $g_k \coloneqq  g \circ \left({-}\right)$. Letting $d_i \coloneqq  \left({-}\right)\circ \partial_i$, we get \textit{short exact sequences of complexes} constituting the columns of 
 \[
 \begin{tikzcd}
 0 \arrow[r] & {\Hom_R(P^0, N)} \arrow[r, "f_0"] \arrow[d, "d_0"] & {\Hom_R(P^0, T)} \arrow[r, "g_0"] \arrow[d, "d_0"] & {\Hom_R(P^0, M)} \arrow[r] \arrow[d, "d_0"] & 0 \\
@@ -447,7 +450,7 @@ Note that $\Hom_R(P^k, -)$ is exact for each $k\geq 0$. Therefore, the sequence 
  & \vdots & \vdots & \vdots & 
 \end{tikzcd}
 .\]
-By definition, $\ext_R^i(M, N) = \overbrace{\faktor{\ker{d_i}}{\im{d_{i-1}}}}^{\text{for the first column}}$. Since $\Hom_R(-, M)$ is left-exact and $P^1 \overset{\partial_1}{\longrightarrow} P^0 \overset{\epsilon}{\longrightarrow} M$ is exact, we also have the exact sequence $$ 0 \to \Hom_R(M, M) \overset{(-) \circ \epsilon}{\longrightarrow} \Hom_R(P^0, M) \overset{d_0}{\longrightarrow} \Hom_R(P^1, M) .  $$ 
+By definition, $\ext_R^i(M, N) = \overbrace{\faktor{\ker{d_i}}{\im{d_{i-1}}}}^{\text{for the first column}}$. Since $\Hom_R(-, M)$ is left-exact and $P^1 \overset{\partial_1}{\longrightarrow} P^0 \overset{\epsilon}{\longrightarrow} M$ is exact, we also have the exact sequence $$ 0 \to \Hom_R(M, M) \overset{\left({-}\right) \circ \epsilon}{\longrightarrow} \Hom_R(P^0, M) \overset{d_0}{\longrightarrow} \Hom_R(P^1, M) .  $$ 
 Let $\psi \in \Hom_R(P^0, M)$ satisfy $d_0(\psi) =0$. Then $\psi = \varphi \circ \epsilon$ for some unique map $\varphi : M\to M$. Since $g_0$ is surjective, there exists $\alpha \in \Hom_R(P^0, T)$ such that $g_0(\alpha) = \psi = \varphi \circ \epsilon $. This implies that $$g_1(d_0(\alpha)) = d_0(g_0(\alpha)) = d_0(\psi) =0.$$ It follows that $d_0(\alpha) \in \ker{g_1} = \im{f_1}$, so that $d_0(\alpha) = f_1(\beta)$ for some $\beta : P^1 \to N$. Since $f_2(d_1(\beta))=d_1(f_1(\beta))= d_1(d_0(\alpha)) = 0$, the fact that $f_2$ is injective means that $d_1(\beta) =0$. Hence $\beta \in \ker{d_1}$, and $\left[\beta\right] \in \ext^1_R(M, N)$ 
 \begin{exercise}
 Show that $\psi \mapsto \left[\beta\right]$ is well-defined, i.e., that $\left[\beta\right]$ is independent of $\alpha$. 
@@ -491,7 +494,7 @@ By \cref{prop2}(2), we have that $\gamma = [f]$ for some $f\in \ker{d_1}$. Note 
 
 Let $N$ be a right $R$-module and $M$ an $R$-module. Recall that $N \otimes_R M \in \ob(\mathbf{Ab})$ is precisely the object in $\Z{-}\mathbf{Mod}$ representing the functor $B_{M, N}: \mathbf{Ab} \to \mathbf{Ab}$ given by $$A \mapsto \left\{f:  M \times N \to A \mid f(ax, y) = f(x, ay) \right\}.$$ Moreover, recall that $N$ is \textit{flat} if the functor
 \[
-N \otimes_R (-) : R{-}\mathbf{Mod} \to \mathbf{Ab}
+N \otimes_R \left({-}\right) : R{-}\mathbf{Mod} \to \mathbf{Ab}
 \] is exact.
 
 
@@ -527,13 +530,13 @@ A right $R$-module $N$ is flat if and only if for any $R$-module $M$ and any $x_
 
 ($\Longrightarrow$) 
 
-We have a module homomorphism $\varphi : R^n \to M$ given by $\left(a_1, \ldots, a_n\right)\mapsto \sum_{i=1}^na_ix_i$. Then $$\underbrace{\ker{\varphi}}_{K}= \left\{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n) \text{ is a relation of the }x_i\text{'s in }R\right\}.$$ We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R (-)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = \left(N\text{-relations}\right) = N\otimes_R K$.
+We have a module homomorphism $\varphi : R^n \to M$ given by $\left(a_1, \ldots, a_n\right)\mapsto \sum_{i=1}^na_ix_i$. Then $$\underbrace{\ker{\varphi}}_{K}= \left\{(r_1, \ldots, r_n)\in R^n \mid (r_1, \ldots, r_n) \text{ is a relation of the }x_i\text{'s in }R\right\}.$$ We have an exact sequence $$ 0 \to K \overset{i}{\longrightarrow} R^n \overset{\varphi}{\longrightarrow} M  .$$ If $N$ is flat, then $N\otimes_R \left({-}\right)$ is exact, so that $$ 0 \to N\otimes_R K \overset{\tilde{i}}{\longrightarrow} N^n \overset{\tilde{\varphi}}{\longrightarrow} N\otimes_R M  $$ is exact. Thus, $\ker{\tilde{\varphi}} = \left(N\text{-relations}\right) = N\otimes_R K$.
 
 \medskip
 
 ($\Longleftarrow$)
 
- Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R (-)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $\left(y_1, \ldots, y_n\right)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $\left(a_i^j\right) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $$0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right).$$ As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
+ Let $0 \to M' \overset{f}{\longrightarrow}  M  \overset{g}{\longrightarrow} M'' \to 0$ be a short exact sequence of $R$-modules. Since $N \otimes_R \left({-}\right)$ is right exact, it suffices to show that $$N \times_R M' \overset{\id_N \otimes f}{\longrightarrow} N\otimes_RM$$ is injective. Let $z\in \ker{\id_N \otimes f}$. Then $z= \sum_{i=1}^n y_i \otimes z_i$. We know that $$\sum_{i=1}^n y_i \otimes f(z_i) = \id_N \otimes f(z) =0,$$ and thus $\left(y_1, \ldots, y_n\right)$ is an $N$ -relation among the $f(z_i)\in M$. This shows that there exist $\left(a_i^j\right) \in R$ where $i=1, \ldots, n$ and $j=1, \ldots, m$ and elements $v_1, \ldots, v_m \in N$ such that $y_i = \sum_{i=1}^m v_ja_i^j$. Therefore, $\sum_{i=1}^n a_i^jf(z_i) = 0$ for each $j$. But $$0 = \sum_{i=1}^n a_i^j f(z_i) = f\left(\sum_{i=1}^n a_i^j z_i \right).$$ As $f$ is injective, it follows that $\sum_{i=1}^n a_i^jz_i = 0$ for each $j$. Finally, we compute 
  \begin{align*}
  \sum_{i=1}^n y_i \otimes z_i & = \sum_{i=1}^n \sum_{j=1}^m (v_ja_i^j) \otimes z_i 
  \\ & = \sum_{j=1}^n v_j \otimes \left(\sum_{i=1}^n a_i^j z_i \right) 
@@ -599,7 +602,7 @@ Let $A$ be a commutative ring and $S \subset A$ be multiplicatively closed. Let 
 
 Moreover, $S^{-1}M$ is naturally a module over $S^{-1}A$ via the action $\frac{a}{s} \cdot \frac{m}{t} \coloneqq  \frac{a\cdot m}{st}$. This makes $h_M$ a module over $h: A \to S^{-1}A$ in  that for any $a\in A$ and $m\in M$, we have that $h_M(a\cdot m) = h(a) \cdot h_M(m)$.
 
-We see that $S^{-1}(-)$ is a functor which maps each homomorphism $\varphi : M \to N$ to $S^{-1}\varphi : S^{-1}M \to S^{-1}N$ given by $\frac{m}{s} \mapsto \frac{\varphi(m)}{s}$.  It's easy to verify that $S^{-1}(-)$ is left adjoint to the pullback functor $h^{\bullet}$.
+We see that $S^{-1}\left({-}\right)$ is a functor which maps each homomorphism $\varphi : M \to N$ to $S^{-1}\varphi : S^{-1}M \to S^{-1}N$ given by $\frac{m}{s} \mapsto \frac{\varphi(m)}{s}$.  It's easy to verify that $S^{-1}\left({-}\right)$ is left adjoint to the pullback functor $h^{\bullet}$.
 
 \medskip
 
@@ -613,7 +616,7 @@ On the one hand, the pullback functor is already familiar to us. On the other ha
 $\left(f_{\bullet}, f^{\bullet}\right)$ is an adjoint pair.
 \end{exercise}
 \begin{corollary}
-$S^{-1}(-) \cong h_{\bullet}$.
+$S^{-1}\left({-}\right) \cong h_{\bullet}$.
 \end{corollary}
 
 \smallskip
@@ -632,7 +635,7 @@ We have that $A_x = \C[x,x^{-1}]$, which is a field, and that $h: A \to A_x$ is 
 \end{prop}
 
 \begin{corollary}
-$S^{-1}(-)$ is an exact functor.
+$S^{-1}\left({-}\right)$ is an exact functor.
 \end{corollary}
 \begin{proof}
 Let $M \overset{f}{\longrightarrow} T \overset{g}{\longrightarrow} N$ be an exact sequence of $A$-modules. We want to show that $$S^{-1}M \overset{S^{-1}f}{\longrightarrow} S^{-1}T \overset{S^{-1}g}{\longrightarrow} S^{-1}N$$ is exact as well. Let $\frac{x}{s} \in S^{-1}T$ with $\left(S^{-1}g\right)\left(\frac{x}{s}\right) = 0$. This implies that $\frac{g(x)}{s} = \frac{0}{1}$, so that $ug(x) = 0$ for some $u\in S$. But since $g$ is a morphism, we know that $0 = ug(x) = g(ux)$. This means that $f(y) = ux$ for some $y\in M$. Then $\frac{y}{us}\in S^{-1}M$ such that $\left(S^{-1}f\right)\left(\frac{y}{us}\right) = \frac{f(y)}{us} = \frac{ux}{us} = \frac{x}{s}$.
@@ -710,7 +713,7 @@ Suppose that $a\in \frak{a}^{ec}$. Then $\frac{a}{1} = h(a) \in  \frak{a}^e$, so
 \begin{definition}
 A submodule $N \subset M$ is \textit{$S$-saturated} if $N=\left \{x \in M \mid \left(\exists s \in S\right)\left(sx\in N\right)\right\}$.
 \end{definition} 
-If $M=A$ and $N= \frak{a}$, then $N$ is $S$-saturated if and only if $\frak{a} = \frak{a}^{ec}$. The localization on modules induces an inclusion-preserving bijection $$S^{-1}(-) : \{N \subset M \mid N \text{ is } S\text{-saturated}\} \to \{M \mid M \subset S^{-1}M\}.$$
+If $M=A$ and $N= \frak{a}$, then $N$ is $S$-saturated if and only if $\frak{a} = \frak{a}^{ec}$. The localization on modules induces an inclusion-preserving bijection $$S^{-1}\left({-}\right) : \{N \subset M \mid N \text{ is } S\text{-saturated}\} \to \{M \mid M \subset S^{-1}M\}.$$
 
 \medskip
 
@@ -734,7 +737,7 @@ An ideal $\frak{b} \unlhd A$ is prime if and only if $A \setminus \frak{b}$ is m
 The forward direction is obvious. Conversely, suppose that $S \cap \frak{p} = \emptyset$. Then $\p^{ec} = \p$. Indeed, $\p^{ec} = \left\{a\in A\mid \exists s \in S \text{ s.t. } sa \in \p \right\}$. But if $sa\in \p$, then either $s\in \p$ or $a\in \p$. Since $S \cap \p = \emptyset$, we see that $s\notin \p \implies a\in \p$. Suppose that $x\cdot y\in \p^e$. Then $x= \frac{a}{s}$ for some $a\in A$ and $s\in S$, and $y = \frac{b}{t}$ for some $b\in A$ and $t\in B$.  Then $\frac{ab}{st}\in \p^e$, so that $\frac{ab}{t} \in \p^e$ since $\p^e$ is an ideal. Hence $ab \in \p$, which is prime by assumption. Say that $a\in \p$. Then $\frac{a}{s} \in \p^e$. 
 \end{proof}
 
-\begin{corollary} If $S \subset A$ is multiplicatively closed, then we get a bijection $$\left\{ \p \in \mathsf{Spec}(A) \mid \p \cap S=\emptyset\right\} \overset{(-)^e}{\longrightarrow}\mathsf{Spec}(S^{-1}A).$$  
+\begin{corollary} If $S \subset A$ is multiplicatively closed, then we get a bijection $$\left\{ \p \in \mathsf{Spec}(A) \mid \p \cap S=\emptyset\right\} \overset{\left({-}\right)^e}{\longrightarrow}\mathsf{Spec}(S^{-1}A).$$  
 \end{corollary}
 \begin{proof}
 This is because $\p^c$ is prime in $A$ with $\p^c \cap S = \emptyset$ whenever $\p$ is prime in $S^{-1}A$.
@@ -774,7 +777,7 @@ Let $S = A \setminus \p$. Then $A_{\p} = S^{-1}A$. Suppose that $I \unlhd A_{\p}
 \end{proof}
 
 \begin{corollary}
-In particular, the map $$\left(\text{prime ideal of } A \mid A \subset \p\right) \overset{(-)^e}{\longrightarrow} \mathsf{Spec}(A_{\p})$$ is a bijection that preserves inclusions of ideals. 
+In particular, the map $$\left(\text{prime ideal of } A \mid A \subset \p\right) \overset{\left({-}\right)^e}{\longrightarrow} \mathsf{Spec}(A_{\p})$$ is a bijection that preserves inclusions of ideals. 
 \end{corollary}
 
 \begin{definition}
@@ -1019,7 +1022,7 @@ Returning to $\eta$, note that $k_A^t$ and $M \otimes_A k_A$ are $t$-dimensional
 \begin{definition} Suppose that $A \subset B$ where $A$ and $B$ are commutative rings. 
 \begin{enumerate}
 \item We say that $u \in B$ is \textit{algebraic over $A$} if there is some $f(x) \in A[x]$ such that $f(u) =0$ in $B$ and $f\ne 0$. We say that $u$ is \textit{transcendental over $A$} if it is not algebraic over $A$. 
-\item In general, we say that a collection of elements $u_1, \ldots, u_k \in B$ are \textit{algebraically independent over $A$} if there is some $f(x_1, \ldots, x_k) \in A[x_1, \ldots, x_k]$ such that $f\ne 0$ and $f(u_1, \ldots, u_k) =0$ in $B$. We say that $u_1, \ldots, u_k \in B$ are \textit{independent transcendentals over $A$} if they are not algebraically independent over $A$.
+\item In general, we say that a collection of elements $u_1, \ldots, u_k \in B$ are \textit{algebraically independent over $A$} if there is some $f(x_1, \ldots, x_k) \in A\left[x_1, \ldots, x_k\right]$ such that $f\ne 0$ and $f(u_1, \ldots, u_k) =0$ in $B$. We say that $u_1, \ldots, u_k \in B$ are \textit{independent transcendentals over $A$} if they are not algebraically independent over $A$.
 \item We say that $B \supset A$ is \textit{algebraic} if each $u\in B$ is algebraic over $A$.
 \end{enumerate}
 \end{definition} 
@@ -1468,7 +1471,7 @@ For example,
 \\ & \vdots
 \\ \Phi_p & = x^{p-1}+x^{p-2}+\cdots + x + 1 \text{ with } p \text{ prime.}
 \end{align*}
-Note that $$ x^n-1 =\prod_{d\mid n}\Phi_d(x)   .$$ Consider the functions $\Phi_{(-)}:\Z_{>0} \to \C(x)^{\times}$ and $f: \Z_{>0} \to \C(x)^{\times}$ where $f(n) = x^n-1$. We can apply \eqref{eqn:MI} to get $$ \Phi_n(x) = \prod_{d\mid n}(x^d -1)^{\mu\left(\frac{n}{d}\right)} ,$$ which is a rational function over $\Z$. We can write $\Phi_n(x) = \frac{a(x)}{b(x)}$ with $b(x)$ monic. Write $\Phi_n(x) = x^m + p_{m-1}X^{m-1} + \cdots + p_0$ and set $M = \lcm\{c_i \mid p_i = \frac{t_i}{c_i}, \ i=1, \ldots, m-1\}$. Let $P_i = Mp_i$ for each $i=1, \ldots, m-1$ and $P_m = M$. Since $ M\Phi_n(x)b(x) =Ma(x)\in \Z[x]$,  we see that $M$ divides each coefficient of $M\Phi_n(x)b(x)$. Suppose, towards a contradiction, that $M >1$. Then there exists a prime divisor $p$ of $M$. By our choice of $M$, there exists a maximal $0\leq i_0 \leq m$ such that $p \nmid P_{i_0}$. If $\deg{b(x)} =s$, then the coefficient of $X^{m+s}$ in $M\Phi_n(x)b(x)$ has the form $M + p \cdot t$ for some $t\in \Z$. But this is not divisible by $p$ and thus not divisible by $M$, a contradiction.   Thus, $M =1$, so that $\Phi_n(x) \in \Z[x]$. 
+Note that $$ x^n-1 =\prod_{d\mid n}\Phi_d(x)   .$$ Consider the functions $\Phi_{\left({-}\right)}:\Z_{>0} \to \C(x)^{\times}$ and $f: \Z_{>0} \to \C(x)^{\times}$ where $f(n) = x^n-1$. We can apply \eqref{eqn:MI} to get $$ \Phi_n(x) = \prod_{d\mid n}(x^d -1)^{\mu\left(\frac{n}{d}\right)} ,$$ which is a rational function over $\Z$. We can write $\Phi_n(x) = \frac{a(x)}{b(x)}$ with $b(x)$ monic. Write $\Phi_n(x) = x^m + p_{m-1}X^{m-1} + \cdots + p_0$ and set $M = \lcm\{c_i \mid p_i = \frac{t_i}{c_i}, \ i=1, \ldots, m-1\}$. Let $P_i = Mp_i$ for each $i=1, \ldots, m-1$ and $P_m = M$. Since $ M\Phi_n(x)b(x) =Ma(x)\in \Z[x]$,  we see that $M$ divides each coefficient of $M\Phi_n(x)b(x)$. Suppose, towards a contradiction, that $M >1$. Then there exists a prime divisor $p$ of $M$. By our choice of $M$, there exists a maximal $0\leq i_0 \leq m$ such that $p \nmid P_{i_0}$. If $\deg{b(x)} =s$, then the coefficient of $X^{m+s}$ in $M\Phi_n(x)b(x)$ has the form $M + p \cdot t$ for some $t\in \Z$. But this is not divisible by $p$ and thus not divisible by $M$, a contradiction.   Thus, $M =1$, so that $\Phi_n(x) \in \Z[x]$. 
 
 Moreover, since $\deg{\Phi_n}= \varphi(n)$, it follows that $\left[\Gamma_n : \Q\right] = \varphi(n)$.
 
@@ -2333,11 +2336,11 @@ This shows that $b-f(a_1)$ is a cocycle. Thus, $H^n(g)([b-f(a_1)]) = [g(b- f(a_1
 a \arrow[r, "f"] & d_B{b}                     &  
 \end{tikzcd}
 .\] 
-Then $H^{n+1}(f)([a]) = [f(a)] = [d_B{b}] =0$. It follows that $\im{\delta^n} \subset \ker{H^{n+1}(f)}$.
+Then $H^{n+1}(f)([a]) = \left[f(a)\right] = \left[d_B{b}\right] =0$. It follows that $\im{\delta^n} \subset \ker{H^{n+1}(f)}$.
 
-Conversely, let $[a] \in  \ker{H^{n+1}(f)}$, so that $H^{n+1}(f)([a]) = [f(a)]= 0$. This means that $f(a) = d_B{b}$ for some $b \in B^n$. Then $\delta^n([g(b)]) = [a]$. This shows that $\im{\delta^n} \supset \ker{H^{n+1}(f)}$.
+Conversely, let $\left[a\right] \in  \ker{H^{n+1}(f)}$, so that $H^{n+1}(f)([a]) = \left[f(a)\right]= 0$. This means that $f(a) = d_B{b}$ for some $b \in B^n$. Then $\delta^n([g(b)]) = \left[a\right]$. This shows that $\im{\delta^n} \supset \ker{H^{n+1}(f)}$.
 \end{proof}
-
+\pagebreak
 \section{Additive categories}
 
 \begin{definition} $ $

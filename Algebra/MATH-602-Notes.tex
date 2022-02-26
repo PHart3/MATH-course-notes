@@ -1688,12 +1688,12 @@ Let $\map(\Sigma_g) =  \ker{G}$. As it turns out, $\map(\Sigma_g) \cong \faktor{
 \begin{definition}
 A \textit{$K$-module} is a pair $\left(A, \alpha\right)$ where $A$ is an abelian group and $\alpha : K \to \aut(A)$ is a group map.
 \end{definition}
-
-\begin{note}[Operations on $\ext(, (A, \alpha))$] $ $
+\pagebreak
+\begin{note}[Operations on $\ext(K, (A, \alpha))$] $ $
 \begin{enumerate}[label=(\arabic*)]
 \item Let $\phi  : L \to K$ be a group map and $$1 \to A \overset{i}{\longrightarrow} G \overset{q}{\longrightarrow} K \to 1$$ be an extension. We can use $\phi$ to produce an extension of $L$ by $A$. Consider the \textit{fiber product} $G \times_K L \equiv \{(g, l) \in G \times L : q(g) = \phi(l)\}$, which is a subgroup of $G \times L$.
 
-There is a natural map $p: G\times_K L \twoheadrightarrow L$ given by $\left(g, l\right) \mapsto l$. Also, $$\ker{p} = \left\{(g, e) : q(g) = \phi(e) =e \right\} = \left\{(g, e) : g \in A\right\} \cong A.$$ This provides us with a commutative diagram
+There is a natural map $p: G\times_K L \twoheadrightarrow L$ given by $\left(g, l\right) \mapsto l$. Also, $$\ker{p} = \left\{\left(g, e\right) : q(g) = \phi(e) =e \right\} = \left\{\left(g, e\right) : g \in A\right\} \cong A.$$ This provides us with a commutative diagram
 \[ \label{eqn:fo}
 \begin{tikzcd}
 \quad \xi:\ 1 \arrow[r] & A \arrow[r, "i"] & G \arrow[r, "q"] & K \arrow[r] & 1 \\
@@ -1706,10 +1706,14 @@ We call $G_{\phi^{\ast}\xi}\coloneqq  G\times_{K}L$ together with the induced ma
 
 Consider the action $\beta \circ q : G \to \aut(B)$. This induces a group map $i \times \psi : A \to G \ltimes_{\beta \circ q} B$ given by $a \mapsto \left(a, \psi(a)\right)$.
 \begin{claim}
-The map $i \times \psi$ is injective, and $$\overbrace{\im(i \times \psi)}^{A} \unlhd G \ltimes_{\beta \circ q} B.$$ Moreover, $A \leq \ker(G\ltimes_{\beta \circ q} B \twoheadrightarrow K)$.
+The map $i \times \psi$ is injective, and $$\overbrace{\im(i \times \psi)}^{A} \ \unlhd \ G \ltimes_{\beta \circ q} B.$$ Moreover, $A \leq \ker(G\ltimes_{\beta \circ q} B \twoheadrightarrow K)$.
 \end{claim}
 \begin{proof}
-Injectivity follows from the fact that $i$ is injective. Recall that the group law on $G \ltimes_{\beta \circ q} B$ is given by $$\left(g_1, b_1\right)\left(g_2, b_2\right) = \left(g_1g_2, b_1(\beta \circ q(g_1)(b_2))\right).$$ To see that $A$ is normal, we compute
+Injectivity follows from the fact that $i$ is injective. Recall that the group law on $G \ltimes_{\beta \circ q} B$ is given by 
+\[
+\left(g_1, b_1\right)\left(g_2, b_2\right) = \left(g_1g_2, b_1(\beta \circ q(g_1)(b_2))\right).
+\] 
+To see that $A$ is normal, we compute
 \begin{align*}
 (g, b)(a, \psi(a))(g,b)^{-1} & = \left(g, b\right)(a, \psi(a) )(g^{-1}, \beta \circ q(g^{-1})(b^{-1})) 
 \\ & = \left(ga, b\beta \circ q(g)(\psi(a))\right)(g^{-1}, \beta \circ q(g^{-1})(b^{-1}))
@@ -1839,7 +1843,7 @@ Let us find all extensions of $\faktor{\Z}{2}\cong \M_2 \coloneqq  \{\pm1\}$ by 
 \begin{tikzcd}
 1 \arrow[r] & \Z \arrow[r] & G \arrow[r] & \M_2 \arrow[r] & 1
 \end{tikzcd}
-\]
+.\]
 \underline{Case 1:} $\M_2$ acts trivially on $\Z$. 
 
 Then $C^2_0 = \left\{f : \M_2 \times \M_2 \to \Z \mid f(1, y) = f(x, 1) = 0 \text{ for any } x,y \in \M_2 \right\}$. Each $f \in C^2_0$ is thus determined by $f(-1, -1)$, so that $C^2_0 \cong \Z$ via $f\mapsto f(-1, 1)$.
@@ -2562,7 +2566,7 @@ Our main setting for ring theory will be $\mathbf{CommRing}$, the category of un
 Let $A \in \mathbf{CommRing}$. Then $A$ is a module over itself with scalar multiplication given by ring multiplication. Then we have an $A$-module $\bigoplus_{\Z_{\geq 0}} A$, where 
 \[
 a\cdot \left(a_0, a_1, a_2, \ldots \right) = \left(a\cdot a_0, a\cdot a_1, a\cdot a_2, \ldots \right), \ \quad a \in A.
-\] For each $k\geq 0$, consider the element $$m_k \coloneqq \left(0, \ldots, 0, \underbrace{1}_{k-\text{th place}}, 0 , \ldots \right).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\Z_{\geq 0}} A$. Let $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\Z_{\geq 0}} A$ by linearity. Then $\left(\bigoplus_{\Z_{\geq 0}} A, + , \cdot\right) \in  \ob{\mathbf{CommRing}}$. Moreover, $\left(\left(\bigoplus_{\Z_{\geq 0}} A, + , \cdot\right), i\right) \in  \ob{\mathbf{CommRing}^A}$ where $i : A \to \bigoplus_{\Z_{\geq 0}}A$ is defined by by $a \mapsto \left(a, 0, 0 \ldots, 0, \ldots\right)$. We call this the \textit{one-variable polynomial ring over $A$}.
+\] For each $k\geq 0$, consider the element $$m_k \coloneqq \left(0, \ldots, 0, \underset{\text{$k$-th place}}{1}, 0 , \ldots \right).$$ Then the $m_k$ form an $A$-basis for  $\bigoplus_{\Z_{\geq 0}} A$. Let $m_k \cdot m_l = m_{k+1}$ and extend this operation to $\bigoplus_{\Z_{\geq 0}} A$ by linearity. Then $\left(\bigoplus_{\Z_{\geq 0}} A, + , \cdot\right) \in  \ob{\mathbf{CommRing}}$. Moreover, $\left(\left(\bigoplus_{\Z_{\geq 0}} A, + , \cdot\right), i\right) \in  \ob{\mathbf{CommRing}^A}$ where $i : A \to \bigoplus_{\Z_{\geq 0}}A$ is defined by by $a \mapsto \left(a, 0, 0 \ldots, 0, \ldots\right)$. We call this the \textit{one-variable polynomial ring over $A$}.
 
 
 Any element $p$ of $\bigoplus_{\Z_{\geq 0}} A$ has the form $\sum_{k\in \N}a_km_k$. But $m_k = \underbrace{m_1\cdots m_1}_{k \text{ copies}}$. Therefore, if $a_k =0$ for any $k\geq n+1$ and $a_n \ne 0$, then   $$p = a_0 + a_1m_1 + \cdots + a_n(m_1)^n.$$ Writing $t$ for $m_1$ and calling the integer $n$ the \textit{degree $\deg{p}$ of $p$}, we recover an ordinary polynomial $a_0 + a_1t + \cdots a_nt^n$ of degree $n$ in the indeterminate $t$. By convention, we let $\deg(0)= {-\infty}$.
@@ -2700,7 +2704,7 @@ See \cref{CH}.
 
 Let $R$ be a ring and $S$ be a set. For any object $B$ in $\mathbf{Ring}^R$, consider the collection of set maps
 \[
-\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{B}\right\rvert)\coloneqq \left\{\phi: S \rightarrow B: \phi(s)(\xi)=\xi \cdot \phi(s), \forall{s} \in S, \forall{\xi} \in \operatorname{im}(R \rightarrow B)\right\}. 
+\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{B}\right\rvert)\coloneqq \left\{\phi: S \rightarrow B: \phi(s)(\xi)=\xi \cdot \phi(s), \ s \in S, \ \xi \in \operatorname{im}(R \rightarrow B)\right\}. 
 \]
 This induces a functor $\operatorname{Hom}_{\mathbf{Set}}^{(c)}(S,\left\lvert{-}\right\rvert) : \mathbf{Ring}^R \to \mathbf{Set}$, which has a left adjoint $R\left\langle{-}\right\rangle : \mathbf{Set} \to \mathbf{Ring}^R$.
 
@@ -3080,7 +3084,7 @@ For simplicity, let us verify just that $\Hom_R(M, -)$ is left exact. Let
 \end{tikzcd} 
 \] be a short exact sequence of $R$-modules. Apply $\Hom_R(M, -)$ to it to get a sequence of abelian groups
 \[
-\begin{tikzcd}
+\begin{tikzcd}[column sep = large]
 0 \arrow[r] & {\Hom_R(M, X')} \arrow[r, "f\circ (-)"] & {\Hom_R(M,X)} \arrow[r, "g\circ (-)"] & {\Hom_R(M, X'')} \arrow[r] & 0
 \end{tikzcd}
 .\]
