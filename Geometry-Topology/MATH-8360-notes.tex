@@ -3242,7 +3242,7 @@ H^{\bullet}(\A(K)) \xrightarrow{\sim} H^{\bullet}(C^{\bullet}(K))
 \item \textbf{Poincar\'e lemma:} 
 \begin{align*}
 H^{\bullet}(\A(\Delta\left[n\right])) &  \cong \Q 
-\\ & \cong H^{\bullet}(\Delta^n, \Q) 
+\\ & \cong H^{\bullet}(\Delta^n; \Q) 
 \\ & \cong H^{\bullet}(C^{\bullet}(\Delta\left[n\right])). \tag{\cref{isoreal}} 
 \end{align*}
 \item \textbf{Mayer-Vietoris sequence:} 
@@ -3613,11 +3613,11 @@ Next, we'll study Quillen models via $L_{\infty}$-algebras as well as dg-Lie alg
 \begin{defn}[DGLA]
 A \textit{dg-Lie algebra} is a chain complex $\left(L_{\bullet} \coloneqq \bigoplus_{n \in \Z} L_n, d : L_n \to L_{n-1}\right)$, $d^2 =0$, equipped with a \textit{graded-Lie bracket} $\left[{-}, {-}\right] : L_{\bullet} \otimes L_{\bullet} \to L_{\bullet}$, $L_p \otimes L_q \to L_{p+q}$, such that
 \be[label=(\arabic*)]
-\item (\textit{graded-skew}) $\left[x,y\right] = {-\left({-1}\right)^{\left\lvert{x}\right\rvert \left\lvert{y}\right\rvert}\left[y,x\right]}$.
+\item (\textit{graded-skew}) $\left[x,y\right] = {-\left({-1}\right)^{\left\lvert{x}\right\rvert \left\lvert{y}\right\rvert}\left[y,x\right]}$
 \item (\textit{graded-Jacobi}) $\left({-1}\right)^{\left\lvert{x}\right\rvert \left\lvert{z}\right\rvert}\left[x, \left[y, z\right]\right] +
 \left({-1}\right)^{\left\lvert{y}\right\rvert \left\lvert{x}\right\rvert}\left[y, \left[z, x\right]\right] + 
 \left({-1}\right)^{\left\lvert{z}\right\rvert \left\lvert{y}\right\rvert}\left[z, \left[x, y\right]\right]
-= 0$.
+= 0$
 \item (\textit{graded-Leibniz (derivation)}) $d{\left[x,y\right]} = \left[d{x},y\right] + \left({-1}\right)^{\left\lvert{x}\right\rvert}\left[x,d{y}\right]$.
 \ee
 \end{defn}
@@ -3778,7 +3778,7 @@ The Hurewicz map $\pi_{\bullet}^{\Q}(\Omega{X}) \to H_{\bullet}(\Omega{X}; \Q)$ 
 \] of graded-Lie algebras.
 \end{theorem}
 
-(The commutator bracket on $\P{H_{\bullet}(\Omega{X}; \Q)}$ is also known as the Pontryagin product.)
+(The commutator bracket on $\P(H_{\bullet}(\Omega{X}; \Q))$ is also known as the Pontryagin product.)
 
 \subsection{Lecture 36}
  
