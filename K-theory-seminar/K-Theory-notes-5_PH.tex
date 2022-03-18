@@ -195,7 +195,7 @@ For the original development, see Friedhelm Waldhausen's \textit{Algebraic K-the
 
 \smallskip
 
-Our goal is to construct the $K$-theory $K(\c)$ of a Waldhausen category $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \left\lvert{w{\c}}\right\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \left\lvert{w{\c}}\right\rvert \to \Omega Y$. Further, we'll require of $K(\c)$ certain limit and coherence properties, thereby making $K(\c)$ the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the \textit{algebraic $K$-theory spectrum} of $\c$.
+Our goal is to construct the $K$-theory $K(\c)$ of a Waldhausen category $\c$ as a based loop space $\Omega Y$ endowed with a loop completion map $ \iota : \left\lvert{w{\c}}\right\rvert \to K(\c)$ where $w{\c}$ denotes the subcategory of weak equivalences. This will produce a function $\ob \c \to \left\lvert{w{\c}}\right\rvert \to \Omega Y$. Further, we'll require $K(\c)$ to have certain limit and coherence properties so that it is the underlying infinite loop space of a spectrum $\mathbf{K}(\c)$, called the \textit{algebraic $K$-theory spectrum} of $\c$.
 
 \medskip
 
@@ -398,7 +398,7 @@ Axiom W3 implies that $w{\c}$ is closed under coproducts, making $\left\lvert{wS
 \end{note}
 
 \begin{definition}
-Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory space} $$K(\c, w) = \Omega \left\lvert{ N_{\bullet} wS_{\bullet} \c}\right\rvert.$$ 
+Let $\left(\c, w{\c}\right)$ be a Waldhausen category. Define the \textit{algebraic $K$-theory} of $\c$ as $$K(\c, w) \coloneqq \Omega \left\lvert{ N_{\bullet} wS_{\bullet} \c}\right\rvert.$$ 
 \end{definition}
 
 \begin{note}
@@ -408,7 +408,7 @@ We have a right adjoint $\iota: \left\lvert{w{\c}}\right\rvert \to K(\c, w)$ to 
 \medskip
 
 
-Let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor. Let $$K(F) = \Omega\left\lvert{wS_{\bullet}F}\right\rvert : K(\c, w) \to K(\d, w).$$ This is the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
+Let $F : \left(\c, w{\c}\right) \to \left(\d, w{\d}\right)$ be an exact functor. Let $$K(F) = \Omega\left\lvert{wS_{\bullet}F}\right\rvert : K(\c, w) \to K(\d, w).$$ This gives us the \textit{algebraic $K$-theory functor} $K : \mathbf{Wald} \to \mathbf{Top_{\ast}}.$
 
 \medskip
 
@@ -428,7 +428,10 @@ Since $wS_0 \c = \ast$ and every simplex of degree $n >0$ is attached to $\ast$,
 \end{remark}
 
 \begin{definition}
-The \textit{$i$-th algebraic $K$-group} is $K_i(\c, w) \equiv \pi_iK(\c, w)$ for each $i\geq 0$. 
+The \textit{$i$-th algebraic $K$-group} of $\c$ is 
+\[
+K_i(\c, w) \equiv \pi_iK(\c, w)
+\] for each $i\geq 0$. 
 \end{definition}
 
 \begin{prop}\label{P4}
@@ -447,7 +450,7 @@ In light of \cref{P4}, it suffices to compute $\pi_1\left\lvert{N_{\bullet}w S_{
 \end{proof}
 
 
-As a result, we obtain functors $$K_i : \mathbf{Wald} \to \mathbf{Top_{\ast}} \to \mathbf{Ab}$$ known as the \textit{algebraic $K$-group functors}. Indeed, thanks to \cref{P4}, we know that $$K_i(\c, w) = \pi_{i+1}\left\lvert{w S_{\bullet} \c}\right\rvert,$$ which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then \cref{L8} implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
+As a result, we obtain functors $$K_i : \mathbf{Wald} \xrightarrow{K} \mathbf{Top_{\ast}} \xrightarrow{\pi_i} \mathbf{Ab},$$ known as the \textit{algebraic $K$-group functors}. Indeed, thanks to \cref{P4}, we know that $$K_i(\c, w) = \pi_{i+1}\left\lvert{w S_{\bullet} \c}\right\rvert,$$ which is abelian for $i\geq 1$. Moreover, note that if $X' \rightarrowtail X' \vee X'' \twoheadrightarrow X''$ and $X'' \rightarrowtail X' \vee X'' \twoheadrightarrow X'$ are cofiber sequences, then \cref{L8} implies that $$\left[X'\right] + \left[X''\right] = \left[X' \vee X''\right] = \left[X'' + X'\right].$$ Hence $K_0(\c, w)$ is also abelian.
 
 
 \begin{exmp}
