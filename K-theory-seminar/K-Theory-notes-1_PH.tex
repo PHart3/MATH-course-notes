@@ -320,7 +320,7 @@ Both \cref{e1} and \cref{e2} are logically equivalent to the axiom of choice, as
 \begin{enumerate}
 \item Let $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$  on objects by $Y \mapsto \c(Y, Z)$ and on morphisms by sending $f: X \to Y$ in $\c$ to the map $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. 
 
-We call $\c(-, Z)\coloneqq \y^Z$ the set-valued functor \textit{represented by $Z$} in $\c$.
+We call $\c(-, Z)\coloneqq \y_Z$ the set-valued functor \textit{represented by $Z$} in $\c$.
 \item Let $X \in \ob \c$. Define the functor $\y^X : \c \to \mathbf{Set}$ on objects by $Y \mapsto \c(X, Y)$  and on morphisms by sending $g: Y \to Z$ to the map $g_{\ast} : \c(X, Y) \to \c(X, Z)$ given by $f \mapsto gf$. 
 
 We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented by $X$} in $\c$.
