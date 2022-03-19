@@ -107,7 +107,7 @@
 \renewcommand{\c}{\mathscr{C}}
 \renewcommand{\d}{\mathscr{D}}
 \newcommand{\e}{\mathscr{E}}
-\newcommand{\y}{\mathscr{Y}}
+\newcommand{\y}{\mathcal{Y}}
 
 \newcommand{\h}{\vec h}
 \newcommand{\f}{\vec f}
@@ -216,7 +216,7 @@ This follows from \cref{rmk} along with our definition of a composite natural tr
 
 \begin{exmp} $ $
 \begin{enumerate}
-\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_n(f)(A)\right).$$ By viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes\linebreak $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
+\item Let $R$ and $S$ be commutative rings. Any ring homomorphism $f: R \to S$ induces a ring homomorphism $\GL_n(f): \GL_n(R) \to \GL_n(S)$ satisfying $$f(\det(A)) = \det\left(\GL_{n}(f)(A)\right).$$ By viewing $\GL_n$ and $R \mapsto R^{\ast}$ as functors from $\mathbf{Ring}$ to $\mathbf{Grp}$ and $\det_R : \GL_n(R) \to R^{\ast}$ as a morphism in $\mathbf{Grp}$, we see that $\det_R$ defines a natural transformation $\phi : \GL_n \Rightarrow f^{\ast}$ where $f^{\ast}$ denotes\linebreak $f\restriction_{R^{\ast}} :R^{\ast} \to S^{\ast}$.  
 
 \[
 \begin{tikzcd}[row sep=large, column sep = large]
@@ -239,12 +239,12 @@ The inversion isomorphism from a group $G$ to its opposite group $G^{\op}$ defin
 \smallskip
 
 \begin{definition}
-Let $\c$ and $\d$ be categories with $\c$ small. The $\textit{functor category}$ $\mathbf{Fun}(\c, \d)\coloneqq \d^\c$ has functors $F: \c \to \d$ as objects and natural transformations as morphisms. 
+Let $\c$ and $\d$ be categories with $\c$ small. The \textit{functor category $\mathbf{Fun}(\c, \d)$} has functors $F: \c \to \d$ as objects and natural transformations as morphisms. 
 \end{definition}
 
 
 \begin{remark}
-Any Grothendieck universe models $\ZFC$, in particular $\mathsf{Replacement}$. This ensures that for any two functors $F, G: \c \to \d$, the class of natural transformation $\phi: F \Rightarrow G$ is a set. This means that $\mathbf{Fun}(\c, \d)$ is locally small, a condition of our definition of a category.
+Any Grothendieck universe models $\ZFC$, in particular $\mathsf{Replacement}$. This ensures that for any two functors $F, G: \c \to \d$, the class of natural transformation $\phi: F \Rightarrow G$ is a set so long as $\c$ is small. This means that $\mathbf{Fun}(\c, \d)$ is locally small, a condition of our definition of a category.
 \end{remark}
 
 \begin{definition}
@@ -316,7 +316,7 @@ Both \cref{e1} and \cref{e2} are logically equivalent to the axiom of choice, as
 
 \section{Adjunctions}
 
-\begin{definition} $ $
+\begin{definition}[Yoneda] $ $
 \begin{enumerate}
 \item Let $Z \in \ob \c$. Define the contravariant functor $\y_Z: \c^{\op} \to \mathbf{Set}$  on objects by $Y \mapsto \c(Y, Z)$ and on morphisms by sending $f: X \to Y$ in $\c$ to the map $f^{\ast} : \c(Y, Z) \to \c(X, Z)$ given by $g\mapsto gf$. 
 
@@ -329,8 +329,8 @@ We call $\c(X, -)\coloneqq\y^X$ the set-valued functor \textit{corepresented by 
 
 \smallskip
 
-A functor of the form $\c \times \c' \to \d$ is called a \textit{bifunctor}.
-In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $\left(X, X'\right) \to \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : \left(X, X'\right) \to \left(Y, Y'\right)$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
+A functor of the form $\c \times \c' \to \d$ is called a \textit{bifunctor}. Equivalently, this is a functor in each of the two arguments.
+In particular, define $\c(-, -): \c^{\op} \times \c \to \mathbf{Set}$ on objects by $\left(X, X'\right) \mapsto \c(X, X')$ and on morphisms by sending $\left(f, f'\right) : \left(X, X'\right) \to \left(Y, Y'\right)$ to the map $\c(f, f') : \c(X, X') \to \c(Y, Y')$ given by $g \mapsto {f'}{g}{f}$.
 
 \medskip
 
@@ -514,4 +514,4 @@ Let $\mathbf{Ab}_T\subset \mathbf{Ab}$ denote the subcategory of torsion groups.
 \end{enumerate}
 \end{exmp}
 
-\end{document}
+\end{document} 
