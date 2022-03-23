@@ -285,7 +285,7 @@ A functor $F : \c \to \d$ is \textit{essentially surjective} if for each object 
 \end{definition}
 
 \begin{theorem}\label{equiv}
-A functor is an equivalence iff it is full, faithful, and essentially surjective.\footnote{Theorem 3.2.10 (Rognes).}
+A functor is an equivalence if and only if it is full, faithful, and essentially surjective.\footnote{Theorem 3.2.10 (Rognes).}
 \end{theorem}
 
 
@@ -503,14 +503,14 @@ The forgetful functor $U: \mathbf{Top} \to \mathbf{Set}$ has a left adjoint that
 \smallskip
 
 \begin{definition}
-A subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor has a left adjoint and is \textit{coreflective} if the inclusion functor has a right adjoint. 
+A full subcategory $\c \subset \d$ is \textit{reflective} if the inclusion functor has a left adjoint and is \textit{coreflective} if the inclusion functor has a right adjoint. 
 \end{definition}
 
 \begin{exmp} $ $
 \begin{enumerate}
 \item The full subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ is reflexive as the inclusion functor is right adjoint to $\left(-\right)^{\ab}$.
 \item
-Let $\mathbf{Ab}_T\subset \mathbf{Ab}$ denote the subcategory of torsion groups. This is coreflective as the inclusion functor is right adjoint to the functor sending an abelian group to its torsion subgroup.
+Let $\mathbf{Ab}_T\subset \mathbf{Ab}$ denote the full subcategory of torsion groups. This is coreflective as the inclusion functor is left adjoint to the functor sending an abelian group to its torsion subgroup.
 \end{enumerate}
 \end{exmp}
 
