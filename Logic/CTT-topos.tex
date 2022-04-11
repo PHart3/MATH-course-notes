@@ -252,7 +252,7 @@ For any monomorphism $\varphi: F \hookrightarrow G$ in $\widehat{\c}$, the class
 
 \begin{note} Let $\c$ be a small category.
 \be
-\item The subobject $\Omega_{\mathtt{dec}} \hookrightarrow \Omega$ of decidable sieves classifies all monomorphisms $F \xrightarrow{\psi} G$ in $\widehat{\c}$ such that $\psi_A : F(A) \to G(A)$ has decidable image for every $A \in \ob{\c}$. Here, a subset $S \subset T$ is decidable if and only if for any $x \in T$, the disjunction $x \in S \vee x \notin S$ is provable. If our metatheory includes $\mathsf{LEM}$, then $\Omega_{\mathtt{dec}} = \Omega$.
+\item The subobject $\Omega_{\mathtt{dec}} \hookrightarrow \Omega$ of decidable sieves classifies all monomorphisms $F \xrightarrow{\psi} G$ in $\widehat{\c}$ such that $\psi_A : F(A) \to G(A)$ has decidable image for every $A \in \ob{\c}$. Here, for any set $T$, a subset $S \subset T$ is decidable if and only if for any $x \in T$, the disjunction $x \in S \vee x \notin S$ is provable. If our metatheory includes $\mathsf{LEM}$, then $\Omega_{\mathtt{dec}} = \Omega$.
 \item  Let $\y : \c \to \widehat{\c}$ denote the Yoneda embedding.
 Let $U \in \ob{\c}$. For any sieve $\sigma$, define the subfunctor $F_{\sigma} \hookrightarrow \y_{U}$ by 
 \[
@@ -314,6 +314,9 @@ Let $U_1$ and $U_2$ be subobjects of $A$.
 \ee
 \end{prop}
 
+\begin{remark}
+A \textit{Boolean algebra} is a Heyting algebra $L$ where every $x \in L$ has a complement, i.e., an element $c_x \in L$ such that $x \vee c_x = 1$ and $x \land c_x = 0$. A topos $\e$ is Boolean if and only if $\sub(A)$ is a Boolean algebra for all $A \in \ob{\e}$. In this case, $\sub(A)$ satisfies $\mathsf{LEM}$.
+\end{remark}
 
 \medskip
 
