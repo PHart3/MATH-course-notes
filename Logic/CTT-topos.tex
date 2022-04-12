@@ -16,6 +16,7 @@
 \usepackage{bm}
 \usepackage{ dsfont }
 \usepackage{mathrsfs}
+\usepackage{comment}
 \usepackage{hyperref}
 \usepackage{scrextend}
 \hypersetup{colorlinks=true, linkcolor=red,          % color of internal links (change box color with linkbordercolor)
@@ -29,7 +30,7 @@
 \usepackage{quiver}
     
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\newtheorem{definition}{Definition}%[section]
 \newtheorem{exmp}[definition]{Example}
 \newtheorem{non-exmp}[definition]{Non-example}
 \newtheorem{note}[definition]{Note}
@@ -161,6 +162,7 @@
 \DeclareMathOperator{\sub}{\mathtt{Sub}}
 \DeclareMathOperator{\mor}{mor}
 \DeclareMathOperator{\ar}{Ar}
+\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\ZFC}{ZFC}
 
 \newcommand{\bi}{\begin{itemize}}
@@ -205,10 +207,22 @@ Let $\c$ be a category with finite limits. For any object $A \in \ob{\c}$, a \te
 A category $\e$ is an  \textit{elementary topos} if it
 \bi
 \item has finite limits,
-\item is Cartesian closed, and
+\item is cartesian closed, and
 \item has a subobject classifier $\true : 1 \to \Omega$.
 \ei
 In this case, any global element $1 \to \Omega$  is called a \textit{truth value}. 
+
+\medskip
+
+Let $\c$ be a category with finite limits. The mapping $X \in \ob{\c} \ \mapsto \ \sub(X)$, the subobject poset of $X$, induces a functor $\c^{\op} \to \mathbf{Set}$ sending a map $A \xrightarrow{f} B$ in $\c$ to the function $\sub(B) \xrightarrow{f^{\ast}({-})} \sub(A)$ of sets. The functor $\sub({-})$ is represented by $\Gamma$ if and only if $\Gamma$ is a subobject classifier of $\c$. By uniqueness of representing objects, it follows that a subobject classifier is unique up to isomorphism.
+
+\begin{theorem}[Fundamental theorem of topos theory]
+If $\e$ is a topos and $X \in \ob{\e}$, then the overcategory ${\e}/{X}$ is a topos.
+\end{theorem}
+
+\begin{corollary}\label{tlcc}
+Every topos is locally cartesian closed.
+\end{corollary}
 
 \begin{prop}\label{power}
 A category $\c$ with finite limits is a topos if and only if every object of $\c$ has a power object. 
@@ -221,9 +235,23 @@ In particular, for any topos $\e$ and $A\in \ob{\e}$, the exponential object $\O
 \[
 \e(X, \Omega^Y) \cong \e(X \times Y, \Omega) \cong \e(Y \times X, \Omega) \cong \e(Y, \Omega^X) \cong \e^{\op}(\Omega^X, Y)
 ,\] which gives us an adjunction $\left(\Omega^{\left({-}\right)}\right)^{\op} \vdash \Omega^{\left({-}\right)}$. 
-By an argument due to Par\'e, this adjunction is \textit{monadic} in the sense that $\Omega^{\left({-}\right)}$ reflects isomorphisms and preserves reflexive coequalizers, which implies that $\Omega^{\left({-}\right)}$ creates limits. Since $\e$ has finite limits as a topos, it follows that $\e^{\op}$ has finite limits, i.e., $\e$ has finite \emph{colimits}.
+By an argument due to Par\'e, this adjunction is \textit{monadic} in the sense that $\Omega^{\left({-}\right)}$ reflects isomorphisms and preserves reflexive coequalizers, which implies that $\Omega^{\left({-}\right)}$ creates limits. Since $\e$ has finite limits as a topos, it follows that $\e^{\op}$ has finite limits, i.e., $\e$ has finite \emph{colimits}. In particular, $\e$ has an initial object $0$. 
 
-\pagebreak
+\begin{lemma}
+The initial object of $\e$ is strict.
+\end{lemma} 
+\begin{proof}
+Let $X \in \ob{\e}$ and $f : X \to 0$. We must show that $f$ is an isomorphism. Notice that the map $0 \xrightarrow{\id_0} 0$ is both initial and terminal in the overcategory ${\e}/{0}$. The pullback functor $f^{\ast} : {\e}/{0} \to {\e}/{X}$ has a left adjoint and thus preserves limits. Therefore, $g \coloneqq f^{\ast}(\id_0)$ is terminal in ${\e}/{X}$. We thus have an isomorphism $h : g \xrightarrow{\cong} \id_X$. Moreover, $f^{\ast}$ has a right adjoint by \cref{tlcc} and thus preserves colimits. Hence $g$ is also initial in ${\e}/X$. This means that $\dom(g) =0$, and $f \circ g = \id_0$. The map $h$ gives us an isomorphism $ h: 0 \xrightarrow{\cong} X$ in $\e$ such that $g = \id_A \circ h$. This implies that  $f = h^{-1}$, so that $f$ is an isomorphism. 
+\end{proof}
+
+\begin{corollary}
+For any $X \in \ob{\e}$, the unique map $0 \to X$ is monic.
+\end{corollary}
+
+Notably, the classifying map of $0 \to 1$ is called \textit{false}.
+
+
+\smallskip
 
 \begin{exmp} $ $
 \be
@@ -247,13 +275,14 @@ For any monomorphism $\varphi: F \hookrightarrow G$ in $\widehat{\c}$, the class
 & \chi_{\varphi}(U)  : G(U) \to \Omega(U)
 \\ & x  \mapsto  \left\{f : X \to U \mid G(f)(x) \in  F(X),\ X \in \ob{\c}   \right\}.
 \end{align*}
+
+The subobject $\Omega_{\mathtt{dec}} \hookrightarrow \Omega$ consisting of decidable sieves classifies all monomorphisms $F \xrightarrow{\psi} G$ in $\widehat{\c}$ such that $\psi_A : F(A) \to G(A)$ has decidable image for every $A \in \ob{\c}$. Here, for any set $T$, a subset $S \subset T$ is decidable if and only if for any $x \in T$, the disjunction $x \in S \vee x \notin S$ is provable. If our metatheory includes $\mathsf{LEM}$, then $\Omega_{\mathtt{dec}} = \Omega$.
 \ee
 \end{exmp}
 
-\begin{note} Let $\c$ be a small category.
-\be
-\item The subobject $\Omega_{\mathtt{dec}} \hookrightarrow \Omega$ of decidable sieves classifies all monomorphisms $F \xrightarrow{\psi} G$ in $\widehat{\c}$ such that $\psi_A : F(A) \to G(A)$ has decidable image for every $A \in \ob{\c}$. Here, for any set $T$, a subset $S \subset T$ is decidable if and only if for any $x \in T$, the disjunction $x \in S \vee x \notin S$ is provable. If our metatheory includes $\mathsf{LEM}$, then $\Omega_{\mathtt{dec}} = \Omega$.
-\item  Let $\y : \c \to \widehat{\c}$ denote the Yoneda embedding.
+\begin{comment}  
+\begin{note} 
+Let $\c$ be a small category and let $\y : \c \to \widehat{\c}$ denote the Yoneda embedding.
 Let $U \in \ob{\c}$. For any sieve $\sigma$, define the subfunctor $F_{\sigma} \hookrightarrow \y_{U}$ by 
 \[
 A  \mapsto  \y_U(A) \cap \sigma
@@ -261,8 +290,8 @@ A  \mapsto  \y_U(A) \cap \sigma
 \[
 \sigma_F \equiv \coprod_{X \in \ob{\c}}F(X)
 \] on $U$. Then $F_{-} : \sieves(U) \to \sub(\y_U)$ is a bijection with inverse $\sigma_{-}$.
-\ee
 \end{note}
+\end{comment}
 
 \medskip
 
@@ -314,14 +343,20 @@ Let $U_1$ and $U_2$ be subobjects of $A$.
 \ee
 \end{prop}
 
+Moreover, implication $\sub(A) \times \sub(A) \xrightarrow{\Rightarrow} \sub(A)$ is defined by 
+\[
+U_1 \Rightarrow U_2 \ = \ \Pi_{U_1}(U_1 \cap U_2) 
+,\]  
+where $\Pi$ denotes the dependent product.
+
 \begin{remark}
 A \textit{Boolean algebra} is a Heyting algebra $L$ where every $x \in L$ has a complement, i.e., an element $c_x \in L$ such that $x \vee c_x = 1$ and $x \land c_x = 0$. A topos $\e$ is Boolean if and only if $\sub(A)$ is a Boolean algebra for all $A \in \ob{\e}$. In this case, $\sub(A)$ satisfies $\mathsf{LEM}$.
 \end{remark}
 
 \medskip
 
-Let $\e$ be a topos and consider a map $\el : \widehat{U} \to U$ in $\e$. We say that a map $f: X \to Y$ in $\e$ is \textit{$U$-small} if there exists a pullback square (not necessarily unique) of the form  
-\[
+Let $\e$ be a topos and consider a map $\el : \widehat{U} \to U$ in $\e$. We say that a map $f: X \to Y$ in $\e$ is \textit{$U$-small} if there exists a pullback square  of the form  
+\[ \label{pbu}
 \begin{tikzcd}[ampersand replacement=\&]
 	X \& {\widehat{U}} \\
 	Y \& U
@@ -330,11 +365,8 @@ Let $\e$ be a topos and consider a map $\el : \widehat{U} \to U$ in $\e$. We say
 	\arrow["f"', from=1-1, to=2-1]
 	\arrow[from=1-1, to=1-2]
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
-\end{tikzcd}
+\end{tikzcd} \tag{$\ast$}
 .\] Note that the class of $U$-small maps is closed under pullbacks.
-
-\medskip
-
 We say that $\el$ is a \textit{universe  in $\e$} if the class of $U$-small maps 
 \be[label=(\alph*)]
 \item is closed under  
@@ -347,7 +379,14 @@ We say that $\el$ is a \textit{universe  in $\e$} if the class of $U$-small maps
 \item contains the unique map $\Omega \to 1$.
 \ee 
 Condition (b) expresses that $U$ is \textit{impredicative}.
+
+\medskip
+
+Although the square \eqref{pbu} need not be unique, it will be when $U$ has the structure of a univalent type-theoretic universe.
+
+\begin{exmp}
 The subobject classifier is a \emph{predicative} universe as long as $\Omega \ne 1$, and the $\Omega$-small maps are precisely the monomorphisms.
+\end{exmp}
 
 \begin{remark}
 Closure under dependent sums is sometimes used as an alternative definition of \textit{impredicative}, in which case $\Omega$ is impredicative. Unfortunately, both definitions appear in the type theory literature.

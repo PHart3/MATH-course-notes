@@ -215,7 +215,7 @@ Either condition is called a \textit{universal property} of $X$.
 \end{definition}
 
 
-Any property $P$ of $\c$ has a dual property $P^{\op}$ of $\c^{\op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
+Any property $P$ of $\c$ (expressible in our metatheory) has a dual property $P^{\op}$ of $\c^{\op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
 
 
 \begin{exmp}
@@ -230,7 +230,7 @@ Let $X$ and $X'$ be two initial objects. The two unique morphisms $X\to X'$ and 
 \end{proof}
 
 
-We can think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $\left(Y, f\right)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism of $\c$ with the property that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ of $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F\big(\hat{f}\big) \circ f = f'$.
+We can think of a universal property as follows.  Let $F : \d \to \c$ be a functor and $X \in \ob \c$. A \textit{universal arrow from $X$ to $F$} is an ordered pair $\left(Y, f\right)$ with $Y \in \ob \d$ and $f : X \to F(Y)$ a morphism in $\c$ such that for any $X' \in \ob \d$ and morphism $f' : X \to F(X')$ in $\c$, there exists a unique morphism $\hat{f} : Y \to X'$ of $\d$ such that $F\big(\hat{f}\big) \circ f = f'$.
 \[ \begin{tikzcd}
 X \arrow[r, "f"] \arrow[swap, dr,  " f' "] & F(Y) \arrow[d, dashed, "F\left(\hat{f}\right)"] \\% 
  & F(X')
@@ -250,27 +250,27 @@ To see why this notion of universality agrees with our original one, we first ge
 
 \begin{definition} Let $F: \c \to \d$ be a functor and $Y \in \ob \d$. 
 \begin{enumerate}
-\item The \textit{slice} or \textit{left fiber category}, denoted by $\left(F/Y\right)$ or $\left(F \downarrow Y\right)$, has as objects pairs $\left(X, f\right)$ where $f: F(X) \to Y$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ such that $f = f' \circ F(g).$ 
+\item The \textit{slice} or \textit{left fiber category}, denoted by $\left(F/Y\right)$ or $\left(F \downarrow Y\right)$, has as objects pairs $\left(X, f\right)$ where $X \in \ob{\c}$ and $f \in \d(F(X), Y)$ and as morphisms from $f : F(X) \to Y$ to $f' : F(X') \to Y$ morphisms $g : X \to X'$ in $\c$ such that $f = f' \circ F(g).$ 
 \item 
-The \textit{coslice} or \textit{right fiber category}, denoted by $\left(Y/F\right)$ or $\left(Y \downarrow F\right)$, has as objects pairs $\left(X, f\right)$ where $f: Y\to F(X)$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ such that $f' = F(g) \circ f.$
+The \textit{coslice} or \textit{right fiber category}, denoted by $\left(Y/F\right)$ or $\left(Y \downarrow F\right)$, has as objects pairs $\left(X, f\right)$ where $X \in \ob{\c}$ and $f\in \d(Y, F(X))$ and as morphisms from $f :  Y \to F(X)$ to $f' : Y \to F(X')$ morphisms $g : X \to X'$ in $\c$ such that $f' = F(g) \circ f.$
 \end{enumerate}
 \end{definition}
 
 \smallskip
 
-Consider the opposite functor $F^{\op}:C^{\op} \to D^{\op}$ of a functor $F: \c \to \d$ . For any $Y \in \ob \d$, we have that $\left(Y/F\right)^{\op} = {F^{\op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{\op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
+Consider the opposite functor $F^{\op}: \c^{\op} \to \d^{\op}$ of a functor $F: \c \to \d$ . For any $Y \in \ob \d$, we have that $\left(Y/F\right)^{\op} = {F^{\op}}/{Y}$. Thus, the left and right fiber categories are dual in the sense that $P(Y, F)$ is true of any right fiber category ${Y}/{F}$ iff $P^{\op}(Y, F)$ is true of any left fiber category ${F}/{Y}$. 
 
 \smallskip
 
 \begin{prop}
-Let $F : \d \to \c$ be a functor and $x \in \ob C$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is an initial object of  $\left(x \downarrow F\right)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of $\left(x \downarrow F\right)$.
+Let $F : \d \to \c$ be a functor and $x \in \ob{\c}$. Then $u : x \to Fr$ is a universal arrow from $x$ to $F$ iff it is an initial object of  $\left(x \downarrow F\right)$. Dually, $u' : Fr' \to x$ is a universal arrow from $F$ to $x$  iff it is a terminal object of $\left(F \downarrow x\right)$.
 \end{prop}
 \begin{proof}
-Suppose that $u$ is universal and $f: x \to Fy$ is another object of $\left(x \downarrow F\right)$. Then there exists a unique $\hat{f}: r \to y$ such that $F\big(\hat{f}\big) \circ u = f$. Thus $F\big(\hat{f}\big)$ is a unique morphism of the coslice.
+Suppose that $u$ is universal and $f: x \to Fy$ is another object of $\left(x \downarrow F\right)$. Then there exists a unique map $\hat{f}: r \to y$ such that $F\big(\hat{f}\big) \circ u = f$. Thus, $F\big(\hat{f}\big)$ is a unique map in the coslice from $u$ to $f$.
 
 \smallskip
 
-Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $\left(x \downarrow F\right)$, there exists a unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Hence setting $\hat{f} = g$ makes $u$ a universal arrow.
+Conversely, suppose that $u$ is initial. Then for any object $f: x \to Fy$ of $\left(x \downarrow F\right)$, there exists a unique arrow $Sg : Fr \to Fy$ such that $Sg \circ u = f$. Thus, taking $\hat{f} = g$ makes $u$ a universal arrow.
 \end{proof}
 
 \begin{corollary}
@@ -279,34 +279,47 @@ Any two universal arrows from $x$ to $F$ can be canonically identified by \cref{
 
 \section{Colimits}
 
+Let $\c$ be a category.
+
+\begin{definition}
+We say that the initial object $0$ of  $\c$ is \textit{strict} if every morphism of the form $X \to 0$ is an isomorphism.
+\end{definition}
+
+\begin{prop}
+Suppose that $0$ is strict. For any $Z \in \ob{\c}$, the unique map $0 \to Z$ is monic.
+\end{prop}
+\begin{proof}
+Let $A \in \ob{\c}$ and consider any two maps $k: A \to 0$ and $h : A \to 0$. These are isomorphisms, and both $k^{-1}$ and $h^{-1}$ equal the unique map $0 \to A$. This means that $k = h$. It follows immediately that $0 \to Z$ is monic.
+\end{proof}
+
 \begin{definition}
 A \textit{zero object} of $\c$ is an object that is both initial and terminal.
 \end{definition}
 
+By \cref{initial}, any zero object is unique up to unique isomorphism.
+
 \begin{exmp}
-The unique initial object of $\set$ is $\emptyset$, and the terminal objects are precisely the singleton sets. Hence there is no zero object. Moreover, there is no initial or terminal object in $\iso(\set)$.
+The initial object of $\set$ is $\emptyset$, and the terminal objects are precisely the singleton sets. Hence there is no zero object. Moreover, there is no initial or terminal object in $\iso(\set)$.
 \end{exmp}
 
 
-For any $X \in \ob \c$, the \textit{undercategory} ${X}/{\c}$ has as objects morphisms in $\c$ of the form $i : X \to Y$ where $X$ is fixed. Given $i: X \to Y$ and  $i' : X \to Y'$ in $\ob {X}/{\c}$, define the set of morphisms from $i$ to $i'$ as the morphisms $f: Y \to Y'$ where
+For any $X \in \ob \c$, the \textit{undercategory} ${X}/{\c}$ has as objects morphisms in $\c$ of the form $i : X \to Y$. Given $i: X \to Y$ and  $i' : X \to Y'$ in $\ob {X}/{\c}$, define a  morphism from $i$ to $i'$ as a morphism $f: Y \to Y'$ where
 \[ \begin{tikzcd}
 X \arrow[r, "i"] \arrow[swap, dr,  " i' "] & Y \arrow[d, "f"] \\% 
  & Y'
 \end{tikzcd}
 \]
 commutes. (We call $i$ the \textit{structure morphism}.)
- Both composition and the set of identity maps are inherited directly from $\c$.
+Both composition and the set of identity maps are inherited directly from $\c$.
 
-\medskip
-
-Likewise, given $x \in \ob \c$, the \textit{overcategory} ${\c}/{X}$ has as objects morphisms in $\c$ of the form $i : Y \to X$ where $X$ is fixed. Given $i:  Y \to X$ and  $i' : Y' \to X$ in $\ob {\c}/{X}$, define the set of morphisms from $i$ to $i'$ as the morphisms $f: Y \to Y'$ where
+Likewise, for any $x \in \ob \c$, the \textit{overcategory} ${\c}/{X}$ has as objects morphisms in $\c$ of the form $i : Y \to X$. Given $i:  Y \to X$ and  $i' : Y' \to X$ in $\ob {\c}/{X}$, define a morphism from $i$ to $i'$ as a morphism $f: Y \to Y'$ where
 \[ \begin{tikzcd}
 Y \arrow[r, "f"] \arrow[swap, dr,  " i "] & Y' \arrow[d, "i '"] \\% 
  & X
 \end{tikzcd}
 \]
 commutes.
- Composition and identity carry over exactly from $\c$.
+Again, both composition and the set of identity maps are inherited directly from $\c$.
 
 
 \begin{remark}
@@ -353,7 +366,7 @@ If $F: \c \to \c$ is the identity functor, then the undercategory $Y/\c$ equals 
 \medskip
 
 
-Let $\j$ be a category. A \textit{diagram of shape $\j$ in $\c$} is a functor $F: \j \to \c$.
+Let $\j$ and $\c$ be categories. A \textit{diagram of shape $\j$ in $\c$} is a functor $F: \j \to \c$.
 
 
 \begin{definition}
@@ -451,7 +464,7 @@ On the other hand,
 \[
 \lim_j{F_j} \cong  \left\{  \left(f_j\right)_j \in \prod_{j\in \ob{\mathscr{J}}} F_ j \mid \forall{\psi : j \to j'} \text{ in }\mathscr{J},\ F(\psi )(f_ j) = f_{j'} \right\} .
 \]
-We have shown that $\set$ is both complete and cocomplete.
+This shows that $\set$ is both complete and cocomplete.
 \item Let $A$ be any set. Define the \textit{cumulative hierarchy $V_n(A)$} of rank $n<\omega$ over $A$ along with a countable sequence
 \[
 \begin{tikzcd}
@@ -685,7 +698,7 @@ We have the following chain of natural  bijections  in $Y \in \ob{\d}$:
 \begin{definition}
 Suppose $\c$ has a terminal object $1$. Let  $f: X \to Y$ be a morphism in $\c$.
 \begin{enumerate}
-\item Given a global element $p: 1 \to Y$ of $Y$, the \textit{fiber $f^{{-1}}(p)$ of $f$}  at $p$ is the pullback  of the cospan $1 \rightarrow Y \leftarrow X$.
+\item For any global element $p: 1 \to Y$ of $Y$, the \textit{fiber $f^{{-1}}(p)$ of $f$}  at $p$ is the pullback  of the cospan $1 \rightarrow Y \leftarrow X$.
 \item The \textit{cofiber  $Y/X$ of $f$ } is the pushout of the span $1 \leftarrow X \rightarrow Y$. 
 \end{enumerate}
 \end{definition}
