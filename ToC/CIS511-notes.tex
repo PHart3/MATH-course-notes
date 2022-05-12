@@ -249,7 +249,7 @@ Consider a function $f: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}$. The c
 \bigskip
 
 Informally, finite automata are characterized by $O(1)$ memory and passing over their inputs exactly once.
-Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is an ordered $5$-tuple 
+Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is a $5$-tuple 
 \[ \label{eqn:auto}
 M\coloneqq \left(Q, \Sigma, q_0, \delta, Q_F\right)  \tag{$\alpha$}
 \] where  $\left\lvert{Q}\right\rvert = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
@@ -336,7 +336,7 @@ As it turns out, every regular expression generates a $\DFA$ (i.e., a regular la
 
 
 \begin{definition}
-A \textit{nondeterministic finite automaton $(\NFA)$} is an ordered quintuple $\left(Q, \Sigma, q_0, \delta, Q_F\right)$ of the sort \eqref{eqn:auto} except that $\delta : Q\times \Sigma \to \P(Q)$.
+A \textit{nondeterministic finite automaton $(\NFA)$} is a quintuple $\left(Q, \Sigma, q_0, \delta, Q_F\right)$ of the sort \eqref{eqn:auto} except that $\delta : Q\times \Sigma \to \P(Q)$.
 \end{definition}
 
 \begin{exmp} Set $\Sigma = \left\{0,1\right\}$ and $M =$
@@ -593,11 +593,12 @@ It remains to show that $M'$ is unique. Let $D\coloneqq \left(Q_D, \Sigma, r_0, 
 \section{Computability theory}
 
 \begin{definition}[Turing machine]
-A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$$ where $\Gamma \supset \Sigma$ is finite such that 
+A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$$ such that
 \begin{enumerate}[label=(\roman*)]
+\item $\Gamma$ is a finite set containing $\Sigma$, 
 \item there is some \textit{null character} $\bot \in \Gamma \setminus \Sigma$,
 \item $\delta : Q\times \Gamma \to Q \times \Gamma \times \{L, R\}$, and 
-\item $Q_F, Q_R \subset Q$ such that $Q_F \cap Q_R = \emptyset$. 
+\item $Q_F, Q_R \subset Q$ with $Q_F \cap Q_R = \emptyset$. 
 \end{enumerate}
 We call 
 \begin{itemize}
@@ -1534,7 +1535,7 @@ $$\mathbf{NL} = \mathbf{co}{-}{\mathbf{NL}}.$$ (In general, $\mathbf{co}{-}\math
 \end{theorem}
 \begin{proof}
 Since $\mathsf{DIR{-}REACH}$ is $\mathbf{NL}$-complete, it suffices to show that $\mathsf{DIR{-}REACH}^c\in \mathbf{NL}.$  
-Let $G= \left(V, E\right)$ be a graph of size $n$ and $s, t\in V$. Let $C_i$ denote the set of vertices $v\in V$ reachable from $s$ in at most $i$ steps. We can assume that $V$ is ordered $\left(v_1, \ldots, v_n\right)$ since each index can be described in $\log{n}$ bits.
+Let $G= \left(V, E\right)$ be a graph of size $n$ and $s, t\in V$. Let $C_i$ denote the set of vertices $v\in V$ reachable from $s$ in at most $i$ steps. We can assume that $V$ is ordered as $\left(v_1, \ldots, v_n\right)$ since each index can be described in $\log{n}$ bits.
 
 \medskip
 
