@@ -775,7 +775,8 @@ Let $X$ be a well-founded class with respect to $R$. Then every non-empty subcla
 \end{prop}
 
 \begin{definition}
-Let $X$ be a class. A linear ordering $\left(X, <\right)$ is a \textit{well-ordering} if it is well-founded. If $X$ is a set, then we call it a \textit{well-ordered set} or \textit{woset}.
+Let $X$ be a class. A linear ordering $\left(X, <\right)$ is a \textit{well-ordering} if it is well-founded. 
+In this case, if $X$ is a set, then we call it a \textit{well-ordered set} or \textit{woset}.
 \end{definition}
 
 \begin{exmp} $ $
@@ -850,7 +851,7 @@ A class $x$ is \textit{transitive} if for any $y\in x$, we have $y\subset x$.
 A set $x$ is transitive if and only if $z \in y \in x \implies z\in x$. Therefore, $\in$ is a partial ordering of $\ord$.
 \end{note}
 
-\begin{definition}
+\begin{definition}[Ordinal]
 A set $x$ is an \textit{ordinal (number)}, written as $\od(x)$, if $x$ is transitive and $\left(x, \in\right)$ is a well ordering. 
 \end{definition}
 
@@ -1047,11 +1048,11 @@ If $X$ is a nonempty set of ordinals, then $\bigcup{X}$ is an ordinal and $\sup(
 $\ord$ is a proper class.
 \end{corollary}
 \begin{proof}
-Otherwise, $\sup{\ord}$ and $\sup{\ord}+1$ are ordinals by \cref{LC}, in which case $$\sup{\ord} < \sup{\ord} +1 \leq \sup{\ord},$$ a contradiction. 
+Otherwise, both $\sup{\ord}$ and $\sup{\ord}+1$ are ordinals by \cref{LC}, in which case $$\sup{\ord} < \sup{\ord} +1 \leq \sup{\ord},$$ a contradiction. 
  \end{proof}
 
-\begin{definition}
- An ordinal $\kappa$ is a \textit{cardinal (number)} (written as $\card(\kappa)$) if for every ordinal $\lambda < \kappa$, $\kappa \not \sim \lambda$.
+\begin{definition}[Cardinal]
+ An ordinal $\kappa$ is a \textit{cardinal (number)}, written as $\card(\kappa)$, if for every ordinal $\lambda < \kappa$, $\kappa \not \sim \lambda$.
 \end{definition}
 
 \begin{exmp} $ $
