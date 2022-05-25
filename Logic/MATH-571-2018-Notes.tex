@@ -700,7 +700,7 @@ For each set $x$, let $V(x)$ denote the formula ${\exists \alpha(x\in V_{\alpha}
 \end{notation}
 
 \begin{definition}
-The \textit{von Neumann universe} $$V \coloneqq \bigcup_{\alpha \in \ord}V_{\alpha}$$ is precisely the proper class $ \{x \mid V(x)\}$ of all sets  belonging to some stage of the rank hierarchy. 
+The \textit{von Neumann universe} $$V \coloneqq \bigcup_{\alpha \in \ord}V_{\alpha}$$ is precisely the proper class $\left\{x \mid V(x)\right\}$ of all sets  belonging to some stage of the rank hierarchy. 
 \end{definition}
  
  \begin{note} $ $
@@ -926,7 +926,7 @@ If $S$ is a nonempty set of ordinals, then  $\bigcap{S} = \min(S)$.
 \end{corollary}
 
 \begin{lemma}\label{PL}
-Let $\left(W, <\right)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to some ordinal. 
+Let $\left(W, <\right)$ be a woset. Suppose that for every $x\in W$, there is some ordinal $Z(x)$ such that $Z(x) \cong W_x$. Then $W$ is isomorphic to an ordinal. 
 \end{lemma}
 \begin{proof}
 \Cref{non-iso} together with \cref{ord-wo} proves that such a $Z(x)$ must be unique. Therefore, $$A\coloneqq \{Z(x) \mid x \in W\}$$ is a set by $\mathsf{Rep}$. Note that $\left(A, \in\right)$ is a well-ordering. To see that $A$ is transitive, let $v\in A$. Then $v = Z(y)$ for some $y\in W$. Let $x\in Z(y)$. Then $$ x \cong X_{g_y^{-1}(x)} \cong Z(g^{-1}_y(x))    $$ where $g_y : W_y \overset{\cong}{\longrightarrow} Z(y)$.  This implies that $x = Z(g^{-1}_y(x))$ since both $x$ and $Z(g^{-1}_y(x))$ are ordinals. Thus, $x \in A$, so that $v\subset A$.
@@ -953,7 +953,7 @@ For any woset $\left(W, <\right)$, there is a unique ordinal $\alpha$ such that 
 For any $x\in W$, there is some ordinal $Z(x)$ such that $W_x \cong Z(x)$.
 \end{claim}
 \begin{proof}
-Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $\left(W_m\right)_y = W_y \cong Z(y)$.  By \cref{PL}, this implies that $W_m$ is isomorphic to some ordinal, contrary to our choice of $m$.
+Now, suppose, towards a contradiction, that the set $D\coloneqq \{ x\in W \mid W_x$ is not isomorphic to an ordinal$\}$ is nonempty.   Let $m = \min(D)$. Then for each $y< m$, there is some ordinal $Z(y)$ such that $\left(W_m\right)_y = W_y \cong Z(y)$.  By \cref{PL}, this implies that $W_m$ is isomorphic to an ordinal, contrary to our choice of $m$.
 \end{proof}It follows from \cref{PL} that $W \cong \alpha$ for some ordinal $\alpha$.
 \end{proof}
 
