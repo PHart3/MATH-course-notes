@@ -88,7 +88,7 @@
 
 \newcommand{\A}{\mathcal A}
 \newcommand{\C}{\mathbb C}
-\newcommand{\E}{\vec E}
+\newcommand{\E}{\mathbb E}
 \newcommand{\CP}{\mathbb CP}
 \newcommand{\F}{\mathbb F}
 \newcommand{\G}{\mathbb G}
@@ -460,7 +460,7 @@ If $L$ is finite or cofinite, then it is regular.
 \begin{enumerate}[label=(\alph*)]
 \item Construct a new $\DFA$ $M_3$ by making every final state of $M_1$ non-final and vice versa. Then $L(M_3) = \overline{L_1}$.
 \item Construct an $\epsilon{\text{-}}\NFA$ $M_3$ as follows. Take a starting state $q_0$. Attach  an $\epsilon$-transition  from $q_0$ to the starting state of $M_1$  and  an $\epsilon$-transition from $q_0$ to the starting state of $M_2$. Then $L(M_3) = L_1 \cup L_2$.
-\item Note that $L_1 \cap L_2 = \left(\overline{L_1} \cup \overline{L_2}\right)^c$.  Now apply (a) and (b).
+\item Note that $L_1 \cap L_2 = \left(\overline{L_1} \cup \overline{L_2}\right)^c$.  Now apply parts (a) and (b).
 \item Construct an $\epsilon{\text{-}}\NFA$ $M_3$ as follows. Given any final state $q$ of $M_1$, add an $\epsilon$-transition from $q$ to the start state of $M_2$. Then $L(M_3) = L_1\cdot L_2$.
 \end{enumerate}
 \end{proof}
@@ -510,7 +510,13 @@ There is some $\DFA$ $M$ such that $L(M) =L$. Without loss of generality, write 
 
 \smallskip
 
-There exists a canonical set isomorphism $\left\{F: F \text{ is a finite automaton}\right\} \cong \N$. Also, we have that\linebreak $\left\{0,1\right\}^{\ast} \cong \N$. But then $$\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : L \text{ is a language over } \left\{0,1\right\}\right\}.$$ Since there is a surjection $$\left\{F: F \text{ is a finite automaton}\right\} \to \left\{L : L \text{ is a regular language over } \left\{0,1\right\}\right\},$$ it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
+There exist bijections $\left\{0,1\right\}^{\ast} \xrightarrow{\cong} \N$ and $\left\{F: \text{$F$ is a finite automaton}\right\}  \xrightarrow{\cong} \N$. In particular, this means that 
+\[
+\R \cong \P(\N) \cong \P(\left\{0,1\right\}^{\ast}) = \left\{L : \text{$L$ is a language over $\left\{0,1\right\}$}\right\}.
+\] Since we have a surjection 
+\[
+\left\{F: \text{$F$ is a finite automaton}\right\} \to \left\{L : \text{$L$ is a regular language over $\left\{0,1\right\}$}\right\},
+\] it follows that there are uncountably many non-regular languages over $\left\{0,1\right\}$.
 
 
 \subsection{Lecture 4}
@@ -527,14 +533,13 @@ In this case, we call the minimal such $n_0$ the \textit{pumping length} of $L$.
 \end{term}
 \begin{proof}
 By assumption, there is some $\DFA$ $M = \left(Q, \Sigma, \delta, q_0, Q_F\right)$ such that $L = L(M)$. Let $n_0 = \left\lvert{Q}\right\rvert$. Let $x\in L$ such that $\left\lvert{x}\right\rvert\geq n_0$. Set $q_i = \hat{\delta}(q_0, x_0 \cdots x_i)$ for each $i\geq 0$.  There exist $0\leq i<j \leq n_0$ such that $q_i = q_j$. Consider the three strings 
-\begin{gather*}
-w\coloneqq x_1\cdots x_i 
-\\  y\coloneqq  x_{i+1}\cdots x_j 
-\\  z\coloneqq x_{j+1} \cdots x_m.
-\end{gather*}
+\begin{align*}
+w  &\coloneqq x_1\cdots x_i 
+\\  y &\coloneqq  x_{i+1}\cdots x_j 
+\\  z &\coloneqq x_{j+1} \cdots x_m.
+\end{align*}
 where $\left\lvert{x}\right\rvert = m$. It is straightforward to verify that these satisfy conditions (a), (b), and (c).
 \end{proof}
-\pagebreak
 \begin{corollary} $ $
 \begin{enumerate} 
 \item Any regular language $L$ has pumping length $\leq \left\lvert{Q}\right\rvert$.
@@ -544,16 +549,19 @@ where $\left\lvert{x}\right\rvert = m$. It is straightforward to verify that the
 
 \begin{exmp} Let $n_0\geq 0$ be an integer. Suppose that $x=wyz$ with $\left\lvert{y}\right\rvert >0$ and $\left\lvert{wy}\right\rvert\leq n_0$.
 \begin{enumerate}
-\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$. Let $x= 1^{2^{n_0+1}}$.  Note that $$\left\lvert{wy^iz}\right\rvert = \left\lvert{wyz}\right\rvert + (i-1)\left\lvert{y}\right\rvert = 2^{n_0+1} + (i-1)\left\lvert{y}\right\rvert.$$ Hence if $i=2$, then $\left\lvert{wy^i z}\right\rvert = 2^{n_0+1} +\left\lvert{y}\right\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}$ since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < \left\lvert{wy^i z}\right\rvert$ as well. Therefore, $L$ is \emph{not} a regular language. 
+\item Let $L=  \left\{ 1^{2^n} : n\geq 0\right\}$ and $x= 1^{2^{n_0+1}}$.  Note that $$\left\lvert{wy^iz}\right\rvert = \left\lvert{wyz}\right\rvert + (i-1)\left\lvert{y}\right\rvert = 2^{n_0+1} + (i-1)\left\lvert{y}\right\rvert.$$ Hence if $i=2$, then 
+\[
+\left\lvert{wy^i z}\right\rvert = 2^{n_0+1} +\left\lvert{y}\right\rvert \leq 2^{n_0+1} +n_0 < 2^{n_0+2}
+\] since $n_0 < 2^{n_0+1}$, in which case $2^{n_0+1} < \left\lvert{wy^i z}\right\rvert$ as well. Therefore, $L$ is \emph{not} a regular language. 
 \item Let $L = \left\{ ww : w \in \left\{0,1\right\}^{\ast}\right\}$. Let $x= 0^{n_0}10^{n_0}1$. If $\left\lvert{y}\right\rvert= m$ with $0<m\leq n_0$,  then $wz= 0^{n_0-m}10^{n_0}1$, which does not belong to $L$. Hence $L$ is \emph{not} a regular language. 
 \end{enumerate}
 \end{exmp}
 
 \medskip
 
-Let $D$ be a $\DFA$ with $\left\lvert{Q_D}\right\rvert =n$. Then $D$ recognizes an infinite language if and only if it accepts some string $s$ such that $n\leq \left\lvert{s}\right\rvert \leq 2n$.
+Let $D$ be a $\DFA$ with $\left\lvert{Q_D}\right\rvert =n$. Then $D$ recognizes an infinite language if and only if it accepts a string $s$ such that $n\leq \left\lvert{s}\right\rvert \leq 2n$.
 
-Indeed, the ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ is infinite. Then $D$ contains some path $p$ of states from the start state to a final state as well as some cycle $c$ of states  such that $c \cap p \ne \emptyset$. Note that $\left\lvert{c}\right\rvert \leq n$ and $\left\lvert{p}\right\rvert \leq n$. Hence we can apply $c$ sufficiently many times to get our desired string.
+Indeed, the ($\Longleftarrow$) direction follows from the pumping lemma. Conversely, suppose that $L(D)$ is infinite. Then $D$ contains a path $p$ of states from the start state to a final state as well as a cycle $c$ of states  that intersects $p$. Note that $\left\lvert{c}\right\rvert \leq n$ and $\left\lvert{p}\right\rvert \leq n$. Hence we can follow $c$ sufficiently many times to get our desired string.
 
 \medskip
 
@@ -723,7 +731,7 @@ A \textit{multi-tape Turing machine} is exactly like an ordinary Turing machine 
 \end{definition}
 
 \begin{theorem}\label{equiv}
-For any $k\in \N$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k\left(T^2\right)$ steps of a single-tape $\TM$.
+For any $k\in \Z_{\geq 1}$ and any language $L$, if there is some $k$-tape $\TM$ $M$ such that $L(M) = M$, then there is some single-tape $\TM$ $M'$ such that $L = L(M')$. Moreover, $T$ steps of a $k$-tape $\TM$ can be simulated using $O_k\left(T^2\right)$ steps of a single-tape $\TM$.
 \end{theorem}
 \begin{proof}
 Write $M= \left(Q, \Sigma, \Gamma, \delta, q_0, Q_F, Q_R\right)$. Let $$ \left\{\#\right\} \bigcup_{\gamma \in \Gamma} \left\{\gamma, \dot{\gamma} \right\}$$ be the tape alphabet of $M'$. Construct $M'$ so that its tape always has $\#$ in a cell separating  the current contents of $M$'s different tapes and $\dot{\gamma}$ whenever the head of the tape of $M$ containing $\gamma$ is currently at $\gamma$. We make $M'$ scan its tape once to determine the positions of the heads of $M$'s tapes, then scan it again to update its contents according to $\delta$.
@@ -1043,8 +1051,6 @@ Let $f: \N \to \N$ be any function. Suppose that $g(n) = \omega(f(n) \log{f(n)})
 We say that a $\NDTM$ $M$ has \textit{time complexity} $t(n)$ if every branch of $M$ runs in time $t(n)$. 
 \end{definition}
 
-\smallskip
-
 Let  
 \begin{align*}
 & \quad \mathsf{NTIME}(t(n))
@@ -1071,6 +1077,8 @@ A language $L$  belongs to $\NP$ if and only if there exist  a deterministic $\T
 In this case, we call $V$ a \textit{verifier} and $y$ a \textit{witness}.
 \end{term}
 \begin{proof} $ $
+
+\smallskip
 
 ($\Longrightarrow$) 
 
@@ -1334,7 +1342,7 @@ Since $t<(k+1)4^m$ and each $a_u> 4^m$, it follows that $\left\lvert{U}\right\rv
 \end{proof}
 
 \begin{remark}
-Using dynamic programming, one can show that there is a poly$\left(k, t\right)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\left\langle a_1, \ldots, a_k, t\right\rangle$ is on the order of \hl{$k\log{t}$}.
+By using dynamic programming, one can show that there is a poly$\left(k, t\right)$ algorithm deciding $\mathsf{SUBSET{-}SUM}$. This result, however, does not imply that $\mathsf{SUBSET{-}SUM} \in \mathbf{P}$, because the size of the whole input $\left\langle a_1, \ldots, a_k, t\right\rangle$ is on the order of \hl{$k\log{t}$}.
 \end{remark}
 
 \subsection{Lecture 14}
@@ -1407,7 +1415,7 @@ Omer Reingold has shown that $$\mathsf{REACH} \coloneqq  \left\{\left\langle G, 
 
 Recall that $\mathsf{NTIME}(S(n)) \subset \mathsf{DTIME}\left(2^{O(S(n))}\right)$. The corresponding relation for space complexity, however, is much better.
 
-\begin{theorem}[Savitch]
+\begin{theorem}[Savitch]\label{Sav}
  $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}\left(S^2(n)\right)$.
 \end{theorem}
 
@@ -1417,10 +1425,7 @@ $\mathsf{PSPACE} = \mathsf{NPSPACE}$.
 
 \subsection{Lecture 15}
 
-\begin{theorem}[Savitch]\label{Sav}
- $\mathsf{NSPACE}(S(n)) \subset \mathsf{DSPACE}\left(S^2(n)\right).$
-\end{theorem}
-\begin{proof}
+\begin{proof}[Proof of \cref{Sav}]
 Let $L \in \mathsf{NSPACE}(S(n)) $ with $L(M) = L$. Recall that the configuration graph $G_{M,x}$ has at most $T_0\coloneqq 2^{O(S(n))}$ nodes. Consider the following recursive algorithm.
 
 \smallskip
@@ -1571,7 +1576,7 @@ Finally, let $c\in \N$. Given that $\left\lvert{C_{i-1}}\right\rvert=k$, we can 
 \item Determine the number $r$ of vertices in $C_i$ by using a counter on the work tape. If $r = c$, then \textit{accept}. Otherwise, \textit{reject}.
 \end{enumerate}
 
-Note that each of our three verifiers uses $O(\log{n})$ space on its work tape and  is polynomial in $n$ on its proof tape. Apply our final algorithm iteratively $n$ times to verify the size of  $C_n$. Since we can reuse space on the work tape, our space complexity on it remains $O(\log{n})$.  Next, apply our first algorithm to verify that $t\notin C_n$, in which case $t$ is not reachable from $s$.
+Note that each of our three verifiers uses $O(\log{n})$ space on its work tape and  is polynomial in $n$ on its proof tape. Apply our final algorithm iteratively $n$ times to verify the size of  $C_n$. Since we can reuse space on the work tape, our space complexity on it remains $O(\log{n})$.  Next, run our first algorithm to verify that $t\notin C_n$, in which case $t$ is not reachable from $s$.
 \end{proof}
 
 \begin{corollary}
@@ -1581,7 +1586,7 @@ If $s(n) \geq \log{n}$, then $\mathsf{NSPACE}(s(n)) = \mathbf{co}{-}\mathsf{NSPA
 \bigskip
 
 \begin{remark}
-Thanks to Bertrand's postulate, some prime number between $N$ and $2N$ always exists.  Suppose that we want to find the least such prime $\tilde{p}$. Consider the probability $\pr$ that a randomly chosen number between $N$ and $2N$ is prime. From the prime number theorem, it is known that $\pr \approx \frac{N}{\log{N}}$. As a result, we can apply the AKS primality test $O(\log{N})$ times to find $\tilde{p}$ with high probability.
+Thanks to Bertrand's postulate, some prime number between $N$ and $2N$ always exists.  Suppose that we want to find the least such prime $\tilde{p}$. Consider the probability $\pr$ that a randomly chosen number between $N$ and $2N$ is prime. From the prime number theorem, it is known that $\pr \approx \frac{N}{\log{N}}$. As a result, we can run the AKS primality test $O(\log{N})$ times to find $\tilde{p}$ with high probability.
 \end{remark}
 
 \subsection{Lecture 18}
@@ -1652,19 +1657,22 @@ Then $A$ accepts $\left\langle L \right\rangle$ with probability $1$ when $\det{
 Let $G=\left(V_1, V_2, E\right)$ be a bipartite graph with $\left\lvert{V_1}\right\rvert=\left\lvert{V_2}\right\rvert=n$. 
 A \textit{perfect matching} is a permutation $\sigma$ of $\left\{1,2, \ldots, n\right\}$ such that $\left(i, \sigma(i)\right) \in E$ for each $i=1, \ldots, n$.
 
-Let $M= \left(m_{i,j}\right)$ be the $n\times n$ matrix with $$m_{i,j} \equiv \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-1})^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has some perfect matching. By \cref{matrix}, it follows that deciding whether or not a finite graph has a perfect matching belongs to $\mathbf{BPP}$.
+Consider the $n\times n$ matrix $M \coloneqq \left(m_{i,j}\right)$ defined by $$m_{i,j} \equiv \begin{cases} X_{ij} & (i,j) \in E\\ 0 & (i,j) \notin E    \end{cases}.$$ Since $$\det{M} =  \sum_{\sigma \in S_n} ({-1})^{\sgn{\sigma}} \prod_{i=1}^n m_{i, \sigma{i}} ,$$ we see that $\det{M} \ne 0$ if and only if $G$ has a perfect matching. By \cref{matrix}, it follows that deciding whether or not a finite graph has a perfect matching belongs to $\mathbf{BPP}$.
 \end{exmp}
 
 \medskip
 
-Let $X_1, \ldots, X_n$ be independent Boolean-valued random variables. Let $ \mu = \mathbb{E}[X_i]$. Then $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\mathbb{E}\left[z\right] = \mu$. 
+Let $X_1, \ldots, X_n$ be independent Boolean-valued random variables. Suppose that $\E[X_i] = \E[X_1]$ for every $1 \leq i \leq n$. Let $ \mu = \E[X_1]$ and $Z= \frac{X_1 + \cdots + X_n}{n}$, so that $\E[Z] = \mu$. 
 
 \begin{theorem}[Chernoff bound]\label{Chb}
- For any $t\in (0,1)$, $$\pr\left[\left\lvert{Z - \mu}\right\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}.$$
+ For all $t\in \left(0,1\right)$, 
+ \[
+ \pr\left[\left\lvert{Z - \mu}\right\rvert \geq t\right] \leq e^{\frac{{-t^2n} \mu}{4}}.
+ \]
 \end{theorem}
 
 \begin{corollary}
-Let $M$ be a randomized polynomial time $\TM$ and $L\subset \Sigma^{\ast}$ be a language. Suppose that there exists $c>0$ such that
+Let $M$ be a randomized polynomial time $\TM$ and let $L\subset \Sigma^{\ast}$. Suppose that there exists $c>0$ such that
 \begin{itemize}
 \item for any $x\in L$, $\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[M(x,r)=1\right] \geq \frac{1}{2} +n^{-c}$ and
 \item for any $x\notin L$, $\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[M(x,r)=0\right] \geq \frac{1}{2} + n^{-c}$
@@ -1676,11 +1684,11 @@ Then for any $c' >0$, there exist a randomized polynomial time $\TM$ $M'$ such t
 \end{itemize}
 \end{corollary}
 \begin{proof}
-Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x)$ $m$ times, with outputs $y_1, \ldots, y_m$. Accept if $M$ accepts $x$ more than $\frac{m}{2}$ times and reject otherwise.
+Let $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x)$ $m$ times, with outputs $y_1, \ldots, y_m$. Accept if $M$ accepts $x$ more than $\frac{m}{2}$ times and reject otherwise.
 
 \medskip
 
-  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\mathbb{E}[X_i] = \pr[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can apply \cref{Chb} to get   
+  For each $i\in \{1, \ldots, m\}$, define the random variable $$ X_i = \begin{cases} 1 & y_i = \chi_L(x) \\ 0 & \text{otherwise} \end{cases} .$$ Then $\E[X_i] = \pr[X_i=1] \geq \mu\coloneqq \frac{1}{2} + n^{{-}c}$. We can use \cref{Chb} to get   
 \begin{align*}
  \pr\left[\sum_{i=1}^m X_i \leq \frac{m}{2}\right] & \leq \pr\left[ \left\lvert{\frac{\sum_{i=1}^m X_i}{m} -\mu}\right\rvert \geq n^{-c}\right] 
 \\ & \leq
@@ -1695,11 +1703,11 @@ Set $m = n^{2c + 2c' + 100}$. Define $M'$ as follows. On any input $x$, run $M(x
 \end{align*} 
 \end{proof}
 
-\begin{remark}\label{good}
+\begin{note}\label{good}
 Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \textit{good for $x$} otherwise. For any $x$ of length $n$, we have that  $\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for }x\right] \leq 2^{{-}n^c}$. Thus, $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is bad for some }x \text{ of length }n\right] \leq 2^{{-}n^c}\cdot 2^n \ll 2^{{-}n}$$ when $c$ is large, and $$\pr_{r\in_R \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[r \text{ is good for every }x \text{ of length }n\right] \geq 1 - 2^{{-}n}.$$
-\end{remark}
+\end{note}
 
-
+\pagebreak
 
 \begin{definition} $ $
 \begin{enumerate}
@@ -1739,7 +1747,7 @@ Recall that any algorithm running in time $t(n)$ can be simulated by circuits of
 Every $L\in \mathbf{BPP}$ has polynomial size circuits. In other words, $$\mathbf{BPP} \subset \mathbf{P}/\mathrm{poly}.$$
 \end{theorem}
 \begin{proof}
-Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. Let $n\in \N$. \Cref{good} implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this, we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
+Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. Let $n\in \N$. \Cref{good} implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
 \end{proof}
 
 \begin{corollary}
@@ -1782,8 +1790,6 @@ If $k>0$ and $\Sigma_p^k = \Pi^k_p$, then $\Sigma^{k+1}_p = \Sigma^k_p$.
 For simplicity, let $k=1$. Note that $L \in \Sigma^2_p$ if and only if some formula $$\varphi(x)\coloneqq \exists{\overline{y_1}}\forall{\overline{y_2}}\left(P\left(x, \overline{y_1}, \overline{y_2}\right)\right)$$ defines $L$. But, by assumption, $\varphi(x)$ is equivalent to some formula  $ \exists{\overline{y_1}}\exists{\overline{y_2}}\left(P'\left(x, \overline{y_1}, \overline{y_2}\right)\right)$.
 \end{proof}
 
-\pagebreak
-
 \begin{theorem}[Sipser-G\'acs]
 $\mathbf{BPP} \subset \Sigma^2_p \cap \Pi^2_p$.
 \end{theorem}
@@ -1794,6 +1800,8 @@ $x \in L \iff \exists \overline{y_1}, \ldots, \overline{y_m} \in \left\{0,1\righ
 \end{claim}
 
 \begin{proof} $ $
+
+\smallskip
 
 ($\Longrightarrow$) 
 
@@ -1911,7 +1919,7 @@ Have $V$ randomly choose $h \in \H$ and $y \in \left\{0,1\right\}^l$ and then se
 
 \begin{caseof}
 \case{Suppose that $\left\lvert{S}\right\rvert \leq \frac{K}{2}$.}{If $x \in S$, then $\pr_{h \in_R \H}[h(x) = y] = \frac{1}{2^l}$. Moreover, if $p$ denotes the quantity $\frac{\left\lvert{K}\right\rvert}{2^l}$, then $$ \pr_{h \in_R \H}\left[\left(\exists x \in S\right)\left(h(x) = y\right)\right] \leq \frac{\left\lvert{S}\right\rvert}{2^l} \leq  \frac{\left\lvert{K}\right\rvert}{2 \cdot 2^l} = \frac{p}{2} . $$}
-\case{Suppose that $\left\lvert{S}\right\rvert \geq K$.} {We compute 
+\case{Suppose that $\left\lvert{S}\right\rvert \geq K$.}{We compute 
 \begin{align*}
 \pr_{h \in \H}\left[\left(\exists x \in S\right)\left(h(x) = y\right)\right] & \geq \sum_{x \in S} \pr\left[h(x) = y\right] - \sum_{\substack{x, x' \in S \\ x\ne x'} } \pr\left[h(x) = y \land h(x') = y\right]  
 \\ & \geq \frac{\left\lvert{S}\right\rvert}{2^l} - \underbrace{\frac{\left\lvert{S}\right\rvert(\left\lvert{S}\right\rvert-1)}{2}}_{\left\lvert{S}\right\rvert \choose 2}\cdot \frac{1}{2^{2l}}
@@ -1952,7 +1960,7 @@ If $n>1$, then let $$h_1(x_1) = \sum_{x_2, \ldots, x_n \in \left\{0,1\right\}} \
 \item $\underline{P}:$ Return  $h'_1(x_1)$ to $V$ where $h'_1(x_1)$ is univariate and has degree at most $d$. 
 \item $\underline{V}:$ Compute $h'_1(0) + h'_1(1)$. If this equals $K$, then \textit{reject}. 
 
-Otherwise,  choose $a_1 \in_R \F_p$. Recursively apply the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
+Otherwise,  choose $a_1 \in_R \F_p$. Recursively run the same protocol thus far with $K$ replaced with $h_1'(a_1)$ and $ \sum_{x_1 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, x_2, \ldots, x_n)$ replaced with $$\sum_{x_2 \in \left\{0,1\right\}} \cdots \sum_{x_n \in \left\{0,1\right\}} \tilde{\varphi}(a_1, x_2, \ldots, x_n).$$
 \end{enumerate}
 Next, we must verify the correctness of $\left(V,P\right)$. If $K = \sum_{x_1, \ldots, x_n \in \left\{0,1\right\}} \tilde{\varphi}(x_1, \ldots, x_n)$, then have $P$ return $h_i(x_i)$ for each $i=1, \ldots, {n-1}$. In this case, $V$ accepts with probability $1$. 
 
