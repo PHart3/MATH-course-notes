@@ -259,7 +259,7 @@ In other words, an automaton $M$ is a $\DFA$ if
 \item $M$ has a finite number of states $Q$,
 \item $M$ has a unique \textit{starting state $q_0$},
 \item for every state $q$ and every symbol $\sigma \in \Sigma$, there is a unique next state $\delta(q, \sigma)$,
-\item computation begins at the starting state and applies $\delta$ in order, and
+\item $M$'s computation begins at $q_0$ and applies $\delta$ in order, and
 \item certain states $Q_F$ are designated as \textit{final states}.
 \end{enumerate}
 
@@ -311,7 +311,7 @@ $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 	edge node {1} (q_3)
 (q_3) edge [loop below] node {0, 1} ();
 \end{tikzpicture}.
-\] Then $L(M) = \left\{x\in \Sigma^{\ast} : x = y101z \text{ for some strings } y \text{ and } z\right\}$.
+\] Then $L(M) = \left\{x\in \Sigma^{\ast} : \text{$x = y101z$  for some strings $y$ and $z$}\right\}$.
 \end{enumerate}
 \end{exmp}
 
@@ -392,7 +392,11 @@ Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\
 For any $\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ where $q_0^{(1)} \equiv \{q_0\}$, $\delta_M (Q', \sigma) \equiv \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma)$ and $Q_F^{(1)} \equiv \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}$. For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to strings.  By setting $R= \left\{q_0\right\}$, we are done.
+Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ by
+ \[
+ q_0^{(1)} = \{q_0\},\ \delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma),\ Q_F^{(1)} = \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}.
+ \]
+  For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to all strings.  Now just take \linebreak $R \equiv \left\{q_0\right\}$.
 \end{proof}
 
 \begin{exmp}
@@ -436,9 +440,11 @@ We have that $\hat{\delta}(q, x) = \begin{cases} \epsilon \text{-}\cl(q) & x = \
 For any $\epsilon{\text{-}}\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \end{theorem}
 \begin{proof}
-Use a similar argument to the proof of \cref{same}. In particular, set $$q_0^{(1)} = \epsilon \text{-}\cl(q_0)$$ and 
+Use a similar argument to the proof of \cref{same}. In particular, take
 \begin{align*}
-\delta_M(R, \sigma)  & =  \bigcup_{r\in R}\bigcup_{p\in \epsilon \text{-}\cl(r)} \bigcup_{s\in \delta_N(p, \sigma)} \epsilon \text{-}\cl(s)
+q_0^{(1)} & \equiv \epsilon \text{-}\cl(q_0)
+\\ & 
+\\ \delta_M(R, \sigma)  & \equiv  \bigcup_{r\in R}\bigcup_{p\in \epsilon \text{-}\cl(r)} \bigcup_{s\in \delta_N(p, \sigma)} \epsilon \text{-}\cl(s)
 \\ & = \bigcup_{r\in R} \bigcup_{s\in \delta_N(r, \sigma)} \epsilon \text{-}\cl(s)
 .\end{align*}
 \end{proof}
@@ -1711,18 +1717,18 @@ Call a random bit $r$ \textit{bad for $x$} if $M(x, r) \ne \chi_L(x)$ and \texti
 
 \begin{definition} $ $
 \begin{enumerate}
-\item Let $\mathbf{RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
+\item Let $\mathbf{RP}$ consist of those languages $L$ for which there is an efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
 \item for any $x\in L$, $\pr_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=1\right] \geq \frac{2}{3}$ and
 \item for any $x\notin L$, $\pr_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=0\right] = 1$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
-\item Let $\mathbf{co{-}RP}$ consist of those languages $L$ for which there is some efficient randomized $\TM$ $M$ such that 
+\item Let $\mathbf{co{-}RP}$ consist of those languages $L$ for which there is an efficient randomized $\TM$ $M$ such that 
 \begin{itemize}
 \item for any $x\in L$, $\pr_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=1\right]= 1$ and
 \item for any $x\notin L$, $\pr_{r\in_R \left\{0,1\right\}^{t(\left\lvert{x}\right\rvert)}}\left[M(x,r)=0\right] \geq \frac{2}{3}$
 \end{itemize} where $t(n)$ denotes the time complexity of $M$.
+\item Let $\mathbf{ZPP} = \mathbf{RP} \cap \mathbf{co{-}RP}$.
 \end{enumerate}
-Let $\mathbf{ZPP} = \mathbf{RP} \cap \mathbf{co{-}RP}$.
 \end{definition}
 
 \smallskip
@@ -1747,7 +1753,7 @@ Recall that any algorithm running in time $t(n)$ can be simulated by circuits of
 Every $L\in \mathbf{BPP}$ has polynomial size circuits. In other words, $$\mathbf{BPP} \subset \mathbf{P}/\mathrm{poly}.$$
 \end{theorem}
 \begin{proof}
-Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. Let $n\in \N$. \Cref{good} implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
+Let $L(M)  = L$ where $M$ is a randomized $\TM$ that runs in polynomial time. For every $n\in \N$, \cref{good} implies that there is some random bit $r_n$ such that for any string $x$ of size $n$, $M(x,r_n) = \chi_L(x)$. From this we can obtain a circuit $C_{r_n}$ of size quadratic in the running time of $M$ such that $$C_{r_n}(x) = M(x,{r_n}) = \chi_L(x)$$ for each $x$ of size $n$.
 \end{proof}
 
 \begin{corollary}
@@ -1817,23 +1823,24 @@ Suppose that $x \in L$. It suffices to show that $$   \pr_{\overline{y_1}, \ldot
 
 Suppose that $x \notin L$. Fix $y_1, \ldots, y_m$. Note that $\pr_{z \in_R \left\{0,1\right\}^{\ast}}[A(x, y_j \oplus z) =1] \leq \frac{1}{100m^2}$ for each $j=1, \ldots, m$. This implies that $$\pr_{z \in_R \left\{0,1\right\}^{\ast}}\left[\bigvee_{j=1}^m A(x, y_j \oplus z) =1\right] \leq \frac{1}{100m^2} \leq \frac{m}{100m^2} = \frac{1}{100m} <1.$$
 \end{proof}
+This completes our proof.
 \end{proof}
 
 \subsection{Lecture 22}
 
 \begin{definition}[Interactive protocol] $ $
 \begin{enumerate}
-\item  Let $V, P: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}^{\ast}$ be mappings and $x$ a binary string. Let $r\in_R \left\{0,1\right\}^{\ast}$. A \textit{$k$-round (randomized) interaction of $V$ and $P$ on $x$ and $r$} is the sequence of length $k$  consisting of the following strings.
+\item  Let $V, P: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}^{\ast}$ be mappings. Let $x$ be a binary string and $r\in_R \left\{0,1\right\}^{\ast}$. A \textit{$k$-round (randomized) interaction of $V$ and $P$ on $x$ and $r$} is the sequence of length $k$  consisting of the following strings.
 \[
 \begin{aligned} a_{1} &=V(x, r) \\ a_{2} &=P\left(x, a_{1}\right) \\ \vdots & \\ a_{2 i+1} &=V\left(x,r, a_{1}, \ldots, a_{2 i}\right) \\ a_{2 i+2} &=P\left(x, a_{1}, \ldots, a_{2 i+1}\right) \end{aligned}
-\] Let $\out{\left\langle V, P\right\rangle(x, r)}$ denote the final string of this sequence. We call $V$ a \textit{verifier} and $P$ a \textit{prover}.
+\] Let $\out_{\left\langle V, P\right\rangle}(x, r)$ denote the final string of this sequence. We call $V$ a \textit{verifier} and $P$ a \textit{prover}.
 \item Let $k : \N \to \N$ be polynomial computable. A language $L$ has a \textit{has a $k$-round (randomized) interactive protocol} or \textit{lies in the class $\mathsf{IP}[k]$} if there exists a randomized $\TM$ $V$ that $V$ is polynomial in its first input and
 \begin{enumerate}
-\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\left\langle V, P\right\rangle(x)$ is a $k(\left\lvert{x}\right\rvert)$-round interaction with $$\pr_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\left\langle V, P\right\rangle(x, r)} =1\right] \geq \frac{2}{3}$$ and 
-\item (soundness) if $x\notin L$, then for any prover $P$ such that $\left\langle V, P\right\rangle(x)$ is a $k(\left\lvert{x}\right\rvert)$-round interaction, $$\pr_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out{\left\langle V, P\right\rangle(x, r)} =1\right] \leq \frac{1}{3}.$$
+\item (completeness) if $x\in L$, then there exists a prover $P$ such that $\left\langle V, P\right\rangle(x)$ is a $k(\left\lvert{x}\right\rvert)$-round interaction with $$\pr_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out_{\left\langle V, P\right\rangle}(x, r) =1\right] \geq \frac{2}{3}$$ and 
+\item (soundness) if $x\notin L$, then for any prover $P$ such that $\left\langle V, P\right\rangle(x)$ is a $k(\left\lvert{x}\right\rvert)$-round interaction, $$\pr_{r\in_R \in \left\{0,1\right\}^{\poly(\left\lvert{x}\right\rvert)}}\left[\out_{\left\langle V, P\right\rangle}(x, r) =1\right] \leq \frac{1}{3}.$$
 \end{enumerate}
+\item Let $\mathbf{IP} = \bigcup_{k\in \N}\mathsf{IP}\left[n^k\right]$.
 \end{enumerate}
-Let $\mathbf{IP} = \bigcup_{k\in \N}\mathsf{IP}\left[n^k\right]$.
 \end{definition}
 
 
