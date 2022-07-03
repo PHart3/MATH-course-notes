@@ -258,7 +258,7 @@ for any $x\in S$ and $g,g' \in G$.
 Find a homomorphism representing a right group action $a: S \times G \to S$.
 \end{exercise}
 \begin{proof}
-Given $a$, define $f: G^{\op} \to \aut(S)$ by $g \mapsto \left(x \mapsto a(x, g)\right)$. This is a homomorphism. Conversely, given a homomorphism $f: G^{\op} \to \aut(S)$, define $a(x, g) = f(g)(x)$. This is a right action.
+Given $a$, define $f: G^{\op} \to \aut(S)$ by $g \mapsto \left(x \mapsto a(x, g)\right)$. This is a homomorphism. Conversely, given a homomorphism $f: G^{\op} \to \aut(S)$, define $a(x, g) = f(g)(x)$. This is a right group action.
 \end{proof}
 
 \medskip
@@ -374,17 +374,17 @@ The conjugation action maps elements of a group $G$ to $\aut_{+}(G)$ the group o
 
 We can define a further class of examples with the following notion from representation theory.
 
-\begin{definition}  Let $S$ be a set and $G$ be a group. Let $k$ be a field.
+\begin{definition}  Let $S$ be a set and $G$ be a group.
 \begin{enumerate}
 \item If $\left(S, +\right)$ is an abelian group and $\theta : G \to \aut_+(S)$ is an action, then we call $S$ a \textit{left $G$-module}.
-\item If $S$ is also a vector space over $k$ and $\theta$ preserves $k$-linearity, then $\theta$ is called a \textit{$k$-linear representation of $G$}.
+\item If $S$ is also a vector space over a field $k$ and $\theta$ preserves $k$-linearity, then $\theta$ is called a \textit{$k$-linear representation of $G$}.
 \end{enumerate}
 \end{definition}
 
 \medskip
 
 \begin{exmp}[The permutation representation]\label{PR}
-Let $S = \left\{1, \ldots, n\right\}$ and $G = S_n$. Let $X$ be a set. Then we have an action $\theta^{\ast} : G\to \aut(X^S) \cong \aut(X^n)$ given by $$\theta^{\ast}(\sigma)(x_1, \ldots, x_n) = \left(x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right)$$. If $X$ is a field, then $X^S \cong X^n$, which is an $n$-dimensional vector space. In this case, $\theta^\ast$ is an $X$-linear representation of $S_n$ and factors as
+Let $S = \left\{1, \ldots, n\right\}$ and $G = S_n$. Let $X$ be a set. Then we have an action $\theta^{\ast} : G\to \aut(X^S) \cong \aut(X^n)$ given by $$\theta^{\ast}(\sigma)(x_1, \ldots, x_n) = \left(x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right).$$ If $X$ is a field, then $X^S \cong X^n$, which is an $n$-dimensional vector space. In this case, $\theta^\ast$ is an $X$-linear representation of $S_n$ and factors as
 
 \[ \begin{tikzcd}
 G \arrow{r}{\theta^{\ast}} \arrow[swap]{dr} & \aut(X^n) \\% 
@@ -396,7 +396,7 @@ G \arrow{r}{\theta^{\ast}} \arrow[swap]{dr} & \aut(X^n) \\%
 
 \smallskip
 
-\Cref{PR} holds for any action $\theta: F \to \aut(S^k)$ where $k$ is a field. This is called the \textit{regular representation of $G$}.
+\Cref{PR} holds for any action $\theta: G \to \aut(S^k)$ where $k$ is a field. This is called the \textit{regular representation of $G$}.
 
 
 \medskip
@@ -2147,10 +2147,10 @@ Notice that $\Hom_{\mathbf{Set}}(\ast, x) \cong x$ for any set $x$ via the mappi
 Given $x \in \ob \c$, a \textit{$y$-point/probe of $x$} is the set $\Hom_{\c}(y, x)$.
 \end{definition}
 The class $\left\{\Hom_{\c}(y, x)\right\}_{y\in \ob \c}$ of $y$-points reconstructs $x$ as an object in $\c$. To see this, consder the presheaf category $$\widehat{\c}\coloneqq  \Fun(\c^{\op}, \mathbf{Set})$$ and let $x \in \ob \c$. Define the functor $h_x : \c^{\op} \to \mathbf{Set}$ on objects and morphisms, respectively, by 
-\begin{gather*}
-y \mapsto \Hom_{\c}(y, x)
-\\ h_x(f) : u \mapsto u \circ f.
-\end{gather*}
+\begin{align*}
+y &  \mapsto \Hom_{\c}(y, x)
+\\  f & \mapsto \left(u  \mapsto u \circ f\right).
+\end{align*}
 
 \begin{definition}
 A presheaf $F \in \widehat{\c}$ is \textit{representable} if $F \cong h_x$ for some $x\in \ob{\c}$. We say that \textit{$x$ represents $F$} in this case.
@@ -2171,7 +2171,7 @@ Let us define an inverse $i:  \Hom_{\widehat{\c}}(h_x, h_y) \to \Hom_{\c}(x, y)$
 
 \medskip
 
- If $f: x \to y$ in $\c$, then $h(f)$ is a map $h_x \to h_y$ and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $\left({-}\right) \mapsto f \circ (-)$ for any $z\in \ob \c$. In this case, $h(f)_x(\id_x) = f\circ \id_x = f$. This proves that $i$ is a left inverse of $h$.
+For any morphism $x \xrightarrow{f} y$ in $\c$, $h(f)$ is a map $h_x \to h_y$, and $h(f)_z : \Hom_{\widehat{\c}}(z, x) \to \Hom_{\widehat{\c}}(z, y)$ is given by $u \mapsto f \circ u$ for any $z\in \ob \c$. In this case, $h(f)_x(\id_x) = f\circ \id_x = f$. This proves that $i$ is a left inverse of $h$.
 
 \medskip
 
