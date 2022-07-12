@@ -211,7 +211,6 @@
 \DeclareMathOperator{\hocolim}{hocolim}
 \DeclareMathOperator{\holim}{holim}
 \DeclareMathOperator{\tot}{Tot}
-\DeclareMathOperator{\const}{const}
 \DeclareMathOperator{\mor}{Mor}
 \DeclareMathOperator{\mc}{MC}
 \DeclareMathOperator{\ce}{CE}
@@ -2166,17 +2165,17 @@ Let's look at homotopy (co)limits in a model category $\m$. We have all (co)limi
 \] are not homotopy equivalent, as the latter is equivalent to $S^2$. In general, we can fix this problem by ``deriving'' (co)limits just as we derived Quillen adjunctions by $\left(F, G\right) \mapsto \left(\Ll{F}, \R{G}\right)$. To this end, recall the following facts of category theory.
 
 \begin{prop}
-Let $\c$ be a (co)complete category and $\j$ be a small category. Consider the category $\fun(\j, \c)$ of $\j$-shaped diagrams in $\c$. Let $\const : \c \to \fun(\j, \c)$ denote the constant-diagram functor. We have adjunctions
+Let $\c$ be a (co)complete category and $\j$ be a small category. Consider the category $\fun(\j, \c)$ of $\j$-shaped diagrams in $\c$ as well as the $\j$-ary diagonal functor  $\Delta_{\j} : \c \to \fun(\j, \c)$ of $\c$. We have adjunctions
 \begin{align*}
-\colim_{\j} & \dashv \const
-\\ \const & \dashv \lim_{\j}
+\colim_{\j} & \dashv \Delta_{\j}
+\\ \Delta_{\j} & \dashv \lim_{\j}
 .\end{align*}
 \end{prop}
 
 The natural bijections
 \begin{align*}
-\Hom_{\c}(\colim_{\j}{F}, C) & \cong \Hom_{\fun(\j, \c)}(F, \const_C)
-\\ \Hom_{\fun(\j, \c)}(\const_C, F) &  \cong \Hom_{\c}(C, \lim_{\j}{F})
+\Hom_{\c}(\colim_{\j}{F}, C) & \cong \Hom_{\fun(\j, \c)}(F, \Delta_{\j}(C))
+\\ \Hom_{\fun(\j, \c)}(\Delta_{\j}(C), F) &  \cong \Hom_{\c}(C, \lim_{\j}{F})
 \end{align*}
 are precisely the universal properties of $\colim_{\j}{F}$ and $\lim_{\j}{F}$, respectively. 
 
@@ -2187,7 +2186,7 @@ We want to take $\Ll{\colim_{\j}}$ and $\R{\lim_{\j}}$ for the homotopy colimit 
 \bi
 \item $\c$ has a model structure,
 \item $\fun(\j, \c)$ has a suitable model structure, and
-\item both $\left(\colim_{\j}, \const\right)$ and $\left(\const, \lim\right)$ are Quillen adjunctions under these two model structures. 
+\item both $\left(\colim_{\j}, \Delta_{\j}\right)$ and $\left(\Delta_{\j}, \lim_{\j}\right)$ are Quillen adjunctions under these two model structures. 
 \ei
 In this case, let $\hocolim_{\j} = \Ll{\colim_{\j}}$ and $\holim_{\j} = \R{\lim_{\j}}$. For example, $\fun(\j, \c)$ has a suitable model structure when $\c$ is a \textit{combinatorial} model category. 
 
