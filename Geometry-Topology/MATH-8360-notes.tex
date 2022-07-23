@@ -433,7 +433,7 @@ A map $f: X \to Y$ is a \textit{weak \emph{(}homotopy\emph{)} equivalence \emph{
 Is it cheating to replace homotopy equivalence (h.e.) with w.e.? Not quite, in the following sense.
 
 \begin{theorem}[Whitehead]\label{Whitehead}
-Any w.e. between CW complexes is a h.e.
+Any w.e.\ between CW complexes is a h.e.
 \end{theorem}
 
 Recall that a CW complex is a space of the form $\bigcup_{n\geq {-1}}X^n = \colim_n{X^n}$ where $X^{-1} \equiv \emptyset$ and $X^n$ is obtained from $X^{n-1}$ by adjoining $n$-cells. In other words, $X^n$ is precisely the pushout
@@ -1433,10 +1433,10 @@ Let's turn to a few basic properties of model categories.
 Suppose that $\m$ is a model category. The cofibrations in $\m$ are precisely the maps with the LLP w.r.t. all acyclic fibrations.
 \end{lemma}
 \begin{proof}
-Suppose that $f: K \to L$ has the LLP w.r.t. all acyclic fibrations. We must show that $f$ is a cofibrations. By MC5, we may factor $f$ as
+Suppose that $f: K \to L$ has the LLP w.r.t. all acyclic fibrations. We must show that $f$ is a cofibration. By MC5, we may factor $f$ as
 \[
 K \xrightarrow{\substack{i\\ \text{cof.}}} L' \xrightarrow{\substack{p \\ \text{acyclic fib.}}} L
-.\] Apply the LLP of $f$ to get a lift $h: L \to L'$ for the commutative sqaure
+.\] Apply the LLP of $f$ to get a lift $h: L \to L'$ for the commutative square
 \[
 \begin{tikzcd}
 	K & {L'} \\
@@ -1690,7 +1690,7 @@ First, note that $i_0$ is a cofibration as the composition of two cofibrations. 
 	\arrow["q", from=1-2, to=1-3]
 	\arrow["\id"', curve={height=18pt}, from=1-1, to=1-3]
 \end{tikzcd}
-\] is a weak equivalence, and $q$ is a weak equivalence. Hence $i_0$ is one by the two-out-of-three property. It follows that $i_0$ is an acyclic cofibration. By the LLP, there exists a lift $K : \cyl(A) \to B^I$ for \eqref{lift}.
+\] is a weak equivalence, and $q$ is a weak equivalence. Hence $i_0$ is one by the 2-out-of-3 property. It follows that $i_0$ is an acyclic cofibration. By the LLP, there exists a lift $K : \cyl(A) \to B^I$ for \eqref{lift}.
 
 \medskip
 
@@ -1791,7 +1791,7 @@ is equivalent to the category of projective complexes with cochain homotopy clas
 Let $\m_{RQ} =  \left(\ob{\m},  \left[RQ{X}, RQ{Y}\right]\right)$. We want to show that $\m_{RQ}$ has the universal property of $\m\left[\w^{-1}\right]$. First, let's show that 
 \[
 \left(\id_{\ob{\m}}, RQ_{\mor(\m)}\right) : \m \longrightarrow \m_{RQ}
-\] takes weak equivalences to isomorphisms. Let $f: X \to Y$ be a w.e. in $\m$. We have a commutative diagram
+\] takes weak equivalences to isomorphisms. Let $f: X \to Y$ be a w.e.\ in $\m$. We have a commutative diagram
 \[ \label{doubs}
 \begin{tikzcd}
 	{RQ{X}} & {RQ{Y}} \\
@@ -1997,7 +1997,7 @@ We claim that $j \circ i_B : B \to C$ is an acyclic cofibration between cofibran
 	\arrow["\sim"', from=1-2, to=1-3]
 	\arrow["{\id_B}", curve={height=-18pt}, from=1-1, to=1-3]
 \end{tikzcd}
-\] commutes, so that $j \circ i_B$ is a w.e. by the 2-out-of-3 property. This implies that $F(j \circ i_B)$ is an isomorphism. 
+\] commutes, so that $j \circ i_B$ is a w.e.\ by the 2-out-of-3 property. This implies that $F(j \circ i_B)$ is an isomorphism. 
 
 \medskip
 
