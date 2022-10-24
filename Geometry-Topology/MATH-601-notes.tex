@@ -198,6 +198,8 @@
 \DeclareMathOperator{\Op}{\mathbf{Op}}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\leftt}{left}
+\DeclareMathOperator{\rightt}{right}
 \DeclareMathOperator{\Et}{\acute{E}t}
 \DeclareMathOperator{\ch}{\mathbf{Ch}}
 \DeclareMathOperator{\vf}{\mathscr{X}}
@@ -2135,40 +2137,36 @@ We do induction on $n$. For the base case, it is obvious that $H_0(\Delta^0, \un
 .\] Since \hl{$H_n(\Delta^n, \wedge) =0 = H_{n-1}(\Delta^n, \wedge)$}, it follows that $\alpha: H_n(\Delta^n, \partial{\Delta^n)} \overset{\cong}{\longrightarrow}  H_{n-1}(\partial{\Delta^n}, \wedge)$. Moreover, obtain an isomorphism $\beta: H_{n-1}(\Delta^{n-1}, \partial{\Delta^{n-1}}) \overset{\cong}{\longrightarrow} H_{n-1}(\partial{\Delta^n}, \wedge)$ from the homeomorphism of pairs $\left(\Delta^{n-1}, \partial{\Delta^{n-1}}\right) \to \left(\partial{\Delta^n}, \wedge\right)$ that maps $\Delta^{n-1}$ to the face missing in $\wedge$. The inductive step now holds because \hl{$\alpha{i_n} = \partial{i_n}= \pm \beta{i_{n-1}}$}.
 \end{proof}
 
-\begin{corollary}
-Consider the sphere $$S^n = D^n \cup_{S^{n-1}} D^n= \Delta^n \cup_{\partial{\Delta^n}}\Delta^n$$ and the inclusion maps 
-\begin{align*}
-& \Delta^n_1 :\Delta^n \to \text{first}(\Delta^n)
-\\ &  \Delta^n_2 :\Delta^n \to \text{second}(\Delta^n).
-\end{align*} Then $\Delta^n_1 - \Delta^n_2$ is a cycle. We claim that $\Delta_1^n -\Delta_2^n$ generates $\widetilde{H}_n(S^n)$.
-\end{corollary}
-\begin{proof}
-We have that $\widetilde{H}_n(S^n) \overset{\cong}{\longrightarrow} H_n(S^n, \im{\partial_2^n}) \overset{\cong}{\longleftarrow} H_n(\im{\Delta^n_1}, \partial{\im{\Delta_1^n}})$ where $\Delta_1^n -\Delta_2^n \mapsto \Delta^n_1 \mapsfrom i_n$.
-\end{proof}
-
 \smallskip
 
-Let $f: S^n \to S^n$ be a map, inducing the endomorphism $f_{\ast} : \widetilde{H}_n(S^n) \cong \Z \to \widetilde{H}_n(S^n) \cong \Z$. Then $f_{\ast}(g) = \alpha g$ for some $\alpha \in \Z$. 
+Consider the sphere $$S^n = D^n \cup_{S^{n-1}} D^n= \Delta^n \cup_{\partial{\Delta^n}}\Delta^n$$ and the inclusion maps 
+\begin{align*}
+& \Delta^n_1 :\Delta^n \to \leftt(\Delta^n)
+\\ &  \Delta^n_2 :\Delta^n \to \rightt(\Delta^n).
+\end{align*} Then $\Delta^n_1 - \Delta^n_2$ is a cycle. Further, $\Delta_1^n -\Delta_2^n$ generates $\widetilde{H}_n(S^n)$. Indeed, we have isomorphisms 
+\[
+\widetilde{H}_n(S^n) \overset{\cong}{\longrightarrow} H_n(S^n, \im{\partial_2^n}) \overset{\cong}{\longleftarrow} H_n(\im{\Delta^n_1}, \partial{\im{\Delta_1^n}})
+\] where $\Delta_1^n -\Delta_2^n \mapsto \Delta^n_1 \mapsfrom i_n$.
 
-\begin{definition}
-We call such an $\alpha$ the \textit{degree of $f$}, written as $\deg{f}$.
-\end{definition}
+\medskip
+
+Let $f: S^n \to S^n$ be a map and consider the induced endomorphism $f_{\ast} : \overbrace{\widetilde{H}_n(S^n)}^{\Z} \longrightarrow  \overbrace{\widetilde{H}_n(S^n)}^{\Z} $. Then there is a unique $\alpha \in \Z$  such that $f_{\ast}(g) = \alpha g$ for all $g$. We call such an $\alpha$ the \textit{degree of $f$}, written as $\deg{f}$.
 
 \begin{prop} $ $
 \begin{enumerate}
 \item $\deg{\1_{S^n}}=1$.
 \item If $f: S^n \to S^n$ is not surjective, then $\deg{f} = 0$.
 \begin{proof}
-Let $x\in S^n \setminus \im{f}$. Since $S^n \setminus \{x\} \cong \R^n$, we have that 
+Let $x\in S^n \setminus \im{f}$. Since $S^n \setminus \{x\} \cong \R^n$, we have a commuting triangle
 \[
 \begin{tikzcd}
 \widetilde{H}_n(S^n) \arrow[r, "f_{\ast}"] \arrow[d] & \widetilde{H}_n(S^n) \\
 \underbrace{\widetilde{H}_n(S^n \setminus \{x\})}_{0} \arrow[ru]      &                     
 \end{tikzcd}
-\]
+.\]
 \end{proof}
 \item If $f \simeq g$, then $\deg{f} = \deg{g}$ since $f_{\ast} = g_{\ast}$.
-\item By functorality, we get $\deg{fg}= \deg{f}\cdot \deg{g}$.
+\item By functorality, we have that $\deg{fg}= \deg{f}\cdot \deg{g}$.
 \begin{corollary}
 If $f$ is a homotopy equivalence, then $\deg{f}= \pm 1$.
 \end{corollary}
