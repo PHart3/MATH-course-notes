@@ -1835,7 +1835,7 @@ The excision theorem holds if and only if whenever $X= \mathring{A} \cup \mathri
 For the forward direction, set $Z= X\setminus B$. Conversely, set $B = X \setminus Z$.
 \end{proof}
 
-\begin{definition} Let $X$ be a space. Let $\mathcal{U} =\left\{\mathring{U}_{\alpha}\right\}$ be a cover of $X$ with each $U_{\alpha} \subset X$.
+\begin{definition} Let $X$ be a space. Let $\mathcal{U} =\left\{\mathring{U}_{\alpha}\right\}$ be a cover of $X$ with $U_{\alpha} \subset X$ for each $\alpha$.
 \begin{enumerate}
 \item The set of  \textit{small simplices relative to $\U$} is $\sing_n^{\U}(X) \equiv \left\{\sigma : \Delta^n  \to X \mid \im{\sigma}\subset U_{\alpha} \text{ for some }\alpha\right\}$.
 \item $C_n^{\U}(X) \equiv\Z\left[\sing_n^{\U}(X)\right]$.
@@ -2177,7 +2177,7 @@ Recall that $\Delta_1^n -\Delta_2^n$ generates $\widetilde{H}_n(S^n)$. Situate t
 \item Let $i: S^n \to S^n$ be the antipodal map. Then $\deg{i} = \left({-1}\right)^{n+1}$ since $i= i_0 \circ i_1 \circ \cdots \circ i_n$.
 \item Suppose that $f: S^n \to S^n$ has no fixed point. Then $\deg{f}= \left({-1}\right)^{n+1}$.
 \begin{proof}
-If $f(x) \ne x$ for every $x\in S^n$, then the line segment $\left(1-t\right)f(x) - tx$ never passes through the origin. Therefore, the maps $$H_t = \frac{ (1-t)f(x)-tx  }{\left\lvert{(1-t)f(x) -tx}\right\rvert     }$$ define a homotopy between $f$ and the antipodal map $i$.
+If $f(x) \ne x$ for every $x\in S^n$, then the line segment $\left(1-t\right)f(x) - tx$ never passes through the origin. Therefore, the maps $$H_t \  \equiv \  \frac{ \left(1-t\right)f(x)-tx  }{\left\lvert{\left(1-t\right)f(x) -tx}\right\rvert     }$$ define a homotopy between $f$ and the antipodal map $i$.
 \end{proof}
 \end{enumerate}
 \end{prop}
@@ -2478,17 +2478,17 @@ If $X$ is simply connected, then $X$ is orientable.
 \begin{proof}
 If $X$ is simply connected, then it has no subgroup of index $2$. Since every nontrivial two-sheeted covering space of $X$ corresponds to an index-2 subgroup of $\pi_1(X)$, it follows that $p$ is trivial. Thus, $X^{\mathrm{or}} \cong X \coprod X$. 
 \end{proof}
-\item Consider the set $X^{\mathrm{Zor}} \coloneqq  \left\{(x, \alpha) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) \right\}$. Topologize this by letting a basic neighborhood of $\left(x, \alpha\right)$ look like $$\widetilde{U}\coloneqq  \left\{(y, j_y^U(\alpha_U)) \mid y \in U\right\}$$ where $U$ is a basic neighborhood of $x$ but $j_y^U$ need \emph{not} be an isomorphism. 
+\item Consider the set $X^{\mathrm{Zor}} \coloneqq  \left\{\left(x, \alpha\right) \mid x\in X, \ \alpha \in H_n(X, X \setminus x) \right\}$. Topologize this by letting a basic neighborhood of $\left(x, \alpha\right)$ look like $$\widetilde{U}\coloneqq  \left\{ \left(y, j_y^U(\alpha_U)\right) \mid y \in U\right\}$$ where $U$ is a basic neighborhood of $x$ but $j_y^U$ need \emph{not} be an isomorphism. 
 
 The projection $p: X^{\mathrm{Zor}} \to X$ is an $\aleph_0$-sheeted covering projection, with each sheet corresponding to an element of $\Z$. Let  $\Gamma(A)$ denote the space of sections $s: A \to X^{\mathrm{Zor}}$ over an open subset $A\subset X$. Note that $\Gamma(A)$ inherits an abelian group operation from $\Z$. 
 \end{enumerate}
 \end{note}
 
 \begin{theorem}
-Let $X$ be an $n$-manifold and $A \subset X$ be compact.
+Let $X$ be an $n$-manifold and let $A \subset X$ be compact.
 \begin{enumerate}[label=(\alph*)]
 \item $H_q(X, X \setminus A) =0$ when $q>n$.
-\item Define the group homomorphism $j_A : H_n(X, X \setminus A) \to \Gamma(A)$ by $\alpha \mapsto \left(x \mapsto \alpha_x\right)$ where $\alpha_x = j_x^A(\alpha)$. This is an isomorphism.
+\item Consider the group homomorphism $j_A : H_n(X, X \setminus A) \to \Gamma(A)$ given by $\alpha \mapsto \left(x \mapsto \alpha_x\right), \ \alpha_x \equiv j_x^A(\alpha)$. This is an isomorphism.
 \end{enumerate}
 \end{theorem}
 \begin{proof}  First of all, note that the case where $A = \emptyset$ is obvious. There are four other cases to consider. 
