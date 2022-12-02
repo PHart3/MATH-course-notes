@@ -1244,7 +1244,7 @@ Let $\c$ be a category. Suppose that the square
 \begin{exmp}
 Let $\c$ be the category $R\text{-}\mathsf{mod}$ of modules over $R$. 
 \bi
-\item We say that an object $P$ is \textit{projective} if the unique map $0 \to P$ has the LLP w.r.t. all surjections.
+\item We say that an object $P$ is \textit{projective} if the unique map $0 \to P$ has the LLP w.r.t.\ all surjections.
 \[
 \begin{tikzcd}
 	0 & M \\
@@ -1256,7 +1256,7 @@ Let $\c$ be the category $R\text{-}\mathsf{mod}$ of modules over $R$.
 	\arrow[dashed, from=2-1, to=1-2]
 \end{tikzcd}
 \]
-\item We say that an object $I$ is \textit{injective} if the unique map $I \to 0$ has the RLP w.r.t. all injections. 
+\item We say that an object $I$ is \textit{injective} if the unique map $I \to 0$ has the RLP w.r.t.\ all injections. 
 \[
 \begin{tikzcd}
 	N & I \\
@@ -1316,9 +1316,9 @@ Moreover, $\m$ must satisfy the following five axioms.
 \item[(MC1)] It has small limits and colimits, i.e., is complete and cocomplete.
 \item[(MC2)] The class $\w$ has the \textit{2-out-of-3} property. For any two morphisms $f$ and $g$ with $fg$ defined, if two of $f$, $g$, and $fg$ belong to $\w$, then so does the third.
 \item[(MC3)] The classes $\f$, $\cf$, and $\w$ are all closed under retracts.
-\item[(MC4)] Any cofibration has the LLP w.r.t. all acyclic fibrations.
+\item[(MC4)] Any cofibration has the LLP w.r.t.\ all acyclic fibrations.
 
-Any acyclic cofibration has the LLP w.r.t. all fibrations. 
+Any acyclic cofibration has the LLP w.r.t.\ all fibrations. 
 \item[(MC5)] Any morphism $f$ in $\m$ can be functorially factored in two ways:
 \begin{align*}
 f & = pi, \ \quad \text{$p$ acyclic fibration, $i$ cofibration} 
@@ -1361,10 +1361,10 @@ Let $X \in \ob{\m}$. We say that
 \end{term}
 
 \begin{exmp}
-The category $\mathsf{Top}$ has the structure of a model category. The class $\w$ consists of all weak homotopy equivalences. The class $\f$ consists of all Serre fibrations, maps with the RLP w.r.t. all inclusions of the form 
+The category $\mathsf{Top}$ has the structure of a model category. The class $\w$ consists of all weak homotopy equivalences. The class $\f$ consists of all Serre fibrations, maps with the RLP w.r.t.\ all inclusions of the form 
 \[
 D \times \left\{0\right\} \hookrightarrow D \times I, \ \quad \text{$D$ an $n$-dimensional ball}.
-\] (We could replace balls with CW complexes.) Thus, a map $p$ is a fibration if and only if it has the HLP w.r.t. all balls:
+\] (We could replace balls with CW complexes.) Thus, a map $p$ is a fibration if and only if it has the HLP w.r.t.\ all balls:
 \[
 \begin{tikzcd}
 	{D\times \left\{0\right\}} & E \\
@@ -1376,7 +1376,7 @@ D \times \left\{0\right\} \hookrightarrow D \times I, \ \quad \text{$D$ an $n$-d
 	\arrow[dashed, from=2-1, to=1-2]
 \end{tikzcd}
 .\]
-The class $\cf$ must consist of all maps with the LLP w.r.t. Serre fibrations that are weak equivalences. One can prove that $\cf$ equals the class of all retracts of relative CW complexes.  
+The class $\cf$ must consist of all maps with the LLP w.r.t.\ Serre fibrations that are weak equivalences. One can prove that $\cf$ equals the class of all retracts of relative CW complexes.  
 \end{exmp}
 
 \subsection{Lecture 11}
@@ -1407,7 +1407,7 @@ Now consider the category $\dg{\text{-}}R{\text{-}}\mathsf{mod}$ of possibly unb
 \begin{align*}
 \w & = \text{the class of quasi-isos.}
 \\ \f & = \text{the class of cochain maps $f$ such that $f_n$ is surjective for all $n\in \Z$}
-\\ \cf & =  \text{the class of cochain maps that have the LLP w.r.t. all acyclic fibrations}
+\\ \cf & =  \text{the class of cochain maps that have the LLP w.r.t.\ all acyclic fibrations}
 . 
 \end{align*}
 A useful description of $\cf$ is much harder in this case. The following sources derive one in detail:
@@ -1421,7 +1421,7 @@ We can equip $k\text{-}\dgca^{\geq 0}$ with a similar model category structure:
 \begin{align*}
 \w & = \text{the class of quasi-isos.}
 \\ \f & = \text{the class of all maps $f$ such that $f_n$ is surjective for all $n\geq 0$}
-\\ \cf & =  \text{the class of all maps that have the LLP w.r.t. all acyclic fibrations}
+\\ \cf & =  \text{the class of all maps that have the LLP w.r.t.\ all acyclic fibrations}
 . 
 \end{align*}
 
@@ -1430,10 +1430,10 @@ We can equip $k\text{-}\dgca^{\geq 0}$ with a similar model category structure:
 Let's turn to a few basic properties of model categories.
 
 \begin{lemma}\label{easy}
-Suppose that $\m$ is a model category. The cofibrations in $\m$ are precisely the maps with the LLP w.r.t. all acyclic fibrations.
+Suppose that $\m$ is a model category. The cofibrations in $\m$ are precisely the maps with the LLP w.r.t.\ all acyclic fibrations.
 \end{lemma}
 \begin{proof}
-Suppose that $f: K \to L$ has the LLP w.r.t. all acyclic fibrations. We must show that $f$ is a cofibration. By MC5, we may factor $f$ as
+Suppose that $f: K \to L$ has the LLP w.r.t.\ all acyclic fibrations. We must show that $f$ is a cofibration. By MC5, we may factor $f$ as
 \[
 K \xrightarrow{\substack{i\\ \text{cof.}}} L' \xrightarrow{\substack{p \\ \text{acyclic fib.}}} L
 .\] Apply the LLP of $f$ to get a lift $h: L \to L'$ for the commutative square
@@ -1499,10 +1499,10 @@ X_0 \xrightarrow{\text{cofib.}} X_1 \xrightarrow{\text{cofib.}} X_2 \xrightarrow
 Consider any model category $\left(\m, \w, \f, \cf\right)$. 
 
 \begin{defn}[Homotopy category]
-The \textit{homotopy category} $\ho(\m)$ of $\m$ is the localization $\m\left[\w^{-1}\right]$ w.r.t. the class $\w$ of weak equivalences.
+The \textit{homotopy category} $\ho(\m)$ of $\m$ is the localization $\m\left[\w^{-1}\right]$ w.r.t.\ the class $\w$ of weak equivalences.
 \end{defn}
 
-In general, for any category $\m$ and any class $\w$ of morphisms in $\c$, the localization w.r.t. $\w$ is a category $\m\left[\w^{-1}\right]$ together with a functor $\m \to \m\left[\w^{-1}\right]$ that sends any $w\in \w$ to an isomorphism and satsifies the following universal property. For any functor $\m \to \c$ sending $\w$ to isomorphism in $\c$, there is a unique factorization of the form
+In general, for any category $\m$ and any class $\w$ of morphisms in $\c$, the localization w.r.t.\ $\w$ is a category $\m\left[\w^{-1}\right]$ together with a functor $\m \to \m\left[\w^{-1}\right]$ that sends any $w\in \w$ to an isomorphism and satsifies the following universal property. For any functor $\m \to \c$ sending $\w$ to isomorphism in $\c$, there is a unique factorization of the form
 \[
 \begin{tikzcd}
 	\m & {\m\left[\w^{-1}\right]} & \c
@@ -1514,7 +1514,7 @@ In general, for any category $\m$ and any class $\w$ of morphisms in $\c$, the l
 
 \smallskip
 
-A direct construction is possible (modulo set-theoretic subtleties) as long as $\w$ satisfies properties similar to those for localization of associative rings:
+A direct construction is possible (modulo set-theoretic subtleties) as long as $\w$ satisfies properties similar to the conditions for localization of associative rings:
 
 \bi
 \item $\w$ is a subcategory (like a multiplicative subset of a ring);
@@ -2259,7 +2259,7 @@ The following subcategories of $\dgca_{\Q}^{\geq 0}$ define the structure of a m
 \begin{align*}
 \q & = \left\{f : A \to B \mid \text{$f$ q-iso.}\right\}
 \\ \f & = \left\{f : A \to B \mid \text{$f^n : A^n \to B^n$ onto for all $n\geq 0$}\right\}
-\\ \cf & = \left\{f: A \to B \mid \text{$f$ has LLP w.r.t. acyclic fibrations}\right\}.
+\\ \cf & = \left\{f: A \to B \mid \text{$f$ has LLP w.r.t.\ acyclic fibrations}\right\}.
 \end{align*}
 \end{theorem}
 
@@ -2391,7 +2391,7 @@ Suppose that $f'$ is a quasi-isomorphism. Consider the commutative diagram
 	\arrow["{\id_{H{B}}}"', curve={height=18pt}, from=2-1, to=2-3]
 \end{tikzcd}
 .\]  It's easy to see that $H(f)$ must be both injective and surjective, hence an isomorphism. Thus, $f$ is a quasi-isomorphism as well.
-\item[\textsf{MC4(i):}] By definition of $\cf$, every cofibration has the LLP w.r.t. acyclic fibrations. 
+\item[\textsf{MC4(i):}] By definition of $\cf$, every cofibration has the LLP w.r.t.\ acyclic fibrations. 
 \item[\textsf{MC5:}] We mimic the ``small object'' argument from model category theory. Let $f: A \to B$ be a map. 
 
 First, we want to factor $f$ as 
@@ -2475,14 +2475,14 @@ The map $\psi : B_f \to B$ is an acyclic fibration.
 \begin{proof}
 It is a fibration because it is onto. To see that it's a weak equivalence, first note that $H(\psi)$ is surjective because $H(\psi_1)$ is onto. Next, suppose that $w\in B_f$ satisfies $\psi(w) = d{b}$ for some $b \in B$. Since $w \in B_f(n)$ for some $n \geq 0$, we have that $d{b} = \psi(w) = \psi_n(w) $. This means that $w$ is a coboundary by our construction of $B_f(n) \xrightarrow{\psi_n} B_f(n+1)$ as a pushout. Therefore, $H(\psi)$ is also injective.
 \end{proof}
-\item[\textsf{MC4(ii):}]  Let $f : A \to B$ be an acyclic cofibration. We must show that this has the LLP w.r.t. all fibrations. By \textsf{MC5}, we can factor $f$ as
+\item[\textsf{MC4(ii):}]  Let $f : A \to B$ be an acyclic cofibration. We must show that this has the LLP w.r.t.\ all fibrations. By \textsf{MC5}, we can factor $f$ as
 \[
 \begin{tikzcd}
 	A & {A_f} & B
 	\arrow["\alpha"', "\sim", hook, from=1-1, to=1-2]
 	\arrow["\pi"', two heads, from=1-2, to=1-3]
 \end{tikzcd}
-,\] where $A_f = A \otimes \left(\bigotimes_{b \in B} D(\left\lvert{b}\right\rvert +1)\right)$. One can check that $\alpha$ has the LLP w.r.t. all fibrations because $\Q \to \Q\left[y, d{y}\right]$ does. Thus, it suffices to show that $f$ is a retract of $\alpha$. We have that $\pi$ is a weak equivalence by \textsf{MC2}. Thus, we can apply \textsf{MC4(ii)} to find a lift $B \to A$ for the commutative square
+,\] where $A_f = A \otimes \left(\bigotimes_{b \in B} D(\left\lvert{b}\right\rvert +1)\right)$. One can check that $\alpha$ has the LLP w.r.t.\ all fibrations because $\Q \to \Q\left[y, d{y}\right]$ does. Thus, it suffices to show that $f$ is a retract of $\alpha$. We have that $\pi$ is a weak equivalence by \textsf{MC2}. Thus, we can apply \textsf{MC4(ii)} to find a lift $B \to A$ for the commutative square
 \[
 \begin{tikzcd}
 	A & {A_f} \\
@@ -2889,7 +2889,7 @@ A simplical set $K_{\bullet}$ is a \textit{Kan complex} if every map $\Lambda_k\
 
 \begin{prop} $ $
 \be
-\item The set of maps $\left\{\Lambda_k\left[n\right] \subset \Delta\left[n\right]\right\}$ is a set of generating acyclic cofibrations, i.e., $K_{\bullet} \to L_{\bullet}$ is a fibration if and only if it has the RLP w.r.t. every inclusion  of the form $\Lambda_k\left[n\right] \subset \Delta\left[n\right]$.
+\item The set of maps $\left\{\Lambda_k\left[n\right] \subset \Delta\left[n\right]\right\}$ is a set of generating acyclic cofibrations, i.e., $K_{\bullet} \to L_{\bullet}$ is a fibration if and only if it has the RLP w.r.t.\ every inclusion  of the form $\Lambda_k\left[n\right] \subset \Delta\left[n\right]$.
 \item The set of maps $\left\{\partial{\left[n\right]} \subset \Delta\left[n\right]\right\}$ is a set of generating cofibrations.
 \ee
 \end{prop}
@@ -3890,7 +3890,7 @@ Further, $\Q\left[G{K}\right]$ denotes the group (simplicial) algebra of $G{K}$ 
 g \mapsto g \otimes g, \ \quad g \in G_n{K}
 \]
 
-Its counit serves as its augmentation. Now, $\hat{\Q}\left[G{K}\right]$ is the completion of this algebra w.r.t. the augmentation ideal $I$:
+Its counit serves as its augmentation. Now, $\hat{\Q}\left[G{K}\right]$ is the completion of this algebra w.r.t.\ the augmentation ideal $I$:
 
 \[
 \lim_n\frac{\Q\left[G{K}\right]}{I^n}
