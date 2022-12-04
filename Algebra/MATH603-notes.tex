@@ -1073,7 +1073,7 @@ The fact that (b) and (c) are equivalent is obvious.
 
 \medskip
 
- Conversely, if $u\in A$ is simple, then for any $x\in A\setminus (u)$ we have that $\left(x,u\right) = \left(1\right)$ since $x$ and $u$ are coprime. This means that we can find $a,b\in A$ such that $ax + bu =1$. Then $[x]\cdot[a] = [1]$. Hence $[x]$ is a unit, so that $\faktor{A}{(u)}$ is a field. 
+ Conversely, if $u\in A$ is simple, then for any $x\in A\setminus (u)$ we have that $\left(x,u\right) = \left(1\right)$ since $x$ and $u$ are coprime. This means that we can find $a,b\in A$ such that $ax + bu =1$. Then $[x]\cdot\left[a\right] = [1]$. Hence $[x]$ is a unit, so that $\faktor{A}{(u)}$ is a field. 
 \end{proof}$ $From this our theorem follows immediately. 
 \end{proof}
 
@@ -1138,7 +1138,7 @@ A finite field extension of $\Q$ is called a \textit{number field}.
 If $f(x) \in \Z[x]$ is irreducible, then it is irreducible in $\Q[x]$.
 \end{lemma}
 \begin{proof}
-Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(x) \in \Z[x]$ and the coefficients  of $Np$ are pairwise coprime. Suppose that $f(x) \in \Z[x]$ is irreducible in $\Z[x]$. Suppose, towards a contradiction, that  there are $g(x), h(x)\in \Q[x]$ non-units such that $f(x) = g(x)h(x)$. Then $g(x)$ and $h(x)$ are $\Q$-proportional to some $\tilde{g}(x)$ and $\tilde{h}(x)$, respectively, over $\Z$ with each having pairwise coprime coefficients. Thus, $f(x) = \lambda \tilde{g}(x)\tilde{h}(x)$ for some $\lambda \in \Q^{\times}$. Let $\lambda = \frac{a}{b}$ with $\left(a,b\right)=1$. If $b \ne \pm 1$, then there is some $p>0$ where $p \mid b$ and $pf = a \tilde{g}\tilde{h}$. We have that $bf, a \tilde{g}, \tilde{h} \in \Z[x]$. We can reduce $\mod p$ to get $[bf]_p = [a]_p[\tilde{g}]_p[\tilde{h}]_p$ But $f(x) \in \Z[x]$, so that $[bf]_p  = [b]_p[f]_p =0$.Hence $[a]_p[\tilde{g}]_p[\tilde{h}]_p =0$ in $\left(\Z/p\right)[x]$, so that one of $[a]_p$, $\left[\tilde{g}\right]_p$, and $\left[\tilde{h}_p\right]$ must be $0$. But $\left(a,b\right) =1$, so that $[a]_p \ne 0$. Since each of $\tilde{g}$ and $\tilde{h}$ has coprime coefficients, we have that $\left[\tilde{g}\right]_p \ne 0$ and $\left[\tilde{h}\right]_p \ne 0$, a contradiction. 
+Note that if $p(x) \in \Q[x]$, then there exists $N \in \Z_{>0}$ such that $N p(x) \in \Z[x]$ and the coefficients  of $Np$ are pairwise coprime. Suppose that $f(x) \in \Z[x]$ is irreducible in $\Z[x]$. Suppose, towards a contradiction, that  there are $g(x), h(x)\in \Q[x]$ non-units such that $f(x) = g(x)h(x)$. Then $g(x)$ and $h(x)$ are $\Q$-proportional to some $\tilde{g}(x)$ and $\tilde{h}(x)$, respectively, over $\Z$ with each having pairwise coprime coefficients. Thus, $f(x) = \lambda \tilde{g}(x)\tilde{h}(x)$ for some $\lambda \in \Q^{\times}$. Let $\lambda = \frac{a}{b}$ with $\left(a,b\right)=1$. If $b \ne \pm 1$, then there is some $p>0$ where $p \mid b$ and $pf = a \tilde{g}\tilde{h}$. We have that $bf, a \tilde{g}, \tilde{h} \in \Z[x]$. We can reduce $\mod p$ to get $[bf]_p = \left[a\right]_p[\tilde{g}]_p[\tilde{h}]_p$ But $f(x) \in \Z[x]$, so that $[bf]_p  = \left[b\right]_p[f]_p =0$.Hence $\left[a\right]_p[\tilde{g}]_p[\tilde{h}]_p =0$ in $\left(\Z/p\right)[x]$, so that one of $\left[a\right]_p$, $\left[\tilde{g}\right]_p$, and $\left[\tilde{h}_p\right]$ must be $0$. But $\left(a,b\right) =1$, so that $\left[a\right]_p \ne 0$. Since each of $\tilde{g}$ and $\tilde{h}$ has coprime coefficients, we have that $\left[\tilde{g}\right]_p \ne 0$ and $\left[\tilde{h}\right]_p \ne 0$, a contradiction. 
 \end{proof}
 
 Thus, it suffices to show that $\frac{x^p-1}{x-1}$  is irreducible in $\Z[x]$. Let $f(x) = x^{p-1} + x^{p-2} + \cdots + x + 1$. Then $f(x)\left(x-1\right) = x^p-1$. By the binomial formula, we see that $[(x-1)^p]_p = [x^p-1]_p$. Thus, $[f]_p[x-1]_p = \left[\left(x-1\right)^p\right]_p$, so that $[f]_p[(x-1)]_p = \left(\left[x-1\right]_p\right)^p$ and $[f]_p = \left[\left(x-1\right)\right]^{p-1}$ If $f=gh$ for some non-units $g$ and $h$, then $[g]_p[h]_p = \left([(x-1)]_p\right)^{p-1}$, which implies that $[g]_p = [(x-1)^r]_p$ and $[h]_p = [(x-1)^s]_p$ for some $r$ and $s$. Thus, $[g(1)]_p = [g]_p(1) = 0 = [h]_p(1)= [h(1)]_p$, meaning that $p\mid g(1)$ and $p\mid h(1)$. Since $f=gh$, it follows that $p^2 \mid f(1) =p$, a contradiction.
@@ -2187,7 +2187,7 @@ If $I \unlhd k[x_1, \ldots, x_n]$ is a homogenous ideal, then Hilbert's syzygy t
 
 \smallskip
 
-Let $a\in \Z$. Define the \textit{shift functor} $${-}[a] : \mathbf{CoCh}(\mathbf{Ab}) \to \mathbf{CoCh}(\mathbf{Ab})$$ as follows. Let $\left(M^{\bullet}, d^{\bullet}_{M}\right)$ be a complex.  Form the pair $\left(M^{\bullet}[a], d^{\bullet}_{M[a]}\right)$ where $\left(M^{\bullet}[a]\right)^n \equiv M^{a+n}$ and $\left(d_{M[a]}\right)^n \equiv ({-1})^a d^{a+n}_M$. If $f^{\bullet}$ is a chain map, then let $\left(f^{\bullet}[a]\right)^n = f^{a+n}$.
+Let $a\in \Z$. Define the \textit{shift functor} $${-}\left[a\right] : \mathbf{CoCh}(\mathbf{Ab}) \to \mathbf{CoCh}(\mathbf{Ab})$$ as follows. Let $\left(M^{\bullet}, d^{\bullet}_{M}\right)$ be a complex.  Form the pair $\left(M^{\bullet}\left[a\right], d^{\bullet}_{M\left[a\right]}\right)$ where $\left(M^{\bullet}\left[a\right]\right)^n \equiv M^{a+n}$ and $\left(d_{M\left[a\right]}\right)^n \equiv ({-1})^a d^{a+n}_M$. If $f^{\bullet}$ is a chain map, then let $\left(f^{\bullet}\left[a\right]\right)^n = f^{a+n}$.
 
 
 \begin{prop}
@@ -2252,7 +2252,7 @@ Let $f, g : A^{\bullet} \to B^{\bullet}$ be two chain maps. A \textit{homotopy b
 \begin{enumerate}
 \item Homotopy is an equivalence relation. 
 \item The class $\mor^{\sim{0}}{\mathbf{CoCh(Ab)}}$ of all chain maps homotopic to $0$ is a two-sided ideal in  $\mor{\mathbf{CoCh(Ab)}}$. 
-\item If $ f \simeq g: A^{\bullet} \to B^{\bullet}$, then $H^{\bullet}(f) = H(^{\bullet}g)$.
+\item If $ f \simeq g: A^{\bullet} \to B^{\bullet}$, then $H^{\bullet}(f) = H^{\bullet}(g)$.
 \item If $f\simeq g$ and $c$ is a cocycle, then $f(c) - g(c) = d_Bh(c)$, which is a coboundary.
 \end{enumerate}
 \end{prop}
@@ -2288,7 +2288,7 @@ Let $$0 \to A \overset{f}{\longrightarrow} B \overset{g}{\longrightarrow} C \to 
 0 \arrow[r] & A^{n+1} \arrow[r, "f^{n+1}"]                         & B^{n+1} \arrow[r, "g^{n+1}"]                        & C^{n+1} \arrow[r]                        & 0
 \end{tikzcd}
  .\]
- Define a collection of \textit{edge homomorphisms} $\left\{\delta^n : H^n(C) \to H^{n+1}(A)\right\}_{n\in \Z}$ as follows. Let $c\in C^n$ with $d_C^n(c) =0$. By exactness, there is some $b\in B^n$ such that $g^n(b) =c$. But then $$d_B^n(b) \in \ker{g^{n+1}} = \im{f^{n+1}}.$$ Since $f^{n+1}$ is injective, this means that there is a unique $a \in A^{n+1}$ such that $f^n(a) = d_B^n(b)$. Let $\delta^n([c]) = [a]$.
+ Define a collection of \textit{edge homomorphisms} $\left\{\delta^n : H^n(C) \to H^{n+1}(A)\right\}_{n\in \Z}$ as follows. Let $c\in C^n$ with $d_C^n(c) =0$. By exactness, there is some $b\in B^n$ such that $g^n(b) =c$. But then $$d_B^n(b) \in \ker{g^{n+1}} = \im{f^{n+1}}.$$ Since $f^{n+1}$ is injective, this means that there is a unique $a \in A^{n+1}$ such that $f^n(a) = d_B^n(b)$. Let $\delta^n(\left[c\right]) = \left[a\right]$.
 
 
 \begin{exercise}
@@ -2312,35 +2312,35 @@ H^{n+1}(A) \arrow[r, "f^{\ast}"'] & H^{n+1}(B) \arrow[r]          & \cdots
 \underline{Exactness at $H^n(B)$:}
 We have that $0_{H^n(C)} = H^n(0) = H^n(g \circ f) = H^n(g) \circ H^n(f)$. Hence $\im{H^n(f)} \subset \ker{H^n(g)}$.
 
-For the reverse inclusion, let $[b] \in \ker{H^n(g)} \subset H^n(B)$. Then $g(b) \in C^n$ must be a coboundary, so that there is some $c\in C^{n-1}$ such that $g(b) = d_C{c}$. Choose a lift $b_1 \in B^{n-1}$ of $c$, meaning that $g(b_1) = c$. Then $b -  d_B{b_1} \in Z^n(B)$, and $[b] = [b - d_B{b_1}]$. But $$g(b - d_B{b_1}) = g(b) - g(d_B{b_1}) = g(b) - d_C{g(b_1)} = g(b) - d_C{c} =0.$$ Hence $b - d_B{b_1} \in \ker{g} \subset B^n$. This implies that there exists a unique $a \in A^n$ such that $b- d_B{b_1} = f(a)$. Also, $$   f(d_A{a}) = d_B(f(a)) = d_B(b-d_B{b_1}) = 0   .$$ Since $f$ is injective, we see that $d_A{a} =0$, i.e., $a \in Z^n(A)$. Thus, $H^n(f)([a]) = [f(a)] = [b-d_B{b_1}] = [b]$. This proves that $[b] \in \im{H^n(f)}$.
+For the reverse inclusion, let $\left[b\right] \in \ker{H^n(g)} \subset H^n(B)$. Then $g(b) \in C^n$ must be a coboundary, so that there is some $c\in C^{n-1}$ such that $g(b) = d_C{c}$. Choose a lift $b_1 \in B^{n-1}$ of $c$, meaning that $g(b_1) = c$. Then $b -  d_B{b_1} \in Z^n(B)$, and $\left[b\right] = \left[b - d_B{b_1}\right]$. But $$g(b - d_B{b_1}) = g(b) - g(d_B{b_1}) = g(b) - d_C{g(b_1)} = g(b) - d_C{c} =0.$$ Hence $b - d_B{b_1} \in \ker{g} \subset B^n$. This implies that there exists a unique $a \in A^n$ such that $b- d_B{b_1} = f(a)$. Also, $$   f(d_A{a}) = d_B(f(a)) = d_B(b-d_B{b_1}) = 0   .$$ Since $f$ is injective, we see that $d_A{a} =0$, i.e., $a \in Z^n(A)$. Thus, $H^n(f)(\left[a\right]) = \left[f(a)\right] = \left[b-d_B{b_1}\right] = \left[b\right]$. This proves that $\left[b\right] \in \im{H^n(f)}$.
 
 \medskip
 
 
-\underline{Exactness at $H^n(C)$:} Let $[b] \in H^n(B)$. Note that $\delta^n(H^n(g)([b])) = [a]$ where $a\in A^{n+1}$ denotes the unique element such that $f(a) = d_B{b} $. Since $d_B{b} =0$ and $f$ is injective, it follows that $a=0$. Hence $\im{H^n(g)}\subset \ker{\delta^n}$.  
+\underline{Exactness at $H^n(C)$:} Let $\left[b\right] \in H^n(B)$. Note that $\delta^n(H^n(g)(\left[b\right])) = \left[a\right]$ where $a\in A^{n+1}$ denotes the unique element such that $f(a) = d_B{b} $. Since $d_B{b} =0$ and $f$ is injective, it follows that $a=0$. Hence $\im{H^n(g)}\subset \ker{\delta^n}$.  
 
-Conversely, let $[c] \in \ker{\delta^n}$. Choose $b\in B^n$ such that $g(b) =c$ and then the unique $a\in A^{n+1}$ such that $f(a) = d_B{b}$. Thus, $\delta^n([c]) =[a] =0$, so that $a\in B^{n+1}(A)$, i.e., $d_A{a_1} =a$ for some $a_1 \in A^n$. Note that $g(b-f(a_1))= g(b) -g(f(a_1)) = c -0 =c$. Further, 
+Conversely, let $\left[c\right] \in \ker{\delta^n}$. Choose $b\in B^n$ such that $g(b) =c$ and then the unique $a\in A^{n+1}$ such that $f(a) = d_B{b}$. Thus, $\delta^n(\left[c\right]) =\left[a\right] =0$, so that $a\in B^{n+1}(A)$, i.e., $d_A{a_1} =a$ for some $a_1 \in A^n$. Note that $g(b-f(a_1))= g(b) -g(f(a_1)) = c -0 =c$. Further, 
 \begin{align*}
 d_B(b-f(a_1)) & = d_B(b) - d_B(f(a_1))
 \\ & = f(a) - f(d_A{a_1})
 \\ & = f(a) - f(a)
 \\ & =0.
 \end{align*} 
-This shows that $b-f(a_1)$ is a cocycle. Thus, $H^n(g)([b-f(a_1)]) = [g(b- f(a_1))] = [c]$, so that $[c] \in \im{H^n(g)}$. 
+This shows that $b-f(a_1)$ is a cocycle. Thus, $H^n(g)(\left[b-f(a_1)\right]) = \left[g(b- f(a_1))\right] = \left[c\right]$, so that $\left[c\right] \in \im{H^n(g)}$. 
 
 \medskip
 
 
-\underline{Exactness at $H^{n+1}(A)$:} Let $[c] \in H^n(C)$ and find $[a] = \delta^n([c])$, where
+\underline{Exactness at $H^{n+1}(A)$:} Let $\left[c\right] \in H^n(C)$ and find $\left[a\right] = \delta^n(\left[c\right])$, where
 \[
 \begin{tikzcd}
                  & b \arrow[d] \arrow[r, "g"] & c \\
 a \arrow[r, "f"] & d_B{b}                     &  
 \end{tikzcd}
 .\] 
-Then $H^{n+1}(f)([a]) = \left[f(a)\right] = \left[d_B{b}\right] =0$. It follows that $\im{\delta^n} \subset \ker{H^{n+1}(f)}$.
+Then $H^{n+1}(f)(\left[a\right]) = \left[f(a)\right] = \left[d_B{b}\right] =0$. It follows that $\im{\delta^n} \subset \ker{H^{n+1}(f)}$.
 
-Conversely, let $\left[a\right] \in  \ker{H^{n+1}(f)}$, so that $H^{n+1}(f)([a]) = \left[f(a)\right]= 0$. This means that $f(a) = d_B{b}$ for some $b \in B^n$. Then $\delta^n([g(b)]) = \left[a\right]$. This shows that $\im{\delta^n} \supset \ker{H^{n+1}(f)}$.
+Conversely, let $\left[a\right] \in  \ker{H^{n+1}(f)}$, so that $H^{n+1}(f)(\left[a\right]) = \left[f(a)\right]= 0$. This means that $f(a) = d_B{b}$ for some $b \in B^n$. Then $\delta^n(\left[g(b)\right]) = \left[a\right]$. This shows that $\im{\delta^n} \supset \ker{H^{n+1}(f)}$.
 \end{proof}
 \pagebreak
 \section{Additive categories}
@@ -2535,7 +2535,7 @@ Given a differential graded category $\c$, we define $\ho^{\bullet}(\c)$ as the 
 \end{definition}
 
 
-If $\c$ is strongly pre-triangulated, then $\ho^{\bullet}(\c)$ and $\ho(\c)$ contain the same information. Indeed, $\ho(\c)$ is precisely the degree zero piece of $\ho^{\bullet}(\c)$. Conversely, $if x,y \in \ob{\c}$, then $$\Hom_{\ho^{\bullet}(\c)}(x,y) = \bigoplus_{a\in \Z}\Hom^a_{\ho^{\bullet}(\c)}(x,y)$$ where $\Hom_{\ho^{\bullet}(\c)}^a(x,y)  =  \Hom_{\ho(\c)}(x, y[a]) = \Hom_{\ho(\c)}(x,y)[a]$. 
+If $\c$ is strongly pre-triangulated, then $\ho^{\bullet}(\c)$ and $\ho(\c)$ contain the same information. Indeed, $\ho(\c)$ is precisely the degree zero piece of $\ho^{\bullet}(\c)$. Conversely, $if x,y \in \ob{\c}$, then $$\Hom_{\ho^{\bullet}(\c)}(x,y) = \bigoplus_{a\in \Z}\Hom^a_{\ho^{\bullet}(\c)}(x,y)$$ where $\Hom_{\ho^{\bullet}(\c)}^a(x,y)  =  \Hom_{\ho(\c)}(x, y\left[a\right]) = \Hom_{\ho(\c)}(x,y)\left[a\right]$. 
 
 \begin{notation}
 From now on, if $\c$ is strongly pre-triangulated, then we write $\ho(\c)$ for the graded homotopy category. 
@@ -2958,11 +2958,11 @@ If $\u \subset \d$ is a strict full triangulated thick subcategory, then TFAE.
 \end{prop}
 
 \begin{definition}
-If $\a$ is an abelian category, then the \textit{derived category of $\a$} is the triangulated category $$ \D(\a) \equiv \faktor{\mathcal{C}(\a)}{\mathcal{C}(\a)^{\acyc}}  , $$ where $\mathcal{C}(\a)^{\acyc}$ is the full subcategory of $\mathcal{C}(a)$ consisting of those $x$ with zero cohomology. 
+If $\a$ is an abelian category, then the \textit{derived category of $\a$} is the triangulated category $$ \D(\a) \equiv \faktor{\mathcal{C}(\a)}{\mathcal{C}(\a)^{\acyc}}  , $$ where $\mathcal{C}(\a)^{\acyc}$ is the full subcategory of $\mathcal{C}(\a)$ on those complexes with zero cohomology. 
 \end{definition}
 
 
-To do computations in $\D(\a)$, we must understand when $\D(a)$ can be embedded in $\mathcal{C}(\a)$ so that $\left(\mathcal{C}(\a)^{\acyc}, \D(\a)\right)$ is an adjoint pair. This requires $\left(\mathcal{C}(\a)^{\acyc}\right)^{\perp}$  to be large. 
+To do computations in $\D(\a)$, we must understand when it can be embedded in $\mathcal{C}(\a)$ so that $\left(\mathcal{C}(\a)^{\acyc}, \D(\a)\right)$ is an adjoint pair. This requires $\left(\mathcal{C}(\a)^{\acyc}\right)^{\perp}$  to be large. 
 
 \medskip
 
