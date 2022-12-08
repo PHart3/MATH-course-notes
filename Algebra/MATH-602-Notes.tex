@@ -383,7 +383,7 @@ We can define a further class of examples with the following notion from represe
 
 \medskip
 
-\begin{exmp}[The permutation representation]\label{PR}
+\begin{exmp}[Permutation representation]\label{PR}
 Let $S = \left\{1, \ldots, n\right\}$ and $G = S_n$. Let $X$ be a set. Then we have an action $\theta^{\ast} : G\to \aut(X^S) \cong \aut(X^n)$ given by $$\theta^{\ast}(\sigma)(x_1, \ldots, x_n) = \left(x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right).$$ If $X$ is a field, then $X^S \cong X^n$, which is an $n$-dimensional vector space. In this case, $\theta^\ast$ is an $X$-linear representation of $S_n$ and factors as
 
 \[ \begin{tikzcd}
@@ -948,7 +948,7 @@ Let $S\in \Syl_p(G)$. Then $N_G(N_G(S)) = N_G(S)$.
 \begin{proof}
 We know that $N_G(S) \subset N_G(N_G(S))$. Since $N_G(S)$ is the maximal subgroup $H$ of $G$ such that $S\unlhd H$, it suffices to show that $S\unlhd N_G(N_G(S))$.
 
-Pick any $p$-Sylow subgroup $H$ of $N_G(N_G(S))$. If $h\in H$, then $\left\lvert{h}\right\rvert =p^K$ for some $K\geq 0$. Consider $\bar{h} \in \faktor{N_G(N_G(S))}{N_G(S)}$, so that $\left\lvert{\bar{h}}\right\rvert$ is also a $p$-power. Observe that $$\left[N_G(N_G(S)): N_G(S)\right]\mid \left[G: N_G(S)\right] \mid \left[G:S\right]=m.$$ Therefore, $\left\lvert{\bar{h}}\right\rvert =1$, so that $h \in N_G(S)$. It follows that $H \subset N_G(S)$. Since $H$ and $S$ are both $p$-Sylow subgroups of $N_G(S)$, we know that $H = nSn^{-1} = S$ for some $n\in N_G(S)$. Thus, $S$ is the unique $p$-Sylow subgroup of $N_G(N_G(S))$, hence is normal in $N_G(N_G(S))$.
+Pick any $p$-Sylow subgroup $H$ of $N_G(N_G(S))$. If $h\in H$, then $\left\lvert{h}\right\rvert =p^K$ for some $K\geq 0$. Consider $\bar{h} \in \faktor{N_G(N_G(S))}{N_G(S)}$, so that $\left\lvert{\bar{h}}\right\rvert$ is also a $p$-power. Observe that $$\left[N_G(N_G(S)): N_G(S)\right]\mid \left[G: N_G(S)\right] \mid \left[G:S\right]=m.$$ Therefore, $\left\lvert{\bar{h}}\right\rvert =1$, so that $h \in N_G(S)$. It follows that $H \subset N_G(S)$. Since both $H$ and $S$ are $p$-Sylow subgroups of $N_G(S)$, we know that $H = nSn^{-1} = S$ for some $n\in N_G(S)$. Thus, $S$ is the unique $p$-Sylow subgroup of $N_G(N_G(S))$, hence is normal in $N_G(N_G(S))$.
 \end{proof}
 
 \begin{exercise} Let $G$ have $\left\lvert{G}\right\rvert=p^{\beta}$ and $H\leq G$ have $\left\lvert{H}\right\rvert=p^{\alpha}$ where $\alpha < \beta$. 
@@ -1819,7 +1819,7 @@ In general, given $\left(K, \left(A, \alpha\right)\right)$ and a normalized func
 \left\{\left(\xi, s\right) : \xi \in \ext(K, (A, \alpha)), \ \text{$s$ a normalized section}\right\} \longleftrightarrow Z^2(K, (A, \alpha))_0 = Z^2 \cap C^2_0
 .\]
 
-If $\tilde{s}$ and $s$ are both normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ defines a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $$\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}, $$ and thus 
+If both $\tilde{s}$ and $s$ are normalized sections, then $c(x)\coloneqq \tilde{s}(x)s(x)^{-1}$ defines a map $c : K \to A$ such that $c(e) =e$. Let $\tilde{f}$ be the second cochain obtained from $\tilde{s}$. Then  $$\tilde{f}(x, y) = \tilde{s}(x)\tilde{s}(y)\tilde{s}(xy)^{-1} =c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}, $$ and thus 
 \begin{align*} \tilde{f}(x, y)f(x,y)^{-1} & = c(x)s(x)c(y)s(y)(c(xy)s(xy))^{-1}s(xy)s(y)^{-1}s(x)^{-1}
 \\ &  = c(x)(s(x)c(y)s(x)^{-1})(s(x)s(y)s(xy)^{-1})c(xy)^{-1}s(xy)s(y)^{-1}s(x)^{-1}
 \\ &  = c(x)\alpha_x(c(y))c(xy)^{-1}f(x,y)f(x,y)^{-1} 
@@ -2547,10 +2547,12 @@ Suppose that the set $S$ generates $G$ and that the set $T$ generates $\ker(\Fr(
 \begin{note} $ $
 \begin{enumerate}
 \item Any quotient $H$ of a finitely generated group $G$ is finitely generated. Indeed, we have a finite set $T$ such that $\Fr(T) \to G$ is surjective. But then the composite $\Fr(T) \to G \twoheadrightarrow H$ is surjective as well.
-\item A subgroup of a finitely generated group need \emph{not} be finitely generated. For example, $F_2\coloneqq \Fr(\{x,y\})$ is finitely generated, but the subgroup $\left\{y^kxy^{-k} : k \geq 0\right\}$ is not.
+\item A subgroup of a finitely generated group need \emph{not} be finitely generated. For example, $F_2\coloneqq \Fr(\{x,y\})$ is finitely generated, but the subgroup $\left\langle{y^kxy^{-k} : k \geq 0}\right\rangle$ is not.
 \item If $G$ is finitely presentable, then any subgroup of $G$ is finitely presentable.
 \end{enumerate}  
 \end{note}
+
+\smallskip
 
 \begin{theorem}[Nielsen-Schreier]
 Any subgroup of a free group is free.
@@ -2892,13 +2894,13 @@ Let $\left\{M_{\lambda}\right\}_{\lambda\in \Lambda}$ be a set of $R$-modules. W
 \item Suppose that $\coprod_{\lambda} M_{\lambda}$ is finitely generated. We have a surjection $$\phi: \coprod_{i=1}^n R \twoheadrightarrow \coprod_{\lambda} M_{\lambda}$$ for some integer $n$. For each $1\leq i\leq n$, let $x_i = \phi(0, \ldots, \underbrace{1}_{i\text{-th spot}}, \ldots, 0),$ so that $x_i = \left(x_{i_{\lambda}}\right)_{\lambda \in \Lambda}$. Let $$\Lambda^0 = \left\{\lambda \in \Lambda : \exists i\left(x_{i_\lambda}\ne 0\right)\right\} .$$ Note that $\Lambda^0$ is finite, which means that there is some $\mu \in \Lambda \setminus \Lambda^0$.  Then the composite $$\pi_{\mu} \circ \phi$$ is precisely the trivial morphism. But it is also a surjection as the composite of surjections, a contradiction. 
 \end{enumerate}
 
-($\Longrightarrow$)
+($\Longleftarrow$)
 
 This direction is clear.
 \end{proof}
 
 \begin{definition}
-A ring $R$ is \textit{Noetherian} if every ideal has  \acc. It is \textit{Artinian} if every ideal has \dcc.
+A ring $R$ is \textit{Noetherian} if every ideal of $R$ has  \acc. It is \textit{Artinian} if every ideal has \dcc.
 \end{definition}
 
 
@@ -2915,14 +2917,14 @@ We just need to check (2). Let $M$ be an $R$-module generated by the finite set 
 \begin{exmp} $ $
 \begin{enumerate}
 \item Any field $k$ is both Noetherian and Artinian since its ideals are precisely $\left(0\right)$ and $k$.
-\item Let $R= \C[x_1, x_2, \ldots]$. This is not Noetherian, because $$\left(x_1\right) \subsetneq \left(x_1, x_2\right) \subsetneq \cdots   $$ fails to stabilize. But $R$ is an integral domain since $\C$ is one. Thus, not all integral domains are Noetherian.
+\item Let $R= \C\left[x_1, x_2, \ldots\right]$. This is not Noetherian, because $$\left(x_1\right) \subsetneq \left(x_1, x_2\right) \subsetneq \cdots   $$ fails to stabilize. But $R$ is an integral domain since $\C$ is one. Thus, not all integral domains are Noetherian.
 
  If $F$ denotes the fraction field of $R$, then $R\subset F$ is the subring of a Noetherian ring but is \emph{not} finitely generated. 
 
 Moreover, a finitely generated module over a general ring $R$ need \emph{not} be finitely presentable. To see this, note that $\C$ is an $R$-module via the action $f \cdot a \equiv f(0)a$. We have a short exact sequence
 \[
 \begin{tikzcd}
-0 \arrow[r] & {(x_1, x_2, \ldots)} \arrow[r] & R \arrow[r, "\text{ev}_0"] & \C \arrow[r] & 0
+0 \arrow[r] & {\left(x_1, x_2, \ldots\right)} \arrow[r] & R \arrow[r, "\text{ev}_0"] & \C \arrow[r] & 0
 \end{tikzcd}
 \] of $R$-modules.
 Suppose, toward a contradiction, that there are finite sets $T$ and $S$ such that 
@@ -2934,7 +2936,7 @@ Suppose, toward a contradiction, that there are finite sets $T$ and $S$ such tha
 Then we may construct a commutative diagram
 \[
 \begin{tikzcd}
-0 \arrow[r] & {(x_1, x_2, \ldots)} \arrow[r] & R \arrow[r, "\text{ev}_0"] & \C \arrow[r] & 0 \\
+0 \arrow[r] & {\left(x_1, x_2, \ldots\right)} \arrow[r] & R \arrow[r, "\text{ev}_0"] & \C \arrow[r] & 0 \\
  & \coprod_{t\in T}R \arrow[r] \arrow[u, "\theta"] & \coprod_{s\in S} R \arrow[r] \arrow[u, "\phi"] & \C \arrow[r] \arrow[u, equal] & 0
 \end{tikzcd}
 \] so that $\phi$ is surjective. But a diagram chase shows that this makes $\theta$ surjective, contrary to the fact that $\left(x_1, x_2, \ldots\right)$ is not finitely generated.
@@ -2945,12 +2947,12 @@ Then we may construct a commutative diagram
 If $A\in \ob{\mathbf{CommRing}}$ is Noetherian, then $A\left[x\right]$ is also Noetherian. 
 \end{theorem}
 \begin{proof}
-Note that $A\left[x\right]$ is an $A$-module since $A$ is a subring. We see that $$A\left[x\right] = \bigcup_{n\geq 0} A\left[x\right]_n, \quad A\left[x\right]_n \coloneqq \{f \in A\left[x\right] : \deg f \leq n\}.$$
-Note that each $A\left[x\right]_n$ is finitely generated by $1, x, \ldots, x^n$, giving us a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A\left[x\right]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian by \cref{l19}, so is $A\left[x\right]_n$.
+Note that $A\left[x\right]$ is an $A$-module since $A$ is a subring. We see that $$A\left[x\right] = \bigcup_{n\geq 0} A\left[x\right]_n, \quad A\left[x\right]_n \coloneqq \left\{f \in A\left[x\right] : \deg f \leq n\right\}.$$
+Note that each $A\left[x\right]_n$ is finitely generated by $1, x, \ldots, x^n$, giving us a surjection $\coprod_{\{0, 1, \ldots, n\}}A \twoheadrightarrow A\left[x\right]_n$. Since $\coprod_{\{0, 1, \ldots, n\}}A$ is Noetherian (by \cref{l19}), so is $A\left[x\right]_n$.
 
 \medskip
 
- Let $\Omega \unlhd A\left[x\right]$ be an ideal. Then $\Omega \cap A\left[x\right]_n$ is an $A$-submodule in $A\left[x\right]_n$ and thus a finitely generated $A$-module with generators, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \left\{a\in A : a = 0 \text{ or } \left(\exists f\in \Omega\right)\left(\deg f >0 \land f(x) = ax^r+ O(x^{r-1})\right)\right\}.$$
+ Let $\Omega \unlhd A\left[x\right]$ be an ideal. Then $\Omega \cap A\left[x\right]_n$ is an $A$-submodule in $A\left[x\right]_n$ and thus a finitely generated $A$-module with generators, say, $\alpha_1, \ldots, \alpha_{k_n}$. Let $$\widetilde{\Omega} \coloneqq  \left\{a\in A : \text{$a = 0$ or $\left(\exists f\in \Omega\right)\left(\deg f >0 \land f(x) = ax^r+ O(x^{r-1})\right)$}\right\}.$$
 \begin{claim}
 $\widetilde{\Omega}$ is an ideal in $A$.
 \end{claim}
@@ -3075,7 +3077,7 @@ the sequence
 \begin{exmp} $ $
 \begin{enumerate}
 \item  The forgetful functor $U : R{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ is both additive and exact.
-\item If $R$ is a ring, then the functors $\Hom_R(M, -) : R{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ and $\Hom_R(-, M) :R{-}\mathbf{Mod}^{\op} \to \Z{-} \mathbf{Mod}$ are both left exact.
+\item If $R$ is a ring, then the functors $\Hom_R(M, -) : R{-}\mathbf{Mod} \to \Z{-}\mathbf{Mod}$ and $\Hom_R(-, M) :R{-}\mathbf{Mod}^{\op} \to \Z{-} \mathbf{Mod}$ are left exact.
 \begin{proof}
 For simplicity, let us verify just that $\Hom_R(M, -)$ is left exact. Let 
 \[
@@ -3138,7 +3140,7 @@ M \arrow[rd, "\phi"] \arrow[d, "\psi"', dashed] &  &  \\
 X \arrow[r, "q"', two heads] & X'' \arrow[r] & 0
 \end{tikzcd}
 \] commutes.
-\item $M$ is injective  if and only if $\Hom_R(-, M)$ maps monomorphisms $0\to X' \overset{i}{\longrightarrow} X$ to epimorphisms. That is, $\Hom_R(X, M) \overset{(-) \circ i}{\longrightarrow} \Hom_R(X', M)$ is surjective, so that for any map $\phi : X' \to M$, there is some map $\psi : X \to M$ such that 
+\item $M$ is injective  if and only if $\Hom_R(-, M)$ maps monomorphisms $0\to X' \overset{i}{\longrightarrow} X$ to epimorphisms. That is, $\Hom_R(X, M) \xrightarrow{{-} \circ i} \Hom_R(X', M)$ is surjective, so that for any map $\phi : X' \to M$, there is some map $\psi : X \to M$ such that 
 \[
 \begin{tikzcd}
  & M &  \\

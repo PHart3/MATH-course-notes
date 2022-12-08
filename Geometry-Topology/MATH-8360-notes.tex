@@ -1502,7 +1502,7 @@ Consider any model category $\left(\m, \w, \f, \cf\right)$.
 The \textit{homotopy category} $\ho(\m)$ of $\m$ is the localization $\m\left[\w^{-1}\right]$ w.r.t.\ the class $\w$ of weak equivalences.
 \end{defn}
 
-In general, for any category $\m$ and any class $\w$ of morphisms in $\c$, the localization w.r.t.\ $\w$ is a category $\m\left[\w^{-1}\right]$ together with a functor $\m \to \m\left[\w^{-1}\right]$ that sends any $w\in \w$ to an isomorphism and satsifies the following universal property. For any functor $\m \to \c$ sending $\w$ to isomorphism in $\c$, there is a unique factorization of the form
+In general, for any category $\m$ and any class $\w$ of morphisms in $\m$, the localization w.r.t.\ $\w$ is a category $\m\left[\w^{-1}\right]$ together with a functor $\m \to \m\left[\w^{-1}\right]$ that sends any $w\in \w$ to an isomorphism and satsifies the following universal property. For any functor $\m \to \c$ sending $\w$ to isomorphisms in $\c$, there is a unique factorization of the form
 \[
 \begin{tikzcd}
 	\m & {\m\left[\w^{-1}\right]} & \c
@@ -1520,7 +1520,7 @@ A direct construction is possible (modulo set-theoretic subtleties) as long as $
 \item $\w$ is a subcategory (like a multiplicative subset of a ring);
 \item the so-called Ore condition. 
 \ei
-We'll use the specific properties of a model category instead.
+Instead, we'll use the specific properties of a model category.
 
 
 \medskip
@@ -2031,8 +2031,8 @@ R{\underline{\Hom}(N, K^{\bullet})} = \underline{\Hom}(N, R{K^{\bullet}}) = \und
 
 Suppose that $N$ is arbitrary. We can still define $L\left({-} \otimes N\right)$ by
 \[
-M^{\bullet} \mapsto M^{\bullet} \overset{\mathbb{L}}{\otimes}_R N \coloneqq Q{M^{\bullet}} \otimes_R N, where
-\] $Q{M^{\bullet}}$ is a projective resolution.  In particular, by viewing the $R$-module $M$ as the complex $0 \to M \to 0$, we can define
+M^{\bullet} \mapsto M^{\bullet} \overset{\mathbb{L}}{\otimes}_R N \coloneqq Q{M^{\bullet}} \otimes_R N,
+\] where $Q{M^{\bullet}}$ is a projective resolution.  In particular, by viewing the $R$-module $M$ as the complex $0 \to M \to 0$, we can define
 \[
 \tor_{-n}(M,N) = H^n(Q{M} \otimes N).
 \]
