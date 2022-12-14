@@ -192,7 +192,7 @@
 \begin{document}
 
 \begin{abstract}
-We  explore the concept of a universal property in category theory. The main sources for this talk are the following.
+We explore universal properties in category theory, especially limits and colimits. The main sources for this talk are the following.
 \begin{itemize}
 \item $n$Lab
 \item John Rognes's \textit{Lecture Notes on Algebraic $K$-Theory}, Ch. 4
@@ -215,7 +215,7 @@ Either condition is called a \textit{universal property} of $X$.
 \end{definition}
 
 
-Any property $P$ of $\c$ (expressible in our metatheory) has a dual property $P^{\op}$ of $\c^{\op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
+Any property $P$ of $\c$ (expressible in our the language of category theory) has a dual property $P^{\op}$ of $\c^{\op}$ obtained by interchanging the source and target of any arrow as well as the order of any composition in the sentence expressing $P$. Then $P$ is true of $\c$ iff $P^{\op}$ is true of $\c^{\op}$.
 
 
 \begin{exmp}
@@ -563,7 +563,7 @@ Let $\mathbf{FinSet}_{\mathrm{mono}}$ denote the category of all finite sets wit
 
 
 \begin{prop}
-The pullback of a monomorphism in a category $\c$ is again a monomorphism in $\c$.
+The pullback of a monomorphism in a category $\c$ is also a monomorphism.
 \end{prop}
 \begin{proof}
 Consider any pullback square
@@ -658,9 +658,9 @@ X_0 \arrow[r, "f_0"] & X_1 \arrow[r, "f_1"] & X_2 \arrow[r, "f_2"] & \cdots
 \begin{enumerate}
 \item Let $F : \j \to \c$ be any diagram with $\j$ small. Consider the following two morphisms in $\c$:
 \begin{align*}
-f, g: \prod_{j\in \ob{\j}}F_j &\to \prod_{\alpha : i \to j}F_j
-\\ \pi_{\alpha : i \to j} \circ f &\equiv \pi_j
-\\ \pi_{\alpha : i \to j} \circ g &\equiv F(\alpha) \circ \pi_i.
+f, g \ :  \ \prod_{j\in \ob{\j}}F_j & \longrightarrow \prod_{\alpha : i \to j}F_j
+\\ \pi_{\alpha : i \to j} \circ f & \equiv \pi_j
+\\ \pi_{\alpha : i \to j} \circ g & \equiv F(\alpha) \circ \pi_i.
 \end{align*}
 Then $\lim_{\j}{F}$ is precisely the equalizer of $f$ and $g$.
 \item Thanks to part (i), it suffices to show that $\c$ has equalizers and finite products. By assumption, there is some terminal object $1$. Then any product $A_1 \times A_2$ can be realized as the pullback of $A_1 \rightarrow 1 \leftarrow A_2$. By induction, it follows that $\c$ has finite products. Moreover, for any morphisms $f,g : A \to B$, note that any cone over the diagram 

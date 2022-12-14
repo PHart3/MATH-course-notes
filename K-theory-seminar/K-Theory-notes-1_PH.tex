@@ -363,14 +363,6 @@ F{x} \leq y \iff x \leq G{y}
 \] for all $x\in P$ and $y \in Q$. In order theory, such a pair is called a \textit{Galois connection}. 
 \end{exmp}
 
-\begin{prop}
-Both left adjoints and right adjoints are unique up to unique isomorphism.
-\end{prop}
-
-\begin{term}
-We call $F$ the \textit{left adjoint} to $G$ and $G$ the \textit{right adjoint} to $F$. In symbols, $F \dashv G$.
-\end{term}
-
 \begin{note}
 It is straightforward to check that any adjoint triple $F \dashv G \dashv H$ yields two new adjunctions:
 \begin{gather*}
@@ -379,6 +371,28 @@ G{F} \dashv G{H}
 \end{gather*}
 \end{note}
 
+\smallskip
+
+\begin{term}
+We call $F$ the \textit{left adjoint} to $G$ and $G$ the \textit{right adjoint} to $F$. In symbols, $F \dashv G$.
+\end{term}
+
+\smallskip
+
+If $\left(F, G', \psi\right)$ is another adjoint pair, then a \textit{morphism $G \to G'$ of right adjoints} is a natural transformation $T : G \Rightarrow G'$ such that
+\[
+\begin{tikzcd}
+	& {\d(F({-}), {-})} \\
+	{\c({-}, G({-}))} && {\c({-}, G'({-}))}
+	\arrow["{\c({-},T({-}))}"', from=2-1, to=2-3]
+	\arrow["\phi"', from=1-2, to=2-1]
+	\arrow["\psi", from=1-2, to=2-3]
+\end{tikzcd}
+\] commutes. A morphism $F \to F'$ of left adjoints is defined similarly. Such a transformation $T$ is called \textit{adjunction-compatible}.
+
+\begin{prop}
+Both left adjoints and right adjoints are unique up to unique adjunction-compatible isomorphism.
+\end{prop}
 
 
 \begin{definition}
