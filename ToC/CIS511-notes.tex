@@ -249,10 +249,10 @@ Consider a function $f: \left\{0,1\right\}^{\ast} \to \left\{0,1\right\}$. The c
 \bigskip
 
 Informally, finite automata are characterized by $O(1)$ memory and passing over their inputs exactly once.
-Formally, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is a $5$-tuple 
+Formally, if $m \in \N$, an \textit{$m$-state deterministic finite automaton $(\DFA)$}  is a $5$-tuple 
 \[ \label{eqn:auto}
 M\coloneqq \left(Q, \Sigma, q_0, \delta, Q_F\right)  \tag{$\alpha$}
-\] where  $\left\lvert{Q}\right\rvert = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function of $M$}.
+\] where  $\left\lvert{Q}\right\rvert = m$, $\Sigma$ is an alphabet, $q_0\in Q$, $\delta : Q\times \Sigma \to Q$, and $Q_F\subset Q$. We call $\delta$ the \textit{transition function} of $M$.
 
 In other words, an automaton $M$ is a $\DFA$ if
 \begin{enumerate}[label=(\alph*)]
@@ -281,7 +281,7 @@ Consider $x\coloneqq x_1x_2\cdots x_n \in \Sigma^{\ast}$. Let $q_0(x) = q_0$, an
 $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 \end{notation}
 
-\begin{exmp} Set $\Sigma = \left\{0,1\right\}$.
+\begin{exmp} Let $\Sigma = \left\{0,1\right\}$.
 \begin{enumerate}
 \item Let $M$ denote
 \[
@@ -290,7 +290,7 @@ $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 \node[state, accepting] (q_1) [right=of q_0] {$q_1$};
 \path[->]
 (q_0) edge [loop below] node {0} ()
-	edge [bend right] node {1} (q_1)
+	edge [bend right] node [swap] {1} (q_1)
 (q_1) edge [loop above] node {0} ()
 	edge [bend right] node [swap] {1} (q_0);
 \end{tikzpicture}.\] Then $L(M)$ consists of all binary strings with an even number of $0$'s.
@@ -311,7 +311,7 @@ $L(M) \coloneqq\{x\in \Sigma^{\ast} : M$ accepts $x\}$.
 	edge node {1} (q_3)
 (q_3) edge [loop below] node {0, 1} ();
 \end{tikzpicture}.
-\] Then $L(M) = \left\{x\in \Sigma^{\ast} : \text{$x = y101z$  for some strings $y$ and $z$}\right\}$.
+\] Then $L(M) = \left\{\text{$x\in \Sigma^{\ast} : x = y101z$ for some strings $y$ and $z$}\right\}$.
 \end{enumerate}
 \end{exmp}
 
@@ -384,7 +384,7 @@ $L(N) \coloneqq \left\{x \in \Sigma^{\ast} : N \text{ accepts } x\right\}$.
 
 \smallskip
 
-Every $\DFA$ is an $\NFA$, in which case we have that $\hat{\delta}(q,x) =\left\{\delta\left(\hat{\delta}(q,y), \sigma\right)\right\}$. It's not the case, however, that any $\NFA$ is a $\DFA$.
+Every $\DFA$ can be viewed as an $\NFA$, where $\hat{\delta}(q,x) =\left\{\delta\left(\hat{\delta}(q,y), \sigma\right)\right\}$. It's not the case, however, that every $\NFA$ is a $\DFA$.
 
 \smallskip
 
@@ -394,13 +394,13 @@ For any $\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) = L(M)$.
 \begin{proof}
 Let $N = \left(Q, \Sigma, q_0, \delta_N, Q_F\right)$. Define the $\DFA$ $$M \coloneqq \left(\P(Q), \Sigma, q_0^{(1)} , \delta_M, Q_F^{(1)} \right)$$ by
  \[
- q_0^{(1)} = \{q_0\},\ \delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma),\ Q_F^{(1)} = \left\{R \subset Q : R\cap Q_F \ne \emptyset\right\}.
+ q_0^{(1)} = \left\{q_0\right\},\ \delta_M (Q', \sigma) = \bigcup_{\gamma \in Q'} \delta_N(\gamma, \sigma),\ Q_F^{(1)} = \left\{R \subset Q : R\cap Q_F \ne \emptyset \right\}.
  \]
-  For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to all strings.  Now just take \linebreak $R \equiv \left\{q_0\right\}$.
+  For any string $x$, one can use induction on $\left\lvert{x}\right\rvert$ to show that if $R\subset Q$, then $$\tilde{\delta}_M(R, x) = \bigcup_{p\in R} \hat{\delta}_N(p,x)$$ where $\tilde{\delta}_M : \P(Q) \times \Sigma^{\ast} \to \P(Q)$ denotes the obvious extension of $\delta_M$ to all strings.  Finally, take \linebreak $R \equiv \left\{q_0\right\}$.
 \end{proof}
 
 \begin{exmp}
-Let $L\subset \left\{0,1\right\}^{\ast}$ consist of those strings $x$ such that $``1010"$ appears in $x$. We can easily capture $L$ with the following $\NFA$, but writing a $\DFA$ that captures $L$ is much harder. 
+Let $L\subset \left\{0,1\right\}^{\ast}$ consist of those strings $x$ such that 1010 appears in $x$. We can easily capture $L$ with the following $\NFA$, but writing a $\DFA$ that captures $L$ is much harder. 
 \[
 \begin{tikzpicture}[shorten >=1pt, node distance=2cm, on grid, auto]
 \node[state, initial] (q_0) {$q_0$};
@@ -443,7 +443,6 @@ For any $\epsilon{\text{-}}\NFA$ $N$, there is some $\DFA$ $M$ such that $L(N) =
 Use a similar argument to the proof of \cref{same}. In particular, take
 \begin{align*}
 q_0^{(1)} & \equiv \epsilon \text{-}\cl(q_0)
-\\ & 
 \\ \delta_M(R, \sigma)  & \equiv  \bigcup_{r\in R}\bigcup_{p\in \epsilon \text{-}\cl(r)} \bigcup_{s\in \delta_N(p, \sigma)} \epsilon \text{-}\cl(s)
 \\ & = \bigcup_{r\in R} \bigcup_{s\in \delta_N(r, \sigma)} \epsilon \text{-}\cl(s)
 .\end{align*}
@@ -453,7 +452,7 @@ q_0^{(1)} & \equiv \epsilon \text{-}\cl(q_0)
 
 \begin{prop} Let $L_1, L_2\subset \Sigma^{\ast}$ be regular. 
 \begin{enumerate}[label=(\alph*)]
-\item $\overline{L_1}\coloneqq \Sigma^{\ast} \setminus L_1 = \left(L_1\right)^c$ is regular.
+\item $\underbrace{\Sigma^{\ast} \setminus L_1}_{\text{$\left(L_1\right)^c$ or $\overline{L_1}$}}$ is regular.
 \begin{corollary}
 If $L$ is finite or cofinite, then it is regular.
 \end{corollary}
@@ -616,9 +615,9 @@ A \textit{Turing machine} is a $7$-tuple $$\left(Q, \Sigma, \Gamma, \delta, q_0,
 \end{enumerate}
 We call 
 \begin{itemize}
-\item $\Sigma$ the \textit{input alphabet}, 
-\item $\Gamma$ the \textit{tape alphabet}, 
-\item $Q_F$ the set of \textit{accepting states}, and 
+\item $\Sigma$ the \textit{input alphabet} 
+\item $\Gamma$ the \textit{tape alphabet}
+\item $Q_F$ the set of \textit{accepting states} 
 \item $Q_R$ the set of \textit{rejecting states}.
 \end{itemize}
 \end{definition}
@@ -648,7 +647,7 @@ Adding a stay option $S$ to the set $\left\{L, R\right\}$ would not increase a T
 Let $M$ be a Turing machine. Let $q\in Q$ and $u,v\in \Gamma^{\ast}$. We say that the \textit{configuration of $M$} is $uqv$ if 
 \begin{enumerate}[label=(\alph*)]
 \item the current state of $M$ is $q$,
-\item the current tape contents is precisely $uv$, and
+\item the current tape content is precisely $uv$, and
 \item the current head location is the first symbol of $v$.
 \end{enumerate}
 We call this an \textit{accepting configuration} if $q \in Q_F$ and a \textit{rejecting configuration} if $q \in Q_R$.
