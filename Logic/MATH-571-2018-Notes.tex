@@ -487,7 +487,7 @@ Let $\epsilon >0$. Choose $n\in \N$ so large that $\left(\frac{1}{3}\right)^n <\
 \subsection{Lecture 4}
 
 \begin{note}
- Let $\mathcal{O}$ denote the set of all open sets. Recall that $\R$ has the set of rational intervals as a countable basis. Since $ \underbrace{\P(\Q \times \Q)}_{\text{power set}} \sim \R$, it follows by  the Cantor-Schr\"oder-Bernstein theorem that  $\mathcal{O} \sim \R$.
+ Let $\mathcal{O}$ denote the set of all open sets. Recall that $\R$ has the set of rational intervals as a countable basis. Since $ \underbrace{\P(\Q \times \Q)}_{\text{power set}} \sim \R$, it follows by the Cantor-Schr\"oder-Bernstein theorem that  $\mathcal{O} \sim \R$.
 \end{note}
 
 \begin{lemma}\label{PL''}
@@ -576,7 +576,7 @@ Any uncountable closed set is equipollent to $\R$.
 \end{corollary}
 
 \begin{remark}[Continuum Hypothesis] 
-Observe that any real number $r$ equals $\sup\{q\in \Q \mid q<r\}$. Thus, there exists a surjection $\R \to \P(\Q)$. Further, we have the inclusion $\bm{\mathcal{C}} \subset \R$. By the Cantor-Schr\"oder-Bernstein, it follows that $$\left\lvert{\R}\right\rvert =2^{\aleph_0}.$$ The \textit{continuum hypothesis} ($\mathsf{CH}$) asserts that every uncountable subset of $\R$ is equipollent to $\R$ (i.e., that   $\aleph_1 =2^{\aleph_0}$).
+Observe that any real number $r$ equals $\sup\{q\in \Q \mid q<r\}$. Thus, there exists a surjection $\R \to \P(\Q)$. Further, we have the inclusion $\bm{\mathcal{C}} \subset \R$. By the Cantor-Schr\"oder-Bernstein theorem, it follows that $$\left\lvert{\R}\right\rvert =2^{\aleph_0}.$$ The \textit{continuum hypothesis} ($\mathsf{CH}$) asserts that every uncountable subset of $\R$ is equipollent to $\R$ (i.e., that   $\aleph_1 =2^{\aleph_0}$).
 
 Hilbert placed the resolution of $\mathsf{CH}$ first on his famous 1900 research agenda for mathematics in the twentieth century. W. Hugh Woodin, a prominent set theorist, has recently argued that $\mathsf{CH}$ is true. It's clear that every nonempty open set is equipollent to $\R$. Moreover, \cref{LC'} shows that any closed set is either finite, equipollent to $\N$, or equipollent to $\R$. Therefore, no closed or open subset of $\R$ is a counterexample to $\mathsf{CH}$. Our next result, however, shows that we \emph{cannot} confirm $\mathsf{CH}$ by showing that every uncountable subset of $\R$ contains a perfect set.
 \end{remark}
@@ -1116,7 +1116,7 @@ If $\kappa$ is a cardinal, then let $\kappa^+$ denote the least cardinal greater
 The class $C$ of all cardinals is a proper class.
 \end{corollary}
 \begin{proof}
-For any ordinal $\alpha$, consider the cardinal $\kappa = \min\{\beta \in \ord \mid \beta \sim \alpha\}$. By Cantor-Schr\"oder-Bernstein, it's easy to check that $\alpha < \kappa^+$. Therefore,  if $C$ is a set, then $\bigcup{C}$ is a set and equals $\ord$, a contradiction. Hence $C$ is a proper class.
+For any ordinal $\alpha$, consider the cardinal $\kappa = \min\{\beta \in \ord \mid \beta \sim \alpha\}$. By \cref{CSB}, it's easy to check that $\alpha < \kappa^+$. Therefore,  if $C$ is a set, then $\bigcup{C}$ is a set and equals $\ord$, a contradiction. Hence $C$ is a proper class.
 \end{proof}
 
 \begin{definition}
@@ -1168,7 +1168,7 @@ Let $X$ be a set, The \textit{cardinality of $X$} is the cardinal number $$\left
 
 \begin{note}[Linear ordering of cardinals] $ $
 \begin{enumerate} 
-\item Consider the binary relation $< $ on the class of all cardinal numbers where $\left\lvert{X}\right\rvert < \left\lvert{Y}\right\rvert$ if there is an injection from $X$ intro $Y$ but $\left\lvert{X}\right\rvert \ne \left\lvert{Y}\right\rvert$. In light of the Cantor-Schr\"oder-Bernstein, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
+\item Consider the binary relation $< $ on the class of all cardinal numbers where $\left\lvert{X}\right\rvert < \left\lvert{Y}\right\rvert$ if there is an injection from $X$ intro $Y$ but $\left\lvert{X}\right\rvert \ne \left\lvert{Y}\right\rvert$. In light of \cref{CSB}, we see that $<$ is a partial ordering. By \cref{LR}, we see that $<$ is actually a linear ordering in $\zfc$. 
 \item In $\zfc$, if $\lambda$ is an infinite cardinal, then $\lambda = \aleph_{\alpha}$ for some ordinal $\alpha$. In this case, we get a transfinite enumeration of class of all cardinals
 \[
 0 < 1 < 2 < 3 < \cdots < \aleph_0 < \aleph_1 < \aleph_2 < \aleph_3 <  \cdots < \aleph_{\omega} < \cdots
@@ -1519,7 +1519,7 @@ For any particular $\varphi(\bar{x})$, the expression $$M \models \varphi(\bar{x
 \smallskip
 
 \begin{definition}\label{D0}
-A formula $\theta(\bar{x})$ of the language of set theory is a \textit{$\Delta_0$-formula} (written as $\theta(\bar{x}) \in \Delta_0$) if
+A formula $\theta(\bar{x})$ of the language of set theory is a \textit{$\Delta_0$ formula} (written as $\theta(\bar{x}) \in \Delta_0$) if
 \be[label=(\alph*)]
 \item it is quantifier-free, or
 \item it is of the form $\varphi \square \psi$ or $\neg{\varphi}$ where $\varphi, \psi \in \Delta_0$ and $\square$ denotes a logical connective, or
@@ -1709,10 +1709,10 @@ Any quantifier-free formula is  absolute for any class $A$.
 \end{exmp}
 
 \begin{note}
-Let $M$ be a transitive class. \Cref{d0abs} states that any $\Delta_0$-formula is absolute for $M$.
+Let $M$ be a transitive class. \Cref{d0abs} states that any $\Delta_0$ formula is absolute for $M$.
 \end{note}
 
-\begin{exmp}\label{d0} The following expressions can be written as $\Delta_0$-formulas and thus are absolute for all transitive models. 
+\begin{exmp}\label{d0} The following expressions can be written as $\Delta_0$ formulas and thus are absolute for all transitive models. 
 \be
 \item Being an ordinal.
 \item Being a limit/successor ordinal.
@@ -1906,7 +1906,7 @@ We may assume, wlog, that $\varphi$ is $\Sigma_0^{\zf}$. Indeed, we have that $\
 \] is also $\Sigma_0^{\zf}$, and $\zf \vdash \exists{x}\varphi \leftrightarrow \exists{v'}\theta$. Take $\left\{x,v\right\}$ as the set $v'$ witnessing this equivalence. If  our theorem holds for any $\Sigma_0^{\zf}$ formula, then this yields another equivalence
 \[
 \left(\exists{x \in \mathrm{H}(\kappa)}\right)\varphi \leftrightarrow \left(\exists{v' \in \mathrm{H}(\kappa)}\right)\theta
-\] in $\zf$ since $\kappa >\omega$ by assumption. In this case, our theorem holds for any $\Sigma_1^{\zf}$ formula holds.
+\] in $\zf$ since $\kappa >\omega$ by assumption. In this case, our theorem holds for any $\Sigma_1^{\zf}$ formula.
 
 \smallskip
 
@@ -1927,7 +1927,7 @@ $\Sigma_1^{\zf}$ is closed under bounded universal quantification.
 Consider any $\Sigma_1$ formula $\exists{z}{\theta(y,z)}$, where $\theta$ is $\Delta_0$ and $y$ is any set. It suffices to prove the biconditional 
 \[
 \left(\forall{x\in y}\right)\exists{z}{\theta(x,z)} \leftrightarrow \exists{w}\underbrace{\left(\forall{x \in y}\right)\left(\exists{z\in w}\right){\theta(x,z)}}_{\Delta_0}
-.\] The ($\leftarrow$) direction is trivial. Conversely, let 
+.\] The ($\Leftarrow$) direction is trivial. Conversely, let 
 \[
 w = \bigcup_{x\in y}S_x, \ \quad S_x \equiv \left\{z \mid \theta(x,z) \land \forall{v}\left(\theta(x,v) \to \rnk(z) \leq \rnk(v)\right)\right\}
 .\] (Forming the set $S_x$ from the class $\theta(x, {-})$ is an example of \textit{Scott's trick}.)

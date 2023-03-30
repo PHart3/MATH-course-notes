@@ -5,3 +5,5 @@
 *.toc
 *.gz
 *.gz(busy)
+*.nav
+*.snm

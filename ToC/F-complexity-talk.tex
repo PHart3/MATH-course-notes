@@ -1,0 +1,534 @@
+\documentclass{beamer}
+\newcommand\bmmax{0}
+\newcommand\hmmax{0}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm}
+\usepackage{lmodern}
+\usepackage{faktor}
+\usepackage{extpfeil}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{xcolor,pict2e}
+\usepackage{soul}
+\usepackage{mathpartir}
+\usepackage{ dsfont }
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{quiver}
+\usepackage{thmtools}
+\usepackage[capitalise]{cleveref}
+\usepackage{scrextend}
+\usepackage{mdframed}
+\usepackage{adjustbox}
+\usepackage{comment}
+\usepackage{tcolorbox}
+\usetikzlibrary{calc,decorations.pathmorphing,shapes}
+\newcommand{\vequiv}{\rotatebox[origin=c]{-90}{$\equiv$}}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+\DeclareMathOperator{\Ima}{Im}
+\newcommand{\A}{\mathcal A}
+\newcommand{\C}{\mathbb C}
+\newcommand{\D}{\mathcal D}
+\newcommand{\E}{\vec E}
+\newcommand{\CP}{\mathbb CP}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\vec G}
+\renewcommand{\H}{\mathbb H}
+\newcommand{\HP}{\mathbb HP}
+\newcommand{\K}{\mathcal K}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\RI}{\mathcal R}
+\newcommand{\M}{\mathbb M}
+\renewcommand{\O}{\mathbf O}
+\newcommand{\OP}{\mathbb OP}
+\renewcommand{\P}{\mathbf P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\I}{\mathbb I}
+\newcommand{\un}{\mathbf{U}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\RP}{\mathbb RP}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\X}{\mathbf X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ran}{\right>}
+\newcommand{\lan}{\left<}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\sra}{\shortrightarrow}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+
+\newcommand{\h}{\vec h}
+\newcommand{\f}{\vec f}
+\newcommand{\g}{\vec g}
+\renewcommand{\i}{\vec i}
+\renewcommand{\k}{\vec k}
+\newcommand{\n}{\vec n}
+\newcommand{\p}{\vec p}
+\newcommand{\q}{\vec q}
+\renewcommand{\r}{\vec r}
+\newcommand{\s}{\vec s}
+\renewcommand{\t}{\vec t}
+\renewcommand{\u}{\vec u}
+\renewcommand{\v}{\vec v}
+\newcommand{\w}{\vec w}
+\newcommand{\x}{\vec x}
+\newcommand{\z}{\vec z}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\GL}{GL}
+\DeclareMathOperator*{\SL}{SL}
+\DeclareMathOperator*{\SO}{SO}
+\DeclareMathOperator*{\SU}{SU}
+\DeclareMathOperator{\rng}{range}
+\DeclareMathOperator{\ft}{ft}
+\DeclareMathOperator{\gemu}{gemu}
+\DeclareMathOperator{\almu}{almu}
+\DeclareMathOperator{\Char}{\mathsf{char}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\graph}{Graph}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\norm}{N}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\out}{Out}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\syl}{syl}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\sym}{sym}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\colimm}{\mathsf{colim}}
+\DeclareMathOperator{\limm}{\mathsf{lim}}
+\DeclareMathOperator{\Ty}{Ty}
+\DeclareMathOperator{\Tm}{Tm}
+\DeclareMathOperator{\plus}{\mathtt{+}}
+
+
+
+%Our function symbols for our signature (not including universe closure symbols, \mathsf{0}, or lambda symbol):
+\newcommand{\J}{\mathsf{J}}
+\newcommand{\id}{\mathsf{Id}}
+\newcommand{\refl}{\mathsf{refl}}
+\newcommand{\app}{\mathsf{app}}
+\renewcommand{\split}{\mathsf{split}}
+\newcommand{\ind}{\mathsf{ind}}
+\newcommand{\pair}{\mathsf{pair}}
+\newcommand{\case}{\mathsf{case}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\el}{\mathsf{el}}
+\newcommand{\univv}{\mathsf{univ}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\2}{\mathbf{2}}
+
+%Primitive strings in our meta-language:
+\DeclareMathOperator{\ctx}{\mathtt{ctx}}
+\DeclareMathOperator{\type}{\mathtt{type}}
+
+%Our abbreviations used in our meta-language:
+
+\DeclareMathOperator{\inv}{\mathtt{inv}}
+\DeclareMathOperator{\isprop}{\mathtt{is\_prop}}
+\DeclareMathOperator{\retr}{\mathtt{retr}}
+\DeclareMathOperator{\sect}{\mathtt{sec}}
+\DeclareMathOperator{\ac}{\mathtt{ac}}
+\DeclareMathOperator{\assoc}{\mathtt{assoc}}
+\DeclareMathOperator{\lunit}{\mathtt{l\_unit}}
+\DeclareMathOperator{\runit}{\mathtt{r\_unit}}
+\DeclareMathOperator{\linv}{\mathtt{l\_inv}}
+\DeclareMathOperator{\rinv}{\mathtt{r\_inv}}
+\DeclareMathOperator{\concat}{\mathtt{concat}}
+\DeclareMathOperator{\cons}{\mathtt{cons}}
+\DeclareMathOperator{\comp}{\mathtt{comp}}
+\DeclareMathOperator{\idmap}{\mathtt{idmap}}
+\DeclareMathOperator{\transport}{\mathtt{transport}}
+\DeclareMathOperator{\ap}{\mathtt{ap}}
+\DeclareMathOperator{\apd}{\mathtt{apd}}
+\DeclareMathOperator{\happly}{\mathtt{hApply}}
+\DeclareMathOperator{\isequiv}{\mathtt{is\_equiv}}
+\DeclareMathOperator{\hfiber}{\mathtt{hFiber}}
+\DeclareMathOperator{\iscont}{\mathtt{is\_contr}}
+\DeclareMathOperator{\iscontmap}{\mathtt{is\_contr\_map}}
+\DeclareMathOperator{\iso}{\mathtt{iso}}
+\DeclareMathOperator{\hpyconcat}{\mathtt{htpy\_concat}}
+\DeclareMathOperator{\pr}{\mathtt{pr}}
+\DeclareMathOperator{\isset}{\mathtt{is\_set}}
+\DeclareMathOperator{\isgrp}{\mathtt{is\_group}}
+\DeclareMathOperator{\isoeq}{\mathtt{iso\_eq}}
+\DeclareMathOperator{\homm}{\mathtt{hom}}
+\DeclareMathOperator{\equiveq}{\mathtt{idtoequiv}}
+
+\DeclareMathOperator{\fv}{FV}
+
+\DeclareMathOperator{\cdtt}{\mathrm{CDTT}}
+\DeclareMathOperator{\univ}{\mathrm{Univ}}
+\DeclareMathOperator{\wfe}{\mathrm{WFE}}
+\DeclareMathOperator{\sfe}{\mathrm{FE}}
+\DeclareMathOperator{\uip}{\mathrm{UIP}}
+\DeclareMathOperator{\err}{\mathrm{ERR}}
+
+
+
+
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\sset}{\mathbf{sSet}}
+\DeclareMathOperator{\expr}{exp}
+\DeclareMathOperator{\set}{\mathbf{Set}}
+\DeclareMathOperator{\Ab}{\mathbf{Ab}}
+\DeclareMathOperator{\Cmon}{\mathbf{CMon}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\hocolimm}{hocolim}
+\DeclareMathOperator{\holimm}{holim}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ar}{Arr}
+\DeclareMathOperator{\pb}{Pb}
+\DeclareMathOperator{\trr}{tr}
+\DeclareMathOperator{\sk}{sk}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\Lan}{Lan}
+\DeclareMathOperator{\fp}{fp}
+
+\makeatletter
+\newcommand{\colim}{\gen@colim{\colimm}}
+\newcommand{\gen@colim}[1]{%
+  \@ifnextchar_{\gen@@colim{#1}}{\mathbin{#1}}%
+}
+\def\gen@@colim#1_#2{%
+  \mathpalette\gen@@@colim{{#1}{#2}}%
+}
+\newcommand\gen@@@colim[2]{\mathbin{\gen@@@@colim#1#2}}
+\newcommand\gen@@@@colim[3]{%
+  \ifx#1\displaystyle
+    \mathop{#2}\limits_{#3}%
+  \else
+    {#2}_{#3}%
+  \fi
+}
+\makeatother
+
+\makeatletter
+\newcommand{\hocolim}{\gen@colim{\hocolimm}}
+\newcommand{\gen@hocolim}[1]{%
+  \@ifnextchar_{\gen@@hocolim{#1}}{\mathbin{#1}}%
+}
+\def\gen@@hocolim#1_#2{%
+  \mathpalette\gen@@@hocolim{{#1}{#2}}%
+}
+\newcommand\gen@@@hocolim[2]{\mathbin{\gen@@@@hocolim#1#2}}
+\newcommand\gen@@@@hocolim[3]{%
+  \ifx#1\displaystyle
+    \mathop{#2}\limits_{#3}%
+  \else
+    {#2}_{#3}%
+  \fi
+}
+\makeatother
+
+\makeatletter
+\newcommand{\holim}{\gen@colim{\holimm}}
+\newcommand{\gen@holim}[1]{%
+  \@ifnextchar_{\gen@@holim{#1}}{\mathbin{#1}}%
+}
+\def\gen@@holim#1_#2{%
+  \mathpalette\gen@@@holim{{#1}{#2}}%
+}
+\newcommand\gen@@@holim[2]{\mathbin{\gen@@@@holim#1#2}}
+\newcommand\gen@@@@holim[3]{%
+  \ifx#1\displaystyle
+    \mathop{#2}\limits_{#3}%
+  \else
+    {#2}_{#3}%
+  \fi
+}
+\makeatother
+
+\newcommand{\RomanNumeralCaps}[1]
+    {\MakeUppercase{\romannumeral #1}}
+
+\renewcommand{\a}{\mathscr{A}}
+\renewcommand{\b}{\mathscr{B}}
+\renewcommand{\c}{\mathscr{C}}
+\renewcommand{\d}{\mathscr{D}}
+\newcommand{\e}{\mathscr{E}}
+\renewcommand{\j}{\mathscr{J}}
+\newcommand{\y}{\mathscr{Y}}
+\newcommand{\rr}{\mathscr{R}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\T}{\mathbb T}
+
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\idd}{id}
+\DeclareMathOperator{\fib}{\mathnormal{Fib}}
+\DeclareMathOperator{\cof}{\mathnormal{Cof}}
+\DeclareMathOperator{\we}{\mathnormal{W}}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\cell}{cell}
+\DeclareMathOperator{\ret}{ret}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\rlp}{rlp}
+\DeclareMathOperator{\llp}{llp}
+\DeclareMathOperator{\nondeg}{nondeg}
+\DeclareMathOperator{\trans}{\mathnormal{trans}}
+\DeclareMathOperator{\ch}{\mathbf{Ch}}
+\DeclareMathOperator{\Mod}{\mathbf Mod}
+
+
+
+\newcounter{sarrow}
+\newcommand\xrsquigarrow[1]{%
+\stepcounter{sarrow}%
+\mathrel{\begin{tikzpicture}[baseline= {( $ (current bounding box.south) + (0,-0.1ex) $ )}]
+\node[inner sep=.5ex] (\thesarrow) {$\scriptstyle #1$};
+\path[draw,<-,decorate,
+  decoration={zigzag,amplitude=0.7pt,segment length=1.2mm,pre=lineto,pre length=4pt}] 
+    (\thesarrow.south east) -- (\thesarrow.south west);
+\end{tikzpicture}}%
+}
+
+
+\def \RightTirName #1{\rm\hbox {\hskip 1ex (#1)}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\newcommand{\bmp}{\begin{mathpar}}
+\newcommand{\emp}{\end{mathpar}}
+
+\setlength{\parindent}{0pt}
+
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+\setbeamertemplate{itemize items}[circle]
+
+%Information to be included in the title page:
+\title{The complexity of type inference for System F}
+\author{Perry Hart}
+\institute{UMN PL Seminar}
+\date{March 29, 2023}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\usepackage{multirow}
+
+
+\usecolortheme{seahorse}
+
+
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{footline}{%
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{1cm}\insertframenumber{}/\inserttotalframenumber}
+\logo{\includegraphics[scale=.4]{logo-ic}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Overview}
+
+Let $\mathbb{T}$ denote a type system. 
+
+\medskip
+
+\textbf{Type inference:}  Given a raw term $t$ of $\mathbb{T}$, decide whether $t$ is typable.
+
+\medskip
+
+\begin{theorem}
+\begin{enumerate}
+\item Type inference for STLC is decidable in polynomial time.
+\item Type inference for Core ML is decidable in $O(2^n)$ time and is $\mathsf{EXPTIME}$-hard under logspace reduction.
+\end{enumerate}
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+
+The more expressive the language, the harder the decision problem.
+
+\smallskip
+
+\begin{example}
+Deciding whether a propositional sentence is true is $\mathsf{PTIME}$-complete.
+
+\medskip
+
+Deciding whether $\exists{x}.\varphi(x)$ with $\varphi(x)$ a propositional formula is $\mathsf{NP}$-complete.
+\end{example}
+
+\bigskip
+
+\begin{theorem}[Henglein and Mairson]
+Type inference for System F is $\mathsf{EXPTIME}$-hard under logspace reduction. 
+\end{theorem}
+
+\begin{corollary}
+Type inference for System F requires exponential time.
+\end{corollary}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof strategy}
+
+For each integer $k \geq 1$, find a logspace reduction
+\[
+\text{total TM $M$ and string $x$ of length $n$} \ \ \mapsto \ \  \text{raw term $\Psi_k(M, x)$}
+,\]
+where $M$ rejects $x$ in $2^{n^k}$ steps if and only if $\Psi_k(M, x)$ is non-typable.
+
+\bigskip
+
+\emph{Such a reduction is known for Core ML.}
+
+\smallskip
+
+\begin{block}{Difficulty}
+The non-typable term $\Psi_k(M, x)$ in Core ML could be typable in System F.
+\end{block}
+\end{frame}
+
+\begin{frame}
+Construct a term $A_k(M,x)$ of System F in logspace such that 
+\begin{align*}
+&   \text{$A_k(M,x) \to^{\ast} \mathbf{false}$ when $M$ accepts $x$ in $2^{n^k}$ steps}
+\\ & \text{$A_k(M,x) \to^{\ast} \mathbf{true}$ when $M$ rejects $x$ in $2^{n^k}$ steps}.
+\end{align*} 
+
+\smallskip
+
+Take
+ \[\adjustbox{scale =.9}{$
+\Psi_k(M,x) \ \coloneqq \  \left(\Lambda{\alpha}.\lambda(x : \alpha).xx\right)\left(A_k(M,x)\left(\Lambda{\alpha}.\lambda(x : \alpha).x\right)\left(\Lambda{\alpha}.\lambda(y : \alpha).yy\right) \right)$}
+\] \pause
+
+\smallskip
+
+If $A_k(M,x) \to^{\ast} \mathbf{false}$, then 
+\[
+\Psi_k(M,x) \ \longrightarrow^{\ast} \ \underbrace{\left(\Lambda{\alpha}.\lambda(x : \alpha).xx\right)\left(\Lambda{\alpha}.\lambda(y : \alpha).yy\right)}_{\text{non-terminating}}
+.\]
+
+\smallskip
+
+If $A_k(M,x) \to^{\ast} \mathbf{true}$, then we must show that $\Psi_k(M,x)$ is typable.
+\end{frame}
+
+\begin{frame}
+\frametitle{Encoding Turing machines with System F}
+
+Let $M$ be a TM.
+
+\medskip
+
+\medskip
+
+The $n$-th configuration $\mathsf{ID}_{M,x}(n)$ of $M$ on input $x$ is the triple $\left(q, L, R\right)$ where, after exactly $n$ steps, 
+\begin{itemize}
+\item $q$ is the state of $M$, 
+\item $L$ is the (finite) list of symbols to the left of the read head, and 
+\item $R$ the list of symbols at or to the right of the read head. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+We can find a $\lambda$-term $\delta_M$ in logspace such that
+\[
+\delta_M \ \overline{\mathsf{ID}_{M,x}(n)} \ \  \longrightarrow^{\ast} \ \  \overline{\mathsf{ID}_{M,x}(n+1)}
+\] for all $n \in \N$. \pause
+
+\bigskip
+
+Moreover, the term  
+\[
+ \left(\overline{2^{n^k}}[T_{\mathsf{ID}_{M,x}}] \ \delta_M\right) \overline{\mathsf{ID}_{M,x}(0)}
+\] has normal form $\overline{\mathsf{ID}_{M,x}(2^{n^k})}$. If $\left(q, L, R\right) = \mathsf{ID}_{M,x}(2^{n^k})$, then take
+\[
+A_k(M,x) \ \coloneqq \ \overline{q}[\mathsf{Bool}] \ \mathit{false}  \cdots \mathit{false} \ \underbrace{\mathit{true} \cdots \mathit{true}}_{\text{$\left\lvert{Q_F}\right\rvert$ copies}}
+.\]
+\end{frame}
+
+\begin{frame}
+If $M$ accepts $x$ in $2^k$ steps, then $A_k(M,x)$ reduces to $\mathbf{true}$. 
+
+\medskip
+
+Therefore,
+ \[\adjustbox{scale =.9}{$
+ \left(\lambda(x : \tau).x[\tau]x\right)\left(A_k(M,x)[\tau][\tau \to \tau]\left(\Lambda{\alpha}.\lambda(x : \alpha).x\right)\left(\lambda(y : \tau).y[\tau]y\right) \right)$}
+\tag{$\tau \coloneqq \forall{\alpha}.\alpha \to \alpha$}
+\] has type $\tau$, so that $\Psi_k(M,x)$ is typable. \pause
+
+\bigskip
+
+Since $A_k(M,x)$ can be constructed in logspace, so can $\Psi_k(M,x)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Related questions}
+
+\begin{itemize}
+\item The decidability of type inference for System F was an open question until 2012, then answered in the negative by Fujita and Schubert.
+
+\bigskip
+
+\item Pfenning proved that partial type inference for System F is undecidable.
+
+\bigskip
+
+\item The set of all strongly normalizing terms of System F is $\mathsf{RE}$-complete (hence undecidable).
+
+\end{itemize}
+
+\end{frame}
+
+\end{document}
