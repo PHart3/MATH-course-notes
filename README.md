@@ -1,1 +1,1 @@
-These are notes I've made for various math courses and seminars.
+Some notes I've made on various math topics.
