@@ -7,3 +7,6 @@
 *.gz(busy)
 *.nav
 *.snm
+*.xml
+*.bbl
+*.blg
